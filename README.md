@@ -1,2 +1,2 @@
-# Azure Disk Log Inspector Service
-Inspect Azure IaaS Disks for Log Files.
+# Azure Inspect Disk Service
+Inspect Azure IaaS Disks for Log and Configuration Files.
