@@ -22,7 +22,7 @@ Globals
 IP_ADDRESS = '127.0.0.1'
 PORT = 8081
 OUTPUTDIRNAME = '/output'
-LOG_FILE = "/var/log/azureDiskInspectorSvc.log"
+LOG_FILE = "/var/log/azureDiskInspectSvc.log"
 
 totalCount = 0
 successCount = 0

@@ -26,13 +26,13 @@ RUN make
 # extractor service
 RUN rm -v /etc/nginx/nginx.conf
 COPY conf/nginx.conf /etc/nginx/
-COPY pyServer/* /azureDiskInspectorSvc/
+COPY pyServer/* /azureDiskInspectSvc/
 
 # Expose port 8080 for nginx
 EXPOSE 8080
 
 # Start the nginx service
-CMD service nginx start && /azureDiskInspectorSvc/main.py
+CMD service nginx start && /azureDiskInspectSvc/main.py
 
 
 
