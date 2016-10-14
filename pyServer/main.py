@@ -24,6 +24,7 @@ IP_ADDRESS = '127.0.0.1'
 PORT = 8081
 OUTPUTDIRNAME = '/output'
 LOG_FILE = "/var/log/azureDiskInspectSvc.log"
+MAX_TIMEOUT = 60*25
 
 """
 Logger Initialization
@@ -125,7 +126,8 @@ class KeepAliveThread(Thread):
         self.complete()
         self.join()
 
-    def run(self):                
+    def run(self):        
+        totalWait = 0        
         while True:
             if self.doWork:
                 rootLogger.info(
@@ -138,6 +140,10 @@ class KeepAliveThread(Thread):
                 return
             if self.exit_flag.wait(timeout=120):
                 break
+            totalWait = totalWait + 120
+            if totalWait > MAX_TIMEOUT
+                rootLogger.info('Thread [' + str(self.forThread) +'] waited for too long. Terminating.')
+                self.complete()
         rootLogger.info('Exiting KeepAliveWorkerThread for thread [' +
                      str(self.forThread) + '].')
 
@@ -257,7 +263,20 @@ class GuestFS:
 
     def inspect_get_mountpoints(self, device):
         (out, err) = self.callGF('Get Device Mountpoints', ['--', '-inspect-get-mountpoints', device], True)
-        return out
+        mountpointsArr = list()
+        for eachMountPoint in out:    
+            eachMountPointArr = eachMountPoint.split(':')
+            mountpoint = str(eachMountPointArr[0])
+            mountdevice = str(eachMountPointArr[1]).strip()
+            mountpointsArr.append( [ mountpoint, mountdevice ] )
+        
+        def getKey(item):
+            return len(item[0])
+
+        mountpointsArrSorted = sorted(mountpointsArr, key=getKey)
+        # mountpointsArr.sort(_compare_mounts, key=_get_key)
+
+        return mountpointsArr
 
     def unmount(self, mountpoint):
         try:
@@ -265,7 +284,13 @@ class GuestFS:
         except subprocess.CalledProcessError:
             pass
 
-    def mount(self, mountpoint, device):
+    def unmount_all(self):
+        try:
+            (out, err) = self.callGF('Unmount All', ['--', '-unmount-all'], True)
+        except subprocess.CalledProcessError:
+            pass
+
+    def mount_ro(self, mountpoint, device):
         try:
             (out, err) = self.callGF('Mount [' + mountpoint + ',' + device + ']', ['--', '-mount-ro', device, mountpoint], True)
             if err:
@@ -358,7 +383,11 @@ class GuestFishWrapper:
         self.WriteToResultFile(operationOutFile, "Type: " + osType)
         self.WriteToResultFile(operationOutFile, "Distribution: " + osDistribution)
         self.WriteToResultFile(operationOutFile, "Product Name: " + osProductName)
-        self.WriteToResultFileWithHeader(operationOutFile, "Mount Points:", osMountpoints)
+
+        osMountpointsStrArr = list()
+        for mp in osMountpoints:
+            osMountpointsStrArr.append(str(mp[0]) + ": " + str(mp[1]))
+        self.WriteToResultFileWithHeader(operationOutFile, "Mount Points:", osMountpointsStrArr)
 
     def GetInspectMetadata(self, guestfish, device):
         osType = guestfish.inspect_get_type(device)
@@ -396,61 +425,76 @@ class GuestFishWrapper:
                     (osType, osDistribution, osProductName, osMountpoints) = self.GetInspectMetadata(guestfish, device)
                     self.WriteInspectMetadataToResultFile(operationOutFile, device, osType, osDistribution, osProductName, osMountpoints)
 
-                    mountpoint = "/"
-                    guestfish.unmount(mountpoint)
-                    wasMounted = guestfish.mount(mountpoint, device)
+                    try:
+                        # Mount all identified mount points
+                        canProceedAfterMount = False
+                                                
+                        for mount in osMountpoints:
+                            mountpoint = mount[0]
+                            mountdevice = mount[1]
+                            wasMounted = guestfish.mount_ro(mountpoint, mountdevice)
 
-                    if not wasMounted:
-                        self.WriteToResultFile(operationOutFile, "Mounting " + device + " on " + mountpoint + " FAILED.\r\n")
+                            if not wasMounted:
+                                self.WriteToResultFile(operationOutFile, "Mounting " + mountdevice + " on " + mountpoint + " FAILED.")
 
-                        # Ignore and continue to next device
-                        continue
-                    else:
-                        self.WriteToResultFile(operationOutFile, "Mounting " + device + " on " + mountpoint + " SUCCEEDED.\r\n")
-
-                    manifestFile = "/etc/azdis/" + self.mode.lower()
-                    operationNumber = 0
-                    with open(manifestFile) as operationManifest:
-                        contents = operationManifest.read().splitlines()
-                        totalOperations = len(contents)
-                        rootLogger.info("Reading manifest file from " + manifestFile + " with " + str(totalOperations) + " operation entries.")
-                        for operation in contents:
-                            operationNumber = operationNumber + 1
-                            rootLogger.info("Executing Operation [" + str(operationNumber) + "/" + str(totalOperations) + "]: " + str(operation))                            
-                            opList = operation.split(',')
-
-                            if len(opList) < 2:
+                                # Ignore and continue to next device
                                 continue
-                            
-                            opCommand = str(opList[0]).lower()
-                            opParam1 = opList[1]
+                            else:
+                                canProceedAfterMount = True
+                                self.WriteToResultFile(operationOutFile, "Mounting " + mountdevice + " on " + mountpoint + " SUCCEEDED.")
 
-                            if opCommand=="echo":
-                                self.WriteToResultFile(operationOutFile, opParam1)
-                            elif opCommand=="ll":
-                                directory = opParam1
-                                dirList = guestfish.ll(directory)
-                                if dirList:
-                                    self.WriteToResultFileWithHeader(operationOutFile, "Listing contents of " + directory + ":", dirList)
-                                else:
-                                    self.WriteToResultFile(operationOutFile, "Directory " + directory + " is not valid.")
-                            elif opCommand=="copy":
-                                gatherItem = opParam1
+                        if not canProceedAfterMount:
+                            self.WriteToResultFile(operationOutFile, "No mount points can be mounted on this device.\r\n")
+                            continue
+                        else:
+                            self.WriteToResultFile(operationOutFile, "\r\n")
 
-                                # Determine Output Folder
-                                dirPrefix = os.path.dirname(gatherItem)
-                                targetDir = requestDir + os.sep + 'device_' + str(deviceNumber) + dirPrefix
+                        manifestFile = "/etc/azdis/" + self.mode.lower()
+                        operationNumber = 0
+                        with open(manifestFile) as operationManifest:
+                            contents = operationManifest.read().splitlines()
+                            totalOperations = len(contents)
+                            rootLogger.info("Reading manifest file from " + manifestFile + " with " + str(totalOperations) + " operation entries.")
+                            for operation in contents:
+                                operationNumber = operationNumber + 1
+                                rootLogger.info("Executing Operation [" + str(operationNumber) + "/" + str(totalOperations) + "]: " + str(operation))                            
+                                opList = operation.split(',')
 
-                                # Create Output Folder if needed
-                                if not (os.path.exists(targetDir)):
-                                    os.makedirs(targetDir)
+                                if len(opList) < 2:
+                                    continue
+                                
+                                opCommand = str(opList[0]).lower()
+                                opParam1 = opList[1]
 
-                                # Copy 
-                                wasCopied = guestfish.copy_out(gatherItem, targetDir)
-                                if wasCopied:
-                                    self.WriteToResultFile(operationOutFile, "Copying " + gatherItem + " SUCCEEDED.")
-                                else:
-                                    self.WriteToResultFile(operationOutFile, "Copying " + gatherItem + " FAILED.")
+                                if opCommand=="echo":
+                                    self.WriteToResultFile(operationOutFile, opParam1)
+                                elif opCommand=="ll":
+                                    directory = opParam1
+                                    dirList = guestfish.ll(directory)
+                                    if dirList:
+                                        self.WriteToResultFileWithHeader(operationOutFile, "Listing contents of " + directory + ":", dirList)
+                                    else:
+                                        self.WriteToResultFile(operationOutFile, "Directory " + directory + " is not valid.")
+                                elif opCommand=="copy":
+                                    gatherItem = opParam1
+
+                                    # Determine Output Folder
+                                    dirPrefix = os.path.dirname(gatherItem)
+                                    targetDir = requestDir + os.sep + 'device_' + str(deviceNumber) + dirPrefix
+
+                                    # Create Output Folder if needed
+                                    if not (os.path.exists(targetDir)):
+                                        os.makedirs(targetDir)
+
+                                    # Copy 
+                                    wasCopied = guestfish.copy_out(gatherItem, targetDir)
+                                    if wasCopied:
+                                        self.WriteToResultFile(operationOutFile, "Copying " + gatherItem + " SUCCEEDED.")
+                                    else:
+                                        self.WriteToResultFile(operationOutFile, "Copying " + gatherItem + " FAILED.")
+                    finally:
+                        # Unmount all mountpoints
+                        guestfish.unmount_all()
 
                 deviceNumber = deviceNumber + 1
 
