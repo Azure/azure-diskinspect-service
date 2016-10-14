@@ -60,6 +60,12 @@ Run:
 	
 to verify the service is up and running.
 
+## Manual Testing:
+
+Issue a curl query while logged into the docker container:
+
+	docker exec -it AzureDiskInspectSvc_US bash
+	<Docker Container> curl -k "https://127.0.0.1:8080/<OPERATION_ID>/<MODE>/<STORAGE BLOB NAME>/<CONTAINER BLOB NAME>?<SAS QUERY PARAMETERS>
 
 ## Logs:
 
