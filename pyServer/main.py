@@ -141,7 +141,7 @@ class KeepAliveThread(Thread):
             if self.exit_flag.wait(timeout=120):
                 break
             totalWait = totalWait + 120
-            if totalWait > MAX_TIMEOUT
+            if totalWait > MAX_TIMEOUT:
                 rootLogger.info('Thread [' + str(self.forThread) +'] waited for too long. Terminating.')
                 self.complete()
         rootLogger.info('Exiting KeepAliveWorkerThread for thread [' +
