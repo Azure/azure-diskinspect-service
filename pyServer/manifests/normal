@@ -1,0 +1,22 @@
+echo,### Probing Directories ###
+ll,/var/log
+ll,/etc/udev/rules.d
+
+echo,### Gathering Configuration Files ###
+copy,/etc/fstab
+copy,/etc/ssh/sshd_config
+echo,
+
+echo,### Gathering Log Files ###
+copy,/var/log/waagent*
+copy,/var/log/syslog*
+copy,/var/log/rsyslog*
+copy,/var/log/messages*
+copy,/var/log/kern*
+copy,/var/log/dmesg*
+copy,/var/log/dpkg*
+copy,/var/log/yum*
+copy,/var/log/cloud-init*
+copy,/var/log/boot*
+copy,/var/log/auth*
+copy,/var/log/secure*

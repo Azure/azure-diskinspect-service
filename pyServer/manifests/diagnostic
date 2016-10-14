@@ -1,0 +1,42 @@
+echo,### Probing Directories ###
+ll,/var/log
+ll,/etc/udev/rules.d
+
+echo,### Gathering Configuration Files ###
+copy,/etc/fstab
+copy,/etc/ssh/sshd_config
+copy,/boot/grub*/grub.conf
+copy,/boot/grub*/menu.lst
+copy,/etc/*-release
+copy,/etc/HOSTNAME
+copy,/etc/hostname
+copy,/etc/network/interfaces
+copy,/etc/network/interfaces.d/*.cfg
+copy,/etc/nsswitch.conf
+copy,/etc/resolv.conf
+copy,/etc/sysconfig/iptables
+copy,/etc/sysconfig/network
+copy,/etc/sysconfig/network/ifcfg-eth*
+copy,/etc/sysconfig/network/routes
+copy,/etc/sysconfig/network-scripts/ifcfg-eth*
+copy,/etc/sysconfig/network-scripts/route-eth*
+copy,/etc/sysconfig/SuSEfirewall2
+copy,/etc/ufw/ufw.conf
+copy,/etc/waagent.conf
+copy,/var/lib/dhcp/dhclient.eth0.leases
+echo,
+
+echo,### Gathering Log Files ###
+copy,/var/log/waagent*
+copy,/var/log/syslog*
+copy,/var/log/rsyslog*
+copy,/var/log/messages*
+copy,/var/log/kern*
+copy,/var/log/dmesg*
+copy,/var/log/dpkg*
+copy,/var/log/yum*
+copy,/var/log/cloud-init*
+copy,/var/log/boot*
+copy,/var/log/auth*
+copy,/var/log/secure*
+copy,/var/log/azure/*/*/*.log

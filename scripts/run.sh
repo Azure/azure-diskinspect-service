@@ -21,5 +21,5 @@ fi
 echo "Starting service..."
 docker create -v /etc/nginx/ssl --name $SERVICEVOLUMENAME ubuntu
 docker cp $SSL_PATH/. $SERVICEVOLUMENAME:/etc/nginx/ssl/.
-docker run -h $CONTAINERHOSTNAME -it -p 8080:8080 --name $SERVICENAME --volumes-from $SERVICEVOLUMENAME -e affinity:image==$CONTAINERNAME $CONTAINERNAME
+docker run -h $CONTAINERHOSTNAME -t -p 8080:8080 --name $SERVICENAME --volumes-from $SERVICEVOLUMENAME -e affinity:image==$CONTAINERNAME $CONTAINERNAME
 echo "Done."
