@@ -1,0 +1,17 @@
+echo,### Probing Directories ###
+ll,/var/log
+ll,/var/lib/waagent
+
+echo,### Gathering Configuration Files ###
+copy,/etc/*-release
+copy,/etc/HOSTNAME
+copy,/etc/hostname
+copy,/etc/waagent.conf
+copy,/var/lib/waagent/*.xml
+echo,
+
+echo,### Gathering Log Files ###
+copy,/var/log/waagent*
+copy,/var/log/dmesg*
+copy,/var/log/auth*
+copy,/var/log/azure/*/*/*
