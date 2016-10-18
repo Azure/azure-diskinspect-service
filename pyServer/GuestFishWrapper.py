@@ -16,7 +16,7 @@ import csv
 import glob
 from threading import Thread
 from datetime import datetime
-import GuestFS
+from GuestFS import GuestFS
 
 """
 LibGuestFS Wrapper for Disk Information Extraction 
@@ -33,11 +33,12 @@ class GuestFishWrapper:
     outputFileName = None
     mode = None
 
-    def __init__(self, handler, storageUrl, outputDirName, operationId, mode):
+    def __init__(self, rootLogger, handler, storageUrl, outputDirName, operationId, mode):
         self.environment = None
         self.httpRequestHandler = handler
         self.storageUrl = storageUrl
         self.outputDirName = outputDirName + os.sep + operationId
+        self.rootLogger = rootLogger
         self.mode = mode 
 
     def __enter__(self):
@@ -46,11 +47,11 @@ class GuestFishWrapper:
 
     def __exit__(self, type, value, traceback):
         if (os.path.exists(self.outputDirName)):
-            rootLogger.info('Removing: ' + self.outputDirName)
+            self.rootLogger.info('Removing: ' + self.outputDirName)
             shutil.rmtree(self.outputDirName)
 
         if (os.path.exists(self.outputFileName)):
-            rootLogger.info('Removing: ' + self.outputFileName)
+            self.rootLogger.info('Removing: ' + self.outputFileName)
             os.remove(self.outputFileName)
 
     def WriteToResultFileWithHeader(self, operationOutFile, headerString, data):
@@ -97,7 +98,7 @@ class GuestFishWrapper:
         operationOutFilename = requestDir + os.sep + 'results.txt'
 
         with open(operationOutFilename, "w", newline="\r\n") as operationOutFile:
-            with GuestFS(storageUrl) as guestfish:
+            with GuestFS(self.rootLogger, storageUrl) as guestfish:
                 
                 # Initialize
                 guestfish.launch()
@@ -112,7 +113,7 @@ class GuestFishWrapper:
 
                 deviceNumber = 0
                 for device in inspectList:
-                    rootLogger.info('GuestFish:Examining Device> %s', device)
+                    self.rootLogger.info('GuestFish:Examining Device> %s', device)
 
                     # Gather and Write Inspect Metadata about the Device
                     (osType, osDistribution, osProductName, osMountpoints) = self.GetInspectMetadata(guestfish, device)
@@ -147,10 +148,10 @@ class GuestFishWrapper:
                         with open(manifestFile) as operationManifest:
                             contents = operationManifest.read().splitlines()
                             totalOperations = len(contents)
-                            rootLogger.info("Reading manifest file from " + manifestFile + " with " + str(totalOperations) + " operation entries.")
+                            self.rootLogger.info("Reading manifest file from " + manifestFile + " with " + str(totalOperations) + " operation entries.")
                             for operation in contents:
                                 operationNumber = operationNumber + 1
-                                rootLogger.info("Executing Operation [" + str(operationNumber) + "/" + str(totalOperations) + "]: " + str(operation))                            
+                                self.rootLogger.info("Executing Operation [" + str(operationNumber) + "/" + str(totalOperations) + "]: " + str(operation))                            
                                 opList = operation.split(',')
 
                                 if len(opList) < 2:

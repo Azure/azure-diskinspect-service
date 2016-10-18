@@ -16,17 +16,17 @@ import csv
 import glob
 from threading import Thread
 from datetime import datetime
-import ServiceMetrics
-import AzureDiskInspectService
+from ServiceMetrics import ServiceMetrics
+from AzureDiskInspectService import AzureDiskInspectService
+from AzureDiskInspectService import ThreadingServer
 
 """
 Globals
 """
 IP_ADDRESS = '127.0.0.1'
 PORT = 8081
-OUTPUTDIRNAME = '/output'
 LOG_FILE = "/var/log/azureDiskInspectSvc.log"
-MAX_TIMEOUT = 60*25
+
 
 """
 Logger Initialization
@@ -52,6 +52,8 @@ Main Entrypoint
 if __name__ == '__main__':
     server_address = (IP_ADDRESS, PORT)
     AzureDiskInspectService.protocol_version = "HTTP/1.1"
+    AzureDiskInspectService.rootLogger = rootLogger
+    AzureDiskInspectService.serviceMetrics = serviceMetrics
     server = ThreadingServer(server_address, AzureDiskInspectService)
     rootLogger.info('Started AzureDiskInspectService on IP: ' + str(IP_ADDRESS) + ', Port: ' + str(PORT))
 

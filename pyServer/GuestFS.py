@@ -29,9 +29,10 @@ class GuestFS:
     pid = None
     environment = None
 
-    def __init__(self, storageUrl):
+    def __init__(self, rootLogger, storageUrl):
         self.storageUrl = storageUrl
         self.environment = os.environ.copy()
+        self.rootLogger = rootLogger
 
     def __enter__(self):
         self.start()
@@ -49,7 +50,7 @@ class GuestFS:
         start_time = datetime.now()
         try:
             retArgs = self.buildGFArgs(commands)
-            rootLogger.info('GuestFish:' + echoStr + ':Remote> ' + ' '.join(retArgs))
+            self.rootLogger.info('GuestFish:' + echoStr + ':Remote> ' + ' '.join(retArgs))
 
             proc = subprocess.Popen(
                 retArgs,
@@ -64,22 +65,22 @@ class GuestFS:
                 resultStr = '\r\n'.join(resultAsArray)
                 if len(resultAsArray) > 1:
                     resultStr = '\r\n' + resultStr
-                rootLogger.info('GuestFish:' + echoStr + ':Result> ' + resultStr)
+                self.rootLogger.info('GuestFish:' + echoStr + ':Result> ' + resultStr)
             if err:
                 if continueOnError:
-                    rootLogger.warning('GuestFish:' + echoStr + ':Error> \r\n' + err)
+                    self.rootLogger.warning('GuestFish:' + echoStr + ':Error> \r\n' + err)
                 else:
-                    rootLogger.error('GuestFish:' + echoStr + ':Error> \r\n' + err)
+                    self.rootLogger.error('GuestFish:' + echoStr + ':Error> \r\n' + err)
             return retValue
         except subprocess.CalledProcessError as e:
             if not continueOnError:
-                rootLogger.error('GuestFish:' + echoStr + ':FAILED')
+                self.rootLogger.error('GuestFish:' + echoStr + ':FAILED')
                 raise(e)
             else:
-                rootLogger.warning('GuestFish:' + echoStr + ':WARNING')
+                self.rootLogger.warning('GuestFish:' + echoStr + ':WARNING')
         finally:
             elapsedTime = datetime.now() - start_time
-            rootLogger.info('GuestFish:' + echoStr + ':Remote> ExecutionTime=' + str(elapsedTime.total_seconds()) + "s.")
+            self.rootLogger.info('GuestFish:' + echoStr + ':Remote> ExecutionTime=' + str(elapsedTime.total_seconds()) + "s.")
             
     def start(self):
         # Run guestfish in remote mode and then send it a command
@@ -87,7 +88,7 @@ class GuestFS:
         # is very limited (no variables, etc.)
 
         args = ['/libguestfs/run', 'guestfish', '--listen', '-a', self.storageUrl, '--ro']
-        rootLogger.info('GuestFish:Create:Local> ' + ' '.join(args))
+        self.rootLogger.info('GuestFish:Create:Local> ' + ' '.join(args))
 
         # Guestfish server mode returns a string of the form
         #   GUESTFISH_PID=pid; export GUESTFISH_PID
@@ -102,7 +103,7 @@ class GuestFS:
             raise Exception('Cannot find GUESTFISH_PID')
 
         self.environment['GUESTFISH_PID'] = str(self.pid)
-        rootLogger.info('GuestFish:PID=' + str(self.pid))
+        self.rootLogger.info('GuestFish:PID=' + str(self.pid))
 
     def launch(self):
         return self.callGF('Launching', ['launch'])
@@ -182,7 +183,7 @@ class GuestFS:
             targetFiles = targetDir + os.sep + os.path.basename(sourceFiles)
             list = glob.glob(targetFiles)
             if len(list) < 1:
-                rootLogger.warning('GuestFish:Copy [' + sourceFiles + ']:Result> No files copied.')
+                self.rootLogger.warning('GuestFish:Copy [' + sourceFiles + ']:Result> No files copied.')
                 return False
         except subprocess.CalledProcessError:
             return False

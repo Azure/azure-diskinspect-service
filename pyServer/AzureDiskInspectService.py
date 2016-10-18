@@ -16,8 +16,10 @@ import csv
 import glob
 from threading import Thread
 from datetime import datetime
-import GuestFishWrapper
-import KeepAliveThread
+from GuestFishWrapper import GuestFishWrapper
+from KeepAliveThread import KeepAliveThread
+
+OUTPUTDIRNAME = '/output'
 
 """
 Helper to print progress
@@ -132,47 +134,47 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
         keepAliveWorkerThread = None
 
         try:
-            serviceMetrics.TotalRequests = serviceMetrics.TotalRequests + 1
-            rootLogger.info('<<STATS>> ' + serviceMetrics.getMetrics())
+            self.serviceMetrics.TotalRequests = self.serviceMetrics.TotalRequests + 1
+            self.rootLogger.info('<<STATS>> ' + self.serviceMetrics.getMetrics())
 
             # Parse Input Parameters
             operationId, mode, storageAcctName, container_blob_name, storageUrl = self.ParseUrlArguments(self.path)                
-            rootLogger.info('Starting service request for <Operation Id=' + operationId + ', Mode=' + mode + ', Url=' + self.path + '>')
+            self.rootLogger.info('Starting service request for <Operation Id=' + operationId + ', Mode=' + mode + ', Url=' + self.path + '>')
 
             # Invoke LibGuestFS Wrapper for prorcessing
-            with KeepAliveThread(self, threading.current_thread().getName()):
-                with GuestFishWrapper(self, storageUrl, OUTPUTDIRNAME, operationId, mode) as outputFileName:
+            with KeepAliveThread(self.rootLogger, self, threading.current_thread().getName()):
+                with GuestFishWrapper(self.rootLogger, self, storageUrl, OUTPUTDIRNAME, operationId, mode) as outputFileName:
 
                     # Upload the ZIP file
                     if outputFileName:                
                         outputFileSize = round(os.path.getsize(outputFileName) / 1024, 2)
-                        rootLogger.info('Uploading: ' + outputFileName + ' (' + str(outputFileSize) + 'kb)')
+                        self.rootLogger.info('Uploading: ' + outputFileName + ' (' + str(outputFileSize) + 'kb)')
                         self.uploadFile(outputFileName)
-                        rootLogger.info('Upload completed.')
+                        self.rootLogger.info('Upload completed.')
 
                         successElapsed = datetime.now() - start_time
-                        serviceMetrics.SuccessRequests = serviceMetrics.SuccessRequests + 1
-                        serviceMetrics.TotalSuccessServiceTime = serviceMetrics.TotalSuccessServiceTime + successElapsed.total_seconds()
+                        self.serviceMetrics.SuccessRequests = self.serviceMetrics.SuccessRequests + 1
+                        self.serviceMetrics.TotalSuccessServiceTime = self.serviceMetrics.TotalSuccessServiceTime + successElapsed.total_seconds()
 
-                        rootLogger.info('Request completed succesfully in ' + str(successElapsed.total_seconds()) + "s.")
+                        self.rootLogger.info('Request completed succesfully in ' + str(successElapsed.total_seconds()) + "s.")
                     else:
-                        rootLogger.error('Failed to create zip package.')
+                        self.rootLogger.error('Failed to create zip package.')
 
         except ValueError as ex:
-            rootLogger.error(str(ex))
+            self.rootLogger.error(str(ex))
 
             self.send_response(500)
             self.end_headers()
         except (IndexError, FileNotFoundError) as ex:
-            rootLogger.exception('Exception: IndexError or FileNotFound error')
+            self.rootLogger.exception('Exception: IndexError or FileNotFound error')
 
             self.send_response(404, 'Not Found')
             self.end_headers()
         except Exception as ex:
-            rootLogger.exception('Exception: ' + str(ex))
+            self.rootLogger.exception('Exception: ' + str(ex))
 
             self.send_response(500)
             self.end_headers()
         finally:
-            rootLogger.info('Ending service request.')
-            rootLogger.info('<<STATS>> ' + serviceMetrics.getMetrics())
+            self.rootLogger.info('Ending service request.')
+            self.rootLogger.info('<<STATS>> ' + self.serviceMetrics.getMetrics())

@@ -17,6 +17,8 @@ import glob
 from threading import Thread
 from datetime import datetime
 
+MAX_TIMEOUT = 60*25
+
 """
 Helper KeepAlive worker thread that attempts to
 keep a HTTP/HTTPS connection alive by sending 
@@ -29,13 +31,14 @@ class KeepAliveThread(Thread):
     doWork = True
     forThread = None
 
-    def __init__(self, handler, threadId):
+    def __init__(self, rootLogger, handler, threadId):
         Thread.__init__(self)
         self.httpRequestHandler = handler
         self.doWork = True
         self.exit_flag = threading.Event()
         self.forThread = threadId
-        rootLogger.info('Starting KeepAliveWorkerThread for thread [' +
+        self.rootLogger = rootLogger
+        self.rootLogger.info('Starting KeepAliveWorkerThread for thread [' +
                      str(self.forThread) + '].')
 
     def __enter__(self):
@@ -49,21 +52,21 @@ class KeepAliveThread(Thread):
         totalWait = 0        
         while True:
             if self.doWork:
-                rootLogger.info(
+                self.rootLogger.info(
                     'Sending CONTINUE response to keep thread [' + str(self.forThread) + '] alive.')
                 self.httpRequestHandler.send_response_only(100)
                 self.httpRequestHandler.end_headers()
             else:
-                rootLogger.info(
+                self.rootLogger.info(
                     'Exiting KeepAliveWorkerThread for thread [' + str(self.forThread) + '].')
                 return
             if self.exit_flag.wait(timeout=120):
                 break
             totalWait = totalWait + 120
             if totalWait > MAX_TIMEOUT:
-                rootLogger.info('Thread [' + str(self.forThread) +'] waited for too long. Terminating.')
+                self.rootLogger.info('Thread [' + str(self.forThread) +'] waited for too long. Terminating.')
                 self.complete()
-        rootLogger.info('Exiting KeepAliveWorkerThread for thread [' +
+        self.rootLogger.info('Exiting KeepAliveWorkerThread for thread [' +
                      str(self.forThread) + '].')
 
     def complete(self):
