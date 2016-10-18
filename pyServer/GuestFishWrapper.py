@@ -105,7 +105,11 @@ class GuestFishWrapper:
 
                 # Enumerate file systems
                 fsList = guestfish.list_filesystems()
-                self.WriteToResultFileWithHeader(operationOutFile, "Filesystem Status:", fsList)
+                fsDetailsArr = list()
+                for eachDevice in fsList:
+                    uuid = guestfish.get_uuid(eachDevice[0])
+                    fsDetailsArr.append(str(eachDevice[0]) + ': ' + str(eachDevice[1]) + ' [uuid=' + str(uuid) + ']')
+                self.WriteToResultFileWithHeader(operationOutFile, "Filesystem Status:", fsDetailsArr)
 
                 # Enumerate devices identified as OS disks
                 inspectList = guestfish.inspect_os()

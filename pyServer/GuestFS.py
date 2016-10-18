@@ -110,6 +110,16 @@ class GuestFS:
     
     def list_filesystems(self):
         (out, err) = self.callGF('Listing Filesystems', ['list-filesystems'], True)
+        devicesArr = list()
+        for eachDevice in out:    
+            eachDeviceArr = eachDevice.split(':')
+            device = str(eachDeviceArr[0])
+            devicefs = str(eachDeviceArr[1]).strip()
+            devicesArr.append( [ device, devicefs ] )        
+        return devicesArr
+
+    def get_uuid(self, device):
+        (out, err) = self.callGF('Get UUID [' + device + ']', ['--', 'get-uuid', device], True)
         return out
 
     def inspect_os(self):
@@ -141,7 +151,6 @@ class GuestFS:
             return len(item[0])
 
         mountpointsArrSorted = sorted(mountpointsArr, key=getKey)
-        # mountpointsArr.sort(_compare_mounts, key=_get_key)
 
         return mountpointsArr
 
