@@ -120,7 +120,7 @@ class GuestFS:
 
     def get_uuid(self, device):
         (out, err) = self.callGF('Get UUID [' + device + ']', ['--', 'get-uuid', device], True)
-        return out
+        return out[0]
 
     def inspect_os(self):
         (out, err) = self.callGF('Inspecting OS Metadata', ['inspect-os'], True)
