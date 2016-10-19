@@ -17,6 +17,7 @@ import glob
 from threading import Thread
 from datetime import datetime
 from GuestFS import GuestFS
+from KeepAliveThread import KeepAliveThread
 
 """
 LibGuestFS Wrapper for Disk Information Extraction 
@@ -32,14 +33,16 @@ class GuestFishWrapper:
     outputDirName = None
     outputFileName = None
     mode = None
+    kpThread = None
 
-    def __init__(self, rootLogger, handler, storageUrl, outputDirName, operationId, mode):
+    def __init__(self, rootLogger, handler, storageUrl, outputDirName, operationId, mode, kpThread):
         self.environment = None
         self.httpRequestHandler = handler
         self.storageUrl = storageUrl
         self.outputDirName = outputDirName + os.sep + operationId
         self.rootLogger = rootLogger
         self.mode = mode 
+        self.kpThread = kpThread
 
     def __enter__(self):
         self.outputFileName = self.execute(self.storageUrl)
@@ -99,7 +102,7 @@ class GuestFishWrapper:
 
         with open(operationOutFilename, "w", newline="\r\n") as operationOutFile:
             with GuestFS(self.rootLogger, storageUrl) as guestfish:
-                
+                self.kpThread.guestfishPid = guestfish.pid
                 # Initialize
                 guestfish.launch()
 
@@ -148,6 +151,7 @@ class GuestFishWrapper:
                             self.WriteToResultFile(operationOutFile, "\r\n")
 
                         manifestFile = "/etc/azdis/" + self.mode.lower()
+                        self.WriteToResultFile(operationOutFile, "Using manifest: " + self.mode.lower())
                         operationNumber = 0
                         with open(manifestFile) as operationManifest:
                             contents = operationManifest.read().splitlines()
@@ -200,6 +204,7 @@ class GuestFishWrapper:
                         guestfish.unmount_all()
 
                 deviceNumber = deviceNumber + 1
+            self.kpThread.guestfishPid = None
 
         archiveName = shutil.make_archive(requestDir, 'zip', requestDir)
         return archiveName

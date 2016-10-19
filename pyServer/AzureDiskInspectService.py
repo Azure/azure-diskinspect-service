@@ -142,8 +142,8 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
             self.rootLogger.info('Starting service request for <Operation Id=' + operationId + ', Mode=' + mode + ', Url=' + self.path + '>')
 
             # Invoke LibGuestFS Wrapper for prorcessing
-            with KeepAliveThread(self.rootLogger, self, threading.current_thread().getName()):
-                with GuestFishWrapper(self.rootLogger, self, storageUrl, OUTPUTDIRNAME, operationId, mode) as outputFileName:
+            with KeepAliveThread(self.rootLogger, self, threading.current_thread().getName()) as kpThread:
+                with GuestFishWrapper(self.rootLogger, self, storageUrl, OUTPUTDIRNAME, operationId, mode, kpThread) as outputFileName:
 
                     # Upload the ZIP file
                     if outputFileName:                

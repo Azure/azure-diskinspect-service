@@ -14,6 +14,7 @@ import io
 import threading
 import csv
 import glob
+import signal
 from threading import Thread
 from datetime import datetime
 
@@ -30,6 +31,7 @@ class KeepAliveThread(Thread):
     exit_flag = None
     doWork = True
     forThread = None
+    guestfishPid = None
 
     def __init__(self, rootLogger, handler, threadId):
         Thread.__init__(self)
@@ -38,36 +40,45 @@ class KeepAliveThread(Thread):
         self.exit_flag = threading.Event()
         self.forThread = threadId
         self.rootLogger = rootLogger
+        self.guestfishPid = None
         self.rootLogger.info('Starting KeepAliveWorkerThread for thread [' +
                      str(self.forThread) + '].')
 
     def __enter__(self):
         self.start()
+        return self
     
     def __exit__(self, type, value, traceback):
         self.complete()
         self.join()
 
-    def run(self):        
-        totalWait = 0        
-        while True:
-            if self.doWork:
-                self.rootLogger.info(
-                    'Sending CONTINUE response to keep thread [' + str(self.forThread) + '] alive.')
-                self.httpRequestHandler.send_response_only(100)
-                self.httpRequestHandler.end_headers()
-            else:
-                self.rootLogger.info(
-                    'Exiting KeepAliveWorkerThread for thread [' + str(self.forThread) + '].')
-                return
-            if self.exit_flag.wait(timeout=120):
-                break
-            totalWait = totalWait + 120
-            if totalWait > MAX_TIMEOUT:
-                self.rootLogger.info('Thread [' + str(self.forThread) +'] waited for too long. Terminating.')
-                self.complete()
-        self.rootLogger.info('Exiting KeepAliveWorkerThread for thread [' +
-                     str(self.forThread) + '].')
+    def run(self):
+        try:
+            totalWait = 0        
+            while True:
+                if self.doWork:
+                    self.rootLogger.info(
+                        'Sending CONTINUE response to keep thread [' + str(self.forThread) + '] alive.')
+                    self.httpRequestHandler.send_response_only(100)
+                    self.httpRequestHandler.end_headers()
+                else:
+                    break
+                if self.exit_flag.wait(timeout=120):
+                    break
+                totalWait = totalWait + 120
+                if totalWait > MAX_TIMEOUT:
+                    self.rootLogger.info('Thread [' + str(self.forThread) +'] waited for too long. Terminating.')
+                    self.complete()
+        except Exception as ex:
+            self.rootLogger.exception('Exception: ' + str(ex))
+
+        finally:
+            self.rootLogger.info('Exiting KeepAliveWorkerThread for thread [' +
+                        str(self.forThread) + '].')
+
+            if self.guestfishPid:
+                self.rootLogger.info('Killing GuestFish PID ' + str(self.guestfishPid))
+                os.kill(self.guestfishPid, signal.SIGTERM)
 
     def complete(self):
         self.doWork = False
