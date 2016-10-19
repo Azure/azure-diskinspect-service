@@ -176,20 +176,25 @@ class GuestFishWrapper:
                                 elif opCommand=="copy":
                                     gatherItem = opParam1
 
-                                    # Determine Output Folder
-                                    dirPrefix = os.path.dirname(gatherItem)
-                                    targetDir = requestDir + os.sep + 'device_' + str(deviceNumber) + dirPrefix
-
-                                    # Create Output Folder if needed
-                                    if not (os.path.exists(targetDir)):
-                                        os.makedirs(targetDir)
-
-                                    # Copy 
-                                    wasCopied = guestfish.copy_out(gatherItem, targetDir)
-                                    if wasCopied:
-                                        self.WriteToResultFile(operationOutFile, "Copying " + gatherItem + " SUCCEEDED.")
+                                    fileList = guestfish.glob_expand(gatherItem)
+                                    if len(fileList) < 1:
+                                        self.WriteToResultFile(operationOutFile, "Copying " + gatherItem + " FAILED as no files were located.")
                                     else:
-                                        self.WriteToResultFile(operationOutFile, "Copying " + gatherItem + " FAILED.")
+                                        for eachFile in fileList:
+                                            # Determine Output Folder
+                                            dirPrefix = os.path.dirname(eachFile)
+                                            targetDir = requestDir + os.sep + 'device_' + str(deviceNumber) + dirPrefix
+
+                                            # Create Output Folder if needed
+                                            if not (os.path.exists(targetDir)):
+                                                os.makedirs(targetDir)
+
+                                            # Copy 
+                                            wasCopied = guestfish.copy_out(eachFile, targetDir)
+                                            if wasCopied:
+                                                self.WriteToResultFile(operationOutFile, "Copying " + eachFile + " SUCCEEDED.")
+                                            else:
+                                                self.WriteToResultFile(operationOutFile, "Copying " + eachFile + " FAILED.")
                     finally:
                         # Unmount all mountpoints
                         guestfish.unmount_all()

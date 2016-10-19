@@ -184,9 +184,15 @@ class GuestFS:
             return None
         return out
 
+    def glob_expand(self, tgtPattern):
+        (out, err) = self.callGF('Expanding Pattern [' + tgtPattern + ']', ['--', '-glob-expand', tgtPattern], True)
+        if len(out) < 1:
+            self.rootLogger.warning('GuestFish:Expanding Pattern [' + tgtPattern + ']:Result> No files found.')
+        return out
+
     def copy_out(self, sourceFiles, targetDir):
         try:
-            (out, err) = self.callGF('Copy [' + sourceFiles + ']', ['--', '-glob', 'copy-out', sourceFiles, targetDir], True)
+            (out, err) = self.callGF('Copy [' + sourceFiles + ']', ['--', '-copy-out', sourceFiles, targetDir], True)
             if err:
                 return False
             targetFiles = targetDir + os.sep + os.path.basename(sourceFiles)
