@@ -1,0 +1,5 @@
+echo,### Probing Directories ###
+ll,/var/log/sa
+
+echo,### Gathering Log Files ###
+copy,/var/log/sa/sar*
