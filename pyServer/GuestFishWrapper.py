@@ -35,13 +35,15 @@ class GuestFishWrapper:
     mode = None
     kpThread = None
 
-    def __init__(self, rootLogger, handler, storageUrl, outputDirName, operationId, mode, kpThread):
+    def __init__(self, rootLogger, handler, storageUrl, outputDirName, operationId, mode, modeMajorSkipTo, modeMinorSkipTo, kpThread):
         self.environment = None
         self.httpRequestHandler = handler
         self.storageUrl = storageUrl
         self.outputDirName = outputDirName + os.sep + operationId
         self.rootLogger = rootLogger
         self.mode = mode 
+        self.modeMajorSkipTo = modeMajorSkipTo
+        self.modeMinorSkipTo = modeMinorSkipTo
         self.kpThread = kpThread
 
     def __enter__(self):
@@ -100,6 +102,9 @@ class GuestFishWrapper:
 
         operationOutFilename = requestDir + os.sep + 'results.txt'
 
+        lastGoodOperationMajorStep = 1
+        lastGoodOperationMinorStep = 1
+
         with open(operationOutFilename, "w", newline="\r\n") as operationOutFile:
             with GuestFS(self.rootLogger, storageUrl) as guestfish:
                 self.kpThread.guestfishPid = guestfish.pid
@@ -120,6 +125,9 @@ class GuestFishWrapper:
 
                 deviceNumber = 0
                 for device in inspectList:
+                    if (self.kpThread.wasTimeout == True):
+                        break
+
                     self.rootLogger.info('GuestFish:Examining Device> %s', device)
 
                     # Gather and Write Inspect Metadata about the Device
@@ -158,8 +166,22 @@ class GuestFishWrapper:
                             totalOperations = len(contents)
                             self.rootLogger.info("Reading manifest file from " + manifestFile + " with " + str(totalOperations) + " operation entries.")
                             for operation in contents:
+                                if (self.kpThread.wasTimeout == True):
+                                    lastGoodOperationMajorStep = operationNumber
+                                    lastGoodOperationMinorStep = 1
+                                    break
+
                                 operationNumber = operationNumber + 1
-                                self.rootLogger.info("Executing Operation [" + str(operationNumber) + "/" + str(totalOperations) + "]: " + str(operation))                            
+                                if (operationNumber < self.modeMajorSkipTo):
+                                    strMsg = "Skipping Operation [" + str(operationNumber) + "/" + str(totalOperations) + "]: " + str(operation)
+                                    self.rootLogger.warning(strMsg)
+                                    self.WriteToResultFile(operationOutFile, strMsg)
+                                    continue
+
+                                strMsg = "Executing Operation [" + str(operationNumber) + "/" + str(totalOperations) + "]: " + str(operation)
+                                self.WriteToResultFile(operationOutFile, strMsg)
+                                self.rootLogger.info(strMsg)
+
                                 opList = operation.split(',')
 
                                 if len(opList) < 2:
@@ -184,7 +206,20 @@ class GuestFishWrapper:
                                     if len(fileList) < 1:
                                         self.WriteToResultFile(operationOutFile, "Copying " + gatherItem + " FAILED as no files were located.")
                                     else:
+                                        fileNumber = 0
                                         for eachFile in fileList:
+                                            if (self.kpThread.wasTimeout == True):
+                                                lastGoodOperationMinorStep = fileNumber
+                                                break
+                                            fileNumber = fileNumber + 1
+                                            strStepDescription = str(operationNumber) + "." + str(fileNumber)
+                                            if (operationNumber == self.modeMajorSkipTo):
+                                                if (fileNumber < self.modeMinorSkipTo):
+                                                    strMsg = "Skipping Copy Step [" + str(strStepDescription) + "]"
+                                                    self.rootLogger.warning(strMsg)
+                                                    self.WriteToResultFile(operationOutFile, strMsg)
+                                                    continue
+
                                             # Determine Output Folder
                                             dirPrefix = os.path.dirname(eachFile)
                                             targetDir = requestDir + os.sep + 'device_' + str(deviceNumber) + dirPrefix
@@ -195,16 +230,20 @@ class GuestFishWrapper:
 
                                             # Copy 
                                             wasCopied = guestfish.copy_out(eachFile, targetDir)
+                                            
                                             if wasCopied:
-                                                self.WriteToResultFile(operationOutFile, "Copying " + eachFile + " SUCCEEDED.")
+                                                self.WriteToResultFile(operationOutFile, "Copying Step [" + strStepDescription + "] File: " + eachFile + " SUCCEEDED.")
                                             else:
-                                                self.WriteToResultFile(operationOutFile, "Copying " + eachFile + " FAILED.")
+                                                self.WriteToResultFile(operationOutFile, "Copying Step [" + strStepDescription + "] File: " + eachFile + " FAILED.")
                     finally:
                         # Unmount all mountpoints
                         guestfish.unmount_all()
 
-                deviceNumber = deviceNumber + 1
+                    deviceNumber = deviceNumber + 1
             self.kpThread.guestfishPid = None
+            if (self.kpThread.wasTimeout):
+                strLastGoodStep = str(lastGoodOperationMajorStep) + "." + str(lastGoodOperationMinorStep)
+                self.WriteToResultFile(operationOutFile, "\r\n##### WARNING: Partial results were collected as the operation was taking too long to complete. Consider retrying the operation specifying skip to step " + strLastGoodStep + " to continue gathering from last succesfully executed data collection step. #####")
 
         archiveName = shutil.make_archive(requestDir, 'zip', requestDir)
         return archiveName

@@ -18,7 +18,8 @@ import signal
 from threading import Thread
 from datetime import datetime
 
-MAX_TIMEOUT = 60*25
+TIME_PERIOD = 60
+MAX_TIMEOUT = TIME_PERIOD * 19
 
 """
 Helper KeepAlive worker thread that attempts to
@@ -32,6 +33,7 @@ class KeepAliveThread(Thread):
     doWork = True
     forThread = None
     guestfishPid = None
+    wasTimeout = False
 
     def __init__(self, rootLogger, handler, threadId):
         Thread.__init__(self)
@@ -41,6 +43,7 @@ class KeepAliveThread(Thread):
         self.forThread = threadId
         self.rootLogger = rootLogger
         self.guestfishPid = None
+        self.wasTimeout = False
         self.rootLogger.info('Starting KeepAliveWorkerThread for thread [' +
                      str(self.forThread) + '].')
 
@@ -63,10 +66,11 @@ class KeepAliveThread(Thread):
                     self.httpRequestHandler.end_headers()
                 else:
                     break
-                if self.exit_flag.wait(timeout=120):
+                if self.exit_flag.wait(timeout=TIME_PERIOD):
                     break
-                totalWait = totalWait + 120
-                if totalWait > MAX_TIMEOUT:
+                totalWait = totalWait + TIME_PERIOD
+                if totalWait >= MAX_TIMEOUT:
+                    self.wasTimeout = True
                     self.rootLogger.info('Thread [' + str(self.forThread) +'] waited for too long. Terminating.')
                     self.complete()
         except Exception as ex:

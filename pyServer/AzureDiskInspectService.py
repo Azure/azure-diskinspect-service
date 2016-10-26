@@ -87,27 +87,45 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
             raise ValueError('Request has insufficient number of GET parameter arguments.')
         
         operationId = urlSplit[1]
-        mode = urlSplit[2]
+        mode = str(urlSplit[2])
+        modeMajorSkipTo = 1
+        modeMinorSkipTo = 1
+        modeSplit = str(mode).split(':')
+        if len(modeSplit) > 1:
+            mode = str(modeSplit[0])
+            modeMajorSkipToStr = str(modeSplit[1])
+            modeSkipSplitStr = str(modeMajorSkipToStr).split('.')
+            if len(modeSkipSplitStr) > 1:
+                modeMajorSkipTo = int(modeSkipSplitStr[0])
+                modeMinorSkipTo = int(modeSkipSplitStr[1])
+            else:
+                modeMajorSkipTo = int(modeMajorSkipToStr)
+            
         storageAcctName = urlSplit[3]
         container_blob_name = urlSplit[4] + '/' + urlSplit[5]
         storageUrl = urllib.parse.urlunparse(
                 ('https', storageAcctName + '.blob.core.windows.net', container_blob_name, '', urlObj.query, None))
             
-        return operationId, mode, storageAcctName, container_blob_name, storageUrl
+        return operationId, mode, modeMajorSkipTo, modeMinorSkipTo, storageAcctName, container_blob_name, storageUrl
 
     """
     Upload a local file as a HTTP binary response.
     """
-    def uploadFile(self, outputFileName):
+    def uploadFile(self, outputFileName, isPartial):
         self.wfile.write(bytes('HTTP/1.1 200 OK\r\n', 'utf-8'))
         self.wfile.write(bytes('Content-Type: application/zip\r\n', 'utf-8'))
 
         statinfo = os.stat(outputFileName)
         self.wfile.write(bytes('Content-Length: {0}\r\n'.format(
             str(statinfo.st_size)), 'utf-8'))
+
+        strOutputFileName = os.path.basename(outputFileName)
+        if isPartial:
+            strOutputFileName = strOutputFileName + "-partial"
+                        
         self.wfile.write(bytes(
             'Content-Disposition: Attachment; filename={0}\r\n'.format(
-                os.path.basename(outputFileName)), 'utf-8'))
+                os.path.basename(strOutputFileName)), 'utf-8'))
         self.wfile.write(bytes('\r\n', 'utf-8'))
         self.wfile.flush()
 
@@ -138,18 +156,18 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
             self.rootLogger.info('<<STATS>> ' + self.serviceMetrics.getMetrics())
 
             # Parse Input Parameters
-            operationId, mode, storageAcctName, container_blob_name, storageUrl = self.ParseUrlArguments(self.path)                
+            operationId, mode, modeMajorSkipTo, modeMinorSkipTo, storageAcctName, container_blob_name, storageUrl = self.ParseUrlArguments(self.path)                
             self.rootLogger.info('Starting service request for <Operation Id=' + operationId + ', Mode=' + mode + ', Url=' + self.path + '>')
 
             # Invoke LibGuestFS Wrapper for prorcessing
             with KeepAliveThread(self.rootLogger, self, threading.current_thread().getName()) as kpThread:
-                with GuestFishWrapper(self.rootLogger, self, storageUrl, OUTPUTDIRNAME, operationId, mode, kpThread) as outputFileName:
+                with GuestFishWrapper(self.rootLogger, self, storageUrl, OUTPUTDIRNAME, operationId, mode, modeMajorSkipTo, modeMinorSkipTo, kpThread) as outputFileName:
 
                     # Upload the ZIP file
                     if outputFileName:                
                         outputFileSize = round(os.path.getsize(outputFileName) / 1024, 2)
                         self.rootLogger.info('Uploading: ' + outputFileName + ' (' + str(outputFileSize) + 'kb)')
-                        self.uploadFile(outputFileName)
+                        self.uploadFile(outputFileName, kpThread.wasTimeout)
                         self.rootLogger.info('Upload completed.')
 
                         successElapsed = datetime.now() - start_time
