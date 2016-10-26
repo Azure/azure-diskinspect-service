@@ -27,7 +27,7 @@ RUN make
 RUN rm -v /etc/nginx/nginx.conf
 COPY conf/nginx.conf /etc/nginx/
 COPY pyServer/* /azureDiskInspectSvc/
-COPY pyServer/manifests/* /etc/azdis/
+COPY pyServer/manifests/ /etc/azdis/
 
 # Expose port 8080 for nginx
 EXPOSE 8080

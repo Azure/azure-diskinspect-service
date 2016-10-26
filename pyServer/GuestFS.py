@@ -190,6 +190,13 @@ class GuestFS:
             self.rootLogger.warning('GuestFish:Expanding Pattern [' + tgtPattern + ']:Result> No files found.')
         return out
 
+    def case_sensitive_path(self, path):
+        (out, err) = self.callGF('Finding Case Sensitive Path [' + path + ']', ['--', '-case-sensitive-path', path], True)
+        if len(out) == 1:
+            return out[0]
+        else:
+            return None
+
     def copy_out(self, sourceFiles, targetDir):
         try:
             (out, err) = self.callGF('Copy [' + sourceFiles + ']', ['--', '-copy-out', sourceFiles, targetDir], True)

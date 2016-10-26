@@ -158,7 +158,11 @@ class GuestFishWrapper:
                         else:
                             self.WriteToResultFile(operationOutFile, "\r\n")
 
-                        manifestFile = "/etc/azdis/" + self.mode.lower()
+                        manifestFile = "/etc/azdis/" + osType + os.sep + self.mode.lower()
+                        if not os.path.isfile(manifestFile):
+                            self.rootLogger.warning("Manifest file " + manifestFile + " could not be located.")
+                            self.WriteToResultFile(operationOutFile, "No manifest exists for " + osType.lower() + " " + self.mode.lower() + " mode data collection.")
+                            continue
                         self.WriteToResultFile(operationOutFile, "Using manifest: " + self.mode.lower())
                         operationNumber = 0
                         with open(manifestFile) as operationManifest:
@@ -194,6 +198,9 @@ class GuestFishWrapper:
                                     self.WriteToResultFile(operationOutFile, opParam1)
                                 elif opCommand=="ll":
                                     directory = opParam1
+                                    if (osType == "windows"):
+                                        directory = guestfish.case_sensitive_path(directory)
+
                                     dirList = guestfish.ll(directory)
                                     if dirList:
                                         self.WriteToResultFileWithHeader(operationOutFile, "Listing contents of " + directory + ":", dirList)
@@ -201,10 +208,15 @@ class GuestFishWrapper:
                                         self.WriteToResultFile(operationOutFile, "Directory " + directory + " is not valid.")
                                 elif opCommand=="copy":
                                     gatherItem = opParam1
+                                    origGatherItem = gatherItem
+                                    if (osType == "windows"):
+                                        gatherItem = guestfish.case_sensitive_path(gatherItem)
 
-                                    fileList = guestfish.glob_expand(gatherItem)
+                                    fileList = []
+                                    if gatherItem:
+                                        fileList = guestfish.glob_expand(gatherItem)
                                     if len(fileList) < 1:
-                                        self.WriteToResultFile(operationOutFile, "Copying " + gatherItem + " FAILED as no files were located.")
+                                        self.WriteToResultFile(operationOutFile, "Copying " + origGatherItem + " FAILED as no files were located.")
                                     else:
                                         fileNumber = 0
                                         for eachFile in fileList:
@@ -220,21 +232,24 @@ class GuestFishWrapper:
                                                     self.WriteToResultFile(operationOutFile, strMsg)
                                                     continue
 
+                                            actualFileName = eachFile
+
                                             # Determine Output Folder
-                                            dirPrefix = os.path.dirname(eachFile)
+                                            dirPrefix = os.path.dirname(actualFileName)
                                             targetDir = requestDir + os.sep + 'device_' + str(deviceNumber) + dirPrefix
 
+   
                                             # Create Output Folder if needed
                                             if not (os.path.exists(targetDir)):
                                                 os.makedirs(targetDir)
 
                                             # Copy 
-                                            wasCopied = guestfish.copy_out(eachFile, targetDir)
+                                            wasCopied = guestfish.copy_out(actualFileName, targetDir)
                                             
                                             if wasCopied:
-                                                self.WriteToResultFile(operationOutFile, "Copying Step [" + strStepDescription + "] File: " + eachFile + " SUCCEEDED.")
+                                                self.WriteToResultFile(operationOutFile, "Copying Step [" + strStepDescription + "] File: " + actualFileName + " SUCCEEDED.")
                                             else:
-                                                self.WriteToResultFile(operationOutFile, "Copying Step [" + strStepDescription + "] File: " + eachFile + " FAILED.")
+                                                self.WriteToResultFile(operationOutFile, "Copying Step [" + strStepDescription + "] File: " + actualFileName + " FAILED.")
                     finally:
                         # Unmount all mountpoints
                         guestfish.unmount_all()

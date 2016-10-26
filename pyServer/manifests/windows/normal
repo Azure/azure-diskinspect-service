@@ -1,0 +1,27 @@
+echo,### EXPERIMENTAL FEATURE ###
+echo,### Probing Directories ###
+ll,/Packages
+ll,/WindowsAzure/Logs
+ll,/WindowsAzure/config
+ll,/Windows/Panther
+
+echo,### Gathering Configuration Files ###
+copy,/AzureData/CustomData.bin
+copy,/Windows/System32/winevt/Logs/System.evtx
+copy,/Windows/System32/winevt/Logs/Application.evtx
+copy,/Windows/Setup/State/state.ini
+copy,/Windows/Inf/netcfg*.*etl
+copy,/Windows/Inf/setupapi.*.log
+copy,/Windows/Panther/WaSetup.log
+copy,/Windows/Panther/WaSetup.xml
+copy,/boot/BOOTSTAT.DAT
+copy,/Windows/BOOTSTAT.DAT
+copy,/Windows/Panther/unattend.xml
+copy,/unattend.xml
+echo,
+
+echo,### Gathering Directories ###
+copy,/Packages/*
+copy,/WindowsAzure/Logs/*
+copy,/WindowsAzure/config/*
+copy,/Windows/Panther/*
