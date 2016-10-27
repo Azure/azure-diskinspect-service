@@ -168,9 +168,12 @@ class GuestFishWrapper:
                         with open(manifestFile) as operationManifest:
                             contents = operationManifest.read().splitlines()
                             totalOperations = len(contents)
+                            timedOut = False
                             self.rootLogger.info("Reading manifest file from " + manifestFile + " with " + str(totalOperations) + " operation entries.")
                             for operation in contents:
                                 if (self.kpThread.wasTimeout == True):
+                                    if timedOut:
+                                        break;
                                     lastGoodOperationMajorStep = operationNumber
                                     lastGoodOperationMinorStep = 1
                                     break
@@ -221,7 +224,9 @@ class GuestFishWrapper:
                                         fileNumber = 0
                                         for eachFile in fileList:
                                             if (self.kpThread.wasTimeout == True):
+                                                lastGoodOperationMajorStep = operationNumber
                                                 lastGoodOperationMinorStep = fileNumber
+                                                timedOut = True
                                                 break
                                             fileNumber = fileNumber + 1
                                             strStepDescription = str(operationNumber) + "." + str(fileNumber)
