@@ -3,13 +3,14 @@ services:
  - docker
 language: python
 python:
-  - 2.7
-  - 3.2
   - 3.5
 install:
   - ./build.sh
+  - mkdir $HOME/azdis_ssl
+  - openssl req -x509 -newkey rsa:2048 -keyout $HOME/azdis_ssl/azdis_private.rsa -out $HOME/azdis_ssl/azdis_public.crt -days 365 -nodes -subj "/CN=localhost"
 before_script:
   - docker version
   - docker info
+  - ./scripts/run.sh
 script:
   - docker ps | grep -q AzureDiskInspectSvc_US
