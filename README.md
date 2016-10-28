@@ -1,4 +1,6 @@
 # Azure Disk Inspect Service
+[![Build Status](https://travis-ci.org/amitchat/azure-diskinspect-service.svg?branch=master)](https://travis-ci.org/amitchat/azure-diskinspect-service)
+
 The Azure Disk Inspect Service is intended to be a service that allows customers, support or third party personnel with privileged access to access an Azure OS Disk for log and configuration files without provisioning a VM and attaching a copy of the disk in order to probe the contents. It is a fast and secure way to retrieve well known contents of an OS disk by the user to aid in system failure diagnosis.
 
 

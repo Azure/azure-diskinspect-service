@@ -203,8 +203,10 @@ class GuestFishWrapper:
                                     directory = opParam1
                                     if (osType == "windows"):
                                         directory = guestfish.case_sensitive_path(directory)
-
-                                    dirList = guestfish.ll(directory)
+                                        
+                                    dirList = []
+                                    if directory:
+                                        dirList = guestfish.ll(directory)
                                     if dirList:
                                         self.WriteToResultFileWithHeader(operationOutFile, "Listing contents of " + directory + ":", dirList)
                                     else:
