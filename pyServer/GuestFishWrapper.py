@@ -201,8 +201,6 @@ class GuestFishWrapper:
                                     self.WriteToResultFile(operationOutFile, opParam1)
                                 elif opCommand=="ll":
                                     directory = opParam1
-                                    if (osType == "windows"):
-                                        directory = guestfish.case_sensitive_path(directory)
                                         
                                     dirList = []
                                     if directory:
@@ -214,8 +212,6 @@ class GuestFishWrapper:
                                 elif opCommand=="copy":
                                     gatherItem = opParam1
                                     origGatherItem = gatherItem
-                                    if (osType == "windows"):
-                                        gatherItem = guestfish.case_sensitive_path(gatherItem)
 
                                     fileList = []
                                     if gatherItem:
