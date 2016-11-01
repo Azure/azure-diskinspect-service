@@ -1,23 +1,8 @@
 #!/usr/bin/python3
 
-import http.server
-import urllib
-import subprocess
 import shutil
-import sys
 import os
-import time
-import socketserver
-import logging
-import logging.handlers
-import io
-import threading
-import csv
-import glob
-from threading import Thread
-from datetime import datetime
 from GuestFS import GuestFS
-from KeepAliveThread import KeepAliveThread
 
 """
 LibGuestFS Wrapper for Disk Information Extraction 
@@ -201,8 +186,6 @@ class GuestFishWrapper:
                                     self.WriteToResultFile(operationOutFile, opParam1)
                                 elif opCommand=="ll":
                                     directory = opParam1
-                                    if (osType == "windows"):
-                                        directory = guestfish.case_sensitive_path(directory)
                                         
                                     dirList = []
                                     if directory:
@@ -214,8 +197,6 @@ class GuestFishWrapper:
                                 elif opCommand=="copy":
                                     gatherItem = opParam1
                                     origGatherItem = gatherItem
-                                    if (osType == "windows"):
-                                        gatherItem = guestfish.case_sensitive_path(gatherItem)
 
                                     fileList = []
                                     if gatherItem:

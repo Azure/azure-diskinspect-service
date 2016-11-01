@@ -1,22 +1,9 @@
 #!/usr/bin/python3
 
-import http.server
-import urllib
-import subprocess
-import shutil
-import sys
 import os
-import time
-import socketserver
-import logging
-import logging.handlers
-import io
-import threading
-import csv
-import glob
 import signal
+import threading
 from threading import Thread
-from datetime import datetime
 
 TIME_PERIOD = 60
 MAX_TIMEOUT = TIME_PERIOD * 19

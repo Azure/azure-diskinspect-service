@@ -1,22 +1,5 @@
 #!/usr/bin/python3
 
-import http.server
-import urllib
-import subprocess
-import shutil
-import sys
-import os
-import time
-import socketserver
-import logging
-import logging.handlers
-import io
-import threading
-import csv
-import glob
-from threading import Thread
-from datetime import datetime
-
 """
 Health Metrics 
 """
