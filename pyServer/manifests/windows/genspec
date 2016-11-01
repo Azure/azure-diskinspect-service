@@ -1,0 +1,3 @@
+echo,### EXPERIMENTAL FEATURE ###
+echo,### Provisioning ###
+copy,/Windows/Setup/State/State.ini
