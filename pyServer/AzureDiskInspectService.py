@@ -170,19 +170,13 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
 
         except ValueError as ex:
             self.rootLogger.error(str(ex))
-
-            self.send_response(500)
-            self.end_headers()
+            self.send_error(500, str(ex))
         except (IndexError, FileNotFoundError) as ex:
             self.rootLogger.exception('Exception: IndexError or FileNotFound error')
-
-            self.send_response(404, 'Not Found')
-            self.end_headers()
+            self.send_error(404, 'Not Found')
         except Exception as ex:
             self.rootLogger.exception('Exception: ' + str(ex))
-
-            self.send_response(500)
-            self.end_headers()
+            self.send_error(500, str(ex))
         finally:
             self.rootLogger.info('Ending service request.')
             self.rootLogger.info('<<STATS>> ' + self.serviceMetrics.getMetrics())
