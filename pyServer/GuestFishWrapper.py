@@ -19,6 +19,7 @@ class GuestFishWrapper:
     outputFileName = None
     mode = None
     kpThread = None
+    osType = None
 
     def __init__(self, rootLogger, handler, storageUrl, outputDirName, operationId, mode, modeMajorSkipTo, modeMinorSkipTo, kpThread):
         self.environment = None
@@ -30,10 +31,11 @@ class GuestFishWrapper:
         self.modeMajorSkipTo = modeMajorSkipTo
         self.modeMinorSkipTo = modeMinorSkipTo
         self.kpThread = kpThread
+        self.osType = "unknown"
 
     def __enter__(self):
-        self.outputFileName = self.execute(self.storageUrl)
-        return self.outputFileName
+        self.outputFileName = self.execute(self.storageUrl)        
+        return self
 
     def __exit__(self, type, value, traceback):
         if (os.path.exists(self.outputDirName)):
@@ -104,9 +106,20 @@ class GuestFishWrapper:
                     fsDetailsArr.append(str(eachDevice[0]) + ': ' + str(eachDevice[1]) + ' [uuid=' + str(uuid) + ']')
                 self.WriteToResultFileWithHeader(operationOutFile, "Filesystem Status:", fsDetailsArr)
 
-                # Enumerate devices identified as OS disks
-                inspectList = guestfish.inspect_os()
-                self.WriteToResultFileWithHeader(operationOutFile, "Inspection Status:", inspectList)
+                defaultOsType = None
+                skipInspect = False
+                if (len(fsList) == 1):
+                    eachDevice = fsList[0]
+                    if (eachDevice[1] == "ntfs"):
+                        defaultOsType="windows"
+                        skipInspect = True 
+
+                if (not skipInspect):
+                    # Enumerate devices identified as OS disks
+                    inspectList = guestfish.inspect_os()
+                    self.WriteToResultFileWithHeader(operationOutFile, "Inspection Status:", inspectList)
+                else:
+                    inspectList = [fsList[0][0]]
 
                 deviceNumber = 0
                 for device in inspectList:
@@ -115,9 +128,14 @@ class GuestFishWrapper:
 
                     self.rootLogger.info('GuestFish:Examining Device> %s', device)
 
-                    # Gather and Write Inspect Metadata about the Device
-                    (osType, osDistribution, osProductName, osMountpoints) = self.GetInspectMetadata(guestfish, device)
-                    self.WriteInspectMetadataToResultFile(operationOutFile, device, osType, osDistribution, osProductName, osMountpoints)
+                    if (not skipInspect):
+                        # Gather and Write Inspect Metadata about the Device
+                        (osType, osDistribution, osProductName, osMountpoints) = self.GetInspectMetadata(guestfish, device)
+                        self.WriteInspectMetadataToResultFile(operationOutFile, device, osType, osDistribution, osProductName, osMountpoints)
+                    else:
+                        osType = defaultOsType
+                        osMountpoints = [ ["/", fsList[0][0]] ]
+                    self.osType = str(osType)
 
                     try:
                         # Mount all identified mount points
