@@ -162,6 +162,16 @@ class GuestFS:
         except subprocess.CalledProcessError:
             return False
         return True
+        
+    #used to mount ufs filesystems on FreeBSD VMs    
+    def mount_bsd(self, mountpoint, device):
+        try:
+            (out, err) = self.callGF('Mount [' + mountpoint + ',' + device + ']', ['--', '-mount-options', 'ro,ufstype=5xbsd', device, mountpoint], True)
+            if err:
+                return False
+        except subprocess.CalledProcessError:
+            return False
+        return True
 
     def ll(self, directory):
         try:

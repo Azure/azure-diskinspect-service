@@ -3,7 +3,7 @@
 import shutil
 import os
 from GuestFS import GuestFS
-
+from datetime import datetime
 """
 LibGuestFS Wrapper for Disk Information Extraction 
 
@@ -95,19 +95,28 @@ class GuestFishWrapper:
         with open(operationOutFilename, "w", newline="\r\n") as operationOutFile:
             with GuestFS(self.rootLogger, storageUrl) as guestfish:
                 self.kpThread.guestfishPid = guestfish.pid
+                execution_start_time = datetime.now()
+                self.WriteToResultFile(operationOutFile, "Execution start time: " + execution_start_time.strftime('%H:%M:%S') + ".\r\n")
+
                 # Initialize
                 guestfish.launch()
 
                 # Enumerate file systems
                 fsList = guestfish.list_filesystems()
                 fsDetailsArr = list()
+                ufs_partitions = list()
                 for eachDevice in fsList:
                     uuid = guestfish.get_uuid(eachDevice[0])
                     fsDetailsArr.append(str(eachDevice[0]) + ': ' + str(eachDevice[1]) + ' [uuid=' + str(uuid) + ']')
+                    # track if any are ufs
+                    if ( str(eachDevice[1]) == "ufs" ):
+                        ufs_partitions.append(str(eachDevice[0]))
+                        
                 self.WriteToResultFileWithHeader(operationOutFile, "Filesystem Status:", fsDetailsArr)
 
                 defaultOsType = None
                 skipInspect = False
+                # special case a single ntfs device as 'windows'
                 if (len(fsList) == 1):
                     eachDevice = fsList[0]
                     if (eachDevice[1] == "ntfs"):
@@ -144,7 +153,13 @@ class GuestFishWrapper:
                         for mount in osMountpoints:
                             mountpoint = mount[0]
                             mountdevice = mount[1]
-                            wasMounted = guestfish.mount_ro(mountpoint, mountdevice)
+                            
+                            # special case ufs on FreeBSD
+                            if (osType == "freebsd" and ufs_partitions.count(mountdevice)>0):
+                                self.WriteToResultFile(operationOutFile, "Attempting to mount ufs on FreeBSD...")
+                                wasMounted = guestfish.mount_bsd(mountpoint, mountdevice)
+                            else:
+                                wasMounted = guestfish.mount_ro(mountpoint, mountdevice)
 
                             if not wasMounted:
                                 self.WriteToResultFile(operationOutFile, "Mounting " + mountdevice + " on " + mountpoint + " FAILED.")
@@ -188,7 +203,8 @@ class GuestFishWrapper:
                                     self.WriteToResultFile(operationOutFile, strMsg)
                                     continue
 
-                                strMsg = "Executing Operation [" + str(operationNumber) + "/" + str(totalOperations) + "]: " + str(operation)
+                                operation_start_time = datetime.now()
+                                strMsg = operation_start_time.strftime('%H:%M:%S') + "  Executing Operation [" + str(operationNumber) + "/" + str(totalOperations) + "]: " + str(operation)
                                 self.WriteToResultFile(operationOutFile, strMsg)
                                 self.rootLogger.info(strMsg)
 
@@ -209,7 +225,9 @@ class GuestFishWrapper:
                                     if directory:
                                         dirList = guestfish.ll(directory)
                                     if dirList:
-                                        self.WriteToResultFileWithHeader(operationOutFile, "Listing contents of " + directory + ":", dirList)
+                                        step_end_time = datetime.now()
+                                        strMsg = step_end_time.strftime('%H:%M:%S') + "  Listing contents of " + directory + ":"                          
+                                        self.WriteToResultFileWithHeader(operationOutFile, strMsg, dirList)
                                     else:
                                         self.WriteToResultFile(operationOutFile, "Directory " + directory + " is not valid.")
                                 elif opCommand=="copy":
@@ -253,9 +271,15 @@ class GuestFishWrapper:
                                             wasCopied = guestfish.copy_out(actualFileName, targetDir)
                                             
                                             if wasCopied:
-                                                self.WriteToResultFile(operationOutFile, "Copying Step [" + strStepDescription + "] File: " + actualFileName + " SUCCEEDED.")
+                                                step_result = " SUCCEEDED."
                                             else:
-                                                self.WriteToResultFile(operationOutFile, "Copying Step [" + strStepDescription + "] File: " + actualFileName + " FAILED.")
+                                                step_result = " FAILED."
+                                                
+                                            step_end_time = datetime.now()
+                                            duration_seconds = (step_end_time - operation_start_time).seconds
+                                            strMsg = step_end_time.strftime('%H:%M:%S') + "  Copying Step [" + strStepDescription + "] File: " + actualFileName + step_result + "  [Operation duration: " + str(duration_seconds) + " seconds]"
+                                            self.WriteToResultFile(operationOutFile, strMsg)
+                                            
                     finally:
                         # Unmount all mountpoints
                         guestfish.unmount_all()
@@ -265,6 +289,9 @@ class GuestFishWrapper:
             if (self.kpThread.wasTimeout):
                 strLastGoodStep = str(lastGoodOperationMajorStep) + "." + str(lastGoodOperationMinorStep)
                 self.WriteToResultFile(operationOutFile, "\r\n##### WARNING: Partial results were collected as the operation was taking too long to complete. Consider retrying the operation specifying skip to step " + strLastGoodStep + " to continue gathering from last succesfully executed data collection step. #####")
-
+            
+            execution_end_time = datetime.now()
+            duration_seconds = (execution_end_time - execution_start_time).seconds
+            self.WriteToResultFile(operationOutFile, "Execution end time: " + execution_end_time.strftime('%H:%M:%S') + "  [Execution duration: " + str(duration_seconds) + " seconds]\r\n")
         archiveName = shutil.make_archive(requestDir, 'zip', requestDir)
         return archiveName
