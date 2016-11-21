@@ -266,5 +266,6 @@ class GuestFishWrapper:
                 strLastGoodStep = str(lastGoodOperationMajorStep) + "." + str(lastGoodOperationMinorStep)
                 self.WriteToResultFile(operationOutFile, "\r\n##### WARNING: Partial results were collected as the operation was taking too long to complete. Consider retrying the operation specifying skip to step " + strLastGoodStep + " to continue gathering from last succesfully executed data collection step. #####")
 
+        self.rootLogger.info("Current working directory: " + str(os.getcwd()))
         archiveName = shutil.make_archive(requestDir, 'zip', requestDir)
         return archiveName
