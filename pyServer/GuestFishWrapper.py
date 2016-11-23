@@ -279,7 +279,31 @@ class GuestFishWrapper:
                                             duration_seconds = (step_end_time - operation_start_time).seconds
                                             strMsg = step_end_time.strftime('%H:%M:%S') + "  Copying Step [" + strStepDescription + "] File: " + actualFileName + step_result + "  [Operation duration: " + str(duration_seconds) + " seconds]"
                                             self.WriteToResultFile(operationOutFile, strMsg)
+                                elif opCommand=="diskinfo":  
+                                    diskInfoOutFilename = requestDir + os.sep + 'diskinfo.txt'  
+                                    with open(diskInfoOutFilename, "a", newline="\r\n") as diskInfoOutFile:                                    
+                                        # get drive letters if we ran inspection
+                                        if (osType == "windows"):
+                                            if (not skipInspect):  
+                                                driveMappings = guestfish.get_drive_letters(device)
+                                                self.WriteToResultFileWithHeader(diskInfoOutFile, "Windows drive letter mappings:", driveMappings)
+                                            else:
+                                                self.WriteToResultFileWithHeader(diskInfoOutFile, "Windows drive letter mappings [Inspect skipped]:", "C: " + device)
+                                        #df-h
+                                        diskInfo = guestfish.df()
+                                        self.WriteToResultFile(diskInfoOutFile, diskInfo)
+                                        #statvfs                                       
+                                        self.WriteToResultFile(diskInfoOutFile, "\r\nFor decoder ring for data below see: http://man.he.net/man2/statvfs \r\n")
+                                        for mount in osMountpoints:
+                                            mountpoint = mount[0]
+                                            mountdevice = mount[1]
+                                            diskstats=guestfish.statvfs(mountpoint)
+                                            self.WriteToResultFileWithHeader(diskInfoOutFile, "[Device: " + mountdevice + ", mountpoint: " + mountpoint + " ]", diskstats)
                                             
+                                    step_end_time = datetime.now() 
+                                    duration_seconds = (step_end_time - operation_start_time).seconds                                    
+                                    strMsg = step_end_time.strftime('%H:%M:%S') + "  DiskInfo gathered. [Operation duration: " + str(duration_seconds) + " seconds]"
+                                    self.WriteToResultFile(operationOutFile, strMsg)
                     finally:
                         # Unmount all mountpoints
                         guestfish.unmount_all()
