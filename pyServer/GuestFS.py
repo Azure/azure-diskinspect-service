@@ -162,6 +162,16 @@ class GuestFS:
         except subprocess.CalledProcessError:
             return False
         return True
+        
+    #used to mount ufs filesystems on FreeBSD VMs    
+    def mount_bsd(self, mountpoint, device):
+        try:
+            (out, err) = self.callGF('Mount [' + mountpoint + ',' + device + ']', ['--', '-mount-options', 'ro,ufstype=5xbsd', device, mountpoint], True)
+            if err:
+                return False
+        except subprocess.CalledProcessError:
+            return False
+        return True
 
     def ll(self, directory):
         try:
@@ -201,3 +211,31 @@ class GuestFS:
 
     def exit(self):
         return self.callGF('Exiting', ['--', '-exit'])
+
+    
+    def df(self):
+        try:
+            (out, err) = self.callGF('DiskInfo (df -h)', ['--', '-df-h'], True)
+            if err:
+                return None
+        except subprocess.CalledProcessError:
+            return None
+        return out
+
+    def statvfs(self, mountpoint):
+        try:
+            (out, err) = self.callGF('DiskInfo (statvfs)', ['--', '-statvfs', mountpoint], True)
+            if err:
+                return None
+        except subprocess.CalledProcessError:
+            return None
+        return out 
+        
+    def get_drive_letters(self, device):
+        try:
+            (out, err) = self.callGF('Windows drive letter mappings', ['--', '-inspect-get-drive-mappings', device], True)
+            if err:
+                return None
+        except subprocess.CalledProcessError:
+            return None
+        return out

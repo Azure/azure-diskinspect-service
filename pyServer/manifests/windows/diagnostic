@@ -174,3 +174,6 @@ copy,/Packages/Plugins/Microsoft.Powershell.DSC/*/DSCVersion.xml
 copy,/Packages/Plugins/Microsoft.Powershell.DSC/*/DSCWork/HotfixInstallInProgress.dsc
 copy,/Packages/Plugins/Microsoft.Powershell.DSC/*/DSCWork/PreInstallDone.dsc
 copy,/Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/*/PackageDefinition.xml
+
+echo,### Gathering Disk Info ###
+diskinfo,

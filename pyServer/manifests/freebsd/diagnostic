@@ -1,0 +1,23 @@
+echo,### Probing Directories ###
+ll,/var/log
+ll,/etc/rc.d
+
+echo,### Gathering Configuration Files ###
+copy,/etc/fstab
+copy,/etc/ssh/sshd_config
+copy,/boot/loader.conf
+copy,/etc/dhclient.conf
+copy,/etc/networks
+copy,/etc/nsswitch.conf
+copy,/etc/resolv.conf
+copy,/etc/rc.conf
+copy,/etc/syslog.conf
+copy,/etc/waagent.conf
+echo,
+
+echo,### Gathering Log Files ###
+copy,/var/log/waagent*
+copy,/var/log/messages*
+copy,/var/log/dmesg*
+copy,/var/log/auth*
+copy,/var/log/secure*
