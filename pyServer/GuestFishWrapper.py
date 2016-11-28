@@ -302,7 +302,7 @@ class GuestFishWrapper:
                                             
                                     step_end_time = datetime.now() 
                                     duration_seconds = (step_end_time - operation_start_time).seconds                                    
-                                    strMsg = step_end_time.strftime('%H:%M:%S') + "  DiskInfo gathered. [Operation duration: " + str(duration_seconds) + " seconds]"
+                                    strMsg = step_end_time.strftime('%H:%M:%S') + "  DiskInfo gathered and written to diskinfo.txt. [Operation duration: " + str(duration_seconds) + " seconds]"
                                     self.WriteToResultFile(operationOutFile, strMsg)
                     finally:
                         # Unmount all mountpoints
