@@ -4,6 +4,7 @@ import shutil
 import os
 from GuestFS import GuestFS
 from datetime import datetime
+import zipfile
 """
 LibGuestFS Wrapper for Disk Information Extraction 
 
@@ -81,6 +82,19 @@ class GuestFishWrapper:
         osProductName = guestfish.inspect_get_product_name(device)
         osMountpoints = guestfish.inspect_get_mountpoints(device)
         return (osType[0], osDistribution[0], osProductName[0], osMountpoints)        
+
+    def CreateArchive(self, zipFilename, targetDir):
+        with zipfile.ZipFile(zipFilename, "w", compression=zipfile.ZIP_DEFLATED) as zf:
+            base_path = os.path.normpath(targetDir)
+            for dirpath, dirnames, filenames in os.walk(targetDir):
+                for name in sorted(dirnames):
+                    path = os.path.normpath(os.path.join(dirpath, name))
+                    zf.write(path, os.path.relpath(path, base_path))
+                for name in filenames:
+                    path = os.path.normpath(os.path.join(dirpath, name))
+                    if os.path.isfile(path):
+                        zf.write(path, os.path.relpath(path, base_path))        
+        return zipFilename
 
     def execute(self, storageUrl):
 
@@ -320,5 +334,8 @@ class GuestFishWrapper:
                 self.WriteToResultFile(operationOutFile, "\r\n##### WARNING: Partial results were collected as the operation was taking too long to complete. Consider retrying the operation specifying skip to step " + strLastGoodStep + " to continue gathering from last succesfully executed data collection step. #####")
 
         self.rootLogger.info("Current working directory: " + str(os.getcwd()))
-        archiveName = shutil.make_archive(requestDir, 'zip', requestDir)
-        return archiveName
+
+        # Build the result output archive
+        zipFileName = requestDir + ".zip"
+        archiveFile = self.CreateArchive(zipFileName, requestDir)
+        return archiveFile
