@@ -99,8 +99,12 @@ class GuestFS:
     def list_filesystems(self):
         (out, err) = self.callGF('Listing Filesystems', ['list-filesystems'], True)
         devicesArr = list()
+        # typically these are name/values delimited by :  
+        # some filesystems have a moniker (e.g. btrfsvol:/dev/sda2/root: btrfs ) but the delimeter
+        # will be a colon with space ': '. This should be consistent based upon a review of 
+        # guestfish code: /fish/fish.c - print_table()
         for eachDevice in out:    
-            eachDeviceArr = eachDevice.split(':')
+            eachDeviceArr = eachDevice.split(': ')
             device = str(eachDeviceArr[0])
             devicefs = str(eachDeviceArr[1]).strip()
             devicesArr.append( [ device, devicefs ] )        
@@ -108,7 +112,7 @@ class GuestFS:
 
     def get_uuid(self, device):
         (out, err) = self.callGF('Get UUID [' + device + ']', ['--', 'get-uuid', device], True)
-        return out[0]
+        return self.get_first_list_item(out)
 
     def inspect_os(self):
         (out, err) = self.callGF('Inspecting OS Metadata', ['inspect-os'], True)
@@ -129,8 +133,10 @@ class GuestFS:
     def inspect_get_mountpoints(self, device):
         (out, err) = self.callGF('Get Device Mountpoints', ['--', '-inspect-get-mountpoints', device], True)
         mountpointsArr = list()
-        for eachMountPoint in out:    
-            eachMountPointArr = eachMountPoint.split(':')
+        for eachMountPoint in out:   
+            # delimiter will be a colon with space ': '. This should be consistent based upon  
+            # a review of guestfish code: /fish/fish.c - print_table()        
+            eachMountPointArr = eachMountPoint.split(': ')
             mountpoint = str(eachMountPointArr[0])
             mountdevice = str(eachMountPointArr[1]).strip()
             mountpointsArr.append( [ mountpoint, mountdevice ] )
@@ -190,10 +196,8 @@ class GuestFS:
 
     def case_sensitive_path(self, path):
         (out, err) = self.callGF('Finding Case Sensitive Path [' + path + ']', ['--', '-case-sensitive-path', path], True)
-        if len(out) == 1:
-            return out[0]
-        else:
-            return None
+        return self.get_first_list_item(out)
+        
 
     def copy_out(self, sourceFiles, targetDir):
         try:
@@ -239,3 +243,10 @@ class GuestFS:
         except subprocess.CalledProcessError:
             return None
         return out
+    
+    # check the list before we dereference
+    def get_first_list_item(self, list_obj):
+        if len(list_obj) == 1:
+            return list_obj[0]
+        else:
+            return None
