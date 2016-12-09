@@ -93,7 +93,12 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
                 modeMajorSkipTo = int(modeMajorSkipToStr)
             
         storageAcctName = urlSplit[3]
-        container_blob_name = urlSplit[4] + '/' + urlSplit[5]
+        container_blob_name = urlSplit[4]
+        urlSplitIndex = 5
+        while (urlSplitIndex < len(urlSplit)):
+            container_blob_name = container_blob_name + '/' + urlSplit[urlSplitIndex]
+            urlSplitIndex = urlSplitIndex + 1
+
         storageUrl = urllib.parse.urlunparse(
                 ('https', storageAcctName + '.blob.core.windows.net', container_blob_name, '', urlObj.query, None))
             
