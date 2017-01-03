@@ -24,6 +24,7 @@ copy,/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Runtime.e
 copy,/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Bootstrapper.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Status%4GuestAgent.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Status%4Plugins.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-DSC%4Operational.evtx
 
 echo,### Provisioning ###
 copy,/AzureData/CustomData.bin
