@@ -3,6 +3,7 @@ ll,/var/log
 ll,/etc/rc.d
 
 echo,### Gathering Configuration Files ###
+copy,/etc/rc.conf
 copy,/etc/fstab
 copy,/etc/ssh/sshd_config
 echo,
