@@ -21,3 +21,4 @@ copy,/var/log/messages*
 copy,/var/log/dmesg*
 copy,/var/log/auth*
 copy,/var/log/secure*
+copy,/var/log/azure/*/*/*
