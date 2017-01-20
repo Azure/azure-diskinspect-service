@@ -85,8 +85,6 @@ class GuestFS:
             elapsedTime = datetime.now() - start_time
             self.rootLogger.info('GuestFish:' + echoStr + ':Remote> ExecutionTime=' + str(elapsedTime.total_seconds()) + "s.")
 
-      
-            
     def start(self):
         # Run guestfish in remote mode and then send it a command
         # at a time since the programming environment inside guestfish
