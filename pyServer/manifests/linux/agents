@@ -15,3 +15,10 @@ copy,/var/log/waagent*
 copy,/var/log/dmesg*
 copy,/var/log/auth*
 copy,/var/log/azure/*/*/*
+echo,
+
+echo,### Gathering Extension Files ###
+copy,/var/lib/waagent/ExtensionsConfig.*.xml
+copy,/var/lib/waagent/*/status/*.status
+copy,/var/lib/waagent/*/config/*.settings
+echo,
