@@ -34,31 +34,46 @@ class GuestFS:
         retArgs.extend(args)
         return retArgs
 
-    def callGF(self, echoStr, commands, continueOnError=False):
+    def callGF(self, echoStr, commands, continueOnError=False, returnRawResults=False):
         start_time = datetime.now()
+        retValue = [None, None]
         try:
             retArgs = self.buildGFArgs(commands)
             self.rootLogger.info('GuestFish:' + echoStr + ':Remote> ' + ' '.join(retArgs))
+            
+            if returnRawResults:
+                result = subprocess.check_output(retArgs,
+                    env=self.environment,
+                    stderr=subprocess.PIPE,
+                    universal_newlines=False)
+               
+                # avoid doing any kind of str() on data since we can encounder encode/decode errors on binary data
+                if result:
+                    retValue = [result, None]  #check_output will throw() if there is an error
+                    resultStr = "".join("%02x " % b for b in result)
+                    self.rootLogger.info('GuestFish:' + echoStr + ':Result> ' + resultStr)
+            else:
+                proc = subprocess.Popen(
+                    retArgs,
+                    env=self.environment,
+                    stderr=subprocess.PIPE,
+                    stdout=subprocess.PIPE,
+                    universal_newlines=True)
+                (result, err) = proc.communicate()  
 
-            proc = subprocess.Popen(
-                retArgs,
-                env=self.environment,
-                stderr=subprocess.PIPE,
-                stdout=subprocess.PIPE,
-                universal_newlines=True)
-            (result, err) = proc.communicate()
-            resultAsArray = str(result).splitlines()
-            retValue = [resultAsArray, err]
-            if result:
-                resultStr = '\r\n'.join(resultAsArray)
-                if len(resultAsArray) > 1:
-                    resultStr = '\r\n' + resultStr
-                self.rootLogger.info('GuestFish:' + echoStr + ':Result> ' + resultStr)
-            if err:
-                if continueOnError:
-                    self.rootLogger.warning('GuestFish:' + echoStr + ':Error> \r\n' + err)
-                else:
-                    self.rootLogger.error('GuestFish:' + echoStr + ':Error> \r\n' + err)
+                resultAsArray = str(result).splitlines()
+                retValue = [resultAsArray, err]
+                if result:
+                    resultStr = '\r\n'.join(resultAsArray)
+                    if len(resultAsArray) > 1:
+                        resultStr = '\r\n' + resultStr
+                        self.rootLogger.info('GuestFish:' + echoStr + ':Result> ' + resultStr)
+                if err:
+                    if continueOnError:
+                        self.rootLogger.warning('GuestFish:' + echoStr + ':Error> \r\n' + err)
+                    else:
+                        retValue = [None, err]
+                        self.rootLogger.error('GuestFish:' + echoStr + ':Error> \r\n' + err)
             return retValue
         except subprocess.CalledProcessError as e:
             if not continueOnError:
@@ -69,6 +84,8 @@ class GuestFS:
         finally:
             elapsedTime = datetime.now() - start_time
             self.rootLogger.info('GuestFish:' + echoStr + ':Remote> ExecutionTime=' + str(elapsedTime.total_seconds()) + "s.")
+
+      
             
     def start(self):
         # Run guestfish in remote mode and then send it a command

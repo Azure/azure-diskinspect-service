@@ -3,6 +3,7 @@
 import shutil
 import os
 from GuestFS import GuestFS
+from GuestFS_registry import GuestFS_Registry
 from datetime import datetime
 """
 LibGuestFS Wrapper for Disk Information Extraction 
@@ -20,6 +21,7 @@ class GuestFishWrapper:
     mode = None
     kpThread = None
     osType = None
+    
 
     def __init__(self, rootLogger, handler, storageUrl, outputDirName, operationId, mode, modeMajorSkipTo, modeMinorSkipTo, kpThread):
         self.environment = None
@@ -83,6 +85,8 @@ class GuestFishWrapper:
         return (osType[0], osDistribution[0], osProductName[0], osMountpoints)        
 
     def execute(self, storageUrl):
+        has_registry_file= False
+        guest_registry = None
 
         requestDir = self.outputDirName
         os.makedirs(requestDir)
@@ -213,8 +217,8 @@ class GuestFishWrapper:
                                 if len(opList) < 2:
                                     continue
                                 
-                                opCommand = str(opList[0]).lower()
-                                opParam1 = opList[1]
+                                opCommand = str(opList[0]).lower().strip()
+                                opParam1 = opList[1].strip()
 
                                 if opCommand=="echo":
                                     self.WriteToResultFile(operationOutFile, opParam1)
@@ -299,14 +303,41 @@ class GuestFishWrapper:
                                             mountdevice = mount[1]
                                             diskstats=guestfish.statvfs(mountpoint)
                                             self.WriteToResultFileWithHeader(diskInfoOutFile, "[Device: " + mountdevice + ", mountpoint: " + mountpoint + " ]", diskstats)
-                                            
                                     step_end_time = datetime.now() 
                                     duration_seconds = (step_end_time - operation_start_time).seconds                                    
                                     strMsg = step_end_time.strftime('%H:%M:%S') + "  DiskInfo gathered. [Operation duration: " + str(duration_seconds) + " seconds]"
                                     self.WriteToResultFile(operationOutFile, strMsg)
-                    finally:
+
+                                elif opCommand=="reg":
+                                    # The registry object has a small cache, try to persist across calls to *same* VM
+                                    if (guest_registry == None):
+                                        self.rootLogger.info('Creating new guest_registry object...')
+                                        guest_registry = GuestFS_Registry(guestfish, self.rootLogger)
+                                        
+                                    registryFilename= operationOutFilename = requestDir + os.sep + 'registry.json'
+                                    with open(registryFilename, "a", newline="\n") as registryOutFile:
+                                        registryValue = guest_registry.reg_read(opParam1)
+                                        if (registryValue != None):
+                                            if (not has_registry_file):
+                                                has_registry_file = True
+                                                self.WriteToResultFile(registryOutFile,'{')
+                                                self.WriteToResultFile(registryOutFile,'"' + opParam1.replace("\\","\\\\") + '": "' + registryValue.replace("\\","\\\\") + '"')
+                                            else:
+                                                #prefix line with comma seperator
+                                                self.WriteToResultFile(registryOutFile,',"' + opParam1.replace("\\","\\\\") + '": "' + registryValue.replace("\\","\\\\") + '"')
+                                        else:
+                                            self.WriteToResultFile(operationOutFile, opParam1 + " could not be read")   
+
+                            # check to see if we need to close the json in registry file
+                            if (has_registry_file):  
+                                with open(registryFilename, "a", newline="\r\n") as registryOutFile:
+                                    self.WriteToResultFile(registryOutFile,'}')
+                                guest_registry.clean_up()
+
+                    finally:                        
                         # Unmount all mountpoints
                         guestfish.unmount_all()
+
 
                     deviceNumber = deviceNumber + 1
             self.kpThread.guestfishPid = None
