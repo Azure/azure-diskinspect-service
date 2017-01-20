@@ -22,7 +22,6 @@ class GuestFishWrapper:
     mode = None
     kpThread = None
     osType = None
-    
 
     def __init__(self, rootLogger, handler, storageUrl, outputDirName, operationId, mode, modeMajorSkipTo, modeMinorSkipTo, kpThread):
         self.environment = None
@@ -351,7 +350,6 @@ class GuestFishWrapper:
                     finally:                        
                         # Unmount all mountpoints
                         guestfish.unmount_all()
-
 
                     deviceNumber = deviceNumber + 1
 
