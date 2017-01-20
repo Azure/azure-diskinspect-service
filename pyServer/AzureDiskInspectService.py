@@ -93,7 +93,12 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
                 modeMajorSkipTo = int(modeMajorSkipToStr)
             
         storageAcctName = urlSplit[3]
-        container_blob_name = urlSplit[4] + '/' + urlSplit[5]
+        container_blob_name = urlSplit[4]
+        urlSplitIndex = 5
+        while (urlSplitIndex < len(urlSplit)):
+            container_blob_name = container_blob_name + '/' + urlSplit[urlSplitIndex]
+            urlSplitIndex = urlSplitIndex + 1
+
         storageUrl = urllib.parse.urlunparse(
                 ('https', storageAcctName + '.blob.core.windows.net', container_blob_name, '', urlObj.query, None))
             
@@ -140,6 +145,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
     def do_GET(self):
         outputFileName = None
         start_time = datetime.now()
+        requestSucceeded = False
 
         try:
             self.serviceMetrics.TotalRequests = self.serviceMetrics.TotalRequests + 1
@@ -164,6 +170,8 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
                         successElapsed = datetime.now() - start_time
                         self.serviceMetrics.SuccessRequests = self.serviceMetrics.SuccessRequests + 1
                         self.serviceMetrics.TotalSuccessServiceTime = self.serviceMetrics.TotalSuccessServiceTime + successElapsed.total_seconds()
+                        self.serviceMetrics.ConsecutiveErrors = 0
+                        requestSucceeded = True
 
                         self.rootLogger.info('Request completed succesfully in ' + str(successElapsed.total_seconds()) + "s.")
                     else:
@@ -179,5 +187,12 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
             self.rootLogger.exception('Exception: ' + str(ex))
             self.send_error(500, str(ex))
         finally:
+            if (not requestSucceeded):
+                self.serviceMetrics.ConsecutiveErrors = self.serviceMetrics.ConsecutiveErrors + 1
+                
+                if (self.serviceMetrics.ConsecutiveErrors > 10):
+                    self.rootLogger.error('FATAL FAILURE: More than 10 consecutive requests failed to be serviced. Shutting down.')
+                    os._exit(1)
+
             self.rootLogger.info('Ending service request.')
             self.rootLogger.info('<<STATS>> ' + self.serviceMetrics.getMetrics())
