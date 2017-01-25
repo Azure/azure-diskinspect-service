@@ -5,7 +5,7 @@ ll,/etc/udev/rules.d
 echo,### Gathering Configuration Files ###
 copy,/etc/fstab
 copy,/etc/ssh/sshd_config
-copy,/boot/grub*/grub.conf
+copy,/boot/grub*/grub.c*
 copy,/boot/grub*/menu.lst
 copy,/etc/*-release
 copy,/etc/HOSTNAME

@@ -151,26 +151,25 @@ class GuestFS_Registry:
     # both human and code readable
     def get_string_value_by_type(self, valueid, valueType):
         self.rootLogger.info('Registry type [get_value_by_type]: ' + hive_type( int(valueType[0]) ).name + ' = ' + str(valueType[0]))
+
+        (out, err) = self.guestFS.callGF('Get registry value-value: ', ['--', '-hivex-value-value', valueid[0]] , False, True)  #raw results
+        
+        # try to convert based on type
         if (int(valueType[0]) == hive_type.hive_t_REG_SZ.value ) or (int(valueType[0]) == hive_type.hive_t_REG_EXPAND_SZ.value ):
-            # LibGuestFS has a special function for REG_SZ
-            (out, err) = self.guestFS.callGF('Get registry value (utf8): ', ['--', '-hivex-value-utf8', valueid[0]], True)
-            retVal = str(out[0])
-        else:            
-            (out, err) = self.guestFS.callGF('Get registry value-value: ', ['--', '-hivex-value-value', valueid[0]] , False, True)  #raw results
-            # try to convert based on type
-            if (int(valueType[0]) == hive_type.hive_t_REG_DWORD.value ):
-                intValue = int.from_bytes(bytes(out), byteorder='little' )
-                #retVal = "%s (%d)" % ( hex(intValue),intValue ) 
-                retVal = hex(intValue)  #easier to parse programatically, if needed
-            elif (int(valueType[0]) == hive_type.hive_t_REG_QWORD.value ):
-                retVal = "0x" + "".join("%02x" % out[b] for b in range(len(out)-1,-1,-1 ) )   #reverse the byte order
-            elif (int(valueType[0]) == hive_type.hive_t_REG_BINARY.value ):
-                retVal = "".join("%02x " % b for b in out)
-            elif (int(valueType[0]) == hive_type.hive_t_REG_MULTI_SZ.value ):
-                retVal = out.decode("UTF-16LE").replace('\0',';')
-            else:
-                # No current use cases for REG_NONE or REG_RESOURCE_*
-                retVal = "".join("%02x " % b for b in out)
+            retVal = self.convert_to_ascii( out.decode("UTF-16LE")).replace('\0','') # remove trailing null termination
+        elif (int(valueType[0]) == hive_type.hive_t_REG_MULTI_SZ.value ):
+            retVal = self.convert_to_ascii(out.decode("UTF-16LE")).replace('\0',';') # make a semi-colon the delimeter between values
+        elif (int(valueType[0]) == hive_type.hive_t_REG_DWORD.value ):
+            intValue = int.from_bytes(bytes(out), byteorder='little' )
+            #retVal = "%s (%d)" % ( hex(intValue),intValue ) 
+            retVal = hex(intValue)  #easier to parse programatically, if needed
+        elif (int(valueType[0]) == hive_type.hive_t_REG_QWORD.value ):
+            retVal = "0x" + "".join("%02x" % out[b] for b in range(len(out)-1,-1,-1 ) )   #reverse the byte order
+        elif (int(valueType[0]) == hive_type.hive_t_REG_BINARY.value ):
+            retVal = "".join("%02x " % b for b in out)
+        else:
+            # No current use cases for REG_NONE or REG_RESOURCE_*
+            retVal = "".join("%02x " % b for b in out)
         
         self.rootLogger.info('get_value_by_type returning:  ' + retVal )
         if err:
@@ -201,3 +200,8 @@ class GuestFS_Registry:
         # to redirect to the numeric controlset node, rather than CurrentControlSet
         (nodeid, err) = self.guestFS.callGF('Get registry child: [' + actual_controlset + ']', ['--', '-hivex_node_get_child', system_node_id, actual_controlset], True) 
         return nodeid
+
+    # round trip through ascii decoding to strip anything unicode 
+    def convert_to_ascii(self, string_to_convert):
+        encoded = string_to_convert.encode('ascii',errors='replace')
+        return encoded.decode('ascii')

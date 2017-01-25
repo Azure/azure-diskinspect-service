@@ -34,6 +34,11 @@ class GuestFishWrapper:
         self.modeMinorSkipTo = modeMinorSkipTo
         self.kpThread = kpThread
         self.osType = "unknown"
+        self.operationOutFilename = self.outputDirName + os.sep + 'results.txt'
+        self.registryFilename= self.outputDirName + os.sep + 'registry.json'
+        # The registry object has a small cache, try to persist across calls to the same VM partition
+        self.guest_registry = None
+        self.has_registry_file = False
 
     def __enter__(self):
         self.outputFileName = self.execute(self.storageUrl)        
@@ -98,20 +103,16 @@ class GuestFishWrapper:
         return zipFilename
 
     def execute(self, storageUrl):
-        has_registry_file= False
-        guest_registry = None
-
         requestDir = self.outputDirName
         os.makedirs(requestDir)
-
-        operationOutFilename = requestDir + os.sep + 'results.txt'
 
         lastGoodOperationMajorStep = 1
         lastGoodOperationMinorStep = 1
 
-        with open(operationOutFilename, "w", newline="\r\n") as operationOutFile:
+        with open(self.operationOutFilename, "w", newline="\n") as operationOutFile:
             with GuestFS(self.rootLogger, storageUrl) as guestfish:
                 self.kpThread.guestfishPid = guestfish.pid
+                self.guest_registry = GuestFS_Registry(guestfish, self.rootLogger)
                 execution_start_time = datetime.now()
                 self.WriteToResultFile(operationOutFile, "Execution start time: " + execution_start_time.strftime('%H:%M:%S') + ".\r\n")
 
@@ -236,17 +237,8 @@ class GuestFishWrapper:
                                 if opCommand=="echo":
                                     self.WriteToResultFile(operationOutFile, opParam1)
                                 elif opCommand=="ll":
-                                    directory = opParam1
-                                        
-                                    dirList = []
-                                    if directory:
-                                        dirList = guestfish.ll(directory)
-                                    if dirList:
-                                        step_end_time = datetime.now()
-                                        strMsg = step_end_time.strftime('%H:%M:%S') + "  Listing contents of " + directory + ":"                          
-                                        self.WriteToResultFileWithHeader(operationOutFile, strMsg, dirList)
-                                    else:
-                                        self.WriteToResultFile(operationOutFile, "Directory " + directory + " is not valid.")
+                                    self.do_opcommand_list_directory(guestfish, opParam1, operationOutFile)
+                          
                                 elif opCommand=="copy":
                                     gatherItem = opParam1
                                     origGatherItem = gatherItem
@@ -322,30 +314,11 @@ class GuestFishWrapper:
                                     self.WriteToResultFile(operationOutFile, strMsg)
 
                                 elif opCommand=="reg":
-                                    # The registry object has a small cache, try to persist across calls to *same* VM
-                                    if (guest_registry == None):
-                                        self.rootLogger.info('Creating new guest_registry object...')
-                                        guest_registry = GuestFS_Registry(guestfish, self.rootLogger)
-                                        
-                                    registryFilename= operationOutFilename = requestDir + os.sep + 'registry.json'
-                                    with open(registryFilename, "a", newline="\n") as registryOutFile:
-                                        registryValue = guest_registry.reg_read(opParam1)
-                                        if (registryValue != None):
-                                            if (not has_registry_file):
-                                                has_registry_file = True
-                                                self.WriteToResultFile(registryOutFile,'{')
-                                                self.WriteToResultFile(registryOutFile,'"' + opParam1.replace("\\","\\\\") + '": "' + registryValue.replace("\\","\\\\") + '"')
-                                            else:
-                                                #prefix line with comma seperator
-                                                self.WriteToResultFile(registryOutFile,',"' + opParam1.replace("\\","\\\\") + '": "' + registryValue.replace("\\","\\\\") + '"')
-                                        else:
-                                            self.WriteToResultFile(operationOutFile, opParam1 + " could not be read")   
+                                     self.do_opcommand_registry(guestfish, opParam1, operationOutFile)
 
-                            # check to see if we need to close the json in registry file
-                            if (has_registry_file):  
-                                with open(registryFilename, "a", newline="\r\n") as registryOutFile:
-                                    self.WriteToResultFile(registryOutFile,'}')
-                                guest_registry.clean_up()
+                            # done processing the manifest for this partition, check to see if we need to close
+                            self.registry_close() 
+        
 
                     finally:                        
                         # Unmount all mountpoints
@@ -368,3 +341,35 @@ class GuestFishWrapper:
         zipFileName = requestDir + ".zip"
         archiveFile = self.CreateArchive(zipFileName, requestDir)
         return archiveFile
+
+
+    def do_opcommand_registry(self, guestfish, registry_path, operationOutFile): 
+        with open(self.registryFilename, "a", newline="\n") as registryOutFile:
+            registryValue = self.guest_registry.reg_read(registry_path)
+            if (registryValue != None):
+                if (not self.has_registry_file):
+                    self.has_registry_file = True
+                    self.WriteToResultFile(registryOutFile,'{')
+                    self.WriteToResultFile(registryOutFile,'"' + registry_path.replace("\\","\\\\") + '": "' + registryValue.replace("\\","\\\\") + '"')
+                else:
+                    #prefix line with comma seperator
+                    self.WriteToResultFile(registryOutFile,',"' + registry_path.replace("\\","\\\\") + '": "' + registryValue.replace("\\","\\\\") + '"')
+            else:
+                self.WriteToResultFile(operationOutFile, registry_path + " could not be read")  
+
+    def registry_close(self):         
+        with open(self.registryFilename, "a", newline="\r\n") as registryOutFile:
+            self.WriteToResultFile(registryOutFile,'}')
+        self.guest_registry.clean_up()
+        self.has_registry_file = False
+
+    def do_opcommand_list_directory(self, guestfish, directory, operationOutFile):
+        dirList = []
+        if directory:
+            dirList = guestfish.ll(directory)
+        if dirList:
+            step_end_time = datetime.now()
+            strMsg = step_end_time.strftime('%H:%M:%S') + "  Listing contents of " + directory + ":"                          
+            self.WriteToResultFileWithHeader(operationOutFile, strMsg, dirList)
+        else:
+            self.WriteToResultFile(operationOutFile, "Directory " + directory + " is not valid.")
