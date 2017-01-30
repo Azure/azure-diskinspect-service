@@ -1,0 +1,29 @@
+echo,### EXPERIMENTAL FEATURE ###
+echo,### Registry ###
+reg,HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\fDenyTSConnections
+reg,HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp\PortNumber
+reg,HKLM\SYSTEM\CurrentControlSet\Services\Dhcp\Start
+reg,HKLM\SYSTEM\CurrentControlSet\Services\TermService\start
+reg,HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\DomainProfile\EnableFirewall
+reg,HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\PublicProfile\EnableFirewall
+reg,HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\EnableFirewall
+reg,HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules\RemoteDesktop-UserMode-In-TCP
+reg,HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules\RemoteDesktop-UserMode-In-UDP
+reg,HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules\RemoteDesktop-Shadow-In-TCP
+reg,HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules\WINRM-HTTP-In-TCP
+reg,HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules\WINRM-HTTP-In-TCP-PUBLIC 
+reg,HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules\WINRM-HTTP-Compat-In-TCP
+reg,HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProductName
+reg,HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\CSDVersion
+reg,HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\BuildLabEx
+reg,HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Setup\State\ImageState
+reg,HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services\fDenyTSConnections
+reg,HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\EnableFirewall
+reg,HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile\EnableFirewall
+reg,HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile\EnableFirewall
+reg,HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\FirewallRules\RemoteDesktop-UserMode-In-TCP 
+reg,HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\FirewallRules\RemoteDesktop-UserMode-In-UDP
+reg,HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\FirewallRules\RemoteDesktop-Shadow-In-TCP
+reg,HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\FirewallRules\WINRM-HTTP-In-TCP
+reg,HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\FirewallRules\WINRM-HTTP-In-TCP-PUBLIC
+reg,HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\FirewallRules\WINRM-HTTP-Compat-In-TCP
