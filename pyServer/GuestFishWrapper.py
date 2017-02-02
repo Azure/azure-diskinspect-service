@@ -357,11 +357,12 @@ class GuestFishWrapper:
             else:
                 self.WriteToResultFile(operationOutFile, registry_path + " could not be read")  
 
-    def registry_close(self):         
-        with open(self.registryFilename, "a", newline="\r\n") as registryOutFile:
-            self.WriteToResultFile(registryOutFile,'}')
-        self.guest_registry.clean_up()
-        self.has_registry_file = False
+    def registry_close(self):      
+        if (self.has_registry_file):
+            with open(self.registryFilename, "a", newline="\r\n") as registryOutFile:
+                self.WriteToResultFile(registryOutFile,'}')
+            self.guest_registry.clean_up()
+            self.has_registry_file = False
 
     def do_opcommand_list_directory(self, guestfish, directory, operationOutFile):
         dirList = []
