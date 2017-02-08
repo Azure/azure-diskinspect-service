@@ -2,19 +2,10 @@
 
 import http.server
 import urllib
-import subprocess
-import shutil
 import sys
 import os
-import time
 import socketserver
-import logging
-import logging.handlers
-import io
 import threading
-import csv
-import glob
-from threading import Thread
 from datetime import datetime
 from GuestFishWrapper import GuestFishWrapper
 from KeepAliveThread import KeepAliveThread
@@ -102,7 +93,12 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
                 modeMajorSkipTo = int(modeMajorSkipToStr)
             
         storageAcctName = urlSplit[3]
-        container_blob_name = urlSplit[4] + '/' + urlSplit[5]
+        container_blob_name = urlSplit[4]
+        urlSplitIndex = 5
+        while (urlSplitIndex < len(urlSplit)):
+            container_blob_name = container_blob_name + '/' + urlSplit[urlSplitIndex]
+            urlSplitIndex = urlSplitIndex + 1
+
         storageUrl = urllib.parse.urlunparse(
                 ('https', storageAcctName + '.blob.core.windows.net', container_blob_name, '', urlObj.query, None))
             
@@ -111,7 +107,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
     """
     Upload a local file as a HTTP binary response.
     """
-    def uploadFile(self, outputFileName, isPartial):
+    def uploadFile(self, outputFileName, isPartial, osType):
         self.wfile.write(bytes('HTTP/1.1 200 OK\r\n', 'utf-8'))
         self.wfile.write(bytes('Content-Type: application/zip\r\n', 'utf-8'))
 
@@ -119,7 +115,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
         self.wfile.write(bytes('Content-Length: {0}\r\n'.format(
             str(statinfo.st_size)), 'utf-8'))
 
-        strOutputFileName = os.path.basename(outputFileName)
+        strOutputFileName = os.path.basename(outputFileName) + "-" + osType
         if isPartial:
             strOutputFileName = strOutputFileName + "-partial"
                         
@@ -149,7 +145,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
     def do_GET(self):
         outputFileName = None
         start_time = datetime.now()
-        keepAliveWorkerThread = None
+        requestSucceeded = False
 
         try:
             self.serviceMetrics.TotalRequests = self.serviceMetrics.TotalRequests + 1
@@ -161,18 +157,21 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
 
             # Invoke LibGuestFS Wrapper for prorcessing
             with KeepAliveThread(self.rootLogger, self, threading.current_thread().getName()) as kpThread:
-                with GuestFishWrapper(self.rootLogger, self, storageUrl, OUTPUTDIRNAME, operationId, mode, modeMajorSkipTo, modeMinorSkipTo, kpThread) as outputFileName:
+                with GuestFishWrapper(self.rootLogger, self, storageUrl, OUTPUTDIRNAME, operationId, mode, modeMajorSkipTo, modeMinorSkipTo, kpThread) as gfWrapper:
 
                     # Upload the ZIP file
-                    if outputFileName:                
+                    if gfWrapper.outputFileName:    
+                        outputFileName = gfWrapper.outputFileName            
                         outputFileSize = round(os.path.getsize(outputFileName) / 1024, 2)
                         self.rootLogger.info('Uploading: ' + outputFileName + ' (' + str(outputFileSize) + 'kb)')
-                        self.uploadFile(outputFileName, kpThread.wasTimeout)
+                        self.uploadFile(outputFileName, kpThread.wasTimeout, gfWrapper.osType)
                         self.rootLogger.info('Upload completed.')
 
                         successElapsed = datetime.now() - start_time
                         self.serviceMetrics.SuccessRequests = self.serviceMetrics.SuccessRequests + 1
                         self.serviceMetrics.TotalSuccessServiceTime = self.serviceMetrics.TotalSuccessServiceTime + successElapsed.total_seconds()
+                        self.serviceMetrics.ConsecutiveErrors = 0
+                        requestSucceeded = True
 
                         self.rootLogger.info('Request completed succesfully in ' + str(successElapsed.total_seconds()) + "s.")
                     else:
@@ -180,19 +179,20 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
 
         except ValueError as ex:
             self.rootLogger.error(str(ex))
-
-            self.send_response(500)
-            self.end_headers()
+            self.send_error(500, str(ex))
         except (IndexError, FileNotFoundError) as ex:
             self.rootLogger.exception('Exception: IndexError or FileNotFound error')
-
-            self.send_response(404, 'Not Found')
-            self.end_headers()
+            self.send_error(404, 'Not Found')
         except Exception as ex:
             self.rootLogger.exception('Exception: ' + str(ex))
-
-            self.send_response(500)
-            self.end_headers()
+            self.send_error(500, str(ex))
         finally:
+            if (not requestSucceeded):
+                self.serviceMetrics.ConsecutiveErrors = self.serviceMetrics.ConsecutiveErrors + 1
+                
+                if (self.serviceMetrics.ConsecutiveErrors > 10):
+                    self.rootLogger.error('FATAL FAILURE: More than 10 consecutive requests failed to be serviced. Shutting down.')
+                    os._exit(1)
+
             self.rootLogger.info('Ending service request.')
             self.rootLogger.info('<<STATS>> ' + self.serviceMetrics.getMetrics())

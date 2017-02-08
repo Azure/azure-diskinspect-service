@@ -1,24 +1,11 @@
 #!/usr/bin/python3
 
-import http.server
-import urllib
-import subprocess
 import shutil
-import sys
 import os
-import time
-import socketserver
-import logging
-import logging.handlers
-import io
-import threading
-import csv
-import glob
-from threading import Thread
-from datetime import datetime
 from GuestFS import GuestFS
-from KeepAliveThread import KeepAliveThread
-
+from GuestFS_registry import GuestFS_Registry
+from datetime import datetime
+import zipfile
 """
 LibGuestFS Wrapper for Disk Information Extraction 
 
@@ -34,6 +21,7 @@ class GuestFishWrapper:
     outputFileName = None
     mode = None
     kpThread = None
+    osType = None
 
     def __init__(self, rootLogger, handler, storageUrl, outputDirName, operationId, mode, modeMajorSkipTo, modeMinorSkipTo, kpThread):
         self.environment = None
@@ -45,10 +33,16 @@ class GuestFishWrapper:
         self.modeMajorSkipTo = modeMajorSkipTo
         self.modeMinorSkipTo = modeMinorSkipTo
         self.kpThread = kpThread
+        self.osType = "unknown"
+        self.operationOutFilename = self.outputDirName + os.sep + 'results.txt'
+        self.registryFilename= self.outputDirName + os.sep + 'registry.json'
+        # The registry object has a small cache, try to persist across calls to the same VM partition
+        self.guest_registry = None
+        self.has_registry_file = False
 
     def __enter__(self):
-        self.outputFileName = self.execute(self.storageUrl)
-        return self.outputFileName
+        self.outputFileName = self.execute(self.storageUrl)        
+        return self
 
     def __exit__(self, type, value, traceback):
         if (os.path.exists(self.outputDirName)):
@@ -95,33 +89,64 @@ class GuestFishWrapper:
         osMountpoints = guestfish.inspect_get_mountpoints(device)
         return (osType[0], osDistribution[0], osProductName[0], osMountpoints)        
 
-    def execute(self, storageUrl):
+    def CreateArchive(self, zipFilename, targetDir):
+        with zipfile.ZipFile(zipFilename, "w", compression=zipfile.ZIP_DEFLATED) as zf:
+            base_path = os.path.normpath(targetDir)
+            for dirpath, dirnames, filenames in os.walk(targetDir):
+                for name in sorted(dirnames):
+                    path = os.path.normpath(os.path.join(dirpath, name))
+                    zf.write(path, os.path.relpath(path, base_path))
+                for name in filenames:
+                    path = os.path.normpath(os.path.join(dirpath, name))
+                    if os.path.isfile(path):
+                        zf.write(path, os.path.relpath(path, base_path))        
+        return zipFilename
 
+    def execute(self, storageUrl):
         requestDir = self.outputDirName
         os.makedirs(requestDir)
-
-        operationOutFilename = requestDir + os.sep + 'results.txt'
 
         lastGoodOperationMajorStep = 1
         lastGoodOperationMinorStep = 1
 
-        with open(operationOutFilename, "w", newline="\r\n") as operationOutFile:
+        with open(self.operationOutFilename, "w", newline="\n") as operationOutFile:
             with GuestFS(self.rootLogger, storageUrl) as guestfish:
                 self.kpThread.guestfishPid = guestfish.pid
+                self.guest_registry = GuestFS_Registry(guestfish, self.rootLogger)
+                execution_start_time = datetime.now()
+                self.WriteToResultFile(operationOutFile, "Execution start time: " + execution_start_time.strftime('%H:%M:%S') + ".\r\n")
+
                 # Initialize
                 guestfish.launch()
 
                 # Enumerate file systems
                 fsList = guestfish.list_filesystems()
                 fsDetailsArr = list()
+                ufs_partitions = list()
                 for eachDevice in fsList:
                     uuid = guestfish.get_uuid(eachDevice[0])
                     fsDetailsArr.append(str(eachDevice[0]) + ': ' + str(eachDevice[1]) + ' [uuid=' + str(uuid) + ']')
+                    # track if any are ufs
+                    if ( str(eachDevice[1]) == "ufs" ):
+                        ufs_partitions.append(str(eachDevice[0]))
+                        
                 self.WriteToResultFileWithHeader(operationOutFile, "Filesystem Status:", fsDetailsArr)
 
-                # Enumerate devices identified as OS disks
-                inspectList = guestfish.inspect_os()
-                self.WriteToResultFileWithHeader(operationOutFile, "Inspection Status:", inspectList)
+                defaultOsType = None
+                skipInspect = False
+                # special case a single ntfs device as 'windows'
+                if (len(fsList) == 1):
+                    eachDevice = fsList[0]
+                    if (eachDevice[1] == "ntfs"):
+                        defaultOsType="windows"
+                        skipInspect = True 
+
+                if (not skipInspect):
+                    # Enumerate devices identified as OS disks
+                    inspectList = guestfish.inspect_os()
+                    self.WriteToResultFileWithHeader(operationOutFile, "Inspection Status:", inspectList)
+                else:
+                    inspectList = [fsList[0][0]]
 
                 deviceNumber = 0
                 for device in inspectList:
@@ -130,9 +155,14 @@ class GuestFishWrapper:
 
                     self.rootLogger.info('GuestFish:Examining Device> %s', device)
 
-                    # Gather and Write Inspect Metadata about the Device
-                    (osType, osDistribution, osProductName, osMountpoints) = self.GetInspectMetadata(guestfish, device)
-                    self.WriteInspectMetadataToResultFile(operationOutFile, device, osType, osDistribution, osProductName, osMountpoints)
+                    if (not skipInspect):
+                        # Gather and Write Inspect Metadata about the Device
+                        (osType, osDistribution, osProductName, osMountpoints) = self.GetInspectMetadata(guestfish, device)
+                        self.WriteInspectMetadataToResultFile(operationOutFile, device, osType, osDistribution, osProductName, osMountpoints)
+                    else:
+                        osType = defaultOsType
+                        osMountpoints = [ ["/", fsList[0][0]] ]
+                    self.osType = str(osType)
 
                     try:
                         # Mount all identified mount points
@@ -141,7 +171,13 @@ class GuestFishWrapper:
                         for mount in osMountpoints:
                             mountpoint = mount[0]
                             mountdevice = mount[1]
-                            wasMounted = guestfish.mount_ro(mountpoint, mountdevice)
+                            
+                            # special case ufs on FreeBSD
+                            if (osType == "freebsd" and ufs_partitions.count(mountdevice)>0):
+                                self.WriteToResultFile(operationOutFile, "Attempting to mount ufs on FreeBSD...")
+                                wasMounted = guestfish.mount_bsd(mountpoint, mountdevice)
+                            else:
+                                wasMounted = guestfish.mount_ro(mountpoint, mountdevice)
 
                             if not wasMounted:
                                 self.WriteToResultFile(operationOutFile, "Mounting " + mountdevice + " on " + mountpoint + " FAILED.")
@@ -185,7 +221,8 @@ class GuestFishWrapper:
                                     self.WriteToResultFile(operationOutFile, strMsg)
                                     continue
 
-                                strMsg = "Executing Operation [" + str(operationNumber) + "/" + str(totalOperations) + "]: " + str(operation)
+                                operation_start_time = datetime.now()
+                                strMsg = operation_start_time.strftime('%H:%M:%S') + "  Executing Operation [" + str(operationNumber) + "/" + str(totalOperations) + "]: " + str(operation)
                                 self.WriteToResultFile(operationOutFile, strMsg)
                                 self.rootLogger.info(strMsg)
 
@@ -194,21 +231,14 @@ class GuestFishWrapper:
                                 if len(opList) < 2:
                                     continue
                                 
-                                opCommand = str(opList[0]).lower()
-                                opParam1 = opList[1]
+                                opCommand = str(opList[0]).lower().strip()
+                                opParam1 = opList[1].strip()
 
                                 if opCommand=="echo":
                                     self.WriteToResultFile(operationOutFile, opParam1)
                                 elif opCommand=="ll":
-                                    directory = opParam1
-                                        
-                                    dirList = []
-                                    if directory:
-                                        dirList = guestfish.ll(directory)
-                                    if dirList:
-                                        self.WriteToResultFileWithHeader(operationOutFile, "Listing contents of " + directory + ":", dirList)
-                                    else:
-                                        self.WriteToResultFile(operationOutFile, "Directory " + directory + " is not valid.")
+                                    self.do_opcommand_list_directory(guestfish, opParam1, operationOutFile)
+                          
                                 elif opCommand=="copy":
                                     gatherItem = opParam1
                                     origGatherItem = gatherItem
@@ -250,18 +280,97 @@ class GuestFishWrapper:
                                             wasCopied = guestfish.copy_out(actualFileName, targetDir)
                                             
                                             if wasCopied:
-                                                self.WriteToResultFile(operationOutFile, "Copying Step [" + strStepDescription + "] File: " + actualFileName + " SUCCEEDED.")
+                                                step_result = " SUCCEEDED."
                                             else:
-                                                self.WriteToResultFile(operationOutFile, "Copying Step [" + strStepDescription + "] File: " + actualFileName + " FAILED.")
-                    finally:
+                                                step_result = " FAILED."
+                                                
+                                            step_end_time = datetime.now()
+                                            duration_seconds = (step_end_time - operation_start_time).seconds
+                                            strMsg = step_end_time.strftime('%H:%M:%S') + "  Copying Step [" + strStepDescription + "] File: " + actualFileName + step_result + "  [Operation duration: " + str(duration_seconds) + " seconds]"
+                                            self.WriteToResultFile(operationOutFile, strMsg)
+                                elif opCommand=="diskinfo":  
+                                    diskInfoOutFilename = requestDir + os.sep + 'diskinfo.txt'  
+                                    with open(diskInfoOutFilename, "a", newline="\r\n") as diskInfoOutFile:                                    
+                                        # get drive letters if we ran inspection
+                                        if (osType == "windows"):
+                                            if (not skipInspect):  
+                                                driveMappings = guestfish.get_drive_letters(device)
+                                                self.WriteToResultFileWithHeader(diskInfoOutFile, "Windows drive letter mappings:", driveMappings)
+                                            else:
+                                                self.WriteToResultFileWithHeader(diskInfoOutFile, "Windows drive letter mappings [Inspect skipped]:", "C: " + device)
+                                        #df-h
+                                        diskInfo = guestfish.df()
+                                        self.WriteToResultFile(diskInfoOutFile, diskInfo)
+                                        #statvfs                                       
+                                        self.WriteToResultFile(diskInfoOutFile, "\r\nFor decoder ring for data below see: http://man.he.net/man2/statvfs \r\n")
+                                        for mount in osMountpoints:
+                                            mountpoint = mount[0]
+                                            mountdevice = mount[1]
+                                            diskstats=guestfish.statvfs(mountpoint)
+                                            self.WriteToResultFileWithHeader(diskInfoOutFile, "[Device: " + mountdevice + ", mountpoint: " + mountpoint + " ]", diskstats)
+                                    step_end_time = datetime.now() 
+                                    duration_seconds = (step_end_time - operation_start_time).seconds                                    
+                                    strMsg = step_end_time.strftime('%H:%M:%S') + "  DiskInfo gathered and written to diskinfo.txt. [Operation duration: " + str(duration_seconds) + " seconds]"
+                                    self.WriteToResultFile(operationOutFile, strMsg)
+
+                                elif opCommand=="reg":
+                                     self.do_opcommand_registry(guestfish, opParam1, operationOutFile)
+
+                            # done processing the manifest for this partition, check to see if we need to close
+                            self.registry_close() 
+        
+
+                    finally:                        
                         # Unmount all mountpoints
                         guestfish.unmount_all()
 
                     deviceNumber = deviceNumber + 1
+
+                execution_end_time = datetime.now()
+                duration_seconds = (execution_end_time - execution_start_time).seconds
+                self.WriteToResultFile(operationOutFile, "Execution end time: " + execution_end_time.strftime('%H:%M:%S') + "  [Execution duration: " + str(duration_seconds) + " seconds]\r\n")
+
             self.kpThread.guestfishPid = None
             if (self.kpThread.wasTimeout):
                 strLastGoodStep = str(lastGoodOperationMajorStep) + "." + str(lastGoodOperationMinorStep)
                 self.WriteToResultFile(operationOutFile, "\r\n##### WARNING: Partial results were collected as the operation was taking too long to complete. Consider retrying the operation specifying skip to step " + strLastGoodStep + " to continue gathering from last succesfully executed data collection step. #####")
 
-        archiveName = shutil.make_archive(requestDir, 'zip', requestDir)
-        return archiveName
+        self.rootLogger.info("Current working directory: " + str(os.getcwd()))
+
+        # Build the result output archive
+        zipFileName = requestDir + ".zip"
+        archiveFile = self.CreateArchive(zipFileName, requestDir)
+        return archiveFile
+
+
+    def do_opcommand_registry(self, guestfish, registry_path, operationOutFile): 
+        with open(self.registryFilename, "a", newline="\n") as registryOutFile:
+            registryValue = self.guest_registry.reg_read(registry_path)
+            if (registryValue != None):
+                if (not self.has_registry_file):
+                    self.has_registry_file = True
+                    self.WriteToResultFile(registryOutFile,'{')
+                    self.WriteToResultFile(registryOutFile,'"' + registry_path.replace("\\","\\\\") + '": "' + registryValue.replace("\\","\\\\") + '"')
+                else:
+                    #prefix line with comma seperator
+                    self.WriteToResultFile(registryOutFile,',"' + registry_path.replace("\\","\\\\") + '": "' + registryValue.replace("\\","\\\\") + '"')
+            else:
+                self.WriteToResultFile(operationOutFile, registry_path + " could not be read")  
+
+    def registry_close(self):      
+        if (self.has_registry_file):
+            with open(self.registryFilename, "a", newline="\r\n") as registryOutFile:
+                self.WriteToResultFile(registryOutFile,'}')
+            self.guest_registry.clean_up()
+            self.has_registry_file = False
+
+    def do_opcommand_list_directory(self, guestfish, directory, operationOutFile):
+        dirList = []
+        if directory:
+            dirList = guestfish.ll(directory)
+        if dirList:
+            step_end_time = datetime.now()
+            strMsg = step_end_time.strftime('%H:%M:%S') + "  Listing contents of " + directory + ":"                          
+            self.WriteToResultFileWithHeader(operationOutFile, strMsg, dirList)
+        else:
+            self.WriteToResultFile(operationOutFile, "Directory " + directory + " is not valid.")

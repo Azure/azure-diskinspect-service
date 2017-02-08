@@ -5,7 +5,7 @@ ll,/etc/udev/rules.d
 echo,### Gathering Configuration Files ###
 copy,/etc/fstab
 copy,/etc/ssh/sshd_config
-copy,/boot/grub*/grub.conf
+copy,/boot/grub*/grub.c*
 copy,/boot/grub*/menu.lst
 copy,/etc/*-release
 copy,/etc/HOSTNAME
@@ -39,3 +39,14 @@ copy,/var/log/cloud-init*
 copy,/var/log/boot*
 copy,/var/log/auth*
 copy,/var/log/secure*
+copy,/var/log/azure/*/*/*
+echo,
+
+echo,### Gathering Extension Files ###
+copy,/var/lib/waagent/ExtensionsConfig.*.xml
+copy,/var/lib/waagent/*/status/*.status
+copy,/var/lib/waagent/*/config/*.settings
+echo,
+
+echo,### Gathering Disk Info ###
+diskinfo,

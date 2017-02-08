@@ -1,0 +1,17 @@
+echo,### Event Logs ### 
+copy,/Windows/System32/winevt/Logs/System.evtx 
+copy,/Windows/System32/winevt/Logs/Application.evtx 
+
+echo,### SqlIaaSAgent Logs ### 
+copy,/Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/*/config.txt 
+copy,/Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/*/HandlerEnvironment.json 
+copy,/Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/*/HandlerManifest.json 
+copy,/Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/*/RuntimeSettings/*.settings 
+copy,/Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/*/Status/*.status 
+copy,/Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/*/Status/HeartBeat.Json 
+copy,/Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/*/PackageDefinition.xml
+copy,/WindowsAzure/Logs/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/*/CommandExecution*.log
+
+echo,### Sql Server Logs ### 
+copy,/WindowsAzure/Logs/SqlServerLogs/*.*
+copy,/Program Files/Microsoft SQL Server/*/MSSQL/Log/*.*

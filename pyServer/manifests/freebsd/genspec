@@ -1,0 +1,3 @@
+copy,/etc/rc.conf
+copy,/var/lib/waagent/provisioned
+copy,/etc/ssh/ssh_host*key*

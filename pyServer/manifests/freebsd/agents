@@ -4,8 +4,8 @@ ll,/var/lib/waagent
 
 echo,### Gathering Configuration Files ###
 copy,/etc/*-release
-copy,/etc/HOSTNAME
-copy,/etc/hostname
+copy,/etc/rc.conf
+copy,/etc/dhclient.conf
 copy,/etc/waagent.conf
 copy,/var/lib/waagent/*.xml
 echo,
