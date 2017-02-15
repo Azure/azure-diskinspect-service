@@ -21,4 +21,9 @@ echo,### Gathering Extension Files ###
 copy,/var/lib/waagent/ExtensionsConfig.*.xml
 copy,/var/lib/waagent/*/status/*.status
 copy,/var/lib/waagent/*/config/*.settings
+copy,/var/lib/waagent/GoalState.*.xml
+copy,/var/lib/waagent/HostingEnvironmentConfig.xml
+copy,/var/lib/waagent/Microsoft.OSTCExtensions.CustomScriptForLinux.*.manifest.xml
+copy,/var/lib/waagent/Prod.*.manifest.xml
+copy,/var/lib/waagent/SharedConfig.xml
 echo,
