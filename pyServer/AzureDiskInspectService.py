@@ -107,9 +107,15 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
     """
     Upload a local file as a HTTP binary response.
     """
-    def uploadFile(self, outputFileName, isPartial, osType):
+    def uploadFile(self, http_headers, outputFileName, isPartial, osType):
+        # Set the HTTP headers, including extended content from GuestFishWrapper
         self.wfile.write(bytes('HTTP/1.1 200 OK\r\n', 'utf-8'))
         self.wfile.write(bytes('Content-Type: application/zip\r\n', 'utf-8'))
+        for header in http_headers:
+            header_value = str(http_headers[header])
+            if len( header_value ) > 0:
+                self.wfile.write(bytes( '{0}: {1}\r\n'.format( header,header_value ), 'utf-8' ))
+                self.rootLogger.info('GuestFishWrapper Header "' + header + '" = "' + header_value +'"')
 
         statinfo = os.stat(outputFileName)
         self.wfile.write(bytes('Content-Length: {0}\r\n'.format(
@@ -125,6 +131,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
         self.wfile.write(bytes('\r\n', 'utf-8'))
         self.wfile.flush()
 
+        # Write the zip file payload
         outputFileSize = os.path.getsize(outputFileName)
         readSize = 0
         with open(outputFileName, 'rb') as outputFileObj:
@@ -164,7 +171,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
                         outputFileName = gfWrapper.outputFileName            
                         outputFileSize = round(os.path.getsize(outputFileName) / 1024, 2)
                         self.rootLogger.info('Uploading: ' + outputFileName + ' (' + str(outputFileSize) + 'kb)')
-                        self.uploadFile(outputFileName, kpThread.wasTimeout, gfWrapper.osType)
+                        self.uploadFile(gfWrapper.metadata_pairs, outputFileName, kpThread.wasTimeout, gfWrapper.osType)
                         self.rootLogger.info('Upload completed.')
 
                         successElapsed = datetime.now() - start_time
