@@ -158,6 +158,7 @@ class GuestFishWrapper:
                     if (self.kpThread.wasTimeout == True):
                         break
 
+                    osType = osDistribution = osProductName = None
                     self.rootLogger.info('GuestFish:Examining Device> %s', device)
 
                     if (not skipInspect):
@@ -170,9 +171,12 @@ class GuestFishWrapper:
                     self.osType = str(osType)
                     
                     #set http headers
-                    self.metadata_pairs[DiskInspectionMetadata.INSPECTION_METADATA_OPERATING_SYSTEM] = osType
-                    self.metadata_pairs[DiskInspectionMetadata.INSPECTION_METADATA_OS_DISTRIBUTION] = osDistribution
-                    self.metadata_pairs[DiskInspectionMetadata.INSPECTION_METADATA_PRODUCT_NAME] = osProductName
+                    if (osType is not None):
+                      self.metadata_pairs[DiskInspectionMetadata.INSPECTION_METADATA_OPERATING_SYSTEM] = osType
+                    if (osDistribution is not None):
+                        self.metadata_pairs[DiskInspectionMetadata.INSPECTION_METADATA_OS_DISTRIBUTION] = osDistribution
+                    if (osProductName is not None):
+                        self.metadata_pairs[DiskInspectionMetadata.INSPECTION_METADATA_PRODUCT_NAME] = osProductName
 
                     try:
                         # Mount all identified mount points
