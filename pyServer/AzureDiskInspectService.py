@@ -4,6 +4,7 @@ import http.server
 import urllib
 import sys
 import os
+import cgi
 import socketserver
 import threading
 from datetime import datetime
@@ -71,7 +72,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
     """
     Parse the URL GET parameters
     """
-    def ParseUrlArguments(self, urlPath):
+    def ParseUrlArguments(self, urlPath, sasKey):
         urlObj = urllib.parse.urlparse(urlPath)
         urlSplit = urlObj.path.split('/')
         if not len(urlSplit) >= 5:
@@ -100,7 +101,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
             urlSplitIndex = urlSplitIndex + 1
 
         storageUrl = urllib.parse.urlunparse(
-                ('https', storageAcctName + '.blob.core.windows.net', container_blob_name, '', urlObj.query, None))
+                ('https', storageAcctName + '.blob.core.windows.net', container_blob_name, '', sasKey, None))
             
         return operationId, mode, modeMajorSkipTo, modeMinorSkipTo, storageAcctName, container_blob_name, storageUrl
 
@@ -147,9 +148,19 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
         self.wfile.flush()
 
     """
-    GET request handler
+    POST request handler
     """
-    def do_GET(self):
+    def do_POST(self):
+        
+        ctype, pdict = cgi.parse_header(self.headers['content-type'])
+        if ctype == 'multipart/form-data':
+            postvars = cgi.parse_multipart(self.rfile, pdict)
+        elif ctype == 'application/x-www-form-urlencoded':
+            length = int(self.headers['content-length'])
+            postvars = cgi.parse_qs(self.rfile.read(length), keep_blank_values=1)
+        else:
+            postvars = {}
+        
         outputFileName = None
         start_time = datetime.now()
         requestSucceeded = False
@@ -159,7 +170,8 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
             self.rootLogger.info('<<STATS>> ' + self.serviceMetrics.getMetrics())
 
             # Parse Input Parameters
-            operationId, mode, modeMajorSkipTo, modeMinorSkipTo, storageAcctName, container_blob_name, storageUrl = self.ParseUrlArguments(self.path)                
+            sasKeyStr = str(postvars[b'saskey'][0], encoding='UTF-8')
+            operationId, mode, modeMajorSkipTo, modeMinorSkipTo, storageAcctName, container_blob_name, storageUrl = self.ParseUrlArguments(self.path, sasKeyStr)                
             self.rootLogger.info('Starting service request for <Operation Id=' + operationId + ', Mode=' + mode + ', Url=' + self.path + '>')
 
             # Invoke LibGuestFS Wrapper for prorcessing
