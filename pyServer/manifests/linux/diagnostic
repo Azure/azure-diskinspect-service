@@ -3,6 +3,7 @@ ll,/var/log
 ll,/etc/udev/rules.d
 
 echo,### Gathering Configuration Files ###
+copy,/var/lib/waagent/provisioned
 copy,/etc/fstab
 copy,/etc/ssh/sshd_config
 copy,/boot/grub*/grub.c*
