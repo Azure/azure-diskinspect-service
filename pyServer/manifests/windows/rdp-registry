@@ -28,3 +28,4 @@ reg,HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\FirewallRules\WINRM-HTTP-In
 reg,HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\FirewallRules\WINRM-HTTP-In-TCP-PUBLIC
 reg,HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\FirewallRules\WINRM-HTTP-Compat-In-TCP
 reg,HKLM\SOFTWARE\Policies\Microsoft\Windows\System\CleanupProfiles
+reg,HKLM\SOFTWARE\Microsoft\Shared Tools\MSConfig
