@@ -1,0 +1,22 @@
+echo,### Probing Directories ###
+ll,/var/log
+ll,/etc/udev/rules.d
+
+echo,### Gathering Configuration Files ###
+copy,/etc/HOSTNAME
+copy,/etc/hostname
+echo,
+
+echo,### Gathering Log Files ###
+copy,/var/log/waagent*
+copy,/var/log/syslog*
+copy,/var/log/rsyslog*
+copy,/var/log/azure/Microsoft.*LinuxDiagnostic/*/*
+echo,
+
+echo,### Gathering Linux Diagnostic Extension Files ###
+copy,/var/lib/waagent/ExtensionsConfig.*.xml
+copy,/var/lib/waagent/Microsoft.*LinuxDiagnostic*/status/*.status
+copy,/var/lib/waagent/Microsoft.*LinuxDiagnostic*/config/*.settings
+copy,/var/lib/waagent/Microsoft.*LinuxDiagnostic*/xmlCfg.xml
+copy,/etc/opt/microsoft/omsagent/LAD/conf/omsagent.d/*
