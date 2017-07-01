@@ -25,6 +25,7 @@ copy,/etc/sysconfig/SuSEfirewall2
 copy,/etc/ufw/ufw.conf
 copy,/etc/waagent.conf
 copy,/var/lib/dhcp/dhclient.eth0.leases
+copy,/var/lib/dhclient/dhclient-eth0.leases
 echo,
 
 echo,### Gathering Log Files ###
