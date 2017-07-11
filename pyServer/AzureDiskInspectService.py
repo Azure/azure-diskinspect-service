@@ -47,8 +47,9 @@ class ThreadingServer(socketserver.ThreadingMixIn, http.server.HTTPServer):
 """
 Request Handler for the Service.
 
-Services URL GET requests of the form:
-    /operationId/mode/storage_acct_name/container_name/blobname?saskey
+Services URL POST requests of the form:
+    /operationId/mode/storage_acct_name/container_name/blobname
+with encoded data: saskey=<sasUrl>  
 
 where:
     operationId: 
@@ -62,7 +63,7 @@ where:
     blobname?saskey: 
         SAS uri
 
-The handler is responsible for servicing the GET request by 
+The handler is responsible for servicing the PUT request by 
 handing off the request with the correct initialization parameters
 to the LibGuestFS wrapper and then packaging the results and sending 
 out the response result as a binary content stream. 
@@ -70,13 +71,13 @@ out the response result as a binary content stream.
 class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
 
     """
-    Parse the URL GET parameters
+    Parse the URL POST parameters
     """
     def ParseUrlArguments(self, urlPath, sasKey):
         urlObj = urllib.parse.urlparse(urlPath)
         urlSplit = urlObj.path.split('/')
         if not len(urlSplit) >= 5:
-            raise ValueError('Request has insufficient number of GET parameter arguments.')
+            raise ValueError('Request has insufficient number of POST parameter arguments.')
         
         operationId = urlSplit[1]
         mode = str(urlSplit[2])

@@ -91,7 +91,8 @@ class GuestFS:
         # is very limited (no variables, etc.)
 
         args = ['/libguestfs/run', 'guestfish', '--listen', '-a', self.storageUrl, '--ro']
-        self.rootLogger.info('GuestFish:Create:Local> ' + ' '.join(args))
+        redactedArgs = ['/libguestfs/run', 'guestfish', '--listen', '-a', self.storageUrl.split('?')[0]+'?[saskey]', '--ro']
+        self.rootLogger.info('GuestFish:Create:Local> ' + ' '.join(redactedArgs))
 
         # Guestfish server mode returns a string of the form
         #   GUESTFISH_PID=pid; export GUESTFISH_PID
@@ -178,21 +179,32 @@ class GuestFS:
     def mount_ro(self, mountpoint, device):
         try:
             (out, err) = self.callGF('Mount [' + mountpoint + ',' + device + ']', ['--', '-mount-ro', device, mountpoint], True)
-            if err:
-                return False
+            # guestfish doesn't seem to return anything here... check to see if it is in mounts
+            (out, err) = self.callGF('Mount [' + mountpoint + ',' + device + ']', ['--', '-mounts'], True)
+            return device in out
         except subprocess.CalledProcessError:
             return False
         return True
         
-    #used to mount ufs filesystems on FreeBSD VMs    
-    def mount_bsd(self, mountpoint, device):
-        try:
-            (out, err) = self.callGF('Mount [' + mountpoint + ',' + device + ']', ['--', '-mount-options', 'ro,ufstype=5xbsd', device, mountpoint], True)
-            if err:
+    """
+    Used to mount ufs filesystems on VMs    
+    LibGuestFS doesn't automatically determine how to mount; given the prevelance in Azure, we try 5xbsd first (common in FreeBSD images) and then 
+        attempt 44bsd which is used in some OpenBSD images
+    """
+    def mount_ufs(self, mountpoint, device):
+        bsd_options = ['ro,ufstype=5xbsd','ro,ufstype=44bsd']
+        for current_option in bsd_options:
+            try:
+                (out, err) = self.callGF('Mount [' + mountpoint + ',' + device + ']', ['--', '-mount-options', current_option, device, mountpoint], True)
+                # guestfish doesn't seem to return anything here... check to see if it is in mounts
+                (out, err) = self.callGF('Mount [' + mountpoint + ',' + device + ']', ['--', '-mounts'], True)
+                if device in out:
+                        return True                    
+                else:
+                        continue
+            except subprocess.CalledProcessError:
                 return False
-        except subprocess.CalledProcessError:
-            return False
-        return True
+        return False
 
     def ll(self, directory):
         try:
@@ -265,3 +277,25 @@ class GuestFS:
             return list_obj[0]
         else:
             return None
+
+    def is_dir(self, path):
+        try:
+            (out, err) = self.callGF('Looking for directory', ['--', '-is-dir', path], True)
+            if err:
+                return None
+        except subprocess.CalledProcessError:
+            return None
+        return 'true' in out
+
+    def libguestfs_version(self):
+        try:
+            (out, err) = self.callGF('Getting guestfish/libguestFS version', ['--', '-version'], True)
+            if err:
+                return None
+        except subprocess.CalledProcessError:
+            return None
+
+        def returnValue(s):
+            return s.split(':')[1].strip()
+
+        return ".".join(map(returnValue,out))

@@ -6,6 +6,7 @@ from GuestFS import GuestFS
 from GuestFS_registry import GuestFS_Registry
 from datetime import datetime
 import zipfile
+import urllib
 """
 LibGuestFS Wrapper for Disk Information Extraction 
 
@@ -27,6 +28,7 @@ class GuestFishWrapper:
         self.environment = None
         self.httpRequestHandler = handler
         self.storageUrl = storageUrl
+        self.operationId = operationId
         self.outputDirName = outputDirName + os.sep + operationId
         self.rootLogger = rootLogger
         self.mode = mode 
@@ -104,6 +106,7 @@ class GuestFishWrapper:
         return zipFilename
 
     def execute(self, storageUrl):
+        found_any_items= False
         requestDir = self.outputDirName
         os.makedirs(requestDir)
 
@@ -116,7 +119,7 @@ class GuestFishWrapper:
                 self.guest_registry = GuestFS_Registry(guestfish, self.rootLogger)
                 execution_start_time = datetime.now()
                 self.WriteToResultFile(operationOutFile, "Execution start time: " + execution_start_time.strftime('%H:%M:%S') + ".\r\n")
-
+                self.output_request_metadata(operationOutFile, guestfish)
                 # Initialize
                 guestfish.launch()
 
@@ -152,7 +155,15 @@ class GuestFishWrapper:
                     self.WriteToResultFileWithHeader(operationOutFile, "Inspection Status:", inspectList)
                 else:
                     inspectList = [fsList[0][0]]
-
+                
+                # if the inspectList is empty then libGuestFS could not determine the OS of the target, rather
+                # than fail, lets try to make an educated guess for OS and try to gather data from the known filesystems using that manifest
+                if ( len(inspectList)  == 0 ):
+                    defaultOsType= self.guess_OS_by_filesystems(fsList)
+                    skipInspect = True 
+                    inspectList = [fs[0] for fs in fsList]
+                    self.WriteToResultFile(operationOutFile, "Automatic detection of OS failed... guessing OS type of: " + defaultOsType)
+        
                 deviceNumber = 0
                 for device in inspectList:
                     if (self.kpThread.wasTimeout == True):
@@ -165,9 +176,12 @@ class GuestFishWrapper:
                         # Gather and Write Inspect Metadata about the Device
                         (osType, osDistribution, osProductName, osMountpoints) = self.GetInspectMetadata(guestfish, device)
                         self.WriteInspectMetadataToResultFile(operationOutFile, device, osType, osDistribution, osProductName, osMountpoints)
+                        # ensure that the device is actually in that list...
+                        if not device in [ mp[1] for mp in osMountpoints ]  :
+                            osMountpoints.append( ["/", device] )
                     else:
                         osType = defaultOsType
-                        osMountpoints = [ ["/", fsList[0][0]] ]
+                        osMountpoints = [ ["/", device] ]
                     self.osType = str(osType)
                     
                     #set http headers
@@ -187,9 +201,13 @@ class GuestFishWrapper:
                             mountdevice = mount[1]
                             
                             # special case ufs on FreeBSD
-                            if (osType == "freebsd" and file_system_types['ufs'].count(mountdevice)>0):
-                                self.WriteToResultFile(operationOutFile, "Attempting to mount ufs on FreeBSD...")
-                                wasMounted = guestfish.mount_bsd(mountpoint, mountdevice)
+                            if ('ufs' in file_system_types and file_system_types['ufs'].count(mountdevice)>0):
+                                # sometimes libguestFS detects FreeBSD as linux.  If we have ufs it likely is a *BSD
+                                if (osType.lower() == 'linux'):
+                                    self.WriteToResultFile(operationOutFile, "Found ufs filesystem, switching OS type to FreeBSD instead of Linux")
+                                    osType = 'freebsd'
+                                self.WriteToResultFile(operationOutFile, "Attempting to mount ufs...")
+                                wasMounted = guestfish.mount_ufs(mountpoint, mountdevice)
                             else:
                                 wasMounted = guestfish.mount_ro(mountpoint, mountdevice)
 
@@ -209,12 +227,29 @@ class GuestFishWrapper:
                         else:
                             self.WriteToResultFile(operationOutFile, "\r\n")
 
-                        manifestFile = "/etc/azdis/" + osType + os.sep + self.mode.lower()
+                        # some Linux distros create an overlay from elsewhere. guestfish doesn't appear to have a chroot or mount -B option
+                        pathPrefix = ""
+                        if (osType.lower() == "linux"):
+                            pathPrefix = self.get_file_path_prefix(guestfish)
+                            if (len(pathPrefix) > 0) :
+                                self.rootLogger.info("Adding prefix to path: " + pathPrefix )
+                        
+                        parentFolder = "/etc/azdis/"
+                        manifestFile = parentFolder + osType + os.sep + self.mode.lower()
                         if not os.path.isfile(manifestFile):
                             self.rootLogger.warning("Manifest file " + manifestFile + " could not be located.")
-                            self.WriteToResultFile(operationOutFile, "No manifest exists for " + osType.lower() + " " + self.mode.lower() + " mode data collection.")
-                            continue
-                        self.WriteToResultFile(operationOutFile, "Using manifest: " + self.mode.lower())
+                            if not os.path.isdir(parentFolder + osType):
+                                # Can happen if libguestFS returns an OS we don't have manifests for (e.g. NetBSD or Solaris)
+                                guessed_os= self.guess_OS_by_filesystems(fsList)
+                                self.WriteToResultFile(operationOutFile, "No manifests for OS '{0}', trying '{1}'...".format(osType,guessed_os) )
+                                manifestFile = parentFolder + osType + os.sep + self.mode.lower()
+                            if not os.path.isfile(manifestFile):
+                                # bad manifest, try normal
+                                self.WriteToResultFile(operationOutFile, "No manifest exists for " + osType.lower() + " '" + self.mode.lower() + "' mode data collection. Trying 'normal' manifest...")
+                                self.mode = "normal"
+                                manifestFile = parentFolder + osType + os.sep + self.mode.lower()  #this should work...
+
+                        self.WriteToResultFile(operationOutFile, "Using manifest: " + self.mode.lower() + "  [" + osType.lower() + "]" )
                         operationNumber = 0
                         with open(manifestFile) as operationManifest:
                             contents = operationManifest.read().splitlines()
@@ -247,7 +282,7 @@ class GuestFishWrapper:
                                     continue
                                 
                                 opCommand = str(opList[0]).lower().strip()
-                                opParam1 = opList[1].strip()
+                                opParam1 = pathPrefix + opList[1].strip()
 
                                 if opCommand=="echo":
                                     self.WriteToResultFile(operationOutFile, opParam1)
@@ -296,6 +331,7 @@ class GuestFishWrapper:
                                             
                                             if wasCopied:
                                                 step_result = " SUCCEEDED."
+                                                found_any_items= True
                                             else:
                                                 step_result = " FAILED."
                                                 
@@ -341,8 +377,8 @@ class GuestFishWrapper:
 
                     deviceNumber = deviceNumber + 1
 
-                if len(inspectList)== 0:   # no OS partition was found
-                    self.WriteToResultFile(operationOutFile, "Inspection did not find an operating system partition.")
+                if not found_any_items:   # no items found
+                    self.WriteToResultFile(operationOutFile, "No manifest items were found.")
                     self.check_for_disk_encryption(file_system_types, guestfish, operationOutFile)
 
                 execution_end_time = datetime.now()
@@ -366,6 +402,7 @@ class GuestFishWrapper:
         with open(self.registryFilename, "a", newline="\n") as registryOutFile:
             registryValue = self.guest_registry.reg_read(registry_path)
             if (registryValue != None):
+                found_any_items= True
                 if (not self.has_registry_file):
                     self.has_registry_file = True
                     self.WriteToResultFile(registryOutFile,'{')
@@ -391,6 +428,7 @@ class GuestFishWrapper:
             step_end_time = datetime.now()
             strMsg = step_end_time.strftime('%H:%M:%S') + "  Listing contents of " + directory + ":"                          
             self.WriteToResultFileWithHeader(operationOutFile, strMsg, dirList)
+            found_any_items= True
         else:
             self.WriteToResultFile(operationOutFile, "Directory " + directory + " is not valid.")
 
@@ -446,7 +484,44 @@ class GuestFishWrapper:
                 if found_windows_encryption or found_linux_encryption:
                     self.metadata_pairs[DiskInspectionMetadata.INSPECTION_METADATA_DISK_CONFIGURATION]="Encrypted"
                     self.WriteToResultFile(operationOutFile, "*** Disk inspection does not currently support disk encryption. Please work with customer to use another data collection method. ***")
+    
+    """
+    LibGuestFS has filed to determine the OS.  If possible we'd still like to try to gather data.  Try to determine the OS so we know which manifest to run.
+    Note: if a OS is returned from this function is it a requirement that it have at least a 'normal' manifest
+    """
+    def guess_OS_by_filesystems(self, file_systems_list):
+        for fs_entry in file_systems_list:
+            if "ntfs"in fs_entry:
+                return "windows"       
+            elif "ufs" in fs_entry:
+                return "freebsd"
+        
+        # other fstypes running in Azure are likely Linux
+        return "linux" 
 
+    """
+    Special case any overlay file systems
+    """
+    def get_file_path_prefix(self, guestfish):
+        # UbuntuCore
+        if ( guestfish.is_dir('/system-data') ):
+            self.rootLogger.info('get_file_path_prefix: Found /system-data, this might be an UbuntuCore image...')
+            return '/system-data'
+
+        return ""
+
+    """
+    Add metadata about the request to the operational log
+    """
+    def output_request_metadata(self, operationOutFile, guestfish):
+        self.WriteToResultFile(operationOutFile,"========== Request Info ==========")
+        urlObj = urllib.parse.urlparse(self.storageUrl)
+        self.WriteToResultFile(operationOutFile, "Storage Acct: " + urlObj[1] )
+        self.WriteToResultFile(operationOutFile, "Container/Vhd: " + urlObj[2] )
+        self.WriteToResultFile(operationOutFile, "Manifest reqeusted: " + self.mode.lower() )
+        self.WriteToResultFile(operationOutFile, "Inspect service Operational ID: " + self.operationId )
+        self.WriteToResultFile(operationOutFile, "Guestfish version: " + guestfish.libguestfs_version() )
+        self.WriteToResultFile(operationOutFile,"========== End Request Info ==========\r\n")
 
 
 class DiskInspectionMetadata:
