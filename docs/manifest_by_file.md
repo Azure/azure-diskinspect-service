@@ -63,6 +63,7 @@ File Path | Manifest
 /var/lib/waagent/ExtensionsConfig.\*.xml | agents, diagnostic, lad 
 /var/lib/waagent/GoalState.\*.xml | agents, diagnostic 
 /var/lib/waagent/HostingEnvironmentConfig.xml | agents, diagnostic 
+/var/lib/waagent/ManagedIdentity-\*.json | diagnostic 
 /var/lib/waagent/Microsoft.OSTCExtensions.CustomScriptForLinux.\*.manifest.xml | agents, diagnostic 
 /var/lib/waagent/Microsoft.\*LinuxDiagnostic\*/config/\*.settings | lad 
 /var/lib/waagent/Microsoft.\*LinuxDiagnostic\*/status/\*.status | lad 
@@ -255,6 +256,7 @@ File Path | Manifest
 /WindowsAzure/Logs/Plugins/Microsoft.Compute.JsonADDomainExtension/\*/ADDomainExtensi<br>on.log | agents, diagnostic, normal 
 /WindowsAzure/Logs/Plugins/Microsoft.Compute.VMAccessAgent/\*/JsonVMAccessExtension.l<br>og | agents, diagnostic, normal 
 /WindowsAzure/Logs/Plugins/Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAg<br>ent/\*/0.log | agents, diagnostic, normal 
+/WindowsAzure/Logs/Plugins/Microsoft.ManagedIdentity.ManagedIdentityExtensionForWindo<br>ws/\*/RuntimeSettings/\*.xml | diagnostic 
 /WindowsAzure/Logs/Plugins/Microsoft.Powershell.DSC/\*/DSCLOG\*.json | agents, diagnostic, normal 
 /WindowsAzure/Logs/Plugins/Microsoft.Powershell.DSC/\*/DscExtensionHandler\*.log | agents, diagnostic, normal 
 /WindowsAzure/Logs/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/\*/CommandExec<br>ution\*.log | sql-iaas 
@@ -271,4 +273,4 @@ File Path | Manifest
 /WindowsAzure/config/\*.xml | agents, diagnostic, normal 
 /unattend.xml | diagnostic, normal 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2017-07-11 10:03:43.977900`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2017-08-04 17:01:30.469208`*

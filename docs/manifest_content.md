@@ -133,6 +133,7 @@ diagnostic | copy | /var/lib/waagent/HostingEnvironmentConfig.xml
 diagnostic | copy | /var/lib/waagent/Microsoft.OSTCExtensions.CustomScriptForLinux.\*.manifest.xml
 diagnostic | copy | /var/lib/waagent/Prod.\*.manifest.xml
 diagnostic | copy | /var/lib/waagent/SharedConfig.xml
+diagnostic | copy | /var/lib/waagent/ManagedIdentity-\*.json
 diagnostic | diskinfo | 
 genspec | copy | /etc/hostname
 genspec | copy | /var/lib/waagent/provisioned
@@ -456,6 +457,7 @@ diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.Ed
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.Edp.NetworkWatcherAgentWind<br>ows/\*/\*.log
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows/<br>\*/\*.txt
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows/<br>\*/\*.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.ManagedIdentity.ManagedIdentityExtensionForWindo<br>ws/\*/RuntimeSettings/\*.xml
 diagnostic | diskinfo | 
 genspec | copy | /Windows/Setup/State/State.ini
 genspec | copy | /Windows/Panther/WaSetup.xml
@@ -625,4 +627,4 @@ sql-iaas | copy | /WindowsAzure/Logs/Plugins/Microsoft.SqlServer.Management.SqlI
 sql-iaas | copy | /WindowsAzure/Logs/SqlServerLogs/\*.\*
 sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.\*
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2017-07-11 10:03:43.977900`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2017-08-04 17:01:30.469208`*
