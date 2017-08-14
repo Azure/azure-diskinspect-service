@@ -518,7 +518,7 @@ class GuestFishWrapper:
         urlObj = urllib.parse.urlparse(self.storageUrl)
         self.WriteToResultFile(operationOutFile, "Storage Acct: " + urlObj[1] )
         self.WriteToResultFile(operationOutFile, "Container/Vhd: " + urlObj[2] )
-        self.WriteToResultFile(operationOutFile, "Manifest reqeusted: " + self.mode.lower() )
+        self.WriteToResultFile(operationOutFile, "Manifest requested: " + self.mode.lower() )
         self.WriteToResultFile(operationOutFile, "Inspect service Operational ID: " + self.operationId )
         self.WriteToResultFile(operationOutFile, "Guestfish version: " + guestfish.libguestfs_version() )
         self.WriteToResultFile(operationOutFile,"========== End Request Info ==========\r\n")

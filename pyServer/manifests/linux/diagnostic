@@ -53,6 +53,7 @@ copy,/var/lib/waagent/HostingEnvironmentConfig.xml
 copy,/var/lib/waagent/Microsoft.OSTCExtensions.CustomScriptForLinux.*.manifest.xml
 copy,/var/lib/waagent/Prod.*.manifest.xml
 copy,/var/lib/waagent/SharedConfig.xml
+copy,/var/lib/waagent/ManagedIdentity-*.json
 echo,
 
 echo,### Gathering Disk Info ###
