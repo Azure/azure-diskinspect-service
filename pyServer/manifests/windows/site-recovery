@@ -1,0 +1,25 @@
+echo,### EXPERIMENTAL FEATURE ###
+echo,### Event Logs ###
+copy,/Windows/System32/winevt/Logs/System.evtx
+copy,/Windows/System32/winevt/Logs/Application.evtx
+copy,/Windows/System32/winevt/Logs/Windows Azure.evtx
+
+echo,### Additional Event Logs ###
+copy,/ProgramData/ASRSetupLogs/UnifiedAgentMSIInstall.log
+copy,/ProgramData/ASRSetupLogs/WrapperUnifiedAgent.log
+copy,/ProgramData/ASRSetupLogs/ASRUnifiedAgentInstaller.log
+copy,/ProgramData/ASRSetupLogs/ASRUnifiedAgentConfigurator.log
+copy,/Program Files (x86)/Microsoft Azure Site Recovery/agent/AzureRcmCli.log
+copy,/Program Files (x86)/Microsoft Azure Site Recovery/agent/svagents*.log
+copy,/Program Files (x86)/Microsoft Azure Site Recovery/agent/s2*.log
+copy,/Program Files (x86)/Microsoft Azure Site Recovery/agent/evtcollforw*.log
+
+echo,### Provisioning ###
+copy,/Windows/Panther/WaSetup.xml
+
+echo,### Guest Agent ###
+copy,/WindowsAzure/Logs/Telemetry.log
+copy,/WindowsAzure/Logs/TransparentInstaller.log
+copy,/WindowsAzure/Logs/WaAppAgent.log
+copy,/WindowsAzure/Logs/Plugins/*
+
