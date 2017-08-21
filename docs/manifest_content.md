@@ -135,6 +135,42 @@ diagnostic | copy | /var/lib/waagent/Prod.\*.manifest.xml
 diagnostic | copy | /var/lib/waagent/SharedConfig.xml
 diagnostic | copy | /var/lib/waagent/ManagedIdentity-\*.json
 diagnostic | diskinfo | 
+eg | list | /var/log
+eg | list | /etc/udev/rules.d
+eg | copy | /var/lib/waagent/provisioned
+eg | copy | /etc/fstab
+eg | copy | /boot/grub\*/grub.c\*
+eg | copy | /boot/grub\*/menu.lst
+eg | copy | /etc/\*-release
+eg | copy | /etc/HOSTNAME
+eg | copy | /etc/hostname
+eg | copy | /etc/network/interfaces
+eg | copy | /etc/network/interfaces.d/\*.cfg
+eg | copy | /etc/resolv.conf
+eg | copy | /etc/sysconfig/iptables
+eg | copy | /etc/sysconfig/network
+eg | copy | /etc/sysconfig/network/ifcfg-eth\*
+eg | copy | /etc/sysconfig/network/routes
+eg | copy | /etc/sysconfig/network-scripts/ifcfg-eth\*
+eg | copy | /etc/sysconfig/network-scripts/route-eth\*
+eg | copy | /etc/sysconfig/SuSEfirewall2
+eg | copy | /etc/ufw/ufw.conf
+eg | copy | /etc/waagent.conf
+eg | copy | /var/lib/dhcp/dhclient.eth0.leases
+eg | copy | /var/lib/dhclient/dhclient-eth0.leases
+eg | copy | /var/log/waagent\*
+eg | copy | /var/log/syslog\*
+eg | copy | /var/log/rsyslog\*
+eg | copy | /var/log/messages\*
+eg | copy | /var/log/kern\*
+eg | copy | /var/log/dmesg\*
+eg | copy | /var/log/dpkg\*
+eg | copy | /var/log/yum\*
+eg | copy | /var/log/cloud-init\*
+eg | copy | /var/log/boot\*
+eg | copy | /var/log/auth\*
+eg | copy | /var/log/secure\*
+eg | diskinfo | 
 genspec | copy | /etc/hostname
 genspec | copy | /var/lib/waagent/provisioned
 lad | list | /var/log
@@ -459,6 +495,93 @@ diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.Ne
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows/<br>\*/\*.log
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.ManagedIdentity.ManagedIdentityExtensionForWindo<br>ws/\*/RuntimeSettings/\*.xml
 diagnostic | diskinfo | 
+eg | copy | /Windows/System32/winevt/Logs/System.evtx
+eg | copy | /Windows/System32/winevt/Logs/Application.evtx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-ServiceFabric%4Admin.evtx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-ServiceFabric%4Operational.evtx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-ServiceFabric-Lease%4Operational.evtx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-ServiceFabric-Lease%4Admin.evtx
+eg | copy | /Windows/System32/winevt/Logs/Windows Azure.evtx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-CAPI2%4Operational.evtx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Dhcp-Client%4Admin.evtx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Dhcp-Client%4Operational.evtx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnP%4Configuration.evtx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnPConfig%4Configuration.evtx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-NdisImPlatform%4Operational.evtx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-NetworkLocationWizard%4Operational.ev<br>tx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-NetworkProfile%4Operational.evtx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-NetworkProvider%4Operational.evtx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-NlaSvc%4Operational.evtx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RdpCoreTS%4Admi<br>n.evtx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RdpCoreTS%4Oper<br>ational.evtx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RemoteDesktopSe<br>ssionManager%4Admin.evtx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-SessionServices<br>%4Operational.evtx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Resource-Exhaustion-Detector%4Operati<br>onal.evtx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-SMBClient%4Operational.evtx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-SMBServer%4Connectivity.evtx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-SMBServer%4Operational.evtx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-ServerManager%4Operational.evtx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-SmbClient%4Connectivity.evtx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TCPIP%4Operational.evtx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-LocalSessionManager%<br>4Admin.evtx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-LocalSessionManager%<br>4Operational.evtx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-PnPDevices%4Admin.ev<br>tx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-PnPDevices%4Operatio<br>nal.evtx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-RDPClient%4Operation<br>al.evtx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-RemoteConnectionMana<br>ger%4Admin.evtx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-RemoteConnectionMana<br>ger%4Operational.evtx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-SessionBroker-Client<br>%4Admin.evtx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-SessionBroker-Client<br>%4Operational.evtx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-UserPnp%4DeviceInstall.evtx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Windows Firewall With Advanced Securi<br>ty%4ConnectionSecurity.evtx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Windows Firewall With Advanced Securi<br>ty%4Firewall.evtx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-WindowsUpdateClient%4Operational.evtx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4GuestAgent.evtx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Heartbeat.evtx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Runtime.evtx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Bootstrapper.evtx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Status%4GuestAgent.evtx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Status%4Plugins.evtx
+eg | copy | /Windows/System32/winevt/Logs/MicrosoftAzureRecoveryServices-Replication.evtx
+eg | copy | /Windows/System32/winevt/Logs/Security.evtx
+eg | copy | /Windows/System32/winevt/Logs/Setup.evtx
+eg | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-DSC%4Operational.evtx
+eg | copy | /AzureData/CustomData.bin
+eg | copy | /Windows/Setup/State/State.ini
+eg | copy | /Windows/Panther/WaSetup.xml
+eg | copy | /Windows/Panther/WaSetup.log
+eg | copy | /Windows/Panther/unattend.xml
+eg | copy | /unattend.xml
+eg | copy | /Windows/Panther/setupact.log
+eg | copy | /Windows/Panther/setuperr.log
+eg | copy | /Windows/Panther/UnattendGC/setupact.log
+eg | copy | /Windows/Panther/FastCleanup/setupact.log
+eg | copy | /Windows/System32/Sysprep/ActionFiles/Generalize.xml
+eg | copy | /Windows/System32/Sysprep/ActionFiles/Specialize.xml
+eg | copy | /Windows/System32/Sysprep/ActionFiles/Respecialize.xml
+eg | copy | /Windows/System32/Sysprep/Panther/setupact.log
+eg | copy | /Windows/System32/Sysprep/Panther/IE/setupact.log
+eg | copy | /Windows/System32/Sysprep/Panther/setuperr.log
+eg | copy | /Windows/System32/Sysprep/Panther/IE/setuperr.log
+eg | copy | /Windows/System32/Sysprep/Sysprep_succeeded.tag
+eg | copy | /Windows/debug/netlogon.log
+eg | copy | /Windows/debug/NetSetup.LOG
+eg | copy | /Windows/debug/mrt.log
+eg | copy | /Windows/debug/DCPROMO.LOG
+eg | copy | /Windows/debug/dcpromoui.log
+eg | copy | /Windows/debug/PASSWD.LOG
+eg | copy | /WindowsAzure/Logs/Telemetry.log
+eg | copy | /WindowsAzure/Logs/TransparentInstaller.log
+eg | copy | /WindowsAzure/Logs/WaAppAgent.log
+eg | copy | /WindowsAzure/config/\*.xml
+eg | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
+eg | copy | /WindowsAzure/Logs/AppAgentRuntime.log
+eg | copy | /WindowsAzure/Logs/MonitoringAgent.log
+eg | copy | /WindowsAzure/Logs/Plugins/\*/\*/CommandExecution.log
+eg | copy | /WindowsAzure/Logs/Plugins/\*/\*/Install.log
+eg | copy | /WindowsAzure/Logs/Plugins/\*/\*/Update.log
+eg | copy | /WindowsAzure/Logs/Plugins/\*/\*/Heartbeat.log
+eg | diskinfo | 
 genspec | copy | /Windows/Setup/State/State.ini
 genspec | copy | /Windows/Panther/WaSetup.xml
 normal | copy | /Windows/System32/winevt/Logs/System.evtx
@@ -627,4 +750,4 @@ sql-iaas | copy | /WindowsAzure/Logs/Plugins/Microsoft.SqlServer.Management.SqlI
 sql-iaas | copy | /WindowsAzure/Logs/SqlServerLogs/\*.\*
 sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.\*
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2017-08-04 17:01:30.469208`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2017-08-16 13:20:41.743941`*
