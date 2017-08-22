@@ -77,6 +77,7 @@ agents | copy | /etc/waagent.conf
 agents | copy | /var/lib/waagent/\*.xml
 agents | copy | /var/log/waagent\*
 agents | copy | /var/log/dmesg\*
+agents | copy | /var/log/syslog\*
 agents | copy | /var/log/auth\*
 agents | copy | /var/log/azure/\*/\*/\*
 agents | copy | /var/lib/waagent/ExtensionsConfig.\*.xml
@@ -205,6 +206,21 @@ normal | copy | /var/log/auth\*
 normal | copy | /var/log/secure\*
 performance | list | /var/log/sa
 performance | copy | /var/log/sa/sar\*
+site-recovery | copy | /etc/\*-release
+site-recovery | copy | /etc/HOSTNAME
+site-recovery | copy | /etc/hostname
+site-recovery | copy | /etc/waagent.conf
+site-recovery | copy | /var/lib/waagent/\*.xml
+site-recovery | copy | /var/log/waagent\*
+site-recovery | copy | /var/log/dmesg\*
+site-recovery | copy | /var/log/syslog\*
+site-recovery | copy | /var/log/azure/\*
+site-recovery | copy | /var/lib/waagent/GoalState.\*.xml
+site-recovery | copy | /var/log/ua_install.log
+site-recovery | copy | /var/log/AzureRcmCli.log
+site-recovery | copy | /var/log/svagents\*.log
+site-recovery | copy | /var/log/s2\*.log
+site-recovery | copy | /var/log/evtcollforw\*.log
 ## windows 
  Manifest | Operation | File Path 
  ------------- | ------------- | ------------- 
@@ -737,6 +753,22 @@ rdp-registry | registry query | HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall
 rdp-registry | registry query | HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\FirewallRules\WINRM-HTTP-Compat-In-T<br>CP
 rdp-registry | registry query | HKLM\SOFTWARE\Policies\Microsoft\Windows\System\CleanupProfiles
 rdp-registry | registry query | HKLM\SOFTWARE\Microsoft\Shared Tools\MSConfig
+site-recovery | copy | /Windows/System32/winevt/Logs/System.evtx
+site-recovery | copy | /Windows/System32/winevt/Logs/Application.evtx
+site-recovery | copy | /Windows/System32/winevt/Logs/Windows Azure.evtx
+site-recovery | copy | /ProgramData/ASRSetupLogs/UnifiedAgentMSIInstall.log
+site-recovery | copy | /ProgramData/ASRSetupLogs/WrapperUnifiedAgent.log
+site-recovery | copy | /ProgramData/ASRSetupLogs/ASRUnifiedAgentInstaller.log
+site-recovery | copy | /ProgramData/ASRSetupLogs/ASRUnifiedAgentConfigurator.log
+site-recovery | copy | /Program Files (x86)/Microsoft Azure Site Recovery/agent/AzureRcmCli.log
+site-recovery | copy | /Program Files (x86)/Microsoft Azure Site Recovery/agent/svagents\*.log
+site-recovery | copy | /Program Files (x86)/Microsoft Azure Site Recovery/agent/s2\*.log
+site-recovery | copy | /Program Files (x86)/Microsoft Azure Site Recovery/agent/evtcollforw\*.log
+site-recovery | copy | /Windows/Panther/WaSetup.xml
+site-recovery | copy | /WindowsAzure/Logs/Telemetry.log
+site-recovery | copy | /WindowsAzure/Logs/TransparentInstaller.log
+site-recovery | copy | /WindowsAzure/Logs/WaAppAgent.log
+site-recovery | copy | /WindowsAzure/Logs/Plugins/\*
 sql-iaas | copy | /Windows/System32/winevt/Logs/System.evtx
 sql-iaas | copy | /Windows/System32/winevt/Logs/Application.evtx
 sql-iaas | copy | /Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/\*/config.txt
@@ -750,4 +782,4 @@ sql-iaas | copy | /WindowsAzure/Logs/Plugins/Microsoft.SqlServer.Management.SqlI
 sql-iaas | copy | /WindowsAzure/Logs/SqlServerLogs/\*.\*
 sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.\*
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2017-08-16 13:20:41.743941`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2017-08-22 09:10:32.995431`*
