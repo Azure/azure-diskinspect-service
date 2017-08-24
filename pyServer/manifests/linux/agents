@@ -13,6 +13,7 @@ echo,
 echo,### Gathering Log Files ###
 copy,/var/log/waagent*
 copy,/var/log/dmesg*
+copy,/var/log/syslog*
 copy,/var/log/auth*
 copy,/var/log/azure/*/*/*
 echo,

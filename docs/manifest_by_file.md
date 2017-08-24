@@ -39,10 +39,10 @@ File Path | Manifest
 ------------- | ------------- 
 /boot/grub\*/grub.c\* | diagnostic, eg 
 /boot/grub\*/menu.lst | diagnostic, eg 
-/etc/HOSTNAME | agents, diagnostic, eg, lad 
-/etc/\*-release | agents, diagnostic, eg 
+/etc/HOSTNAME | agents, diagnostic, eg, lad, site-recovery 
+/etc/\*-release | agents, diagnostic, eg, site-recovery 
 /etc/fstab | diagnostic, eg, normal 
-/etc/hostname | agents, diagnostic, eg, genspec, lad 
+/etc/hostname | agents, diagnostic, eg, genspec, lad, site-recovery 
 /etc/network/interfaces | diagnostic, eg 
 /etc/network/interfaces.d/\*.cfg | diagnostic, eg 
 /etc/nsswitch.conf | diagnostic 
@@ -57,11 +57,11 @@ File Path | Manifest
 /etc/sysconfig/network/ifcfg-eth\* | diagnostic, eg 
 /etc/sysconfig/network/routes | diagnostic, eg 
 /etc/ufw/ufw.conf | diagnostic, eg 
-/etc/waagent.conf | agents, diagnostic, eg 
+/etc/waagent.conf | agents, diagnostic, eg, site-recovery 
 /var/lib/dhclient/dhclient-eth0.leases | diagnostic, eg 
 /var/lib/dhcp/dhclient.eth0.leases | diagnostic, eg 
 /var/lib/waagent/ExtensionsConfig.\*.xml | agents, diagnostic, lad 
-/var/lib/waagent/GoalState.\*.xml | agents, diagnostic 
+/var/lib/waagent/GoalState.\*.xml | agents, diagnostic, site-recovery 
 /var/lib/waagent/HostingEnvironmentConfig.xml | agents, diagnostic 
 /var/lib/waagent/ManagedIdentity-\*.json | diagnostic 
 /var/lib/waagent/Microsoft.OSTCExtensions.CustomScriptForLinux.\*.manifest.xml | agents, diagnostic 
@@ -70,24 +70,30 @@ File Path | Manifest
 /var/lib/waagent/Microsoft.\*LinuxDiagnostic\*/xmlCfg.xml | lad 
 /var/lib/waagent/Prod.\*.manifest.xml | agents, diagnostic 
 /var/lib/waagent/SharedConfig.xml | agents, diagnostic 
-/var/lib/waagent/\*.xml | agents 
+/var/lib/waagent/\*.xml | agents, site-recovery 
 /var/lib/waagent/\*/config/\*.settings | agents, diagnostic 
 /var/lib/waagent/\*/status/\*.status | agents, diagnostic 
 /var/lib/waagent/provisioned | diagnostic, eg, genspec 
+/var/log/AzureRcmCli.log | site-recovery 
 /var/log/auth\* | agents, diagnostic, eg, normal 
 /var/log/azure/Microsoft.\*LinuxDiagnostic/\*/\* | lad 
+/var/log/azure/\* | site-recovery 
 /var/log/azure/\*/\*/\* | agents, diagnostic 
 /var/log/boot\* | diagnostic, eg, normal 
 /var/log/cloud-init\* | diagnostic, eg, normal 
-/var/log/dmesg\* | agents, diagnostic, eg, normal 
+/var/log/dmesg\* | agents, diagnostic, eg, normal, site-recovery 
 /var/log/dpkg\* | diagnostic, eg, normal 
+/var/log/evtcollforw\*.log | site-recovery 
 /var/log/kern\* | diagnostic, eg, normal 
 /var/log/messages\* | diagnostic, eg, normal 
 /var/log/rsyslog\* | diagnostic, eg, lad, normal 
+/var/log/s2\*.log | site-recovery 
 /var/log/sa/sar\* | performance 
 /var/log/secure\* | diagnostic, eg, normal 
-/var/log/syslog\* | diagnostic, eg, lad, normal 
-/var/log/waagent\* | agents, diagnostic, eg, lad, normal 
+/var/log/svagents\*.log | site-recovery 
+/var/log/syslog\* | agents, diagnostic, eg, lad, normal, site-recovery 
+/var/log/ua_install.log | site-recovery 
+/var/log/waagent\* | agents, diagnostic, eg, lad, normal, site-recovery 
 /var/log/yum\* | diagnostic, eg, normal 
 /var/opt/microsoft/omsagent/LAD/log/\* | lad 
 ## windows 
@@ -156,13 +162,21 @@ File Path | Manifest
 /Packages/Plugins/\*/\*/Status/HeartBeat.Json | agents, diagnostic, normal 
 /Packages/Plugins/\*/\*/Status/\*.status | agents, diagnostic, normal 
 /Packages/Plugins/\*/\*/config.txt | agents, diagnostic, normal 
+/Program Files (x86)/Microsoft Azure Site Recovery/agent/AzureRcmCli.log | site-recovery 
+/Program Files (x86)/Microsoft Azure Site Recovery/agent/evtcollforw\*.log | site-recovery 
+/Program Files (x86)/Microsoft Azure Site Recovery/agent/s2\*.log | site-recovery 
+/Program Files (x86)/Microsoft Azure Site Recovery/agent/svagents\*.log | site-recovery 
 /Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.\* | sql-iaas 
+/ProgramData/ASRSetupLogs/ASRUnifiedAgentConfigurator.log | site-recovery 
+/ProgramData/ASRSetupLogs/ASRUnifiedAgentInstaller.log | site-recovery 
+/ProgramData/ASRSetupLogs/UnifiedAgentMSIInstall.log | site-recovery 
+/ProgramData/ASRSetupLogs/WrapperUnifiedAgent.log | site-recovery 
 /Windows/Inf/netcfg\*.\*etl | diagnostic, normal 
 /Windows/Inf/setupapi.dev.log | diagnostic, normal 
 /Windows/Panther/FastCleanup/setupact.log | diagnostic, eg, normal 
 /Windows/Panther/UnattendGC/setupact.log | diagnostic, eg, normal 
 /Windows/Panther/WaSetup.log | diagnostic, eg, normal 
-/Windows/Panther/WaSetup.xml | agents, diagnostic, eg, genspec, normal 
+/Windows/Panther/WaSetup.xml | agents, diagnostic, eg, genspec, normal, site-recovery 
 /Windows/Panther/setupact.log | diagnostic, eg, normal 
 /Windows/Panther/setuperr.log | diagnostic, eg, normal 
 /Windows/Panther/unattend.xml | diagnostic, eg, normal 
@@ -178,7 +192,7 @@ File Path | Manifest
 /Windows/System32/Sysprep/Sysprep_succeeded.tag | diagnostic, eg, normal 
 /Windows/System32/config/SOFTWARE | diagnostic 
 /Windows/System32/config/SYSTEM | diagnostic 
-/Windows/System32/winevt/Logs/Application.evtx | agents, diagnostic, eg, normal, sql-iaas 
+/Windows/System32/winevt/Logs/Application.evtx | agents, diagnostic, eg, normal, site-recovery, sql-iaas 
 /Windows/System32/winevt/Logs/Microsoft-ServiceFabric%4Admin.evtx | diagnostic, eg, normal 
 /Windows/System32/winevt/Logs/Microsoft-ServiceFabric%4Operational.evtx | diagnostic, eg, normal 
 /Windows/System32/winevt/Logs/Microsoft-ServiceFabric-Lease%4Admin.evtx | diagnostic, eg, normal 
@@ -227,8 +241,8 @@ File Path | Manifest
 /Windows/System32/winevt/Logs/MicrosoftAzureRecoveryServices-Replication.evtx | diagnostic, eg 
 /Windows/System32/winevt/Logs/Security.evtx | diagnostic, eg 
 /Windows/System32/winevt/Logs/Setup.evtx | diagnostic, eg 
-/Windows/System32/winevt/Logs/System.evtx | agents, diagnostic, eg, normal, sql-iaas 
-/Windows/System32/winevt/Logs/Windows Azure.evtx | agents, diagnostic, eg, normal 
+/Windows/System32/winevt/Logs/System.evtx | agents, diagnostic, eg, normal, site-recovery, sql-iaas 
+/Windows/System32/winevt/Logs/Windows Azure.evtx | agents, diagnostic, eg, normal, site-recovery 
 /Windows/debug/DCPROMO.LOG | diagnostic, eg, normal 
 /Windows/debug/NetSetup.LOG | diagnostic, eg, normal 
 /Windows/debug/PASSWD.LOG | diagnostic, eg, normal 
@@ -264,15 +278,16 @@ File Path | Manifest
 /WindowsAzure/Logs/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/\*/CommandExec<br>ution\*.log | sql-iaas 
 /WindowsAzure/Logs/Plugins/Symantec.SymantecEndpointProtection/\*/sepManagedAzure.txt | agents, diagnostic, normal 
 /WindowsAzure/Logs/Plugins/TrendMicro.DeepSecurity.TrendMicroDSA/\*/\*.log | agents, diagnostic, normal 
+/WindowsAzure/Logs/Plugins/\* | site-recovery 
 /WindowsAzure/Logs/Plugins/\*/\*/CommandExecution.log | agents, diagnostic, eg, normal 
 /WindowsAzure/Logs/Plugins/\*/\*/Heartbeat.log | agents, diagnostic, eg, normal 
 /WindowsAzure/Logs/Plugins/\*/\*/Install.log | agents, diagnostic, eg, normal 
 /WindowsAzure/Logs/Plugins/\*/\*/Update.log | agents, diagnostic, eg, normal 
 /WindowsAzure/Logs/SqlServerLogs/\*.\* | sql-iaas 
-/WindowsAzure/Logs/Telemetry.log | agents, diagnostic, eg, normal 
-/WindowsAzure/Logs/TransparentInstaller.log | agents, diagnostic, eg, normal 
-/WindowsAzure/Logs/WaAppAgent.log | agents, diagnostic, eg, normal 
+/WindowsAzure/Logs/Telemetry.log | agents, diagnostic, eg, normal, site-recovery 
+/WindowsAzure/Logs/TransparentInstaller.log | agents, diagnostic, eg, normal, site-recovery 
+/WindowsAzure/Logs/WaAppAgent.log | agents, diagnostic, eg, normal, site-recovery 
 /WindowsAzure/config/\*.xml | agents, diagnostic, eg, normal 
 /unattend.xml | diagnostic, eg, normal 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2017-08-16 13:20:41.743941`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2017-08-22 09:10:32.995431`*

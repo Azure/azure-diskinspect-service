@@ -102,6 +102,28 @@
       "os_product_name": "",
       "os_disk_configuration": "Encrypted",
       "files_present": [ ]
+    },
+    {
+      "title": "Site Recovery - Windows",
+      "description": "Test of the site-recovery manifest against a Windows VHD",
+      "vhd_relative_path": "/windows/asr-windows.vhd",
+      "manifest": "site-recovery",
+      "os": "windows",
+      "os_distribution": "",
+      "os_product_name": "",
+      "os_disk_configuration": "Standard",
+      "files_present": [ "/device_0/ProgramData/ASRSetupLogs/ASRUnifiedAgentInstaller.log", "/device_0/Program Files (x86)/Microsoft Azure Site Recovery/agent/AzureRcmCli.log", "/device_0/Windows/System32/winevt/Logs/System.evtx"]
+    },
+    {
+      "title": "Site Recovery - Linux",
+      "description": "Test of the site-recovery manifest against a Linux VHD",
+      "vhd_relative_path": "/linux/asr-linux.vhd",
+      "manifest": "site-recovery",
+      "os": "linux",
+      "os_distribution": "rhel",
+      "os_product_name": "Red Hat Enterprise Linux Server release 6.8 (Santiago)",
+      "os_disk_configuration": "Standard",
+      "files_present": [ "/device_0/var/log/waagent.log", "/device_0/var/log/AzureRcmCli.log", "/device_0/var/log/evtcollforw.log","device_0/var/log/azure/Microsoft.Azure.RecoveryServices.SiteRecovery.Linux/Microsoft.Azure.RecoveryServices.SiteRecovery.Linux/1.0.0.2/CommandExecution.log"]
     }
   ]
 }

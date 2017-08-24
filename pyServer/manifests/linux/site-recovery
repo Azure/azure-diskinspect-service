@@ -1,0 +1,23 @@
+echo,### Gathering Configuration Files ###
+copy,/etc/*-release
+copy,/etc/HOSTNAME
+copy,/etc/hostname
+copy,/etc/waagent.conf
+copy,/var/lib/waagent/*.xml
+echo,
+
+echo,### Gathering Log Files ###
+copy,/var/log/waagent*
+copy,/var/log/dmesg*
+copy,/var/log/syslog*
+copy,/var/log/azure/*
+
+echo,
+
+echo,### Gathering Extension Files ###
+copy,/var/lib/waagent/GoalState.*.xml
+copy,/var/log/ua_install.log
+copy,/var/log/AzureRcmCli.log
+copy,/var/log/svagents*.log
+copy,/var/log/s2*.log
+copy,/var/log/evtcollforw*.log
