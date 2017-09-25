@@ -71,6 +71,22 @@ out the response result as a binary content stream.
 class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
 
     """
+    Parse the URL Query Parameters for Health Prefix
+    """
+    def IsHealthQuery(self, urlPath):
+        urlObj = urllib.parse.urlparse(urlPath)
+        urlSplit = urlObj.path.split('/')
+        if not len(urlSplit) >= 1:
+            raise ValueError('Request has insufficient number of query parameter arguments.')
+
+        prefix = str(urlSplit[1])
+        if prefix == "health":
+            return True
+        
+        return False
+
+
+    """
     Parse the URL POST parameters
     """
     def ParseUrlArguments(self, urlPath, sasKey):
@@ -149,6 +165,31 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
         self.wfile.flush()
 
     """
+    GET request handler
+    """
+    def do_GET(self):
+        try:
+            # Parse Input Parameters
+            isHealthCheck = self.IsHealthQuery(self.path)
+            if isHealthCheck:
+                self.send_response(200)
+                self.send_header('Content-type', 'text/html')
+                self.end_headers()
+                response = '<<STATS>>' + self.serviceMetrics.getMetrics()
+                self.wfile.write(bytes("<html><head><title>InspectDisk Service Health Report</title></head>", "utf-8"))
+                self.wfile.write(bytes("<body><p>", "utf-8"))
+                self.wfile.write(bytes(response, "utf-8"))
+                self.wfile.write(bytes("</p></body></html>", "utf-8"))
+                self.wfile.flush()
+                self.rootLogger.info('Health query requested by ' + str(self.client_address) + ' and responded with ' + response) 
+            else:
+                self.rootLogger.info('Invalid GET query path requested by ' + self.client.address, ' for path ' + self.path) 
+
+        except Exception as ex:
+            self.rootLogger.exception('Exception: ' + str(ex))
+            self.send_error(500, str(ex)) 
+
+    """
     POST request handler
     """
     def do_POST(self):
@@ -170,7 +211,6 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
             self.serviceMetrics.TotalRequests = self.serviceMetrics.TotalRequests + 1
             self.rootLogger.info('<<STATS>> ' + self.serviceMetrics.getMetrics())
 
-            # Parse Input Parameters
             sasKeyStr = str(postvars[b'saskey'][0], encoding='UTF-8')
             operationId, mode, modeMajorSkipTo, modeMinorSkipTo, storageAcctName, container_blob_name, storageUrl = self.ParseUrlArguments(self.path, sasKeyStr)                
             self.rootLogger.info('Starting service request for <Operation Id=' + operationId + ', Mode=' + mode + ', Url=' + self.path + '>')
