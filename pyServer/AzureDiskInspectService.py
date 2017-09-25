@@ -80,7 +80,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
             raise ValueError('Request has insufficient number of query parameter arguments.')
 
         prefix = str(urlSplit[1])
-        if prefix == "health":
+        if (prefix.lower() == "health"):
             return True
         
         return False
