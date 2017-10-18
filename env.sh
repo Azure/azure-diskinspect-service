@@ -2,7 +2,7 @@
 
 # Docker Container
 CONTAINERREPO="azlinux/azdis"
-CONTAINERTAG="1.0"
+CONTAINERTAG="1.1"
 CONTAINERNAME="$CONTAINERREPO:$CONTAINERTAG"
 CONTAINERHOSTNAME="logext-testagents.trafficmanager.net"
 

@@ -6,9 +6,11 @@ import sys
 import os
 import cgi
 import socketserver
+import subprocess
 import threading
 from datetime import datetime
 from GuestFishWrapper import GuestFishWrapper
+from GuestFishWrapper import DiskInspectionMetadata  #ensure telemetry is logged properly
 from KeepAliveThread import KeepAliveThread
 
 OUTPUTDIRNAME = '/output'
@@ -37,6 +39,24 @@ def printProgress(iteration, total, prefix='',
     if iteration == total:
         sys.stdout.write('\n')
     sys.stdout.flush()
+
+
+"""
+Get metadata about the host to aid in telemetry insight and troubleshooting scenarios
+"""
+def getHostMetadata():
+    command = ["curl", "-H", "Metadata:true", "http://169.254.169.254/metadata/instance/compute?api-version=2017-08-01"]
+    metadata = subprocess.check_output(command)
+    return metadata.decode('utf-8')
+
+"""
+Get the container ID to aid in telemetry insight and troubleshooting scenarios
+"""
+def getContainerId():
+    command = ['head', '/proc/1/cgroup', '-n 1']
+    line = subprocess.check_output(command)
+    longContainerId = subprocess.check_output(['basename', line])
+    return longContainerId.decode('utf-8')[0:12]
 
 """
 Threading server to handle multiple web requests.
@@ -169,6 +189,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
     """
     def do_GET(self):
         try:
+            start_time = datetime.now()
             # Parse Input Parameters
             isHealthCheck = self.IsHealthQuery(self.path)
             if isHealthCheck:
@@ -181,19 +202,21 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
                 self.wfile.write(bytes(response, "utf-8"))
                 self.wfile.write(bytes("</p></body></html>", "utf-8"))
                 self.wfile.flush()
-                self.rootLogger.info('Health query requested by ' + str(self.client_address) + ' and responded with ' + response) 
+                self.rootLogger.info('Health query requested by ' + str(self.client_address) + ' and responded with ' + response)
+                self.telemetryClient.track_request('Health query', self.path, True, start_time.isoformat(), (datetime.now() - start_time).microseconds / 1000, 200, 'GET')
             else:
                 self.rootLogger.info('Invalid GET query path requested by ' + self.client.address, ' for path ' + self.path) 
-
+                self.telemetryClient.track_request('Invalid GET', self.path, False, start_time.isoformat(), (datetime.now() - start_time).microseconds / 1000, 200, 'GET')
         except Exception as ex:
             self.rootLogger.exception('Exception: ' + str(ex))
             self.send_error(500, str(ex)) 
+            self.telemetryClient.track_request('GET Exception', self.path, False, start_time.isoformat(), (datetime.now() - start_time).microseconds / 1000, 500, 'GET')
 
     """
     POST request handler
     """
     def do_POST(self):
-        
+
         ctype, pdict = cgi.parse_header(self.headers['content-type'])
         if ctype == 'multipart/form-data':
             postvars = cgi.parse_multipart(self.rfile, pdict)
@@ -206,7 +229,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
         outputFileName = None
         start_time = datetime.now()
         requestSucceeded = False
-
+        fatal_exit = False
         try:
             self.serviceMetrics.TotalRequests = self.serviceMetrics.TotalRequests + 1
             self.rootLogger.info('<<STATS>> ' + self.serviceMetrics.getMetrics())
@@ -214,6 +237,31 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
             sasKeyStr = str(postvars[b'saskey'][0], encoding='UTF-8')
             operationId, mode, modeMajorSkipTo, modeMinorSkipTo, storageAcctName, container_blob_name, storageUrl = self.ParseUrlArguments(self.path, sasKeyStr)                
             self.rootLogger.info('Starting service request for <Operation Id=' + operationId + ', Mode=' + mode + ', Url=' + self.path + '>')
+            
+
+            hostMetadata = getHostMetadata()
+            # The Python AppInsight SDK does not expose User.StoreRegion, Cloud.* or ServerDevice.* contract fields at this time
+            # # if hostMetadata and "location" in hostMetadata:
+            #    region = hostMetadata["location"]
+            if os.environ['CONTAINER_VERSION']:
+                containerVersion = os.environ['CONTAINER_VERSION']
+            else:
+                containerVersion = 'not set'
+            # update the fields in the telemetry client
+            for h in self.rootLogger.handlers:
+                if h.__class__.__name__ == 'LoggingHandler':
+                    h.client.context.session.id = operationId
+                    h.client.context.application.ver = containerVersion
+                    telemetryClient = h.client
+
+            customProperties = { 'mode' : mode,
+                                 'operationId': operationId,
+                                 'MajorSkipTo' : modeMajorSkipTo,
+                                 'MinorSkipTo' : modeMinorSkipTo,
+                                 'containerName' : getContainerId(),
+                                 'containerVersion' : containerVersion,
+                                 'HostMetadata' : hostMetadata
+                                 }
 
             # Invoke LibGuestFS Wrapper for prorcessing
             with KeepAliveThread(self.rootLogger, self, threading.current_thread().getName()) as kpThread:
@@ -231,28 +279,53 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
                         self.serviceMetrics.SuccessRequests = self.serviceMetrics.SuccessRequests + 1
                         self.serviceMetrics.TotalSuccessServiceTime = self.serviceMetrics.TotalSuccessServiceTime + successElapsed.total_seconds()
                         self.serviceMetrics.ConsecutiveErrors = 0
-                        requestSucceeded = True
-
+                        requestSucceeded = True                        
+                        
                         self.rootLogger.info('Request completed succesfully in ' + str(successElapsed.total_seconds()) + "s.")
+                        # Capture info discovered about the VHD for telemetry
+                        for metadata in gfWrapper.metadata_pairs:
+                            metadata_value = str(gfWrapper.metadata_pairs[metadata])
+                            if len( metadata_value ) > 0:
+                                customProperties[metadata] = metadata_value 
+                        # track request and metrics
+                        self.telemetryClient.track_request('Request Success', self.path, requestSucceeded, start_time.isoformat(), successElapsed.total_seconds() * 1000, 200, 'POST', customProperties)
+                        self.telemetryClient.track_metric("Request Success", 1)
+                        self.telemetryClient.track_metric("Request Success Duration", successElapsed.total_seconds())
                     else:
                         self.rootLogger.error('Failed to create zip package.')
+                        self.telemetryClient.track_request('Failed to create zip', self.path, requestSucceeded, start_time.isoformat(), successElapsed.total_seconds() * 1000, 200, 'POST', customProperties)
 
         except ValueError as ex:
             self.rootLogger.error(str(ex))
             self.send_error(500, str(ex))
+            self.telemetryClient.track_request('POST ValueError', self.path, requestSucceeded, start_time.isoformat(), (datetime.now() - start_time).microseconds / 1000, 500, 'POST', customProperties)
         except (IndexError, FileNotFoundError) as ex:
             self.rootLogger.exception('Exception: IndexError or FileNotFound error')
             self.send_error(404, 'Not Found')
+            self.telemetryClient.track_request('POST Not Found', self.path, requestSucceeded, start_time.isoformat(), (datetime.now() - start_time).microseconds / 1000, 404, 'POST', customProperties)
         except Exception as ex:
             self.rootLogger.exception('Exception: ' + str(ex))
             self.send_error(500, str(ex))
+            self.telemetryClient.track_request('POST Exception', self.path, requestSucceeded, start_time.isoformat(), (datetime.now() - start_time).microseconds / 1000, 500, 'POST', customProperties)
         finally:
             if (not requestSucceeded):
                 self.serviceMetrics.ConsecutiveErrors = self.serviceMetrics.ConsecutiveErrors + 1
-                
+                self.telemetryClient.track_metric("Request Failure", 1)
+                failedElapsed = datetime.now() - start_time
+                self.telemetryClient.track_metric("Request Failure Duration", failedElapsed.total_seconds())
                 if (self.serviceMetrics.ConsecutiveErrors > 10):
                     self.rootLogger.error('FATAL FAILURE: More than 10 consecutive requests failed to be serviced. Shutting down.')
-                    os._exit(1)
+                    self.telemetryClient.track_metric("Fatal Failure", 1)
+                    fatal_exit = True       # set a flag so that the telemetry clients are flushed prior to exit
 
             self.rootLogger.info('Ending service request.')
             self.rootLogger.info('<<STATS>> ' + self.serviceMetrics.getMetrics())
+            # Make sure the telemetry is flushed into its channels
+            self.telemetryClient.flush()
+            for h in self.rootLogger.handlers:
+                if h.__class__.__name__ == 'LoggingHandler':
+                    h.flush()
+                    h.client.context.session.id = None
+                    telemetryClient = h.client
+            if (fatal_exit):
+                os._exit(1)

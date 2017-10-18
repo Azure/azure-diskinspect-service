@@ -12,6 +12,7 @@ RUN apt-get update \
     autoconf \
     git \
     nginx \
+    python3-pip \
  && DEBIAN_FRONTEND=noninteractive apt-get build-dep -y \
     libguestfs
 
@@ -29,11 +30,19 @@ COPY conf/nginx.conf /etc/nginx/
 COPY pyServer/* /azureDiskInspectSvc/
 COPY pyServer/manifests/ /etc/azdis/
 
+# Redirect python3 as default 
+RUN ln -s -f /usr/bin/python3 /usr/bin/python
+
+# Install AppInsights 
+RUN pip3 install applicationinsights
+# configure to use AzLinux ACIS subscription instrumentation key
+ENV APPINSIGHTS_KEY=0cc8661b-24de-457c-bd38-b5a39d717041
+
 # Expose port 8080 for nginx
 EXPOSE 8080
 
 # Start the nginx service
-CMD service nginx start && /azureDiskInspectSvc/main.py
+CMD service nginx start && python /azureDiskInspectSvc/main.py
 
 
 
