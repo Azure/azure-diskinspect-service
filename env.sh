@@ -2,7 +2,7 @@
 
 # Docker Container
 CONTAINERREPO="azlinux/azdis"
-CONTAINERTAG="1.0"
+CONTAINERTAG="1.1"
 CONTAINERNAME="$CONTAINERREPO:$CONTAINERTAG"
 CONTAINERHOSTNAME="logext-testagents.trafficmanager.net"
 
@@ -17,3 +17,6 @@ SSL_PUBLIC_KEY="$SSL_PATH/azdis_public.crt"
 
 # Miscellaneous
 LOG_FILE="/var/log/azureDiskInspectSvc.log"
+
+# TODO: replace this with envionment specific AppInsights instrumentation key
+APPINSIGHTS_KEY='00000000-0000-0000-00000000000000000'
