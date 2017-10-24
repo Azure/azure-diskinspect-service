@@ -198,10 +198,15 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
     def do_GET(self):
         try:
             start_time = datetime.now()
+            
+            if ("error" in self.hostMetadata):
+                self.hostMetadata = getHostMetadata()
+            
             customProperties = { 
                         'containerName' : self.containerId,
                         'containerVersion' : self.containerVersion,
-                        'HostMetadata' : self.hostMetadata
+                        'HostMetadata' : self.hostMetadata,
+                        'HttpMethod':'GET'
                         }
             # Parse Input Parameters
             isHealthCheck = self.IsHealthQuery(self.path)
@@ -235,7 +240,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
                 if h.__class__.__name__ == 'LoggingHandler':
                     h.flush()
                     h.client.context.session.id = None
-                    self.telemetryClient = h.client
+            self.telemetryClient.context.session.id = None
 
     """
     POST request handler
@@ -274,7 +279,11 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
                 if h.__class__.__name__ == 'LoggingHandler':
                     h.client.context.session.id = operationId
                     h.client.context.application.ver = self.containerVersion
-                    self.telemetryClient = h.client
+            self.telemetryClient.context.session.id = operationId
+            self.telemetryClient.context.application.ver = self.containerVersion
+
+            if ("error" in self.hostMetadata):
+                self.hostMetadata = getHostMetadata()
 
             customProperties = { 'mode' : mode,
                                  'operationId': operationId,
@@ -282,7 +291,8 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
                                  'MinorSkipTo' : modeMinorSkipTo,
                                  'containerName' : self.containerId,
                                  'containerVersion' : self.containerVersion,
-                                 'HostMetadata' : self.hostMetadata
+                                 'HostMetadata' : self.hostMetadata,
+                                 'HttpMethod':'POST'
                                  }
 
             # Invoke LibGuestFS Wrapper for prorcessing
@@ -355,6 +365,6 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
                 if h.__class__.__name__ == 'LoggingHandler':
                     h.flush()
                     h.client.context.session.id = None
-                    self.telemetryClient = h.client
+            self.telemetryClient.context.session.id = None
             if (fatal_exit):
                 os._exit(1)
