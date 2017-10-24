@@ -6,8 +6,7 @@ import logging.handlers
 from ServiceMetrics import ServiceMetrics
 from AzureDiskInspectService import AzureDiskInspectService
 from AzureDiskInspectService import ThreadingServer
-from applicationinsights import TelemetryClient
-from applicationinsights.logging import LoggingHandler
+
 
 """
 Globals
@@ -35,15 +34,6 @@ rootLogger.addHandler(consoleHandler)
 # global service metrics
 serviceMetrics = ServiceMetrics()
 
-# AppInsights initialization
-appInsightsKey = os.environ['APPINSIGHTS_KEY']
-rootLogger.info("AppInsights key: '" + appInsightsKey + "'")
-
-telemetryhandler = LoggingHandler(appInsightsKey)
-telemetryhandler.setFormatter(logFormatter)
-telemetryhandler.client.context.application.id = "DiskInspect-Service"
-rootLogger.addHandler(telemetryhandler)
-
 """
 Main Entrypoint
 """
@@ -52,7 +42,6 @@ if __name__ == '__main__':
     AzureDiskInspectService.protocol_version = "HTTP/1.1"
     AzureDiskInspectService.rootLogger = rootLogger
     AzureDiskInspectService.serviceMetrics = serviceMetrics
-    AzureDiskInspectService.telemetryClient = telemetryhandler.client # dont' create a new one, use the one already configured
     server = ThreadingServer(server_address, AzureDiskInspectService)
     rootLogger.info('Started AzureDiskInspectService on IP: ' + str(IP_ADDRESS) + ', Port: ' + str(PORT))
     
