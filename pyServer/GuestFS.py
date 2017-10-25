@@ -99,7 +99,15 @@ class GuestFS:
         # We need to parse this and extract out the GUESTFISH_PID
         # environment variable and inserting it into the subsequent env
         
-        output = subprocess.check_output(args, env=self.environment, universal_newlines=True)
+        try:
+            output = subprocess.check_output(args, env=self.environment, universal_newlines=True)
+        except subprocess.CalledProcessError as ex:
+            # we need to make sure that any sas uri are redacted under error
+            for i in range(0, len(ex.cmd) -1):
+                location = ex.cmd[i].find('?')
+                if location > 0:
+                    ex.cmd[i] =ex.cmd[i][0:location] + '?[saskey]'
+            raise ex  # throw the redacted exception which is caught in do_POST() and ends the web request
 
         try:
             self.pid = int(output.split(';')[0].split('=')[1])
