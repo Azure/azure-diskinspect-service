@@ -79,6 +79,7 @@ File Path | Manifest
 /var/log/azure/Microsoft.\*LinuxDiagnostic/\*/\* | lad 
 /var/log/azure/\* | site-recovery 
 /var/log/azure/\*/\*/\* | agents, diagnostic 
+/var/log/azure/custom-script/handler.log | agents, diagnostic 
 /var/log/boot\* | diagnostic, eg, normal 
 /var/log/cloud-init\* | diagnostic, eg, normal 
 /var/log/dmesg\* | agents, diagnostic, eg, normal, site-recovery 
@@ -290,4 +291,4 @@ File Path | Manifest
 /WindowsAzure/config/\*.xml | agents, diagnostic, eg, normal 
 /unattend.xml | diagnostic, eg, normal 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2017-08-22 09:10:32.995431`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2017-11-11 23:58:17.716378`*

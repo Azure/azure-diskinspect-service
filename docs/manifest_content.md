@@ -80,6 +80,7 @@ agents | copy | /var/log/dmesg\*
 agents | copy | /var/log/syslog\*
 agents | copy | /var/log/auth\*
 agents | copy | /var/log/azure/\*/\*/\*
+agents | copy | /var/log/azure/custom-script/handler.log
 agents | copy | /var/lib/waagent/ExtensionsConfig.\*.xml
 agents | copy | /var/lib/waagent/\*/status/\*.status
 agents | copy | /var/lib/waagent/\*/config/\*.settings
@@ -126,6 +127,7 @@ diagnostic | copy | /var/log/boot\*
 diagnostic | copy | /var/log/auth\*
 diagnostic | copy | /var/log/secure\*
 diagnostic | copy | /var/log/azure/\*/\*/\*
+diagnostic | copy | /var/log/azure/custom-script/handler.log
 diagnostic | copy | /var/lib/waagent/ExtensionsConfig.\*.xml
 diagnostic | copy | /var/lib/waagent/\*/status/\*.status
 diagnostic | copy | /var/lib/waagent/\*/config/\*.settings
@@ -782,4 +784,4 @@ sql-iaas | copy | /WindowsAzure/Logs/Plugins/Microsoft.SqlServer.Management.SqlI
 sql-iaas | copy | /WindowsAzure/Logs/SqlServerLogs/\*.\*
 sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.\*
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2017-08-22 09:10:32.995431`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2017-11-11 23:58:17.716378`*
