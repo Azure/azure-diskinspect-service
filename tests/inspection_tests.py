@@ -85,6 +85,10 @@ def extract_zip(zipFilename, basename):
 	zf = zipfile.ZipFile(zipFilename) 
 	zf.extractall(basename)
 
+def parseHealthResponse(healthHTML):
+	regex = '<<STATS>>Total Requests: (?P<total>\d+), Success Requests: (?P<success>\d+), Avg Success Service Time: (?P<avg_time>\S+)s, Active Requests: (?P<active>\d+), Consecutive Errors: (?P<consecutive_error>\d+)'
+	m = re.search(regex, healthHTML)
+	return m.groupdict()
 		
 header_to_json_mappings = {"os":"InspectionMetadata-Operating-System",
 				"os_distribution":"InspectionMetadata-OS-Distribution", 
@@ -118,7 +122,14 @@ os.mkdir(subdirectory)
 print("Downloading zip files to '{0}'".format(subdirectory) )
 passed_tests = []
 failed_tests = []
+should_fail_tests = []
 
+user_home = os.environ.get('HOME')
+if os.path.exists(user_home+'/azdis_ssl/azdis_public.crt'):					
+	cafile= user_home+'/azdis_ssl/azdis_public.crt'
+else:
+	print("ERROR: No certificate found!")
+	cafile=None
 
 # get json configuration
 with open(os.path.join(current_directory,'test_config.json'), "r") as json_config_file:
@@ -131,41 +142,50 @@ with open(os.path.join(current_directory,'test_config.json'), "r") as json_confi
 	for inspection_test in json_root["tests"]:
 		test_start_time = datetime.datetime.now()
 		test_passed = True
-		operation_id = uuid.uuid4().hex[0:12]  #generate a unique id
+		operation_id = str(uuid.uuid4())  #generate a unique id
 		print("==============================================")
 		print(inspection_test["title"] + " : " + inspection_test["description"])
-		uri = "{0}/{1}/{2}/{3}{4}".format(service_host, operation_id, inspection_test["manifest"], storage_acct,inspection_test["vhd_relative_path"]) 
+		if inspection_test["title"] == "Invalid storage account":
+			uri = "{0}/{1}/{2}/{3}{4}".format(service_host, operation_id, inspection_test["manifest"], "nosuchAccount",inspection_test["vhd_relative_path"]) 
+		else:
+			uri = "{0}/{1}/{2}/{3}{4}".format(service_host, operation_id, inspection_test["manifest"], storage_acct,inspection_test["vhd_relative_path"]) 
 		print(uri)
-		DATA = urllib.parse.urlencode({"saskey":storage_sas})
+		if inspection_test["title"] == "Invalid SAS":
+			DATA = urllib.parse.urlencode({"saskey": "sv=2017-04-17&sr=c&sig=INVALIDSAS"})
+		else:
+			DATA = urllib.parse.urlencode({"saskey":storage_sas})
 		DATA = DATA.encode('ascii')
 		req = urllib.request.Request(url=uri,data=DATA,method='POST')
 		try:
-			user_home = os.environ.get('HOME')
-			if os.path.exists(user_home+'/azdis_ssl/azdis_public.crt'):					
-				cafile= user_home+'/azdis_ssl/azdis_public.crt'
-			else:
-				cafile=None
 			res = urllib.request.urlopen(req, timeout=max_duration,cafile=cafile)
 		except urllib.error.HTTPError as e:
 			print("Error requesting service: " + str(e))    #not catch
-			test_passed = False
-			
+			if not "shouldFail" in inspection_test:
+				test_passed = False	
+			else:
+				should_fail_tests.append(inspection_test["title"])
 		except socket.timeout as e:
 			print("Test exceeded time duration.. failing..")
 			test_passed = False
-		if test_passed: 
-			folder_name = "{0}_{1}".format( uri.split('/')[-1].split('.')[0],  inspection_test["manifest"])  # e.g. Centos7_normal	
-			folder_path = os.path.join( subdirectory, folder_name)
-			file_path = folder_path+".zip"
-			print('INFO: Saving file to: ' + file_path )
-			with open(file_path, "wb") as f:
-				f.write(res.read())
 			
-			response_headers = res.getheaders()
-			print(response_headers)
-			extract_zip(file_path, folder_path)
+		if not "shouldFail" in inspection_test:
+			if test_passed: 
+				folder_name = "{0}_{1}".format( uri.split('/')[-1].split('.')[0],  inspection_test["manifest"])  # e.g. Centos7_normal	
+				folder_path = os.path.join( subdirectory, folder_name)
+				file_path = folder_path+".zip"
+				print('INFO: Saving file to: ' + file_path )
+				with open(file_path, "wb") as f:
+					f.write(res.read())
+				
+				response_headers = res.getheaders()
+				print(response_headers)
+				extract_zip(file_path, folder_path)
+				mappings = header_to_json_mappings
+		else:
+			mappings = {} # skip this for "shouldFail" expected failure cases
+			folder_path = ""
 
-		if test_passed and test_headers(header_to_json_mappings, inspection_test) and test_files(inspection_test, folder_path ) and test_content(inspection_test, folder_path ):
+		if test_passed and test_headers(mappings, inspection_test) and test_files(inspection_test, folder_path ) and test_content(inspection_test, folder_path ):
 			passed_tests.append(inspection_test["title"])
 			test_result = "PASSED"
 		else:
@@ -174,17 +194,46 @@ with open(os.path.join(current_directory,'test_config.json'), "r") as json_confi
 		test_end_time = datetime.datetime.now()
 		print("Test '{1}' {2}. Test duration {0} minutes".format( str( (test_end_time - test_start_time).total_seconds()/60 ), inspection_test["title"],test_result  ) )
 
+	# Query health test: This ensures that we encountered only "expected" errors
+	test_name = 'Health result validation test'
+	uri = "{0}/{1}/".format(service_host,"health")
+	req = urllib.request.Request(url=uri,method='GET')
+	try:
+		res = urllib.request.urlopen(req, cafile=cafile)
+		responseDict = parseHealthResponse(res.read().decode('utf-8'))
+		print(responseDict)
+		if ("success" in responseDict and int(responseDict["success"]) == len(passed_tests) - len(should_fail_tests)
+			and "total" in responseDict and int(responseDict["total"]) == len(passed_tests)
+			and "active" in responseDict and int(responseDict["active"]) == 0
+			and "consecutive_error" in responseDict and int(responseDict["consecutive_error"]) == 0 
+		):
+			passed_tests.append(test_name)
+			test_result = "PASSED"
+		else:
+			failed_tests.append(test_name)
+			test_result = "FAILED"	
+	except urllib.error.HTTPError as e:
+		print("Error requesting health: " + str(e))
+		failed_tests.append(test_name)
+		test_result = "FAILED"
+	print( "{0}: {1}".format(test_name, test_result))
+
 	print("***************************************************")
 	print("Passing tests")
 	print("=============")
 	print(passed_tests)
 	print("***************************************************")
+	print("Should fail tests")
+	print("=============")
+	print(should_fail_tests)
+	print("***************************************************")	
 	print("Failing tests")
 	print("=============")
 	print(failed_tests)
 	print("***************************************************")	
 	script_end_time = datetime.datetime.now()
-	print("Ran {1} tests. Script duration {0} minutes".format( str( (script_end_time - script_start_time).total_seconds()/60 ), len(json_root["tests"])  ) )
+	test_count = len(json_root["tests"]) + 1 	# include 'Health result validation test'
+	print("Ran {1} tests. Script duration {0} minutes".format( str( (script_end_time - script_start_time).total_seconds()/60 ), test_count) )
 	
 sys.exit( len(failed_tests) ) #zero indicates success 
 			

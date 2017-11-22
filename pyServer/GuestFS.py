@@ -4,6 +4,9 @@ import subprocess
 import os
 import glob
 from datetime import datetime
+import http.client
+import urllib
+import socket
 
 """
 LibGuestFS Wrapper
@@ -94,21 +97,16 @@ class GuestFS:
         redactedArgs = ['/libguestfs/run', 'guestfish', '--listen', '-a', self.storageUrl.split('?')[0]+'?[saskey]', '--ro']
         self.rootLogger.info('GuestFish:Create:Local> ' + ' '.join(redactedArgs))
 
+        try:
+            output = subprocess.check_output(args, env=self.environment, universal_newlines=True)
+        except subprocess.CalledProcessError as ex:
+            self.rootLogger.error("GuestFish failed to start using the previous sas url, trying to diagnose...")
+            output = self.diagnoseStartFailureOrRetry(args)  # this will raise an exception that will be caught in HTTP handler
+
         # Guestfish server mode returns a string of the form
         #   GUESTFISH_PID=pid; export GUESTFISH_PID
         # We need to parse this and extract out the GUESTFISH_PID
         # environment variable and inserting it into the subsequent env
-        
-        try:
-            output = subprocess.check_output(args, env=self.environment, universal_newlines=True)
-        except subprocess.CalledProcessError as ex:
-            # we need to make sure that any sas uri are redacted under error
-            for i in range(0, len(ex.cmd) -1):
-                location = ex.cmd[i].find('?')
-                if location > 0:
-                    ex.cmd[i] =ex.cmd[i][0:location] + '?[saskey]'
-            raise ex  # throw the redacted exception which is caught in do_POST() and ends the web request
-
         try:
             self.pid = int(output.split(';')[0].split('=')[1])
         except Exception as e:
@@ -306,4 +304,55 @@ class GuestFS:
         def returnValue(s):
             return s.split(':')[1].strip()
 
-        return ".".join(map(returnValue,out))
+        return ".".join(map(returnValue, out))
+
+    '''
+    Function attempts to gain better insight into why libGuestFS could not start when targeting a particular sas url
+    The resulting diagnosis is used in the HTTP handler to determine which errors indicative of the service being 
+    unhealthy and which should not 
+    '''
+    def diagnoseStartFailureOrRetry(self, args):
+        urlObj = urllib.parse.urlparse(self.storageUrl)
+        if urlObj.scheme != 'https':
+            raise InvalidStorageAccountException("HTTPS connection is required!")
+        # Split the host portion from url path & sas
+        storageAccountHost = urlObj.netloc
+        pathAndSas = urlObj.path + "?" + urlObj.query
+        try:
+            conn = http.client.HTTPSConnection(storageAccountHost)
+            conn.request("GET", pathAndSas)
+            resp = conn.getresponse()
+            if resp.status == 200:
+                # transient failure or issue with libGuestFS. retry, repeat error will throw exception
+                self.rootLogger.info("diagnoseStartFailureOrRetry: HTTP check of Sas url returned 200. Retrying GuestFish start...")
+                output = subprocess.check_output(args, env=self.environment, universal_newlines=True)
+                return output
+            else:
+                self.rootLogger.warning("diagnoseStartFailureOrRetry: HTTP check of Sas url returned status: " + str(resp.status))
+                if resp.status == 404:
+                    raise InvalidVhdNotFoundException(resp.reason)
+                elif resp.status == 403:
+                    raise InvalidSasException(resp.reason)
+                else:
+                    raise HTTPException("HTTP GET for SaS url returned %s: %s" % (resp.status, resp.reason))
+        except socket.gaierror:
+            self.rootLogger.error("diagnoseStartFailureOrRetry: HTTP connection to storage account url failed! Account may be invalid.")
+            raise InvalidStorageAccountException(storageAccountHost)
+        except subprocess.CalledProcessError as ex:
+            # the retry failed, we need to make sure that any sas uri are redacted under error
+            for i in range(0, len(ex.cmd) -1):
+                location = ex.cmd[i].find('?')
+                if location > 0:
+                    ex.cmd[i] =ex.cmd[i][0:location] + '?[saskey]'
+            raise ex  # throw the redacted exception which is caught in do_POST() and ends the web request
+        finally:
+            conn.close()
+
+class InvalidSasException(Exception):
+    pass
+
+class InvalidVhdNotFoundException(Exception):
+    pass
+
+class InvalidStorageAccountException(Exception):
+    pass
