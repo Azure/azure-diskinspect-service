@@ -124,6 +124,39 @@
       "os_product_name": "Red Hat Enterprise Linux Server release 6.8 (Santiago)",
       "os_disk_configuration": "Standard",
       "files_present": [ "/device_0/var/log/waagent.log", "/device_0/var/log/AzureRcmCli.log", "/device_0/var/log/evtcollforw.log","device_0/var/log/azure/Microsoft.Azure.RecoveryServices.SiteRecovery.Linux/Microsoft.Azure.RecoveryServices.SiteRecovery.Linux/1.0.0.2/CommandExecution.log"]
+    },
+    {
+      "title": "Invalid VHD path",
+      "description": "Test to ensure an invalid VHD path is handled properly",
+      "vhd_relative_path": "/linux/nosuch.vhd",
+      "manifest": "normal",
+      "os": "",
+      "os_distribution": "",
+      "os_product_name": "",
+      "os_disk_configuration": "",
+      "shouldFail" : true
+    },
+    {
+      "title": "Invalid SAS",
+      "description": "Test to ensure an invalid SAS uri is handled properly (performed in code)",
+      "vhd_relative_path": "/linux/UbuntuCore.vhd",
+      "manifest": "normal",
+      "os": "",
+      "os_distribution": "",
+      "os_product_name": "",
+      "os_disk_configuration": "",
+      "shouldFail" : true
+    },
+    {
+      "title": "Invalid storage account",
+      "description": "Test to ensure an invalid storage account is handled properly (performed in code)",
+      "vhd_relative_path": "/linux/UbuntuCore.vhd",
+      "manifest": "normal",
+      "os": "",
+      "os_distribution": "",
+      "os_product_name": "",
+      "os_disk_configuration": "",
+      "shouldFail" : true
     }
   ]
 }

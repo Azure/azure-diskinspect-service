@@ -58,19 +58,16 @@ class GuestFishWrapper:
 
     def WriteToResultFileWithHeader(self, operationOutFile, headerString, data):
         operationOutFile.write(headerString + '\r\n')
-        if (isinstance(data, list)):
-            operationOutFile.write("\r\n".join(data))            
-        else:
-            operationOutFile.write(str(data))      
-        operationOutFile.write('\r\n')  
-        operationOutFile.write('\r\n')
-        operationOutFile.flush()
-    
+        self.WriteToResultFile(operationOutFile, data)
+
     def WriteToResultFile(self, operationOutFile, data):
         if (isinstance(data, list)):
-            operationOutFile.write("\r\n".join(data))            
+            tempStr = "\r\n".join(data)
         else:
-            operationOutFile.write(str(data))
+            tempStr = str(data)
+        operationOutFile.write(tempStr)
+        if len(tempStr) > 0:
+            self.rootLogger.info("OperationalLog: " + tempStr)  # ensure it is added to telemetry
         operationOutFile.write('\r\n') 
         operationOutFile.flush()
 
@@ -90,7 +87,7 @@ class GuestFishWrapper:
         osDistribution = guestfish.inspect_get_distro(device)
         osProductName = guestfish.inspect_get_product_name(device)
         osMountpoints = guestfish.inspect_get_mountpoints(device)
-        return (osType[0], osDistribution[0], osProductName[0], osMountpoints)        
+        return (osType[0], osDistribution[0], osProductName[0], osMountpoints)
 
     def CreateArchive(self, zipFilename, targetDir):
         with zipfile.ZipFile(zipFilename, "w", compression=zipfile.ZIP_DEFLATED) as zf:
