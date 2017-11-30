@@ -42,10 +42,13 @@ class GuestFishWrapper:
         self.guest_registry = None
         self.has_registry_file = False
         self.metadata_pairs = {}
+        self.outputFileName = ""
 
     def __enter__(self):
-        self.outputFileName = self.execute(self.storageUrl)        
         return self
+
+    def start(self):
+        self.outputFileName = self.execute(self.storageUrl)        
 
     def __exit__(self, type, value, traceback):
         if (os.path.exists(self.outputDirName)):

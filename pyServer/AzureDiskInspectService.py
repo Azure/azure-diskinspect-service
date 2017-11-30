@@ -50,7 +50,7 @@ def printProgress(iteration, total, prefix='',
 Get metadata about the host to aid in telemetry insight and troubleshooting scenarios
 """
 def getHostMetadata():
-    command = ["curl", "-H", "Metadata:true", "http://169.254.169.254/metadata/instance/compute?api-version=2017-08-01"]
+    command = ["curl", "-H", "Metadata:true", "-A", "DiskInspectionService", "http://169.254.169.254/metadata/instance/compute?api-version=2017-08-01"]
     metadata = subprocess.check_output(command)
     return metadata.decode('utf-8')
 
@@ -131,7 +131,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
     '''
     
     def logException(self, ex, properties=None):
-        customProperties =  {"HostingInstance": os.environ['HOSTING_INSTANCE'] if 'HOSTING_INSTANCE' in os.environ  else ""}
+        customProperties =  {"HOSTNAME": os.environ['HOSTNAME'] if 'HOSTNAME' in os.environ  else ""}
         if properties:
             customProperties.update(properties)  # combine with any passed in
         self.rootLogger.exception(str(ex))  # note this is rootLogger not the child telemetryLogger
@@ -242,6 +242,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
                 self.hostMetadata = getHostMetadata()
 
             customProperties = { 
+                        "HOSTNAME": os.environ['HOSTNAME'] if 'HOSTNAME' in os.environ  else "",
                         'containerName' : self.containerId,
                         'containerVersion' : self.containerVersion,
                         'HostMetadata' : self.hostMetadata,
@@ -320,20 +321,21 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
             if ("error" in self.hostMetadata):
                 self.hostMetadata = getHostMetadata()
 
-            customProperties = { 'mode' : mode,
-                                 'operationId': operationId,
-                                 'MajorSkipTo' : modeMajorSkipTo,
-                                 'MinorSkipTo' : modeMinorSkipTo,
-                                 'containerName' : self.containerId,
-                                 'containerVersion' : self.containerVersion,
-                                 'HostMetadata' : self.hostMetadata,
-                                 'HttpMethod':'POST'
-                                 }
+            customProperties = {"HOSTNAME": os.environ['HOSTNAME'] if 'HOSTNAME' in os.environ  else "",
+                                'mode' : mode,
+                                'operationId': operationId,
+                                'MajorSkipTo' : modeMajorSkipTo,
+                                'MinorSkipTo' : modeMinorSkipTo,
+                                'containerName' : self.containerId,
+                                'containerVersion' : self.containerVersion,
+                                'HostMetadata' : self.hostMetadata,
+                                'HttpMethod':'POST'
+                                }
 
             # Invoke LibGuestFS Wrapper for prorcessing
             with KeepAliveThread(self.telemetryLogger, self, threading.current_thread().getName()) as kpThread:
                 with GuestFishWrapper(self.telemetryLogger, self, storageUrl, OUTPUTDIRNAME, operationId, mode, modeMajorSkipTo, modeMinorSkipTo, kpThread) as gfWrapper:
-
+                    gfWrapper.start()
                     # Upload the ZIP file
                     if gfWrapper.outputFileName:    
                         outputFileName = gfWrapper.outputFileName            
