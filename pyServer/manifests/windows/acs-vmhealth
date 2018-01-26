@@ -1,0 +1,3 @@
+echo,### ASC Extension - Log for VM Health Signals ###
+
+copy,/WindowsAzure/Logs/TransparentInstaller.log
