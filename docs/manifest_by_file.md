@@ -286,9 +286,9 @@ File Path | Manifest
 /WindowsAzure/Logs/Plugins/\*/\*/Update.log | agents, diagnostic, eg, normal 
 /WindowsAzure/Logs/SqlServerLogs/\*.\* | sql-iaas 
 /WindowsAzure/Logs/Telemetry.log | agents, diagnostic, eg, normal, site-recovery 
-/WindowsAzure/Logs/TransparentInstaller.log | agents, diagnostic, eg, normal, site-recovery 
+/WindowsAzure/Logs/TransparentInstaller.log | agents, asc-vmhealth, diagnostic, eg, normal, site-recovery 
 /WindowsAzure/Logs/WaAppAgent.log | agents, diagnostic, eg, normal, site-recovery 
 /WindowsAzure/config/\*.xml | agents, diagnostic, eg, normal 
 /unattend.xml | diagnostic, eg, normal 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2017-11-11 23:58:17.716378`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-01-26 13:27:30.840232`*
