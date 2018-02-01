@@ -208,6 +208,19 @@ normal | copy | /var/log/auth\*
 normal | copy | /var/log/secure\*
 performance | list | /var/log/sa
 performance | copy | /var/log/sa/sar\*
+servicefabric | copy | /opt/microsoft/servicefabric/bin/Fabric/Fabric.Code/Fabric
+servicefabric | copy | /var/log/syslog
+servicefabric | copy | /var/log/sfnode/sfnodelog
+servicefabric | copy | /var/log/azure/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode/\*.\*/CommandExec<br>ution.log
+servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/heartbeat.lo<br>g
+servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/Service/curr<br>ent.config
+servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*.\*/HandlerEn<br>vironment.json
+servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/HandlerManif<br>est.json
+servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/config/\*.se<br>ttings
+servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*.\*/status/\*<br>.status
+servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/heartbeat.lo<br>g
+servicefabric | copy | /var/lib/waagent/Microsoft.OSTCExtensions.LinuxDiagnostic-\*/xmlCfg.xml
+servicefabric | copy | /var/log/azure/Microsoft.OSTCExtensions.LinuxDiagnostic/\*/mdsd.\*
 site-recovery | copy | /etc/\*-release
 site-recovery | copy | /etc/HOSTNAME
 site-recovery | copy | /etc/hostname
@@ -756,6 +769,29 @@ rdp-registry | registry query | HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall
 rdp-registry | registry query | HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\FirewallRules\WINRM-HTTP-Compat-In-T<br>CP
 rdp-registry | registry query | HKLM\SOFTWARE\Policies\Microsoft\Windows\System\CleanupProfiles
 rdp-registry | registry query | HKLM\SOFTWARE\Microsoft\Shared Tools\MSConfig
+servicefabric | copy | /Windows/System32/winevt/Logs/System.evtx
+servicefabric | copy | /Windows/System32/winevt/Logs/Application.evtx
+servicefabric | copy | /Windows/System32/winevt/Logs/Microsoft-ServiceFabric%4Admin.evtx
+servicefabric | copy | /Windows/System32/winevt/Logs/Microsoft-ServiceFabric%4Operational.evtx
+servicefabric | copy | /Windows/System32/winevt/Logs/Microsoft-ServiceFabric-Lease%4Operational.evtx
+servicefabric | copy | /Windows/System32/winevt/Logs/Microsoft-ServiceFabric-Lease%4Admin.evtx
+servicefabric | copy | /Program Files/Microsoft Service Fabric/bin/Fabric/Fabric.Code
+servicefabric | copy | /WindowsAzure/Logs/MonitoringAgent.log
+servicefabric | copy | /WindowsAzure/Logs/Plugins/\*/\*/CommandExecution.log
+servicefabric | copy | /WindowsAzure/Logs/Plugins/\*/\*/Install.log
+servicefabric | copy | /WindowsAzure/Logs/Plugins/\*/\*/Update.log
+servicefabric | copy | /WindowsAzure/Logs/Plugins/\*/\*/Heartbeat.log
+servicefabric | copy | /Packages/Plugins/\*/\*/config.txt
+servicefabric | copy | /Packages/Plugins/\*/\*/HandlerEnvironment.json
+servicefabric | copy | /Packages/Plugins/\*/\*/HandlerManifest.json
+servicefabric | copy | /Packages/Plugins/\*/\*/HandlerManifest.json
+servicefabric | copy | /Packages/Plugins/\*/\*/RuntimeSettings/\*.settings
+servicefabric | copy | /Packages/Plugins/\*/\*/Status/\*.status
+servicefabric | copy | /Packages/Plugins/\*/\*/Status/HeartBeat.Json
+servicefabric | copy | /Packages/Plugins/\*/\*/PackageInformation.txt
+servicefabric | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/\*/Configur<br>ation/Checkpoint.txt
+servicefabric | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/\*/Configur<br>ation/MaConfig.xml
+servicefabric | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/\*/Configur<br>ation/MonAgentHost.\*.log
 site-recovery | copy | /Windows/System32/winevt/Logs/System.evtx
 site-recovery | copy | /Windows/System32/winevt/Logs/Application.evtx
 site-recovery | copy | /Windows/System32/winevt/Logs/Windows Azure.evtx
@@ -785,4 +821,4 @@ sql-iaas | copy | /WindowsAzure/Logs/Plugins/Microsoft.SqlServer.Management.SqlI
 sql-iaas | copy | /WindowsAzure/Logs/SqlServerLogs/\*.\*
 sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.\*
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-01-26 13:27:30.840232`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-02-01 15:04:55.668373`*

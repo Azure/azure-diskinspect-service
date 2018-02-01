@@ -1,0 +1,26 @@
+echo,### Event Logs ###
+copy,/Windows/System32/winevt/Logs/System.evtx
+copy,/Windows/System32/winevt/Logs/Application.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-ServiceFabric%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-ServiceFabric%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-ServiceFabric-Lease%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-ServiceFabric-Lease%4Admin.evtx
+
+echo,### Additional logs ###
+copy,/Program Files/Microsoft Service Fabric/bin/Fabric/Fabric.Code
+copy,/WindowsAzure/Logs/MonitoringAgent.log
+copy,/WindowsAzure/Logs/Plugins/*/*/CommandExecution.log
+copy,/WindowsAzure/Logs/Plugins/*/*/Install.log
+copy,/WindowsAzure/Logs/Plugins/*/*/Update.log
+copy,/WindowsAzure/Logs/Plugins/*/*/Heartbeat.log
+copy,/Packages/Plugins/*/*/config.txt
+copy,/Packages/Plugins/*/*/HandlerEnvironment.json
+copy,/Packages/Plugins/*/*/HandlerManifest.json
+copy,/Packages/Plugins/*/*/HandlerManifest.json
+copy,/Packages/Plugins/*/*/RuntimeSettings/*.settings
+copy,/Packages/Plugins/*/*/Status/*.status
+copy,/Packages/Plugins/*/*/Status/HeartBeat.Json
+copy,/Packages/Plugins/*/*/PackageInformation.txt
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/*/*/Configuration/Checkpoint.txt
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/*/*/Configuration/MaConfig.xml
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/*/*/Configuration/MonAgentHost.*.log
