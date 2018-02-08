@@ -55,6 +55,8 @@ copy,/Windows/System32/winevt/Logs/MicrosoftAzureRecoveryServices-Replication.ev
 copy,/Windows/System32/winevt/Logs/Security.evtx
 copy,/Windows/System32/winevt/Logs/Setup.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-DSC%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker%4BitLocker Management.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker-DrivePreparationTool%4Operational.evtx
 
 echo,### Provisioning ###
 copy,/AzureData/CustomData.bin
