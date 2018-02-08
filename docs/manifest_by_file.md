@@ -264,6 +264,7 @@ File Path | Manifest
 /Windows/debug/dcpromoui.log | diagnostic, eg, normal 
 /Windows/debug/mrt.log | diagnostic, eg, normal 
 /Windows/debug/netlogon.log | diagnostic, eg, normal 
+/WindowsAzure/GuestAgent\*/CommonAgentConfig.config | diagnostic 
 /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json | agents, diagnostic, eg, normal 
 /WindowsAzure/Logs/AppAgentRuntime.log | agents, diagnostic, eg, normal 
 /WindowsAzure/Logs/MonitoringAgent.log | agents, diagnostic, eg, normal, servicefabric 
@@ -305,4 +306,4 @@ File Path | Manifest
 /WindowsAzure/config/\*.xml | agents, diagnostic, eg, normal 
 /unattend.xml | diagnostic, eg, normal 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-02-08 11:26:13.915323`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-02-08 14:41:11.015138`*
