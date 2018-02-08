@@ -7,7 +7,6 @@ copy,/Windows/System32/winevt/Logs/Microsoft-ServiceFabric-Lease%4Operational.ev
 copy,/Windows/System32/winevt/Logs/Microsoft-ServiceFabric-Lease%4Admin.evtx
 
 echo,### Additional logs ###
-copy,/Program Files/Microsoft Service Fabric/bin/Fabric/Fabric.Code
 copy,/WindowsAzure/Logs/MonitoringAgent.log
 copy,/WindowsAzure/Logs/Plugins/*/*/CommandExecution.log
 copy,/WindowsAzure/Logs/Plugins/*/*/Install.log

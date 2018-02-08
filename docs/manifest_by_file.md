@@ -180,7 +180,6 @@ File Path | Manifest
 /Program Files (x86)/Microsoft Azure Site Recovery/agent/s2\*.log | site-recovery 
 /Program Files (x86)/Microsoft Azure Site Recovery/agent/svagents\*.log | site-recovery 
 /Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.\* | sql-iaas 
-/Program Files/Microsoft Service Fabric/bin/Fabric/Fabric.Code | servicefabric 
 /ProgramData/ASRSetupLogs/ASRUnifiedAgentConfigurator.log | site-recovery 
 /ProgramData/ASRSetupLogs/ASRUnifiedAgentInstaller.log | site-recovery 
 /ProgramData/ASRSetupLogs/UnifiedAgentMSIInstall.log | site-recovery 
@@ -211,6 +210,8 @@ File Path | Manifest
 /Windows/System32/winevt/Logs/Microsoft-ServiceFabric%4Operational.evtx | diagnostic, eg, normal, servicefabric 
 /Windows/System32/winevt/Logs/Microsoft-ServiceFabric-Lease%4Admin.evtx | diagnostic, eg, normal, servicefabric 
 /Windows/System32/winevt/Logs/Microsoft-ServiceFabric-Lease%4Operational.evtx | diagnostic, eg, normal, servicefabric 
+/Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker%4BitLocker Management.evtx | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker-DrivePreparationTool%4Opera<br>tional.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-CAPI2%4Operational.evtx | agents, diagnostic, eg 
 /Windows/System32/winevt/Logs/Microsoft-Windows-DSC%4Operational.evtx | agents, diagnostic, eg 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Dhcp-Client%4Admin.evtx | eg 
@@ -304,4 +305,4 @@ File Path | Manifest
 /WindowsAzure/config/\*.xml | agents, diagnostic, eg, normal 
 /unattend.xml | diagnostic, eg, normal 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-02-01 15:04:55.668373`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-02-08 11:26:13.915323`*

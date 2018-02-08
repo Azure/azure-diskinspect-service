@@ -408,6 +408,8 @@ diagnostic | copy | /Windows/System32/winevt/Logs/MicrosoftAzureRecoveryServices
 diagnostic | copy | /Windows/System32/winevt/Logs/Security.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Setup.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-DSC%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker%4BitLocker Management.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker-DrivePreparationTool%4Opera<br>tional.evtx
 diagnostic | copy | /AzureData/CustomData.bin
 diagnostic | copy | /Windows/Setup/State/State.ini
 diagnostic | copy | /Windows/Panther/WaSetup.xml
@@ -775,7 +777,6 @@ servicefabric | copy | /Windows/System32/winevt/Logs/Microsoft-ServiceFabric%4Ad
 servicefabric | copy | /Windows/System32/winevt/Logs/Microsoft-ServiceFabric%4Operational.evtx
 servicefabric | copy | /Windows/System32/winevt/Logs/Microsoft-ServiceFabric-Lease%4Operational.evtx
 servicefabric | copy | /Windows/System32/winevt/Logs/Microsoft-ServiceFabric-Lease%4Admin.evtx
-servicefabric | copy | /Program Files/Microsoft Service Fabric/bin/Fabric/Fabric.Code
 servicefabric | copy | /WindowsAzure/Logs/MonitoringAgent.log
 servicefabric | copy | /WindowsAzure/Logs/Plugins/\*/\*/CommandExecution.log
 servicefabric | copy | /WindowsAzure/Logs/Plugins/\*/\*/Install.log
@@ -821,4 +822,4 @@ sql-iaas | copy | /WindowsAzure/Logs/Plugins/Microsoft.SqlServer.Management.SqlI
 sql-iaas | copy | /WindowsAzure/Logs/SqlServerLogs/\*.\*
 sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.\*
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-02-01 15:04:55.668373`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-02-08 11:26:13.915323`*
