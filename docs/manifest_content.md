@@ -133,8 +133,7 @@ diagnostic | copy | /var/lib/waagent/\*/status/\*.status
 diagnostic | copy | /var/lib/waagent/\*/config/\*.settings
 diagnostic | copy | /var/lib/waagent/GoalState.\*.xml
 diagnostic | copy | /var/lib/waagent/HostingEnvironmentConfig.xml
-diagnostic | copy | /var/lib/waagent/Microsoft.OSTCExtensions.CustomScriptForLinux.\*.manifest.xml
-diagnostic | copy | /var/lib/waagent/Prod.\*.manifest.xml
+diagnostic | copy | /var/lib/waagent/\*.manifest.xml
 diagnostic | copy | /var/lib/waagent/SharedConfig.xml
 diagnostic | copy | /var/lib/waagent/ManagedIdentity-\*.json
 diagnostic | diskinfo | 
@@ -823,4 +822,4 @@ sql-iaas | copy | /WindowsAzure/Logs/Plugins/Microsoft.SqlServer.Management.SqlI
 sql-iaas | copy | /WindowsAzure/Logs/SqlServerLogs/\*.\*
 sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.\*
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-02-08 14:41:11.015138`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-03-01 16:25:42.401417`*
