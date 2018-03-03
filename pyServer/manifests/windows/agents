@@ -32,6 +32,8 @@ copy,/Windows/Setup/State/state.ini
 copy,/Windows/Panther/WaSetup.xml
 
 echo,### Guest Agent ###
+ll,/WindowsAzure
+ll,/Packages/Plugins
 copy,/WindowsAzure/Logs/Telemetry.log
 copy,/WindowsAzure/Logs/TransparentInstaller.log
 copy,/WindowsAzure/Logs/WaAppAgent.log
