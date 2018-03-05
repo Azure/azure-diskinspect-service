@@ -264,6 +264,8 @@ agents | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-DSC%4Operational
 agents | copy | /AzureData/CustomData.bin
 agents | copy | /Windows/Setup/State/state.ini
 agents | copy | /Windows/Panther/WaSetup.xml
+agents | list | /WindowsAzure
+agents | list | /Packages/Plugins
 agents | copy | /WindowsAzure/Logs/Telemetry.log
 agents | copy | /WindowsAzure/Logs/TransparentInstaller.log
 agents | copy | /WindowsAzure/Logs/WaAppAgent.log
@@ -435,6 +437,8 @@ diagnostic | copy | /Windows/debug/mrt.log
 diagnostic | copy | /Windows/debug/DCPROMO.LOG
 diagnostic | copy | /Windows/debug/dcpromoui.log
 diagnostic | copy | /Windows/debug/PASSWD.LOG
+diagnostic | list | /WindowsAzure
+diagnostic | list | /Packages/Plugins
 diagnostic | copy | /WindowsAzure/Logs/Telemetry.log
 diagnostic | copy | /WindowsAzure/Logs/TransparentInstaller.log
 diagnostic | copy | /WindowsAzure/Logs/WaAppAgent.log
@@ -651,6 +655,8 @@ normal | copy | /Windows/debug/mrt.log
 normal | copy | /Windows/debug/DCPROMO.LOG
 normal | copy | /Windows/debug/dcpromoui.log
 normal | copy | /Windows/debug/PASSWD.LOG
+normal | list | /WindowsAzure
+normal | list | /Packages/Plugins
 normal | copy | /WindowsAzure/Logs/Telemetry.log
 normal | copy | /WindowsAzure/Logs/TransparentInstaller.log
 normal | copy | /WindowsAzure/Logs/WaAppAgent.log
@@ -822,4 +828,4 @@ sql-iaas | copy | /WindowsAzure/Logs/Plugins/Microsoft.SqlServer.Management.SqlI
 sql-iaas | copy | /WindowsAzure/Logs/SqlServerLogs/\*.\*
 sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.\*
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-03-01 16:25:42.401417`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-03-02 21:43:33.100454`*
