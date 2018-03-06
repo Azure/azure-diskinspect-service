@@ -1,0 +1,16 @@
+copy,/opt/microsoft/servicefabric/bin/Fabric/Fabric.Code/Fabric 
+copy,/var/log/syslog
+copy,/var/log/sfnode/sfnodelog
+copy,/var/log/azure/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode/*.*/CommandExecution.log
+
+
+copy,/var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-*/heartbeat.log
+copy,/var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-*/Service/current.config
+copy,/var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-*.*/HandlerEnvironment.json
+copy,/var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-*/HandlerManifest.json
+copy,/var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-*/config/*.settings
+copy,/var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-*.*/status/*.status
+copy,/var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-*/heartbeat.log
+
+copy,/var/lib/waagent/Microsoft.OSTCExtensions.LinuxDiagnostic-*/xmlCfg.xml
+copy,/var/log/azure/Microsoft.OSTCExtensions.LinuxDiagnostic/*/mdsd.*

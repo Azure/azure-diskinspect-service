@@ -133,8 +133,7 @@ diagnostic | copy | /var/lib/waagent/\*/status/\*.status
 diagnostic | copy | /var/lib/waagent/\*/config/\*.settings
 diagnostic | copy | /var/lib/waagent/GoalState.\*.xml
 diagnostic | copy | /var/lib/waagent/HostingEnvironmentConfig.xml
-diagnostic | copy | /var/lib/waagent/Microsoft.OSTCExtensions.CustomScriptForLinux.\*.manifest.xml
-diagnostic | copy | /var/lib/waagent/Prod.\*.manifest.xml
+diagnostic | copy | /var/lib/waagent/\*.manifest.xml
 diagnostic | copy | /var/lib/waagent/SharedConfig.xml
 diagnostic | copy | /var/lib/waagent/ManagedIdentity-\*.json
 diagnostic | diskinfo | 
@@ -208,6 +207,19 @@ normal | copy | /var/log/auth\*
 normal | copy | /var/log/secure\*
 performance | list | /var/log/sa
 performance | copy | /var/log/sa/sar\*
+servicefabric | copy | /opt/microsoft/servicefabric/bin/Fabric/Fabric.Code/Fabric
+servicefabric | copy | /var/log/syslog
+servicefabric | copy | /var/log/sfnode/sfnodelog
+servicefabric | copy | /var/log/azure/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode/\*.\*/CommandExec<br>ution.log
+servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/heartbeat.lo<br>g
+servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/Service/curr<br>ent.config
+servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*.\*/HandlerEn<br>vironment.json
+servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/HandlerManif<br>est.json
+servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/config/\*.se<br>ttings
+servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*.\*/status/\*<br>.status
+servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/heartbeat.lo<br>g
+servicefabric | copy | /var/lib/waagent/Microsoft.OSTCExtensions.LinuxDiagnostic-\*/xmlCfg.xml
+servicefabric | copy | /var/log/azure/Microsoft.OSTCExtensions.LinuxDiagnostic/\*/mdsd.\*
 site-recovery | copy | /etc/\*-release
 site-recovery | copy | /etc/HOSTNAME
 site-recovery | copy | /etc/hostname
@@ -252,6 +264,8 @@ agents | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-DSC%4Operational
 agents | copy | /AzureData/CustomData.bin
 agents | copy | /Windows/Setup/State/state.ini
 agents | copy | /Windows/Panther/WaSetup.xml
+agents | list | /WindowsAzure
+agents | list | /Packages/Plugins
 agents | copy | /WindowsAzure/Logs/Telemetry.log
 agents | copy | /WindowsAzure/Logs/TransparentInstaller.log
 agents | copy | /WindowsAzure/Logs/WaAppAgent.log
@@ -395,6 +409,8 @@ diagnostic | copy | /Windows/System32/winevt/Logs/MicrosoftAzureRecoveryServices
 diagnostic | copy | /Windows/System32/winevt/Logs/Security.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Setup.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-DSC%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker%4BitLocker Management.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker-DrivePreparationTool%4Opera<br>tional.evtx
 diagnostic | copy | /AzureData/CustomData.bin
 diagnostic | copy | /Windows/Setup/State/State.ini
 diagnostic | copy | /Windows/Panther/WaSetup.xml
@@ -421,6 +437,8 @@ diagnostic | copy | /Windows/debug/mrt.log
 diagnostic | copy | /Windows/debug/DCPROMO.LOG
 diagnostic | copy | /Windows/debug/dcpromoui.log
 diagnostic | copy | /Windows/debug/PASSWD.LOG
+diagnostic | list | /WindowsAzure
+diagnostic | list | /Packages/Plugins
 diagnostic | copy | /WindowsAzure/Logs/Telemetry.log
 diagnostic | copy | /WindowsAzure/Logs/TransparentInstaller.log
 diagnostic | copy | /WindowsAzure/Logs/WaAppAgent.log
@@ -638,6 +656,8 @@ normal | copy | /Windows/debug/mrt.log
 normal | copy | /Windows/debug/DCPROMO.LOG
 normal | copy | /Windows/debug/dcpromoui.log
 normal | copy | /Windows/debug/PASSWD.LOG
+normal | list | /WindowsAzure
+normal | list | /Packages/Plugins
 normal | copy | /WindowsAzure/Logs/Telemetry.log
 normal | copy | /WindowsAzure/Logs/TransparentInstaller.log
 normal | copy | /WindowsAzure/Logs/WaAppAgent.log
@@ -758,6 +778,28 @@ rdp-registry | registry query | HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall
 rdp-registry | registry query | HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\FirewallRules\WINRM-HTTP-Compat-In-T<br>CP
 rdp-registry | registry query | HKLM\SOFTWARE\Policies\Microsoft\Windows\System\CleanupProfiles
 rdp-registry | registry query | HKLM\SOFTWARE\Microsoft\Shared Tools\MSConfig
+servicefabric | copy | /Windows/System32/winevt/Logs/System.evtx
+servicefabric | copy | /Windows/System32/winevt/Logs/Application.evtx
+servicefabric | copy | /Windows/System32/winevt/Logs/Microsoft-ServiceFabric%4Admin.evtx
+servicefabric | copy | /Windows/System32/winevt/Logs/Microsoft-ServiceFabric%4Operational.evtx
+servicefabric | copy | /Windows/System32/winevt/Logs/Microsoft-ServiceFabric-Lease%4Operational.evtx
+servicefabric | copy | /Windows/System32/winevt/Logs/Microsoft-ServiceFabric-Lease%4Admin.evtx
+servicefabric | copy | /WindowsAzure/Logs/MonitoringAgent.log
+servicefabric | copy | /WindowsAzure/Logs/Plugins/\*/\*/CommandExecution.log
+servicefabric | copy | /WindowsAzure/Logs/Plugins/\*/\*/Install.log
+servicefabric | copy | /WindowsAzure/Logs/Plugins/\*/\*/Update.log
+servicefabric | copy | /WindowsAzure/Logs/Plugins/\*/\*/Heartbeat.log
+servicefabric | copy | /Packages/Plugins/\*/\*/config.txt
+servicefabric | copy | /Packages/Plugins/\*/\*/HandlerEnvironment.json
+servicefabric | copy | /Packages/Plugins/\*/\*/HandlerManifest.json
+servicefabric | copy | /Packages/Plugins/\*/\*/HandlerManifest.json
+servicefabric | copy | /Packages/Plugins/\*/\*/RuntimeSettings/\*.settings
+servicefabric | copy | /Packages/Plugins/\*/\*/Status/\*.status
+servicefabric | copy | /Packages/Plugins/\*/\*/Status/HeartBeat.Json
+servicefabric | copy | /Packages/Plugins/\*/\*/PackageInformation.txt
+servicefabric | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/\*/Configur<br>ation/Checkpoint.txt
+servicefabric | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/\*/Configur<br>ation/MaConfig.xml
+servicefabric | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/\*/Configur<br>ation/MonAgentHost.\*.log
 site-recovery | copy | /Windows/System32/winevt/Logs/System.evtx
 site-recovery | copy | /Windows/System32/winevt/Logs/Application.evtx
 site-recovery | copy | /Windows/System32/winevt/Logs/Windows Azure.evtx
@@ -788,3 +830,4 @@ sql-iaas | copy | /WindowsAzure/Logs/SqlServerLogs/\*.\*
 sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.\*
 
 *File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-03-06 16:24:20.004418`*
+
