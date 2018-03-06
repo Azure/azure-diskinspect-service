@@ -250,6 +250,7 @@ File Path | Manifest
 /Windows/debug/dcpromoui.log | diagnostic, eg, normal 
 /Windows/debug/mrt.log | diagnostic, eg, normal 
 /Windows/debug/netlogon.log | diagnostic, eg, normal 
+/WindowsAzure/GuestAgent\*/CommonAgentConfig.config | diagnostic 
 /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json | agents, diagnostic, eg, normal 
 /WindowsAzure/Logs/AppAgentRuntime.log | agents, diagnostic, eg, normal 
 /WindowsAzure/Logs/MonitoringAgent.log | agents, diagnostic, eg, normal 
@@ -270,6 +271,7 @@ File Path | Manifest
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/TempClu<br>sterManifest.xml | agents, diagnostic, normal 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/VCRunti<br>meInstall\*.log | agents, diagnostic, normal 
 /WindowsAzure/Logs/Plugins/Microsoft.Compute.BGInfo/\*/BGInfo\*.log | agents, diagnostic, normal 
+/WindowsAzure/Logs/Plugins/Microsoft.Compute.CustomScriptExtension/\*/\*.log | diagnostic 
 /WindowsAzure/Logs/Plugins/Microsoft.Compute.JsonADDomainExtension/\*/ADDomainExtensi<br>on.log | agents, diagnostic, normal 
 /WindowsAzure/Logs/Plugins/Microsoft.Compute.VMAccessAgent/\*/JsonVMAccessExtension.l<br>og | agents, diagnostic, normal 
 /WindowsAzure/Logs/Plugins/Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAg<br>ent/\*/0.log | agents, diagnostic, normal 
@@ -291,4 +293,4 @@ File Path | Manifest
 /WindowsAzure/config/\*.xml | agents, diagnostic, eg, normal 
 /unattend.xml | diagnostic, eg, normal 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-01-26 13:27:30.840232`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-03-06 16:24:20.004418`*
