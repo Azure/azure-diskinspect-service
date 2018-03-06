@@ -90,6 +90,8 @@ copy,/Windows/debug/dcpromoui.log
 copy,/Windows/debug/PASSWD.LOG
 
 echo,### Guest Agent ###
+ll,/WindowsAzure
+ll,/Packages/Plugins
 copy,/WindowsAzure/Logs/Telemetry.log
 copy,/WindowsAzure/Logs/TransparentInstaller.log
 copy,/WindowsAzure/Logs/WaAppAgent.log
@@ -183,7 +185,7 @@ copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.NetworkWatcherAge
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows/*/*.log
 copy,/WindowsAzure/Logs/Plugins/Microsoft.ManagedIdentity.ManagedIdentityExtensionForWindows/*/RuntimeSettings/*.xml
 copy,/WindowsAzure/GuestAgent*/CommonAgentConfig.config
-
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Compute.CustomScriptExtension/*/*.log
  
 echo,### Gathering Disk Info ###
 diskinfo,
