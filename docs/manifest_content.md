@@ -829,5 +829,4 @@ sql-iaas | copy | /WindowsAzure/Logs/Plugins/Microsoft.SqlServer.Management.SqlI
 sql-iaas | copy | /WindowsAzure/Logs/SqlServerLogs/\*.\*
 sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.\*
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-03-06 16:24:20.004418`*
-
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-03-06 16:28:53.980756`*
