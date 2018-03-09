@@ -1,0 +1,25 @@
+echo,### EXPERIMENTAL FEATURE ###
+echo,### Event Logs ###
+copy,/Windows/System32/winevt/Logs/System.evtx
+copy,/Windows/System32/winevt/Logs/Application.evtx
+copy,/Windows/System32/winevt/Logs/Windows Azure.evtx
+copy,/Windows/System32/Tasks/Microsoft/IaaSWorkloadBackup/*
+
+echo,### Additional Event Logs ###
+copy,/Program Files/Azure Workload Backup/Catalog/InquiryCatalog/*/*.bin
+copy,/Program Files/Azure Workload Backup/Catalog/RegisteredObjectInfoCatalog/*/*.bin
+copy,/Program Files/Azure Workload Backup/Catalog/WorkloadExtDatasourceCatalog/*/*.bin
+copy,/Program Files/Azure Workload Backup/Catalog/WorkloadSchedules/*/*.bin
+copy,/Program Files/Azure Workload Backup/Catalog/SyncObjectsCatalog/DatasourceSyncTable/*.bin
+copy,/Program Files/Azure Workload Backup/Catalog/SyncObjectsCatalog/AlertEventsTable/*.bin
+copy,/Program Files/Azure Workload Backup/bin/AzureWLBackupCommonManagementSettings.json
+copy,/Program Files/Azure Workload Backup/bin/AzureWLBackupMonitoringSync_config.json
+
+echo,### Guest Agent ###
+copy,/WindowsAzure/Logs/Telemetry.log
+copy,/WindowsAzure/Logs/TransparentInstaller.log
+copy,/WindowsAzure/Logs/WaAppAgent.log
+copy,/WindowsAzure/Logs/Plugins/*
+copy,/WindowsAzure/Logs/AggregateStatus/aggregatestatus*.json
+copy,/WindowsAzure/Logs/AppAgentRuntime.log
+
