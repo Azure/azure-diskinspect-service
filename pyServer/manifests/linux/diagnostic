@@ -1,5 +1,6 @@
 echo,### Probing Directories ###
 ll,/var/log
+ll,/var/lib/waagent
 ll,/etc/udev/rules.d
 
 echo,### Gathering Configuration Files ###
@@ -52,8 +53,11 @@ copy,/var/lib/waagent/*/config/*.settings
 copy,/var/lib/waagent/GoalState.*.xml
 copy,/var/lib/waagent/HostingEnvironmentConfig.xml
 copy,/var/lib/waagent/*.manifest.xml
+copy,/var/lib/waagent/*.agentsManifest
 copy,/var/lib/waagent/SharedConfig.xml
 copy,/var/lib/waagent/ManagedIdentity-*.json
+copy,/var/lib/waagent/error.json
+copy,/var/lib/waagent/Incarnation
 echo,
 
 echo,### Gathering Disk Info ###

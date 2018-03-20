@@ -63,9 +63,10 @@ File Path | Manifest
 /opt/msawb/bin/AzureWLBackupMonitoringSync_config.json | workloadbackup 
 /var/lib/dhclient/dhclient-eth0.leases | diagnostic, eg 
 /var/lib/dhcp/dhclient.eth0.leases | diagnostic, eg 
-/var/lib/waagent/ExtensionsConfig.\*.xml | agents, diagnostic, lad 
-/var/lib/waagent/GoalState.\*.xml | agents, diagnostic, site-recovery, workloadbackup 
-/var/lib/waagent/HostingEnvironmentConfig.xml | agents, diagnostic 
+/var/lib/waagent/ExtensionsConfig.\*.xml | diagnostic, lad 
+/var/lib/waagent/GoalState.\*.xml | diagnostic, site-recovery, workloadbackup 
+/var/lib/waagent/HostingEnvironmentConfig.xml | diagnostic 
+/var/lib/waagent/Incarnation | agents, diagnostic 
 /var/lib/waagent/ManagedIdentity-\*.json | diagnostic 
 /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*.\*/HandlerEn<br>vironment.json | servicefabric 
 /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*.\*/status/\*<br>.status | servicefabric 
@@ -73,17 +74,17 @@ File Path | Manifest
 /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/Service/curr<br>ent.config | servicefabric 
 /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/config/\*.se<br>ttings | servicefabric 
 /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/heartbeat.lo<br>g | servicefabric, servicefabric 
-/var/lib/waagent/Microsoft.OSTCExtensions.CustomScriptForLinux.\*.manifest.xml | agents 
 /var/lib/waagent/Microsoft.OSTCExtensions.LinuxDiagnostic-\*/xmlCfg.xml | servicefabric 
 /var/lib/waagent/Microsoft.\*LinuxDiagnostic\*/config/\*.settings | lad 
 /var/lib/waagent/Microsoft.\*LinuxDiagnostic\*/status/\*.status | lad 
 /var/lib/waagent/Microsoft.\*LinuxDiagnostic\*/xmlCfg.xml | lad 
-/var/lib/waagent/Prod.\*.manifest.xml | agents 
-/var/lib/waagent/SharedConfig.xml | agents, diagnostic 
+/var/lib/waagent/SharedConfig.xml | diagnostic 
+/var/lib/waagent/\*.agentsManifest | agents, diagnostic 
 /var/lib/waagent/\*.manifest.xml | diagnostic 
 /var/lib/waagent/\*.xml | agents, site-recovery, workloadbackup 
 /var/lib/waagent/\*/config/\*.settings | agents, diagnostic 
 /var/lib/waagent/\*/status/\*.status | agents, diagnostic 
+/var/lib/waagent/error.json | agents, diagnostic 
 /var/lib/waagent/provisioned | diagnostic, eg, genspec 
 /var/log/AzureRcmCli.log | site-recovery 
 /var/log/auth\* | agents, diagnostic, eg, normal 
@@ -326,4 +327,4 @@ File Path | Manifest
 /WindowsAzure/config/\*.xml | agents, diagnostic, eg, normal 
 /unattend.xml | diagnostic, eg, normal 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-03-09 11:18:52.760159`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-03-20 09:27:42.503971`*

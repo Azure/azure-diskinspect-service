@@ -74,22 +74,20 @@ agents | copy | /etc/\*-release
 agents | copy | /etc/HOSTNAME
 agents | copy | /etc/hostname
 agents | copy | /etc/waagent.conf
-agents | copy | /var/lib/waagent/\*.xml
 agents | copy | /var/log/waagent\*
 agents | copy | /var/log/dmesg\*
 agents | copy | /var/log/syslog\*
 agents | copy | /var/log/auth\*
 agents | copy | /var/log/azure/\*/\*/\*
 agents | copy | /var/log/azure/custom-script/handler.log
-agents | copy | /var/lib/waagent/ExtensionsConfig.\*.xml
+agents | copy | /var/lib/waagent/\*.xml
 agents | copy | /var/lib/waagent/\*/status/\*.status
 agents | copy | /var/lib/waagent/\*/config/\*.settings
-agents | copy | /var/lib/waagent/GoalState.\*.xml
-agents | copy | /var/lib/waagent/HostingEnvironmentConfig.xml
-agents | copy | /var/lib/waagent/Microsoft.OSTCExtensions.CustomScriptForLinux.\*.manifest.xml
-agents | copy | /var/lib/waagent/Prod.\*.manifest.xml
-agents | copy | /var/lib/waagent/SharedConfig.xml
+agents | copy | /var/lib/waagent/\*.agentsManifest
+agents | copy | /var/lib/waagent/error.json
+agents | copy | /var/lib/waagent/Incarnation
 diagnostic | list | /var/log
+diagnostic | list | /var/lib/waagent
 diagnostic | list | /etc/udev/rules.d
 diagnostic | copy | /var/lib/waagent/provisioned
 diagnostic | copy | /etc/fstab
@@ -134,8 +132,11 @@ diagnostic | copy | /var/lib/waagent/\*/config/\*.settings
 diagnostic | copy | /var/lib/waagent/GoalState.\*.xml
 diagnostic | copy | /var/lib/waagent/HostingEnvironmentConfig.xml
 diagnostic | copy | /var/lib/waagent/\*.manifest.xml
+diagnostic | copy | /var/lib/waagent/\*.agentsManifest
 diagnostic | copy | /var/lib/waagent/SharedConfig.xml
 diagnostic | copy | /var/lib/waagent/ManagedIdentity-\*.json
+diagnostic | copy | /var/lib/waagent/error.json
+diagnostic | copy | /var/lib/waagent/Incarnation
 diagnostic | diskinfo | 
 eg | list | /var/log
 eg | list | /etc/udev/rules.d
@@ -866,4 +867,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-03-09 11:18:52.760159`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-03-20 09:27:42.503971`*
