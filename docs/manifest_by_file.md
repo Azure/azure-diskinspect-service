@@ -79,7 +79,7 @@ File Path | Manifest
 /var/lib/waagent/Microsoft.\*LinuxDiagnostic\*/status/\*.status | lad 
 /var/lib/waagent/Microsoft.\*LinuxDiagnostic\*/xmlCfg.xml | lad 
 /var/lib/waagent/SharedConfig.xml | diagnostic 
-/var/lib/waagent/\*.agentsManifest | agents, diagnostic 
+/var/lib/waagent/\*.agentsManifest | agents 
 /var/lib/waagent/\*.manifest.xml | diagnostic 
 /var/lib/waagent/\*.xml | agents, site-recovery, workloadbackup 
 /var/lib/waagent/\*/config/\*.settings | agents, diagnostic 
@@ -327,4 +327,4 @@ File Path | Manifest
 /WindowsAzure/config/\*.xml | agents, diagnostic, eg, normal 
 /unattend.xml | diagnostic, eg, normal 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-03-20 09:27:42.503971`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-03-20 22:50:22.511906`*

@@ -132,7 +132,6 @@ diagnostic | copy | /var/lib/waagent/\*/config/\*.settings
 diagnostic | copy | /var/lib/waagent/GoalState.\*.xml
 diagnostic | copy | /var/lib/waagent/HostingEnvironmentConfig.xml
 diagnostic | copy | /var/lib/waagent/\*.manifest.xml
-diagnostic | copy | /var/lib/waagent/\*.agentsManifest
 diagnostic | copy | /var/lib/waagent/SharedConfig.xml
 diagnostic | copy | /var/lib/waagent/ManagedIdentity-\*.json
 diagnostic | copy | /var/lib/waagent/error.json
@@ -867,4 +866,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-03-20 09:27:42.503971`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-03-20 22:50:22.511906`*
