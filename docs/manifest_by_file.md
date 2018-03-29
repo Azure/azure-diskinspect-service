@@ -41,7 +41,7 @@ File Path | Manifest
 /boot/grub\*/menu.lst | diagnostic, eg 
 /etc/HOSTNAME | agents, diagnostic, eg, lad, site-recovery, workloadbackup 
 /etc/\*-release | agents, diagnostic, eg, site-recovery, workloadbackup 
-/etc/fstab | diagnostic, eg, normal 
+/etc/fstab | eg 
 /etc/hostname | agents, diagnostic, eg, genspec, lad, site-recovery, workloadbackup 
 /etc/network/interfaces | diagnostic, eg 
 /etc/network/interfaces.d/\*.cfg | diagnostic, eg 
@@ -327,4 +327,4 @@ File Path | Manifest
 /WindowsAzure/config/\*.xml | agents, diagnostic, eg, normal 
 /unattend.xml | diagnostic, eg, normal 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-03-20 22:50:22.511906`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-03-29 23:08:37.775959`*

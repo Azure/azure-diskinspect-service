@@ -90,7 +90,6 @@ diagnostic | list | /var/log
 diagnostic | list | /var/lib/waagent
 diagnostic | list | /etc/udev/rules.d
 diagnostic | copy | /var/lib/waagent/provisioned
-diagnostic | copy | /etc/fstab
 diagnostic | copy | /etc/ssh/sshd_config
 diagnostic | copy | /boot/grub\*/grub.c\*
 diagnostic | copy | /boot/grub\*/menu.lst
@@ -191,7 +190,6 @@ lad | copy | /etc/opt/microsoft/omsagent/LAD/conf/omsagent.d/\*
 lad | copy | /var/opt/microsoft/omsagent/LAD/log/\*
 normal | list | /var/log
 normal | list | /etc/udev/rules.d
-normal | copy | /etc/fstab
 normal | copy | /etc/ssh/sshd_config
 normal | copy | /var/log/waagent\*
 normal | copy | /var/log/syslog\*
@@ -866,4 +864,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-03-20 22:50:22.511906`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-03-29 23:08:37.775959`*
