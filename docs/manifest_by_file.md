@@ -9,7 +9,6 @@ File Path | Manifest
 /boot/loader.conf | diagnostic, normal 
 /etc/\*-release | agents 
 /etc/dhclient.conf | agents, diagnostic 
-/etc/fstab | diagnostic, normal 
 /etc/networks | diagnostic 
 /etc/nsswitch.conf | diagnostic 
 /etc/rc.conf | agents, diagnostic, genspec, normal 
@@ -41,7 +40,6 @@ File Path | Manifest
 /boot/grub\*/menu.lst | diagnostic, eg 
 /etc/HOSTNAME | agents, diagnostic, eg, lad, site-recovery, workloadbackup 
 /etc/\*-release | agents, diagnostic, eg, site-recovery, workloadbackup 
-/etc/fstab | eg 
 /etc/hostname | agents, diagnostic, eg, genspec, lad, site-recovery, workloadbackup 
 /etc/network/interfaces | diagnostic, eg 
 /etc/network/interfaces.d/\*.cfg | diagnostic, eg 
@@ -327,4 +325,4 @@ File Path | Manifest
 /WindowsAzure/config/\*.xml | agents, diagnostic, eg, normal 
 /unattend.xml | diagnostic, eg, normal 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-03-29 23:08:37.775959`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-03-30 02:25:37.061207`*
