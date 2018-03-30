@@ -28,7 +28,6 @@ agents | copy | /var/lib/waagent/SharedConfig.xml
 diagnostic | list | /var/log
 diagnostic | list | /etc/rc.d
 diagnostic | copy | /var/lib/waagent/provisioned
-diagnostic | copy | /etc/fstab
 diagnostic | copy | /etc/ssh/sshd_config
 diagnostic | copy | /boot/loader.conf
 diagnostic | copy | /etc/dhclient.conf
@@ -57,7 +56,6 @@ genspec | copy | /var/lib/waagent/provisioned
 normal | list | /var/log
 normal | list | /etc/rc.d
 normal | copy | /etc/rc.conf
-normal | copy | /etc/fstab
 normal | copy | /etc/ssh/sshd_config
 normal | copy | /var/log/waagent\*
 normal | copy | /var/log/messages\*
@@ -139,7 +137,6 @@ diagnostic | diskinfo |
 eg | list | /var/log
 eg | list | /etc/udev/rules.d
 eg | copy | /var/lib/waagent/provisioned
-eg | copy | /etc/fstab
 eg | copy | /boot/grub\*/grub.c\*
 eg | copy | /boot/grub\*/menu.lst
 eg | copy | /etc/\*-release
@@ -864,4 +861,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-03-29 23:08:37.775959`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-03-30 02:25:37.061207`*
