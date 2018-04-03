@@ -28,7 +28,6 @@ agents | copy | /var/lib/waagent/SharedConfig.xml
 diagnostic | list | /var/log
 diagnostic | list | /etc/rc.d
 diagnostic | copy | /var/lib/waagent/provisioned
-diagnostic | copy | /etc/fstab
 diagnostic | copy | /etc/ssh/sshd_config
 diagnostic | copy | /boot/loader.conf
 diagnostic | copy | /etc/dhclient.conf
@@ -57,7 +56,6 @@ genspec | copy | /var/lib/waagent/provisioned
 normal | list | /var/log
 normal | list | /etc/rc.d
 normal | copy | /etc/rc.conf
-normal | copy | /etc/fstab
 normal | copy | /etc/ssh/sshd_config
 normal | copy | /var/log/waagent\*
 normal | copy | /var/log/messages\*
@@ -74,25 +72,22 @@ agents | copy | /etc/\*-release
 agents | copy | /etc/HOSTNAME
 agents | copy | /etc/hostname
 agents | copy | /etc/waagent.conf
-agents | copy | /var/lib/waagent/\*.xml
 agents | copy | /var/log/waagent\*
 agents | copy | /var/log/dmesg\*
 agents | copy | /var/log/syslog\*
 agents | copy | /var/log/auth\*
 agents | copy | /var/log/azure/\*/\*/\*
 agents | copy | /var/log/azure/custom-script/handler.log
-agents | copy | /var/lib/waagent/ExtensionsConfig.\*.xml
+agents | copy | /var/lib/waagent/\*.xml
 agents | copy | /var/lib/waagent/\*/status/\*.status
 agents | copy | /var/lib/waagent/\*/config/\*.settings
-agents | copy | /var/lib/waagent/GoalState.\*.xml
-agents | copy | /var/lib/waagent/HostingEnvironmentConfig.xml
-agents | copy | /var/lib/waagent/Microsoft.OSTCExtensions.CustomScriptForLinux.\*.manifest.xml
-agents | copy | /var/lib/waagent/Prod.\*.manifest.xml
-agents | copy | /var/lib/waagent/SharedConfig.xml
+agents | copy | /var/lib/waagent/\*.agentsManifest
+agents | copy | /var/lib/waagent/error.json
+agents | copy | /var/lib/waagent/Incarnation
 diagnostic | list | /var/log
+diagnostic | list | /var/lib/waagent
 diagnostic | list | /etc/udev/rules.d
 diagnostic | copy | /var/lib/waagent/provisioned
-diagnostic | copy | /etc/fstab
 diagnostic | copy | /etc/ssh/sshd_config
 diagnostic | copy | /boot/grub\*/grub.c\*
 diagnostic | copy | /boot/grub\*/menu.lst
@@ -136,11 +131,12 @@ diagnostic | copy | /var/lib/waagent/HostingEnvironmentConfig.xml
 diagnostic | copy | /var/lib/waagent/\*.manifest.xml
 diagnostic | copy | /var/lib/waagent/SharedConfig.xml
 diagnostic | copy | /var/lib/waagent/ManagedIdentity-\*.json
+diagnostic | copy | /var/lib/waagent/error.json
+diagnostic | copy | /var/lib/waagent/Incarnation
 diagnostic | diskinfo | 
 eg | list | /var/log
 eg | list | /etc/udev/rules.d
 eg | copy | /var/lib/waagent/provisioned
-eg | copy | /etc/fstab
 eg | copy | /boot/grub\*/grub.c\*
 eg | copy | /boot/grub\*/menu.lst
 eg | copy | /etc/\*-release
@@ -191,7 +187,6 @@ lad | copy | /etc/opt/microsoft/omsagent/LAD/conf/omsagent.d/\*
 lad | copy | /var/opt/microsoft/omsagent/LAD/log/\*
 normal | list | /var/log
 normal | list | /etc/udev/rules.d
-normal | copy | /etc/fstab
 normal | copy | /etc/ssh/sshd_config
 normal | copy | /var/log/waagent\*
 normal | copy | /var/log/syslog\*
@@ -910,4 +905,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServi
 workloadbackup | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/WLPatch.log
 workloadbackup | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/WLmsi.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-04-03 20:06:48.958641`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-04-03 20:19:45.559926`*
