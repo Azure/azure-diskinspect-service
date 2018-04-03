@@ -297,6 +297,51 @@ File Path | Manifest
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows/<br>\*/\*.log | agents, diagnostic, normal 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows/<br>\*/\*.txt | agents, diagnostic, normal 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.VMSnapshot/\*/IaaSBcdrExt<br>ension\*.log | agents, diagnostic, normal 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/CommandExecution\*.log | workloadbackup 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/ExtensionEnableZip.zip | workloadbackup 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/IaaSWLPluginSvc0\*.AzureWLBackupPluginS<br>vc.log | workloadbackup 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/IaaSWLPluginSvc1\*.AzureWLBackupPluginS<br>vc.log | workloadbackup 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/IaaSWLPluginSvc2\*.AzureWLBackupPluginS<br>vc.log | workloadbackup 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/IaaSWLPluginSvc3\*.AzureWLBackupPluginS<br>vc.log | workloadbackup 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/IaaSWLPluginSvc4\*.AzureWLBackupPluginS<br>vc.log | workloadbackup 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/IaaSWLPluginSvc5\*.AzureWLBackupPluginS<br>vc.log | workloadbackup 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/IaaSWLPluginSvc6\*.AzureWLBackupPluginS<br>vc.log | workloadbackup 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/IaaSWLPluginSvc7\*.AzureWLBackupPluginS<br>vc.log | workloadbackup 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/IaaSWLPluginSvc8\*.AzureWLBackupPluginS<br>vc.log | workloadbackup 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/IaaSWLPluginSvc9\*.AzureWLBackupPluginS<br>vc.log | workloadbackup 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/IaaSWorkloadCoordinatorService0\*.Azure<br>WLBackupCoordinatorSvc.log | workloadbackup 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/IaaSWorkloadCoordinatorService1\*.Azure<br>WLBackupCoordinatorSvc.log | workloadbackup 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/IaaSWorkloadCoordinatorService2\*.Azure<br>WLBackupCoordinatorSvc.log | workloadbackup 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/IaaSWorkloadCoordinatorService3\*.Azure<br>WLBackupCoordinatorSvc.log | workloadbackup 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/IaaSWorkloadCoordinatorService4\*.Azure<br>WLBackupCoordinatorSvc.log | workloadbackup 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/IaaSWorkloadCoordinatorService5\*.Azure<br>WLBackupCoordinatorSvc.log | workloadbackup 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/IaaSWorkloadCoordinatorService6\*.Azure<br>WLBackupCoordinatorSvc.log | workloadbackup 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/IaaSWorkloadCoordinatorService7\*.Azure<br>WLBackupCoordinatorSvc.log | workloadbackup 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/IaaSWorkloadCoordinatorService8\*.Azure<br>WLBackupCoordinatorSvc.log | workloadbackup 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/IaaSWorkloadCoordinatorService9\*.Azure<br>WLBackupCoordinatorSvc.log | workloadbackup 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/TriggerExtensionJob0\*.log | workloadbackup 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/TriggerExtensionJob1\*.log | workloadbackup 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/TriggerExtensionJob2\*.log | workloadbackup 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/TriggerExtensionJob3\*.log | workloadbackup 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/TriggerExtensionJob4\*.log | workloadbackup 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/TriggerExtensionJob5\*.log | workloadbackup 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/TriggerExtensionJob6\*.log | workloadbackup 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/TriggerExtensionJob7\*.log | workloadbackup 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/TriggerExtensionJob8\*.log | workloadbackup 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/TriggerExtensionJob9\*.log | workloadbackup 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/VCRedist\*.log | workloadbackup 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/WLPatch.log | workloadbackup 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/WLmsi.log | workloadbackup 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/WorkloadExtensionHandler0\*.log | workloadbackup 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/WorkloadExtensionHandler1\*.log | workloadbackup 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/WorkloadExtensionHandler2\*.log | workloadbackup 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/WorkloadExtensionHandler3\*.log | workloadbackup 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/WorkloadExtensionHandler4\*.log | workloadbackup 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/WorkloadExtensionHandler5\*.log | workloadbackup 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/WorkloadExtensionHandler6\*.log | workloadbackup 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/WorkloadExtensionHandler7\*.log | workloadbackup 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/WorkloadExtensionHandler8\*.log | workloadbackup 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBacku<br>pWindowsWorkload/\*/WorkloadExtnLogFolder/WorkloadExtensionHandler9\*.log | workloadbackup 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.IaaSAntimalware/\*/AntimalwareCon<br>fig.log | agents, diagnostic, normal 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.Monitoring/\*/AsmExtension.log | agents, diagnostic, normal 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/FabricM<br>SIInstall\*.log | agents, diagnostic, normal 
@@ -314,7 +359,7 @@ File Path | Manifest
 /WindowsAzure/Logs/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/\*/CommandExec<br>ution\*.log | sql-iaas 
 /WindowsAzure/Logs/Plugins/Symantec.SymantecEndpointProtection/\*/sepManagedAzure.txt | agents, diagnostic, normal 
 /WindowsAzure/Logs/Plugins/TrendMicro.DeepSecurity.TrendMicroDSA/\*/\*.log | agents, diagnostic, normal 
-/WindowsAzure/Logs/Plugins/\* | site-recovery, workloadbackup 
+/WindowsAzure/Logs/Plugins/\* | site-recovery 
 /WindowsAzure/Logs/Plugins/\*/\*/CommandExecution.log | agents, diagnostic, eg, normal, servicefabric 
 /WindowsAzure/Logs/Plugins/\*/\*/Heartbeat.log | agents, diagnostic, eg, normal, servicefabric 
 /WindowsAzure/Logs/Plugins/\*/\*/Install.log | agents, diagnostic, eg, normal, servicefabric 
@@ -326,4 +371,4 @@ File Path | Manifest
 /WindowsAzure/config/\*.xml | agents, diagnostic, eg, normal 
 /unattend.xml | diagnostic, eg, normal 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-03-09 11:18:52.760159`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-04-03 20:06:48.958641`*
