@@ -31,6 +31,7 @@ class KeepAliveThread(Thread):
         self.rootLogger = rootLogger
         self.guestfishPid = None
         self.wasTimeout = False
+        self.avoidSendingKeepAlive = False
         self.rootLogger.info('Starting KeepAliveWorkerThread for thread [' +
                      str(self.forThread) + '].')
 
@@ -47,10 +48,14 @@ class KeepAliveThread(Thread):
             totalWait = 0        
             while True:
                 if self.doWork:
-                    self.rootLogger.info(
-                        'Sending CONTINUE response to keep thread [' + str(self.forThread) + '] alive.')
-                    self.httpRequestHandler.send_response_only(100)
-                    self.httpRequestHandler.end_headers()
+                    if self.avoidSendingKeepAlive:
+                        self.rootLogger.info(
+                            'Avoiding sending CONTINUE while thread [' + str(self.forThread) + '] is sending zip...')
+                    else:
+                        self.rootLogger.info(
+                            'Sending CONTINUE response to keep thread [' + str(self.forThread) + '] alive.')
+                        self.httpRequestHandler.send_response_only(100)
+                        self.httpRequestHandler.end_headers()
                 else:
                     break
                 if self.exit_flag.wait(timeout=TIME_PERIOD):

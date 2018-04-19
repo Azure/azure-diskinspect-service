@@ -310,13 +310,13 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
 
             sasKeyStr = str(postvars[b'saskey'][0], encoding='UTF-8')
             operationId, mode, modeMajorSkipTo, modeMinorSkipTo, storageAcctName, container_blob_name, storageUrl = self.ParseUrlArguments(self.path, sasKeyStr)                
-            self.telemetryLogger.info('Starting service request for <Operation Id=' + operationId + ', Mode=' + mode + ', Url=' + self.path + '>')
 
             # update the fields in the telemetry client
             for h in self.telemetryLogger.handlers:
                 if h.__class__.__name__ == 'LoggingHandler':
                     h.client.context.session.id = operationId                   
             self.telemetryClient.context.session.id = operationId
+            self.telemetryLogger.info('Starting service request for <Operation Id=' + operationId + ', Mode=' + mode + ', Url=' + self.path + '>')
 
             if ("error" in self.hostMetadata):
                 self.hostMetadata = getHostMetadata()
@@ -338,6 +338,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
                     gfWrapper.start()
                     # Upload the ZIP file
                     if gfWrapper.outputFileName:    
+                        kpThread.avoidSendingKeepAlive = True  # stop KeepAlive while we send the zip to avoid corruption issue
                         outputFileName = gfWrapper.outputFileName            
                         outputFileSize = round(os.path.getsize(outputFileName) / 1024, 2)
                         self.telemetryLogger.info('Uploading: ' + outputFileName + ' (' + str(outputFileSize) + 'kb)')
