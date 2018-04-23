@@ -370,16 +370,19 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
 
         except InvalidVhdNotFoundException as ex:
             unexpectedError = False
+            failureResultCode = 404
             telemetryException = ex
             failureStatusText = 'Vhd not found'
             self.telemetryLogger.error(failureStatusText)  # don't raise exception            
         except InvalidStorageAccountException as ex:
             unexpectedError = False
+            failureResultCode = 400
             telemetryException = ex
             failureStatusText = 'Invalid storage account'
             self.telemetryLogger.error(failureStatusText)  # don't raise exception  
         except InvalidSasException as ex:
             unexpectedError = False
+            failureResultCode = 400
             telemetryException = ex
             failureStatusText = 'Invalid SAS uri'
             self.telemetryLogger.error(failureStatusText)  # don't raise exception  
