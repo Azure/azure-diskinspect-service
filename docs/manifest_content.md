@@ -109,6 +109,7 @@ diagnostic | copy | /etc/ufw/ufw.conf
 diagnostic | copy | /etc/waagent.conf
 diagnostic | copy | /var/lib/dhcp/dhclient.eth0.leases
 diagnostic | copy | /var/lib/dhclient/dhclient-eth0.leases
+diagnostic | copy | /var/lib/wicked/lease-eth0-dhcp-ipv4.xml
 diagnostic | copy | /var/log/waagent\*
 diagnostic | copy | /var/log/syslog\*
 diagnostic | copy | /var/log/rsyslog\*
@@ -156,6 +157,7 @@ eg | copy | /etc/ufw/ufw.conf
 eg | copy | /etc/waagent.conf
 eg | copy | /var/lib/dhcp/dhclient.eth0.leases
 eg | copy | /var/lib/dhclient/dhclient-eth0.leases
+eg | copy | /var/lib/wicked/lease-eth0-dhcp-ipv4.xml
 eg | copy | /var/log/waagent\*
 eg | copy | /var/log/syslog\*
 eg | copy | /var/log/rsyslog\*

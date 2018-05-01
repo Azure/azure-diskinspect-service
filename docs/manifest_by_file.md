@@ -60,7 +60,8 @@ File Path | Manifest
 /opt/msawb/bin/AzureWLBackupCommonManagementSettings.json | workloadbackup 
 /opt/msawb/bin/AzureWLBackupMonitoringSync_config.json | workloadbackup 
 /var/lib/dhclient/dhclient-eth0.leases | diagnostic, eg 
-/var/lib/dhcp/dhclient.eth0.leases | diagnostic, eg 
+/var/lib/dhcp/dhclient.eth0.leases | diagnostic, eg
+/var/lib/wicked/lease-eth0-dhcp-ipv4.xml | diagnostic, eg 
 /var/lib/waagent/ExtensionsConfig.\*.xml | diagnostic, lad 
 /var/lib/waagent/GoalState.\*.xml | diagnostic, site-recovery, workloadbackup 
 /var/lib/waagent/HostingEnvironmentConfig.xml | diagnostic 
