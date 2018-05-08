@@ -84,6 +84,7 @@ File Path | Manifest
 /var/lib/waagent/\*/status/\*.status | agents, diagnostic 
 /var/lib/waagent/error.json | agents, diagnostic 
 /var/lib/waagent/provisioned | diagnostic, eg, genspec 
+/var/lib/wicked/lease-eth0-dhcp-ipv4.xml | diagnostic, eg 
 /var/log/AzureRcmCli.log | site-recovery 
 /var/log/auth\* | agents, diagnostic, eg, normal 
 /var/log/azure/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode/\*.\*/CommandExec<br>ution.log | servicefabric 
@@ -325,4 +326,4 @@ File Path | Manifest
 /WindowsAzure/config/\*.xml | agents, diagnostic, eg, normal 
 /unattend.xml | diagnostic, eg, normal 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-03-30 02:25:37.061207`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-05-07 16:24:09.437875`*
