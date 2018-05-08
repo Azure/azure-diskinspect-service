@@ -251,7 +251,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
                         }
 
             roleinstance = "Unknown"
-            if (self.hostMetadata):
+            if ("name" in self.hostMetadata):
                 roleInstance = json.loads(self.hostMetadata)["name"]
             # Hack: we cram this data into a global context available in the Python AppInsights SDK 
             # which will be sent by the logger in a field that the Geneva connector will pickup, and we post-process during cook
@@ -342,7 +342,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
                                 }
 
             roleinstance = "Unknown"
-            if (self.hostMetadata):
+            if ("name" in self.hostMetadata):
                 roleInstance = json.loads(self.hostMetadata)["name"]
             # Hack: we cram this data into a global context available in the Python AppInsights SDK 
             # which will be sent by the logger in a field that the Geneva connector will pickup, and we post-process during cook
