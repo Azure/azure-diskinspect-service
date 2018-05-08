@@ -124,6 +124,18 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
 
         self.telemetryClient = telemetryhandler.client
 
+    """
+    Retrieve the name of the host from the Azure metadata
+    """
+    def getInstanceNameFromMetadata(self):
+        if (len(self.hostMetadata) > 1 and "name" in self.hostMetadata):
+            try:
+                roleInstance = json.loads(self.hostMetadata)["name"]
+                self.telemetryLogger.info("Request executing on instance: " + roleInstance)
+            except json.decoder.JSONDecodeError as ex:
+                self.telemetryLogger.error("Unexpected metadata: " + self.hostMetadata) 
+                roleInstance = "Unknown"
+        return roleInstance
 
     '''
     The Application Insights libary hooks Logger.exception() but it does not allow for the passing of 
@@ -250,9 +262,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
                         'HttpMethod':'GET'
                         }
 
-            roleinstance = "Unknown"
-            if ("name" in self.hostMetadata):
-                roleInstance = json.loads(self.hostMetadata)["name"]
+            roleInstance = self.getInstanceNameFromMetadata()
             # Hack: we cram this data into a global context available in the Python AppInsights SDK 
             # which will be sent by the logger in a field that the Geneva connector will pickup, and we post-process during cook
             self.telemetryClient.context.user.id = os.environ['HOSTNAME'] + "/" + roleInstance
@@ -341,9 +351,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
                                 'HttpMethod':'POST'
                                 }
 
-            roleinstance = "Unknown"
-            if ("name" in self.hostMetadata):
-                roleInstance = json.loads(self.hostMetadata)["name"]
+            roleInstance = self.getInstanceNameFromMetadata()
             # Hack: we cram this data into a global context available in the Python AppInsights SDK 
             # which will be sent by the logger in a field that the Geneva connector will pickup, and we post-process during cook
             self.telemetryClient.context.user.id = os.environ['HOSTNAME'] + "/" + roleInstance
