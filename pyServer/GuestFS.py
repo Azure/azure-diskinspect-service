@@ -334,7 +334,7 @@ class GuestFS:
                 elif resp.status == 403:
                     raise InvalidSasException(resp.reason)
                 else:
-                    raise HTTPException("HTTP GET for SaS url returned %s: %s" % (resp.status, resp.reason))
+                    raise http.client.HTTPException("HTTP GET for SaS url returned %s: %s" % (resp.status, resp.reason))
         except socket.gaierror:
             self.rootLogger.error("diagnoseStartFailureOrRetry: HTTP connection to storage account url failed! Account may be invalid.")
             raise InvalidStorageAccountException(storageAccountHost)
