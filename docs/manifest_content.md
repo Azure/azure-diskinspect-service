@@ -28,6 +28,7 @@ agents | copy | /var/lib/waagent/SharedConfig.xml
 diagnostic | list | /var/log
 diagnostic | list | /etc/rc.d
 diagnostic | copy | /var/lib/waagent/provisioned
+diagnostic | copy | /etc/fstab
 diagnostic | copy | /etc/ssh/sshd_config
 diagnostic | copy | /boot/loader.conf
 diagnostic | copy | /etc/dhclient.conf
@@ -56,6 +57,7 @@ genspec | copy | /var/lib/waagent/provisioned
 normal | list | /var/log
 normal | list | /etc/rc.d
 normal | copy | /etc/rc.conf
+normal | copy | /etc/fstab
 normal | copy | /etc/ssh/sshd_config
 normal | copy | /var/log/waagent\*
 normal | copy | /var/log/messages\*
@@ -88,6 +90,7 @@ diagnostic | list | /var/log
 diagnostic | list | /var/lib/waagent
 diagnostic | list | /etc/udev/rules.d
 diagnostic | copy | /var/lib/waagent/provisioned
+diagnostic | copy | /etc/fstab
 diagnostic | copy | /etc/ssh/sshd_config
 diagnostic | copy | /boot/grub\*/grub.c\*
 diagnostic | copy | /boot/grub\*/menu.lst
@@ -138,6 +141,7 @@ diagnostic | diskinfo |
 eg | list | /var/log
 eg | list | /etc/udev/rules.d
 eg | copy | /var/lib/waagent/provisioned
+eg | copy | /etc/fstab
 eg | copy | /boot/grub\*/grub.c\*
 eg | copy | /boot/grub\*/menu.lst
 eg | copy | /etc/\*-release
@@ -189,6 +193,7 @@ lad | copy | /etc/opt/microsoft/omsagent/LAD/conf/omsagent.d/\*
 lad | copy | /var/opt/microsoft/omsagent/LAD/log/\*
 normal | list | /var/log
 normal | list | /etc/udev/rules.d
+normal | copy | /etc/fstab
 normal | copy | /etc/ssh/sshd_config
 normal | copy | /var/log/waagent\*
 normal | copy | /var/log/syslog\*
@@ -863,4 +868,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-05-07 16:24:09.437875`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-06-08 18:37:59.895792`*

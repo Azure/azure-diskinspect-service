@@ -4,7 +4,7 @@ ll,/etc/udev/rules.d
 
 echo,### Gathering Configuration Files ###
 copy,/var/lib/waagent/provisioned
-echo,### /etc/fstab collection temporarily disabled.
+copy,/etc/fstab
 copy,/boot/grub*/grub.c*
 copy,/boot/grub*/menu.lst
 copy,/etc/*-release

@@ -17,6 +17,7 @@ SSL_PUBLIC_KEY="$SSL_PATH/azdis_public.crt"
 
 # Miscellaneous
 LOG_FILE="/var/log/azureDiskInspectSvc.log"
+CREDSCANSERVICEVOLUMENAME="CredScanSvc"
 
 # TODO: replace this with envionment specific AppInsights instrumentation key
 APPINSIGHTS_KEY='00000000-0000-0000-00000000000000000'
