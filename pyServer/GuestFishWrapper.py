@@ -7,6 +7,8 @@ from GuestFS_registry import GuestFS_Registry
 from datetime import datetime
 import zipfile
 import urllib
+import subprocess
+import csv
 """
 LibGuestFS Wrapper for Disk Information Extraction 
 
@@ -104,6 +106,48 @@ class GuestFishWrapper:
                     if os.path.isfile(path):
                         zf.write(path, os.path.relpath(path, base_path))        
         return zipFilename
+
+    def RunCredentialScanner(self, targetDir):
+        if not os.path.exists("/CS_Latest/tools/CredentialScanner.exe"):
+            strMsg = "Credential Scanner executable not found, skipping step."
+            self.rootLogger.warning(strMsg)
+            return
+
+        step_start_time = datetime.now()
+        output_file = targetDir + "/credscan"
+        try:
+            # Run credential scanner
+            bash_command = ["mono", "--runtime=v4.0", "/CS_Latest/tools/CredentialScanner.exe", "-I", targetDir, "-S", "/CS_Latest/tools/Searchers/buildsearchers.xml,/CS_Latest/tools/Searchers/diskinspectsearchers.xml", "-O", output_file, "-v"]
+            result = subprocess.run(bash_command, timeout=600)
+        except subprocess.TimeoutExpired:
+            strMsg = "Credential Scanner timed out after 10 min."
+            self.rootLogger.warning(strMsg)
+        except:
+            strMsg = "Credential Scanner failed to run due to an exception."
+            self.rootLogger.warning(strMsg)
+        else:
+            if result.returncode != 0: 
+                step_end_time = datetime.now()
+                duration_seconds = (step_end_time - step_start_time).seconds
+                strMsg = "Credential Scanner failed to run, exit code " + str(result.returncode) + ". [Operation duration: " + str(duration_seconds) + " seconds]"
+                self.rootLogger.warning(strMsg)
+                return
+
+            # Remove files with secrets
+            removed_files = []
+            with open(output_file + "-matches.tsv", encoding='utf-8', errors='replace') as tsv:
+                for line in csv.reader(tsv, delimiter='\t'):
+                    source_file = line[1]
+                    line_number = line[4]          
+
+                    if os.path.isfile(source_file):
+                        os.remove(source_file)
+                        removed_files.append(source_file)
+
+            step_end_time = datetime.now()
+            duration_seconds = (step_end_time - step_start_time).seconds
+            strMsg = "Removed files containing secrets: " + ','.join(removed_files) + " [Operation duration: " + str(duration_seconds) + " seconds]"
+            self.rootLogger.info(strMsg)
 
     def execute(self, storageUrl):
         found_any_items= False
@@ -391,6 +435,9 @@ class GuestFishWrapper:
                 self.WriteToResultFile(operationOutFile, "\r\n##### WARNING: Partial results were collected as the operation was taking too long to complete. Consider retrying the operation specifying skip to step " + strLastGoodStep + " to continue gathering from last succesfully executed data collection step. #####")
 
         self.rootLogger.info("Current working directory: " + str(os.getcwd()))
+
+        # Scan results for secrets
+        credScannerResults = self.RunCredentialScanner(requestDir)
 
         # Build the result output archive
         zipFileName = requestDir + ".zip"
