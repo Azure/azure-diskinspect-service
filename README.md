@@ -67,7 +67,7 @@ to verify the service is up and running.
 Issue a curl query while logged into the docker container:
 
 	docker exec -it AzureDiskInspectSvc_US bash
-	<Docker Container> curl -k "https://127.0.0.1:8080/<OPERATION_ID>/<MODE>/<STORAGE BLOB NAME>/<CONTAINER BLOB NAME> -d "saskey=?<SAS QUERY PARAMETERS>
+	<Docker Container> curl -k "https://127.0.0.1:8080/<OPERATION_ID>/<MODE>/<STORAGE BLOB NAME>/<CONTAINER BLOB NAME>" --data-urlencode "saskey=<SAS QUERY PARAMETERS>"
 
 ## Automated Testing
 
@@ -75,7 +75,7 @@ A set of automated tests can be run by executing the following logged into a VM 
 
 	./tests/inspection_tests.py ~ "https://127.0.0.1:8080"
 
-Automated testing is also through [travis-ci](https://travis-ci.org/).  Additional information on automated testing found [here](.docs/tests.md).
+Automated testing is also through [travis-ci](https://travis-ci.org/).  Additional information on automated testing found [here](docs/tests.md).
 
 ## Logs:
 
