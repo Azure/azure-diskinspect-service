@@ -107,7 +107,7 @@ class GuestFishWrapper:
                         zf.write(path, os.path.relpath(path, base_path))        
         return zipFilename
 
-    def RunCredentialScanner(self, targetDir):
+    def RunCredentialScanner(self, targetDir, operationOutFile):
         if not os.path.exists("/CS_Latest/tools/CredentialScanner.exe"):
             strMsg = "Credential Scanner executable not found, skipping step."
             self.rootLogger.warning(strMsg)
@@ -147,7 +147,7 @@ class GuestFishWrapper:
             step_end_time = datetime.now()
             duration_seconds = (step_end_time - step_start_time).seconds
             strMsg = "Removed files containing secrets: " + ','.join(removed_files) + " [Operation duration: " + str(duration_seconds) + " seconds]"
-            self.rootLogger.info(strMsg)
+            self.WriteToResultFile(operationOutFile, strMsg)
 
     def execute(self, storageUrl):
         found_any_items= False
@@ -434,10 +434,10 @@ class GuestFishWrapper:
                 strLastGoodStep = str(lastGoodOperationMajorStep) + "." + str(lastGoodOperationMinorStep)
                 self.WriteToResultFile(operationOutFile, "\r\n##### WARNING: Partial results were collected as the operation was taking too long to complete. Consider retrying the operation specifying skip to step " + strLastGoodStep + " to continue gathering from last succesfully executed data collection step. #####")
 
-        self.rootLogger.info("Current working directory: " + str(os.getcwd()))
+            # Scan results for secrets
+            credScannerResults = self.RunCredentialScanner(requestDir, operationOutFile)
 
-        # Scan results for secrets
-        credScannerResults = self.RunCredentialScanner(requestDir)
+        self.rootLogger.info("Current working directory: " + str(os.getcwd()))     
 
         # Build the result output archive
         zipFileName = requestDir + ".zip"
