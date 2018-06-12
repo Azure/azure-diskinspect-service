@@ -115,9 +115,12 @@ class GuestFishWrapper:
 
         step_start_time = datetime.now()
         output_file = targetDir + "/credscan"
+        credscan_results_file = output_file + "-matches.tsv"
         try:
             # Run credential scanner
             bash_command = ["mono", "--runtime=v4.0", "/CS_Latest/tools/CredentialScanner.exe", "-I", targetDir, "-S", "/CS_Latest/tools/Searchers/buildsearchers.xml,/CS_Latest/tools/Searchers/diskinspectsearchers.xml", "-O", output_file, "-v"]
+            strMsg = "Running: " + ' '.join(bash_command)
+            self.WriteToResultFile(operationOutFile, strMsg)
             result = subprocess.run(bash_command, timeout=600)
         except subprocess.TimeoutExpired:
             strMsg = "Credential Scanner timed out after 10 min."
@@ -135,7 +138,7 @@ class GuestFishWrapper:
 
             # Remove files with secrets
             removed_files = []
-            with open(output_file + "-matches.tsv", encoding='utf-8', errors='replace') as tsv:
+            with open(credscan_results_file, encoding='utf-8', errors='replace') as tsv:
                 for line in csv.reader(tsv, delimiter='\t'):
                     source_file = line[1]
                     line_number = line[4]          
