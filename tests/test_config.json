@@ -11,7 +11,7 @@
       "os_distribution": "centos",
       "os_product_name": "CentOS Linux release 7.0.1406 (Core)",
       "os_disk_configuration": "Standard",
-      "files_present": [ "/device_0/etc/hostname", "/device_0/etc/os-release", "/device_0/var/log/yum.log", "/device_0/var/log/waagent.log", "/device_0/var/log/messages", "diskinfo.txt" ]
+      "files_present": [ "/device_0/etc/fstab", "/device_0/etc/hostname", "/device_0/etc/os-release", "/device_0/var/log/yum.log", "/device_0/var/log/waagent.log", "/device_0/var/log/messages", "diskinfo.txt" ]
     },
     {
       "title": "UbuntuCore (resilency)",
@@ -44,7 +44,7 @@
       "os_distribution": "freebsd",
       "os_product_name": "FreeBSD 10.3-RELEASE (GENERIC) #2 d912ed6(10.3.0_hyperv): Thu May 19 09:20:45 CST 2016",
       "os_disk_configuration": "Standard",
-      "files_present": [ "/device_0/etc/rc.conf", "/device_0/var/log/waagent.log", "/device_0/var/log/auth.log", "/device_0/boot/loader.conf" ]
+      "files_present": [ "/device_0/etc/rc.conf", "/device_0/etc/fstab", "/device_0/var/log/waagent.log", "/device_0/var/log/auth.log", "/device_0/boot/loader.conf" ]
     },
     {
       "title": "Windows genspec",

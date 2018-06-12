@@ -4,7 +4,7 @@ ll,/etc/rc.d
 
 echo,### Gathering Configuration Files ###
 copy,/etc/rc.conf
-echo,### /etc/fstab collection temporarily disabled.
+copy,/etc/fstab
 copy,/etc/ssh/sshd_config
 echo,
 
