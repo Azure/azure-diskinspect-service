@@ -122,6 +122,12 @@ class GuestFishWrapper:
             strMsg = "Running: " + ' '.join(bash_command)
             self.WriteToResultFile(operationOutFile, strMsg)
 
+            # Check for timeout before starting process
+            if self.kpThread.wasTimeout:
+                strMsg = "CredScanner did not run due to timeout."
+                self.rootLogger.warning(strMsg)
+                return
+
             credscan_process = subprocess.Popen(bash_command)
             self.kpThread.credscanPid = credscan_process.pid
             credscan_process.wait(timeout=600)
@@ -133,13 +139,17 @@ class GuestFishWrapper:
             strMsg = "Credential Scanner failed to run due to an exception."
             self.rootLogger.warning(strMsg)
         else:
-            # TODO remove the files that did get found even if something went wrong
-            if credscan_process.returncode != 0: 
-                step_end_time = datetime.now()
-                duration_seconds = (step_end_time - step_start_time).seconds
-                strMsg = "Credential Scanner failed to run, exit code " + str(credscan_process.returncode) + ". [Operation duration: " + str(duration_seconds) + " seconds]"
-                self.rootLogger.warning(strMsg)
-                return
+            if credscan_process.returncode != 0:
+                # Check if any secrets have been found
+                if not os.path.isfile(credscan_results_file):
+                    step_end_time = datetime.now()
+                    duration_seconds = (step_end_time - step_start_time).seconds
+                    strMsg = "Credential Scanner failed to run, exit code " + str(credscan_process.returncode) + ". [Operation duration: " + str(duration_seconds) + " seconds]"
+                    self.rootLogger.warning(strMsg)
+                    return
+                else:
+                    strMsg = "Credential Scanner returned exit code " + str(credscan_process.returncode)
+                    self.rootLogger.warning(strMsg)
 
             # Remove files with secrets
             removed_files = []
@@ -443,10 +453,7 @@ class GuestFishWrapper:
                 self.WriteToResultFile(operationOutFile, "\r\n##### WARNING: Partial results were collected as the operation was taking too long to complete. Consider retrying the operation specifying skip to step " + strLastGoodStep + " to continue gathering from last succesfully executed data collection step. #####")
 
             # Scan results for secrets
-            if not self.kpThread.wasTimeout:
-                credScannerResults = self.RunCredentialScanner(requestDir, operationOutFile)
-            else:
-                self.rootLogger.info("CredScanner did not run due to timeout.")
+            credScannerResults = self.RunCredentialScanner(requestDir, operationOutFile)
 
         self.rootLogger.info("Current working directory: " + str(os.getcwd()))     
 
