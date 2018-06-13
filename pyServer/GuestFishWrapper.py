@@ -121,7 +121,11 @@ class GuestFishWrapper:
             bash_command = ["mono", "--runtime=v4.0", "/CS_Latest/tools/CredentialScanner.exe", "-I", targetDir, "-S", "/CS_Latest/tools/Searchers/buildsearchers.xml,/CS_Latest/tools/Searchers/diskinspectsearchers.xml", "-O", output_file, "-v"]
             strMsg = "Running: " + ' '.join(bash_command)
             self.WriteToResultFile(operationOutFile, strMsg)
-            result = subprocess.run(bash_command, timeout=600)
+
+            credscan_process = subprocess.Popen(bash_command)
+            self.kpThread.credscanPid = credscan_process.pid
+            credscan_process.wait(timeout=600)
+            self.kpThread.credscanPid = None
         except subprocess.TimeoutExpired:
             strMsg = "Credential Scanner timed out after 10 min."
             self.rootLogger.warning(strMsg)
@@ -129,10 +133,11 @@ class GuestFishWrapper:
             strMsg = "Credential Scanner failed to run due to an exception."
             self.rootLogger.warning(strMsg)
         else:
-            if result.returncode != 0: 
+            # TODO remove the files that did get found even if something went wrong
+            if credscan_process.returncode != 0: 
                 step_end_time = datetime.now()
                 duration_seconds = (step_end_time - step_start_time).seconds
-                strMsg = "Credential Scanner failed to run, exit code " + str(result.returncode) + ". [Operation duration: " + str(duration_seconds) + " seconds]"
+                strMsg = "Credential Scanner failed to run, exit code " + str(credscan_process.returncode) + ". [Operation duration: " + str(duration_seconds) + " seconds]"
                 self.rootLogger.warning(strMsg)
                 return
 
@@ -438,7 +443,10 @@ class GuestFishWrapper:
                 self.WriteToResultFile(operationOutFile, "\r\n##### WARNING: Partial results were collected as the operation was taking too long to complete. Consider retrying the operation specifying skip to step " + strLastGoodStep + " to continue gathering from last succesfully executed data collection step. #####")
 
             # Scan results for secrets
-            credScannerResults = self.RunCredentialScanner(requestDir, operationOutFile)
+            if not self.kpThread.wasTimeout:
+                credScannerResults = self.RunCredentialScanner(requestDir, operationOutFile)
+            else:
+                self.rootLogger.info("CredScanner did not run due to timeout.")
 
         self.rootLogger.info("Current working directory: " + str(os.getcwd()))     
 
