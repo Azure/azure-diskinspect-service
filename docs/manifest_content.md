@@ -846,7 +846,10 @@ sql-iaas | copy | /Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/
 sql-iaas | copy | /Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/\*/Status/\*.status
 sql-iaas | copy | /Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/\*/Status/HeartBeat.Jso<br>n
 sql-iaas | copy | /Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/\*/PackageDefinition.xm<br>l
+sql-iaas | copy | /Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/\*/installation_log
 sql-iaas | copy | /WindowsAzure/Logs/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/\*/CommandExec<br>ution\*.log
+sql-iaas | copy | /WindowsAzure/Logs/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/\*/ExtensionLo<br>g\*.log
+sql-iaas | copy | /WindowsAzure/Logs/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/\*/SqlCustomer<br>SupportLogs/\*
 sql-iaas | copy | /WindowsAzure/Logs/SqlServerLogs/\*.\*
 sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.\*
 workloadbackup | copy | /Windows/System32/winevt/Logs/System.evtx
@@ -868,4 +871,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-06-08 18:37:59.895792`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-06-13 11:47:39.213990`*
