@@ -10,7 +10,11 @@ copy,/Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/*/RuntimeSett
 copy,/Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/*/Status/*.status 
 copy,/Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/*/Status/HeartBeat.Json 
 copy,/Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/*/PackageDefinition.xml
+copy,/Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/*/installation_log
+
 copy,/WindowsAzure/Logs/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/*/CommandExecution*.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/*/ExtensionLog*.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/*/SqlCustomerSupportLogs/*
 
 echo,### Sql Server Logs ### 
 copy,/WindowsAzure/Logs/SqlServerLogs/*.*
