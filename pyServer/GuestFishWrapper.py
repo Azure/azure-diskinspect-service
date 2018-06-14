@@ -109,7 +109,7 @@ class GuestFishWrapper:
 
     def RunCredentialScanner(self, targetDir, operationOutFile):
         if not os.path.exists("/CS_Latest/tools/CredentialScanner.exe"):
-            strMsg = "Credential Scanner executable not found, skipping step."
+            strMsg = "CredentialScanner: Executable not found, skipping step."
             self.rootLogger.warning(strMsg)
             return
 
@@ -117,26 +117,26 @@ class GuestFishWrapper:
         output_file = targetDir + "/credscan"
         credscan_results_file = output_file + "-matches.tsv"
         try:
-            # Run credential scanner
-            bash_command = ["mono", "--runtime=v4.0", "/CS_Latest/tools/CredentialScanner.exe", "-I", targetDir, "-S", "/CS_Latest/tools/Searchers/buildsearchers.xml,/CS_Latest/tools/Searchers/diskinspectsearchers.xml", "-O", output_file, "-v"]
-            strMsg = "Running: " + ' '.join(bash_command)
-            self.WriteToResultFile(operationOutFile, strMsg)
-
             # Check for timeout before starting process
             if self.kpThread.wasTimeout:
-                strMsg = "CredScanner did not run due to timeout."
+                strMsg = "CredentialScanner: Timed out as inspection processing time limit exceeded."
                 self.rootLogger.warning(strMsg)
                 return
+
+            # Run credential scanner
+            bash_command = ["mono", "--runtime=v4.0", "/CS_Latest/tools/CredentialScanner.exe", "-I", targetDir, "-S", "/CS_Latest/tools/Searchers/buildsearchers.xml,/CS_Latest/tools/Searchers/diskinspectsearchers.xml", "-O", output_file]
+            strMsg = "CredentialScanner: START Scan, running: {}".format(' '.join(bash_command))
+            self.WriteToResultFile(operationOutFile, strMsg)
 
             credscan_process = subprocess.Popen(bash_command)
             self.kpThread.credscanPid = credscan_process.pid
             credscan_process.wait(timeout=600)
             self.kpThread.credscanPid = None
         except subprocess.TimeoutExpired:
-            strMsg = "Credential Scanner timed out after 10 min."
+            strMsg = "CredentialScanner: Timed out as scanning step time limit exceeded."
             self.rootLogger.warning(strMsg)
         except:
-            strMsg = "Credential Scanner failed to run due to an exception."
+            strMsg = "CredentialScanner: Failed to run due to an unexpected exception."
             self.rootLogger.warning(strMsg)
         else:
             if credscan_process.returncode != 0:
@@ -144,11 +144,11 @@ class GuestFishWrapper:
                 if not os.path.isfile(credscan_results_file):
                     step_end_time = datetime.now()
                     duration_seconds = (step_end_time - step_start_time).seconds
-                    strMsg = "Credential Scanner failed to run, exit code " + str(credscan_process.returncode) + ". [Operation duration: " + str(duration_seconds) + " seconds]"
+                    strMsg = "CredentialScanner: Failed to run, returned exit code {}. [Operation duration {} seconds]".format(credscan_process.returncode, duration_seconds)
                     self.rootLogger.warning(strMsg)
                     return
                 else:
-                    strMsg = "Credential Scanner returned exit code " + str(credscan_process.returncode)
+                    strMsg = "CredentialScanner: Returned exit code {}".format(credscan_process.returncode)
                     self.rootLogger.warning(strMsg)
 
             # Remove files with secrets
@@ -160,12 +160,25 @@ class GuestFishWrapper:
 
                     if os.path.isfile(source_file):
                         os.remove(source_file)
-                        removed_files.append(source_file)
+                        # Strip out the common target dir for logging
+                        relative_source_file = source_file.replace(targetDir + "/", "")
+                        removed_files.append(relative_source_file)
+            num_removed_files = len(removed_files)
 
             step_end_time = datetime.now()
             duration_seconds = (step_end_time - step_start_time).seconds
-            strMsg = "Removed files containing secrets: " + ','.join(removed_files) + " [Operation duration: " + str(duration_seconds) + " seconds]"
-            self.WriteToResultFile(operationOutFile, strMsg)
+
+            strMsg = "CredentialScanner: Statistics - No. Removed: {}, Removed File List: [{}]".format(num_removed_files, ','.join(removed_files))
+            if num_removed_files > 0:
+                # Only write to file if files have been removed
+                self.WriteToResultFile(operationOutFile, strMsg)
+            else:
+                self.rootLogger.info(strMsg)
+                # No files removed - delete output file
+                os.remove(credscan_results_file)
+
+            strMsg = "CredentialScanner: END Scan [Operation duration: {} seconds]".format(duration_seconds)
+            self.rootLogger.info(strMsg)
 
     def execute(self, storageUrl):
         found_any_items= False
