@@ -9,6 +9,7 @@ import zipfile
 import urllib
 import subprocess
 import csv
+from collections import defaultdict
 """
 LibGuestFS Wrapper for Disk Information Extraction 
 
@@ -152,31 +153,45 @@ class GuestFishWrapper:
                     self.rootLogger.warning(strMsg)
 
             # Remove files with secrets
-            removed_files = []
+            removed_file_secrets = {}
             with open(credscan_results_file, encoding='utf-8', errors='replace') as tsv:
+                # Skip the first header line
+                next(tsv)
                 for line in csv.reader(tsv, delimiter='\t'):
                     source_file = line[1]
-                    line_number = line[4]          
-
+                    secret_found = line[2]
+                    line_number = line[4]
+                    
+                    # Remove file
                     if os.path.isfile(source_file):
                         os.remove(source_file)
-                        # Strip out the common target dir for logging
-                        relative_source_file = source_file.replace(targetDir + "/", "")
-                        removed_files.append(relative_source_file)
-            num_removed_files = len(removed_files)
+
+                    # Strip out the common target dir for logging
+                    relative_source_file = source_file.replace(targetDir + "/", "")
+                    # Store additional details for logging
+                    if relative_source_file not in removed_file_secrets:
+                        removed_file_secrets[relative_source_file] = defaultdict(int)
+                    removed_file_secrets[relative_source_file][secret_found] += 1
+
+            num_removed_files = len(removed_file_secrets.keys())
 
             step_end_time = datetime.now()
             duration_seconds = (step_end_time - step_start_time).seconds
 
-            strMsg = "CredentialScanner: Statistics - No. Removed: {}, Removed File List: [{}]".format(num_removed_files, ','.join(removed_files))
+            strMsg = "CredentialScanner: Statistics - No. Removed: {}, Removed File List: [{}]".format(num_removed_files, ', '.join(removed_file_secrets.keys()))
             if num_removed_files > 0:
                 # Only write to file if files have been removed
                 self.WriteToResultFile(operationOutFile, strMsg)
+
+                # Detailed output on secrets found
+                for removed_file, secret_dict in removed_file_secrets.items():
+                    secrets_string = ["{} {}".format(secret, count) for secret, count in secret_dict.items()]
+                    self.rootLogger.info("CredentialScanner: Detailed - File: {}, Secrets: [{}]".format(removed_file, ', '.join(secrets_string)))
             else:
                 self.rootLogger.info(strMsg)
                 # No files removed - delete output file
                 os.remove(credscan_results_file)
-
+            
             strMsg = "CredentialScanner: END Scan [Operation duration: {} seconds]".format(duration_seconds)
             self.rootLogger.info(strMsg)
 
