@@ -113,6 +113,15 @@ class GuestFishWrapper:
             strMsg = "CredentialScanner: Executable not found, skipping step."
             self.rootLogger.warning(strMsg)
             return
+        
+        # Get target directory size and count for statistics
+        scanned_directory_size = 0
+        scanned_files_count = 0
+        for dirpath, dirnames, filenames in os.walk(targetDir):
+            for filename in filenames:
+                filepath = os.path.join(dirpath, filename)
+                scanned_directory_size += os.path.getsize(filepath)
+                scanned_files_count += 1
 
         step_start_time = datetime.now()
         output_file = targetDir + "/credscan"
@@ -161,7 +170,7 @@ class GuestFishWrapper:
                     source_file = line[1]
                     secret_found = line[2]
                     line_number = line[4]
-                    
+
                     # Remove file
                     if os.path.isfile(source_file):
                         os.remove(source_file)
@@ -178,7 +187,7 @@ class GuestFishWrapper:
             step_end_time = datetime.now()
             duration_seconds = (step_end_time - step_start_time).seconds
 
-            strMsg = "CredentialScanner: Statistics - No. Removed: {}, Removed File List: [{}]".format(num_removed_files, ', '.join(removed_file_secrets.keys()))
+            strMsg = "CredentialScanner: Statistics - No. Scanned Files: {}, Scanned Directory Size: {} bytes, Operation duration: {} seconds, No. Removed: {}, Removed File List: [{}]".format(scanned_files_count, scanned_directory_size, duration_seconds, num_removed_files, ', '.join(removed_file_secrets.keys()))
             if num_removed_files > 0:
                 # Only write to file if files have been removed
                 self.WriteToResultFile(operationOutFile, strMsg)
@@ -191,9 +200,6 @@ class GuestFishWrapper:
                 self.rootLogger.info(strMsg)
                 # No files removed - delete output file
                 os.remove(credscan_results_file)
-            
-            strMsg = "CredentialScanner: END Scan [Operation duration: {} seconds]".format(duration_seconds)
-            self.rootLogger.info(strMsg)
 
     def execute(self, storageUrl):
         found_any_items= False
