@@ -1,5 +1,3 @@
-echo,### EXPERIMENTAL FEATURE ###
-
 copy,/WindowsAzure/Logs/TransparentInstaller.log
 
 echo,### Registry Hives ###
