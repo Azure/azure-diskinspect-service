@@ -30,6 +30,7 @@ class KeepAliveThread(Thread):
         self.forThread = threadId
         self.rootLogger = rootLogger
         self.guestfishPid = None
+        self.credscanPid = None
         self.wasTimeout = False
         self.avoidSendingKeepAlive = False
         self.rootLogger.info('Starting KeepAliveWorkerThread for thread [' +
@@ -75,6 +76,9 @@ class KeepAliveThread(Thread):
             if self.guestfishPid:
                 self.rootLogger.info('Killing GuestFish PID ' + str(self.guestfishPid))
                 os.kill(self.guestfishPid, signal.SIGTERM)
+            if self.credscanPid:
+                self.rootLogger.info('Killing CredScan PID ' + str(self.credscanPid))
+                os.kill(self.credscanPid, signal.SIGTERM)
 
     def complete(self):
         self.doWork = False
