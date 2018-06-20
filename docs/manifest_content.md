@@ -644,6 +644,9 @@ eg | copy | /WindowsAzure/Logs/Plugins/\*/\*/Heartbeat.log
 eg | diskinfo | 
 genspec | copy | /Windows/Setup/State/State.ini
 genspec | copy | /Windows/Panther/WaSetup.xml
+min-diagnostic | copy | /WindowsAzure/Logs/TransparentInstaller.log
+min-diagnostic | copy | /Windows/System32/config/SOFTWARE
+min-diagnostic | copy | /Windows/System32/config/SYSTEM
 normal | copy | /Windows/System32/winevt/Logs/System.evtx
 normal | copy | /Windows/System32/winevt/Logs/Application.evtx
 normal | copy | /Windows/System32/winevt/Logs/Microsoft-ServiceFabric%4Admin.evtx
@@ -871,4 +874,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-06-13 11:47:39.213990`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-06-19 22:46:56.743040`*
