@@ -1,0 +1,4 @@
+echo,### EXPERIMENTAL FEATURE ###
+echo,### Registry Hives ###
+copy,/Windows/System32/config/SOFTWARE
+copy,/Windows/System32/config/SYSTEM

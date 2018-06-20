@@ -379,8 +379,6 @@ agents | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.Edp.Ne
 agents | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows/<br>\*/\*.txt
 agents | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows/<br>\*/\*.log
 asc-vmhealth | copy | /WindowsAzure/Logs/TransparentInstaller.log
-asc-vmhealth | copy | /Windows/System32/config/SOFTWARE
-asc-vmhealth | copy | /Windows/System32/config/SYSTEM
 diagnostic | copy | /Windows/System32/config/SOFTWARE
 diagnostic | copy | /Windows/System32/config/SYSTEM
 diagnostic | copy | /Windows/System32/winevt/Logs/System.evtx
@@ -646,6 +644,8 @@ eg | copy | /WindowsAzure/Logs/Plugins/\*/\*/Heartbeat.log
 eg | diskinfo | 
 genspec | copy | /Windows/Setup/State/State.ini
 genspec | copy | /Windows/Panther/WaSetup.xml
+min-diagnostic | copy | /Windows/System32/config/SOFTWARE
+min-diagnostic | copy | /Windows/System32/config/SYSTEM
 normal | copy | /Windows/System32/winevt/Logs/System.evtx
 normal | copy | /Windows/System32/winevt/Logs/Application.evtx
 normal | copy | /Windows/System32/winevt/Logs/Microsoft-ServiceFabric%4Admin.evtx
@@ -870,4 +870,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-06-19 14:39:28.573388`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-06-19 17:22:27.249116`*
