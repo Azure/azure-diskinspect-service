@@ -1,4 +1,7 @@
 echo,### EXPERIMENTAL FEATURE ###
+
+copy,/WindowsAzure/Logs/TransparentInstaller.log
+
 echo,### Registry Hives ###
 copy,/Windows/System32/config/SOFTWARE
 copy,/Windows/System32/config/SYSTEM
