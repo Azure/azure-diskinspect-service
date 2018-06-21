@@ -9,6 +9,8 @@ import zipfile
 import urllib
 import subprocess
 import csv
+from collections import defaultdict
+import signal
 """
 LibGuestFS Wrapper for Disk Information Extraction 
 
@@ -112,6 +114,19 @@ class GuestFishWrapper:
             strMsg = "CredentialScanner: Executable not found, skipping step."
             self.rootLogger.warning(strMsg)
             return
+        
+        # Get target directory size and count for statistics
+        scanned_directory_size = 0
+        scanned_files_count = 0
+        try:
+            for dirpath, dirnames, filenames in os.walk(targetDir):
+                for filename in filenames:
+                    filepath = os.path.join(dirpath, filename)
+                    scanned_directory_size += os.path.getsize(filepath)
+                    scanned_files_count += 1
+        except:
+            strMsg = "CredentialScanner: Could not get directory size or file count."
+            self.rootLogger.warning(strMsg)
 
         step_start_time = datetime.now()
         output_file = targetDir + "/credscan"
@@ -135,50 +150,85 @@ class GuestFishWrapper:
         except subprocess.TimeoutExpired:
             strMsg = "CredentialScanner: Timed out as scanning step time limit exceeded."
             self.rootLogger.warning(strMsg)
+            if not os.path.isfile(credscan_results_file):
+                return
         except:
             strMsg = "CredentialScanner: Failed to run due to an unexpected exception."
             self.rootLogger.warning(strMsg)
+            return
         else:
-            if credscan_process.returncode != 0:
-                # Check if any secrets have been found
-                if not os.path.isfile(credscan_results_file):
-                    step_end_time = datetime.now()
-                    duration_seconds = (step_end_time - step_start_time).seconds
-                    strMsg = "CredentialScanner: Failed to run, returned exit code {}. [Operation duration {} seconds]".format(credscan_process.returncode, duration_seconds)
-                    self.rootLogger.warning(strMsg)
-                    return
-                else:
-                    strMsg = "CredentialScanner: Returned exit code {}".format(credscan_process.returncode)
-                    self.rootLogger.warning(strMsg)
-
-            # Remove files with secrets
-            removed_files = []
-            with open(credscan_results_file, encoding='utf-8', errors='replace') as tsv:
-                for line in csv.reader(tsv, delimiter='\t'):
-                    source_file = line[1]
-                    line_number = line[4]          
-
-                    if os.path.isfile(source_file):
-                        os.remove(source_file)
-                        # Strip out the common target dir for logging
-                        relative_source_file = source_file.replace(targetDir + "/", "")
-                        removed_files.append(relative_source_file)
-            num_removed_files = len(removed_files)
-
+            # Check for errors
+            exit_code = credscan_process.returncode
             step_end_time = datetime.now()
             duration_seconds = (step_end_time - step_start_time).seconds
 
-            strMsg = "CredentialScanner: Statistics - No. Removed: {}, Removed File List: [{}]".format(num_removed_files, ','.join(removed_files))
-            if num_removed_files > 0:
-                # Only write to file if files have been removed
-                self.WriteToResultFile(operationOutFile, strMsg)
-            else:
-                self.rootLogger.info(strMsg)
-                # No files removed - delete output file
-                os.remove(credscan_results_file)
+            # Negative value indicates that child was terminated by signal
+            if exit_code < 0:
+                signal_name = signal.Signals(-1 * exit_code).name
+                if signal_name == signal.SIGTERM.name:
+                    strMsg = "CredentialScanner: Timed out as inspection processing time limit exceeded."
+                    # Check if any secrets have been found
+                    if not os.path.isfile(credscan_results_file):
+                        strMsg += " [Operation duration {} seconds]".format(duration_seconds)
+                        self.rootLogger.warning(strMsg)
+                        return
+                    else:
+                        self.rootLogger.warning(strMsg)
+                else:
+                    # Replace code with signal_name for logging
+                    exit_code = signal_name
 
-            strMsg = "CredentialScanner: END Scan [Operation duration: {} seconds]".format(duration_seconds)
+            if exit_code != 0 and exit_code != signal.SIGTERM.name:
+                # Check if any secrets have been found
+                if not os.path.isfile(credscan_results_file):
+                    strMsg = "CredentialScanner: Failed to run, returned exit code {}. [Operation duration {} seconds]".format(exit_code, duration_seconds)
+                    self.rootLogger.warning(strMsg)
+                    return
+                else:
+                    strMsg = "CredentialScanner: Returned exit code {}".format(exit_code)
+                    self.rootLogger.warning(strMsg)
+
+        # Remove files with secrets
+        removed_file_secrets = {}
+        with open(credscan_results_file, encoding='utf-8', errors='replace') as tsv:
+            # Skip the first header line
+            next(tsv)
+            for line in csv.reader(tsv, delimiter='\t'):
+                source_file = line[1]
+                secret_found = line[2]
+                line_number = line[4]
+
+                # Remove file
+                if os.path.isfile(source_file):
+                    os.remove(source_file)
+
+                # Strip out the common target dir for logging
+                relative_source_file = source_file.replace(targetDir + "/", "")
+                # Store additional details for logging
+                if relative_source_file not in removed_file_secrets:
+                    removed_file_secrets[relative_source_file] = defaultdict(int)
+                removed_file_secrets[relative_source_file][secret_found] += 1
+
+        num_removed_files = len(removed_file_secrets.keys())
+
+        # No errors, include file removal in duration
+        step_end_time = datetime.now()
+        duration_seconds = (step_end_time - step_start_time).seconds
+
+        strMsg = "CredentialScanner: Statistics - No. Scanned Files: {}, Scanned Directory Size: {}, Operation duration: {} seconds, No. Removed: {}, Removed File List: [{}]".format(scanned_files_count, scanned_directory_size, duration_seconds, num_removed_files, ', '.join(removed_file_secrets.keys()))
+        if num_removed_files > 0:
+            # Only write to file if files have been removed
+            self.WriteToResultFile(operationOutFile, strMsg)
+
+            # Detailed output on secrets found
+            for removed_file, secret_dict in removed_file_secrets.items():
+                secrets_string = ["{} {}".format(secret, count) for secret, count in secret_dict.items()]
+                strMsg = "CredentialScanner: Detailed - File: {}, Secrets: [{}]".format(removed_file, ', '.join(secrets_string))
+                self.rootLogger.info(strMsg)
+        else:
             self.rootLogger.info(strMsg)
+            # No files removed - delete output file
+            os.remove(credscan_results_file)
 
     def execute(self, storageUrl):
         found_any_items= False
