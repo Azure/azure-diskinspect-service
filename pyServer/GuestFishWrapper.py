@@ -152,7 +152,19 @@ class GuestFishWrapper:
             self.rootLogger.warning(strMsg)
             return
         else:
-            if credscan_process.returncode != 0:
+            # Negative value indicates that child was terminated by signal
+            if credscan_process.returncode < 0:
+                strMsg = "CredentialScanner: Timed out as inspection processing time limit exceeded."
+                # Check if any secrets have been found
+                if not os.path.isfile(credscan_results_file):
+                    step_end_time = datetime.now()
+                    duration_seconds = (step_end_time - step_start_time).seconds
+                    strMsg += " [Operation duration {} seconds]".format(duration_seconds)
+                    self.rootLogger.warning(strMsg)
+                    return
+                else:
+                    self.rootLogger.warning(strMsg)
+            elif credscan_process.returncode > 0:
                 # Check if any secrets have been found
                 if not os.path.isfile(credscan_results_file):
                     step_end_time = datetime.now()
@@ -190,7 +202,7 @@ class GuestFishWrapper:
         step_end_time = datetime.now()
         duration_seconds = (step_end_time - step_start_time).seconds
 
-        strMsg = "CredentialScanner: Statistics - No. Scanned Files: {}, Scanned Directory Size: {} bytes, Operation duration: {} seconds, No. Removed: {}, Removed File List: [{}]".format(scanned_files_count, scanned_directory_size, duration_seconds, num_removed_files, ', '.join(removed_file_secrets.keys()))
+        strMsg = "CredentialScanner: Statistics - No. Scanned Files: {}, Scanned Directory Size: {}, Operation duration: {} seconds, No. Removed: {}, Removed File List: [{}]".format(scanned_files_count, scanned_directory_size, duration_seconds, num_removed_files, ', '.join(removed_file_secrets.keys()))
         if num_removed_files > 0:
             # Only write to file if files have been removed
             self.WriteToResultFile(operationOutFile, strMsg)
@@ -198,7 +210,8 @@ class GuestFishWrapper:
             # Detailed output on secrets found
             for removed_file, secret_dict in removed_file_secrets.items():
                 secrets_string = ["{} {}".format(secret, count) for secret, count in secret_dict.items()]
-                self.rootLogger.info("CredentialScanner: Detailed - File: {}, Secrets: [{}]".format(removed_file, ', '.join(secrets_string)))
+                strMsg = "CredentialScanner: Detailed - File: {}, Secrets: [{}]".format(removed_file, ', '.join(secrets_string))
+                self.rootLogger.info(strMsg)
         else:
             self.rootLogger.info(strMsg)
             # No files removed - delete output file
