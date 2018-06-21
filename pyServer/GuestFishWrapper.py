@@ -10,6 +10,7 @@ import urllib
 import subprocess
 import csv
 from collections import defaultdict
+import signal
 """
 LibGuestFS Wrapper for Disk Information Extraction 
 
@@ -117,11 +118,15 @@ class GuestFishWrapper:
         # Get target directory size and count for statistics
         scanned_directory_size = 0
         scanned_files_count = 0
-        for dirpath, dirnames, filenames in os.walk(targetDir):
-            for filename in filenames:
-                filepath = os.path.join(dirpath, filename)
-                scanned_directory_size += os.path.getsize(filepath)
-                scanned_files_count += 1
+        try:
+            for dirpath, dirnames, filenames in os.walk(targetDir):
+                for filename in filenames:
+                    filepath = os.path.join(dirpath, filename)
+                    scanned_directory_size += os.path.getsize(filepath)
+                    scanned_files_count += 1
+        except:
+            strMsg = "CredentialScanner: Could not get directory size or file count."
+            self.rootLogger.warning(strMsg)
 
         step_start_time = datetime.now()
         output_file = targetDir + "/credscan"
@@ -152,28 +157,35 @@ class GuestFishWrapper:
             self.rootLogger.warning(strMsg)
             return
         else:
+            # Check for errors
+            exit_code = credscan_process.returncode
+            step_end_time = datetime.now()
+            duration_seconds = (step_end_time - step_start_time).seconds
+
             # Negative value indicates that child was terminated by signal
-            if credscan_process.returncode < 0:
-                strMsg = "CredentialScanner: Timed out as inspection processing time limit exceeded."
+            if exit_code < 0:
+                signal_name = signal.Signals(-1 * exit_code).name
+                if signal_name == signal.SIGTERM.name:
+                    strMsg = "CredentialScanner: Timed out as inspection processing time limit exceeded."
+                    # Check if any secrets have been found
+                    if not os.path.isfile(credscan_results_file):
+                        strMsg += " [Operation duration {} seconds]".format(duration_seconds)
+                        self.rootLogger.warning(strMsg)
+                        return
+                    else:
+                        self.rootLogger.warning(strMsg)
+                else:
+                    # Replace code with signal_name for logging
+                    exit_code = signal_name
+
+            if exit_code != 0 and exit_code != signal.SIGTERM.name:
                 # Check if any secrets have been found
                 if not os.path.isfile(credscan_results_file):
-                    step_end_time = datetime.now()
-                    duration_seconds = (step_end_time - step_start_time).seconds
-                    strMsg += " [Operation duration {} seconds]".format(duration_seconds)
+                    strMsg = "CredentialScanner: Failed to run, returned exit code {}. [Operation duration {} seconds]".format(exit_code, duration_seconds)
                     self.rootLogger.warning(strMsg)
                     return
                 else:
-                    self.rootLogger.warning(strMsg)
-            elif credscan_process.returncode > 0:
-                # Check if any secrets have been found
-                if not os.path.isfile(credscan_results_file):
-                    step_end_time = datetime.now()
-                    duration_seconds = (step_end_time - step_start_time).seconds
-                    strMsg = "CredentialScanner: Failed to run, returned exit code {}. [Operation duration {} seconds]".format(credscan_process.returncode, duration_seconds)
-                    self.rootLogger.warning(strMsg)
-                    return
-                else:
-                    strMsg = "CredentialScanner: Returned exit code {}".format(credscan_process.returncode)
+                    strMsg = "CredentialScanner: Returned exit code {}".format(exit_code)
                     self.rootLogger.warning(strMsg)
 
         # Remove files with secrets
@@ -199,6 +211,7 @@ class GuestFishWrapper:
 
         num_removed_files = len(removed_file_secrets.keys())
 
+        # No errors, include file removal in duration
         step_end_time = datetime.now()
         duration_seconds = (step_end_time - step_start_time).seconds
 
