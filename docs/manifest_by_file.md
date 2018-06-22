@@ -94,6 +94,7 @@ File Path | Manifest
 /var/log/azure/Microsoft.\*LinuxDiagnostic/\*/\* | lad 
 /var/log/azure/\* | site-recovery, workloadbackup 
 /var/log/azure/\*/\*/\* | agents, diagnostic 
+/var/log/azure/cluster-provision.log | diagnostic 
 /var/log/azure/custom-script/handler.log | agents, diagnostic 
 /var/log/boot\* | diagnostic, eg, normal 
 /var/log/cloud-init\* | diagnostic, eg, normal 
@@ -125,6 +126,7 @@ File Path | Manifest
 File Path | Manifest 
 ------------- | ------------- 
 /AzureData/CustomData.bin | agents, diagnostic, eg, normal 
+/Boot/BCD | diagnostic 
 /Packages/Plugins/ESET.FileSecurity/\*/agent_version.txt | agents, diagnostic, normal 
 /Packages/Plugins/ESET.FileSecurity/\*/extension_version.txt | agents, diagnostic, normal 
 /Packages/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/AnalyzerConfigTempla<br>te.xml | agents, diagnostic, normal 
@@ -206,6 +208,7 @@ File Path | Manifest
 /ProgramData/ASRSetupLogs/WrapperUnifiedAgent.log | site-recovery 
 /Windows/Inf/netcfg\*.\*etl | diagnostic, normal 
 /Windows/Inf/setupapi.dev.log | diagnostic, normal 
+/Windows/Logs/CBS/CBS.log | diagnostic 
 /Windows/Panther/FastCleanup/setupact.log | diagnostic, eg, normal 
 /Windows/Panther/UnattendGC/setupact.log | diagnostic, eg, normal 
 /Windows/Panther/WaSetup.log | diagnostic, eg, normal 
@@ -328,4 +331,4 @@ File Path | Manifest
 /WindowsAzure/config/\*.xml | agents, diagnostic, eg, normal 
 /unattend.xml | diagnostic, eg, normal 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-06-08 18:37:59.895792`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-06-21 17:39:20.286342`*

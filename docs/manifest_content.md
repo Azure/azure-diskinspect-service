@@ -137,6 +137,7 @@ diagnostic | copy | /var/lib/waagent/SharedConfig.xml
 diagnostic | copy | /var/lib/waagent/ManagedIdentity-\*.json
 diagnostic | copy | /var/lib/waagent/error.json
 diagnostic | copy | /var/lib/waagent/Incarnation
+diagnostic | copy | /var/log/azure/cluster-provision.log
 diagnostic | diskinfo | 
 eg | list | /var/log
 eg | list | /etc/udev/rules.d
@@ -381,6 +382,8 @@ agents | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.Networ
 asc-vmhealth | copy | /WindowsAzure/Logs/TransparentInstaller.log
 diagnostic | copy | /Windows/System32/config/SOFTWARE
 diagnostic | copy | /Windows/System32/config/SYSTEM
+diagnostic | copy | /Boot/BCD
+diagnostic | copy | /Windows/Logs/CBS/CBS.log
 diagnostic | copy | /Windows/System32/winevt/Logs/System.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Application.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-ServiceFabric%4Admin.evtx
@@ -868,4 +871,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-06-08 18:37:59.895792`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-06-21 17:39:20.286342`*
