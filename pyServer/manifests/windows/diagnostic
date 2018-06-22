@@ -3,6 +3,12 @@ echo,### Registry Hives ###
 copy,/Windows/System32/config/SOFTWARE
 copy,/Windows/System32/config/SYSTEM
 
+echo,### BCD Store ###
+copy,/Boot/BCD
+
+echo,### CBS ###
+copy,/Windows/Logs/CBS/CBS.log
+
 echo,### Event Logs ###
 copy,/Windows/System32/winevt/Logs/System.evtx
 copy,/Windows/System32/winevt/Logs/Application.evtx
