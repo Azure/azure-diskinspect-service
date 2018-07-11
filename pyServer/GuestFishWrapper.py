@@ -139,7 +139,7 @@ class GuestFishWrapper:
                 return
 
             # Run credential scanner
-            bash_command = ["mono", "--runtime=v4.0", "/CS_Latest/tools/CredentialScanner.exe", "-I", targetDir, "-S", "/CS_Latest/tools/Searchers/buildsearchers.xml,/CS_Latest/tools/Searchers/diskinspectsearchers.xml", "-O", output_file]
+            bash_command = ["mono", "--runtime=v4.0", "/CS_Latest/tools/CredentialScanner.exe", "-I", targetDir, "-S", "/CS_Latest/tools/Searchers/diskinspectsearchers.xml", "-O", output_file]
             strMsg = "CredentialScanner: START Scan, running: {}".format(' '.join(bash_command))
             self.WriteToResultFile(operationOutFile, strMsg)
 
