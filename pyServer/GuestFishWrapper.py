@@ -198,9 +198,21 @@ class GuestFishWrapper:
                 secret_found = line[2]
                 line_number = line[4]
 
-                # Remove file
+                # Remove secret - delete line for small files, entire file for large files
                 if os.path.isfile(source_file):
-                    os.remove(source_file)
+                    if os.path.getsize(filepath) < 1000000:
+                        with open(source_file, "r+") as f:
+                            lines = f.readlines()
+                            f.seek(0)
+                            for i, line in enumerate(lines):
+                                if (i+1) != int(line_number):
+                                    f.write(line)
+                                else:
+                                    f.write("***REDACTED***")
+                            f.truncate()
+                    else:
+                        print("WZ - removing large file")
+                        os.remove(source_file)
 
                 # Strip out the common target dir for logging
                 relative_source_file = source_file.replace(targetDir + "/", "")
