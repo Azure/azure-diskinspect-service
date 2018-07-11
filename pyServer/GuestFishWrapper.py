@@ -28,7 +28,7 @@ class GuestFishWrapper:
     kpThread = None
     osType = None
 
-    def __init__(self, rootLogger, handler, storageUrl, outputDirName, operationId, mode, modeMajorSkipTo, modeMinorSkipTo, kpThread):
+    def __init__(self, rootLogger, handler, storageUrl, outputDirName, operationId, mode, modeMajorSkipTo, modeMinorSkipTo, kpThread, runWithCredscan):
         self.environment = None
         self.httpRequestHandler = handler
         self.storageUrl = storageUrl
@@ -39,6 +39,7 @@ class GuestFishWrapper:
         self.modeMajorSkipTo = modeMajorSkipTo
         self.modeMinorSkipTo = modeMinorSkipTo
         self.kpThread = kpThread
+        self.runWithCredscan = runWithCredscan
         self.osType = "unknown"
         self.operationOutFilename = self.outputDirName + os.sep + 'results.txt'
         self.registryFilename= self.outputDirName + os.sep + 'registry.json'
@@ -528,7 +529,8 @@ class GuestFishWrapper:
                 self.WriteToResultFile(operationOutFile, "\r\n##### WARNING: Partial results were collected as the operation was taking too long to complete. Consider retrying the operation specifying skip to step " + strLastGoodStep + " to continue gathering from last succesfully executed data collection step. #####")
 
             # Scan results for secrets
-            credScannerResults = self.RunCredentialScanner(requestDir, operationOutFile)
+            if self.runWithCredscan:
+                self.RunCredentialScanner(requestDir, operationOutFile)
 
         self.rootLogger.info("Current working directory: " + str(os.getcwd()))     
 
