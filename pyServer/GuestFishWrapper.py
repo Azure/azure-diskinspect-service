@@ -28,7 +28,7 @@ class GuestFishWrapper:
     kpThread = None
     osType = None
 
-    def __init__(self, rootLogger, handler, storageUrl, outputDirName, operationId, mode, modeMajorSkipTo, modeMinorSkipTo, kpThread):
+    def __init__(self, rootLogger, handler, storageUrl, outputDirName, operationId, mode, modeMajorSkipTo, modeMinorSkipTo, kpThread, runWithCredscan):
         self.environment = None
         self.httpRequestHandler = handler
         self.storageUrl = storageUrl
@@ -39,6 +39,7 @@ class GuestFishWrapper:
         self.modeMajorSkipTo = modeMajorSkipTo
         self.modeMinorSkipTo = modeMinorSkipTo
         self.kpThread = kpThread
+        self.runWithCredscan = runWithCredscan
         self.osType = "unknown"
         self.operationOutFilename = self.outputDirName + os.sep + 'results.txt'
         self.registryFilename= self.outputDirName + os.sep + 'registry.json'
@@ -188,7 +189,8 @@ class GuestFishWrapper:
                     strMsg = "CredentialScanner: Returned exit code {}".format(exit_code)
                     self.rootLogger.warning(strMsg)
 
-        # Remove files with secrets
+        # Remove found secrets from files
+        redacted_file_secrets = {}
         removed_file_secrets = {}
         with open(credscan_results_file, encoding='utf-8', errors='replace') as tsv:
             # Skip the first header line
@@ -197,33 +199,56 @@ class GuestFishWrapper:
                 source_file = line[1]
                 secret_found = line[2]
                 line_number = line[4]
+                is_redacted = False
 
-                # Remove file
+                # Remove secret - delete line for small files, entire file for large files
                 if os.path.isfile(source_file):
-                    os.remove(source_file)
+                    if os.path.getsize(filepath) < 1000000:
+                        is_redacted = True
+                        with open(source_file, "r+") as f:
+                            lines = f.readlines()
+                            f.seek(0)
+                            for i, line in enumerate(lines):
+                                if (i+1) != int(line_number):
+                                    f.write(line)
+                                else:
+                                    f.write("***REDACTED***")
+                            f.truncate()
+                    else:
+                        os.remove(source_file)
 
                 # Strip out the common target dir for logging
                 relative_source_file = source_file.replace(targetDir + "/", "")
                 # Store additional details for logging
-                if relative_source_file not in removed_file_secrets:
-                    removed_file_secrets[relative_source_file] = defaultdict(int)
-                removed_file_secrets[relative_source_file][secret_found] += 1
+                if is_redacted:
+                    if relative_source_file not in redacted_file_secrets:
+                        redacted_file_secrets[relative_source_file] = defaultdict(int)
+                    redacted_file_secrets[relative_source_file][secret_found] += 1
+                else:
+                    if relative_source_file not in removed_file_secrets:
+                        removed_file_secrets[relative_source_file] = defaultdict(int)
+                    removed_file_secrets[relative_source_file][secret_found] += 1
 
+        num_secret_files = len(redacted_file_secrets.keys()) + len(removed_file_secrets.keys())
         num_removed_files = len(removed_file_secrets.keys())
 
         # No errors, include file removal in duration
         step_end_time = datetime.now()
         duration_seconds = (step_end_time - step_start_time).seconds
 
-        strMsg = "CredentialScanner: Statistics - No. Scanned Files: {}, Scanned Directory Size: {}, Operation duration: {} seconds, No. Removed: {}, Removed File List: [{}]".format(scanned_files_count, scanned_directory_size, duration_seconds, num_removed_files, ', '.join(removed_file_secrets.keys()))
+        strMsg = "CredentialScanner: Statistics - No. Scanned Files: {}, Scanned Directory Size: {}, Operation duration: {} seconds, No. Files Containing Secrets: {}, No. Files Removed: {}, Redacted File List: [{}], Removed File List: [{}]".format(scanned_files_count, scanned_directory_size, duration_seconds, num_secret_files, num_removed_files, ', '.join(redacted_file_secrets.keys()), ', '.join(removed_file_secrets.keys()))
         if num_removed_files > 0:
             # Only write to file if files have been removed
             self.WriteToResultFile(operationOutFile, strMsg)
 
             # Detailed output on secrets found
+            for redacted_file, secret_dict in redacted_file_secrets.items():
+                secrests_string = ["{} {}".format(secret, count) for secret, count in secret_dict.items()]
+                strMsg = "CredentialScanner: Detailed - Redacted File: {}, Secrets: [{}]".format(removed_file, ', '.join(secrets_string))
+                self.rootLogger.info(strMsg)
             for removed_file, secret_dict in removed_file_secrets.items():
                 secrets_string = ["{} {}".format(secret, count) for secret, count in secret_dict.items()]
-                strMsg = "CredentialScanner: Detailed - File: {}, Secrets: [{}]".format(removed_file, ', '.join(secrets_string))
+                strMsg = "CredentialScanner: Detailed - Removed File: {}, Secrets: [{}]".format(removed_file, ', '.join(secrets_string))
                 self.rootLogger.info(strMsg)
         else:
             self.rootLogger.info(strMsg)
@@ -516,7 +541,8 @@ class GuestFishWrapper:
                 self.WriteToResultFile(operationOutFile, "\r\n##### WARNING: Partial results were collected as the operation was taking too long to complete. Consider retrying the operation specifying skip to step " + strLastGoodStep + " to continue gathering from last succesfully executed data collection step. #####")
 
             # Scan results for secrets
-            credScannerResults = self.RunCredentialScanner(requestDir, operationOutFile)
+            if self.runWithCredscan:
+                self.RunCredentialScanner(requestDir, operationOutFile)
 
         self.rootLogger.info("Current working directory: " + str(os.getcwd()))     
 

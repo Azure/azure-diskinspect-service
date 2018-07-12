@@ -330,6 +330,12 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
             sasKeyStr = str(postvars[b'saskey'][0], encoding='UTF-8')
             operationId, mode, modeMajorSkipTo, modeMinorSkipTo, storageAcctName, container_blob_name, storageUrl = self.ParseUrlArguments(self.path, sasKeyStr)                
 
+            if b'credscan' in postvars:
+                credscanStr = str(postvars[b'credscan'][0], encoding='UTF-8')
+                runWithCredscan = (credscanStr == "true")
+            else:
+                runWithCredscan = False
+
             # update the fields in the telemetry client
             for h in self.telemetryLogger.handlers:
                 if h.__class__.__name__ == 'LoggingHandler':
@@ -358,7 +364,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
 
             # Invoke LibGuestFS Wrapper for prorcessing
             with KeepAliveThread(self.telemetryLogger, self, threading.current_thread().getName()) as kpThread:
-                with GuestFishWrapper(self.telemetryLogger, self, storageUrl, OUTPUTDIRNAME, operationId, mode, modeMajorSkipTo, modeMinorSkipTo, kpThread) as gfWrapper:
+                with GuestFishWrapper(self.telemetryLogger, self, storageUrl, OUTPUTDIRNAME, operationId, mode, modeMajorSkipTo, modeMinorSkipTo, kpThread, runWithCredscan) as gfWrapper:
                     gfWrapper.start()
                     # Upload the ZIP file
                     if gfWrapper.outputFileName:    
