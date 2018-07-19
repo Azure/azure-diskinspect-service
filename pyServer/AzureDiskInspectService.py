@@ -323,6 +323,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
         telemetryException = None
         failureStatusText = None
         fatal_exit = False
+
         try:
             self.serviceMetrics.TotalRequests = self.serviceMetrics.TotalRequests + 1
             self.telemetryLogger.info('<<STATS>> ' + self.serviceMetrics.getMetrics())
@@ -335,6 +336,14 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
                 runWithCredscan = (credscanStr == "true")
             else:
                 runWithCredscan = False
+
+            if b'timeout' in postvars:
+                timeoutInMinsStr = str(postvars[b'timeout'][0], encoding='UTF-8')
+                timeoutInMins = int(timeoutInMinsStr)
+            else:
+                timeoutInMins = 19
+
+            self.telemetryLogger.info('Using timeout value=' + str(timeoutInMins))
 
             # update the fields in the telemetry client
             for h in self.telemetryLogger.handlers:
@@ -363,7 +372,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
             self.telemetryClient.context.user.id = os.environ['HOSTNAME'] + "/" + roleInstance
 
             # Invoke LibGuestFS Wrapper for prorcessing
-            with KeepAliveThread(self.telemetryLogger, self, threading.current_thread().getName()) as kpThread:
+            with KeepAliveThread(self.telemetryLogger, self, threading.current_thread().getName(), timeoutInMins) as kpThread:
                 with GuestFishWrapper(self.telemetryLogger, self, storageUrl, OUTPUTDIRNAME, operationId, mode, modeMajorSkipTo, modeMinorSkipTo, kpThread, runWithCredscan) as gfWrapper:
                     gfWrapper.start()
                     # Upload the ZIP file
