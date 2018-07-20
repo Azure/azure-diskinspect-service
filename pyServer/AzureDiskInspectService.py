@@ -20,6 +20,7 @@ from applicationinsights.logging import LoggingHandler
 import json
 
 OUTPUTDIRNAME = '/output'
+DEFAULT_TIMEOUT_IN_MINS = 19
 
 """
 Helper to print progress
@@ -341,9 +342,9 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
                 timeoutInMinsStr = str(postvars[b'timeout'][0], encoding='UTF-8')
                 timeoutInMins = int(timeoutInMinsStr)
             else:
-                timeoutInMins = 19
+                timeoutInMins = DEFAULT_TIMEOUT_IN_MINS
 
-            self.telemetryLogger.info('Using timeout value=' + str(timeoutInMins))
+            self.telemetryLogger.info('Using timeout value: ' + str(timeoutInMins)+ ' min(s)')
 
             # update the fields in the telemetry client
             for h in self.telemetryLogger.handlers:
