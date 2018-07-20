@@ -58,6 +58,7 @@ copy,/var/lib/waagent/SharedConfig.xml
 copy,/var/lib/waagent/ManagedIdentity-*.json
 copy,/var/lib/waagent/error.json
 copy,/var/lib/waagent/Incarnation
+copy,/var/lib/waagent/history/*.zip
 echo,
 
 echo,### Gathering Disk Info ###

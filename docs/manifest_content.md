@@ -86,6 +86,7 @@ agents | copy | /var/lib/waagent/\*/config/\*.settings
 agents | copy | /var/lib/waagent/\*.agentsManifest
 agents | copy | /var/lib/waagent/error.json
 agents | copy | /var/lib/waagent/Incarnation
+agents | copy | /var/lib/waagent/history/\*.zip
 diagnostic | list | /var/log
 diagnostic | list | /var/lib/waagent
 diagnostic | list | /etc/udev/rules.d
@@ -137,6 +138,7 @@ diagnostic | copy | /var/lib/waagent/SharedConfig.xml
 diagnostic | copy | /var/lib/waagent/ManagedIdentity-\*.json
 diagnostic | copy | /var/lib/waagent/error.json
 diagnostic | copy | /var/lib/waagent/Incarnation
+diagnostic | copy | /var/lib/waagent/history/\*.zip
 diagnostic | diskinfo | 
 eg | list | /var/log
 eg | list | /etc/udev/rules.d
@@ -874,4 +876,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-06-19 22:46:56.743040`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-07-20 12:07:42.479922`*
