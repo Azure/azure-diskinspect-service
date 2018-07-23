@@ -85,6 +85,7 @@ File Path | Manifest
 /var/lib/waagent/\*/config/\*.settings | agents, diagnostic 
 /var/lib/waagent/\*/status/\*.status | agents, diagnostic 
 /var/lib/waagent/error.json | agents, diagnostic 
+/var/lib/waagent/history/\*.zip | agents, diagnostic 
 /var/lib/waagent/provisioned | diagnostic, eg, genspec 
 /var/lib/wicked/lease-eth0-dhcp-ipv4.xml | diagnostic, eg 
 /var/log/AzureRcmCli.log | site-recovery 
@@ -331,4 +332,4 @@ File Path | Manifest
 /WindowsAzure/config/\*.xml | agents, diagnostic, eg, normal 
 /unattend.xml | diagnostic, eg, normal 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-06-19 22:46:56.743040`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-07-20 12:07:42.479922`*
