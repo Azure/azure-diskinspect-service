@@ -157,6 +157,16 @@
       "os_product_name": "",
       "os_disk_configuration": "",
       "shouldFail" : true
+    },
+    {
+      "title": "KeepAliveThread timeout",
+      "description": "Validate that disk inspect should stop after after roughly 1 minute with the provided timeout override value. ",
+      "vhd_relative_path": "/windows/craigw-2008R2.vhd",
+      "manifest": "diagnostic",
+      "os": "windows",
+      "os_distribution": "",
+      "os_product_name": "",
+      "os_disk_configuration": "Standard"
     }
   ]
 }

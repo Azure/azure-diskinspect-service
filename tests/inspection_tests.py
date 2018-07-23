@@ -168,6 +168,10 @@ with open(os.path.join(current_directory,'test_config.json'), "r") as json_confi
             DATA = urllib.parse.urlencode({"saskey": "sv=2017-04-17&sr=c&sig=INVALIDSAS"})
         else:
             DATA = urllib.parse.urlencode({"saskey":storage_sas})
+
+        if inspection_test["title"] == "KeepAliveThread timeout":
+            DATA = urllib.parse.urlencode({"saskey":storage_sas, "timeout":1})
+
         DATA = DATA.encode('ascii')
         req = urllib.request.Request(url=uri,data=DATA,method='POST')
         try:
@@ -181,7 +185,7 @@ with open(os.path.join(current_directory,'test_config.json'), "r") as json_confi
         except socket.timeout as e:
             print("Test exceeded time duration.. failing..")
             test_passed = False
-            
+
         if not "shouldFail" in inspection_test:
             if test_passed: 
                 folder_name = "{0}_{1}".format( uri.split('/')[-1].split('.')[0],  inspection_test["manifest"])  # e.g. Centos7_normal  
@@ -199,14 +203,22 @@ with open(os.path.join(current_directory,'test_config.json'), "r") as json_confi
             mappings = {} # skip this for "shouldFail" expected failure cases
             folder_path = ""
 
+        test_end_time = datetime.datetime.now()
+        test_duration = ((test_end_time - test_start_time).total_seconds()/60)
+
+        if inspection_test["title"] == "KeepAliveThread timeout":
+            if test_duration > 1.1:
+                test_passed = False
+                print("Error: Test did not timeout after 1 minutes" )
+
         if test_passed and test_headers(mappings, inspection_test) and test_files(inspection_test, folder_path ) and test_content(inspection_test, folder_path ):
             passed_tests.append(inspection_test["title"])
             test_result = "PASSED"
         else:
             failed_tests.append(inspection_test["title"])
             test_result = "FAILED"
-        test_end_time = datetime.datetime.now()
-        print("Test '{1}' {2}. Test duration {0} minutes".format( str( (test_end_time - test_start_time).total_seconds()/60 ), inspection_test["title"],test_result  ) )
+
+        print("Test '{1}' {2}. Test duration {0} minutes".format( str( test_duration ), inspection_test["title"],test_result  ) )
 
     print("==============================================")
     # Query health test: This ensures that we encountered only "expected" errors
