@@ -209,17 +209,22 @@ with open(os.path.join(current_directory,'test_config.json'), "r") as json_confi
         test_end_time = datetime.datetime.now()
         test_duration = ((test_end_time - test_start_time).total_seconds()/60)
 
-        if inspection_test["title"] == "KeepAliveThread timeout":
-            if test_duration > 1.1:
-                test_passed = False
+        if inspection_test["title"] == "KeepAliveThread timeout" and test_passed:
+            if test_duration > 1.1 and test_files(inspection_test, folder_path ):
+                failed_tests.append(inspection_test["title"])
+                test_result = "FAILED"
                 print("Error: Test did not timeout after 1 minutes" )
-
-        if test_passed and test_headers(mappings, inspection_test) and test_files(inspection_test, folder_path ) and test_content(inspection_test, folder_path ):
-            passed_tests.append(inspection_test["title"])
-            test_result = "PASSED"
+            elif test_headers(mappings, inspection_test) and not test_files(inspection_test, folder_path ):
+                test_passed = True
+                passed_tests.append(inspection_test["title"])
+                test_result = "PASSED"
         else:
-            failed_tests.append(inspection_test["title"])
-            test_result = "FAILED"
+            if test_passed and test_headers(mappings, inspection_test) and test_files(inspection_test, folder_path ) and test_content(inspection_test, folder_path ):
+                passed_tests.append(inspection_test["title"])
+                test_result = "PASSED"
+            else:
+                failed_tests.append(inspection_test["title"])
+                test_result = "FAILED"
 
         print("Test '{1}' {2}. Test duration {0} minutes".format( str( test_duration ), inspection_test["title"],test_result  ) )
 
