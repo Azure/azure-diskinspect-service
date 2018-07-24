@@ -82,6 +82,9 @@ def test_content(inspection_test, extracted_base):
 
 
 def extract_zip(zipFilename, basename):
+    if os.path.exists(basename):
+        shutil.rmtree(basename)
+
     os.makedirs(basename)
     zf = zipfile.ZipFile(zipFilename) 
     zf.extractall(basename)
