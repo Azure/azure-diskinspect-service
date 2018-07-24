@@ -199,6 +199,7 @@ with open(os.path.join(current_directory,'test_config.json'), "r") as json_confi
                     f.write(res.read())
                 
                 response_headers = res.getheaders()
+                print("RESPONSE HEADERS:")
                 print(response_headers)
                 extract_zip(file_path, folder_path)
                 mappings = header_to_json_mappings
@@ -210,11 +211,17 @@ with open(os.path.join(current_directory,'test_config.json'), "r") as json_confi
         test_duration = ((test_end_time - test_start_time).total_seconds()/60)
 
         if inspection_test["title"] == "KeepAliveThread timeout" and test_passed:
-            if test_duration > 1.1 and test_files(inspection_test, folder_path ):
+            timeoutHeaderVal = res.getheader("KeepAliveThread-Timeout-In-Mins")
+            print(timeoutHeaderVal)
+            if timeoutHeaderVal == None:
                 failed_tests.append(inspection_test["title"])
                 test_result = "FAILED"
-                print("Error: Test did not timeout after 1 minutes" )
-            elif test_headers(mappings, inspection_test) and not test_files(inspection_test, folder_path ):
+                print("ERROR: Could not extract timeout value from response header" )
+            elif test_duration > 1.1 and test_files(inspection_test, folder_path ) and timeoutHeaderVal != "1":
+                failed_tests.append(inspection_test["title"])
+                test_result = "FAILED"
+                print("ERROR: Test did not timeout after 1 minutes" )
+            elif test_headers(mappings, inspection_test) and not test_files(inspection_test, folder_path ) and timeoutHeaderVal == "1":
                 test_passed = True
                 passed_tests.append(inspection_test["title"])
                 test_result = "PASSED"

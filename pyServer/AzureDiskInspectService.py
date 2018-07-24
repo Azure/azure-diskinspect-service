@@ -65,6 +65,10 @@ def getContainerId():
     longContainerId = subprocess.check_output(['basename', line])
     return longContainerId.decode('utf-8')[0:12]
 
+
+class ResponseHeaderMetadata:
+    KEEPALIVETHREAD_TIMEOUT_IN_MINS = "KeepAliveThread-Timeout-In-Mins"
+
 """
 Threading server to handle multiple web requests.
 """
@@ -382,6 +386,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
                         outputFileName = gfWrapper.outputFileName            
                         outputFileSize = round(os.path.getsize(outputFileName) / 1024, 2)
                         self.telemetryLogger.info('Uploading: ' + outputFileName + ' (' + str(outputFileSize) + 'kb)')
+                        gfWrapper.metadata_pairs[ResponseHeaderMetadata.KEEPALIVETHREAD_TIMEOUT_IN_MINS] = timeoutInMins
                         self.uploadFile(gfWrapper.metadata_pairs, outputFileName, kpThread.wasTimeout, gfWrapper.osType)
                         self.telemetryLogger.info('Upload completed.')
 
