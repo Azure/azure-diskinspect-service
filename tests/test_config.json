@@ -11,6 +11,7 @@
       "os_distribution": "centos",
       "os_product_name": "CentOS Linux release 7.0.1406 (Core)",
       "os_disk_configuration": "Standard",
+      "thread_timeout": "19",
       "files_present": [ "/device_0/etc/fstab", "/device_0/etc/hostname", "/device_0/etc/os-release", "/device_0/var/log/yum.log", "/device_0/var/log/waagent.log", "/device_0/var/log/messages", "diskinfo.txt" ]
     },
     {
@@ -22,6 +23,7 @@
       "os_distribution": "",
       "os_product_name": "",
       "os_disk_configuration": "Standard",
+      "thread_timeout": "19",
       "files_present": [ "/device_1/system-data/etc/ssh/sshd_config", "/device_1/system-data/var/log/cloud-init.log", "/device_1/system-data/var/log/dmesg" ]
     },
     {
@@ -33,6 +35,7 @@
       "os_distribution": "",
       "os_product_name": "",
       "os_disk_configuration": "Standard",
+      "thread_timeout": "19",
       "files_present": [ "/diskinfo.txt","/device_0/Windows/System32/winevt/Logs/System.evtx", "/device_0/Windows/System32/winevt/Logs/Application.evtx", "/device_0/Windows/Panther/UnattendGC/setupact.log", "/device_0/Windows/Panther/WaSetup.log", "/device_0/Windows/Panther/WaSetup.xml", "/device_0/WindowsAzure/Logs/WaAppAgent.log","/device_0/WindowsAzure/Logs/AggregateStatus/aggregatestatus.json", "/device_0/Packages/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/1.6.4.0/RuntimeSettings/0.settings" ]
     },
     {
@@ -44,6 +47,7 @@
       "os_distribution": "freebsd",
       "os_product_name": "FreeBSD 10.3-RELEASE (GENERIC) #2 d912ed6(10.3.0_hyperv): Thu May 19 09:20:45 CST 2016",
       "os_disk_configuration": "Standard",
+      "thread_timeout": "19",
       "files_present": [ "/device_0/etc/rc.conf", "/device_0/etc/fstab", "/device_0/var/log/waagent.log", "/device_0/var/log/auth.log", "/device_0/boot/loader.conf" ]
     },
     {
@@ -55,6 +59,7 @@
       "os_distribution": "",
       "os_product_name": "",
       "os_disk_configuration": "Standard",
+      "thread_timeout": "19",
       "files_present": [ "/device_0/Windows/Setup/State/State.ini", "/device_0/Windows/Panther/WaSetup.xml" ],
       "file_content":{"/device_0/Windows/Setup/State/State.ini":"IMAGE_STATE_COMPLETE"}
     },
@@ -67,6 +72,7 @@
       "os_distribution": "sles",
       "os_product_name": "SUSE Linux Enterprise Server 12 SP1",
       "os_disk_configuration": "Standard",
+      "thread_timeout": "19",
       "files_present": ["/device_0/etc/hostname"],
       "file_content":{"/device_0/etc/hostname":"suse12-sp1"}
     },
@@ -79,6 +85,7 @@
       "os_distribution": "",
       "os_product_name": "",
       "os_disk_configuration": "Standard",
+      "thread_timeout": "19",
       "files_present": [ "/registry.json"]
     },
     {
@@ -90,6 +97,7 @@
       "os_distribution": "",
       "os_product_name": "",
       "os_disk_configuration": "Encrypted",
+      "thread_timeout": "19",
       "files_present": [ ]
     },
     {
@@ -101,6 +109,7 @@
       "os_distribution": "",
       "os_product_name": "",
       "os_disk_configuration": "Encrypted",
+      "thread_timeout": "19",
       "files_present": [ ]
     },
     {
@@ -112,6 +121,7 @@
       "os_distribution": "",
       "os_product_name": "",
       "os_disk_configuration": "Standard",
+      "thread_timeout": "19",
       "files_present": [ "/device_0/ProgramData/ASRSetupLogs/ASRUnifiedAgentInstaller.log", "/device_0/Program Files (x86)/Microsoft Azure Site Recovery/agent/AzureRcmCli.log", "/device_0/Windows/System32/winevt/Logs/System.evtx"]
     },
     {
@@ -123,6 +133,7 @@
       "os_distribution": "rhel",
       "os_product_name": "Red Hat Enterprise Linux Server release 6.8 (Santiago)",
       "os_disk_configuration": "Standard",
+      "thread_timeout": "19",
       "files_present": [ "/device_0/var/log/waagent.log", "/device_0/var/log/AzureRcmCli.log", "/device_0/var/log/evtcollforw.log","device_0/var/log/azure/Microsoft.Azure.RecoveryServices.SiteRecovery.Linux/Microsoft.Azure.RecoveryServices.SiteRecovery.Linux/1.0.0.2/CommandExecution.log"]
     },
     {
@@ -134,6 +145,7 @@
       "os_distribution": "",
       "os_product_name": "",
       "os_disk_configuration": "",
+      "thread_timeout": "19",
       "shouldFail" : true
     },
     {
@@ -145,6 +157,7 @@
       "os_distribution": "",
       "os_product_name": "",
       "os_disk_configuration": "",
+      "thread_timeout": "19",
       "shouldFail" : true
     },
     {
@@ -156,6 +169,7 @@
       "os_distribution": "",
       "os_product_name": "",
       "os_disk_configuration": "",
+      "thread_timeout": "19",
       "shouldFail" : true
     },
     {
@@ -166,7 +180,9 @@
       "os": "windows",
       "os_distribution": "",
       "os_product_name": "",
-      "os_disk_configuration": "Standard"
+      "os_disk_configuration": "Standard",
+      "thread_timeout": "1",
+      "files_present": [ "/diskinfo.txt","/device_0/Windows/System32/winevt/Logs/System.evtx", "/device_0/Windows/System32/winevt/Logs/Application.evtx", "/device_0/Windows/Panther/UnattendGC/setupact.log", "/device_0/Windows/Panther/WaSetup.log", "/device_0/Windows/Panther/WaSetup.xml", "/device_0/WindowsAzure/Logs/WaAppAgent.log","/device_0/WindowsAzure/Logs/AggregateStatus/aggregatestatus.json", "/device_0/Packages/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/1.6.4.0/RuntimeSettings/0.settings" ]
     }
   ]
 }

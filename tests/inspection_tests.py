@@ -106,7 +106,8 @@ def get_service_health(service_host):
 header_to_json_mappings = {"os":"InspectionMetadata-Operating-System",
                 "os_distribution":"InspectionMetadata-OS-Distribution", 
                 "os_product_name":"InspectionMetadata-Product-Name",
-                "os_disk_configuration":"InspectionMetadata-Disk-Configuration"}
+                "os_disk_configuration":"InspectionMetadata-Disk-Configuration",
+                "thread_timeout":"KeepAliveThread-Timeout-In-Mins"}
                         
 
 relative_subdirectory = "TestDownloads"
@@ -211,17 +212,11 @@ with open(os.path.join(current_directory,'test_config.json'), "r") as json_confi
         test_duration = ((test_end_time - test_start_time).total_seconds()/60)
 
         if inspection_test["title"] == "KeepAliveThread timeout" and test_passed:
-            timeoutHeaderVal = res.getheader("KeepAliveThread-Timeout-In-Mins")
-            print(timeoutHeaderVal)
-            if timeoutHeaderVal == None:
-                failed_tests.append(inspection_test["title"])
-                test_result = "FAILED"
-                print("ERROR: Could not extract timeout value from response header" )
-            elif test_duration > 1.1 and test_files(inspection_test, folder_path ) and timeoutHeaderVal != "1":
+            if test_duration > 1.1 and test_files(inspection_test, folder_path ):
                 failed_tests.append(inspection_test["title"])
                 test_result = "FAILED"
                 print("ERROR: Test did not timeout after 1 minutes" )
-            elif test_headers(mappings, inspection_test) and not test_files(inspection_test, folder_path ) and timeoutHeaderVal == "1":
+            elif test_headers(mappings, inspection_test) and not test_files(inspection_test, folder_path ):
                 test_passed = True
                 passed_tests.append(inspection_test["title"])
                 test_result = "PASSED"
