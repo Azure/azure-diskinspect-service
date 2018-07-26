@@ -346,7 +346,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
 
             if b'timeout' in postvars:
                 timeoutInputStr = str(postvars[b'timeout'][0], encoding='UTF-8')
-                if timeoutInputStr.isdecimal() and int(timeoutInputStr) > 0 and int(timeoutInputStr) < 720 :
+                if timeoutInputStr.isdecimal() and int(timeoutInputStr) > 0 and int(timeoutInputStr) < 360 :
                     timeoutInMinsStr = timeoutInputStr
                 else:
                     self.telemetryLogger.info('WARNING: Received timeout override is invalid: {0}. Default will be used.'.format(timeoutInMinsStr))
