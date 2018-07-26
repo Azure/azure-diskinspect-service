@@ -342,11 +342,16 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
             else:
                 runWithCredscan = False
 
+            timeoutInMinsStr = str(DEFAULT_TIMEOUT_IN_MINS)
+
             if b'timeout' in postvars:
-                timeoutInMinsStr = str(postvars[b'timeout'][0], encoding='UTF-8')
-                timeoutInMins = int(timeoutInMinsStr)
-            else:
-                timeoutInMins = DEFAULT_TIMEOUT_IN_MINS
+                timeoutInputStr = str(postvars[b'timeout'][0], encoding='UTF-8')
+                if timeoutInputStr.isdecimal() and int(timeoutInputStr) > 0 and int(timeoutInputStr) < 720 :
+                    timeoutInMinsStr = timeoutInputStr
+                else:
+                    self.telemetryLogger.info('WARNING: Received timeout override is invalid: {0}. Default will be used.'.format(timeoutInMinsStr))
+
+            timeoutInMins = int(timeoutInMinsStr)
 
             self.telemetryLogger.info('Using timeout value: ' + str(timeoutInMins)+ ' min(s)')
 

@@ -107,7 +107,7 @@ header_to_json_mappings = {"os":"InspectionMetadata-Operating-System",
                 "os_distribution":"InspectionMetadata-OS-Distribution", 
                 "os_product_name":"InspectionMetadata-Product-Name",
                 "os_disk_configuration":"InspectionMetadata-Disk-Configuration",
-                "thread_timeout":"KeepAliveThread-Timeout-In-Mins"}
+                "expected_timeout":"KeepAliveThread-Timeout-In-Mins"}
                         
 
 relative_subdirectory = "TestDownloads"
@@ -173,8 +173,8 @@ with open(os.path.join(current_directory,'test_config.json'), "r") as json_confi
         else:
             DATA = urllib.parse.urlencode({"saskey":storage_sas})
 
-        if inspection_test["title"] == "KeepAliveThread timeout":
-            DATA = urllib.parse.urlencode({"saskey":storage_sas, "timeout":1})
+        if "timeout_override" in inspection_test:
+            DATA = urllib.parse.urlencode({"saskey":storage_sas, "timeout":inspection_test["timeout_override"]})
 
         DATA = DATA.encode('ascii')
         req = urllib.request.Request(url=uri,data=DATA,method='POST')
