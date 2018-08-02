@@ -14,12 +14,15 @@ Globals
 IP_ADDRESS = '127.0.0.1'
 PORT = 8081
 LOG_FILE = "/var/log/azureDiskInspectSvc.log"
-
+if 'RELEASENAME' in os.environ:
+    RELEASENAME=os.environ['RELEASENAME']
+else:
+    RELEASENAME="AzureDiskInspect-Release-MANUAL"
 
 """
 Logger Initialization
 """
-logFormatter = logging.Formatter("%(asctime)s [%(threadName)-12.12s] [%(levelname)-7.7s]: %(message)s")
+logFormatter = logging.Formatter("%(asctime)s [%(threadName)-12.12s] [%(levelname)-7.7s] ["+RELEASENAME+"]: %(message)s")
 rootLogger = logging.getLogger()
 rootLogger.setLevel(logging.DEBUG)
 
@@ -44,7 +47,7 @@ if __name__ == '__main__':
     AzureDiskInspectService.serviceMetrics = serviceMetrics
     server = ThreadingServer(server_address, AzureDiskInspectService)
     rootLogger.info('Started AzureDiskInspectService on IP: ' + str(IP_ADDRESS) + ', Port: ' + str(PORT))
-    
+
     try:
         while (True):
             sys.stdout.flush()
