@@ -99,10 +99,14 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
     def __init__(self, request, client_address, server ):    
         self.hostMetadata = getHostMetadata()
         self.containerId = getContainerId() 
-        if os.environ['CONTAINER_VERSION']:
+        if 'CONTAINER_VERSION' in os.environ:
             self.containerVersion = os.environ['CONTAINER_VERSION']
         else:
             self.containerVersion = 'not set'
+        if 'RELEASENAME' in os.environ:
+            self.releaseName=os.environ['RELEASENAME']
+        else:
+            self.releaseName="AzureDiskInspect-Release-MANUAL"
         self.InitializeAppInsights() 
         super().__init__(request, client_address, server) # invoke the base class constructor
 
@@ -120,6 +124,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
         telemetryhandler.setFormatter(logFormatter)
         telemetryhandler.client.context.application.id = "DiskInspect-Service"
         telemetryhandler.client.context.application.ver = self.containerVersion
+        telemetryhandler.client.context.properties['releaseName'] = self.releaseName
         self.telemetryLogger.addHandler(telemetryhandler)
 
         self.telemetryClient = telemetryhandler.client
