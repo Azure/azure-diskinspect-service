@@ -20,6 +20,7 @@ from applicationinsights.logging import LoggingHandler
 import json
 
 OUTPUTDIRNAME = '/output'
+DEFAULT_TIMEOUT_IN_MINS = 19
 
 """
 Helper to print progress
@@ -63,6 +64,10 @@ def getContainerId():
     line = subprocess.check_output(command)
     longContainerId = subprocess.check_output(['basename', line])
     return longContainerId.decode('utf-8')[0:12]
+
+
+class ResponseHeaderMetadata:
+    KEEPALIVETHREAD_TIMEOUT_IN_MINS = "KeepAliveThread-Timeout-In-Mins"
 
 """
 Threading server to handle multiple web requests.
@@ -328,6 +333,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
         telemetryException = None
         failureStatusText = None
         fatal_exit = False
+
         try:
             self.serviceMetrics.TotalRequests = self.serviceMetrics.TotalRequests + 1
             self.telemetryLogger.info('<<STATS>> ' + self.serviceMetrics.getMetrics())
@@ -340,6 +346,19 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
                 runWithCredscan = (credscanStr == "true")
             else:
                 runWithCredscan = False
+
+            timeoutInMinsStr = str(DEFAULT_TIMEOUT_IN_MINS)
+
+            if b'timeout' in postvars:
+                timeoutInputStr = str(postvars[b'timeout'][0], encoding='UTF-8')
+                if timeoutInputStr.isdecimal() and int(timeoutInputStr) > 0 and int(timeoutInputStr) < 120 :
+                    timeoutInMinsStr = timeoutInputStr
+                else:
+                    self.telemetryLogger.info('WARNING: Received timeout override is invalid: {0}. Default will be used.'.format(timeoutInMinsStr))
+
+            timeoutInMins = int(timeoutInMinsStr)
+
+            self.telemetryLogger.info('Using timeout value: ' + str(timeoutInMins)+ ' min(s)')
 
             # update the fields in the telemetry client
             for h in self.telemetryLogger.handlers:
@@ -368,7 +387,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
             self.telemetryClient.context.user.id = os.environ['HOSTNAME'] + "/" + roleInstance
 
             # Invoke LibGuestFS Wrapper for prorcessing
-            with KeepAliveThread(self.telemetryLogger, self, threading.current_thread().getName()) as kpThread:
+            with KeepAliveThread(self.telemetryLogger, self, threading.current_thread().getName(), timeoutInMins) as kpThread:
                 with GuestFishWrapper(self.telemetryLogger, self, storageUrl, OUTPUTDIRNAME, operationId, mode, modeMajorSkipTo, modeMinorSkipTo, kpThread, runWithCredscan) as gfWrapper:
                     gfWrapper.start()
                     # Upload the ZIP file
@@ -377,6 +396,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
                         outputFileName = gfWrapper.outputFileName            
                         outputFileSize = round(os.path.getsize(outputFileName) / 1024, 2)
                         self.telemetryLogger.info('Uploading: ' + outputFileName + ' (' + str(outputFileSize) + 'kb)')
+                        gfWrapper.metadata_pairs[ResponseHeaderMetadata.KEEPALIVETHREAD_TIMEOUT_IN_MINS] = timeoutInMins
                         self.uploadFile(gfWrapper.metadata_pairs, outputFileName, kpThread.wasTimeout, gfWrapper.osType)
                         self.telemetryLogger.info('Upload completed.')
 

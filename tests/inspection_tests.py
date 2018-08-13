@@ -82,6 +82,9 @@ def test_content(inspection_test, extracted_base):
 
 
 def extract_zip(zipFilename, basename):
+    if os.path.exists(basename):
+        shutil.rmtree(basename)
+
     os.makedirs(basename)
     zf = zipfile.ZipFile(zipFilename) 
     zf.extractall(basename)
@@ -103,7 +106,8 @@ def get_service_health(service_host):
 header_to_json_mappings = {"os":"InspectionMetadata-Operating-System",
                 "os_distribution":"InspectionMetadata-OS-Distribution", 
                 "os_product_name":"InspectionMetadata-Product-Name",
-                "os_disk_configuration":"InspectionMetadata-Disk-Configuration"}
+                "os_disk_configuration":"InspectionMetadata-Disk-Configuration",
+                "expected_timeout":"KeepAliveThread-Timeout-In-Mins"}
                         
 
 relative_subdirectory = "TestDownloads"
@@ -168,6 +172,10 @@ with open(os.path.join(current_directory,'test_config.json'), "r") as json_confi
             DATA = urllib.parse.urlencode({"saskey": "sv=2017-04-17&sr=c&sig=INVALIDSAS"})
         else:
             DATA = urllib.parse.urlencode({"saskey":storage_sas})
+
+        if "timeout_override" in inspection_test:
+            DATA = urllib.parse.urlencode({"saskey":storage_sas, "timeout":inspection_test["timeout_override"]})
+
         DATA = DATA.encode('ascii')
         req = urllib.request.Request(url=uri,data=DATA,method='POST')
         try:
@@ -181,7 +189,7 @@ with open(os.path.join(current_directory,'test_config.json'), "r") as json_confi
         except socket.timeout as e:
             print("Test exceeded time duration.. failing..")
             test_passed = False
-            
+
         if not "shouldFail" in inspection_test:
             if test_passed: 
                 folder_name = "{0}_{1}".format( uri.split('/')[-1].split('.')[0],  inspection_test["manifest"])  # e.g. Centos7_normal  
@@ -192,6 +200,7 @@ with open(os.path.join(current_directory,'test_config.json'), "r") as json_confi
                     f.write(res.read())
                 
                 response_headers = res.getheaders()
+                print("RESPONSE HEADERS:")
                 print(response_headers)
                 extract_zip(file_path, folder_path)
                 mappings = header_to_json_mappings
@@ -199,14 +208,27 @@ with open(os.path.join(current_directory,'test_config.json'), "r") as json_confi
             mappings = {} # skip this for "shouldFail" expected failure cases
             folder_path = ""
 
-        if test_passed and test_headers(mappings, inspection_test) and test_files(inspection_test, folder_path ) and test_content(inspection_test, folder_path ):
-            passed_tests.append(inspection_test["title"])
-            test_result = "PASSED"
-        else:
-            failed_tests.append(inspection_test["title"])
-            test_result = "FAILED"
         test_end_time = datetime.datetime.now()
-        print("Test '{1}' {2}. Test duration {0} minutes".format( str( (test_end_time - test_start_time).total_seconds()/60 ), inspection_test["title"],test_result  ) )
+        test_duration = ((test_end_time - test_start_time).total_seconds()/60)
+
+        if inspection_test["title"] == "KeepAliveThread timeout" and test_passed:
+            if test_duration > 1.1 and test_files(inspection_test, folder_path ):
+                failed_tests.append(inspection_test["title"])
+                test_result = "FAILED"
+                print("ERROR: Test did not timeout after 1 minutes" )
+            elif test_headers(mappings, inspection_test) and not test_files(inspection_test, folder_path ):
+                test_passed = True
+                passed_tests.append(inspection_test["title"])
+                test_result = "PASSED"
+        else:
+            if test_passed and test_headers(mappings, inspection_test) and test_files(inspection_test, folder_path ) and test_content(inspection_test, folder_path ):
+                passed_tests.append(inspection_test["title"])
+                test_result = "PASSED"
+            else:
+                failed_tests.append(inspection_test["title"])
+                test_result = "FAILED"
+
+        print("Test '{1}' {2}. Test duration {0} minutes".format( str( test_duration ), inspection_test["title"],test_result  ) )
 
     print("==============================================")
     # Query health test: This ensures that we encountered only "expected" errors
