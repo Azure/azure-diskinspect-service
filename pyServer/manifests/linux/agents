@@ -25,4 +25,5 @@ copy,/var/lib/waagent/*/config/*.settings
 copy,/var/lib/waagent/*.agentsManifest
 copy,/var/lib/waagent/error.json
 copy,/var/lib/waagent/Incarnation
+copy,/var/lib/waagent/history/*.zip
 echo,
