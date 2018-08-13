@@ -237,21 +237,18 @@ class GuestFishWrapper:
         duration_seconds = (step_end_time - step_start_time).seconds
 
         strMsg = "CredentialScanner: Statistics - No. Scanned Files: {}, Scanned Directory Size: {}, Operation duration: {} seconds, No. Files Containing Secrets: {}, No. Files Removed: {}, Redacted File List: [{}], Removed File List: [{}]".format(scanned_files_count, scanned_directory_size, duration_seconds, num_secret_files, num_removed_files, ', '.join(redacted_file_secrets.keys()), ', '.join(removed_file_secrets.keys()))
-        if num_removed_files > 0:
-            # Only write to file if files have been removed
-            self.WriteToResultFile(operationOutFile, strMsg)
-
+        self.WriteToResultFile(operationOutFile, strMsg)
+        if num_secret_files > 0:
             # Detailed output on secrets found
             for redacted_file, secret_dict in redacted_file_secrets.items():
-                secrests_string = ["{} {}".format(secret, count) for secret, count in secret_dict.items()]
-                strMsg = "CredentialScanner: Detailed - Redacted File: {}, Secrets: [{}]".format(removed_file, ', '.join(secrets_string))
+                secrets_string = ["{} {}".format(secret, count) for secret, count in secret_dict.items()]
+                strMsg = "CredentialScanner: Detailed - Redacted File: {}, Secrets: [{}]".format(redacted_file, ', '.join(secrets_string))
                 self.rootLogger.info(strMsg)
             for removed_file, secret_dict in removed_file_secrets.items():
                 secrets_string = ["{} {}".format(secret, count) for secret, count in secret_dict.items()]
                 strMsg = "CredentialScanner: Detailed - Removed File: {}, Secrets: [{}]".format(removed_file, ', '.join(secrets_string))
                 self.rootLogger.info(strMsg)
         else:
-            self.rootLogger.info(strMsg)
             # No files removed - delete output file
             os.remove(credscan_results_file)
 
