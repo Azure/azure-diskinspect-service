@@ -649,6 +649,10 @@ genspec | copy | /Windows/Panther/WaSetup.xml
 min-diagnostic | copy | /WindowsAzure/Logs/TransparentInstaller.log
 min-diagnostic | copy | /Windows/System32/config/SOFTWARE
 min-diagnostic | copy | /Windows/System32/config/SYSTEM
+min-diagnostic | copy | /Windows/System32/config/SYSTEM.LOG1
+min-diagnostic | copy | /Windows/System32/config/SYSTEM.LOG2
+min-diagnostic | copy | /Windows/System32/config/SOFTWARE.LOG1
+min-diagnostic | copy | /Windows/System32/config/SOFTWARE.LOG2
 normal | copy | /Windows/System32/winevt/Logs/System.evtx
 normal | copy | /Windows/System32/winevt/Logs/Application.evtx
 normal | copy | /Windows/System32/winevt/Logs/Microsoft-ServiceFabric%4Admin.evtx
@@ -876,4 +880,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-07-20 12:07:42.479922`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-08-14 14:32:27.595617`*

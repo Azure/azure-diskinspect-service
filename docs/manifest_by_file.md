@@ -227,7 +227,11 @@ File Path | Manifest
 /Windows/System32/Sysprep/Sysprep_succeeded.tag | diagnostic, eg, normal 
 /Windows/System32/Tasks/Microsoft/IaaSWorkloadBackup/\* | workloadbackup 
 /Windows/System32/config/SOFTWARE | diagnostic, min-diagnostic 
+/Windows/System32/config/SOFTWARE.LOG1 | min-diagnostic 
+/Windows/System32/config/SOFTWARE.LOG2 | min-diagnostic 
 /Windows/System32/config/SYSTEM | diagnostic, min-diagnostic 
+/Windows/System32/config/SYSTEM.LOG1 | min-diagnostic 
+/Windows/System32/config/SYSTEM.LOG2 | min-diagnostic 
 /Windows/System32/winevt/Logs/Application.evtx | agents, diagnostic, eg, normal, servicefabric, site-recovery, sql-iaas, workloadbackup 
 /Windows/System32/winevt/Logs/Microsoft-ServiceFabric%4Admin.evtx | diagnostic, eg, normal, servicefabric 
 /Windows/System32/winevt/Logs/Microsoft-ServiceFabric%4Operational.evtx | diagnostic, eg, normal, servicefabric 
@@ -332,4 +336,4 @@ File Path | Manifest
 /WindowsAzure/config/\*.xml | agents, diagnostic, eg, normal 
 /unattend.xml | diagnostic, eg, normal 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-07-20 12:07:42.479922`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-08-14 14:32:27.595617`*
