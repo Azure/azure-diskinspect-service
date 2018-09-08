@@ -331,4 +331,4 @@ File Path | Manifest
 /WindowsAzure/config/\*.xml | agents, diagnostic, eg, normal 
 /unattend.xml | diagnostic, eg, normal 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-07-13 08:59:07.503959`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-09-07 17:14:43.527992`*
