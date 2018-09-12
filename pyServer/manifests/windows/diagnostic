@@ -88,6 +88,7 @@ copy,/Windows/debug/mrt.log
 copy,/Windows/debug/DCPROMO.LOG
 copy,/Windows/debug/dcpromoui.log
 copy,/Windows/debug/PASSWD.LOG
+copy,/Windows/Logs/CBS/CBS.log 
 
 echo,### Guest Agent ###
 ll,/WindowsAzure
@@ -186,6 +187,7 @@ copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.NetworkWatcherAge
 copy,/WindowsAzure/Logs/Plugins/Microsoft.ManagedIdentity.ManagedIdentityExtensionForWindows/*/RuntimeSettings/*.xml
 copy,/WindowsAzure/GuestAgent*/CommonAgentConfig.config
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Compute.CustomScriptExtension/*/*.log
+copy,/Windows/Microsoft.NET/Framework64/v4.0.30319/Config/machine.config 
  
 echo,### Gathering Disk Info ###
 diskinfo,
