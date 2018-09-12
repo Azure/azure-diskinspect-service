@@ -460,6 +460,8 @@ diagnostic | copy | /Windows/debug/mrt.log
 diagnostic | copy | /Windows/debug/DCPROMO.LOG
 diagnostic | copy | /Windows/debug/dcpromoui.log
 diagnostic | copy | /Windows/debug/PASSWD.LOG
+diagnostic | copy | /Windows/Microsoft.NET/Framework/v4.0.30319/Config/machine.config
+diagnostic | copy | /Windows/Microsoft.NET/Framework64/v4.0.30319/Config/machine.config
 diagnostic | list | /WindowsAzure
 diagnostic | list | /Packages/Plugins
 diagnostic | copy | /WindowsAzure/Logs/Telemetry.log
@@ -880,4 +882,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-08-14 14:32:27.595617`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-09-11 21:51:08.358944`*
