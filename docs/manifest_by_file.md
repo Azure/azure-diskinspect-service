@@ -187,6 +187,8 @@ File Path | Manifest
 /ProgramData/ASRSetupLogs/WrapperUnifiedAgent.log | site-recovery 
 /Windows/Inf/netcfg\*.\*etl | diagnostic, normal 
 /Windows/Inf/setupapi.dev.log | diagnostic, normal 
+/Windows/Logs/CBS/CBS.log | diagnostic 
+/Windows/Microsoft.NET/Framework64/v4.0.30319/Config/machine.config | diagnostic 
 /Windows/Panther/FastCleanup/setupact.log | diagnostic, eg, normal 
 /Windows/Panther/UnattendGC/setupact.log | diagnostic, eg, normal 
 /Windows/Panther/WaSetup.log | diagnostic, eg, normal 
@@ -308,6 +310,4 @@ File Path | Manifest
 /WindowsAzure/config/\*.xml | agents, diagnostic, eg, normal 
 /unattend.xml | diagnostic, eg, normal 
 
-
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-03-06 16:24:20.004418`*
-
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-09-18 04:12:42.555271`*

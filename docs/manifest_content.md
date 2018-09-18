@@ -437,6 +437,7 @@ diagnostic | copy | /Windows/debug/mrt.log
 diagnostic | copy | /Windows/debug/DCPROMO.LOG
 diagnostic | copy | /Windows/debug/dcpromoui.log
 diagnostic | copy | /Windows/debug/PASSWD.LOG
+diagnostic | copy | /Windows/Logs/CBS/CBS.log
 diagnostic | list | /WindowsAzure
 diagnostic | list | /Packages/Plugins
 diagnostic | copy | /WindowsAzure/Logs/Telemetry.log
@@ -533,6 +534,7 @@ diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.Ne
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.ManagedIdentity.ManagedIdentityExtensionForWindo<br>ws/\*/RuntimeSettings/\*.xml
 diagnostic | copy | /WindowsAzure/GuestAgent\*/CommonAgentConfig.config
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Compute.CustomScriptExtension/\*/\*.log
+diagnostic | copy | /Windows/Microsoft.NET/Framework64/v4.0.30319/Config/machine.config
 diagnostic | diskinfo | 
 eg | copy | /Windows/System32/winevt/Logs/System.evtx
 eg | copy | /Windows/System32/winevt/Logs/Application.evtx
@@ -829,5 +831,4 @@ sql-iaas | copy | /WindowsAzure/Logs/Plugins/Microsoft.SqlServer.Management.SqlI
 sql-iaas | copy | /WindowsAzure/Logs/SqlServerLogs/\*.\*
 sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.\*
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-03-06 16:24:20.004418`*
-
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-09-18 04:12:42.555271`*
