@@ -89,6 +89,10 @@ copy,/Windows/debug/DCPROMO.LOG
 copy,/Windows/debug/dcpromoui.log
 copy,/Windows/debug/PASSWD.LOG
 
+echo,### .NET ###
+copy,/Windows/Microsoft.NET/Framework/v4.0.30319/Config/machine.config
+copy,/Windows/Microsoft.NET/Framework64/v4.0.30319/Config/machine.config
+
 echo,### Guest Agent ###
 ll,/WindowsAzure
 ll,/Packages/Plugins
