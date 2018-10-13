@@ -138,6 +138,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
     Retrieve the name of the host from the Azure metadata
     """
     def getInstanceNameFromMetadata(self):
+        roleInstance = None
         if (len(self.hostMetadata) > 1 and "name" in self.hostMetadata):
             try:
                 roleInstance = json.loads(self.hostMetadata)["name"]
