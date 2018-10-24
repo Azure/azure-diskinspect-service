@@ -193,6 +193,22 @@ lad | copy | /var/lib/waagent/Microsoft.\*LinuxDiagnostic\*/config/\*.settings
 lad | copy | /var/lib/waagent/Microsoft.\*LinuxDiagnostic\*/xmlCfg.xml
 lad | copy | /etc/opt/microsoft/omsagent/LAD/conf/omsagent.d/\*
 lad | copy | /var/opt/microsoft/omsagent/LAD/log/\*
+monitor-mgmt | copy | /var/opt/microsoft/omsagent/\*/log/omsagent.log
+monitor-mgmt | copy | /var/opt/microsoft/omsconfig/omsconfig.log
+monitor-mgmt | copy | /var/opt/microsoft/omsconfig/omsconfigdetailed.log
+monitor-mgmt | copy | /etc/opt/microsoft/omsagent/conf/omsagent.conf
+monitor-mgmt | copy | /etc/opt/microsoft/omsagent/\*/conf/omsagent.d/\*.conf
+monitor-mgmt | copy | /etc/opt/omi/conf/omsconfig/agentid
+monitor-mgmt | copy | /var/log/messages\*
+monitor-mgmt | copy | /var/log/syslog\*
+monitor-mgmt | copy | /var/opt/microsoft/scx/log/scx.log
+monitor-mgmt | copy | /var/opt/omi/log/\*.log
+monitor-mgmt | copy | /var/log/waagent\*.log
+monitor-mgmt | copy | /var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/\*/\*.log
+monitor-mgmt | copy | /var/opt/microsoft/omsagent/\*/run/automationworker/omsupdatemgmt.log
+monitor-mgmt | copy | /var/opt/microsoft/omsagent/run/automationworker/worker.log
+monitor-mgmt | copy | /tmp/omsagent\*.tgz
+monitor-mgmt | copy | /etc/opt/omi/conf/omsconfig/configuration/\*.mof
 normal | list | /var/log
 normal | list | /etc/udev/rules.d
 normal | copy | /etc/fstab
@@ -655,6 +671,32 @@ min-diagnostic | copy | /Windows/System32/config/SYSTEM.LOG1
 min-diagnostic | copy | /Windows/System32/config/SYSTEM.LOG2
 min-diagnostic | copy | /Windows/System32/config/SOFTWARE.LOG1
 min-diagnostic | copy | /Windows/System32/config/SOFTWARE.LOG2
+monitor-mgmt | copy | /Program Files/Microsoft Monitoring Agent/Agent/Health Service State/Management Packs<br>/\*.xml
+monitor-mgmt | copy | /Program Files/Microsoft Monitoring Agent/Agent/Health Service State/CT_\*/work/Servi<br>ceState/\*.log
+monitor-mgmt | copy | /WindowsAzure/Logs/\*.log
+monitor-mgmt | copy | /WindowsAzure/Logs/AggregateStatus/\*.json
+monitor-mgmt | copy | /WindowsAzure/logs/plugins/\*/\*/\*.log
+monitor-mgmt | copy | /WindowsAzure/Logs/VFPlugin/\*.log
+monitor-mgmt | copy | /Windows/system32/winevt/logs/Operations Manager.evtx
+monitor-mgmt | copy | /Windows/System32/Winevt/Logs/Windows PowerShell.evtx
+monitor-mgmt | copy | /Windows/System32/Winevt/Logs/Windows Azure.evtx
+monitor-mgmt | copy | /Windows/System32/Winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Bootstrapper.evtx
+monitor-mgmt | copy | /Windows/System32/Winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4GuestAgent.evtx
+monitor-mgmt | copy | /Windows/System32/Winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Heartbeat.evtx
+monitor-mgmt | copy | /Windows/System32/Winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Runtime.evtx
+monitor-mgmt | copy | /Windows/System32/Winevt/Logs/Microsoft-WindowsAzure-Status%4GuestAgent.evtx
+monitor-mgmt | copy | /Windows/System32/Winevt/Logs/Microsoft-WindowsAzure-Status%4Plugins.evtx
+monitor-mgmt | copy | /Windows/System32/Winevt/Logs/Microsoft-SMA%4Operational.evtx
+monitor-mgmt | copy | /Windows/System32/Winevt/Logs/Microsoft-SMA%4Debug.etl
+monitor-mgmt | copy | /Windows/System32/Winevt/Logs/Microsoft-Automation%4Operational.evtx
+monitor-mgmt | copy | /Windows/WindowsUpdate.log
+monitor-mgmt | copy | /Windows/logs/WindowsUpdate/WindowsUpdate.\*.etl
+monitor-mgmt | copy | /Windows/SoftwareDistribution/ReportingEvents.log
+monitor-mgmt | copy | /Program Files/Microsoft Dependency Agent/logs/\*.\*
+monitor-mgmt | copy | /ProgramData/Microsoft/System Center/Orchestrator/7.2/SMA/\*.\*
+monitor-mgmt | copy | /Windows/logs/OpsMgrTrace/\*.\*
+monitor-mgmt | copy | /Windows/temp/MonitoringAgent.log
+monitor-mgmt | copy | /Windows/temp/MOMPerfCtrsInstall.log
 normal | copy | /Windows/System32/winevt/Logs/System.evtx
 normal | copy | /Windows/System32/winevt/Logs/Application.evtx
 normal | copy | /Windows/System32/winevt/Logs/Microsoft-ServiceFabric%4Admin.evtx
@@ -882,4 +924,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-09-11 21:51:08.358944`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-10-24 17:44:24.104910`*
