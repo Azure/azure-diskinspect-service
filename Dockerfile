@@ -5,7 +5,7 @@
 FROM ubuntu:16.04
 
 # package dependencies
-RUN echo "deb http://archive.ubuntu.com/ubuntu/ trusty main universe" >> /etc/apt/sources.list
+COPY conf/sources.list /etc/apt/sources.list
 RUN apt-get update \
  && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     build-essential \
