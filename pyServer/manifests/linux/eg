@@ -1,5 +1,6 @@
 echo,### Probing Directories ###
 ll,/var/log
+ll,/var/lib/waagent
 ll,/etc/udev/rules.d
 
 echo,### Gathering Configuration Files ###

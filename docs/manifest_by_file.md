@@ -378,4 +378,4 @@ File Path | Manifest
 /WindowsAzure/logs/plugins/\*/\*/\*.log | monitor-mgmt 
 /unattend.xml | diagnostic, eg, normal 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-10-24 17:44:24.104910`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-11-19 14:36:06.668044`*
