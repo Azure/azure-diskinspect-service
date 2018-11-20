@@ -141,6 +141,7 @@ diagnostic | copy | /var/lib/waagent/Incarnation
 diagnostic | copy | /var/lib/waagent/history/\*.zip
 diagnostic | diskinfo | 
 eg | list | /var/log
+eg | list | /var/lib/waagent
 eg | list | /etc/udev/rules.d
 eg | copy | /var/lib/waagent/provisioned
 eg | copy | /etc/fstab
@@ -924,4 +925,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-11-19 10:41:46.582211`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-11-19 14:36:06.668044`*
