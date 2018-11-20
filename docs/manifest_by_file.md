@@ -226,6 +226,8 @@ File Path | Manifest
 /ProgramData/Microsoft/System Center/Orchestrator/7.2/SMA/\*.\* | monitor-mgmt 
 /Windows/Inf/netcfg\*.\*etl | diagnostic, normal 
 /Windows/Inf/setupapi.dev.log | diagnostic, normal 
+/Windows/Logs/OpsMgrTrace/\*.\* | monitor-mgmt 
+/Windows/Logs/WindowsUpdate/WindowsUpdate.\*.etl | monitor-mgmt 
 /Windows/Microsoft.NET/Framework/v4.0.30319/Config/machine.config | diagnostic 
 /Windows/Microsoft.NET/Framework64/v4.0.30319/Config/machine.config | diagnostic 
 /Windows/Panther/FastCleanup/setupact.log | diagnostic, eg, normal 
@@ -247,17 +249,6 @@ File Path | Manifest
 /Windows/System32/Sysprep/Panther/setuperr.log | diagnostic, eg, normal 
 /Windows/System32/Sysprep/Sysprep_succeeded.tag | diagnostic, eg, normal 
 /Windows/System32/Tasks/Microsoft/IaaSWorkloadBackup/\* | workloadbackup 
-/Windows/System32/Winevt/Logs/Microsoft-Automation%4Operational.evtx | monitor-mgmt 
-/Windows/System32/Winevt/Logs/Microsoft-SMA%4Debug.etl | monitor-mgmt 
-/Windows/System32/Winevt/Logs/Microsoft-SMA%4Operational.evtx | monitor-mgmt 
-/Windows/System32/Winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Bootstrapper.evtx | monitor-mgmt 
-/Windows/System32/Winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4GuestAgent.evtx | monitor-mgmt 
-/Windows/System32/Winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Heartbeat.evtx | monitor-mgmt 
-/Windows/System32/Winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Runtime.evtx | monitor-mgmt 
-/Windows/System32/Winevt/Logs/Microsoft-WindowsAzure-Status%4GuestAgent.evtx | monitor-mgmt 
-/Windows/System32/Winevt/Logs/Microsoft-WindowsAzure-Status%4Plugins.evtx | monitor-mgmt 
-/Windows/System32/Winevt/Logs/Windows Azure.evtx | monitor-mgmt 
-/Windows/System32/Winevt/Logs/Windows PowerShell.evtx | monitor-mgmt 
 /Windows/System32/config/SOFTWARE | diagnostic, min-diagnostic 
 /Windows/System32/config/SOFTWARE.LOG1 | min-diagnostic 
 /Windows/System32/config/SOFTWARE.LOG2 | min-diagnostic 
@@ -265,6 +256,9 @@ File Path | Manifest
 /Windows/System32/config/SYSTEM.LOG1 | min-diagnostic 
 /Windows/System32/config/SYSTEM.LOG2 | min-diagnostic 
 /Windows/System32/winevt/Logs/Application.evtx | agents, diagnostic, eg, normal, servicefabric, site-recovery, sql-iaas, workloadbackup 
+/Windows/System32/winevt/Logs/Microsoft-Automation%4Operational.evtx | monitor-mgmt 
+/Windows/System32/winevt/Logs/Microsoft-SMA%4Debug.etl | monitor-mgmt 
+/Windows/System32/winevt/Logs/Microsoft-SMA%4Operational.evtx | monitor-mgmt 
 /Windows/System32/winevt/Logs/Microsoft-ServiceFabric%4Admin.evtx | diagnostic, eg, normal, servicefabric 
 /Windows/System32/winevt/Logs/Microsoft-ServiceFabric%4Operational.evtx | diagnostic, eg, normal, servicefabric 
 /Windows/System32/winevt/Logs/Microsoft-ServiceFabric-Lease%4Admin.evtx | diagnostic, eg, normal, servicefabric 
@@ -306,17 +300,20 @@ File Path | Manifest
 /Windows/System32/winevt/Logs/Microsoft-Windows-Windows Firewall With Advanced Securi<br>ty%4ConnectionSecurity.evtx | agents, diagnostic, eg 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Windows Firewall With Advanced Securi<br>ty%4Firewall.evtx | agents, diagnostic, eg 
 /Windows/System32/winevt/Logs/Microsoft-Windows-WindowsUpdateClient%4Operational.evtx | diagnostic, eg 
-/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Bootstrapper.evtx | agents, diagnostic, eg 
-/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4GuestAgent.evtx | agents, diagnostic, eg 
-/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Heartbeat.evtx | agents, diagnostic, eg 
-/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Runtime.evtx | agents, diagnostic, eg 
-/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Status%4GuestAgent.evtx | agents, diagnostic, eg 
-/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Status%4Plugins.evtx | agents, diagnostic, eg 
+/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Bootstrapper.evtx | agents, diagnostic, eg, monitor-mgmt 
+/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4GuestAgent.evtx | agents, diagnostic, eg, monitor-mgmt 
+/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Heartbeat.evtx | agents, diagnostic, eg, monitor-mgmt 
+/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Runtime.evtx | agents, diagnostic, eg, monitor-mgmt 
+/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Status%4GuestAgent.evtx | agents, diagnostic, eg, monitor-mgmt 
+/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Status%4Plugins.evtx | agents, diagnostic, eg, monitor-mgmt 
 /Windows/System32/winevt/Logs/MicrosoftAzureRecoveryServices-Replication.evtx | diagnostic, eg 
 /Windows/System32/winevt/Logs/Security.evtx | diagnostic, eg 
 /Windows/System32/winevt/Logs/Setup.evtx | diagnostic, eg 
 /Windows/System32/winevt/Logs/System.evtx | agents, diagnostic, eg, normal, servicefabric, site-recovery, sql-iaas, workloadbackup 
-/Windows/System32/winevt/Logs/Windows Azure.evtx | agents, diagnostic, eg, normal, site-recovery, workloadbackup 
+/Windows/System32/winevt/Logs/Windows Azure.evtx | agents, diagnostic, eg, monitor-mgmt, normal, site-recovery, workloadbackup 
+/Windows/System32/winevt/Logs/Windows PowerShell.evtx | monitor-mgmt 
+/Windows/Temp/MOMPerfCtrsInstall.log | monitor-mgmt 
+/Windows/Temp/MonitoringAgent.log | monitor-mgmt 
 /Windows/WindowsUpdate.log | monitor-mgmt 
 /Windows/debug/DCPROMO.LOG | diagnostic, eg, normal 
 /Windows/debug/NetSetup.LOG | diagnostic, eg, normal 
@@ -324,11 +321,7 @@ File Path | Manifest
 /Windows/debug/dcpromoui.log | diagnostic, eg, normal 
 /Windows/debug/mrt.log | diagnostic, eg, normal 
 /Windows/debug/netlogon.log | diagnostic, eg, normal 
-/Windows/logs/OpsMgrTrace/\*.\* | monitor-mgmt 
-/Windows/logs/WindowsUpdate/WindowsUpdate.\*.etl | monitor-mgmt 
-/Windows/system32/winevt/logs/Operations Manager.evtx | monitor-mgmt 
-/Windows/temp/MOMPerfCtrsInstall.log | monitor-mgmt 
-/Windows/temp/MonitoringAgent.log | monitor-mgmt 
+/Windows/system32/winevt/Logs/Operations Manager.evtx | monitor-mgmt 
 /WindowsAzure/GuestAgent\*/CommonAgentConfig.config | diagnostic 
 /WindowsAzure/Logs/AggregateStatus/\*.json | monitor-mgmt 
 /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json | agents, diagnostic, eg, normal, workloadbackup 
@@ -374,8 +367,8 @@ File Path | Manifest
 /WindowsAzure/Logs/VFPlugin/\*.log | monitor-mgmt 
 /WindowsAzure/Logs/WaAppAgent.log | agents, diagnostic, eg, normal, site-recovery, workloadbackup 
 /WindowsAzure/Logs/\*.log | monitor-mgmt 
+/WindowsAzure/Logs/plugins/\*/\*/\*.log | monitor-mgmt 
 /WindowsAzure/config/\*.xml | agents, diagnostic, eg, normal 
-/WindowsAzure/logs/plugins/\*/\*/\*.log | monitor-mgmt 
 /unattend.xml | diagnostic, eg, normal 
 
 *File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-11-19 14:36:06.668044`*
