@@ -19,6 +19,18 @@ from applicationinsights import TelemetryClient
 from applicationinsights.logging import LoggingHandler
 import json
 
+from azure.storage.blob import (
+    BlockBlobService,
+    ContainerPermissions,
+    BlobPermissions,
+    PublicAccess,
+)
+from azure.storage.common import (
+    AccessPolicy,
+    ResourceTypes,
+    AccountPermissions,
+)
+
 OUTPUTDIRNAME = '/output'
 DEFAULT_TIMEOUT_IN_MINS = 19
 
@@ -74,6 +86,10 @@ Threading server to handle multiple web requests.
 """
 class ThreadingServer(socketserver.ThreadingMixIn, http.server.HTTPServer):
     pass
+
+class InvalidBlobSasUrlException(Exception):
+   """Raised when an invalid Blob Sas Url is received as parameter input"""
+   pass
 
 """
 Request Handler for the Service.
@@ -213,46 +229,115 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
         return operationId, mode, modeMajorSkipTo, modeMinorSkipTo, storageAcctName, container_blob_name, storageUrl
 
     """
+    Validate the given destination Blob Sas Url.
+    """
+    def ValidateDestinationBlobSasUrl(self, blobSasUrl):
+        self.telemetryLogger.info("Validating input destination Blob Sas Url.")
+
+        urlParts = urllib.parse.urlparse(blobSasUrl)
+        if not urlParts.path:
+            raise InvalidBlobSasUrlException('Input Blob SAS Url for upload is missing Container and Blob info')
+        if not urlParts.query:
+            raise InvalidBlobSasUrlException('Input Blob SAS url for upload is missing SAS token')
+
+        if urlParts.path[0] == '/':
+            blob_storage_path = urlParts.path[1:]
+        else:
+            blob_storage_path = urlParts.path
+
+        if 'blob'not in urlParts.netloc:
+            raise InvalidBlobSasUrlException('Input Blob SAS url for upload is not pointing to a valid Azure Blob endpoint')
+
+        self.destination_storage_account = urlParts.netloc.split('.')[0]
+
+        if not self.destination_storage_account:
+            raise InvalidBlobSasUrlException('Input Blob SAS url for upload does not contain storage account')
+
+        urlSplit = blob_storage_path.split('/')
+
+        if not len(urlSplit) == 2 or not urlSplit[0] or not urlSplit[1]:
+            raise InvalidBlobSasUrlException('Input Blob SAS Url is not in the right format')
+        
+        self.destinaion_container_name = urlSplit[0]
+        self.destinaion_blob_name = urlSplit[1]
+        self.destination_sas_token = urlParts.query
+
+        self.telemetryLogger.info("Destination Blob Storage Account: " + self.destination_storage_account)
+        self.telemetryLogger.info("Container Name: " + self.destinaion_container_name)
+        self.telemetryLogger.info("Blob Name: " + self.destinaion_blob_name)
+
+    """
+    Upload the given file to destination Blob storage using the given Sas Url.
+    """
+    def uploadFileWithBlobSasUrl(self, file_name_full_path):
+        sas_service = BlockBlobService(account_name=self.destination_storage_account, sas_token=self.destination_sas_token)
+        sas_service.create_blob_from_path(self.destinaion_container_name, self.destinaion_blob_name, file_name_full_path)
+
+    """
     Upload a local file as a HTTP binary response.
     """
-    def uploadFile(self, http_headers, outputFileName, isPartial, osType):
+    def uploadFile(self, http_headers, outputFileName, isPartial, osType, blobSasUrl):
         # Set the HTTP headers, including extended content from GuestFishWrapper
         self.wfile.write(bytes('HTTP/1.1 200 OK\r\n', 'utf-8'))
-        self.wfile.write(bytes('Content-Type: application/zip\r\n', 'utf-8'))
+        
         for header in http_headers:
             header_value = str(http_headers[header])
             if len( header_value ) > 0:
                 self.wfile.write(bytes( '{0}: {1}\r\n'.format( header,header_value ), 'utf-8' ))
                 self.telemetryLogger.info('GuestFishWrapper Header "' + header + '" = "' + header_value +'"')
+        
+        if blobSasUrl:
+            self.telemetryLogger.info('Uploading result to Blob storage.')
+            self.wfile.write(bytes('Content-Type: text/plain\r\n', 'utf-8'))
+            statinfo = os.stat(outputFileName)
+            self.wfile.write(bytes('Content-Length: 0\r\n', 'utf-8'))
+            self.wfile.write(bytes('\r\n', 'utf-8'))
+            self.wfile.flush()
 
-        statinfo = os.stat(outputFileName)
-        self.wfile.write(bytes('Content-Length: {0}\r\n'.format(
-            str(statinfo.st_size)), 'utf-8'))
+            local_path=os.path.expanduser("~\libguestfs")
+            full_path_to_file =os.path.join(local_path, outputFileName)
+            file_name = os.path.basename(outputFileName)            
+            
+            self.telemetryLogger.info('Uploading: ' + full_path_to_file + ' to Blob...')
+            self.telemetryLogger.info('Filename: ' + file_name)
+            
+            self.uploadFileWithBlobSasUrl(file_name_full_path=outputFileName)
+            self.telemetryLogger.info('Uploading to Blob completed.')
+        
+        else:
+            self.telemetryLogger.info('Writing result to Http reponse.')
+            self.wfile.write(bytes('Content-Type: application/zip\r\n', 'utf-8'))
+            
+            statinfo = os.stat(outputFileName)
+            self.wfile.write(bytes('Content-Length: {0}\r\n'.format(
+                str(statinfo.st_size)), 'utf-8'))
 
-        strOutputFileName = os.path.basename(outputFileName) + "-" + osType
-        if isPartial:
-            strOutputFileName = strOutputFileName + "-partial"
+            strOutputFileName = os.path.basename(outputFileName) + "-" + osType
+            if isPartial:
+                strOutputFileName = strOutputFileName + "-partial"
 
-        self.wfile.write(bytes(
-            'Content-Disposition: Attachment; filename={0}\r\n'.format(
-                os.path.basename(strOutputFileName)), 'utf-8'))
-        self.wfile.write(bytes('\r\n', 'utf-8'))
-        self.wfile.flush()
+            self.wfile.write(bytes(
+                'Content-Disposition: Attachment; filename={0}\r\n'.format(
+                    os.path.basename(strOutputFileName)), 'utf-8'))
+            self.wfile.write(bytes('\r\n', 'utf-8'))
+            self.wfile.flush()
 
-        # Write the zip file payload
-        outputFileSize = os.path.getsize(outputFileName)
-        readSize = 0
-        with open(outputFileName, 'rb') as outputFileObj:
-            buf = None
-            while (True):
-                buf = outputFileObj.read(64 * 1024)
-                if (not buf):
-                    break
-                readSize = readSize + len(buf)
-                printProgress(
-                    readSize, outputFileSize, prefix='Progress:', suffix='Complete', barLength=50)
-                self.wfile.write(buf)
-        self.wfile.flush()
+            # Write the zip file payload
+            outputFileSize = os.path.getsize(outputFileName)
+            readSize = 0
+            with open(outputFileName, 'rb') as outputFileObj:
+                buf = None
+                while (True):
+                    buf = outputFileObj.read(64 * 1024)
+                    if (not buf):
+                        break
+                    readSize = readSize + len(buf)
+                    printProgress(
+                        readSize, outputFileSize, prefix='Progress:', suffix='Complete', barLength=50)
+                    self.wfile.write(buf)
+            self.wfile.flush()
+            
+            self.telemetryLogger.info('Finished writing output Http response.')
 
     """
     GET request handler
@@ -357,8 +442,17 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
                     self.telemetryLogger.info('WARNING: Received timeout override is invalid: {0}. Default will be used.'.format(timeoutInMinsStr))
 
             timeoutInMins = int(timeoutInMinsStr)
-
             self.telemetryLogger.info('Using timeout value: ' + str(timeoutInMins)+ ' min(s)')
+
+            if b'blobsasurl' in postvars:
+                blobSasUrl = str(postvars[b'blobsasurl'][0], encoding='UTF-8')
+                
+                # Sas Url format validation 
+                self.ValidateDestinationBlobSasUrl(blobSasUrl)
+
+                self.telemetryLogger.info('Received a valid Blob Sas url for upload. Result will be uploaded to Blob directly instead of Http response.')
+            else:
+                blobSasUrl = ""
 
             # update the fields in the telemetry client
             for h in self.telemetryLogger.handlers:
@@ -397,8 +491,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
                         outputFileSize = round(os.path.getsize(outputFileName) / 1024, 2)
                         self.telemetryLogger.info('Uploading: ' + outputFileName + ' (' + str(outputFileSize) + 'kb)')
                         gfWrapper.metadata_pairs[ResponseHeaderMetadata.KEEPALIVETHREAD_TIMEOUT_IN_MINS] = timeoutInMins
-                        self.uploadFile(gfWrapper.metadata_pairs, outputFileName, kpThread.wasTimeout, gfWrapper.osType)
-                        self.telemetryLogger.info('Upload completed.')
+                        self.uploadFile(gfWrapper.metadata_pairs, outputFileName, kpThread.wasTimeout, gfWrapper.osType, blobSasUrl)
 
                         successElapsed = datetime.now() - start_time
                         self.serviceMetrics.SuccessRequests = self.serviceMetrics.SuccessRequests + 1
@@ -440,6 +533,12 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
             failureResultCode = 400
             telemetryException = ex
             failureStatusText = 'Invalid SAS uri'
+            self.telemetryLogger.error(failureStatusText)  # don't raise exception  
+        except InvalidBlobSasUrlException as ex:
+            unexpectedError = False
+            failureResultCode = 400
+            telemetryException = ex
+            failureStatusText = 'Invalid Blob SAS uri for upload'
             self.telemetryLogger.error(failureStatusText)  # don't raise exception  
         except ValueError as ex:
             unexpectedError = True
