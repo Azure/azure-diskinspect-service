@@ -229,16 +229,17 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
         return operationId, mode, modeMajorSkipTo, modeMinorSkipTo, storageAcctName, container_blob_name, storageUrl
 
     """
-    Validate the given destination Blob Sas Url.
+    Validate and parse the given destination Blob Sas Url.
     """
-    def ValidateDestinationBlobSasUrl(self, blobSasUrl):
+    def ValidateAndParseBlobSasUrl(self, blobSasUrl):
         self.telemetryLogger.info("Validating input destination Blob Sas Url.")
 
         urlParts = urllib.parse.urlparse(blobSasUrl)
-        if not urlParts.path:
-            raise InvalidBlobSasUrlException('Input Blob SAS Url for upload is missing Container and Blob info')
-        if not urlParts.query:
-            raise InvalidBlobSasUrlException('Input Blob SAS url for upload is missing SAS token')
+
+        if not urlParts.path or len(urlParts.path) == 0:
+            raise InvalidBlobSasUrlException('Input Blob SAS Url for upload is missing Container and Blob info.')
+        if not urlParts.query or len(urlParts.query) == 0:
+            raise InvalidBlobSasUrlException('Input Blob SAS url for upload is missing SAS token.')
 
         if urlParts.path[0] == '/':
             blob_storage_path = urlParts.path[1:]
@@ -246,17 +247,17 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
             blob_storage_path = urlParts.path
 
         if 'blob'not in urlParts.netloc:
-            raise InvalidBlobSasUrlException('Input Blob SAS url for upload is not pointing to a valid Azure Blob endpoint')
+            raise InvalidBlobSasUrlException('Input Blob SAS url for upload is not pointing to a valid Azure Blob endpoint.')
 
         self.destination_storage_account = urlParts.netloc.split('.')[0]
 
         if not self.destination_storage_account:
-            raise InvalidBlobSasUrlException('Input Blob SAS url for upload does not contain storage account')
+            raise InvalidBlobSasUrlException('Input Blob SAS url for upload does not contain storage account.')
 
         urlSplit = blob_storage_path.split('/')
 
         if not len(urlSplit) == 2 or not urlSplit[0] or not urlSplit[1]:
-            raise InvalidBlobSasUrlException('Input Blob SAS Url is not in the right format')
+            raise InvalidBlobSasUrlException('Input Blob SAS Url is not in the right format.')
         
         self.destinaion_container_name = urlSplit[0]
         self.destinaion_blob_name = urlSplit[1]
@@ -279,13 +280,13 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
     def uploadFile(self, http_headers, outputFileName, isPartial, osType, blobSasUrl):
         # Set the HTTP headers, including extended content from GuestFishWrapper
         self.wfile.write(bytes('HTTP/1.1 200 OK\r\n', 'utf-8'))
-        
+
         for header in http_headers:
             header_value = str(http_headers[header])
             if len( header_value ) > 0:
                 self.wfile.write(bytes( '{0}: {1}\r\n'.format( header,header_value ), 'utf-8' ))
                 self.telemetryLogger.info('GuestFishWrapper Header "' + header + '" = "' + header_value +'"')
-        
+
         if blobSasUrl:
             self.telemetryLogger.info('Uploading result to Blob storage.')
             self.wfile.write(bytes('Content-Type: text/plain\r\n', 'utf-8'))
@@ -297,13 +298,12 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
             local_path=os.path.expanduser("~\libguestfs")
             full_path_to_file =os.path.join(local_path, outputFileName)
             file_name = os.path.basename(outputFileName)            
-            
+
             self.telemetryLogger.info('Uploading: ' + full_path_to_file + ' to Blob...')
             self.telemetryLogger.info('Filename: ' + file_name)
-            
+
             self.uploadFileWithBlobSasUrl(file_name_full_path=outputFileName)
             self.telemetryLogger.info('Uploading to Blob completed.')
-        
         else:
             self.telemetryLogger.info('Writing result to Http reponse.')
             self.wfile.write(bytes('Content-Type: application/zip\r\n', 'utf-8'))
@@ -446,10 +446,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
 
             if b'blobsasurl' in postvars:
                 blobSasUrl = str(postvars[b'blobsasurl'][0], encoding='UTF-8')
-                
-                # Sas Url format validation 
-                self.ValidateDestinationBlobSasUrl(blobSasUrl)
-
+                self.ValidateAndParseBlobSasUrl(blobSasUrl)
                 self.telemetryLogger.info('Received a valid Blob Sas url for upload. Result will be uploaded to Blob directly instead of Http response.')
             else:
                 blobSasUrl = ""
@@ -539,7 +536,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
             failureResultCode = 400
             telemetryException = ex
             failureStatusText = 'Invalid Blob SAS uri for upload'
-            self.telemetryLogger.error(failureStatusText)  # don't raise exception  
+            self.telemetryLogger.error(failureStatusText)
         except ValueError as ex:
             unexpectedError = True
             telemetryException = ex

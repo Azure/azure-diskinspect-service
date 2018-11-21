@@ -107,23 +107,31 @@ header_to_json_mappings = {"os":"InspectionMetadata-Operating-System",
                 "os_distribution":"InspectionMetadata-OS-Distribution", 
                 "os_product_name":"InspectionMetadata-Product-Name",
                 "os_disk_configuration":"InspectionMetadata-Disk-Configuration",
-                "expected_timeout":"KeepAliveThread-Timeout-In-Mins"}
+                "expected_timeout":"KeepAliveThread-Timeout-In-Mins",
+                "content_type":"Content-Type",
+                "content_length":"Content-Length"}
                         
 
 relative_subdirectory = "TestDownloads"
 download_directory = current_directory = os.path.split( inspect.getfile(inspect.currentframe() ) )[0]
 service_host = "https://localhost:8080"
 storage_sas = os.environ.get('LIBGUESTFS_SAS_KEY')
+blob_upload_sas_url = os.environ.get('BLOB_UPLOAD_SAS_URL')
+
 if len(sys.argv) > 1:
     download_directory  = sys.argv[1]
 if len(sys.argv) > 2:
     service_host = sys.argv[2]
 if len(sys.argv) > 3:
     storage_sas = sys.argv[3]
-
+if len(sys.argv) > 4:
+    blob_upload_sas_url = sys.argv[4]
 
 if storage_sas is None:
     print("ERROR: Unable to get SAS key from environment variable! Exiting...")
+    sys.exit(1)
+if blob_upload_sas_url is None:
+    print("ERROR: Unable to get Blob upload SAS Url from environment variable! Exiting...")
     sys.exit(1)
 
 script_start_time = datetime.datetime.now()
@@ -167,14 +175,26 @@ with open(os.path.join(current_directory,'test_config.json'), "r") as json_confi
             uri = "{0}/{1}/{2}/{3}{4}".format(service_host, operation_id, inspection_test["manifest"], "nosuchAccount",inspection_test["vhd_relative_path"]) 
         else:
             uri = "{0}/{1}/{2}/{3}{4}".format(service_host, operation_id, inspection_test["manifest"], storage_acct,inspection_test["vhd_relative_path"]) 
+
         print(uri)
+
+        cached_blob_sas_url = blob_upload_sas_url
+        if "invalid_blob_token" in inspection_test:
+            blob_upload_sas_url = blob_upload_sas_url.replace(urllib.parse.urlparse(blob_upload_sas_url).query, "")
+            blob_upload_sas_url = blob_upload_sas_url.replace("?", "")
+        elif "no_container_blob" in inspection_test:
+            blob_upload_sas_url = blob_upload_sas_url.replace(urllib.parse.urlparse(blob_upload_sas_url).path, "")
+        elif "bad_blob_endpoint" in inspection_test:
+            blob_upload_sas_url = blob_upload_sas_url.replace("blob", "foo")
+
         if inspection_test["title"] == "Invalid SAS":
             DATA = urllib.parse.urlencode({"saskey": "sv=2017-04-17&sr=c&sig=INVALIDSAS"})
+        elif "timeout_override" in inspection_test:
+            DATA = urllib.parse.urlencode({"saskey":storage_sas, "timeout":inspection_test["timeout_override"]})
+        elif "blob_upload" in inspection_test and inspection_test["blob_upload"] == True:
+            DATA = urllib.parse.urlencode({"saskey":storage_sas, "blobsasurl":blob_upload_sas_url})
         else:
             DATA = urllib.parse.urlencode({"saskey":storage_sas})
-
-        if "timeout_override" in inspection_test:
-            DATA = urllib.parse.urlencode({"saskey":storage_sas, "timeout":inspection_test["timeout_override"]})
 
         DATA = DATA.encode('ascii')
         req = urllib.request.Request(url=uri,data=DATA,method='POST')
@@ -186,6 +206,8 @@ with open(os.path.join(current_directory,'test_config.json'), "r") as json_confi
                 test_passed = False 
             else:
                 should_fail_tests.append(inspection_test["title"])
+                if "invalid_blob_token" in inspection_test or "no_container_blob" in inspection_test or "bad_blob_endpoint" in inspection_test:
+                    blob_upload_sas_url  = cached_blob_sas_url
         except socket.timeout as e:
             print("Test exceeded time duration.. failing..")
             test_passed = False
@@ -202,7 +224,8 @@ with open(os.path.join(current_directory,'test_config.json'), "r") as json_confi
                 response_headers = res.getheaders()
                 print("RESPONSE HEADERS:")
                 print(response_headers)
-                extract_zip(file_path, folder_path)
+                if "blob_upload" not in inspection_test or inspection_test["blob_upload"] == False:
+                    extract_zip(file_path, folder_path)
                 mappings = header_to_json_mappings
         else:
             mappings = {} # skip this for "shouldFail" expected failure cases
