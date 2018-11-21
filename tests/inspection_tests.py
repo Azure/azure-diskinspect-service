@@ -255,6 +255,8 @@ with open(os.path.join(current_directory,'test_config.json'), "r") as json_confi
 
     print("==============================================")
     # Query health test: This ensures that we encountered only "expected" errors
+    # Sleep for 2 seconds first and let cleanup and service status update complete
+    time.sleep(2)
     test_name = 'Health result validation test'
     currentServiceHealth = get_service_health(service_host)
     print(currentServiceHealth)
