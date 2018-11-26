@@ -291,14 +291,23 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
     Upload the given file to destination Blob storage using the given Sas Url.
     """
     def uploadFileWithBlobSasUrl(self, file_name_full_path):
-        try:
-            sas_service = BlockBlobService(account_name=self.destination_storage_account, sas_token=self.destination_sas_token)
-            self.telemetryLogger.info('Uploading to Blob starting.')
-            start_time = datetime.now()
-            sas_service.create_blob_from_path(self.destinaion_container_name, self.destinaion_blob_name, file_name_full_path)
-            self.telemetryLogger.info('Uploading to Blob completed. Time take: ' + str((datetime.now() - start_time).total_seconds() * 1000) + ' ms')
-        except Exception as ex:
-            raise BlobUploadException(ex)
+        retryRemaining = 3
+        while retryRemaining > 0:
+            try:
+                sas_service = BlockBlobService(account_name=self.destination_storage_account, sas_token=self.destination_sas_token)
+                self.telemetryLogger.info('Uploading to Blob starting.')
+                start_time = datetime.now()
+                sas_service.create_blob_from_path(self.destinaion_container_name, self.destinaion_blob_name, file_name_full_path)
+                self.telemetryLogger.info('Uploading to Blob completed. Time take: ' + str((datetime.now() - start_time).total_seconds() * 1000) + ' ms')
+                break
+            except Exception as ex:
+                retryRemaining -= 1
+                if retryRemaining <= 0:
+                    self.telemetryLogger.error('Encountered error during blob upload multiple times after exhausting all retry attempts')
+                    raise BlobUploadException(ex)
+                exMessage = str(ex)
+                self.telemetryLogger.warning('Encountered error during blob upload: ' + exMessage)
+                self.telemetryLogger.warning('Retrying. ' + str(retryRemaining) + ' attempt(s) remaining.')
 
     """
     Upload a local file either as a HTTP binary response or upload to a given destination blob storage.
@@ -503,8 +512,10 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
                 with GuestFishWrapper(self.telemetryLogger, self, storageUrl, OUTPUTDIRNAME, operationId, mode, modeMajorSkipTo, modeMinorSkipTo, kpThread, runWithCredscan) as gfWrapper:
                     gfWrapper.start()
                     # Upload the ZIP file
-                    if gfWrapper.outputFileName:    
-                        kpThread.avoidSendingKeepAlive = True  # stop KeepAlive while we send the zip to avoid corruption issue
+                    if gfWrapper.outputFileName:
+                        if not blobSasUrl:
+                            self.telemetryLogger.info('Turning off KeepAlive messages before writing result to response.')
+                            kpThread.avoidSendingKeepAlive = True  # stop KeepAlive if we send the zip in response to avoid corruption issue
                         outputFileName = gfWrapper.outputFileName            
                         outputFileSize = round(os.path.getsize(outputFileName) / 1024, 2)
                         self.telemetryLogger.info('Uploading: ' + outputFileName + ' (' + str(outputFileSize) + 'kb)')
