@@ -92,7 +92,7 @@ class InvalidBlobSasUrlException(Exception):
    pass
 
 class BlobUploadException(Exception):
-   """Raised when an invalid Blob Sas Url is received as parameter input"""
+   """Raised when an error is encountered during uploading result to Blob via Sas Url"""
    pass
 
 """
@@ -279,13 +279,13 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
         if not len(urlSplit) == 2 or not urlSplit[0] or not urlSplit[1]:
             raise InvalidBlobSasUrlException('Input Blob SAS Url is not in the right format.')
         
-        self.destinaion_container_name = urlSplit[0]
-        self.destinaion_blob_name = urlSplit[1]
+        self.destination_container_name = urlSplit[0]
+        self.destination_blob_name = urlSplit[1]
         self.destination_sas_token = urlParts.query
 
         self.telemetryLogger.info("Destination Blob Storage Account: " + self.destination_storage_account)
-        self.telemetryLogger.info("Container Name: " + self.destinaion_container_name)
-        self.telemetryLogger.info("Blob Name: " + self.destinaion_blob_name)
+        self.telemetryLogger.info("Container Name: " + self.destination_container_name)
+        self.telemetryLogger.info("Blob Name: " + self.destination_blob_name)
 
     """
     Upload the given file to destination Blob storage using the given Sas Url.
@@ -297,7 +297,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
                 sas_service = BlockBlobService(account_name=self.destination_storage_account, sas_token=self.destination_sas_token)
                 self.telemetryLogger.info('Uploading to Blob starting.')
                 start_time = datetime.now()
-                sas_service.create_blob_from_path(self.destinaion_container_name, self.destinaion_blob_name, file_name_full_path)
+                sas_service.create_blob_from_path(self.destination_container_name, self.destination_blob_name, file_name_full_path)
                 self.telemetryLogger.info('Uploading to Blob completed. Time take: ' + str((datetime.now() - start_time).total_seconds() * 1000) + ' ms')
                 break
             except Exception as ex:
