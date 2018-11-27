@@ -15,6 +15,17 @@ import inspect
 import re
 import subprocess
 
+from azure.storage.blob import (
+    BlockBlobService,
+    ContainerPermissions,
+    BlobPermissions,
+    PublicAccess,
+)
+
+class InvalidBlobSasUrlException(Exception):
+   """Raised when an invalid Blob Sas Url is received as parameter input"""
+   pass
+
 def test_headers(header_to_json_mappings, inspection_test):
     #validate headers with test values
     for test_setting in header_to_json_mappings:
@@ -102,6 +113,45 @@ def get_service_health(service_host):
         return parseHealthResponse(res.read().decode('utf-8'))
     except urllib.error.HTTPError as e:
         return {}
+
+def download_result_blob(blobSasUrl, local_file_path):
+    urlParts = urllib.parse.urlparse(blobSasUrl)
+
+    if not urlParts.path or len(urlParts.path) == 0:
+        raise InvalidBlobSasUrlException('Input Blob SAS Url for upload is missing Container and Blob info.')
+    if not urlParts.query or len(urlParts.query) == 0:
+        raise InvalidBlobSasUrlException('Input Blob SAS url for upload is missing SAS token.')
+
+    if urlParts.path[0] == '/':
+        blob_storage_path = urlParts.path[1:]
+    else:
+        blob_storage_path = urlParts.path
+
+    if 'blob' not in urlParts.netloc:
+        raise InvalidBlobSasUrlException('Input Blob SAS url for upload is not pointing to a valid Azure Blob endpoint.')
+
+    destination_storage_account = urlParts.netloc.split('.')[0]
+
+    if not destination_storage_account:
+        raise InvalidBlobSasUrlException('Input Blob SAS url for upload does not contain storage account.')
+
+    urlSplit = blob_storage_path.split('/')
+
+    if not len(urlSplit) == 2 or not urlSplit[0] or not urlSplit[1]:
+        raise InvalidBlobSasUrlException('Input Blob SAS Url is not in the right format.')
+    
+    destination_container_name = urlSplit[0]
+    destination_blob_name = urlSplit[1]
+    destination_sas_token = urlParts.query
+
+    blob_service = BlockBlobService(
+        account_name = destination_storage_account,
+        sas_token = destination_sas_token,
+    )
+
+    print("\nDownloading blob to " + local_file_path)
+    blob_service.get_blob_to_path(destination_container_name, destination_blob_name, local_file_path)
+
         
 header_to_json_mappings = {"os":"InspectionMetadata-Operating-System",
                 "os_distribution":"InspectionMetadata-OS-Distribution", 
@@ -178,21 +228,21 @@ with open(os.path.join(current_directory,'test_config.json'), "r") as json_confi
 
         print(uri)
 
-        cached_blob_sas_url = blob_upload_sas_url
+        blob_sas_to_use = blob_upload_sas_url
         if "invalid_blob_token" in inspection_test:
-            blob_upload_sas_url = blob_upload_sas_url.replace(urllib.parse.urlparse(blob_upload_sas_url).query, "")
-            blob_upload_sas_url = blob_upload_sas_url.replace("?", "")
+            blob_sas_to_use  = blob_upload_sas_url.replace(urllib.parse.urlparse(blob_upload_sas_url).query, "")
+            blob_sas_to_use  = blob_sas_to_use.replace("?", "")
         elif "no_container_blob" in inspection_test:
-            blob_upload_sas_url = blob_upload_sas_url.replace(urllib.parse.urlparse(blob_upload_sas_url).path, "")
+            blob_sas_to_use  = blob_upload_sas_url.replace(urllib.parse.urlparse(blob_upload_sas_url).path, "")
         elif "bad_blob_endpoint" in inspection_test:
-            blob_upload_sas_url = blob_upload_sas_url.replace("blob", "foo")
+            blob_sas_to_use  = blob_upload_sas_url.replace("blob", "foo")
 
         if inspection_test["title"] == "Invalid SAS":
             DATA = urllib.parse.urlencode({"saskey": "sv=2017-04-17&sr=c&sig=INVALIDSAS"})
         elif "timeout_override" in inspection_test:
             DATA = urllib.parse.urlencode({"saskey":storage_sas, "timeout":inspection_test["timeout_override"]})
         elif "blob_upload" in inspection_test and inspection_test["blob_upload"] == True:
-            DATA = urllib.parse.urlencode({"saskey":storage_sas, "blobsasurl":blob_upload_sas_url})
+            DATA = urllib.parse.urlencode({"saskey":storage_sas, "blobsasurl":blob_sas_to_use })
         else:
             DATA = urllib.parse.urlencode({"saskey":storage_sas})
 
@@ -206,8 +256,6 @@ with open(os.path.join(current_directory,'test_config.json'), "r") as json_confi
                 test_passed = False 
             else:
                 should_fail_tests.append(inspection_test["title"])
-                if "invalid_blob_token" in inspection_test or "no_container_blob" in inspection_test or "bad_blob_endpoint" in inspection_test:
-                    blob_upload_sas_url  = cached_blob_sas_url
         except socket.timeout as e:
             print("Test exceeded time duration.. failing..")
             test_passed = False
@@ -215,17 +263,22 @@ with open(os.path.join(current_directory,'test_config.json'), "r") as json_confi
         if not "shouldFail" in inspection_test:
             if test_passed: 
                 folder_name = "{0}_{1}".format( uri.split('/')[-1].split('.')[0],  inspection_test["manifest"])  # e.g. Centos7_normal  
-                folder_path = os.path.join( subdirectory, folder_name)
+                folder_path = os.path.join(subdirectory, folder_name)
                 file_path = folder_path+".zip"
+
                 print('INFO: Saving file to: ' + file_path )
-                with open(file_path, "wb") as f:
-                    f.write(res.read())
-                
+                if "blob_upload" not in inspection_test or inspection_test["blob_upload"] == False:
+                    # extract result from response
+                    with open(file_path, "wb") as f:
+                        f.write(res.read())
+                else:
+                    # download result from blob
+                    download_result_blob(blob_sas_to_use, file_path)
+
                 response_headers = res.getheaders()
                 print("RESPONSE HEADERS:")
                 print(response_headers)
-                if "blob_upload" not in inspection_test or inspection_test["blob_upload"] == False:
-                    extract_zip(file_path, folder_path)
+                extract_zip(file_path, folder_path)
                 mappings = header_to_json_mappings
         else:
             mappings = {} # skip this for "shouldFail" expected failure cases
