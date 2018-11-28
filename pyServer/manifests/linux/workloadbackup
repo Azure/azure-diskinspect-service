@@ -5,6 +5,7 @@ copy,/etc/hostname
 copy,/etc/waagent.conf
 copy,/var/lib/waagent/*.xml
 copy,/var/spool/cron/tabs/root
+copy,/opt/msawb/etc*
 echo,
 
 echo,### Gathering Log Files ###
@@ -12,14 +13,11 @@ copy,/var/log/waagent*
 copy,/var/log/dmesg*
 copy,/var/log/syslog*
 copy,/var/log/azure/*
-copy,/var/opt/msawb/catalog/InquiryCatalog/*/*.bin
-copy,/var/opt/msawb/catalogRegisteredObjectInfoCatalog/*/*.bin
-copy,/var/opt/msawb/catalog/WorkloadExtDatasourceCatalog/*/*.bin
-copy,/var/opt/msawb/catalog/WorkloadSchedules/*/*.bin
-copy,/var/opt/msawb/catalog/SyncObjectsCatalog/DatasourceSyncTable/*.bin
-copy,/var/opt/msawb/catalog/SyncObjectsCatalog/AlertEventsTable/*.bin
+copy,/opt/msawb/var/lib*
 copy,/opt/msawb/bin/AzureWLBackupCommonManagementSettings.json
 copy,/opt/msawb/bin/AzureWLBackupMonitoringSync_config.json
+copy,/opt/msawb/var/log*
+copy,/opt/msawb/var/run*
 
 echo,
 
