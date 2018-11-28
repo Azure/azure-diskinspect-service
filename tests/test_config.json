@@ -197,6 +197,78 @@
       "timeout_override": "-10",
       "expected_timeout": "19",
       "files_present": [ "/device_0/etc/fstab", "/device_0/etc/hostname", "/device_0/etc/os-release", "/device_0/var/log/yum.log", "/device_0/var/log/waagent.log", "/device_0/var/log/messages", "diskinfo.txt" ]      
+    },
+    {
+      "title": "Invalid Upload Blob SAS Url: Missing SAS token",
+      "description": "Test to ensure an invalid upload blob SAS uri is handled properly (performed in code)",
+      "vhd_relative_path": "/linux/UbuntuCore.vhd",
+      "manifest": "normal",
+      "os": "",
+      "os_distribution": "",
+      "os_product_name": "",
+      "os_disk_configuration": "",
+      "expected_timeout": "19",
+      "blob_upload": true,
+      "invalid_blob_token" : true,
+      "shouldFail" : true
+    },
+    {
+      "title": "Invalid Upload Blob SAS Url: Missing container and blob info",
+      "description": "Test to ensure an invalid storage account is handled properly (performed in code)",
+      "vhd_relative_path": "/linux/UbuntuCore.vhd",
+      "manifest": "normal",
+      "os": "",
+      "os_distribution": "",
+      "os_product_name": "",
+      "os_disk_configuration": "",
+      "expected_timeout": "19",
+      "blob_upload": true,
+      "no_container_blob" : true,
+      "shouldFail" : true
+    },
+    {
+      "title": "Invalid Upload Blob SAS Url: Invalid storage blob endpoint suffix",
+      "description": "Test to ensure an invalid storage account is handled properly (performed in code)",
+      "vhd_relative_path": "/linux/UbuntuCore.vhd",
+      "manifest": "normal",
+      "os": "",
+      "os_distribution": "",
+      "os_product_name": "",
+      "os_disk_configuration": "",
+      "expected_timeout": "19",
+      "blob_upload": true,
+      "bad_blob_endpoint" : true,
+      "shouldFail" : true
+    },
+    {
+      "title": "Blob Upload: Linux diagnostic (CentOS)",
+      "description": "test should return os as linux and the CentOS 7.0 product name",
+      "vhd_relative_path": "/linux/craigw-centos72016320152715.vhd",
+      "manifest": "diagnostic",
+      "os": "linux",
+      "os_distribution": "centos",
+      "os_product_name": "CentOS Linux release 7.0.1406 (Core)",
+      "os_disk_configuration": "Standard",
+      "expected_timeout": "19",
+      "blob_upload": true,
+      "content_type": "text/plain",
+      "content_length": "0",
+      "files_present": [ "/device_0/etc/fstab", "/device_0/etc/hostname", "/device_0/etc/os-release", "/device_0/var/log/yum.log", "/device_0/var/log/waagent.log", "/device_0/var/log/messages", "diskinfo.txt" ]
+    },
+    {
+      "title": "Blob Upload: Windows 2008R2 diagnostic w/ one partition",
+      "description": "test should return os as windows. The disk has only 1 partition so we won't get a product name as it should use the service skipInspect logic",
+      "vhd_relative_path": "/windows/craigw-2008R2.vhd",
+      "manifest": "diagnostic",
+      "os": "windows",
+      "os_distribution": "",
+      "os_product_name": "",
+      "os_disk_configuration": "Standard",
+      "expected_timeout": "19",
+      "blob_upload": true,
+      "content_type": "text/plain",
+      "content_length": "0",
+      "files_present": [ "/diskinfo.txt","/device_0/Windows/System32/winevt/Logs/System.evtx", "/device_0/Windows/System32/winevt/Logs/Application.evtx", "/device_0/Windows/Panther/UnattendGC/setupact.log", "/device_0/Windows/Panther/WaSetup.log", "/device_0/Windows/Panther/WaSetup.xml", "/device_0/WindowsAzure/Logs/WaAppAgent.log","/device_0/WindowsAzure/Logs/AggregateStatus/aggregatestatus.json", "/device_0/Packages/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/1.6.4.0/RuntimeSettings/0.settings" ]
     }
   ]
 }
