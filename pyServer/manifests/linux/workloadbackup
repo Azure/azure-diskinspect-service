@@ -17,7 +17,6 @@ copy,/opt/msawb/var/lib*
 copy,/opt/msawb/bin/AzureWLBackupCommonManagementSettings.json
 copy,/opt/msawb/bin/AzureWLBackupMonitoringSync_config.json
 copy,/opt/msawb/var/log*
-copy,/opt/msawb/var/run*
 
 echo,
 
