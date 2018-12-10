@@ -3,3 +3,9 @@ copy,/WindowsAzure/Logs/TransparentInstaller.log
 echo,### Registry Hives ###
 copy,/Windows/System32/config/SOFTWARE
 copy,/Windows/System32/config/SYSTEM
+
+echo,### Registry Hive Journals ###
+copy,/Windows/System32/config/SYSTEM.LOG1
+copy,/Windows/System32/config/SYSTEM.LOG2
+copy,/Windows/System32/config/SOFTWARE.LOG1
+copy,/Windows/System32/config/SOFTWARE.LOG2

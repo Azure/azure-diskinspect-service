@@ -1,0 +1,34 @@
+echo,#Microsoft monitoring Agent Logs
+copy,/Program Files/Microsoft Monitoring Agent/Agent/Health Service State/Management Packs/*.xml
+copy,/Program Files/Microsoft Monitoring Agent/Agent/Health Service State/CT_*/work/ServiceState/*.log
+copy,/WindowsAzure/Logs/*.log
+copy,/WindowsAzure/Logs/AggregateStatus/*.json
+copy,/WindowsAzure/Logs/plugins/*/*/*.log
+copy,/WindowsAzure/Logs/VFPlugin/*.log
+
+echo,#Event Logs
+copy,/Windows/system32/winevt/Logs/Operations Manager.evtx
+copy,/Windows/System32/winevt/Logs/Windows PowerShell.evtx
+copy,/Windows/System32/winevt/Logs/Windows Azure.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Bootstrapper.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4GuestAgent.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Heartbeat.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Runtime.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Status%4GuestAgent.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Status%4Plugins.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-SMA%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-SMA%4Debug.etl
+copy,/Windows/System32/winevt/Logs/Microsoft-Automation%4Operational.evtx
+
+
+echo,#Windows Update Logs
+copy,/Windows/WindowsUpdate.log
+copy,/Windows/Logs/WindowsUpdate/WindowsUpdate.*.etl
+copy,/Windows/SoftwareDistribution/ReportingEvents.log
+
+echo,#Agent Trace Logs
+copy,/Program Files/Microsoft Dependency Agent/logs/*.*
+copy,/ProgramData/Microsoft/System Center/Orchestrator/7.2/SMA/*.*
+copy,/Windows/Logs/OpsMgrTrace/*.*
+copy,/Windows/Temp/MonitoringAgent.log
+copy,/Windows/Temp/MOMPerfCtrsInstall.log
