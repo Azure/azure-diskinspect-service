@@ -8,7 +8,7 @@ copy,/var/spool/cron/tabs/root
 copy,/opt/msawb/etc*
 echo,
 
-echo,### Gathering Log Files ###
+echo,### Gathering Log Files. It is expected for this step to take more than 20 minutes. Please use SkipToStep feature if all logs are not downloaded in one go.###
 copy,/var/log/waagent*
 copy,/var/log/dmesg*
 copy,/var/log/syslog*
