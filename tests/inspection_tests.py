@@ -157,6 +157,7 @@ header_to_json_mappings = {"os":"InspectionMetadata-Operating-System",
                 "os_distribution":"InspectionMetadata-OS-Distribution", 
                 "os_product_name":"InspectionMetadata-Product-Name",
                 "os_disk_configuration":"InspectionMetadata-Disk-Configuration",
+                "partial_result":"InspectionMetadata-Partial-Result",
                 "expected_timeout":"KeepAliveThread-Timeout-In-Mins",
                 "content_type":"Content-Type",
                 "content_length":"Content-Length"}

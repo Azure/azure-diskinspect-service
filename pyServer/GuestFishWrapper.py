@@ -339,6 +339,8 @@ class GuestFishWrapper:
                     if (osProductName is not None):
                         self.metadata_pairs[DiskInspectionMetadata.INSPECTION_METADATA_PRODUCT_NAME] = osProductName
 
+                    self.metadata_pairs[DiskInspectionMetadata.INSPECTION_METADATA_PARTIAL_RESULT] = "false"
+
                     try:
                         # Mount all identified mount points
                         canProceedAfterMount = False
@@ -536,6 +538,7 @@ class GuestFishWrapper:
             if (self.kpThread.wasTimeout):
                 strLastGoodStep = str(lastGoodOperationMajorStep) + "." + str(lastGoodOperationMinorStep)
                 self.WriteToResultFile(operationOutFile, "\r\n##### WARNING: Partial results were collected as the operation was taking too long to complete. Consider retrying the operation specifying skip to step " + strLastGoodStep + " to continue gathering from last succesfully executed data collection step. #####")
+                self.metadata_pairs[DiskInspectionMetadata.INSPECTION_METADATA_PARTIAL_RESULT] = "true"
 
             # Scan results for secrets
             if self.runWithCredscan:
@@ -680,3 +683,4 @@ class DiskInspectionMetadata:
     INSPECTION_METADATA_DISK_CONFIGURATION = "InspectionMetadata-Disk-Configuration"
     INSPECTION_METADATA_OS_DISTRIBUTION = "InspectionMetadata-OS-Distribution"
     INSPECTION_METADATA_PRODUCT_NAME = "InspectionMetadata-Product-Name"
+    INSPECTION_METADATA_PARTIAL_RESULT = "InspectionMetadata-Partial-Result"
