@@ -13,10 +13,17 @@ copy,/var/log/waagent*
 copy,/var/log/dmesg*
 copy,/var/log/syslog*
 copy,/var/log/azure/*
-copy,/opt/msawb/var/lib*
+copy,/var/opt/msawb/catalog/AutoHealCatalog/AutoHealTask/*.bin
+copy,/var/opt/msawb/catalog/InquiryCatalog/*/*.bin
+copy,/var/opt/msawb/catalog/RegisteredObjectInfoCatalog/*/*.bin
+copy,/var/opt/msawb/catalog/WorkloadExtDatasourceCatalog/*/*.bin
+copy,/var/opt/msawb/catalog/WorkloadSchedules/*/*.bin
+copy,/var/opt/msawb/catalog/SyncObjectsCatalog/DatasourceSyncTable/*.bin
+copy,/var/opt/msawb/catalog/SyncObjectsCatalog/AlertEventsTable/*.bin
 copy,/opt/msawb/bin/AzureWLBackupCommonManagementSettings.json
 copy,/opt/msawb/bin/AzureWLBackupMonitoringSync_config.json
-copy,/opt/msawb/var/log*
+copy,/opt/msawb/var/log/*/*/*
+copy,/opt/msawb/var/log/*/*/*/*/*
 
 echo,
 
