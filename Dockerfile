@@ -25,7 +25,7 @@ RUN apt-get update && apt-get install -y mono-complete
 
 # patched libguestfs
 WORKDIR /
-RUN git clone https://github.com/amitchat/libguestfs.git
+RUN git clone https://github.com/craigwiand/libguestfs.git
 WORKDIR /libguestfs
 RUN ./autogen.sh \
  && make ; rm -f po-docs/podfiles; make -C po-docs update-po 
