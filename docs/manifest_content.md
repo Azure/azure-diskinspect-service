@@ -267,10 +267,17 @@ workloadbackup | copy | /var/log/waagent\*
 workloadbackup | copy | /var/log/dmesg\*
 workloadbackup | copy | /var/log/syslog\*
 workloadbackup | copy | /var/log/azure/\*
-workloadbackup | copy | /opt/msawb/var/lib\*
+workloadbackup | copy | /var/opt/msawb/catalog/AutoHealCatalog/AutoHealTask/\*.bin
+workloadbackup | copy | /var/opt/msawb/catalog/InquiryCatalog/\*/\*.bin
+workloadbackup | copy | /var/opt/msawb/catalog/RegisteredObjectInfoCatalog/\*/\*.bin
+workloadbackup | copy | /var/opt/msawb/catalog/WorkloadExtDatasourceCatalog/\*/\*.bin
+workloadbackup | copy | /var/opt/msawb/catalog/WorkloadSchedules/\*/\*.bin
+workloadbackup | copy | /var/opt/msawb/catalog/SyncObjectsCatalog/DatasourceSyncTable/\*.bin
+workloadbackup | copy | /var/opt/msawb/catalog/SyncObjectsCatalog/AlertEventsTable/\*.bin
 workloadbackup | copy | /opt/msawb/bin/AzureWLBackupCommonManagementSettings.json
 workloadbackup | copy | /opt/msawb/bin/AzureWLBackupMonitoringSync_config.json
-workloadbackup | copy | /opt/msawb/var/log\*
+workloadbackup | copy | /opt/msawb/var/log/\*/\*/\*
+workloadbackup | copy | /opt/msawb/var/log/\*/\*/\*/\*/\*
 workloadbackup | copy | /var/lib/waagent/GoalState.\*.xml
 ## windows 
  Manifest | Operation | File Path 
@@ -922,4 +929,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-11-29 10:32:02.853862`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-12-13 12:00:54.295729`*

@@ -66,8 +66,8 @@ File Path | Manifest
 /opt/msawb/bin/AzureWLBackupCommonManagementSettings.json | workloadbackup 
 /opt/msawb/bin/AzureWLBackupMonitoringSync_config.json | workloadbackup 
 /opt/msawb/etc\* | workloadbackup 
-/opt/msawb/var/lib\* | workloadbackup 
-/opt/msawb/var/log\* | workloadbackup 
+/opt/msawb/var/log/\*/\*/\* | workloadbackup 
+/opt/msawb/var/log/\*/\*/\*/\*/\* | workloadbackup 
 /tmp/omsagent\*.tgz | monitor-mgmt 
 /var/lib/dhclient/dhclient-eth0.leases | diagnostic, eg 
 /var/lib/dhcp/dhclient.eth0.leases | diagnostic, eg 
@@ -131,6 +131,13 @@ File Path | Manifest
 /var/opt/microsoft/omsconfig/omsconfig.log | monitor-mgmt 
 /var/opt/microsoft/omsconfig/omsconfigdetailed.log | monitor-mgmt 
 /var/opt/microsoft/scx/log/scx.log | monitor-mgmt 
+/var/opt/msawb/catalog/AutoHealCatalog/AutoHealTask/\*.bin | workloadbackup 
+/var/opt/msawb/catalog/InquiryCatalog/\*/\*.bin | workloadbackup 
+/var/opt/msawb/catalog/RegisteredObjectInfoCatalog/\*/\*.bin | workloadbackup 
+/var/opt/msawb/catalog/SyncObjectsCatalog/AlertEventsTable/\*.bin | workloadbackup 
+/var/opt/msawb/catalog/SyncObjectsCatalog/DatasourceSyncTable/\*.bin | workloadbackup 
+/var/opt/msawb/catalog/WorkloadExtDatasourceCatalog/\*/\*.bin | workloadbackup 
+/var/opt/msawb/catalog/WorkloadSchedules/\*/\*.bin | workloadbackup 
 /var/opt/omi/log/\*.log | monitor-mgmt 
 /var/spool/cron/tabs/root | workloadbackup 
 ## windows 
@@ -368,4 +375,4 @@ File Path | Manifest
 /WindowsAzure/config/\*.xml | agents, diagnostic, eg, normal 
 /unattend.xml | diagnostic, eg, normal 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-11-29 10:32:02.853862`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-12-13 12:00:54.295729`*
