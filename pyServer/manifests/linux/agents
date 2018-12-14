@@ -14,6 +14,7 @@ copy,/var/log/waagent*
 copy,/var/log/dmesg*
 copy,/var/log/syslog*
 copy,/var/log/auth*
+copy,/var/log/azure/*/*
 copy,/var/log/azure/*/*/*
 copy,/var/log/azure/custom-script/handler.log
 echo,
