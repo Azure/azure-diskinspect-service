@@ -535,6 +535,7 @@ diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.ManagedIdentity.Managed
 diagnostic | copy | /WindowsAzure/GuestAgent\*/CommonAgentConfig.config
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Compute.CustomScriptExtension/\*/\*.log
 diagnostic | copy | /Windows/Microsoft.NET/Framework64/v4.0.30319/Config/machine.config
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.RunCommandWindows/\*/\*.log
 diagnostic | diskinfo | 
 eg | copy | /Windows/System32/winevt/Logs/System.evtx
 eg | copy | /Windows/System32/winevt/Logs/Application.evtx
@@ -831,4 +832,4 @@ sql-iaas | copy | /WindowsAzure/Logs/Plugins/Microsoft.SqlServer.Management.SqlI
 sql-iaas | copy | /WindowsAzure/Logs/SqlServerLogs/\*.\*
 sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.\*
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-09-18 04:12:42.555271`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-01-03 08:53:07.322526`*

@@ -188,6 +188,7 @@ copy,/WindowsAzure/Logs/Plugins/Microsoft.ManagedIdentity.ManagedIdentityExtensi
 copy,/WindowsAzure/GuestAgent*/CommonAgentConfig.config
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Compute.CustomScriptExtension/*/*.log
 copy,/Windows/Microsoft.NET/Framework64/v4.0.30319/Config/machine.config
+copy,/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.RunCommandWindows/*/*.log
  
 echo,### Gathering Disk Info ###
 diskinfo,
