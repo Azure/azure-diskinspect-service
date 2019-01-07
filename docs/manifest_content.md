@@ -579,6 +579,7 @@ diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.Ne
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.ManagedIdentity.ManagedIdentityExtensionForWindo<br>ws/\*/RuntimeSettings/\*.xml
 diagnostic | copy | /WindowsAzure/GuestAgent\*/CommonAgentConfig.config
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Compute.CustomScriptExtension/\*/\*.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.RunCommandWindows/\*/\*.log
 diagnostic | diskinfo | 
 eg | copy | /Windows/System32/winevt/Logs/System.evtx
 eg | copy | /Windows/System32/winevt/Logs/Application.evtx
@@ -929,4 +930,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2018-12-13 12:00:54.295729`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-01-07 18:23:57.119536`*
