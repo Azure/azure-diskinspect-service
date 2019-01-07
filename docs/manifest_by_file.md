@@ -105,6 +105,7 @@ File Path | Manifest
 /var/log/azure/\* | site-recovery, workloadbackup 
 /var/log/azure/\*/\*/\* | agents, diagnostic 
 /var/log/azure/custom-script/handler.log | agents, diagnostic 
+/var/log/azure/run-command/handler.log | diagnostic 
 /var/log/boot\* | diagnostic, eg, normal 
 /var/log/cloud-init\* | diagnostic, eg, normal 
 /var/log/dmesg\* | agents, diagnostic, eg, normal, site-recovery, workloadbackup 
@@ -376,4 +377,4 @@ File Path | Manifest
 /WindowsAzure/config/\*.xml | agents, diagnostic, eg, normal 
 /unattend.xml | diagnostic, eg, normal 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-01-07 18:23:57.119536`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-01-07 18:36:33.870092`*

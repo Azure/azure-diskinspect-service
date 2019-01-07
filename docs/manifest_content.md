@@ -128,6 +128,7 @@ diagnostic | copy | /var/log/auth\*
 diagnostic | copy | /var/log/secure\*
 diagnostic | copy | /var/log/azure/\*/\*/\*
 diagnostic | copy | /var/log/azure/custom-script/handler.log
+diagnostic | copy | /var/log/azure/run-command/handler.log
 diagnostic | copy | /var/lib/waagent/ExtensionsConfig.\*.xml
 diagnostic | copy | /var/lib/waagent/\*/status/\*.status
 diagnostic | copy | /var/lib/waagent/\*/config/\*.settings
@@ -930,4 +931,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-01-07 18:23:57.119536`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-01-07 18:36:33.870092`*
