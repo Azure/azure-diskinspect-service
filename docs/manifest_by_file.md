@@ -103,6 +103,7 @@ File Path | Manifest
 /var/log/azure/Microsoft.OSTCExtensions.LinuxDiagnostic/\*/mdsd.\* | servicefabric 
 /var/log/azure/Microsoft.\*LinuxDiagnostic/\*/\* | lad 
 /var/log/azure/\* | site-recovery, workloadbackup 
+/var/log/azure/\*/\* | agents, diagnostic 
 /var/log/azure/\*/\*/\* | agents, diagnostic 
 /var/log/azure/custom-script/handler.log | agents, diagnostic 
 /var/log/azure/run-command/handler.log | diagnostic 
@@ -377,4 +378,4 @@ File Path | Manifest
 /WindowsAzure/config/\*.xml | agents, diagnostic, eg, normal 
 /unattend.xml | diagnostic, eg, normal 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-01-07 18:36:33.870092`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-01-08 10:18:43.280677`*
