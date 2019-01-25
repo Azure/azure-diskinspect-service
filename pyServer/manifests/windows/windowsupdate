@@ -81,8 +81,13 @@ copy,/Windows/System32/Sysprep/Panther/IE/setuperr.log
 copy,/Windows/System32/Sysprep/Sysprep_succeeded.tag
 
 echo,### Plug and Play ###
+copy,/Windows/INF/netcfg*.*etl
 copy,/Windows/Inf/netcfg*.*etl
-copy,/Windows/Inf/setupapi.dev.log
+copy,/Windows/inf/netcfg*.*etl
+copy,/Windows/INF/setupapi.*.log
+copy,/Windows/Inf/setupapi.*.log
+copy,/Windows/inf/setupapi.*.log
+
 echo,### Active Directory domain join ###
 copy,/Windows/debug/netlogon.log
 copy,/Windows/debug/NetSetup.LOG
@@ -201,7 +206,6 @@ copy,/Windows/windowsupdate*.log
 copy,/Windows/Logs/WindowsUpdate/WindowsUpdate.*.etl
 copy,/Windows/Logs/SIH/SIH.*.etl
 copy,/Windows/Logs/NetSetup/*.etl
-copy,/Windows/INF/Setupapi.*.log
 copy,/Windows/WinSxS/pending.xml
 copy,/Windows/WinSxS/poqexec.log
 copy,/Users/*/AppData/Local/microsoft/windows/windowsupdate.log
