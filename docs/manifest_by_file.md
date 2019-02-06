@@ -229,6 +229,8 @@ File Path | Manifest
 /ProgramData/ASRSetupLogs/UnifiedAgentMSIInstall.log | site-recovery 
 /ProgramData/ASRSetupLogs/WrapperUnifiedAgent.log | site-recovery 
 /ProgramData/Microsoft/System Center/Orchestrator/7.2/SMA/\*.\* | monitor-mgmt 
+/Windows/INF/netcfg\*.\*etl | diagnostic 
+/Windows/INF/setupapi.dev.log | diagnostic 
 /Windows/Inf/netcfg\*.\*etl | diagnostic, normal 
 /Windows/Inf/setupapi.dev.log | diagnostic, normal 
 /Windows/Logs/OpsMgrTrace/\*.\* | monitor-mgmt 
@@ -326,6 +328,8 @@ File Path | Manifest
 /Windows/debug/dcpromoui.log | diagnostic, eg, normal 
 /Windows/debug/mrt.log | diagnostic, eg, normal 
 /Windows/debug/netlogon.log | diagnostic, eg, normal 
+/Windows/inf/netcfg\*.\*etl | diagnostic 
+/Windows/inf/setupapi.dev.log | diagnostic 
 /Windows/system32/winevt/Logs/Operations Manager.evtx | monitor-mgmt 
 /WindowsAzure/GuestAgent\*/CommonAgentConfig.config | diagnostic 
 /WindowsAzure/Logs/AggregateStatus/\*.json | monitor-mgmt 
@@ -376,4 +380,4 @@ File Path | Manifest
 /WindowsAzure/config/\*.xml | agents, diagnostic, eg, normal 
 /unattend.xml | diagnostic, eg, normal 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-01-08 10:18:43.280677`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-02-05 16:23:28.715926`*
