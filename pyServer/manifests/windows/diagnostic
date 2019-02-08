@@ -79,8 +79,13 @@ copy,/Windows/System32/Sysprep/Panther/IE/setuperr.log
 copy,/Windows/System32/Sysprep/Sysprep_succeeded.tag
 
 echo,### Plug and Play ###
+copy,/Windows/INF/netcfg*.*etl
 copy,/Windows/Inf/netcfg*.*etl
+copy,/Windows/inf/netcfg*.*etl
+copy,/Windows/INF/setupapi.dev.log
 copy,/Windows/Inf/setupapi.dev.log
+copy,/Windows/inf/setupapi.dev.log
+
 echo,### Active Directory domain join ###
 copy,/Windows/debug/netlogon.log
 copy,/Windows/debug/NetSetup.LOG
