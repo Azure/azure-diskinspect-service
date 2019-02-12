@@ -98,6 +98,8 @@ class GuestFishWrapper:
         return (osType[0], osDistribution[0], osProductName[0], osMountpoints)
 
     def CreateArchive(self, zipFilename, targetDir):
+        start_time = datetime.now()
+        self.rootLogger.info("Starting zip archiving.")
         with zipfile.ZipFile(zipFilename, "w", compression=zipfile.ZIP_DEFLATED) as zf:
             base_path = os.path.normpath(targetDir)
             for dirpath, dirnames, filenames in os.walk(targetDir):
@@ -107,7 +109,9 @@ class GuestFishWrapper:
                 for name in filenames:
                     path = os.path.normpath(os.path.join(dirpath, name))
                     if os.path.isfile(path):
-                        zf.write(path, os.path.relpath(path, base_path))        
+                        zf.write(path, os.path.relpath(path, base_path))
+        successElapsed = datetime.now() - start_time
+        self.rootLogger.info('Zip archiving completed succesfully in ' + str(successElapsed.total_seconds()) + "s.")
         return zipFilename
 
     def RunCredentialScanner(self, targetDir, operationOutFile):

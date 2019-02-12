@@ -39,6 +39,7 @@ def test_headers(header_to_json_mappings, inspection_test):
                     found_header = True
                     print("INFO: json config setting[{0}]: '{1}' => response header[{2}]:'{3}'".format( test_setting, test_value, mapped_value, header_value) )
                     if test_value.lower().strip() != header_value.lower().strip():
+                        print("ERROR: Comparison failed: test_value:[{0}] vs header_value:[{1}]".format( test_value.lower().strip(), header_value.lower().strip()) )
                         return False
             if not found_header: 
                 print( "ERROR: Test failed... did not find header: {0} in http response.".format(mapped_value) )
