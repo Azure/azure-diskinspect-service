@@ -477,7 +477,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
 
             self.telemetryLogger.info('Received timeout value: ' + str(timeoutInMins)+ ' min(s)')
 
-            if timeoutInMins < 20:
+            if timeoutInMins <= DEFAULT_TIMEOUT_IN_MINS:
                 zipFileHandlingOverhead = DEFAULT_ARCHIVING_OVERHEAD_IN_MINS # If customized timeout is low, inspection result will likely be small. Zip archive creation will be faster.
             else:
                 zipFileHandlingOverhead = EXTENDED_ARCHIVING_OVERHEAD_IN_MINS  # if customized timeout is high, inspection result will likely be large and zip archiving time will take longer.
