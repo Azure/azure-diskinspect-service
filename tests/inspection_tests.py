@@ -39,6 +39,7 @@ def test_headers(header_to_json_mappings, inspection_test):
                     found_header = True
                     print("INFO: json config setting[{0}]: '{1}' => response header[{2}]:'{3}'".format( test_setting, test_value, mapped_value, header_value) )
                     if test_value.lower().strip() != header_value.lower().strip():
+                        print("ERROR: Comparison failed: test_value:[{0}] vs header_value:[{1}]".format( test_value.lower().strip(), header_value.lower().strip()) )
                         return False
             if not found_header: 
                 print( "ERROR: Test failed... did not find header: {0} in http response.".format(mapped_value) )
@@ -238,15 +239,18 @@ with open(os.path.join(current_directory,'test_config.json'), "r") as json_confi
         elif "bad_blob_endpoint" in inspection_test:
             blob_sas_to_use  = blob_upload_sas_url.replace("blob", "foo")
 
-        if inspection_test["title"] == "Invalid SAS":
-            DATA = urllib.parse.urlencode({"saskey": "sv=2017-04-17&sr=c&sig=INVALIDSAS"})
-        elif "timeout_override" in inspection_test:
-            DATA = urllib.parse.urlencode({"saskey":storage_sas, "timeout":inspection_test["timeout_override"]})
-        elif "blob_upload" in inspection_test and inspection_test["blob_upload"] == True:
-            DATA = urllib.parse.urlencode({"saskey":storage_sas, "blobsasurl":blob_sas_to_use })
-        else:
-            DATA = urllib.parse.urlencode({"saskey":storage_sas})
+        input_params = {"saskey":storage_sas}
 
+        if inspection_test["title"] == "Invalid SAS":
+            input_params.update({"saskey": "sv=2017-04-17&sr=c&sig=INVALIDSAS"})
+
+        if "timeout_override" in inspection_test:
+            input_params.update({"timeout":inspection_test["timeout_override"]})
+
+        if "blob_upload" in inspection_test and inspection_test["blob_upload"] == True:
+            input_params.update({"blobsasurl":blob_sas_to_use })
+
+        DATA = urllib.parse.urlencode(input_params)
         DATA = DATA.encode('ascii')
         req = urllib.request.Request(url=uri,data=DATA,method='POST')
         try:

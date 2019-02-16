@@ -33,6 +33,8 @@ from azure.storage.common import (
 
 OUTPUTDIRNAME = '/output'
 DEFAULT_TIMEOUT_IN_MINS = 19
+DEFAULT_ARCHIVING_OVERHEAD_IN_MINS = 1
+EXTENDED_ARCHIVING_OVERHEAD_IN_MINS = 4
 
 """
 Helper to print progress
@@ -472,6 +474,16 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
                     self.telemetryLogger.info('WARNING: Received timeout override is invalid: {0}. Default will be used.'.format(timeoutInMinsStr))
 
             timeoutInMins = int(timeoutInMinsStr)
+
+            self.telemetryLogger.info('Received timeout value: ' + str(timeoutInMins)+ ' min(s)')
+
+            if timeoutInMins <= DEFAULT_TIMEOUT_IN_MINS:
+                zipFileHandlingOverhead = DEFAULT_ARCHIVING_OVERHEAD_IN_MINS # If customized timeout is low, inspection result will likely be small. Zip archive creation will be faster.
+            else:
+                zipFileHandlingOverhead = EXTENDED_ARCHIVING_OVERHEAD_IN_MINS  # if customized timeout is high, inspection result will likely be large and zip archiving time will take longer.
+
+            self.telemetryLogger.info('Trimming timeout value by ' + str(zipFileHandlingOverhead)+ ' min(s) to reserve overhead time for inspection file archiving.')
+            timeoutInMins -= zipFileHandlingOverhead
             self.telemetryLogger.info('Using timeout value: ' + str(timeoutInMins)+ ' min(s)')
 
             if b'blobsasurl' in postvars:
