@@ -67,6 +67,7 @@ copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Compute.BGInfo/*/BGInfo*.log
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Compute.JsonADDomainExtension/*/ADDomainExtension.log
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Compute.VMAccessAgent/*/JsonVMAccessExtension.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.RunCommandWindows/*/RunCommandExtension.log
 copy,/WindowsAzure/Logs/Plugins/Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent/*/0.log
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Powershell.DSC/*/DSCLOG*.json
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Powershell.DSC/*/DscExtensionHandler*.log
