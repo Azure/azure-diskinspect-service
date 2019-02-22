@@ -10,6 +10,7 @@ import subprocess
 import threading
 import logging
 import logging.handlers
+import traceback
 from datetime import datetime
 from GuestFishWrapper import GuestFishWrapper
 from GuestFishWrapper import DiskInspectionMetadata  #ensure telemetry is logged properly
@@ -179,6 +180,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
         customProperties =  {"HOSTNAME": os.environ['HOSTNAME'] if 'HOSTNAME' in os.environ  else ""}
         if properties:
             customProperties.update(properties)  # combine with any passed in
+        self.telemetryLogger.error(traceback.format_exc())
         self.rootLogger.exception(str(ex))  # note this is rootLogger not the child telemetryLogger
         self.telemetryClient.track_exception(*sys.exc_info(), properties=customProperties)
 
@@ -607,6 +609,12 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
             unexpectedError = True
             telemetryException = ex
             self.logException(ex, customProperties)
+            failureStatusText = 'Server Error'
+        except:
+            exc_value = sys.exc_info()[1]
+            unexpectedError = True
+            telemetryException = exc_value
+            self.logException(exc_value, customProperties)
             failureStatusText = 'Server Error'
         finally:
             if (not requestSucceeded):

@@ -194,6 +194,7 @@ class GuestFishWrapper:
                     self.rootLogger.warning(strMsg)
 
         # Remove found secrets from files
+        self.rootLogger.info("OperationalLog: CredScan completed. Proceeding with redacting.")
         redacted_file_secrets = {}
         removed_file_secrets = {}
         with open(credscan_results_file, encoding='utf-8', errors='replace') as tsv:
@@ -209,7 +210,7 @@ class GuestFishWrapper:
                 if os.path.isfile(source_file):
                     if os.path.getsize(filepath) < 1000000:
                         is_redacted = True
-                        with open(source_file, "r+") as f:
+                        with open(source_file, "r+", encoding='utf-8') as f:
                             lines = f.readlines()
                             f.seek(0)
                             for i, line in enumerate(lines):
