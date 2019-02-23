@@ -4,23 +4,24 @@ services:
 language: python
 python:
 - 3.5
-install:
-- travis_wait 60 ./build.sh ~/docker_build.txt
-- pip3 install azure-storage-blob
-- mkdir $HOME/azdis_ssl
-- openssl req -x509 -newkey rsa:2048 -keyout $HOME/azdis_ssl/azdis_private.rsa -out
-  $HOME/azdis_ssl/azdis_public.crt -days 365 -nodes -subj "/CN=localhost"
-before_script:
-- docker version
-- docker info
-- ./tests/requires_doc_change.sh
-- ./scripts/run.sh
+
 jobs:
   include:
-    - stage: dockercheck
-      script: docker ps | grep -q AzureDiskInspectSvc_US
-    - stage: unittest
-      script: python3 ./tests/inspection_tests.py ~ 'https://localhost:8080'
+    - stage: build docker image
+      script:
+      - travis_wait 60 ./build.sh ~/docker_build.txt
+    - stage: test
+      script: 
+      - pip3 install azure-storage-blob
+      - mkdir $HOME/azdis_ssl
+      - openssl req -x509 -newkey rsa:2048 -keyout $HOME/azdis_ssl/azdis_private.rsa -out
+        $HOME/azdis_ssl/azdis_public.crt -days 365 -nodes -subj "/CN=localhost"
+      - docker version
+      - docker info
+      - ./tests/requires_doc_change.sh
+      - ./scripts/run.sh
+      - docker ps | grep -q AzureDiskInspectSvc_US
+      - python3 ./tests/inspection_tests.py ~ 'https://localhost:8080'
 after_failure:
 - ./tests/check_travis_env.sh
 - ./scripts/getlogs.sh
