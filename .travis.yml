@@ -15,9 +15,12 @@ before_script:
 - docker info
 - ./tests/requires_doc_change.sh
 - ./scripts/run.sh
-script:
-- docker ps | grep -q AzureDiskInspectSvc_US
-- python3 ./tests/inspection_tests.py ~ 'https://localhost:8080'
+jobs:
+  include:
+    - stage: dockercheck
+      script: docker ps | grep -q AzureDiskInspectSvc_US
+    - stage: unit test
+      script: python3 ./tests/inspection_tests.py ~ 'https://localhost:8080'
 after_failure:
 - ./tests/check_travis_env.sh
 - ./scripts/getlogs.sh
