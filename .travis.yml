@@ -19,7 +19,7 @@ jobs:
   include:
     - stage: dockercheck
       script: docker ps | grep -q AzureDiskInspectSvc_US
-    - stage: unit test
+    - stage: unittest
       script: python3 ./tests/inspection_tests.py ~ 'https://localhost:8080'
 after_failure:
 - ./tests/check_travis_env.sh
