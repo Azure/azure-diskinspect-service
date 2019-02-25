@@ -1,0 +1,32 @@
+echo,### HDInsight Logs ###
+
+echo,### HDInsight Ambari Server Logs ###
+copy,/var/log/ambari-server/ambari-server.log
+
+echo,### HDInsight Yarn Logs ###
+copy,/var/log/hadoop-yarn/yarn/*
+
+echo,### HDInsight Host Files ###
+copy,/etc/hosts
+
+echo,### HDInsight HBase ###
+copy,/var/log/hbase/hbase-hbase-master
+
+echo,### HDInsight Kafka ###
+copy,/var/log/kafka/*
+
+echo,### HDInsight Storm ###
+copy,/var/log/storm/*
+
+echo,### HDInsight Hive ###
+copy,/var/log/hive/hiveserver2.log
+copy,/var/log/hive/hivemetastore.log
+
+echo,### HDInsight Livy ###
+copy,/var/log/livy/livy-livy-server.out
+
+echo,### HDInsight Jupyter ###
+copy,/var/log/jupyter/*
+
+echo,### HDInsight Zeppelin ###
+copy,/var/log/zeppelin/*
