@@ -3,9 +3,9 @@ This file documents the various files collected, or directory listed or registry
 * [freebsd](#freebsd)
 * [linux](#linux)
 * [windows](#windows)
-## freebsd
- Manifest | Operation | File Path
- ------------- | ------------- | -------------
+## freebsd 
+ Manifest | Operation | File Path 
+ ------------- | ------------- | ------------- 
 agents | list | /var/log
 agents | list | /var/lib/waagent
 agents | copy | /etc/\*-release
@@ -65,9 +65,9 @@ normal | copy | /var/log/dmesg\*
 normal | copy | /var/log/boot\*
 normal | copy | /var/log/auth\*
 normal | copy | /boot/loader.conf
-## linux
- Manifest | Operation | File Path
- ------------- | ------------- | -------------
+## linux 
+ Manifest | Operation | File Path 
+ ------------- | ------------- | ------------- 
 agents | list | /var/log
 agents | list | /var/lib/waagent
 agents | copy | /etc/\*-release
@@ -141,7 +141,7 @@ diagnostic | copy | /var/lib/waagent/ManagedIdentity-\*.json
 diagnostic | copy | /var/lib/waagent/error.json
 diagnostic | copy | /var/lib/waagent/Incarnation
 diagnostic | copy | /var/lib/waagent/history/\*.zip
-diagnostic | diskinfo |
+diagnostic | diskinfo | 
 eg | list | /var/log
 eg | list | /var/lib/waagent
 eg | list | /etc/udev/rules.d
@@ -179,7 +179,7 @@ eg | copy | /var/log/cloud-init\*
 eg | copy | /var/log/boot\*
 eg | copy | /var/log/auth\*
 eg | copy | /var/log/secure\*
-eg | diskinfo |
+eg | diskinfo | 
 genspec | copy | /etc/hostname
 genspec | copy | /var/lib/waagent/provisioned
 hdinsight | copy | /var/log/ambari-server/ambari-server.log
@@ -302,9 +302,9 @@ workloadbackup | copy | /opt/msawb/bin/AzureWLBackupMonitoringSync_config.json
 workloadbackup | copy | /opt/msawb/var/log/\*/\*/\*
 workloadbackup | copy | /opt/msawb/var/log/\*/\*/\*/\*/\*
 workloadbackup | copy | /var/lib/waagent/GoalState.\*.xml
-## windows
- Manifest | Operation | File Path
- ------------- | ------------- | -------------
+## windows 
+ Manifest | Operation | File Path 
+ ------------- | ------------- | ------------- 
 agents | copy | /Windows/System32/winevt/Logs/System.evtx
 agents | copy | /Windows/System32/winevt/Logs/Application.evtx
 agents | copy | /Windows/System32/winevt/Logs/Windows Azure.evtx
@@ -606,7 +606,7 @@ diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.Ne
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.ManagedIdentity.ManagedIdentityExtensionForWindo<br>ws/\*/RuntimeSettings/\*.xml
 diagnostic | copy | /WindowsAzure/GuestAgent\*/CommonAgentConfig.config
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Compute.CustomScriptExtension/\*/\*.log
-diagnostic | diskinfo |
+diagnostic | diskinfo | 
 eg | copy | /Windows/System32/winevt/Logs/System.evtx
 eg | copy | /Windows/System32/winevt/Logs/Application.evtx
 eg | copy | /Windows/System32/winevt/Logs/Microsoft-ServiceFabric%4Admin.evtx
@@ -693,7 +693,7 @@ eg | copy | /WindowsAzure/Logs/Plugins/\*/\*/CommandExecution.log
 eg | copy | /WindowsAzure/Logs/Plugins/\*/\*/Install.log
 eg | copy | /WindowsAzure/Logs/Plugins/\*/\*/Update.log
 eg | copy | /WindowsAzure/Logs/Plugins/\*/\*/Heartbeat.log
-eg | diskinfo |
+eg | diskinfo | 
 genspec | copy | /Windows/Setup/State/State.ini
 genspec | copy | /Windows/Panther/WaSetup.xml
 min-diagnostic | copy | /WindowsAzure/Logs/TransparentInstaller.log
@@ -1181,7 +1181,7 @@ windowsupdate | copy | /Windows/System32/LogFiles/Firewall/pfirewall.log.old
 windowsupdate | copy | /Windows/Logs/waasmedic/waasmedic.\*.etl
 windowsupdate | copy | /Windows/Logs/SystemRestore/\*.\*
 windowsupdate | copy | /Windows/Minidump/\*.dmp
-windowsupdate | diskinfo |
+windowsupdate | diskinfo | 
 workloadbackup | copy | /Windows/System32/winevt/Logs/System.evtx
 workloadbackup | copy | /Windows/System32/winevt/Logs/Application.evtx
 workloadbackup | copy | /Windows/System32/winevt/Logs/Windows Azure.evtx
@@ -1201,4 +1201,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-02-26 19:41:09.561181`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-02-26 11:55:41.437820`*
