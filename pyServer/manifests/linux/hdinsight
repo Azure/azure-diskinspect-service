@@ -32,7 +32,7 @@ echo,### HDInsight Zeppelin ###
 copy,/var/log/zeppelin/*
 
 echo,### Virtual machine syslogs ###
-copy,/var/log/syslog
+copy,/var/log/syslog*
 
 echo,### Configurations ###
 copy,/etc/ambari-server/conf/*
@@ -40,7 +40,6 @@ copy,/etc/ambari-agent/conf/*
 copy,/etc/spark/conf/*
 copy,/etc/hbase/conf/*
 copy,/etc/hadoop/conf/*
-copy,/etc/hbase/conf/*
 copy,/etc/storm/conf/*
 copy,/etc/hive2/conf/*
 copy,/var/lib/.jupyter/jupyter_notebook_config.py

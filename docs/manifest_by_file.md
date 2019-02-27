@@ -45,7 +45,7 @@ File Path | Manifest
 /etc/ambari-server/conf/\* | hdinsight 
 /etc/fstab | diagnostic, eg, normal 
 /etc/hadoop/conf/\* | hdinsight 
-/etc/hbase/conf/\* | hdinsight, hdinsight 
+/etc/hbase/conf/\* | hdinsight 
 /etc/hive2/conf/\* | hdinsight 
 /etc/hostname | agents, diagnostic, eg, genspec, lad, site-recovery, workloadbackup 
 /etc/hosts | hdinsight 
@@ -137,8 +137,8 @@ File Path | Manifest
 /var/log/sfnode/sfnodelog | servicefabric 
 /var/log/storm/\* | hdinsight 
 /var/log/svagents\*.log | site-recovery 
-/var/log/syslog | hdinsight, servicefabric 
-/var/log/syslog\* | agents, diagnostic, eg, lad, monitor-mgmt, normal, site-recovery, workloadbackup 
+/var/log/syslog | servicefabric 
+/var/log/syslog\* | agents, diagnostic, eg, hdinsight, lad, monitor-mgmt, normal, site-recovery, workloadbackup 
 /var/log/ua_install.log | site-recovery 
 /var/log/waagent\* | agents, diagnostic, eg, lad, normal, site-recovery, workloadbackup 
 /var/log/waagent\*.log | monitor-mgmt 
@@ -454,4 +454,4 @@ File Path | Manifest
 /WindowsUpdateVerbose.etl | windowsupdate 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-02-26 11:55:41.437820`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-02-27 09:55:01.377620`*

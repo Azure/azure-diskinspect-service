@@ -193,13 +193,12 @@ hdinsight | copy | /var/log/hive/hivemetastore.log
 hdinsight | copy | /var/log/livy/livy-livy-server.out
 hdinsight | copy | /var/log/jupyter/\*
 hdinsight | copy | /var/log/zeppelin/\*
-hdinsight | copy | /var/log/syslog
+hdinsight | copy | /var/log/syslog\*
 hdinsight | copy | /etc/ambari-server/conf/\*
 hdinsight | copy | /etc/ambari-agent/conf/\*
 hdinsight | copy | /etc/spark/conf/\*
 hdinsight | copy | /etc/hbase/conf/\*
 hdinsight | copy | /etc/hadoop/conf/\*
-hdinsight | copy | /etc/hbase/conf/\*
 hdinsight | copy | /etc/storm/conf/\*
 hdinsight | copy | /etc/hive2/conf/\*
 hdinsight | copy | /var/lib/.jupyter/jupyter_notebook_config.py
@@ -1201,4 +1200,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-02-26 11:55:41.437820`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-02-27 09:55:01.377620`*
