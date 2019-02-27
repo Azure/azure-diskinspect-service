@@ -41,8 +41,14 @@ File Path | Manifest
 /boot/grub\*/menu.lst | diagnostic, eg 
 /etc/HOSTNAME | agents, diagnostic, eg, lad, site-recovery, workloadbackup 
 /etc/\*-release | agents, diagnostic, eg, site-recovery, workloadbackup 
+/etc/ambari-agent/conf/\* | hdinsight 
+/etc/ambari-server/conf/\* | hdinsight 
 /etc/fstab | diagnostic, eg, normal 
+/etc/hadoop/conf/\* | hdinsight 
+/etc/hbase/conf/\* | hdinsight 
+/etc/hive2/conf/\* | hdinsight 
 /etc/hostname | agents, diagnostic, eg, genspec, lad, site-recovery, workloadbackup 
+/etc/hosts | hdinsight 
 /etc/network/interfaces | diagnostic, eg 
 /etc/network/interfaces.d/\*.cfg | diagnostic, eg 
 /etc/nsswitch.conf | diagnostic 
@@ -52,7 +58,9 @@ File Path | Manifest
 /etc/opt/omi/conf/omsconfig/agentid | monitor-mgmt 
 /etc/opt/omi/conf/omsconfig/configuration/\*.mof | monitor-mgmt 
 /etc/resolv.conf | diagnostic, eg 
+/etc/spark/conf/\* | hdinsight 
 /etc/ssh/sshd_config | diagnostic, normal 
+/etc/storm/conf/\* | hdinsight 
 /etc/sysconfig/SuSEfirewall2 | diagnostic, eg 
 /etc/sysconfig/iptables | diagnostic, eg 
 /etc/sysconfig/network | diagnostic, eg 
@@ -69,6 +77,7 @@ File Path | Manifest
 /opt/msawb/var/log/\*/\*/\* | workloadbackup 
 /opt/msawb/var/log/\*/\*/\*/\*/\* | workloadbackup 
 /tmp/omsagent\*.tgz | monitor-mgmt 
+/var/lib/.jupyter/jupyter_notebook_config.py | hdinsight 
 /var/lib/dhclient/dhclient-eth0.leases | diagnostic, eg 
 /var/lib/dhcp/dhclient.eth0.leases | diagnostic, eg 
 /var/lib/waagent/ExtensionsConfig.\*.xml | diagnostic, lad 
@@ -97,6 +106,7 @@ File Path | Manifest
 /var/lib/waagent/provisioned | diagnostic, eg, genspec 
 /var/lib/wicked/lease-eth0-dhcp-ipv4.xml | diagnostic, eg 
 /var/log/AzureRcmCli.log | site-recovery 
+/var/log/ambari-server/ambari-server.log | hdinsight 
 /var/log/auth\* | agents, diagnostic, eg, normal 
 /var/log/azure/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode/\*.\*/CommandExec<br>ution.log | servicefabric 
 /var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/\*/\*.log | monitor-mgmt 
@@ -111,20 +121,29 @@ File Path | Manifest
 /var/log/dmesg\* | agents, diagnostic, eg, normal, site-recovery, workloadbackup 
 /var/log/dpkg\* | diagnostic, eg, normal 
 /var/log/evtcollforw\*.log | site-recovery 
+/var/log/hadoop-yarn/yarn/\* | hdinsight 
+/var/log/hbase/hbase-hbase-master | hdinsight 
+/var/log/hive/hivemetastore.log | hdinsight 
+/var/log/hive/hiveserver2.log | hdinsight 
+/var/log/jupyter/\* | hdinsight 
+/var/log/kafka/\* | hdinsight 
 /var/log/kern\* | diagnostic, eg, normal 
+/var/log/livy/livy-livy-server.out | hdinsight 
 /var/log/messages\* | diagnostic, eg, monitor-mgmt, normal 
 /var/log/rsyslog\* | diagnostic, eg, lad, normal 
 /var/log/s2\*.log | site-recovery 
 /var/log/sa/sar\* | performance 
 /var/log/secure\* | diagnostic, eg, normal 
 /var/log/sfnode/sfnodelog | servicefabric 
+/var/log/storm/\* | hdinsight 
 /var/log/svagents\*.log | site-recovery 
 /var/log/syslog | servicefabric 
-/var/log/syslog\* | agents, diagnostic, eg, lad, monitor-mgmt, normal, site-recovery, workloadbackup 
+/var/log/syslog\* | agents, diagnostic, eg, hdinsight, lad, monitor-mgmt, normal, site-recovery, workloadbackup 
 /var/log/ua_install.log | site-recovery 
 /var/log/waagent\* | agents, diagnostic, eg, lad, normal, site-recovery, workloadbackup 
 /var/log/waagent\*.log | monitor-mgmt 
 /var/log/yum\* | diagnostic, eg, normal 
+/var/log/zeppelin/\* | hdinsight 
 /var/opt/microsoft/omsagent/LAD/log/\* | lad 
 /var/opt/microsoft/omsagent/\*/log/omsagent.log | monitor-mgmt 
 /var/opt/microsoft/omsagent/\*/run/automationworker/omsupdatemgmt.log | monitor-mgmt 
