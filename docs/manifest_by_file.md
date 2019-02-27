@@ -245,8 +245,7 @@ File Path | Manifest
 /Windows.old/Windows/SoftwareDistribution/ReportingEvents.log | windowsupdate 
 /Windows/INF/netcfg\*.\*etl | windowsupdate 
 /Windows/INF/setupapi.\*.log | windowsupdate 
-/Windows/Inf/netcfg\*.\*etl | normal, windowsupdate 
-/Windows/Inf/setupapi.\*.log | windowsupdate 
+/Windows/Inf/netcfg\*.\*etl | normal 
 /Windows/Inf/setupapi.dev.log | normal 
 /Windows/Logs/CBS/\*.cab | windowsupdate 
 /Windows/Logs/CBS/\*.log | windowsupdate 
@@ -378,8 +377,7 @@ File Path | Manifest
 /Windows/debug/dcpromoui.log | diagnostic, eg, normal, windowsupdate 
 /Windows/debug/mrt.log | diagnostic, eg, normal, windowsupdate 
 /Windows/debug/netlogon.log | diagnostic, eg, normal, windowsupdate 
-/Windows/inf/netcfg\*.\*etl | diagnostic, windowsupdate 
-/Windows/inf/setupapi.\*.log | windowsupdate 
+/Windows/inf/netcfg\*.\*etl | diagnostic 
 /Windows/inf/setupapi.dev.log | diagnostic 
 /Windows/servicing/sessions/sessions.xml | windowsupdate 
 /Windows/system32/winevt/Logs/Operations Manager.evtx | monitor-mgmt 
@@ -434,4 +432,4 @@ File Path | Manifest
 /WindowsUpdateVerbose.etl | windowsupdate 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-02-27 02:42:31.710692`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-02-27 22:17:50.593664`*
