@@ -438,6 +438,11 @@ class GuestFishWrapper:
                                 opCommand = str(opList[0]).lower().strip()
                                 opParam1 = pathPrefix + opList[1].strip()
 
+                                if (osType.lower() == "windows"):
+                                    opParamWin = guestfish.case_sensitive_path(opParam1)
+                                    if (opParamWin is not None):
+                                        opParam1 = opParamWin
+
                                 if opCommand=="echo":
                                     self.WriteToResultFile(operationOutFile, opParam1)
                                 elif opCommand=="ll":
