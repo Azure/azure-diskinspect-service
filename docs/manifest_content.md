@@ -496,11 +496,7 @@ diagnostic | copy | /Windows/System32/Sysprep/Panther/setuperr.log
 diagnostic | copy | /Windows/System32/Sysprep/Panther/IE/setuperr.log
 diagnostic | copy | /Windows/System32/Sysprep/Sysprep_succeeded.tag
 diagnostic | copy | /Windows/INF/netcfg\*.\*etl
-diagnostic | copy | /Windows/Inf/netcfg\*.\*etl
-diagnostic | copy | /Windows/inf/netcfg\*.\*etl
 diagnostic | copy | /Windows/INF/setupapi.dev.log
-diagnostic | copy | /Windows/Inf/setupapi.dev.log
-diagnostic | copy | /Windows/inf/setupapi.dev.log
 diagnostic | copy | /Windows/debug/netlogon.log
 diagnostic | copy | /Windows/debug/NetSetup.LOG
 diagnostic | copy | /Windows/debug/mrt.log
@@ -1010,11 +1006,7 @@ windowsupdate | copy | /Windows/System32/Sysprep/Panther/setuperr.log
 windowsupdate | copy | /Windows/System32/Sysprep/Panther/IE/setuperr.log
 windowsupdate | copy | /Windows/System32/Sysprep/Sysprep_succeeded.tag
 windowsupdate | copy | /Windows/INF/netcfg\*.\*etl
-windowsupdate | copy | /Windows/Inf/netcfg\*.\*etl
-windowsupdate | copy | /Windows/inf/netcfg\*.\*etl
 windowsupdate | copy | /Windows/INF/setupapi.\*.log
-windowsupdate | copy | /Windows/Inf/setupapi.\*.log
-windowsupdate | copy | /Windows/inf/setupapi.\*.log
 windowsupdate | copy | /Windows/debug/netlogon.log
 windowsupdate | copy | /Windows/debug/NetSetup.LOG
 windowsupdate | copy | /Windows/debug/mrt.log
@@ -1200,4 +1192,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-02-27 09:55:01.377620`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-02-27 23:14:57.665432`*
