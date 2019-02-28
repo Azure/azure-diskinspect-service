@@ -44,7 +44,7 @@
       "blob_upload": true,
       "content_type": "text/plain",
       "content_length": "0",
-      "files_present": [ "/diskinfo.txt","/device_0/Windows/System32/winevt/Logs/System.evtx", "/device_0/Windows/System32/winevt/Logs/Application.evtx", "/device_0/Windows/Panther/UnattendGC/setupact.log", "/device_0/Windows/Panther/WaSetup.log", "/device_0/Windows/Panther/WaSetup.xml", "/device_0/WindowsAzure/Logs/WaAppAgent.log","/device_0/WindowsAzure/Logs/AggregateStatus/aggregatestatus.json", "/device_0/Packages/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/1.6.4.0/RuntimeSettings/0.settings" ]
+      "files_present": [ "/diskinfo.txt","/device_0/Windows/System32/winevt/Logs/System.evtx", "/device_0/Windows/System32/winevt/Logs/Application.evtx", "/device_0/Windows/Panther/UnattendGC/setupact.log", "/device_0/Windows/Panther/WaSetup.log", "/device_0/Windows/Panther/WaSetup.xml", "/device_0/WindowsAzure/Logs/WaAppAgent.log","/device_0/WindowsAzure/Logs/AggregateStatus/aggregatestatus.json", "/device_0/Packages/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/1.6.4.0/RuntimeSettings/0.settings", "/device_0/Windows/inf/setupapi.dev.log" ]
     },
     {
       "title": "FreeBSD",
@@ -250,6 +250,20 @@
       "blob_upload": true,
       "bad_blob_endpoint" : true,
       "shouldFail" : true
+    },
+    {
+      "title": "Windows 2016 case insensitivity",
+      "description": "test should return os windows files insensitive to path casing (one partition)",
+      "vhd_relative_path": "/windows/windows2016.vhd",
+      "manifest": "normal",
+      "os": "windows",
+      "os_distribution": "",
+      "os_product_name": "",
+      "os_disk_configuration": "Standard",
+      "expected_timeout": "18",
+      "partial_result": "false",
+      "files_present": [ "/device_0/Windows/Setup/State/State.ini", "/device_0/Windows/Panther/WaSetup.xml", "/device_0/Windows/INF/setupapi.dev.log" ],
+      "file_content":{"/device_0/Windows/Setup/State/State.ini":"IMAGE_STATE_COMPLETE"}
     }
   ]
 }
