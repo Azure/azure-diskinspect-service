@@ -205,23 +205,25 @@ class GuestFishWrapper:
                 secret_found = line[2]
                 line_number = line[4]
                 is_redacted = False
-
-                # Remove secret - delete line for small files, entire file for large files
-                if os.path.isfile(source_file):
-                    if os.path.getsize(filepath) < 1000000:
-                        is_redacted = True
-                        with open(source_file, "r+", encoding='utf-8') as f:
-                            lines = f.readlines()
-                            f.seek(0)
-                            for i, line in enumerate(lines):
-                                if (i+1) != int(line_number):
-                                    f.write(line)
-                                else:
-                                    f.write("***REDACTED***")
-                            f.truncate()
-                    else:
-                        os.remove(source_file)
-
+                try:
+                    # Remove secret - delete line for small files, entire file for large files
+                    if os.path.isfile(source_file):
+                        if os.path.getsize(filepath) < 1000000:
+                            is_redacted = True
+                            with open(source_file, "r+", encoding='utf-8') as f:
+                                lines = f.readlines()
+                                f.seek(0)
+                                for i, line in enumerate(lines):
+                                    if (i+1) != int(line_number):
+                                        f.write(line)
+                                    else:
+                                        f.write("***REDACTED***")
+                                f.truncate()
+                        else:
+                            os.remove(source_file)
+                except:
+                    strMsg = "CredentialScanner: Could not Find the filepath - {}".format(filepath)
+                    self.rootLogger.warning(strMsg)
                 # Strip out the common target dir for logging
                 relative_source_file = source_file.replace(targetDir + "/", "")
                 # Store additional details for logging
