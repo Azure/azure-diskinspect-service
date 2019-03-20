@@ -221,8 +221,8 @@ class GuestFishWrapper:
                                 f.truncate()
                         else:
                             os.remove(source_file)
-                except:
-                    strMsg = "CredentialScanner: Failed to run for file - {}".format(source_file)
+                except Exception as e:
+                    strMsg = "CredentialScanner: Failed to run due to {}".format(e)
                     self.rootLogger.warning(strMsg)
                 # Strip out the common target dir for logging
                 relative_source_file = source_file.replace(targetDir + "/", "")
