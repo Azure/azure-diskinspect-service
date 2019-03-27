@@ -106,7 +106,6 @@ File Path | Manifest
 /var/lib/waagent/provisioned | diagnostic, eg, genspec 
 /var/lib/wicked/lease-eth0-dhcp-ipv4.xml | diagnostic, eg 
 /var/log/AzureRcmCli.log | site-recovery 
-/var/log/ambari-server/ambari-server.log | hdinsight 
 /var/log/auth\* | agents, diagnostic, eg, normal 
 /var/log/azure/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode/\*.\*/CommandExec<br>ution.log | servicefabric 
 /var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/\*/\*.log | monitor-mgmt 
@@ -121,29 +120,20 @@ File Path | Manifest
 /var/log/dmesg\* | agents, diagnostic, eg, normal, site-recovery, workloadbackup 
 /var/log/dpkg\* | diagnostic, eg, normal 
 /var/log/evtcollforw\*.log | site-recovery 
-/var/log/hadoop-yarn/yarn/\* | hdinsight 
-/var/log/hbase/hbase-hbase-master | hdinsight 
-/var/log/hive/hivemetastore.log | hdinsight 
-/var/log/hive/hiveserver2.log | hdinsight 
-/var/log/jupyter/\* | hdinsight 
-/var/log/kafka/\* | hdinsight 
 /var/log/kern\* | diagnostic, eg, normal 
-/var/log/livy/livy-livy-server.out | hdinsight 
 /var/log/messages\* | diagnostic, eg, monitor-mgmt, normal 
 /var/log/rsyslog\* | diagnostic, eg, lad, normal 
 /var/log/s2\*.log | site-recovery 
 /var/log/sa/sar\* | performance 
 /var/log/secure\* | diagnostic, eg, normal 
 /var/log/sfnode/sfnodelog | servicefabric 
-/var/log/storm/\* | hdinsight 
 /var/log/svagents\*.log | site-recovery 
 /var/log/syslog | servicefabric 
-/var/log/syslog\* | agents, diagnostic, eg, hdinsight, lad, monitor-mgmt, normal, site-recovery, workloadbackup 
+/var/log/syslog\* | agents, diagnostic, eg, lad, monitor-mgmt, normal, site-recovery, workloadbackup 
 /var/log/ua_install.log | site-recovery 
 /var/log/waagent\* | agents, diagnostic, eg, lad, normal, site-recovery, workloadbackup 
 /var/log/waagent\*.log | monitor-mgmt 
 /var/log/yum\* | diagnostic, eg, normal 
-/var/log/zeppelin/\* | hdinsight 
 /var/opt/microsoft/omsagent/LAD/log/\* | lad 
 /var/opt/microsoft/omsagent/\*/log/omsagent.log | monitor-mgmt 
 /var/opt/microsoft/omsagent/\*/run/automationworker/omsupdatemgmt.log | monitor-mgmt 
@@ -450,4 +440,4 @@ File Path | Manifest
 /WindowsUpdateVerbose.etl | windowsupdate 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-02-27 23:14:57.665432`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-03-04 10:06:00.338297`*
