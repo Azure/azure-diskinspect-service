@@ -21,6 +21,7 @@ echo,
 
 echo,### Gathering Extension Files ###
 copy,/var/lib/waagent/*.xml
+copy,/var/lib/waagent/waagent_status.json
 copy,/var/lib/waagent/*/status/*.status
 copy,/var/lib/waagent/*/config/*.settings
 copy,/var/lib/waagent/*.agentsManifest
