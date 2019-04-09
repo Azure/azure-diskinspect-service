@@ -11,7 +11,7 @@ jobs:
   include:
     - stage: build
       script: travis_wait 60 ./build.sh ~/docker_build.txt
-    - stage: prepare
+    - stage: prepare1
       script: mkdir $HOME/azdis_ssl
     - stage: prepare  
       install: openssl req -x509 -newkey rsa:2048 -keyout $HOME/azdis_ssl/azdis_private.rsa -out $HOME/azdis_ssl/azdis_public.crt -days 365 -nodes -subj "/CN=localhost"
