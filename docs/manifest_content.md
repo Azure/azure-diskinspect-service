@@ -82,6 +82,7 @@ agents | copy | /var/log/azure/\*/\*
 agents | copy | /var/log/azure/\*/\*/\*
 agents | copy | /var/log/azure/custom-script/handler.log
 agents | copy | /var/lib/waagent/\*.xml
+agents | copy | /var/lib/waagent/waagent_status.json
 agents | copy | /var/lib/waagent/\*/status/\*.status
 agents | copy | /var/lib/waagent/\*/config/\*.settings
 agents | copy | /var/lib/waagent/\*.agentsManifest
@@ -140,6 +141,7 @@ diagnostic | copy | /var/lib/waagent/SharedConfig.xml
 diagnostic | copy | /var/lib/waagent/ManagedIdentity-\*.json
 diagnostic | copy | /var/lib/waagent/error.json
 diagnostic | copy | /var/lib/waagent/Incarnation
+diagnostic | copy | /var/lib/waagent/waagent_status.json
 diagnostic | copy | /var/lib/waagent/history/\*.zip
 diagnostic | diskinfo | 
 eg | list | /var/log
@@ -182,6 +184,15 @@ eg | copy | /var/log/secure\*
 eg | diskinfo | 
 genspec | copy | /etc/hostname
 genspec | copy | /var/lib/waagent/provisioned
+hdinsight | copy | /etc/ambari-server/conf/\*
+hdinsight | copy | /etc/ambari-agent/conf/\*
+hdinsight | copy | /etc/spark/conf/\*
+hdinsight | copy | /etc/hbase/conf/\*
+hdinsight | copy | /etc/hadoop/conf/\*
+hdinsight | copy | /etc/storm/conf/\*
+hdinsight | copy | /etc/hive2/conf/\*
+hdinsight | copy | /var/lib/.jupyter/jupyter_notebook_config.py
+hdinsight | copy | /etc/hosts
 lad | list | /var/log
 lad | list | /etc/udev/rules.d
 lad | copy | /etc/HOSTNAME
@@ -476,11 +487,7 @@ diagnostic | copy | /Windows/System32/Sysprep/Panther/setuperr.log
 diagnostic | copy | /Windows/System32/Sysprep/Panther/IE/setuperr.log
 diagnostic | copy | /Windows/System32/Sysprep/Sysprep_succeeded.tag
 diagnostic | copy | /Windows/INF/netcfg\*.\*etl
-diagnostic | copy | /Windows/Inf/netcfg\*.\*etl
-diagnostic | copy | /Windows/inf/netcfg\*.\*etl
 diagnostic | copy | /Windows/INF/setupapi.dev.log
-diagnostic | copy | /Windows/Inf/setupapi.dev.log
-diagnostic | copy | /Windows/inf/setupapi.dev.log
 diagnostic | copy | /Windows/debug/netlogon.log
 diagnostic | copy | /Windows/debug/NetSetup.LOG
 diagnostic | copy | /Windows/debug/mrt.log
@@ -990,11 +997,7 @@ windowsupdate | copy | /Windows/System32/Sysprep/Panther/setuperr.log
 windowsupdate | copy | /Windows/System32/Sysprep/Panther/IE/setuperr.log
 windowsupdate | copy | /Windows/System32/Sysprep/Sysprep_succeeded.tag
 windowsupdate | copy | /Windows/INF/netcfg\*.\*etl
-windowsupdate | copy | /Windows/Inf/netcfg\*.\*etl
-windowsupdate | copy | /Windows/inf/netcfg\*.\*etl
 windowsupdate | copy | /Windows/INF/setupapi.\*.log
-windowsupdate | copy | /Windows/Inf/setupapi.\*.log
-windowsupdate | copy | /Windows/inf/setupapi.\*.log
 windowsupdate | copy | /Windows/debug/netlogon.log
 windowsupdate | copy | /Windows/debug/NetSetup.LOG
 windowsupdate | copy | /Windows/debug/mrt.log
@@ -1180,4 +1183,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-02-06 11:22:48.357268`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-04-02 15:57:58.147997`*

@@ -41,8 +41,14 @@ File Path | Manifest
 /boot/grub\*/menu.lst | diagnostic, eg 
 /etc/HOSTNAME | agents, diagnostic, eg, lad, site-recovery, workloadbackup 
 /etc/\*-release | agents, diagnostic, eg, site-recovery, workloadbackup 
+/etc/ambari-agent/conf/\* | hdinsight 
+/etc/ambari-server/conf/\* | hdinsight 
 /etc/fstab | diagnostic, eg, normal 
+/etc/hadoop/conf/\* | hdinsight 
+/etc/hbase/conf/\* | hdinsight 
+/etc/hive2/conf/\* | hdinsight 
 /etc/hostname | agents, diagnostic, eg, genspec, lad, site-recovery, workloadbackup 
+/etc/hosts | hdinsight 
 /etc/network/interfaces | diagnostic, eg 
 /etc/network/interfaces.d/\*.cfg | diagnostic, eg 
 /etc/nsswitch.conf | diagnostic 
@@ -52,7 +58,9 @@ File Path | Manifest
 /etc/opt/omi/conf/omsconfig/agentid | monitor-mgmt 
 /etc/opt/omi/conf/omsconfig/configuration/\*.mof | monitor-mgmt 
 /etc/resolv.conf | diagnostic, eg 
+/etc/spark/conf/\* | hdinsight 
 /etc/ssh/sshd_config | diagnostic, normal 
+/etc/storm/conf/\* | hdinsight 
 /etc/sysconfig/SuSEfirewall2 | diagnostic, eg 
 /etc/sysconfig/iptables | diagnostic, eg 
 /etc/sysconfig/network | diagnostic, eg 
@@ -69,6 +77,7 @@ File Path | Manifest
 /opt/msawb/var/log/\*/\*/\* | workloadbackup 
 /opt/msawb/var/log/\*/\*/\*/\*/\* | workloadbackup 
 /tmp/omsagent\*.tgz | monitor-mgmt 
+/var/lib/.jupyter/jupyter_notebook_config.py | hdinsight 
 /var/lib/dhclient/dhclient-eth0.leases | diagnostic, eg 
 /var/lib/dhcp/dhclient.eth0.leases | diagnostic, eg 
 /var/lib/waagent/ExtensionsConfig.\*.xml | diagnostic, lad 
@@ -95,6 +104,7 @@ File Path | Manifest
 /var/lib/waagent/error.json | agents, diagnostic 
 /var/lib/waagent/history/\*.zip | agents, diagnostic 
 /var/lib/waagent/provisioned | diagnostic, eg, genspec 
+/var/lib/waagent/waagent_status.json | agents, diagnostic 
 /var/lib/wicked/lease-eth0-dhcp-ipv4.xml | diagnostic, eg 
 /var/log/AzureRcmCli.log | site-recovery 
 /var/log/auth\* | agents, diagnostic, eg, normal 
@@ -246,9 +256,8 @@ File Path | Manifest
 /Windows/INF/netcfg\*.\*etl | diagnostic, windowsupdate 
 /Windows/INF/setupapi.\*.log | windowsupdate 
 /Windows/INF/setupapi.dev.log | diagnostic 
-/Windows/Inf/netcfg\*.\*etl | diagnostic, normal, windowsupdate 
-/Windows/Inf/setupapi.\*.log | windowsupdate 
-/Windows/Inf/setupapi.dev.log | diagnostic, normal 
+/Windows/Inf/netcfg\*.\*etl | normal 
+/Windows/Inf/setupapi.dev.log | normal 
 /Windows/Logs/CBS/\*.cab | windowsupdate 
 /Windows/Logs/CBS/\*.log | windowsupdate 
 /Windows/Logs/DISM/\*.log | windowsupdate 
@@ -379,9 +388,6 @@ File Path | Manifest
 /Windows/debug/dcpromoui.log | diagnostic, eg, normal, windowsupdate 
 /Windows/debug/mrt.log | diagnostic, eg, normal, windowsupdate 
 /Windows/debug/netlogon.log | diagnostic, eg, normal, windowsupdate 
-/Windows/inf/netcfg\*.\*etl | diagnostic, windowsupdate 
-/Windows/inf/setupapi.\*.log | windowsupdate 
-/Windows/inf/setupapi.dev.log | diagnostic 
 /Windows/servicing/sessions/sessions.xml | windowsupdate 
 /Windows/system32/winevt/Logs/Operations Manager.evtx | monitor-mgmt 
 /Windows/windowsupdate\*.log | windowsupdate 
@@ -435,4 +441,4 @@ File Path | Manifest
 /WindowsUpdateVerbose.etl | windowsupdate 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-02-06 11:22:48.357268`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-04-02 15:57:58.147997`*
