@@ -19,8 +19,9 @@ jobs:
         - docker version
         - docker info
         - ./tests/requires_doc_change.sh
+      script: 
         - ./scripts/run.sh
-      script: docker ps | grep -q AzureDiskInspectSvc_US
+        - docker ps | grep -q AzureDiskInspectSvc_US
     - stage: test
       script: python3 ./tests/inspection_tests.py ~ 'https://localhost:8080'
     - after_failure:
