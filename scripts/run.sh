@@ -2,6 +2,7 @@
 cd "$(dirname "$0")"
 . ../env.sh
 
+az_registry=$1
 echo "Cleaning up previous instances..."
 docker stop $SERVICENAME
 docker rm -f $SERVICENAME
@@ -23,8 +24,8 @@ docker create -v /etc/nginx/ssl --name $SERVICEVOLUMENAME ubuntu
 docker cp $SSL_PATH/. $SERVICEVOLUMENAME:/etc/nginx/ssl/.
 
 if [ $TRAVIS ]; then
-  docker pull $CONTAINERREGISTRY/$CONTAINERREPO
-  CONTAINERNAME=$CONTAINERREGISTRY/$CONTAINERREPO
+  docker pull $az_registry/$CONTAINERREPO
+  CONTAINERNAME=$az_registry/$CONTAINERREPO
   CONTAINERTAG="latest"
 fi
 

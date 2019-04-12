@@ -8,6 +8,7 @@ echo "Starting Docker build..."
 
 
 file_output=$1
+az_registry=$2
 if [ -z $file_output ]; then
 	file_output="~/docker_build.txt"
 fi
@@ -27,6 +28,6 @@ if  [ ! $TRAVIS ] && [ ! -f $HOME/azdis_ssl/azdis_private.rsa ]; then
 fi
 
 if [ $TRAVIS ]; then
-  docker tag $CONTAINERNAME $CONTAINERREGISTRY/$CONTAINERREPO
-  docker push $CONTAINERREGISTRY/$CONTAINERREPO
+  docker tag $CONTAINERNAME $az_registry/$CONTAINERREPO
+  docker push $az_registry/$CONTAINERREPO
 fi

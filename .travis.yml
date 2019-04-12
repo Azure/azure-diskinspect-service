@@ -9,14 +9,14 @@ jobs:
   include:
     - stage: build
       before_script: 
-        - docker login -u $REG_USER -p $REG_PASS iidbuildimagestest.azurecr.io
-      script: travis_wait 60 ./build.sh ~/docker_build.txt
+        - docker login -u $REG_USER -p $REG_PASS $AZ_REGISTRY
+      script: travis_wait 60 ./build.sh ~/docker_build.txt $AZ_REGISTRY
       after_failure:
         - cat ~/docker_build.txt
     - stage: deploy  
       install: 
         - pip3 install azure-storage-blob
-        - docker login -u $REG_USER -p $REG_PASS iidbuildimagestest.azurecr.io
+        - docker login -u $REG_USER -p $REG_PASS $AZ_REGISTRY
         - mkdir $HOME/azdis_ssl
         - openssl req -x509 -newkey rsa:2048 -keyout $HOME/azdis_ssl/azdis_private.rsa -out $HOME/azdis_ssl/azdis_public.crt -days 365 -nodes -subj "/CN=localhost"
       before_script:
@@ -24,7 +24,7 @@ jobs:
         - docker info
         - ./tests/requires_doc_change.sh
       script: 
-        - ./scripts/run.sh
+        - ./scripts/run.sh $AZ_REGISTRY
         - docker ps | grep -q AzureDiskInspectSvc_US
         - python3 ./tests/inspection_tests.py ~ 'https://localhost:8080'
       after_failure:
