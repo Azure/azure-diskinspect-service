@@ -2,6 +2,7 @@
 cd "$(dirname "$0")"
 . ../env.sh
 
+az_registry=$1
 echo "Cleaning up previous instances..."
 docker stop $SERVICENAME
 docker rm -f $SERVICENAME
@@ -16,6 +17,12 @@ if [ ! -f $SSL_PUBLIC_KEY ]
 then
   echo "File $SSL_PUBLIC_KEY is missing."
   exit 1
+fi
+
+if [ $TRAVIS ]; then
+  docker pull $az_registry/$CONTAINERREPO
+  CONTAINERNAME=$az_registry/$CONTAINERREPO
+  CONTAINERTAG="latest"
 fi
 
 echo "Starting service..."
