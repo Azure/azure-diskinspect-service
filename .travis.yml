@@ -11,6 +11,8 @@ jobs:
       before_script: 
         - docker login -u $REG_USER -p $REG_PASS iidbuildimagestest.azurecr.io
       script: travis_wait 60 ./build.sh ~/docker_build.txt
+      after_failure:
+        - cat ~/docker_build.txt
     - stage: deploy  
       install: 
         - pip3 install azure-storage-blob
@@ -25,8 +27,8 @@ jobs:
         - ./scripts/run.sh
         - docker ps | grep -q AzureDiskInspectSvc_US
         - python3 ./tests/inspection_tests.py ~ 'https://localhost:8080'
-    - after_failure:
-      - ./tests/check_travis_env.sh
-      - ./scripts/getlogs.sh
-      - cat ./scripts/logs/azureDiskInspectSvc.log 
-      - cat ~/docker_build.txt 
+      after_failure:
+        - ./tests/check_travis_env.sh
+        - ./scripts/getlogs.sh
+        - cat ./scripts/logs/azureDiskInspectSvc.log 
+       
