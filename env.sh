@@ -5,6 +5,7 @@ CONTAINERREPO="azlinux/azdis"
 CONTAINERTAG="1.1"
 CONTAINERNAME="$CONTAINERREPO:$CONTAINERTAG"
 CONTAINERHOSTNAME="logext-testagents.trafficmanager.net"
+CONTAINERREGISTRY="iidbuildimagestest.azurecr.io"
 
 # Disk Inspector Service
 SERVICENAME="AzureDiskInspectSvc_US"
