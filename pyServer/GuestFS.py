@@ -100,7 +100,7 @@ class GuestFS:
         try:
             output = subprocess.check_output(args, env=self.environment, universal_newlines=True)
         except subprocess.CalledProcessError as ex:
-            self.rootLogger.error("GuestFish failed to start using the previous sas url, trying to diagnose...")
+            self.rootLogger.error("GuestFish failed to start using the previous sas url, trying to diagnose...Exception :" + str(ex))
             output = self.diagnoseStartFailureOrRetry(args)  # this will raise an exception that will be caught in HTTP handler
 
         # Guestfish server mode returns a string of the form
