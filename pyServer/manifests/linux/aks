@@ -1,0 +1,9 @@
+copy,/var/log/azure/cluster-provision.log
+copy,/var/log/syslog
+copy,/var/log/cloud-init-output.log
+copy,/var/log/azure/docker-status.log
+copy,/var/log/azure/kubelet-status.log
+copy,/var/log/azure/kern.log
+copy,/var/log/journal/*/*
+copy,/var/log/azure-vnet.log
+

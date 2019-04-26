@@ -89,6 +89,14 @@ agents | copy | /var/lib/waagent/\*.agentsManifest
 agents | copy | /var/lib/waagent/error.json
 agents | copy | /var/lib/waagent/Incarnation
 agents | copy | /var/lib/waagent/history/\*.zip
+aks | copy | /var/log/azure/cluster-provision.log
+aks | copy | /var/log/syslog
+aks | copy | /var/log/cloud-init-output.log
+aks | copy | /var/log/azure/docker-status.log
+aks | copy | /var/log/azure/kubelet-status.log
+aks | copy | /var/log/azure/kern.log
+aks | copy | /var/log/journal/\*/\*
+aks | copy | /var/log/azure-vnet.log
 diagnostic | list | /var/log
 diagnostic | list | /var/lib/waagent
 diagnostic | list | /etc/udev/rules.d
@@ -414,6 +422,14 @@ agents | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.Edp.Ne
 agents | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.Edp.NetworkWatcherAgentWind<br>ows/\*/\*.log
 agents | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows/<br>\*/\*.txt
 agents | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows/<br>\*/\*.log
+aks | copy | /Windows/System32/winevt/Logs/System.evtx
+aks | copy | /Windows/System32/winevt/Logs/Application.evtx
+aks | copy | /k/\*.log
+aks | copy | /k/\*.err
+aks | copy | /k/azure-vnet.log.\*
+aks | copy | /cni/azure-vnet.log
+aks | copy | /cni/azure-vnet-ipam.log
+aks | copy | /k/azure/CustomDataSetupScript.log
 asc-vmhealth | copy | /WindowsAzure/Logs/TransparentInstaller.log
 diagnostic | copy | /Windows/System32/config/SOFTWARE
 diagnostic | copy | /Windows/System32/config/SYSTEM
@@ -1183,4 +1199,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-04-02 15:57:58.147997`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-04-26 15:13:40.020206`*
