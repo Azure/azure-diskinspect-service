@@ -337,6 +337,10 @@ File Path | Manifest
 /Windows/System32/winevt/Logs/Microsoft-Windows-DeliveryOptimization%%4Operational.ev<br>tx | windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Dhcp-Client%4Admin.evtx | eg 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Dhcp-Client%4Operational.evtx | eg, windowsupdate 
+/Windows/System32/winevt/Logs/Microsoft-Windows-Host-Network-Service-Admin.evtx | aks 
+/Windows/System32/winevt/Logs/Microsoft-Windows-Host-Network-Service-Operational.evtx | aks 
+/Windows/System32/winevt/Logs/Microsoft-Windows-Hyper-V-Compute-Admin.evtx | aks 
+/Windows/System32/winevt/Logs/Microsoft-Windows-Hyper-V-Compute-Operational.evtx | aks 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnP%%4Configuration.evtx | windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnP%4Configuration.evtx | agents, diagnostic, eg, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnPConfig%4Configuration.evtx | agents, diagnostic, eg, windowsupdate 
@@ -454,4 +458,4 @@ File Path | Manifest
 /k/azure/CustomDataSetupScript.log | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-04-26 15:13:40.020206`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-04-26 17:04:09.338444`*

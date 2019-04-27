@@ -11,6 +11,13 @@ copy,/k/azure-vnet.log.*
 copy,/cni/azure-vnet.log
 copy,/cni/azure-vnet-ipam.log
 
+echo,## Hyper-V logs ##
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Host-Network-Service-Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Hyper-V-Compute-Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Hyper-V-Compute-Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Host-Network-Service-Operational.evtx
+
+
 
 
 echo,## Cluster provision logs ##

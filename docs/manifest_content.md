@@ -429,6 +429,10 @@ aks | copy | /k/\*.err
 aks | copy | /k/azure-vnet.log.\*
 aks | copy | /cni/azure-vnet.log
 aks | copy | /cni/azure-vnet-ipam.log
+aks | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Host-Network-Service-Admin.evtx
+aks | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Hyper-V-Compute-Admin.evtx
+aks | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Hyper-V-Compute-Operational.evtx
+aks | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Host-Network-Service-Operational.evtx
 aks | copy | /k/azure/CustomDataSetupScript.log
 asc-vmhealth | copy | /WindowsAzure/Logs/TransparentInstaller.log
 diagnostic | copy | /Windows/System32/config/SOFTWARE
@@ -1199,4 +1203,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-04-26 15:13:40.020206`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-04-26 17:04:09.338444`*
