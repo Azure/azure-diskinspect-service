@@ -98,7 +98,7 @@ class GuestFS:
         self.rootLogger.info('GuestFish:Create:Local> ' + ' '.join(redactedArgs))
 
         try:
-            output = subprocess.check_output(args, env=self.environment, universal_newlines=True, stderr = subprocess.STDOUT)
+            output = subprocess.check_output(args, env=self.environment, universal_newlines=True)
         except subprocess.CalledProcessError as ex:
             self.rootLogger.error("GuestFish failed to start using the previous sas url, trying to diagnose...")
             self.rootLogger.error("GuestFishStdout: " + str(ex.output))
@@ -326,7 +326,7 @@ class GuestFS:
             if resp.status == 200:
                 # transient failure or issue with libGuestFS. retry, repeat error will throw exception
                 self.rootLogger.info("diagnoseStartFailureOrRetry: HTTP check of Sas url returned 200. Retrying GuestFish start...")
-                output = subprocess.check_output(args, env=self.environment, universal_newlines=True, stderr = subprocess.STDOUT)
+                output = subprocess.check_output(args, env=self.environment, universal_newlines=True)
                 return output
             else:
                 self.rootLogger.warning("diagnoseStartFailureOrRetry: HTTP check of Sas url returned status: " + str(resp.status))
