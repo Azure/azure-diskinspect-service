@@ -165,6 +165,8 @@ File Path | Manifest
 /$Windows.~BT/Sources/Panther/setupact.log | windowsupdate 
 /$Windows.~BT/Sources/Panther/setuperr.log | windowsupdate 
 /AzureData/CustomData.bin | agents, diagnostic, eg, normal, windowsupdate 
+/AzureData/CustomDataSetupScript.log | aks 
+/AzureData/CustomDataSetupScript.ps1 | aks 
 /Boot/BCD | windowsupdate 
 /Packages/Plugins/ESET.FileSecurity/\*/agent_version.txt | agents, diagnostic, normal, windowsupdate 
 /Packages/Plugins/ESET.FileSecurity/\*/extension_version.txt | agents, diagnostic, normal, windowsupdate 
@@ -450,12 +452,12 @@ File Path | Manifest
 /WindowsAzure/Logs/plugins/\*/\*/\*.log | monitor-mgmt 
 /WindowsAzure/config/\*.xml | agents, diagnostic, eg, normal, windowsupdate 
 /WindowsUpdateVerbose.etl | windowsupdate 
-/cni/azure-vnet-ipam.log | aks 
-/cni/azure-vnet.log | aks 
 /k/\*.err | aks 
 /k/\*.log | aks 
-/k/azure-vnet.log.\* | aks 
-/k/azure/CustomDataSetupScript.log | aks 
+/k/azure-vnet-ipam.json | aks 
+/k/azure-vnet-ipam.log | aks 
+/k/azure-vnet.json | aks 
+/k/azure-vnet.log | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-04-26 17:04:09.338444`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-05-01 08:50:32.698813`*

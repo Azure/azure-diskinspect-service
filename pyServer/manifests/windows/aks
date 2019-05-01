@@ -7,9 +7,10 @@ copy,/k/*.log
 copy,/k/*.err
 
 echo,## CNI logs ##
-copy,/k/azure-vnet.log.*
-copy,/cni/azure-vnet.log
-copy,/cni/azure-vnet-ipam.log
+copy,/k/azure-vnet.log
+copy,/k/azure-vnet-ipam.log
+copy,/k/azure-vnet.json
+copy,/k/azure-vnet-ipam.json
 
 echo,## Hyper-V logs ##
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Host-Network-Service-Admin.evtx
@@ -21,7 +22,9 @@ copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Host-Network-Service-Operat
 
 
 echo,## Cluster provision logs ##
-copy,/k/azure/CustomDataSetupScript.log
+copy,/AzureData/CustomDataSetupScript.log
+copy,/AzureData/CustomDataSetupScript.ps1
+
 
 
 
