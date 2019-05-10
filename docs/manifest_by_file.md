@@ -49,6 +49,7 @@ File Path | Manifest
 /etc/hive2/conf/\* | hdinsight 
 /etc/hostname | agents, diagnostic, eg, genspec, lad, site-recovery, workloadbackup 
 /etc/hosts | hdinsight 
+/etc/netplan/50-cloud-init.yaml | diagnostic, eg 
 /etc/network/interfaces | diagnostic, eg 
 /etc/network/interfaces.d/\*.cfg | diagnostic, eg 
 /etc/nsswitch.conf | diagnostic 
@@ -460,4 +461,4 @@ File Path | Manifest
 /k/azure-vnet.log | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-05-01 08:50:32.698813`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-05-10 01:42:38.246644`*

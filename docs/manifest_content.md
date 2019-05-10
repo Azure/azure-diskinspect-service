@@ -110,6 +110,7 @@ diagnostic | copy | /etc/HOSTNAME
 diagnostic | copy | /etc/hostname
 diagnostic | copy | /etc/network/interfaces
 diagnostic | copy | /etc/network/interfaces.d/\*.cfg
+diagnostic | copy | /etc/netplan/50-cloud-init.yaml
 diagnostic | copy | /etc/nsswitch.conf
 diagnostic | copy | /etc/resolv.conf
 diagnostic | copy | /etc/sysconfig/iptables
@@ -164,6 +165,7 @@ eg | copy | /etc/HOSTNAME
 eg | copy | /etc/hostname
 eg | copy | /etc/network/interfaces
 eg | copy | /etc/network/interfaces.d/\*.cfg
+eg | copy | /etc/netplan/50-cloud-init.yaml
 eg | copy | /etc/resolv.conf
 eg | copy | /etc/sysconfig/iptables
 eg | copy | /etc/sysconfig/network
@@ -1205,4 +1207,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-05-01 08:50:32.698813`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-05-10 01:42:38.246644`*
