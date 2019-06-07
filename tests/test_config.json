@@ -3,7 +3,7 @@
   "max_duration_seconds":  500,
   "tests": [
     {
-      "title": "Linux diagnostic (CentOS)",
+      "title": "Blob Upload: Linux diagnostic (CentOS)",
       "description": "test should return os as linux and the CentOS 7.0 product name",
       "vhd_relative_path": "/linux/craigw-centos72016320152715.vhd",
       "manifest": "diagnostic",
@@ -11,7 +11,11 @@
       "os_distribution": "centos",
       "os_product_name": "CentOS Linux release 7.0.1406 (Core)",
       "os_disk_configuration": "Standard",
-      "expected_timeout": "19",
+      "timeout_override": "55",
+      "expected_timeout": "51",
+      "blob_upload": true,
+      "content_type": "text/plain",
+      "content_length": "0",
       "files_present": [ "/device_0/etc/fstab", "/device_0/etc/hostname", "/device_0/etc/os-release", "/device_0/var/log/yum.log", "/device_0/var/log/waagent.log", "/device_0/var/log/messages", "diskinfo.txt" ]
     },
     {
@@ -23,11 +27,12 @@
       "os_distribution": "",
       "os_product_name": "",
       "os_disk_configuration": "Standard",
-      "expected_timeout": "19",
+      "expected_timeout": "18",
+      "partial_result": "false",
       "files_present": [ "/device_1/system-data/etc/ssh/sshd_config", "/device_1/system-data/var/log/cloud-init.log", "/device_1/system-data/var/log/dmesg" ]
     },
     {
-      "title": "Windows 2008R2 diagnostic w/ one partition",
+      "title": "Blob Upload: Windows 2008R2 diagnostic w/ one partition",
       "description": "test should return os as windows. The disk has only 1 partition so we won't get a product name as it should use the service skipInspect logic",
       "vhd_relative_path": "/windows/craigw-2008R2.vhd",
       "manifest": "diagnostic",
@@ -35,8 +40,11 @@
       "os_distribution": "",
       "os_product_name": "",
       "os_disk_configuration": "Standard",
-      "expected_timeout": "19",
-      "files_present": [ "/diskinfo.txt","/device_0/Windows/System32/winevt/Logs/System.evtx", "/device_0/Windows/System32/winevt/Logs/Application.evtx", "/device_0/Windows/Panther/UnattendGC/setupact.log", "/device_0/Windows/Panther/WaSetup.log", "/device_0/Windows/Panther/WaSetup.xml", "/device_0/WindowsAzure/Logs/WaAppAgent.log","/device_0/WindowsAzure/Logs/AggregateStatus/aggregatestatus.json", "/device_0/Packages/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/1.6.4.0/RuntimeSettings/0.settings" ]
+      "expected_timeout": "18",
+      "blob_upload": true,
+      "content_type": "text/plain",
+      "content_length": "0",
+      "files_present": [ "/diskinfo.txt","/device_0/Windows/System32/winevt/Logs/System.evtx", "/device_0/Windows/System32/winevt/Logs/Application.evtx", "/device_0/Windows/Panther/UnattendGC/setupact.log", "/device_0/Windows/Panther/WaSetup.log", "/device_0/Windows/Panther/WaSetup.xml", "/device_0/WindowsAzure/Logs/WaAppAgent.log","/device_0/WindowsAzure/Logs/AggregateStatus/aggregatestatus.json", "/device_0/Packages/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/1.6.4.0/RuntimeSettings/0.settings", "/device_0/Windows/inf/setupapi.dev.log" ]
     },
     {
       "title": "FreeBSD",
@@ -47,7 +55,8 @@
       "os_distribution": "freebsd",
       "os_product_name": "FreeBSD 10.3-RELEASE (GENERIC) #2 d912ed6(10.3.0_hyperv): Thu May 19 09:20:45 CST 2016",
       "os_disk_configuration": "Standard",
-      "expected_timeout": "19",
+      "expected_timeout": "18",
+      "partial_result": "false",
       "files_present": [ "/device_0/etc/rc.conf", "/device_0/etc/fstab", "/device_0/var/log/waagent.log", "/device_0/var/log/auth.log", "/device_0/boot/loader.conf" ]
     },
     {
@@ -59,7 +68,8 @@
       "os_distribution": "",
       "os_product_name": "",
       "os_disk_configuration": "Standard",
-      "expected_timeout": "19",
+      "expected_timeout": "18",
+      "partial_result": "false",
       "files_present": [ "/device_0/Windows/Setup/State/State.ini", "/device_0/Windows/Panther/WaSetup.xml" ],
       "file_content":{"/device_0/Windows/Setup/State/State.ini":"IMAGE_STATE_COMPLETE"}
     },
@@ -72,7 +82,7 @@
       "os_distribution": "sles",
       "os_product_name": "SUSE Linux Enterprise Server 12 SP1",
       "os_disk_configuration": "Standard",
-      "expected_timeout": "19",
+      "expected_timeout": "18",
       "files_present": ["/device_0/etc/hostname"],
       "file_content":{"/device_0/etc/hostname":"suse12-sp1"}
     },
@@ -85,7 +95,7 @@
       "os_distribution": "",
       "os_product_name": "",
       "os_disk_configuration": "Standard",
-      "expected_timeout": "19",
+      "expected_timeout": "18",
       "files_present": [ "/registry.json"]
     },
     {
@@ -97,7 +107,7 @@
       "os_distribution": "",
       "os_product_name": "",
       "os_disk_configuration": "Encrypted",
-      "expected_timeout": "19",
+      "expected_timeout": "18",
       "files_present": [ ]
     },
     {
@@ -109,7 +119,7 @@
       "os_distribution": "",
       "os_product_name": "",
       "os_disk_configuration": "Encrypted",
-      "expected_timeout": "19",
+      "expected_timeout": "18",
       "files_present": [ ]
     },
     {
@@ -121,7 +131,7 @@
       "os_distribution": "",
       "os_product_name": "",
       "os_disk_configuration": "Standard",
-      "expected_timeout": "19",
+      "expected_timeout": "18",
       "files_present": [ "/device_0/ProgramData/ASRSetupLogs/ASRUnifiedAgentInstaller.log", "/device_0/Program Files (x86)/Microsoft Azure Site Recovery/agent/AzureRcmCli.log", "/device_0/Windows/System32/winevt/Logs/System.evtx"]
     },
     {
@@ -133,7 +143,7 @@
       "os_distribution": "rhel",
       "os_product_name": "Red Hat Enterprise Linux Server release 6.8 (Santiago)",
       "os_disk_configuration": "Standard",
-      "expected_timeout": "19",
+      "expected_timeout": "18",
       "files_present": [ "/device_0/var/log/waagent.log", "/device_0/var/log/AzureRcmCli.log", "/device_0/var/log/evtcollforw.log","device_0/var/log/azure/Microsoft.Azure.RecoveryServices.SiteRecovery.Linux/Microsoft.Azure.RecoveryServices.SiteRecovery.Linux/1.0.0.2/CommandExecution.log"]
     },
     {
@@ -145,7 +155,7 @@
       "os_distribution": "",
       "os_product_name": "",
       "os_disk_configuration": "",
-      "expected_timeout": "19",
+      "expected_timeout": "18",
       "shouldFail" : true
     },
     {
@@ -157,7 +167,7 @@
       "os_distribution": "",
       "os_product_name": "",
       "os_disk_configuration": "",
-      "expected_timeout": "19",
+      "expected_timeout": "18",
       "shouldFail" : true
     },
     {
@@ -169,7 +179,7 @@
       "os_distribution": "",
       "os_product_name": "",
       "os_disk_configuration": "",
-      "expected_timeout": "19",
+      "expected_timeout": "18",
       "shouldFail" : true
     },
     {
@@ -181,13 +191,14 @@
       "os_distribution": "",
       "os_product_name": "",
       "os_disk_configuration": "Standard",
-      "timeout_override": "1",
+      "timeout_override": "2",
       "expected_timeout": "1",
+      "partial_result": "true",
       "files_present": [ "/diskinfo.txt","/device_0/Windows/System32/winevt/Logs/System.evtx", "/device_0/Windows/System32/winevt/Logs/Application.evtx", "/device_0/Windows/Panther/UnattendGC/setupact.log", "/device_0/Windows/Panther/WaSetup.log", "/device_0/Windows/Panther/WaSetup.xml", "/device_0/WindowsAzure/Logs/WaAppAgent.log","/device_0/WindowsAzure/Logs/AggregateStatus/aggregatestatus.json", "/device_0/Packages/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/1.6.4.0/RuntimeSettings/0.settings" ]
     },
     {
       "title": "Invalid KeepAliveThread timeout",
-      "description": "Test should use default thread timeout of 19 mins when invalid arg (negative value) is given.",
+      "description": "Test should use default thread timeout of 18 mins when invalid arg (negative value) is given.",
       "vhd_relative_path": "/linux/craigw-centos72016320152715.vhd",
       "manifest": "diagnostic",
       "os": "linux",
@@ -195,8 +206,64 @@
       "os_product_name": "CentOS Linux release 7.0.1406 (Core)",
       "os_disk_configuration": "Standard",
       "timeout_override": "-10",
-      "expected_timeout": "19",
+      "expected_timeout": "18",
       "files_present": [ "/device_0/etc/fstab", "/device_0/etc/hostname", "/device_0/etc/os-release", "/device_0/var/log/yum.log", "/device_0/var/log/waagent.log", "/device_0/var/log/messages", "diskinfo.txt" ]      
+    },
+    {
+      "title": "Invalid Upload Blob SAS Url: Missing SAS token",
+      "description": "Test to ensure an invalid upload blob SAS uri is handled properly (performed in code)",
+      "vhd_relative_path": "/linux/UbuntuCore.vhd",
+      "manifest": "normal",
+      "os": "",
+      "os_distribution": "",
+      "os_product_name": "",
+      "os_disk_configuration": "",
+      "expected_timeout": "18",
+      "blob_upload": true,
+      "invalid_blob_token" : true,
+      "shouldFail" : true
+    },
+    {
+      "title": "Invalid Upload Blob SAS Url: Missing container and blob info",
+      "description": "Test to ensure an invalid storage account is handled properly (performed in code)",
+      "vhd_relative_path": "/linux/UbuntuCore.vhd",
+      "manifest": "normal",
+      "os": "",
+      "os_distribution": "",
+      "os_product_name": "",
+      "os_disk_configuration": "",
+      "expected_timeout": "18",
+      "blob_upload": true,
+      "no_container_blob" : true,
+      "shouldFail" : true
+    },
+    {
+      "title": "Invalid Upload Blob SAS Url: Invalid storage blob endpoint suffix",
+      "description": "Test to ensure an invalid storage account is handled properly (performed in code)",
+      "vhd_relative_path": "/linux/UbuntuCore.vhd",
+      "manifest": "normal",
+      "os": "",
+      "os_distribution": "",
+      "os_product_name": "",
+      "os_disk_configuration": "",
+      "expected_timeout": "18",
+      "blob_upload": true,
+      "bad_blob_endpoint" : true,
+      "shouldFail" : true
+    },
+    {
+      "title": "Windows 2016 case insensitivity",
+      "description": "test should return os windows files insensitive to path casing (one partition)",
+      "vhd_relative_path": "/windows/windows2016.vhd",
+      "manifest": "normal",
+      "os": "windows",
+      "os_distribution": "",
+      "os_product_name": "",
+      "os_disk_configuration": "Standard",
+      "expected_timeout": "18",
+      "partial_result": "false",
+      "files_present": [ "/device_0/Windows/Setup/State/State.ini", "/device_0/Windows/Panther/WaSetup.xml", "/device_0/Windows/INF/setupapi.dev.log" ],
+      "file_content":{"/device_0/Windows/Setup/State/State.ini":"IMAGE_STATE_COMPLETE"}
     }
   ]
 }

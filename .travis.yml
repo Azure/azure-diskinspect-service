@@ -4,21 +4,30 @@ services:
 language: python
 python:
 - 3.5
-install:
-- travis_wait 30 ./build.sh ~/docker_build.txt
-- mkdir $HOME/azdis_ssl
-- openssl req -x509 -newkey rsa:2048 -keyout $HOME/azdis_ssl/azdis_private.rsa -out
-  $HOME/azdis_ssl/azdis_public.crt -days 365 -nodes -subj "/CN=localhost"
-before_script:
-- docker version
-- docker info
-- ./tests/requires_doc_change.sh
-- ./scripts/run.sh
-script:
-- docker ps | grep -q AzureDiskInspectSvc_US
-- python3 ./tests/inspection_tests.py ~ 'https://localhost:8080'
-after_failure:
-- ./tests/check_travis_env.sh
-- ./scripts/getlogs.sh
-- cat ./scripts/logs/azureDiskInspectSvc.log 
-- cat ~/docker_build.txt 
+# Setup stages for the build
+jobs:
+  include:
+    - stage: build
+      before_script: 
+        - docker login -u $REG_USER -p $REG_PASS $AZ_REGISTRY
+      script: travis_wait 60 ./build.sh ~/docker_build.txt $AZ_REGISTRY
+      after_failure:
+        - cat ~/docker_build.txt
+    - stage: deploy  
+      install: 
+        - pip3 install azure-storage-blob
+        - docker login -u $REG_USER -p $REG_PASS $AZ_REGISTRY
+        - mkdir $HOME/azdis_ssl
+        - openssl req -x509 -newkey rsa:2048 -keyout $HOME/azdis_ssl/azdis_private.rsa -out $HOME/azdis_ssl/azdis_public.crt -days 365 -nodes -subj "/CN=localhost"
+      before_script:
+        - docker version
+        - docker info
+        - ./tests/requires_doc_change.sh
+      script: 
+        - ./scripts/run.sh $AZ_REGISTRY
+        - docker ps | grep -q AzureDiskInspectSvc_US
+        - python3 ./tests/inspection_tests.py ~ 'https://localhost:8080'
+      after_failure:
+        - ./tests/check_travis_env.sh
+        - ./scripts/getlogs.sh
+        - cat ./scripts/logs/azureDiskInspectSvc.log

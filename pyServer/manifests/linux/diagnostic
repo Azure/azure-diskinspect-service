@@ -14,6 +14,7 @@ copy,/etc/HOSTNAME
 copy,/etc/hostname
 copy,/etc/network/interfaces
 copy,/etc/network/interfaces.d/*.cfg
+copy,/etc/netplan/50-cloud-init.yaml
 copy,/etc/nsswitch.conf
 copy,/etc/resolv.conf
 copy,/etc/sysconfig/iptables
@@ -43,6 +44,7 @@ copy,/var/log/cloud-init*
 copy,/var/log/boot*
 copy,/var/log/auth*
 copy,/var/log/secure*
+copy,/var/log/azure/*/*
 copy,/var/log/azure/*/*/*
 copy,/var/log/azure/custom-script/handler.log
 echo,
@@ -58,6 +60,7 @@ copy,/var/lib/waagent/SharedConfig.xml
 copy,/var/lib/waagent/ManagedIdentity-*.json
 copy,/var/lib/waagent/error.json
 copy,/var/lib/waagent/Incarnation
+copy,/var/lib/waagent/waagent_status.json
 copy,/var/lib/waagent/history/*.zip
 echo,
 

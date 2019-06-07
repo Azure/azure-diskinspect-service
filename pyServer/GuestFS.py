@@ -101,6 +101,7 @@ class GuestFS:
             output = subprocess.check_output(args, env=self.environment, universal_newlines=True)
         except subprocess.CalledProcessError as ex:
             self.rootLogger.error("GuestFish failed to start using the previous sas url, trying to diagnose...")
+            self.rootLogger.error("GuestFishStdout: " + str(ex.output))
             output = self.diagnoseStartFailureOrRetry(args)  # this will raise an exception that will be caught in HTTP handler
 
         # Guestfish server mode returns a string of the form
@@ -339,12 +340,13 @@ class GuestFS:
             self.rootLogger.error("diagnoseStartFailureOrRetry: HTTP connection to storage account url failed! Account may be invalid.")
             raise InvalidStorageAccountException(storageAccountHost)
         except subprocess.CalledProcessError as ex:
+            self.rootLogger.error("GuestFishStdoutAfterRetry: " + str(ex.output))
             # the retry failed, we need to make sure that any sas uri are redacted under error
             for i in range(0, len(ex.cmd) -1):
                 location = ex.cmd[i].find('?')
                 if location > 0:
                     ex.cmd[i] =ex.cmd[i][0:location] + '?[saskey]'
-            raise ex  # throw the redacted exception which is caught in do_POST() and ends the web request
+            raise ex from None # throw the redacted exception which is caught in do_POST() and ends the web request
         finally:
             conn.close()
 

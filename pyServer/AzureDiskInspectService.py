@@ -10,6 +10,7 @@ import subprocess
 import threading
 import logging
 import logging.handlers
+import traceback
 from datetime import datetime
 from GuestFishWrapper import GuestFishWrapper
 from GuestFishWrapper import DiskInspectionMetadata  #ensure telemetry is logged properly
@@ -19,8 +20,22 @@ from applicationinsights import TelemetryClient
 from applicationinsights.logging import LoggingHandler
 import json
 
+from azure.storage.blob import (
+    BlockBlobService,
+    ContainerPermissions,
+    BlobPermissions,
+    PublicAccess,
+)
+from azure.storage.common import (
+    AccessPolicy,
+    ResourceTypes,
+    AccountPermissions,
+)
+
 OUTPUTDIRNAME = '/output'
 DEFAULT_TIMEOUT_IN_MINS = 19
+DEFAULT_ARCHIVING_OVERHEAD_IN_MINS = 1
+EXTENDED_ARCHIVING_OVERHEAD_IN_MINS = 4
 
 """
 Helper to print progress
@@ -74,6 +89,14 @@ Threading server to handle multiple web requests.
 """
 class ThreadingServer(socketserver.ThreadingMixIn, http.server.HTTPServer):
     pass
+
+class InvalidBlobSasUrlException(Exception):
+   """Raised when an invalid Blob Sas Url is received as parameter input"""
+   pass
+
+class BlobUploadException(Exception):
+   """Raised when an error is encountered during uploading result to Blob via Sas Url"""
+   pass
 
 """
 Request Handler for the Service.
@@ -157,6 +180,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
         customProperties =  {"HOSTNAME": os.environ['HOSTNAME'] if 'HOSTNAME' in os.environ  else ""}
         if properties:
             customProperties.update(properties)  # combine with any passed in
+        self.telemetryLogger.error(traceback.format_exc())
         self.rootLogger.exception(str(ex))  # note this is rootLogger not the child telemetryLogger
         self.telemetryClient.track_exception(*sys.exc_info(), properties=customProperties)
 
@@ -213,46 +237,141 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
         return operationId, mode, modeMajorSkipTo, modeMinorSkipTo, storageAcctName, container_blob_name, storageUrl
 
     """
-    Upload a local file as a HTTP binary response.
+    Validate and parse the given destination Blob Sas Url.
+
+    A Blob Sas Url has these components:
+
+        https://<a. Account_Name>.<b. Blob_endpoint_suffix>/<c. Container_Name>/<d. Blob_Name>?<e. Sas_Token>
+
+    For example:
+
+        https://myaccount.blob.core.windows.net/mycontainer/outputfile.zip?some_sas_token
+
+    These can be parsed using the Python urllib.parse.urlparse tool by looking up:
+
+        urlparse(blobSasUrl).netloc = <a. Account_Name>.<b. Blob_endpoint_suffix>
+        urlparse(blobSasUrl).path = <c. Container_Name>/<d. Blob_Name>
+        urlparse(blobSasUrl).query: = <e. Sas_Token>
+
+    The following validating and parsing logic is based on the pattern described.
     """
-    def uploadFile(self, http_headers, outputFileName, isPartial, osType):
+    def ValidateAndParseBlobSasUrl(self, blobSasUrl):
+        self.telemetryLogger.info("Validating input destination Blob Sas Url.")
+
+        urlParts = urllib.parse.urlparse(blobSasUrl)
+
+        if not urlParts.path or len(urlParts.path) == 0:
+            raise InvalidBlobSasUrlException('Input Blob SAS Url for upload is missing Container and Blob info.')
+        if not urlParts.query or len(urlParts.query) == 0:
+            raise InvalidBlobSasUrlException('Input Blob SAS url for upload is missing SAS token.')
+
+        if urlParts.path[0] == '/':
+            blob_storage_path = urlParts.path[1:]
+        else:
+            blob_storage_path = urlParts.path
+
+        if 'blob' not in urlParts.netloc:
+            raise InvalidBlobSasUrlException('Input Blob SAS url for upload is not pointing to a valid Azure Blob endpoint.')
+
+        self.destination_storage_account = urlParts.netloc.split('.')[0]
+
+        if not self.destination_storage_account:
+            raise InvalidBlobSasUrlException('Input Blob SAS url for upload does not contain storage account.')
+
+        urlSplit = blob_storage_path.split('/')
+
+        if not len(urlSplit) == 2 or not urlSplit[0] or not urlSplit[1]:
+            raise InvalidBlobSasUrlException('Input Blob SAS Url is not in the right format.')
+        
+        self.destination_container_name = urlSplit[0]
+        self.destination_blob_name = urlSplit[1]
+        self.destination_sas_token = urlParts.query
+
+        self.telemetryLogger.info("Destination Blob Storage Account: " + self.destination_storage_account)
+        self.telemetryLogger.info("Container Name: " + self.destination_container_name)
+        self.telemetryLogger.info("Blob Name: " + self.destination_blob_name)
+
+    """
+    Upload the given file to destination Blob storage using the given Sas Url.
+    """
+    def uploadFileWithBlobSasUrl(self, file_name_full_path):
+        retryRemaining = 3
+        while retryRemaining > 0:
+            try:
+                sas_service = BlockBlobService(account_name=self.destination_storage_account, sas_token=self.destination_sas_token)
+                self.telemetryLogger.info('Uploading to Blob starting.')
+                start_time = datetime.now()
+                sas_service.create_blob_from_path(self.destination_container_name, self.destination_blob_name, file_name_full_path)
+                self.telemetryLogger.info('Uploading to Blob completed. Time take: ' + str((datetime.now() - start_time).total_seconds() * 1000) + ' ms')
+                break
+            except Exception as ex:
+                retryRemaining -= 1
+                if retryRemaining <= 0:
+                    self.telemetryLogger.error('Encountered error during blob upload multiple times after exhausting all retry attempts')
+                    raise BlobUploadException(ex)
+                exMessage = str(ex)
+                self.telemetryLogger.warning('Encountered error during blob upload: ' + exMessage)
+                self.telemetryLogger.warning('Retrying. ' + str(retryRemaining) + ' attempt(s) remaining.')
+
+    """
+    Upload a local file either as a HTTP binary response or upload to a given destination blob storage.
+    """
+    def uploadFile(self, http_headers, outputFileName, isPartial, osType, blobSasUrl):
+
+        if blobSasUrl:
+            self.telemetryLogger.info('Uploading result to Blob storage.')
+            self.uploadFileWithBlobSasUrl(file_name_full_path=outputFileName)
+            self.PrepareHttpResponseHeaders(http_headers)
+            self.wfile.write(bytes('Content-Type: text/plain\r\n', 'utf-8'))
+            statinfo = os.stat(outputFileName)
+            self.wfile.write(bytes('Content-Length: 0\r\n', 'utf-8'))
+            self.wfile.write(bytes('\r\n', 'utf-8'))
+            self.wfile.flush()
+        else:
+            self.telemetryLogger.info('Writing result to Http reponse.')
+            self.PrepareHttpResponseHeaders(http_headers)
+            self.wfile.write(bytes('Content-Type: application/zip\r\n', 'utf-8'))
+            
+            statinfo = os.stat(outputFileName)
+            self.wfile.write(bytes('Content-Length: {0}\r\n'.format(
+                str(statinfo.st_size)), 'utf-8'))
+
+            strOutputFileName = os.path.basename(outputFileName) + "-" + osType
+            if isPartial:
+                strOutputFileName = strOutputFileName + "-partial"
+
+            self.wfile.write(bytes(
+                'Content-Disposition: Attachment; filename={0}\r\n'.format(
+                    os.path.basename(strOutputFileName)), 'utf-8'))
+            self.wfile.write(bytes('\r\n', 'utf-8'))
+            self.wfile.flush()
+
+            # Write the zip file payload
+            outputFileSize = os.path.getsize(outputFileName)
+            readSize = 0
+            with open(outputFileName, 'rb') as outputFileObj:
+                buf = None
+                while (True):
+                    buf = outputFileObj.read(64 * 1024)
+                    if (not buf):
+                        break
+                    readSize = readSize + len(buf)
+                    printProgress(
+                        readSize, outputFileSize, prefix='Progress:', suffix='Complete', barLength=50)
+                    self.wfile.write(buf)
+            self.wfile.flush()
+            
+            self.telemetryLogger.info('Finished writing output Http response.')
+
+    def PrepareHttpResponseHeaders(self, http_headers):
         # Set the HTTP headers, including extended content from GuestFishWrapper
         self.wfile.write(bytes('HTTP/1.1 200 OK\r\n', 'utf-8'))
-        self.wfile.write(bytes('Content-Type: application/zip\r\n', 'utf-8'))
+
         for header in http_headers:
             header_value = str(http_headers[header])
             if len( header_value ) > 0:
                 self.wfile.write(bytes( '{0}: {1}\r\n'.format( header,header_value ), 'utf-8' ))
                 self.telemetryLogger.info('GuestFishWrapper Header "' + header + '" = "' + header_value +'"')
-
-        statinfo = os.stat(outputFileName)
-        self.wfile.write(bytes('Content-Length: {0}\r\n'.format(
-            str(statinfo.st_size)), 'utf-8'))
-
-        strOutputFileName = os.path.basename(outputFileName) + "-" + osType
-        if isPartial:
-            strOutputFileName = strOutputFileName + "-partial"
-
-        self.wfile.write(bytes(
-            'Content-Disposition: Attachment; filename={0}\r\n'.format(
-                os.path.basename(strOutputFileName)), 'utf-8'))
-        self.wfile.write(bytes('\r\n', 'utf-8'))
-        self.wfile.flush()
-
-        # Write the zip file payload
-        outputFileSize = os.path.getsize(outputFileName)
-        readSize = 0
-        with open(outputFileName, 'rb') as outputFileObj:
-            buf = None
-            while (True):
-                buf = outputFileObj.read(64 * 1024)
-                if (not buf):
-                    break
-                readSize = readSize + len(buf)
-                printProgress(
-                    readSize, outputFileSize, prefix='Progress:', suffix='Complete', barLength=50)
-                self.wfile.write(buf)
-        self.wfile.flush()
 
     """
     GET request handler
@@ -358,7 +477,23 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
 
             timeoutInMins = int(timeoutInMinsStr)
 
+            self.telemetryLogger.info('Received timeout value: ' + str(timeoutInMins)+ ' min(s)')
+
+            if timeoutInMins <= DEFAULT_TIMEOUT_IN_MINS:
+                zipFileHandlingOverhead = DEFAULT_ARCHIVING_OVERHEAD_IN_MINS # If customized timeout is low, inspection result will likely be small. Zip archive creation will be faster.
+            else:
+                zipFileHandlingOverhead = EXTENDED_ARCHIVING_OVERHEAD_IN_MINS  # if customized timeout is high, inspection result will likely be large and zip archiving time will take longer.
+
+            self.telemetryLogger.info('Trimming timeout value by ' + str(zipFileHandlingOverhead)+ ' min(s) to reserve overhead time for inspection file archiving.')
+            timeoutInMins -= zipFileHandlingOverhead
             self.telemetryLogger.info('Using timeout value: ' + str(timeoutInMins)+ ' min(s)')
+
+            if b'blobsasurl' in postvars:
+                blobSasUrl = str(postvars[b'blobsasurl'][0], encoding='UTF-8')
+                self.ValidateAndParseBlobSasUrl(blobSasUrl)
+                self.telemetryLogger.info('Received a valid Blob Sas url for upload. Result will be uploaded to Blob directly instead of Http response.')
+            else:
+                blobSasUrl = ""
 
             # update the fields in the telemetry client
             for h in self.telemetryLogger.handlers:
@@ -391,14 +526,15 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
                 with GuestFishWrapper(self.telemetryLogger, self, storageUrl, OUTPUTDIRNAME, operationId, mode, modeMajorSkipTo, modeMinorSkipTo, kpThread, runWithCredscan) as gfWrapper:
                     gfWrapper.start()
                     # Upload the ZIP file
-                    if gfWrapper.outputFileName:    
-                        kpThread.avoidSendingKeepAlive = True  # stop KeepAlive while we send the zip to avoid corruption issue
+                    if gfWrapper.outputFileName:
+                        if not blobSasUrl:
+                            self.telemetryLogger.info('Turning off KeepAlive messages before writing result to response.')
+                            kpThread.avoidSendingKeepAlive = True  # stop KeepAlive if we send the zip in response to avoid corruption issue
                         outputFileName = gfWrapper.outputFileName            
                         outputFileSize = round(os.path.getsize(outputFileName) / 1024, 2)
                         self.telemetryLogger.info('Uploading: ' + outputFileName + ' (' + str(outputFileSize) + 'kb)')
                         gfWrapper.metadata_pairs[ResponseHeaderMetadata.KEEPALIVETHREAD_TIMEOUT_IN_MINS] = timeoutInMins
-                        self.uploadFile(gfWrapper.metadata_pairs, outputFileName, kpThread.wasTimeout, gfWrapper.osType)
-                        self.telemetryLogger.info('Upload completed.')
+                        self.uploadFile(gfWrapper.metadata_pairs, outputFileName, kpThread.wasTimeout, gfWrapper.osType, blobSasUrl)
 
                         successElapsed = datetime.now() - start_time
                         self.serviceMetrics.SuccessRequests = self.serviceMetrics.SuccessRequests + 1
@@ -441,6 +577,18 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
             telemetryException = ex
             failureStatusText = 'Invalid SAS uri'
             self.telemetryLogger.error(failureStatusText)  # don't raise exception  
+        except InvalidBlobSasUrlException as ex:
+            unexpectedError = False
+            failureResultCode = 400
+            telemetryException = ex
+            failureStatusText = 'Invalid Blob SAS uri for upload'
+            self.telemetryLogger.error(failureStatusText)
+        except BlobUploadException as ex:
+            unexpectedError = False
+            failureResultCode = 500
+            telemetryException = ex
+            failureStatusText = 'Error encountered during blob upload'
+            self.telemetryLogger.error(failureStatusText)
         except ValueError as ex:
             unexpectedError = True
             telemetryException = ex
@@ -461,6 +609,12 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
             unexpectedError = True
             telemetryException = ex
             self.logException(ex, customProperties)
+            failureStatusText = 'Server Error'
+        except:
+            exc_value = sys.exc_info()[1]
+            unexpectedError = True
+            telemetryException = exc_value
+            self.logException(exc_value, customProperties)
             failureStatusText = 'Server Error'
         finally:
             if (not requestSucceeded):

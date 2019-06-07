@@ -98,6 +98,8 @@ class GuestFishWrapper:
         return (osType[0], osDistribution[0], osProductName[0], osMountpoints)
 
     def CreateArchive(self, zipFilename, targetDir):
+        start_time = datetime.now()
+        self.rootLogger.info("Starting zip archiving.")
         with zipfile.ZipFile(zipFilename, "w", compression=zipfile.ZIP_DEFLATED) as zf:
             base_path = os.path.normpath(targetDir)
             for dirpath, dirnames, filenames in os.walk(targetDir):
@@ -107,7 +109,9 @@ class GuestFishWrapper:
                 for name in filenames:
                     path = os.path.normpath(os.path.join(dirpath, name))
                     if os.path.isfile(path):
-                        zf.write(path, os.path.relpath(path, base_path))        
+                        zf.write(path, os.path.relpath(path, base_path))
+        successElapsed = datetime.now() - start_time
+        self.rootLogger.info('Zip archiving completed succesfully in ' + str(successElapsed.total_seconds()) + "s.")
         return zipFilename
 
     def RunCredentialScanner(self, targetDir, operationOutFile):
@@ -190,6 +194,7 @@ class GuestFishWrapper:
                     self.rootLogger.warning(strMsg)
 
         # Remove found secrets from files
+        self.rootLogger.info("OperationalLog: CredScan completed. Proceeding with redacting.")
         redacted_file_secrets = {}
         removed_file_secrets = {}
         with open(credscan_results_file, encoding='utf-8', errors='replace') as tsv:
@@ -200,23 +205,25 @@ class GuestFishWrapper:
                 secret_found = line[2]
                 line_number = line[4]
                 is_redacted = False
-
-                # Remove secret - delete line for small files, entire file for large files
-                if os.path.isfile(source_file):
-                    if os.path.getsize(filepath) < 1000000:
-                        is_redacted = True
-                        with open(source_file, "r+") as f:
-                            lines = f.readlines()
-                            f.seek(0)
-                            for i, line in enumerate(lines):
-                                if (i+1) != int(line_number):
-                                    f.write(line)
-                                else:
-                                    f.write("***REDACTED***")
-                            f.truncate()
-                    else:
-                        os.remove(source_file)
-
+                try:
+                    # Remove secret - delete line for small files, entire file for large files
+                    if os.path.isfile(source_file):
+                        if os.path.getsize(source_file) < 1000000:
+                            is_redacted = True
+                            with open(source_file, "r+", encoding='utf-8') as f:
+                                lines = f.readlines()
+                                f.seek(0)
+                                for i, line in enumerate(lines):
+                                    if (i+1) != int(line_number):
+                                        f.write(line)
+                                    else:
+                                        f.write("***REDACTED***")
+                                f.truncate()
+                        else:
+                            os.remove(source_file)
+                except Exception as e:
+                    strMsg = "CredentialScanner: Failed to run due to {}".format(e)
+                    self.rootLogger.warning(strMsg)
                 # Strip out the common target dir for logging
                 relative_source_file = source_file.replace(targetDir + "/", "")
                 # Store additional details for logging
@@ -339,6 +346,8 @@ class GuestFishWrapper:
                     if (osProductName is not None):
                         self.metadata_pairs[DiskInspectionMetadata.INSPECTION_METADATA_PRODUCT_NAME] = osProductName
 
+                    self.metadata_pairs[DiskInspectionMetadata.INSPECTION_METADATA_PARTIAL_RESULT] = "false"
+
                     try:
                         # Mount all identified mount points
                         canProceedAfterMount = False
@@ -430,6 +439,11 @@ class GuestFishWrapper:
                                 
                                 opCommand = str(opList[0]).lower().strip()
                                 opParam1 = pathPrefix + opList[1].strip()
+
+                                if (osType.lower() == "windows"):
+                                    opParamWin = guestfish.case_sensitive_path(opParam1)
+                                    if (opParamWin is not None):
+                                        opParam1 = opParamWin
 
                                 if opCommand=="echo":
                                     self.WriteToResultFile(operationOutFile, opParam1)
@@ -536,6 +550,7 @@ class GuestFishWrapper:
             if (self.kpThread.wasTimeout):
                 strLastGoodStep = str(lastGoodOperationMajorStep) + "." + str(lastGoodOperationMinorStep)
                 self.WriteToResultFile(operationOutFile, "\r\n##### WARNING: Partial results were collected as the operation was taking too long to complete. Consider retrying the operation specifying skip to step " + strLastGoodStep + " to continue gathering from last succesfully executed data collection step. #####")
+                self.metadata_pairs[DiskInspectionMetadata.INSPECTION_METADATA_PARTIAL_RESULT] = "true"
 
             # Scan results for secrets
             if self.runWithCredscan:
@@ -680,3 +695,4 @@ class DiskInspectionMetadata:
     INSPECTION_METADATA_DISK_CONFIGURATION = "InspectionMetadata-Disk-Configuration"
     INSPECTION_METADATA_OS_DISTRIBUTION = "InspectionMetadata-OS-Distribution"
     INSPECTION_METADATA_PRODUCT_NAME = "InspectionMetadata-Product-Name"
+    INSPECTION_METADATA_PARTIAL_RESULT = "InspectionMetadata-Partial-Result"

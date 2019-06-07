@@ -1,0 +1,32 @@
+echo,### Event Logs ### 
+copy,/Windows/System32/winevt/Logs/System.evtx 
+copy,/Windows/System32/winevt/Logs/Application.evtx 
+
+echo,## Kubelet and Kube proxy Logs ##
+copy,/k/*.log
+copy,/k/*.err
+
+echo,## CNI logs ##
+copy,/k/azure-vnet.log
+copy,/k/azure-vnet-ipam.log
+copy,/k/azure-vnet.json
+copy,/k/azure-vnet-ipam.json
+
+echo,## Hyper-V logs ##
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Host-Network-Service-Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Hyper-V-Compute-Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Hyper-V-Compute-Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Host-Network-Service-Operational.evtx
+
+
+
+
+echo,## Cluster provision logs ##
+copy,/AzureData/CustomDataSetupScript.log
+copy,/AzureData/CustomDataSetupScript.ps1
+
+
+
+
+
+

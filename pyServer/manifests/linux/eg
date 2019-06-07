@@ -13,6 +13,7 @@ copy,/etc/HOSTNAME
 copy,/etc/hostname
 copy,/etc/network/interfaces
 copy,/etc/network/interfaces.d/*.cfg
+copy,/etc/netplan/50-cloud-init.yaml
 copy,/etc/resolv.conf
 copy,/etc/sysconfig/iptables
 copy,/etc/sysconfig/network
