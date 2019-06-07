@@ -75,6 +75,12 @@ File Path | Manifest
 /opt/msawb/bin/AzureWLBackupCommonManagementSettings.json | workloadbackup 
 /opt/msawb/bin/AzureWLBackupMonitoringSync_config.json | workloadbackup 
 /opt/msawb/etc\* | workloadbackup 
+/opt/msawb/var/lib/catalog/AutoHealCatalog/AutoHealTask/\*.bin | workloadbackup 
+/opt/msawb/var/lib/catalog/InquiryCatalog/\*/\*.bin | workloadbackup 
+/opt/msawb/var/lib/catalog/SyncObjectsCatalog/AlertEventsTable/\*.bin | workloadbackup 
+/opt/msawb/var/lib/catalog/SyncObjectsCatalog/DatasourceSyncTable/\*.bin | workloadbackup 
+/opt/msawb/var/lib/catalog/WorkloadExtDatasourceCatalog/\*/\*.bin | workloadbackup 
+/opt/msawb/var/lib/catalog/WorkloadSchedules/\*/\*.bin | workloadbackup 
 /opt/msawb/var/log/\*/\*/\* | workloadbackup 
 /opt/msawb/var/log/\*/\*/\*/\*/\* | workloadbackup 
 /tmp/omsagent\*.tgz | monitor-mgmt 
@@ -150,13 +156,6 @@ File Path | Manifest
 /var/opt/microsoft/omsconfig/omsconfig.log | monitor-mgmt 
 /var/opt/microsoft/omsconfig/omsconfigdetailed.log | monitor-mgmt 
 /var/opt/microsoft/scx/log/scx.log | monitor-mgmt 
-/var/opt/msawb/catalog/AutoHealCatalog/AutoHealTask/\*.bin | workloadbackup 
-/var/opt/msawb/catalog/InquiryCatalog/\*/\*.bin | workloadbackup 
-/var/opt/msawb/catalog/RegisteredObjectInfoCatalog/\*/\*.bin | workloadbackup 
-/var/opt/msawb/catalog/SyncObjectsCatalog/AlertEventsTable/\*.bin | workloadbackup 
-/var/opt/msawb/catalog/SyncObjectsCatalog/DatasourceSyncTable/\*.bin | workloadbackup 
-/var/opt/msawb/catalog/WorkloadExtDatasourceCatalog/\*/\*.bin | workloadbackup 
-/var/opt/msawb/catalog/WorkloadSchedules/\*/\*.bin | workloadbackup 
 /var/opt/omi/log/\*.log | monitor-mgmt 
 /var/spool/cron/tabs/root | workloadbackup 
 ## windows 
@@ -237,7 +236,6 @@ File Path | Manifest
 /Program Files (x86)/Microsoft Azure Site Recovery/agent/s2\*.log | site-recovery, windowsupdate 
 /Program Files (x86)/Microsoft Azure Site Recovery/agent/svagents\*.log | site-recovery, windowsupdate 
 /Program Files/Azure Workload Backup/Catalog/InquiryCatalog/\*/\*.bin | workloadbackup 
-/Program Files/Azure Workload Backup/Catalog/RegisteredObjectInfoCatalog/\*/\*.bin | workloadbackup 
 /Program Files/Azure Workload Backup/Catalog/SyncObjectsCatalog/AlertEventsTable/\*.b<br>in | workloadbackup 
 /Program Files/Azure Workload Backup/Catalog/SyncObjectsCatalog/DatasourceSyncTable/\<br>*.bin | workloadbackup 
 /Program Files/Azure Workload Backup/Catalog/WorkloadExtDatasourceCatalog/\*/\*.bin | workloadbackup 
@@ -461,4 +459,4 @@ File Path | Manifest
 /k/azure-vnet.log | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-05-10 01:42:38.246644`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-06-07 14:06:12.022983`*
