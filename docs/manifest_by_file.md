@@ -92,6 +92,7 @@ File Path | Manifest
 /var/lib/waagent/HostingEnvironmentConfig.xml | diagnostic 
 /var/lib/waagent/Incarnation | agents, diagnostic 
 /var/lib/waagent/ManagedIdentity-\*.json | diagnostic 
+/var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-1.1.0.2 | servicefabric 
 /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*.\*/HandlerEn<br>vironment.json | servicefabric 
 /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*.\*/status/\*<br>.status | servicefabric 
 /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/HandlerManif<br>est.json | servicefabric 
@@ -132,20 +133,25 @@ File Path | Manifest
 /var/log/cloud-init-output.log | aks 
 /var/log/cloud-init\* | diagnostic, eg, normal 
 /var/log/dmesg\* | agents, diagnostic, eg, normal, site-recovery, workloadbackup 
+/var/log/dpkg.log | servicefabric 
 /var/log/dpkg\* | diagnostic, eg, normal 
 /var/log/evtcollforw\*.log | site-recovery 
 /var/log/journal/\*/\* | aks 
+/var/log/kern.log | servicefabric 
 /var/log/kern\* | diagnostic, eg, normal 
 /var/log/messages\* | diagnostic, eg, monitor-mgmt, normal 
 /var/log/rsyslog\* | diagnostic, eg, lad, normal 
 /var/log/s2\*.log | site-recovery 
 /var/log/sa/sar\* | performance 
 /var/log/secure\* | diagnostic, eg, normal 
-/var/log/sfnode/sfnodelog | servicefabric 
+/var/log/sfnode/handler.trace | servicefabric 
+/var/log/sfnode/loguploader.trace | servicefabric 
+/var/log/sfnode/sfnodelog.trace | servicefabric 
 /var/log/svagents\*.log | site-recovery 
 /var/log/syslog | aks, servicefabric 
 /var/log/syslog\* | agents, diagnostic, eg, lad, monitor-mgmt, normal, site-recovery, workloadbackup 
 /var/log/ua_install.log | site-recovery 
+/var/log/waagent.log | servicefabric 
 /var/log/waagent\* | agents, diagnostic, eg, lad, normal, site-recovery, workloadbackup 
 /var/log/waagent\*.log | monitor-mgmt 
 /var/log/yum\* | diagnostic, eg, normal 
@@ -459,4 +465,4 @@ File Path | Manifest
 /k/azure-vnet.log | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-06-07 14:06:12.022983`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-06-11 14:04:02.285633`*

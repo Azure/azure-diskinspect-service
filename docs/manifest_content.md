@@ -253,8 +253,14 @@ performance | list | /var/log/sa
 performance | copy | /var/log/sa/sar\*
 servicefabric | copy | /opt/microsoft/servicefabric/bin/Fabric/Fabric.Code/Fabric
 servicefabric | copy | /var/log/syslog
-servicefabric | copy | /var/log/sfnode/sfnodelog
+servicefabric | copy | /var/log/dpkg.log
+servicefabric | copy | /var/log/kern.log
+servicefabric | copy | /var/log/waagent.log
+servicefabric | copy | /var/log/sfnode/sfnodelog.trace
+servicefabric | copy | /var/log/sfnode/loguploader.trace
+servicefabric | copy | /var/log/sfnode/handler.trace
 servicefabric | copy | /var/log/azure/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode/\*.\*/CommandExec<br>ution.log
+servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-1.1.0.2
 servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/heartbeat.lo<br>g
 servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/Service/curr<br>ent.config
 servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*.\*/HandlerEn<br>vironment.json
@@ -1205,4 +1211,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-06-07 14:06:12.022983`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-06-11 14:04:02.285633`*
