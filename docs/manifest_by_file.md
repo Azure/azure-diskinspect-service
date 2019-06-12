@@ -406,7 +406,7 @@ File Path | Manifest
 /Windows/debug/dcpromoui.log | diagnostic, eg, normal, windowsupdate 
 /Windows/debug/mrt.log | diagnostic, eg, normal, windowsupdate 
 /Windows/debug/netlogon.log | diagnostic, eg, normal, windowsupdate 
-/Windows/servicing/sessions/sessions.xml | windowsupdate 
+/Windows/servicing/sessions/sessions.xml | diagnostic, windowsupdate 
 /Windows/system32/winevt/Logs/Operations Manager.evtx | monitor-mgmt 
 /Windows/windowsupdate\*.log | windowsupdate 
 /WindowsAzure/GuestAgent\*/CommonAgentConfig.config | diagnostic, windowsupdate 
@@ -465,4 +465,4 @@ File Path | Manifest
 /k/azure-vnet.log | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-06-11 14:04:02.285633`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-06-12 08:39:29.941988`*
