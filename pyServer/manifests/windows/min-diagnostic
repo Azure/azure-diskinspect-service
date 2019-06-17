@@ -1,5 +1,3 @@
-copy,/WindowsAzure/Logs/TransparentInstaller.log
-
 echo,### Registry Hives ###
 copy,/Windows/System32/config/SOFTWARE
 copy,/Windows/System32/config/SYSTEM
@@ -9,3 +7,24 @@ copy,/Windows/System32/config/SYSTEM.LOG1
 copy,/Windows/System32/config/SYSTEM.LOG2
 copy,/Windows/System32/config/SOFTWARE.LOG1
 copy,/Windows/System32/config/SOFTWARE.LOG2
+
+echo,### Event Logs ###
+copy,/Windows/System32/winevt/Logs/System.evtx
+copy,/Windows/System32/winevt/Logs/Application.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-NetworkProfile%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RdpCoreTS%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-LocalSessionManager%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-RemoteConnectionManager%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-RemoteConnectionManager%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Windows Firewall With Advanced Security%4Firewall.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnP%4Configuration.evtx
+copy,/Windows/System32/winevt/Logs/Security.evtx
+
+echo,### Guest Agent ###
+copy,/WindowsAzure/Logs/TransparentInstaller.log
+copy,/WindowsAzure/Logs/WaAppAgent.log
+copy,/WindowsAzure/Logs/AggregateStatus/aggregatestatus*.json
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Compute.VMAccessAgent/*/JsonVMAccessExtension.log
+
+echo,### Gathering Disk Info ###
+diskinfo,

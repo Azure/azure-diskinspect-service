@@ -712,13 +712,27 @@ eg | copy | /WindowsAzure/Logs/Plugins/\*/\*/Heartbeat.log
 eg | diskinfo | 
 genspec | copy | /Windows/Setup/State/State.ini
 genspec | copy | /Windows/Panther/WaSetup.xml
-min-diagnostic | copy | /WindowsAzure/Logs/TransparentInstaller.log
 min-diagnostic | copy | /Windows/System32/config/SOFTWARE
 min-diagnostic | copy | /Windows/System32/config/SYSTEM
 min-diagnostic | copy | /Windows/System32/config/SYSTEM.LOG1
 min-diagnostic | copy | /Windows/System32/config/SYSTEM.LOG2
 min-diagnostic | copy | /Windows/System32/config/SOFTWARE.LOG1
 min-diagnostic | copy | /Windows/System32/config/SOFTWARE.LOG2
+min-diagnostic | copy | /Windows/System32/winevt/Logs/System.evtx
+min-diagnostic | copy | /Windows/System32/winevt/Logs/Application.evtx
+min-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-NetworkProfile%4Operational.evtx
+min-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RdpCoreTS%4Oper<br>ational.evtx
+min-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-LocalSessionManager%<br>4Admin.evtx
+min-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-RemoteConnectionMana<br>ger%4Admin.evtx
+min-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-RemoteConnectionMana<br>ger%4Operational.evtx
+min-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Windows Firewall With Advanced Securi<br>ty%4Firewall.evtx
+min-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnP%4Configuration.evtx
+min-diagnostic | copy | /Windows/System32/winevt/Logs/Security.evtx
+min-diagnostic | copy | /WindowsAzure/Logs/TransparentInstaller.log
+min-diagnostic | copy | /WindowsAzure/Logs/WaAppAgent.log
+min-diagnostic | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
+min-diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Compute.VMAccessAgent/\*/JsonVMAccessExtension.l<br>og
+min-diagnostic | diskinfo | 
 monitor-mgmt | copy | /Program Files/Microsoft Monitoring Agent/Agent/Health Service State/Management Packs<br>/\*.xml
 monitor-mgmt | copy | /Program Files/Microsoft Monitoring Agent/Agent/Health Service State/CT_\*/work/Servi<br>ceState/\*.log
 monitor-mgmt | copy | /WindowsAzure/Logs/\*.log
@@ -1212,4 +1226,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-06-12 08:39:29.941988`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-06-17 12:34:25.329445`*
