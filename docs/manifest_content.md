@@ -253,8 +253,14 @@ performance | list | /var/log/sa
 performance | copy | /var/log/sa/sar\*
 servicefabric | copy | /opt/microsoft/servicefabric/bin/Fabric/Fabric.Code/Fabric
 servicefabric | copy | /var/log/syslog
-servicefabric | copy | /var/log/sfnode/sfnodelog
+servicefabric | copy | /var/log/dpkg.log
+servicefabric | copy | /var/log/kern.log
+servicefabric | copy | /var/log/waagent.log
+servicefabric | copy | /var/log/sfnode/sfnodelog.trace
+servicefabric | copy | /var/log/sfnode/loguploader.trace
+servicefabric | copy | /var/log/sfnode/handler.trace
 servicefabric | copy | /var/log/azure/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode/\*.\*/CommandExec<br>ution.log
+servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-1.1.0.2
 servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/heartbeat.lo<br>g
 servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/Service/curr<br>ent.config
 servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*.\*/HandlerEn<br>vironment.json
@@ -290,13 +296,12 @@ workloadbackup | copy | /var/log/waagent\*
 workloadbackup | copy | /var/log/dmesg\*
 workloadbackup | copy | /var/log/syslog\*
 workloadbackup | copy | /var/log/azure/\*
-workloadbackup | copy | /var/opt/msawb/catalog/AutoHealCatalog/AutoHealTask/\*.bin
-workloadbackup | copy | /var/opt/msawb/catalog/InquiryCatalog/\*/\*.bin
-workloadbackup | copy | /var/opt/msawb/catalog/RegisteredObjectInfoCatalog/\*/\*.bin
-workloadbackup | copy | /var/opt/msawb/catalog/WorkloadExtDatasourceCatalog/\*/\*.bin
-workloadbackup | copy | /var/opt/msawb/catalog/WorkloadSchedules/\*/\*.bin
-workloadbackup | copy | /var/opt/msawb/catalog/SyncObjectsCatalog/DatasourceSyncTable/\*.bin
-workloadbackup | copy | /var/opt/msawb/catalog/SyncObjectsCatalog/AlertEventsTable/\*.bin
+workloadbackup | copy | /opt/msawb/var/lib/catalog/AutoHealCatalog/AutoHealTask/\*.bin
+workloadbackup | copy | /opt/msawb/var/lib/catalog/InquiryCatalog/\*/\*.bin
+workloadbackup | copy | /opt/msawb/var/lib/catalog/WorkloadExtDatasourceCatalog/\*/\*.bin
+workloadbackup | copy | /opt/msawb/var/lib/catalog/WorkloadSchedules/\*/\*.bin
+workloadbackup | copy | /opt/msawb/var/lib/catalog/SyncObjectsCatalog/DatasourceSyncTable/\*.bin
+workloadbackup | copy | /opt/msawb/var/lib/catalog/SyncObjectsCatalog/AlertEventsTable/\*.bin
 workloadbackup | copy | /opt/msawb/bin/AzureWLBackupCommonManagementSettings.json
 workloadbackup | copy | /opt/msawb/bin/AzureWLBackupMonitoringSync_config.json
 workloadbackup | copy | /opt/msawb/var/log/\*/\*/\*
@@ -616,6 +621,7 @@ diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.Ne
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.ManagedIdentity.ManagedIdentityExtensionForWindo<br>ws/\*/RuntimeSettings/\*.xml
 diagnostic | copy | /WindowsAzure/GuestAgent\*/CommonAgentConfig.config
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Compute.CustomScriptExtension/\*/\*.log
+diagnostic | copy | /Windows/servicing/sessions/sessions.xml
 diagnostic | diskinfo | 
 eg | copy | /Windows/System32/winevt/Logs/System.evtx
 eg | copy | /Windows/System32/winevt/Logs/Application.evtx
@@ -1193,7 +1199,6 @@ workloadbackup | copy | /Windows/System32/winevt/Logs/Application.evtx
 workloadbackup | copy | /Windows/System32/winevt/Logs/Windows Azure.evtx
 workloadbackup | copy | /Windows/System32/Tasks/Microsoft/IaaSWorkloadBackup/\*
 workloadbackup | copy | /Program Files/Azure Workload Backup/Catalog/InquiryCatalog/\*/\*.bin
-workloadbackup | copy | /Program Files/Azure Workload Backup/Catalog/RegisteredObjectInfoCatalog/\*/\*.bin
 workloadbackup | copy | /Program Files/Azure Workload Backup/Catalog/WorkloadExtDatasourceCatalog/\*/\*.bin
 workloadbackup | copy | /Program Files/Azure Workload Backup/Catalog/WorkloadSchedules/\*/\*.bin
 workloadbackup | copy | /Program Files/Azure Workload Backup/Catalog/SyncObjectsCatalog/DatasourceSyncTable/\<br>*.bin
@@ -1207,4 +1212,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-05-10 01:42:38.246644`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-06-12 08:39:29.941988`*
