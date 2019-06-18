@@ -5,7 +5,8 @@ copy,/etc/hostname
 copy,/etc/waagent.conf
 copy,/var/lib/waagent/*.xml
 copy,/var/spool/cron/tabs/root
-copy,/opt/msawb/etc*
+copy,/opt/msawb/etc/config/SAPHana/*
+copy,/opt/msawb/etc/config/global.json
 echo,
 
 echo,### Gathering Log Files. It is expected for this step to take more than 20 minutes. Please use SkipToStep feature if all logs are not downloaded in one go.###

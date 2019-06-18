@@ -74,7 +74,8 @@ File Path | Manifest
 /opt/microsoft/servicefabric/bin/Fabric/Fabric.Code/Fabric | servicefabric 
 /opt/msawb/bin/AzureWLBackupCommonManagementSettings.json | workloadbackup 
 /opt/msawb/bin/AzureWLBackupMonitoringSync_config.json | workloadbackup 
-/opt/msawb/etc\* | workloadbackup 
+/opt/msawb/etc/config/SAPHana/\* | workloadbackup 
+/opt/msawb/etc/config/global.json | workloadbackup 
 /opt/msawb/var/log/\*/\*/\* | workloadbackup 
 /opt/msawb/var/log/\*/\*/\*/\*/\* | workloadbackup 
 /tmp/omsagent\*.tgz | monitor-mgmt 
@@ -461,4 +462,4 @@ File Path | Manifest
 /k/azure-vnet.log | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-05-10 01:42:38.246644`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-06-18 15:36:07.744738`*
