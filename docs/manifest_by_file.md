@@ -74,7 +74,8 @@ File Path | Manifest
 /opt/microsoft/servicefabric/bin/Fabric/Fabric.Code/Fabric | servicefabric 
 /opt/msawb/bin/AzureWLBackupCommonManagementSettings.json | workloadbackup 
 /opt/msawb/bin/AzureWLBackupMonitoringSync_config.json | workloadbackup 
-/opt/msawb/etc\* | workloadbackup 
+/opt/msawb/etc/config/SAPHana/\* | workloadbackup 
+/opt/msawb/etc/config/global.json | workloadbackup 
 /opt/msawb/var/lib/catalog/AutoHealCatalog/AutoHealTask/\*.bin | workloadbackup 
 /opt/msawb/var/lib/catalog/InquiryCatalog/\*/\*.bin | workloadbackup 
 /opt/msawb/var/lib/catalog/SyncObjectsCatalog/AlertEventsTable/\*.bin | workloadbackup 
@@ -465,4 +466,4 @@ File Path | Manifest
 /k/azure-vnet.log | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-06-17 12:34:25.329445`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-06-18 15:47:22.119637`*

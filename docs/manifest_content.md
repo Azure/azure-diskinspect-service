@@ -291,7 +291,8 @@ workloadbackup | copy | /etc/hostname
 workloadbackup | copy | /etc/waagent.conf
 workloadbackup | copy | /var/lib/waagent/\*.xml
 workloadbackup | copy | /var/spool/cron/tabs/root
-workloadbackup | copy | /opt/msawb/etc\*
+workloadbackup | copy | /opt/msawb/etc/config/SAPHana/\*
+workloadbackup | copy | /opt/msawb/etc/config/global.json
 workloadbackup | copy | /var/log/waagent\*
 workloadbackup | copy | /var/log/dmesg\*
 workloadbackup | copy | /var/log/syslog\*
@@ -1226,4 +1227,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-06-17 12:34:25.329445`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-06-18 15:47:22.119637`*
