@@ -74,6 +74,8 @@ class GuestFS:
                 if err:
                     if continueOnError:
                         self.rootLogger.warning('GuestFish:' + echoStr + ':Error> \r\n' + err)
+                        self.rootLogger.warning('GuestFish: Retrying for' + echoStr)
+                        retValue = self.callGFRetry(echoStr, retArgs)
                     else:
                         retValue = [None, err]
                         self.rootLogger.error('GuestFish:' + echoStr + ':Error> \r\n' + err)
@@ -232,6 +234,14 @@ class GuestFS:
         (out, err) = self.callGF('Finding Case Sensitive Path [' + path + ']', ['--', '-case-sensitive-path', path], True)
         return self.get_first_list_item(out)
         
+    def is_symlink(self, path):
+        try:
+            (out, err) = self.callGF('Checking Symbolic Link [' + path + ']', ['--', '-is-symlink', path], True)
+            if err:
+                return None
+        except subprocess.CalledProcessError:
+            return None
+        return 'true' in out    
 
     def copy_out(self, sourceFiles, targetDir):
         try:
@@ -349,6 +359,30 @@ class GuestFS:
             raise ex from None # throw the redacted exception which is caught in do_POST() and ends the web request
         finally:
             conn.close()
+
+    def callGFRetry(self, echoStr, retArgs):
+        retValue = [None, None]
+        try:
+            proc = subprocess.Popen(
+                    retArgs,
+                    env=self.environment,
+                    stderr=subprocess.PIPE,
+                    stdout=subprocess.PIPE,
+                    universal_newlines=True)
+            (result, err) = proc.communicate()  
+
+            resultAsArray = str(result).splitlines()
+            retValue = [resultAsArray, err]
+            if result:
+                resultStr = '\r\n'.join(resultAsArray)
+                if len(resultAsArray) > 1:
+                    resultStr = '\r\n' + resultStr
+                    self.rootLogger.info('GuestFish: Retried for' + echoStr + ':Result> ' + resultStr)
+            if err:
+                self.rootLogger.warning('GuestFish: Retried for' + echoStr + ':Error> \r\n' + err)
+            return retValue
+        except subprocess.CalledProcessError as e:
+            self.rootLogger.warning('GuestFish: Retried for' + echoStr + ':WARNING')
 
 class InvalidSasException(Exception):
     pass
