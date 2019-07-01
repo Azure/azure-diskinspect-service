@@ -234,16 +234,7 @@ class GuestFS:
 
     def case_sensitive_path(self, path):
         (out, err) = self.callGF('Finding Case Sensitive Path [' + path + ']', ['--', '-case-sensitive-path', path], True, retryCount=1)
-        return self.get_first_list_item(out)
-        
-    def is_symlink(self, path):
-        try:
-            (out, err) = self.callGF('Checking Symbolic Link [' + path + ']', ['--', '-is-symlink', path], True, retryCount=1)
-            if err:
-                return None
-        except subprocess.CalledProcessError:
-            return None
-        return 'true' in out    
+        return self.get_first_list_item(out)   
 
     def copy_out(self, sourceFiles, targetDir):
         try:
@@ -361,7 +352,7 @@ class GuestFS:
             raise ex from None # throw the redacted exception which is caught in do_POST() and ends the web request
         finally:
             conn.close()
-            
+
 class InvalidSasException(Exception):
     pass
 
