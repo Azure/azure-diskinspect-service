@@ -37,7 +37,7 @@ class GuestFS:
         retArgs.extend(args)
         return retArgs
 
-    def callGF(self, echoStr, commands, continueOnError=False, returnRawResults=False):
+    def callGF(self, echoStr, commands, continueOnError=False, returnRawResults=False, remainingRetriesCount=0):
         start_time = datetime.now()
         retValue = [None, None]
         try:
@@ -74,6 +74,10 @@ class GuestFS:
                 if err:
                     if continueOnError:
                         self.rootLogger.warning('GuestFish:' + echoStr + ':Error> \r\n' + err)
+                        if remainingRetriesCount > 0:
+                            remainingRetriesCount = remainingRetriesCount - 1
+                            self.rootLogger.warning('GuestFish: Retrying for' + echoStr)
+                            retValue = self.callGF(echoStr, commands, continueOnError, returnRawResults, remainingRetriesCount)
                     else:
                         retValue = [None, err]
                         self.rootLogger.error('GuestFish:' + echoStr + ':Error> \r\n' + err)
@@ -120,7 +124,7 @@ class GuestFS:
         return self.callGF('Launching', ['launch'])
     
     def list_filesystems(self):
-        (out, err) = self.callGF('Listing Filesystems', ['list-filesystems'], True)
+        (out, err) = self.callGF('Listing Filesystems', ['list-filesystems'], True, remainingRetriesCount=1)
         devicesArr = list()
         # typically these are name/values delimited by :  
         # some filesystems have a moniker (e.g. btrfsvol:/dev/sda2/root: btrfs ) but the delimeter
@@ -134,27 +138,27 @@ class GuestFS:
         return devicesArr
 
     def get_uuid(self, device):
-        (out, err) = self.callGF('Get UUID [' + device + ']', ['--', 'get-uuid', device], True)
+        (out, err) = self.callGF('Get UUID [' + device + ']', ['--', 'get-uuid', device], True, remainingRetriesCount=1)
         return self.get_first_list_item(out)
 
     def inspect_os(self):
-        (out, err) = self.callGF('Inspecting OS Metadata', ['inspect-os'], True)
+        (out, err) = self.callGF('Inspecting OS Metadata', ['inspect-os'], True, remainingRetriesCount=1)
         return out
 
     def inspect_get_type(self, device):
-        (out, err) = self.callGF('Get OS Type', ['--', '-inspect-get-type', device], True)
+        (out, err) = self.callGF('Get OS Type', ['--', '-inspect-get-type', device], True, remainingRetriesCount=1)
         return out
  
     def inspect_get_distro(self, device):
-        (out, err) = self.callGF('Get OS Distribution', ['--', '-inspect-get-distro', device], True)
+        (out, err) = self.callGF('Get OS Distribution', ['--', '-inspect-get-distro', device], True, remainingRetriesCount=1)
         return out
 
     def inspect_get_product_name(self, device):
-        (out, err) = self.callGF('Get Product Name', ['--', '-inspect-get-product-name', device], True)
+        (out, err) = self.callGF('Get Product Name', ['--', '-inspect-get-product-name', device], True, remainingRetriesCount=1)
         return out
 
     def inspect_get_mountpoints(self, device):
-        (out, err) = self.callGF('Get Device Mountpoints', ['--', '-inspect-get-mountpoints', device], True)
+        (out, err) = self.callGF('Get Device Mountpoints', ['--', '-inspect-get-mountpoints', device], True, remainingRetriesCount=1)
         mountpointsArr = list()
         for eachMountPoint in out:   
             # delimiter will be a colon with space ': '. This should be consistent based upon  
@@ -173,21 +177,21 @@ class GuestFS:
 
     def unmount(self, mountpoint):
         try:
-            (out, err) = self.callGF('Unmount [' + mountpoint + ']', ['--', '-unmount', mountpoint], True)
+            (out, err) = self.callGF('Unmount [' + mountpoint + ']', ['--', '-unmount', mountpoint], True, remainingRetriesCount=1)
         except subprocess.CalledProcessError:
             pass
 
     def unmount_all(self):
         try:
-            (out, err) = self.callGF('Unmount All', ['--', '-unmount-all'], True)
+            (out, err) = self.callGF('Unmount All', ['--', '-unmount-all'], True, remainingRetriesCount=1)
         except subprocess.CalledProcessError:
             pass
 
     def mount_ro(self, mountpoint, device):
         try:
-            (out, err) = self.callGF('Mount [' + mountpoint + ',' + device + ']', ['--', '-mount-ro', device, mountpoint], True)
+            (out, err) = self.callGF('Mount [' + mountpoint + ',' + device + ']', ['--', '-mount-ro', device, mountpoint], True, remainingRetriesCount=1)
             # guestfish doesn't seem to return anything here... check to see if it is in mounts
-            (out, err) = self.callGF('Mount [' + mountpoint + ',' + device + ']', ['--', '-mounts'], True)
+            (out, err) = self.callGF('Mount [' + mountpoint + ',' + device + ']', ['--', '-mounts'], True, remainingRetriesCount=1)
             return device in out
         except subprocess.CalledProcessError:
             return False
@@ -202,9 +206,9 @@ class GuestFS:
         bsd_options = ['ro,ufstype=5xbsd','ro,ufstype=44bsd']
         for current_option in bsd_options:
             try:
-                (out, err) = self.callGF('Mount [' + mountpoint + ',' + device + ']', ['--', '-mount-options', current_option, device, mountpoint], True)
+                (out, err) = self.callGF('Mount [' + mountpoint + ',' + device + ']', ['--', '-mount-options', current_option, device, mountpoint], True, remainingRetriesCount=1)
                 # guestfish doesn't seem to return anything here... check to see if it is in mounts
-                (out, err) = self.callGF('Mount [' + mountpoint + ',' + device + ']', ['--', '-mounts'], True)
+                (out, err) = self.callGF('Mount [' + mountpoint + ',' + device + ']', ['--', '-mounts'], True, remainingRetriesCount=1)
                 if device in out:
                         return True                    
                 else:
@@ -215,7 +219,7 @@ class GuestFS:
 
     def ll(self, directory):
         try:
-            (out, err) = self.callGF('List(verbose) [' + directory + ']', ['--', '-ll', directory], True)
+            (out, err) = self.callGF('List(verbose) [' + directory + ']', ['--', '-ll', directory], True, remainingRetriesCount=1)
             if err:
                 return None
         except subprocess.CalledProcessError:
@@ -223,19 +227,18 @@ class GuestFS:
         return out
 
     def glob_expand(self, tgtPattern):
-        (out, err) = self.callGF('Expanding Pattern [' + tgtPattern + ']', ['--', '-glob-expand', tgtPattern], True)
+        (out, err) = self.callGF('Expanding Pattern [' + tgtPattern + ']', ['--', '-glob-expand', tgtPattern], True, remainingRetriesCount=1)
         if len(out) < 1:
             self.rootLogger.warning('GuestFish:Expanding Pattern [' + tgtPattern + ']:Result> No files found.')
         return out
 
     def case_sensitive_path(self, path):
-        (out, err) = self.callGF('Finding Case Sensitive Path [' + path + ']', ['--', '-case-sensitive-path', path], True)
-        return self.get_first_list_item(out)
-        
+        (out, err) = self.callGF('Finding Case Sensitive Path [' + path + ']', ['--', '-case-sensitive-path', path], True, remainingRetriesCount=1)
+        return self.get_first_list_item(out)   
 
     def copy_out(self, sourceFiles, targetDir):
         try:
-            (out, err) = self.callGF('Copy [' + sourceFiles + ']', ['--', '-copy-out', sourceFiles, targetDir], True)
+            (out, err) = self.callGF('Copy [' + sourceFiles + ']', ['--', '-copy-out', sourceFiles, targetDir], True, remainingRetriesCount=1)
             if err:
                 return False
             targetFiles = targetDir + os.sep + os.path.basename(sourceFiles)
@@ -253,7 +256,7 @@ class GuestFS:
     
     def df(self):
         try:
-            (out, err) = self.callGF('DiskInfo (df -h)', ['--', '-df-h'], True)
+            (out, err) = self.callGF('DiskInfo (df -h)', ['--', '-df-h'], True, remainingRetriesCount=1)
             if err:
                 return None
         except subprocess.CalledProcessError:
@@ -262,7 +265,7 @@ class GuestFS:
 
     def statvfs(self, mountpoint):
         try:
-            (out, err) = self.callGF('DiskInfo (statvfs)', ['--', '-statvfs', mountpoint], True)
+            (out, err) = self.callGF('DiskInfo (statvfs)', ['--', '-statvfs', mountpoint], True, remainingRetriesCount=1)
             if err:
                 return None
         except subprocess.CalledProcessError:
@@ -271,7 +274,7 @@ class GuestFS:
         
     def get_drive_letters(self, device):
         try:
-            (out, err) = self.callGF('Windows drive letter mappings', ['--', '-inspect-get-drive-mappings', device], True)
+            (out, err) = self.callGF('Windows drive letter mappings', ['--', '-inspect-get-drive-mappings', device], True, remainingRetriesCount=1)
             if err:
                 return None
         except subprocess.CalledProcessError:
@@ -287,7 +290,7 @@ class GuestFS:
 
     def is_dir(self, path):
         try:
-            (out, err) = self.callGF('Looking for directory', ['--', '-is-dir', path], True)
+            (out, err) = self.callGF('Looking for directory', ['--', '-is-dir', path], True, remainingRetriesCount=1)
             if err:
                 return None
         except subprocess.CalledProcessError:
@@ -296,7 +299,7 @@ class GuestFS:
 
     def libguestfs_version(self):
         try:
-            (out, err) = self.callGF('Getting guestfish/libguestFS version', ['--', '-version'], True)
+            (out, err) = self.callGF('Getting guestfish/libguestFS version', ['--', '-version'], True, remainingRetriesCount=1)
             if err:
                 return None
         except subprocess.CalledProcessError:
