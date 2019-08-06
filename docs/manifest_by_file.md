@@ -17,6 +17,7 @@ File Path | Manifest
 /etc/ssh/sshd_config | diagnostic, normal 
 /etc/syslog.conf | diagnostic 
 /etc/waagent.conf | agents, diagnostic 
+/run/systemd/resolve/stub-resolv.conf | diagnostic 
 /var/lib/waagent/ExtensionsConfig.\*.xml | agents, diagnostic 
 /var/lib/waagent/GoalState.\*.xml | agents, diagnostic 
 /var/lib/waagent/HostingEnvironmentConfig.xml | agents, diagnostic 
@@ -84,6 +85,7 @@ File Path | Manifest
 /opt/msawb/var/lib/catalog/WorkloadSchedules/\*/\*.bin | workloadbackup 
 /opt/msawb/var/log/\*/\*/\* | workloadbackup 
 /opt/msawb/var/log/\*/\*/\*/\*/\* | workloadbackup 
+/run/systemd/resolve/stub-resolv.conf | diagnostic, eg 
 /tmp/omsagent\*.tgz | monitor-mgmt 
 /var/lib/.jupyter/jupyter_notebook_config.py | hdinsight 
 /var/lib/dhclient/dhclient-eth0.leases | diagnostic, eg 
@@ -466,4 +468,4 @@ File Path | Manifest
 /k/azure-vnet.log | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-06-18 15:47:22.119637`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-08-06 13:26:15.427837`*
