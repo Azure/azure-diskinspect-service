@@ -161,13 +161,13 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
     Retrieve the name of the host from the Azure metadata
     """
     def getInstanceNameFromMetadata(self):
+        roleInstance = "Unknown"
         if (len(self.hostMetadata) > 1 and "name" in self.hostMetadata):
             try:
                 roleInstance = json.loads(self.hostMetadata)["name"]
                 self.telemetryLogger.info("Request executing on instance: " + roleInstance)
             except json.decoder.JSONDecodeError as ex:
-                self.telemetryLogger.error("Unexpected metadata: " + self.hostMetadata) 
-                roleInstance = "Unknown"
+                self.telemetryLogger.error("Unexpected metadata: " + self.hostMetadata)
         return roleInstance
 
     '''
