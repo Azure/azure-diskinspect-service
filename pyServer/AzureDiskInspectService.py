@@ -10,6 +10,7 @@ import subprocess
 import threading
 import logging
 import logging.handlers
+import traceback
 from datetime import datetime
 from GuestFishWrapper import GuestFishWrapper
 from GuestFishWrapper import DiskInspectionMetadata  #ensure telemetry is logged properly
@@ -33,6 +34,8 @@ from azure.storage.common import (
 
 OUTPUTDIRNAME = '/output'
 DEFAULT_TIMEOUT_IN_MINS = 19
+DEFAULT_ARCHIVING_OVERHEAD_IN_MINS = 1
+EXTENDED_ARCHIVING_OVERHEAD_IN_MINS = 4
 
 """
 Helper to print progress
@@ -158,13 +161,13 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
     Retrieve the name of the host from the Azure metadata
     """
     def getInstanceNameFromMetadata(self):
+        roleInstance = "Unknown"
         if (len(self.hostMetadata) > 1 and "name" in self.hostMetadata):
             try:
                 roleInstance = json.loads(self.hostMetadata)["name"]
                 self.telemetryLogger.info("Request executing on instance: " + roleInstance)
             except json.decoder.JSONDecodeError as ex:
-                self.telemetryLogger.error("Unexpected metadata: " + self.hostMetadata) 
-                roleInstance = "Unknown"
+                self.telemetryLogger.error("Unexpected metadata: " + self.hostMetadata)
         return roleInstance
 
     '''
@@ -177,6 +180,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
         customProperties =  {"HOSTNAME": os.environ['HOSTNAME'] if 'HOSTNAME' in os.environ  else ""}
         if properties:
             customProperties.update(properties)  # combine with any passed in
+        self.telemetryLogger.error(traceback.format_exc())
         self.rootLogger.exception(str(ex))  # note this is rootLogger not the child telemetryLogger
         self.telemetryClient.track_exception(*sys.exc_info(), properties=customProperties)
 
@@ -472,6 +476,16 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
                     self.telemetryLogger.info('WARNING: Received timeout override is invalid: {0}. Default will be used.'.format(timeoutInMinsStr))
 
             timeoutInMins = int(timeoutInMinsStr)
+
+            self.telemetryLogger.info('Received timeout value: ' + str(timeoutInMins)+ ' min(s)')
+
+            if timeoutInMins <= DEFAULT_TIMEOUT_IN_MINS:
+                zipFileHandlingOverhead = DEFAULT_ARCHIVING_OVERHEAD_IN_MINS # If customized timeout is low, inspection result will likely be small. Zip archive creation will be faster.
+            else:
+                zipFileHandlingOverhead = EXTENDED_ARCHIVING_OVERHEAD_IN_MINS  # if customized timeout is high, inspection result will likely be large and zip archiving time will take longer.
+
+            self.telemetryLogger.info('Trimming timeout value by ' + str(zipFileHandlingOverhead)+ ' min(s) to reserve overhead time for inspection file archiving.')
+            timeoutInMins -= zipFileHandlingOverhead
             self.telemetryLogger.info('Using timeout value: ' + str(timeoutInMins)+ ' min(s)')
 
             if b'blobsasurl' in postvars:
@@ -595,6 +609,12 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
             unexpectedError = True
             telemetryException = ex
             self.logException(ex, customProperties)
+            failureStatusText = 'Server Error'
+        except:
+            exc_value = sys.exc_info()[1]
+            unexpectedError = True
+            telemetryException = exc_value
+            self.logException(exc_value, customProperties)
             failureStatusText = 'Server Error'
         finally:
             if (not requestSucceeded):

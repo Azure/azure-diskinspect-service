@@ -7,7 +7,6 @@ copy,/Windows/System32/Tasks/Microsoft/IaaSWorkloadBackup/*
 
 echo,### Additional Event Logs ###
 copy,/Program Files/Azure Workload Backup/Catalog/InquiryCatalog/*/*.bin
-copy,/Program Files/Azure Workload Backup/Catalog/RegisteredObjectInfoCatalog/*/*.bin
 copy,/Program Files/Azure Workload Backup/Catalog/WorkloadExtDatasourceCatalog/*/*.bin
 copy,/Program Files/Azure Workload Backup/Catalog/WorkloadSchedules/*/*.bin
 copy,/Program Files/Azure Workload Backup/Catalog/SyncObjectsCatalog/DatasourceSyncTable/*.bin

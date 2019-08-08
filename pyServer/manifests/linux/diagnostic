@@ -14,8 +14,10 @@ copy,/etc/HOSTNAME
 copy,/etc/hostname
 copy,/etc/network/interfaces
 copy,/etc/network/interfaces.d/*.cfg
+copy,/etc/netplan/50-cloud-init.yaml
 copy,/etc/nsswitch.conf
 copy,/etc/resolv.conf
+copy,/run/systemd/resolve/stub-resolv.conf
 copy,/etc/sysconfig/iptables
 copy,/etc/sysconfig/network
 copy,/etc/sysconfig/network/ifcfg-eth*
@@ -60,6 +62,7 @@ copy,/var/lib/waagent/SharedConfig.xml
 copy,/var/lib/waagent/ManagedIdentity-*.json
 copy,/var/lib/waagent/error.json
 copy,/var/lib/waagent/Incarnation
+copy,/var/lib/waagent/waagent_status.json
 copy,/var/lib/waagent/history/*.zip
 echo,
 

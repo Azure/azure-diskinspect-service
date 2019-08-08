@@ -53,7 +53,7 @@ class GuestFS_Registry:
             regHivePath= self.guestFS.case_sensitive_path("/Windows/System32/config/"+hiveName)
             if len(regHivePath) == 0:
                 return False;
-            (out, err) = self.guestFS.callGF('Opening registry hive [' + regHivePath + ']', ['--', '-hivex-open', regHivePath], True)
+            (out, err) = self.guestFS.callGF('Opening registry hive [' + regHivePath + ']', ['--', '-hivex-open', regHivePath], True, remainingRetriesCount=1)
             self.current_open_hive = hiveName
             if err:
                 return False
@@ -64,7 +64,7 @@ class GuestFS_Registry:
     def close_hive(self):
         try:
             if self.current_open_hive != None:
-                (out, err) = self.guestFS.callGF('Closing registry hive', ['--', '-hivex-close'], True)
+                (out, err) = self.guestFS.callGF('Closing registry hive', ['--', '-hivex-close'], True, remainingRetriesCount=1)
                 self.current_open_hive = None
                 if err:
                     return False
@@ -102,7 +102,7 @@ class GuestFS_Registry:
                 if (not current_key_path in self.regCache):
                     if (index == 1):
                         # Hive root
-                        (nodeid, err) = self.guestFS.callGF('Get registry root', ['--', '-hivex-root'], True)
+                        (nodeid, err) = self.guestFS.callGF('Get registry root', ['--', '-hivex-root'], True, remainingRetriesCount=1)
                     else:                        
                         if ( current_key_path.casefold() == "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet".casefold() ):
                             #special case HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet
@@ -111,7 +111,7 @@ class GuestFS_Registry:
                             # standard key / node
                             node_name= reg_nodes[index]
                             # use the current nodeId and the name to get the child node id
-                            (nodeid, err) = self.guestFS.callGF('Get registry child: [' + reg_nodes[index] + ']', ['--', '-hivex_node_get_child', current_node_id, reg_nodes[index]], True)
+                            (nodeid, err) = self.guestFS.callGF('Get registry child: [' + reg_nodes[index] + ']', ['--', '-hivex_node_get_child', current_node_id, reg_nodes[index]], True, remainingRetriesCount=1)
                     
                     # we have a nodeid: validate it and update cache
                     if err or (nodeid is None) or len(nodeid)== 0 or (nodeid[0] == 0):
@@ -136,11 +136,11 @@ class GuestFS_Registry:
     
     def get_string_value_by_name(self, node_id, value_name):
         # get the valueId for the value name 
-        (valueid, err) = self.guestFS.callGF('Get registry value-id: [' + value_name + ']', ['--', '-hivex-node-get-value', node_id, value_name], True)
+        (valueid, err) = self.guestFS.callGF('Get registry value-id: [' + value_name + ']', ['--', '-hivex-node-get-value', node_id, value_name], True, remainingRetriesCount=1)
         if err or not valueid or valueid[0] == 0:
             return None
         # get the type for the value
-        (valueType, err) = self.guestFS.callGF('Get registry value-type: [' + value_name + ']', ['--', '-hivex-value-type', valueid[0]], True)
+        (valueType, err) = self.guestFS.callGF('Get registry value-type: [' + value_name + ']', ['--', '-hivex-value-type', valueid[0]], True, remainingRetriesCount=1)
         if err or not valueType or valueType[0]== 0:
             return None
         # get the value, as a string, by its type
@@ -184,7 +184,7 @@ class GuestFS_Registry:
         #  system_node_id parameter is for HKEY_LOCAL_MACHINE\SYSTEM        
 
         # Read:  \SYSTEM\Select\Current(DWORD)
-        (nodeid, err) = self.guestFS.callGF('Get registry child: [determine_currentcontrolset()]: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Select', ['--', '-hivex_node_get_child', system_node_id, "Select"], True)
+        (nodeid, err) = self.guestFS.callGF('Get registry child: [determine_currentcontrolset()]: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Select', ['--', '-hivex_node_get_child', system_node_id, "Select"], True, remainingRetriesCount=1)
         if err or (nodeid is None) or len(nodeid)== 0 or (nodeid[0] == 0):
             self.rootLogger.error('Invalid registry path [determine_currentcontrolset()]: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Select')
             return None
@@ -198,7 +198,7 @@ class GuestFS_Registry:
 
         # Return the nodeid for that node, eg. HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001; this will cause current and future requests
         # to redirect to the numeric controlset node, rather than CurrentControlSet
-        (nodeid, err) = self.guestFS.callGF('Get registry child: [' + actual_controlset + ']', ['--', '-hivex_node_get_child', system_node_id, actual_controlset], True) 
+        (nodeid, err) = self.guestFS.callGF('Get registry child: [' + actual_controlset + ']', ['--', '-hivex_node_get_child', system_node_id, actual_controlset], True, remainingRetriesCount=1) 
         return nodeid
 
     # round trip through ascii decoding to strip anything unicode 
