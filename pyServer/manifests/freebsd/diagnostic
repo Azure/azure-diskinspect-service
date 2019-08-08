@@ -11,6 +11,7 @@ copy,/etc/dhclient.conf
 copy,/etc/networks
 copy,/etc/nsswitch.conf
 copy,/etc/resolv.conf
+copy,/run/systemd/resolve/stub-resolv.conf
 copy,/etc/rc.conf
 copy,/etc/syslog.conf
 copy,/etc/waagent.conf

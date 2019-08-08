@@ -17,6 +17,7 @@ copy,/etc/network/interfaces.d/*.cfg
 copy,/etc/netplan/50-cloud-init.yaml
 copy,/etc/nsswitch.conf
 copy,/etc/resolv.conf
+copy,/run/systemd/resolve/stub-resolv.conf
 copy,/etc/sysconfig/iptables
 copy,/etc/sysconfig/network
 copy,/etc/sysconfig/network/ifcfg-eth*
