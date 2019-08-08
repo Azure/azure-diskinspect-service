@@ -132,6 +132,7 @@ File Path | Manifest
 /var/log/azure/docker-status.log | aks 
 /var/log/azure/kern.log | aks 
 /var/log/azure/kubelet-status.log | aks 
+/var/log/azure/run-command/handler.log | diagnostic 
 /var/log/boot\* | diagnostic, eg, normal 
 /var/log/cloud-init-output.log | aks 
 /var/log/cloud-init\* | diagnostic, eg, normal 
@@ -433,6 +434,7 @@ File Path | Manifest
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/Infrast<br>ructureManifest.xml | agents, diagnostic, normal, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/TempClu<br>sterManifest.xml | agents, diagnostic, normal, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/VCRunti<br>meInstall\*.log | agents, diagnostic, normal, windowsupdate 
+/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.RunCommandWindows/\*/\*.log | diagnostic 
 /WindowsAzure/Logs/Plugins/Microsoft.Compute.BGInfo/\*/BGInfo\*.log | agents, diagnostic, normal, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.Compute.CustomScriptExtension/\*/\*.log | diagnostic, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.Compute.JsonADDomainExtension/\*/ADDomainExtensi<br>on.log | agents, diagnostic, normal, windowsupdate 
@@ -468,4 +470,4 @@ File Path | Manifest
 /k/azure-vnet.log | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-08-06 13:26:15.427837`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-08-08 10:44:09.800455`*

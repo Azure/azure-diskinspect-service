@@ -142,6 +142,7 @@ diagnostic | copy | /var/log/secure\*
 diagnostic | copy | /var/log/azure/\*/\*
 diagnostic | copy | /var/log/azure/\*/\*/\*
 diagnostic | copy | /var/log/azure/custom-script/handler.log
+diagnostic | copy | /var/log/azure/run-command/handler.log
 diagnostic | copy | /var/lib/waagent/ExtensionsConfig.\*.xml
 diagnostic | copy | /var/lib/waagent/\*/status/\*.status
 diagnostic | copy | /var/lib/waagent/\*/config/\*.settings
@@ -625,6 +626,7 @@ diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.Ne
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.ManagedIdentity.ManagedIdentityExtensionForWindo<br>ws/\*/RuntimeSettings/\*.xml
 diagnostic | copy | /WindowsAzure/GuestAgent\*/CommonAgentConfig.config
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Compute.CustomScriptExtension/\*/\*.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.RunCommandWindows/\*/\*.log
 diagnostic | copy | /Windows/servicing/sessions/sessions.xml
 diagnostic | diskinfo | 
 eg | copy | /Windows/System32/winevt/Logs/System.evtx
@@ -1230,4 +1232,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-08-06 13:26:15.427837`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-08-08 10:44:09.800455`*
