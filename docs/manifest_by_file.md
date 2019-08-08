@@ -129,10 +129,10 @@ File Path | Manifest
 /var/log/azure/\*/\*/\* | agents, diagnostic 
 /var/log/azure/cluster-provision.log | aks 
 /var/log/azure/custom-script/handler.log | agents, diagnostic 
-/var/log/azure/run-command/handler.log | diagnostic 
-/var/log/azure/docker-status.log | aks
+/var/log/azure/docker-status.log | aks 
 /var/log/azure/kern.log | aks 
 /var/log/azure/kubelet-status.log | aks 
+/var/log/azure/run-command/handler.log | diagnostic 
 /var/log/boot\* | diagnostic, eg, normal 
 /var/log/cloud-init-output.log | aks 
 /var/log/cloud-init\* | diagnostic, eg, normal 
@@ -470,4 +470,4 @@ File Path | Manifest
 /k/azure-vnet.log | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-08-06 13:26:15.427837`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-08-08 10:44:09.800455`*
