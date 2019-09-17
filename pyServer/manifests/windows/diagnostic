@@ -192,6 +192,7 @@ copy,/WindowsAzure/Logs/Plugins/Microsoft.ManagedIdentity.ManagedIdentityExtensi
 copy,/WindowsAzure/GuestAgent*/CommonAgentConfig.config
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Compute.CustomScriptExtension/*/*.log
 copy,/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.RunCommandWindows/*/*.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ActiveDirectory.AADLoginForWindows/*/*.log
 
 echo,### Servicing ###
 copy,/Windows/servicing/sessions/sessions.xml
