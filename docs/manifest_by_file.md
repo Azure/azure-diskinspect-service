@@ -17,6 +17,7 @@ File Path | Manifest
 /etc/ssh/sshd_config | diagnostic, normal 
 /etc/syslog.conf | diagnostic 
 /etc/waagent.conf | agents, diagnostic 
+/run/systemd/resolve/stub-resolv.conf | diagnostic 
 /var/lib/waagent/ExtensionsConfig.\*.xml | agents, diagnostic 
 /var/lib/waagent/GoalState.\*.xml | agents, diagnostic 
 /var/lib/waagent/HostingEnvironmentConfig.xml | agents, diagnostic 
@@ -49,6 +50,7 @@ File Path | Manifest
 /etc/hive2/conf/\* | hdinsight 
 /etc/hostname | agents, diagnostic, eg, genspec, lad, site-recovery, workloadbackup 
 /etc/hosts | hdinsight 
+/etc/netplan/50-cloud-init.yaml | diagnostic, eg 
 /etc/network/interfaces | diagnostic, eg 
 /etc/network/interfaces.d/\*.cfg | diagnostic, eg 
 /etc/nsswitch.conf | diagnostic 
@@ -73,9 +75,17 @@ File Path | Manifest
 /opt/microsoft/servicefabric/bin/Fabric/Fabric.Code/Fabric | servicefabric 
 /opt/msawb/bin/AzureWLBackupCommonManagementSettings.json | workloadbackup 
 /opt/msawb/bin/AzureWLBackupMonitoringSync_config.json | workloadbackup 
-/opt/msawb/etc\* | workloadbackup 
+/opt/msawb/etc/config/SAPHana/\* | workloadbackup 
+/opt/msawb/etc/config/global.json | workloadbackup 
+/opt/msawb/var/lib/catalog/AutoHealCatalog/AutoHealTask/\*.bin | workloadbackup 
+/opt/msawb/var/lib/catalog/InquiryCatalog/\*/\*.bin | workloadbackup 
+/opt/msawb/var/lib/catalog/SyncObjectsCatalog/AlertEventsTable/\*.bin | workloadbackup 
+/opt/msawb/var/lib/catalog/SyncObjectsCatalog/DatasourceSyncTable/\*.bin | workloadbackup 
+/opt/msawb/var/lib/catalog/WorkloadExtDatasourceCatalog/\*/\*.bin | workloadbackup 
+/opt/msawb/var/lib/catalog/WorkloadSchedules/\*/\*.bin | workloadbackup 
 /opt/msawb/var/log/\*/\*/\* | workloadbackup 
 /opt/msawb/var/log/\*/\*/\*/\*/\* | workloadbackup 
+/run/systemd/resolve/stub-resolv.conf | diagnostic, eg 
 /tmp/omsagent\*.tgz | monitor-mgmt 
 /var/lib/.jupyter/jupyter_notebook_config.py | hdinsight 
 /var/lib/dhclient/dhclient-eth0.leases | diagnostic, eg 
@@ -85,6 +95,7 @@ File Path | Manifest
 /var/lib/waagent/HostingEnvironmentConfig.xml | diagnostic 
 /var/lib/waagent/Incarnation | agents, diagnostic 
 /var/lib/waagent/ManagedIdentity-\*.json | diagnostic 
+/var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-1.1.0.2 | servicefabric 
 /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*.\*/HandlerEn<br>vironment.json | servicefabric 
 /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*.\*/status/\*<br>.status | servicefabric 
 /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/HandlerManif<br>est.json | servicefabric 
@@ -108,6 +119,7 @@ File Path | Manifest
 /var/lib/wicked/lease-eth0-dhcp-ipv4.xml | diagnostic, eg 
 /var/log/AzureRcmCli.log | site-recovery 
 /var/log/auth\* | agents, diagnostic, eg, normal 
+/var/log/azure-vnet.log | aks 
 /var/log/azure/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode/\*.\*/CommandExec<br>ution.log | servicefabric 
 /var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/\*/\*.log | monitor-mgmt 
 /var/log/azure/Microsoft.OSTCExtensions.LinuxDiagnostic/\*/mdsd.\* | servicefabric 
@@ -115,23 +127,35 @@ File Path | Manifest
 /var/log/azure/\* | site-recovery, workloadbackup 
 /var/log/azure/\*/\* | agents, diagnostic 
 /var/log/azure/\*/\*/\* | agents, diagnostic 
+/var/log/azure/cluster-provision.log | aks 
 /var/log/azure/custom-script/handler.log | agents, diagnostic 
+/var/log/azure/docker-status.log | aks 
+/var/log/azure/kern.log | aks 
+/var/log/azure/kubelet-status.log | aks 
+/var/log/azure/run-command/handler.log | diagnostic 
 /var/log/boot\* | diagnostic, eg, normal 
+/var/log/cloud-init-output.log | aks 
 /var/log/cloud-init\* | diagnostic, eg, normal 
 /var/log/dmesg\* | agents, diagnostic, eg, normal, site-recovery, workloadbackup 
+/var/log/dpkg.log | servicefabric 
 /var/log/dpkg\* | diagnostic, eg, normal 
 /var/log/evtcollforw\*.log | site-recovery 
+/var/log/journal/\*/\* | aks 
+/var/log/kern.log | servicefabric 
 /var/log/kern\* | diagnostic, eg, normal 
 /var/log/messages\* | diagnostic, eg, monitor-mgmt, normal 
 /var/log/rsyslog\* | diagnostic, eg, lad, normal 
 /var/log/s2\*.log | site-recovery 
 /var/log/sa/sar\* | performance 
 /var/log/secure\* | diagnostic, eg, normal 
-/var/log/sfnode/sfnodelog | servicefabric 
+/var/log/sfnode/handler.trace | servicefabric 
+/var/log/sfnode/loguploader.trace | servicefabric 
+/var/log/sfnode/sfnodelog.trace | servicefabric 
 /var/log/svagents\*.log | site-recovery 
-/var/log/syslog | servicefabric 
+/var/log/syslog | aks, servicefabric 
 /var/log/syslog\* | agents, diagnostic, eg, lad, monitor-mgmt, normal, site-recovery, workloadbackup 
 /var/log/ua_install.log | site-recovery 
+/var/log/waagent.log | servicefabric 
 /var/log/waagent\* | agents, diagnostic, eg, lad, normal, site-recovery, workloadbackup 
 /var/log/waagent\*.log | monitor-mgmt 
 /var/log/yum\* | diagnostic, eg, normal 
@@ -142,13 +166,6 @@ File Path | Manifest
 /var/opt/microsoft/omsconfig/omsconfig.log | monitor-mgmt 
 /var/opt/microsoft/omsconfig/omsconfigdetailed.log | monitor-mgmt 
 /var/opt/microsoft/scx/log/scx.log | monitor-mgmt 
-/var/opt/msawb/catalog/AutoHealCatalog/AutoHealTask/\*.bin | workloadbackup 
-/var/opt/msawb/catalog/InquiryCatalog/\*/\*.bin | workloadbackup 
-/var/opt/msawb/catalog/RegisteredObjectInfoCatalog/\*/\*.bin | workloadbackup 
-/var/opt/msawb/catalog/SyncObjectsCatalog/AlertEventsTable/\*.bin | workloadbackup 
-/var/opt/msawb/catalog/SyncObjectsCatalog/DatasourceSyncTable/\*.bin | workloadbackup 
-/var/opt/msawb/catalog/WorkloadExtDatasourceCatalog/\*/\*.bin | workloadbackup 
-/var/opt/msawb/catalog/WorkloadSchedules/\*/\*.bin | workloadbackup 
 /var/opt/omi/log/\*.log | monitor-mgmt 
 /var/spool/cron/tabs/root | workloadbackup 
 ## windows 
@@ -158,6 +175,8 @@ File Path | Manifest
 /$Windows.~BT/Sources/Panther/setupact.log | windowsupdate 
 /$Windows.~BT/Sources/Panther/setuperr.log | windowsupdate 
 /AzureData/CustomData.bin | agents, diagnostic, eg, normal, windowsupdate 
+/AzureData/CustomDataSetupScript.log | aks 
+/AzureData/CustomDataSetupScript.ps1 | aks 
 /Boot/BCD | windowsupdate 
 /Packages/Plugins/ESET.FileSecurity/\*/agent_version.txt | agents, diagnostic, normal, windowsupdate 
 /Packages/Plugins/ESET.FileSecurity/\*/extension_version.txt | agents, diagnostic, normal, windowsupdate 
@@ -227,7 +246,6 @@ File Path | Manifest
 /Program Files (x86)/Microsoft Azure Site Recovery/agent/s2\*.log | site-recovery, windowsupdate 
 /Program Files (x86)/Microsoft Azure Site Recovery/agent/svagents\*.log | site-recovery, windowsupdate 
 /Program Files/Azure Workload Backup/Catalog/InquiryCatalog/\*/\*.bin | workloadbackup 
-/Program Files/Azure Workload Backup/Catalog/RegisteredObjectInfoCatalog/\*/\*.bin | workloadbackup 
 /Program Files/Azure Workload Backup/Catalog/SyncObjectsCatalog/AlertEventsTable/\*.b<br>in | workloadbackup 
 /Program Files/Azure Workload Backup/Catalog/SyncObjectsCatalog/DatasourceSyncTable/\<br>*.bin | workloadbackup 
 /Program Files/Azure Workload Backup/Catalog/WorkloadExtDatasourceCatalog/\*/\*.bin | workloadbackup 
@@ -314,7 +332,7 @@ File Path | Manifest
 /Windows/System32/config/SYSTEM | diagnostic, min-diagnostic, windowsupdate 
 /Windows/System32/config/SYSTEM.LOG1 | min-diagnostic 
 /Windows/System32/config/SYSTEM.LOG2 | min-diagnostic 
-/Windows/System32/winevt/Logs/Application.evtx | agents, diagnostic, eg, normal, servicefabric, site-recovery, sql-iaas, windowsupdate, workloadbackup 
+/Windows/System32/winevt/Logs/Application.evtx | agents, aks, diagnostic, eg, min-diagnostic, normal, servicefabric, site-recovery, sql-iaas, windowsupdate, workloadbackup 
 /Windows/System32/winevt/Logs/Microsoft-Automation%4Operational.evtx | monitor-mgmt 
 /Windows/System32/winevt/Logs/Microsoft-SMA%4Debug.etl | monitor-mgmt 
 /Windows/System32/winevt/Logs/Microsoft-SMA%4Operational.evtx | monitor-mgmt 
@@ -330,16 +348,20 @@ File Path | Manifest
 /Windows/System32/winevt/Logs/Microsoft-Windows-DeliveryOptimization%%4Operational.ev<br>tx | windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Dhcp-Client%4Admin.evtx | eg 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Dhcp-Client%4Operational.evtx | eg, windowsupdate 
+/Windows/System32/winevt/Logs/Microsoft-Windows-Host-Network-Service-Admin.evtx | aks 
+/Windows/System32/winevt/Logs/Microsoft-Windows-Host-Network-Service-Operational.evtx | aks 
+/Windows/System32/winevt/Logs/Microsoft-Windows-Hyper-V-Compute-Admin.evtx | aks 
+/Windows/System32/winevt/Logs/Microsoft-Windows-Hyper-V-Compute-Operational.evtx | aks 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnP%%4Configuration.evtx | windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnP%4Configuration.evtx | agents, diagnostic, eg, windowsupdate 
+/Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnP%4Configuration.evtx | agents, diagnostic, eg, min-diagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnPConfig%4Configuration.evtx | agents, diagnostic, eg, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-NdisImPlatform%4Operational.evtx | agents, diagnostic, eg, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-NetworkLocationWizard%4Operational.ev<br>tx | agents, diagnostic, eg, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-NetworkProfile%4Operational.evtx | agents, diagnostic, eg, windowsupdate 
+/Windows/System32/winevt/Logs/Microsoft-Windows-NetworkProfile%4Operational.evtx | agents, diagnostic, eg, min-diagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-NetworkProvider%4Operational.evtx | agents, diagnostic, eg, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-NlaSvc%4Operational.evtx | agents, diagnostic, eg, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RdpCoreTS%4Admi<br>n.evtx | diagnostic, eg, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RdpCoreTS%4Oper<br>ational.evtx | diagnostic, eg, windowsupdate 
+/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RdpCoreTS%4Oper<br>ational.evtx | diagnostic, eg, min-diagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RemoteDesktopSe<br>ssionManager%4Admin.evtx | diagnostic, eg, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-SessionServices<br>%4Operational.evtx | diagnostic, eg, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Resource-Exhaustion-Detector%4Operati<br>onal.evtx | agents, diagnostic, eg, windowsupdate 
@@ -351,18 +373,18 @@ File Path | Manifest
 /Windows/System32/winevt/Logs/Microsoft-Windows-Store%%4Operational.evtx | windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-TCPIP%4Operational.evtx | agents, diagnostic, eg, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-TaskScheduler%%4Operational.evtx | windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-LocalSessionManager%<br>4Admin.evtx | diagnostic, eg, windowsupdate 
+/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-LocalSessionManager%<br>4Admin.evtx | diagnostic, eg, min-diagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-LocalSessionManager%<br>4Operational.evtx | diagnostic, eg, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-PnPDevices%4Admin.ev<br>tx | diagnostic, eg, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-PnPDevices%4Operatio<br>nal.evtx | diagnostic, eg, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-RDPClient%4Operation<br>al.evtx | diagnostic, eg, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-RemoteConnectionMana<br>ger%4Admin.evtx | diagnostic, eg, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-RemoteConnectionMana<br>ger%4Operational.evtx | diagnostic, eg, windowsupdate 
+/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-RemoteConnectionMana<br>ger%4Admin.evtx | diagnostic, eg, min-diagnostic, windowsupdate 
+/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-RemoteConnectionMana<br>ger%4Operational.evtx | diagnostic, eg, min-diagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-SessionBroker-Client<br>%4Admin.evtx | diagnostic, eg, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-SessionBroker-Client<br>%4Operational.evtx | diagnostic, eg, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-UserPnp%4DeviceInstall.evtx | agents, diagnostic, eg, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Windows Firewall With Advanced Securi<br>ty%4ConnectionSecurity.evtx | agents, diagnostic, eg, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-Windows Firewall With Advanced Securi<br>ty%4Firewall.evtx | agents, diagnostic, eg, windowsupdate 
+/Windows/System32/winevt/Logs/Microsoft-Windows-Windows Firewall With Advanced Securi<br>ty%4Firewall.evtx | agents, diagnostic, eg, min-diagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-WindowsUpdateClient%%4Operational.evt<br>x | windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-WindowsUpdateClient%4Operational.evtx | diagnostic, eg, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Bootstrapper.evtx | agents, diagnostic, eg, monitor-mgmt, windowsupdate 
@@ -372,9 +394,9 @@ File Path | Manifest
 /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Status%4GuestAgent.evtx | agents, diagnostic, eg, monitor-mgmt, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Status%4Plugins.evtx | agents, diagnostic, eg, monitor-mgmt, windowsupdate 
 /Windows/System32/winevt/Logs/MicrosoftAzureRecoveryServices-Replication.evtx | diagnostic, eg, windowsupdate 
-/Windows/System32/winevt/Logs/Security.evtx | diagnostic, eg, windowsupdate 
+/Windows/System32/winevt/Logs/Security.evtx | diagnostic, eg, min-diagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Setup.evtx | diagnostic, eg, windowsupdate 
-/Windows/System32/winevt/Logs/System.evtx | agents, diagnostic, eg, normal, servicefabric, site-recovery, sql-iaas, windowsupdate, workloadbackup 
+/Windows/System32/winevt/Logs/System.evtx | agents, aks, diagnostic, eg, min-diagnostic, normal, servicefabric, site-recovery, sql-iaas, windowsupdate, workloadbackup 
 /Windows/System32/winevt/Logs/Windows Azure.evtx | agents, diagnostic, eg, monitor-mgmt, normal, site-recovery, windowsupdate, workloadbackup 
 /Windows/System32/winevt/Logs/Windows PowerShell.evtx | monitor-mgmt 
 /Windows/Temp/MOMPerfCtrsInstall.log | monitor-mgmt 
@@ -388,12 +410,12 @@ File Path | Manifest
 /Windows/debug/dcpromoui.log | diagnostic, eg, normal, windowsupdate 
 /Windows/debug/mrt.log | diagnostic, eg, normal, windowsupdate 
 /Windows/debug/netlogon.log | diagnostic, eg, normal, windowsupdate 
-/Windows/servicing/sessions/sessions.xml | windowsupdate 
+/Windows/servicing/sessions/sessions.xml | diagnostic, windowsupdate 
 /Windows/system32/winevt/Logs/Operations Manager.evtx | monitor-mgmt 
 /Windows/windowsupdate\*.log | windowsupdate 
 /WindowsAzure/GuestAgent\*/CommonAgentConfig.config | diagnostic, windowsupdate 
 /WindowsAzure/Logs/AggregateStatus/\*.json | monitor-mgmt 
-/WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json | agents, diagnostic, eg, normal, windowsupdate, workloadbackup 
+/WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json | agents, diagnostic, eg, min-diagnostic, normal, windowsupdate, workloadbackup 
 /WindowsAzure/Logs/AppAgentRuntime.log | agents, diagnostic, eg, normal, windowsupdate, workloadbackup 
 /WindowsAzure/Logs/MonitoringAgent.log | agents, diagnostic, eg, normal, servicefabric, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/Diagnostics<br>Plugin.log | agents, diagnostic, normal, windowsupdate 
@@ -412,10 +434,11 @@ File Path | Manifest
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/Infrast<br>ructureManifest.xml | agents, diagnostic, normal, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/TempClu<br>sterManifest.xml | agents, diagnostic, normal, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/VCRunti<br>meInstall\*.log | agents, diagnostic, normal, windowsupdate 
+/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.RunCommandWindows/\*/\*.log | diagnostic 
 /WindowsAzure/Logs/Plugins/Microsoft.Compute.BGInfo/\*/BGInfo\*.log | agents, diagnostic, normal, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.Compute.CustomScriptExtension/\*/\*.log | diagnostic, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.Compute.JsonADDomainExtension/\*/ADDomainExtensi<br>on.log | agents, diagnostic, normal, windowsupdate 
-/WindowsAzure/Logs/Plugins/Microsoft.Compute.VMAccessAgent/\*/JsonVMAccessExtension.l<br>og | agents, diagnostic, normal, windowsupdate 
+/WindowsAzure/Logs/Plugins/Microsoft.Compute.VMAccessAgent/\*/JsonVMAccessExtension.l<br>og | agents, diagnostic, min-diagnostic, normal, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAg<br>ent/\*/0.log | agents, diagnostic, normal, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.ManagedIdentity.ManagedIdentityExtensionForWindo<br>ws/\*/RuntimeSettings/\*.xml | diagnostic, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.Powershell.DSC/\*/DSCLOG\*.json | agents, diagnostic, normal, windowsupdate 
@@ -434,11 +457,17 @@ File Path | Manifest
 /WindowsAzure/Logs/Telemetry.log | agents, diagnostic, eg, normal, site-recovery, windowsupdate, workloadbackup 
 /WindowsAzure/Logs/TransparentInstaller.log | agents, asc-vmhealth, diagnostic, eg, min-diagnostic, normal, site-recovery, windowsupdate, workloadbackup 
 /WindowsAzure/Logs/VFPlugin/\*.log | monitor-mgmt 
-/WindowsAzure/Logs/WaAppAgent.log | agents, diagnostic, eg, normal, site-recovery, windowsupdate, workloadbackup 
+/WindowsAzure/Logs/WaAppAgent.log | agents, diagnostic, eg, min-diagnostic, normal, site-recovery, windowsupdate, workloadbackup 
 /WindowsAzure/Logs/\*.log | monitor-mgmt 
 /WindowsAzure/Logs/plugins/\*/\*/\*.log | monitor-mgmt 
 /WindowsAzure/config/\*.xml | agents, diagnostic, eg, normal, windowsupdate 
 /WindowsUpdateVerbose.etl | windowsupdate 
+/k/\*.err | aks 
+/k/\*.log | aks 
+/k/azure-vnet-ipam.json | aks 
+/k/azure-vnet-ipam.log | aks 
+/k/azure-vnet.json | aks 
+/k/azure-vnet.log | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-04-02 15:57:58.147997`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-08-08 10:44:09.800455`*

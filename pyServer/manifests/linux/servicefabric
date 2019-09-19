@@ -1,7 +1,13 @@
 copy,/opt/microsoft/servicefabric/bin/Fabric/Fabric.Code/Fabric 
 copy,/var/log/syslog
-copy,/var/log/sfnode/sfnodelog
+copy,/var/log/dpkg.log
+copy,/var/log/kern.log
+copy,/var/log/waagent.log
+copy,/var/log/sfnode/sfnodelog.trace
+copy,/var/log/sfnode/loguploader.trace
+copy,/var/log/sfnode/handler.trace
 copy,/var/log/azure/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode/*.*/CommandExecution.log
+copy,/var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-1.1.0.2
 
 
 copy,/var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-*/heartbeat.log

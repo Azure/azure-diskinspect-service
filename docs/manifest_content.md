@@ -35,6 +35,7 @@ diagnostic | copy | /etc/dhclient.conf
 diagnostic | copy | /etc/networks
 diagnostic | copy | /etc/nsswitch.conf
 diagnostic | copy | /etc/resolv.conf
+diagnostic | copy | /run/systemd/resolve/stub-resolv.conf
 diagnostic | copy | /etc/rc.conf
 diagnostic | copy | /etc/syslog.conf
 diagnostic | copy | /etc/waagent.conf
@@ -89,6 +90,14 @@ agents | copy | /var/lib/waagent/\*.agentsManifest
 agents | copy | /var/lib/waagent/error.json
 agents | copy | /var/lib/waagent/Incarnation
 agents | copy | /var/lib/waagent/history/\*.zip
+aks | copy | /var/log/azure/cluster-provision.log
+aks | copy | /var/log/syslog
+aks | copy | /var/log/cloud-init-output.log
+aks | copy | /var/log/azure/docker-status.log
+aks | copy | /var/log/azure/kubelet-status.log
+aks | copy | /var/log/azure/kern.log
+aks | copy | /var/log/journal/\*/\*
+aks | copy | /var/log/azure-vnet.log
 diagnostic | list | /var/log
 diagnostic | list | /var/lib/waagent
 diagnostic | list | /etc/udev/rules.d
@@ -102,8 +111,10 @@ diagnostic | copy | /etc/HOSTNAME
 diagnostic | copy | /etc/hostname
 diagnostic | copy | /etc/network/interfaces
 diagnostic | copy | /etc/network/interfaces.d/\*.cfg
+diagnostic | copy | /etc/netplan/50-cloud-init.yaml
 diagnostic | copy | /etc/nsswitch.conf
 diagnostic | copy | /etc/resolv.conf
+diagnostic | copy | /run/systemd/resolve/stub-resolv.conf
 diagnostic | copy | /etc/sysconfig/iptables
 diagnostic | copy | /etc/sysconfig/network
 diagnostic | copy | /etc/sysconfig/network/ifcfg-eth\*
@@ -131,6 +142,7 @@ diagnostic | copy | /var/log/secure\*
 diagnostic | copy | /var/log/azure/\*/\*
 diagnostic | copy | /var/log/azure/\*/\*/\*
 diagnostic | copy | /var/log/azure/custom-script/handler.log
+diagnostic | copy | /var/log/azure/run-command/handler.log
 diagnostic | copy | /var/lib/waagent/ExtensionsConfig.\*.xml
 diagnostic | copy | /var/lib/waagent/\*/status/\*.status
 diagnostic | copy | /var/lib/waagent/\*/config/\*.settings
@@ -156,7 +168,9 @@ eg | copy | /etc/HOSTNAME
 eg | copy | /etc/hostname
 eg | copy | /etc/network/interfaces
 eg | copy | /etc/network/interfaces.d/\*.cfg
+eg | copy | /etc/netplan/50-cloud-init.yaml
 eg | copy | /etc/resolv.conf
+eg | copy | /run/systemd/resolve/stub-resolv.conf
 eg | copy | /etc/sysconfig/iptables
 eg | copy | /etc/sysconfig/network
 eg | copy | /etc/sysconfig/network/ifcfg-eth\*
@@ -243,8 +257,14 @@ performance | list | /var/log/sa
 performance | copy | /var/log/sa/sar\*
 servicefabric | copy | /opt/microsoft/servicefabric/bin/Fabric/Fabric.Code/Fabric
 servicefabric | copy | /var/log/syslog
-servicefabric | copy | /var/log/sfnode/sfnodelog
+servicefabric | copy | /var/log/dpkg.log
+servicefabric | copy | /var/log/kern.log
+servicefabric | copy | /var/log/waagent.log
+servicefabric | copy | /var/log/sfnode/sfnodelog.trace
+servicefabric | copy | /var/log/sfnode/loguploader.trace
+servicefabric | copy | /var/log/sfnode/handler.trace
 servicefabric | copy | /var/log/azure/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode/\*.\*/CommandExec<br>ution.log
+servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-1.1.0.2
 servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/heartbeat.lo<br>g
 servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/Service/curr<br>ent.config
 servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*.\*/HandlerEn<br>vironment.json
@@ -275,18 +295,18 @@ workloadbackup | copy | /etc/hostname
 workloadbackup | copy | /etc/waagent.conf
 workloadbackup | copy | /var/lib/waagent/\*.xml
 workloadbackup | copy | /var/spool/cron/tabs/root
-workloadbackup | copy | /opt/msawb/etc\*
+workloadbackup | copy | /opt/msawb/etc/config/SAPHana/\*
+workloadbackup | copy | /opt/msawb/etc/config/global.json
 workloadbackup | copy | /var/log/waagent\*
 workloadbackup | copy | /var/log/dmesg\*
 workloadbackup | copy | /var/log/syslog\*
 workloadbackup | copy | /var/log/azure/\*
-workloadbackup | copy | /var/opt/msawb/catalog/AutoHealCatalog/AutoHealTask/\*.bin
-workloadbackup | copy | /var/opt/msawb/catalog/InquiryCatalog/\*/\*.bin
-workloadbackup | copy | /var/opt/msawb/catalog/RegisteredObjectInfoCatalog/\*/\*.bin
-workloadbackup | copy | /var/opt/msawb/catalog/WorkloadExtDatasourceCatalog/\*/\*.bin
-workloadbackup | copy | /var/opt/msawb/catalog/WorkloadSchedules/\*/\*.bin
-workloadbackup | copy | /var/opt/msawb/catalog/SyncObjectsCatalog/DatasourceSyncTable/\*.bin
-workloadbackup | copy | /var/opt/msawb/catalog/SyncObjectsCatalog/AlertEventsTable/\*.bin
+workloadbackup | copy | /opt/msawb/var/lib/catalog/AutoHealCatalog/AutoHealTask/\*.bin
+workloadbackup | copy | /opt/msawb/var/lib/catalog/InquiryCatalog/\*/\*.bin
+workloadbackup | copy | /opt/msawb/var/lib/catalog/WorkloadExtDatasourceCatalog/\*/\*.bin
+workloadbackup | copy | /opt/msawb/var/lib/catalog/WorkloadSchedules/\*/\*.bin
+workloadbackup | copy | /opt/msawb/var/lib/catalog/SyncObjectsCatalog/DatasourceSyncTable/\*.bin
+workloadbackup | copy | /opt/msawb/var/lib/catalog/SyncObjectsCatalog/AlertEventsTable/\*.bin
 workloadbackup | copy | /opt/msawb/bin/AzureWLBackupCommonManagementSettings.json
 workloadbackup | copy | /opt/msawb/bin/AzureWLBackupMonitoringSync_config.json
 workloadbackup | copy | /opt/msawb/var/log/\*/\*/\*
@@ -414,6 +434,20 @@ agents | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.Edp.Ne
 agents | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.Edp.NetworkWatcherAgentWind<br>ows/\*/\*.log
 agents | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows/<br>\*/\*.txt
 agents | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows/<br>\*/\*.log
+aks | copy | /Windows/System32/winevt/Logs/System.evtx
+aks | copy | /Windows/System32/winevt/Logs/Application.evtx
+aks | copy | /k/\*.log
+aks | copy | /k/\*.err
+aks | copy | /k/azure-vnet.log
+aks | copy | /k/azure-vnet-ipam.log
+aks | copy | /k/azure-vnet.json
+aks | copy | /k/azure-vnet-ipam.json
+aks | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Host-Network-Service-Admin.evtx
+aks | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Hyper-V-Compute-Admin.evtx
+aks | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Hyper-V-Compute-Operational.evtx
+aks | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Host-Network-Service-Operational.evtx
+aks | copy | /AzureData/CustomDataSetupScript.log
+aks | copy | /AzureData/CustomDataSetupScript.ps1
 asc-vmhealth | copy | /WindowsAzure/Logs/TransparentInstaller.log
 diagnostic | copy | /Windows/System32/config/SOFTWARE
 diagnostic | copy | /Windows/System32/config/SYSTEM
@@ -592,6 +626,8 @@ diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.Ne
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.ManagedIdentity.ManagedIdentityExtensionForWindo<br>ws/\*/RuntimeSettings/\*.xml
 diagnostic | copy | /WindowsAzure/GuestAgent\*/CommonAgentConfig.config
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Compute.CustomScriptExtension/\*/\*.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.RunCommandWindows/\*/\*.log
+diagnostic | copy | /Windows/servicing/sessions/sessions.xml
 diagnostic | diskinfo | 
 eg | copy | /Windows/System32/winevt/Logs/System.evtx
 eg | copy | /Windows/System32/winevt/Logs/Application.evtx
@@ -682,13 +718,27 @@ eg | copy | /WindowsAzure/Logs/Plugins/\*/\*/Heartbeat.log
 eg | diskinfo | 
 genspec | copy | /Windows/Setup/State/State.ini
 genspec | copy | /Windows/Panther/WaSetup.xml
-min-diagnostic | copy | /WindowsAzure/Logs/TransparentInstaller.log
 min-diagnostic | copy | /Windows/System32/config/SOFTWARE
 min-diagnostic | copy | /Windows/System32/config/SYSTEM
 min-diagnostic | copy | /Windows/System32/config/SYSTEM.LOG1
 min-diagnostic | copy | /Windows/System32/config/SYSTEM.LOG2
 min-diagnostic | copy | /Windows/System32/config/SOFTWARE.LOG1
 min-diagnostic | copy | /Windows/System32/config/SOFTWARE.LOG2
+min-diagnostic | copy | /Windows/System32/winevt/Logs/System.evtx
+min-diagnostic | copy | /Windows/System32/winevt/Logs/Application.evtx
+min-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-NetworkProfile%4Operational.evtx
+min-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RdpCoreTS%4Oper<br>ational.evtx
+min-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-LocalSessionManager%<br>4Admin.evtx
+min-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-RemoteConnectionMana<br>ger%4Admin.evtx
+min-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-RemoteConnectionMana<br>ger%4Operational.evtx
+min-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Windows Firewall With Advanced Securi<br>ty%4Firewall.evtx
+min-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnP%4Configuration.evtx
+min-diagnostic | copy | /Windows/System32/winevt/Logs/Security.evtx
+min-diagnostic | copy | /WindowsAzure/Logs/TransparentInstaller.log
+min-diagnostic | copy | /WindowsAzure/Logs/WaAppAgent.log
+min-diagnostic | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
+min-diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Compute.VMAccessAgent/\*/JsonVMAccessExtension.l<br>og
+min-diagnostic | diskinfo | 
 monitor-mgmt | copy | /Program Files/Microsoft Monitoring Agent/Agent/Health Service State/Management Packs<br>/\*.xml
 monitor-mgmt | copy | /Program Files/Microsoft Monitoring Agent/Agent/Health Service State/CT_\*/work/Servi<br>ceState/\*.log
 monitor-mgmt | copy | /WindowsAzure/Logs/\*.log
@@ -1169,7 +1219,6 @@ workloadbackup | copy | /Windows/System32/winevt/Logs/Application.evtx
 workloadbackup | copy | /Windows/System32/winevt/Logs/Windows Azure.evtx
 workloadbackup | copy | /Windows/System32/Tasks/Microsoft/IaaSWorkloadBackup/\*
 workloadbackup | copy | /Program Files/Azure Workload Backup/Catalog/InquiryCatalog/\*/\*.bin
-workloadbackup | copy | /Program Files/Azure Workload Backup/Catalog/RegisteredObjectInfoCatalog/\*/\*.bin
 workloadbackup | copy | /Program Files/Azure Workload Backup/Catalog/WorkloadExtDatasourceCatalog/\*/\*.bin
 workloadbackup | copy | /Program Files/Azure Workload Backup/Catalog/WorkloadSchedules/\*/\*.bin
 workloadbackup | copy | /Program Files/Azure Workload Backup/Catalog/SyncObjectsCatalog/DatasourceSyncTable/\<br>*.bin
@@ -1183,4 +1232,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-04-02 15:57:58.147997`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-08-08 10:44:09.800455`*

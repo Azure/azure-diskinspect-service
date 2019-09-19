@@ -5,7 +5,8 @@ copy,/etc/hostname
 copy,/etc/waagent.conf
 copy,/var/lib/waagent/*.xml
 copy,/var/spool/cron/tabs/root
-copy,/opt/msawb/etc*
+copy,/opt/msawb/etc/config/SAPHana/*
+copy,/opt/msawb/etc/config/global.json
 echo,
 
 echo,### Gathering Log Files. It is expected for this step to take more than 20 minutes. Please use SkipToStep feature if all logs are not downloaded in one go.###
@@ -13,13 +14,12 @@ copy,/var/log/waagent*
 copy,/var/log/dmesg*
 copy,/var/log/syslog*
 copy,/var/log/azure/*
-copy,/var/opt/msawb/catalog/AutoHealCatalog/AutoHealTask/*.bin
-copy,/var/opt/msawb/catalog/InquiryCatalog/*/*.bin
-copy,/var/opt/msawb/catalog/RegisteredObjectInfoCatalog/*/*.bin
-copy,/var/opt/msawb/catalog/WorkloadExtDatasourceCatalog/*/*.bin
-copy,/var/opt/msawb/catalog/WorkloadSchedules/*/*.bin
-copy,/var/opt/msawb/catalog/SyncObjectsCatalog/DatasourceSyncTable/*.bin
-copy,/var/opt/msawb/catalog/SyncObjectsCatalog/AlertEventsTable/*.bin
+copy,/opt/msawb/var/lib/catalog/AutoHealCatalog/AutoHealTask/*.bin
+copy,/opt/msawb/var/lib/catalog/InquiryCatalog/*/*.bin
+copy,/opt/msawb/var/lib/catalog/WorkloadExtDatasourceCatalog/*/*.bin
+copy,/opt/msawb/var/lib/catalog/WorkloadSchedules/*/*.bin
+copy,/opt/msawb/var/lib/catalog/SyncObjectsCatalog/DatasourceSyncTable/*.bin
+copy,/opt/msawb/var/lib/catalog/SyncObjectsCatalog/AlertEventsTable/*.bin
 copy,/opt/msawb/bin/AzureWLBackupCommonManagementSettings.json
 copy,/opt/msawb/bin/AzureWLBackupMonitoringSync_config.json
 copy,/opt/msawb/var/log/*/*/*
