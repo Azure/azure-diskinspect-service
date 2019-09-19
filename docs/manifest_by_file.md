@@ -119,7 +119,7 @@ File Path | Manifest
 /var/lib/wicked/lease-eth0-dhcp-ipv4.xml | diagnostic, eg 
 /var/log/AzureRcmCli.log | site-recovery 
 /var/log/auth\* | agents, diagnostic, eg, normal 
-/var/log/azure-vnet.log | aks 
+/var/log/azure-vnet\* | aks 
 /var/log/azure/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode/\*.\*/CommandExec<br>ution.log | servicefabric 
 /var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/\*/\*.log | monitor-mgmt 
 /var/log/azure/Microsoft.OSTCExtensions.LinuxDiagnostic/\*/mdsd.\* | servicefabric 
@@ -134,8 +134,7 @@ File Path | Manifest
 /var/log/azure/kubelet-status.log | aks 
 /var/log/azure/run-command/handler.log | diagnostic 
 /var/log/boot\* | diagnostic, eg, normal 
-/var/log/cloud-init-output.log | aks 
-/var/log/cloud-init\* | diagnostic, eg, normal 
+/var/log/cloud-init\* | aks, diagnostic, eg, normal 
 /var/log/dmesg\* | agents, diagnostic, eg, normal, site-recovery, workloadbackup 
 /var/log/dpkg.log | servicefabric 
 /var/log/dpkg\* | diagnostic, eg, normal 
@@ -167,6 +166,7 @@ File Path | Manifest
 /var/opt/microsoft/omsconfig/omsconfigdetailed.log | monitor-mgmt 
 /var/opt/microsoft/scx/log/scx.log | monitor-mgmt 
 /var/opt/omi/log/\*.log | monitor-mgmt 
+/var/run/azure-vnet\* | aks 
 /var/spool/cron/tabs/root | workloadbackup 
 ## windows 
 File Path | Manifest 
@@ -470,4 +470,4 @@ File Path | Manifest
 /k/azure-vnet.log | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-08-08 10:44:09.800455`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-09-17 23:19:16.885783`*
