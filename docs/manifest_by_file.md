@@ -418,6 +418,7 @@ File Path | Manifest
 /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json | agents, diagnostic, eg, min-diagnostic, normal, windowsupdate, workloadbackup 
 /WindowsAzure/Logs/AppAgentRuntime.log | agents, diagnostic, eg, normal, windowsupdate, workloadbackup 
 /WindowsAzure/Logs/MonitoringAgent.log | agents, diagnostic, eg, normal, servicefabric, windowsupdate 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.ActiveDirectory.AADLoginForWindows/\*/\*.l<br>og | diagnostic 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/Diagnostics<br>Plugin.log | agents, diagnostic, normal, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/Diagnostics<br>PluginLauncher.log | agents, diagnostic, normal, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/\*/Configur<br>ation/Checkpoint.txt | agents, diagnostic, normal, servicefabric, windowsupdate 
@@ -470,4 +471,4 @@ File Path | Manifest
 /k/azure-vnet.log | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-09-17 23:19:16.885783`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-09-25 00:52:16.306041`*
