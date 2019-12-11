@@ -462,10 +462,11 @@ class GuestFishWrapper:
                                     if len(fileList) < 1:
                                         self.WriteToResultFile(operationOutFile, "Copying " + origGatherItem + " FAILED as no files were located.")
                                     else:
-                                        fileNumber = Value('i', 0)
-                                        lock = Lock()
-                                        pool = Pool(10, self.initializer, (fileNumber, lock))
-                                        pool.map(partial(self.copy_files, requestDir, operationNumber, operationOutFile, deviceNumber, guestfish, operation_start_time), fileList)
+                                        #fileNumber = Value('i', 0)
+                                        #lock = Lock()
+                                        pool = Pool(10)
+                                        job_args = [(fileList, i, requestDir. operationNumber, operationOutFile, deviceNumber, guestfish, operation_start_time) for i, fileList in enumerate(fileList)]
+                                        pool.map(self.copy_files, job_args)
                                         pool.close()
                                         pool.join()
                                 elif opCommand=="diskinfo":  
@@ -531,11 +532,10 @@ class GuestFishWrapper:
         archiveFile = self.CreateArchive(zipFileName, requestDir)
         return archiveFile
 
-    def initializer(self, *args):
-        global fileNumber, lock
-        fileNumber, lock = args
-
-    def copy_files(self, eachFile, requestDir, operationNumber, operationOutFile, deviceNumber, guestfish, operation_start_time):
+    def copy_files(self, args):
+        return self.copy_eachFile(*args)
+    
+    def copy_eachFile(self, eachFile, fileNumber, requestDir, operationNumber, operationOutFile, deviceNumber, guestfish, operation_start_time):
         if (self.kpThread.wasTimeout == True):
             lastGoodOperationMajorStep = operationNumber
             lastGoodOperationMinorStep = fileNumber
