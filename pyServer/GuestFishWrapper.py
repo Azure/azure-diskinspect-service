@@ -11,6 +11,8 @@ import subprocess
 import csv
 from collections import defaultdict
 import signal
+from multiprocessing import Pool, Value, Lock
+from functools import partial
 """
 LibGuestFS Wrapper for Disk Information Extraction 
 
@@ -460,46 +462,12 @@ class GuestFishWrapper:
                                     if len(fileList) < 1:
                                         self.WriteToResultFile(operationOutFile, "Copying " + origGatherItem + " FAILED as no files were located.")
                                     else:
-                                        fileNumber = 0
-                                        for eachFile in fileList:
-                                            if (self.kpThread.wasTimeout == True):
-                                                lastGoodOperationMajorStep = operationNumber
-                                                lastGoodOperationMinorStep = fileNumber
-                                                timedOut = True
-                                                break
-                                            fileNumber = fileNumber + 1
-                                            strStepDescription = str(operationNumber) + "." + str(fileNumber)
-                                            if (operationNumber == self.modeMajorSkipTo):
-                                                if (fileNumber < self.modeMinorSkipTo):
-                                                    strMsg = "Skipping Copy Step [" + str(strStepDescription) + "]"
-                                                    self.rootLogger.warning(strMsg)
-                                                    self.WriteToResultFile(operationOutFile, strMsg)
-                                                    continue
-
-                                            actualFileName = eachFile
-
-                                            # Determine Output Folder
-                                            dirPrefix = os.path.dirname(actualFileName)
-                                            targetDir = requestDir + os.sep + 'device_' + str(deviceNumber) + dirPrefix
-
-   
-                                            # Create Output Folder if needed
-                                            if not (os.path.exists(targetDir)):
-                                                os.makedirs(targetDir)
-
-                                            # Copy 
-                                            wasCopied = guestfish.copy_out(actualFileName, targetDir)
-                                            
-                                            if wasCopied:
-                                                step_result = " SUCCEEDED."
-                                                found_any_items= True
-                                            else:
-                                                step_result = " FAILED."
-                                                
-                                            step_end_time = datetime.now()
-                                            duration_seconds = (step_end_time - operation_start_time).seconds
-                                            strMsg = step_end_time.strftime('%H:%M:%S') + "  Copying Step [" + strStepDescription + "] File: " + actualFileName + step_result + "  [Operation duration: " + str(duration_seconds) + " seconds]"
-                                            self.WriteToResultFile(operationOutFile, strMsg)
+                                        fileNumber = Value('i', 0)
+                                        lock = Lock()
+                                        pool = Pool(10, self.initializer, (fileNumber, lock))
+                                        pool.map(partial(self.copy_files, requestDir, operationNumber, operationOutFile, deviceNumber, guestfish, operation_start_time), fileList)
+                                        pool.close()
+                                        pool.join()
                                 elif opCommand=="diskinfo":  
                                     diskInfoOutFilename = requestDir + os.sep + 'diskinfo.txt'  
                                     with open(diskInfoOutFilename, "a", newline="\r\n") as diskInfoOutFile:                                    
@@ -563,6 +531,49 @@ class GuestFishWrapper:
         archiveFile = self.CreateArchive(zipFileName, requestDir)
         return archiveFile
 
+    def initializer(self, *args):
+        global fileNumber, lock
+        fileNumber, lock = args
+
+    def copy_files(self, eachFile, requestDir, operationNumber, operationOutFile, deviceNumber, guestfish, operation_start_time):
+        if (self.kpThread.wasTimeout == True):
+            lastGoodOperationMajorStep = operationNumber
+            lastGoodOperationMinorStep = fileNumber
+            timedOut = True
+            return
+        fileNumber = fileNumber + 1
+        strStepDescription = str(operationNumber) + "." + str(fileNumber)
+        if (operationNumber == self.modeMajorSkipTo):
+            if (fileNumber < self.modeMinorSkipTo):
+                strMsg = "Skipping Copy Step [" + str(strStepDescription) + "]"
+                self.rootLogger.warning(strMsg)
+                self.WriteToResultFile(operationOutFile, strMsg)
+                return
+
+        actualFileName = eachFile
+
+        # Determine Output Folder
+        dirPrefix = os.path.dirname(actualFileName)
+        targetDir = requestDir + os.sep + \
+            'device_' + str(deviceNumber) + dirPrefix
+
+        # Create Output Folder if needed
+        if not (os.path.exists(targetDir)):
+            os.makedirs(targetDir)
+
+        # Copy
+        wasCopied = guestfish.copy_out(actualFileName, targetDir)
+
+        if wasCopied:
+            step_result = " SUCCEEDED."
+            found_any_items = True
+        else:
+            step_result = " FAILED."
+
+        step_end_time = datetime.now()
+        duration_seconds = (step_end_time - operation_start_time).seconds
+        strMsg = step_end_time.strftime('%H:%M:%S') + "  Copying Step [" + strStepDescription + "] File: " + actualFileName + step_result + "  [Operation duration: " + str(duration_seconds) + " seconds]"
+        self.WriteToResultFile(operationOutFile, strMsg)
 
     def do_opcommand_registry(self, guestfish, registry_path, operationOutFile): 
         with open(self.registryFilename, "a", newline="\n") as registryOutFile:
