@@ -465,7 +465,7 @@ class GuestFishWrapper:
                                         #fileNumber = Value('i', 0)
                                         #lock = Lock()
                                         pool = Pool(10)
-                                        job_args = [(fileList, i, requestDir. operationNumber, operationOutFile, deviceNumber, guestfish, operation_start_time) for i, fileList in enumerate(fileList)]
+                                        job_args = [(fileList, i, requestDir, operationNumber, deviceNumber, guestfish, operation_start_time) for i, fileList in enumerate(fileList)]
                                         pool.map(self.copy_files, job_args)
                                         pool.close()
                                         pool.join()
@@ -535,7 +535,7 @@ class GuestFishWrapper:
     def copy_files(self, args):
         return self.copy_eachFile(*args)
     
-    def copy_eachFile(self, eachFile, fileNumber, requestDir, operationNumber, operationOutFile, deviceNumber, guestfish, operation_start_time):
+    def copy_eachFile(self, eachFile, fileNumber, requestDir, operationNumber, deviceNumber, guestfish, operation_start_time):
         if (self.kpThread.wasTimeout == True):
             lastGoodOperationMajorStep = operationNumber
             lastGoodOperationMinorStep = fileNumber
@@ -547,7 +547,8 @@ class GuestFishWrapper:
             if (fileNumber < self.modeMinorSkipTo):
                 strMsg = "Skipping Copy Step [" + str(strStepDescription) + "]"
                 self.rootLogger.warning(strMsg)
-                self.WriteToResultFile(operationOutFile, strMsg)
+                print (strMsg)
+                #self.WriteToResultFile(operationOutFile, strMsg)
                 return
 
         actualFileName = eachFile
@@ -573,7 +574,8 @@ class GuestFishWrapper:
         step_end_time = datetime.now()
         duration_seconds = (step_end_time - operation_start_time).seconds
         strMsg = step_end_time.strftime('%H:%M:%S') + "  Copying Step [" + strStepDescription + "] File: " + actualFileName + step_result + "  [Operation duration: " + str(duration_seconds) + " seconds]"
-        self.WriteToResultFile(operationOutFile, strMsg)
+        print (strMsg)
+        #self.WriteToResultFile(operationOutFile, strMsg)
 
     def do_opcommand_registry(self, guestfish, registry_path, operationOutFile): 
         with open(self.registryFilename, "a", newline="\n") as registryOutFile:
