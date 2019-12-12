@@ -415,7 +415,7 @@ class GuestFishWrapper:
                             timedOut = False
                             self.rootLogger.info("Reading manifest file from " + manifestFile + " with " + str(totalOperations) + " operation entries.")
                             pool = Pool(10)
-                            job_args = [(contents, i, timedOut, osType, totalOperations, operationOutFile, pathPrefix, guestfish, requestDir, deviceNumber, skipInspect, device, osMountpoints) for i, fileList in enumerate(fileList)]
+                            job_args = [(contents, i, timedOut, osType, totalOperations, operationOutFile, pathPrefix, guestfish, requestDir, deviceNumber, skipInspect, device, osMountpoints) for i, contents in enumerate(contents)]
                             pool.map(self.process_manifest, job_args)
                             pool.close()
                             pool.join()
