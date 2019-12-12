@@ -14,6 +14,7 @@ import socket
 import inspect
 import re
 import subprocess
+import ssl
 
 from azure.storage.blob import (
     BlockBlobService,
@@ -110,7 +111,9 @@ def get_service_health(service_host):
     uri = "{0}/{1}/".format(service_host,"health")
     req = urllib.request.Request(url=uri,method='GET')
     try:
-        res = urllib.request.urlopen(req, cafile=cafile)
+        ctx = ssl.SSLContext()
+        ctx.verify_mode = ssl.CERT_NONE
+        res = urllib.request.urlopen(req, context=ctx)
         return parseHealthResponse(res.read().decode('utf-8'))
     except urllib.error.HTTPError as e:
         return {}
@@ -254,7 +257,9 @@ with open(os.path.join(current_directory,'test_config.json'), "r") as json_confi
         DATA = DATA.encode('ascii')
         req = urllib.request.Request(url=uri,data=DATA,method='POST')
         try:
-            res = urllib.request.urlopen(req, timeout=max_duration,cafile=cafile)
+            ctx = ssl.SSLContext()
+            ctx.verify_mode = ssl.CERT_NONE
+            res = urllib.request.urlopen(req, timeout=max_duration, context=ctx)
         except urllib.error.HTTPError as e:
             print("Error requesting service: " + str(e))    #not catch
             if not "shouldFail" in inspection_test:
