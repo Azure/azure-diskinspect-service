@@ -255,7 +255,8 @@ File Path | Manifest
 /Program Files/Microsoft Dependency Agent/logs/\*.\* | monitor-mgmt 
 /Program Files/Microsoft Monitoring Agent/Agent/Health Service State/CT_\*/work/Servi<br>ceState/\*.log | monitor-mgmt 
 /Program Files/Microsoft Monitoring Agent/Agent/Health Service State/Management Packs<br>/\*.xml | monitor-mgmt 
-/Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.\* | sql-iaas 
+/Program Files/Microsoft SQL Server/\*/MSSQL/Log/\* | sql-iaas 
+/Program Files/Microsoft SQL Server/\*/Setup Bootstrap/Log/\*/Detail.txt | sql-iaas 
 /ProgramData/ASRSetupLogs/ASRUnifiedAgentConfigurator.log | site-recovery, windowsupdate 
 /ProgramData/ASRSetupLogs/ASRUnifiedAgentInstaller.log | site-recovery, windowsupdate 
 /ProgramData/ASRSetupLogs/UnifiedAgentMSIInstall.log | site-recovery, windowsupdate 
@@ -454,7 +455,7 @@ File Path | Manifest
 /WindowsAzure/Logs/Plugins/\*/\*/Heartbeat.log | agents, diagnostic, eg, normal, servicefabric, windowsupdate 
 /WindowsAzure/Logs/Plugins/\*/\*/Install.log | agents, diagnostic, eg, normal, servicefabric, windowsupdate 
 /WindowsAzure/Logs/Plugins/\*/\*/Update.log | agents, diagnostic, eg, normal, servicefabric, windowsupdate 
-/WindowsAzure/Logs/SqlServerLogs/\*.\* | sql-iaas 
+/WindowsAzure/Logs/SqlServerLogs/\* | sql-iaas 
 /WindowsAzure/Logs/Telemetry.log | agents, diagnostic, eg, normal, site-recovery, windowsupdate, workloadbackup 
 /WindowsAzure/Logs/TransparentInstaller.log | agents, asc-vmhealth, diagnostic, eg, min-diagnostic, normal, site-recovery, windowsupdate, workloadbackup 
 /WindowsAzure/Logs/VFPlugin/\*.log | monitor-mgmt 
@@ -471,4 +472,4 @@ File Path | Manifest
 /k/azure-vnet.log | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-09-25 00:52:16.306041`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-12-12 22:36:57.040189`*
