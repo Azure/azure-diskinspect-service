@@ -15,7 +15,7 @@ jobs:
         - cat ~/docker_build.txt
     - stage: deploy  
       install: 
-        - pip3 install azure-storage-blob
+        - pip3 install azure-storage-blob==1.4.0
         - echo "$REG_PASS" | docker login -u $REG_USER $AZ_REGISTRY --password-stdin
         - mkdir $HOME/azdis_ssl
         - openssl req -x509 -newkey rsa:2048 -keyout $HOME/azdis_ssl/azdis_private.rsa -out $HOME/azdis_ssl/azdis_public.crt -days 365 -nodes -subj "/CN=localhost"

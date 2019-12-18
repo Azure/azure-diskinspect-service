@@ -45,7 +45,7 @@ COPY pyServer/manifests/ /etc/azdis/
 RUN ln -s -f /usr/bin/python3 /usr/bin/python
 
 # Install AppInsights 
-RUN pip3 install azure-storage-blob
+RUN pip3 install azure-storage-blob==1.4.0
 RUN pip3 install applicationinsights
 
 # Expose port 8080 for nginx
