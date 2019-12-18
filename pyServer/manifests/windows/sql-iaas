@@ -17,5 +17,6 @@ copy,/WindowsAzure/Logs/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/*/Ex
 copy,/WindowsAzure/Logs/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/*/SqlCustomerSupportLogs/*
 
 echo,### Sql Server Logs ### 
-copy,/WindowsAzure/Logs/SqlServerLogs/*.*
-copy,/Program Files/Microsoft SQL Server/*/MSSQL/Log/*.*
+copy,/WindowsAzure/Logs/SqlServerLogs/*
+copy,/Program Files/Microsoft SQL Server/*/MSSQL/Log/*
+copy,/Program Files/Microsoft SQL Server/*/Setup Bootstrap/Log/*/Detail.txt
