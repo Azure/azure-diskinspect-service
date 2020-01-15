@@ -17,6 +17,6 @@ echo,### HDInsight Log Files ###
 copy,/var/log/ambari-server/ambari-server.log
 copy,/var/log/ambari-server/ambari-audit.log
 copy,/var/log/ambari-agent/ambari-agent.log
-copy,/var/log/hadoop-yarn/yarn/*
+copy,/var/log/hadoop-yarn/yarn/*.log
 copy,/var/log/hive/hiveserver2.log
 copy,/var/log/hive/hivemetastore.log

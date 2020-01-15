@@ -142,7 +142,7 @@ File Path | Manifest
 /var/log/dpkg.log | servicefabric 
 /var/log/dpkg\* | diagnostic, eg, normal 
 /var/log/evtcollforw\*.log | site-recovery 
-/var/log/hadoop-yarn/yarn/\* | hdinsight 
+/var/log/hadoop-yarn/yarn/\*.log | hdinsight 
 /var/log/hive/hivemetastore.log | hdinsight 
 /var/log/hive/hiveserver2.log | hdinsight 
 /var/log/journal/\*/\* | aks 
@@ -478,4 +478,4 @@ File Path | Manifest
 /k/azure-vnet.log | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-01-15 21:17:22.178240`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-01-15 21:37:51.359351`*
