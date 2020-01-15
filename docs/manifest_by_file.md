@@ -118,6 +118,9 @@ File Path | Manifest
 /var/lib/waagent/waagent_status.json | agents, diagnostic 
 /var/lib/wicked/lease-eth0-dhcp-ipv4.xml | diagnostic, eg 
 /var/log/AzureRcmCli.log | site-recovery 
+/var/log/ambari-agent/ambari-agent.log | hdinsight 
+/var/log/ambari-server/ambari-audit.log | hdinsight 
+/var/log/ambari-server/ambari-server.log | hdinsight 
 /var/log/auth\* | agents, diagnostic, eg, normal 
 /var/log/azure-vnet\* | aks 
 /var/log/azure/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode/\*.\*/CommandExec<br>ution.log | servicefabric 
@@ -139,6 +142,9 @@ File Path | Manifest
 /var/log/dpkg.log | servicefabric 
 /var/log/dpkg\* | diagnostic, eg, normal 
 /var/log/evtcollforw\*.log | site-recovery 
+/var/log/hadoop-yarn/yarn/\* | hdinsight 
+/var/log/hive/hivemetastore.log | hdinsight 
+/var/log/hive/hiveserver2.log | hdinsight 
 /var/log/journal/\*/\* | aks 
 /var/log/kern.log | servicefabric 
 /var/log/kern\* | diagnostic, eg, normal 
@@ -472,4 +478,4 @@ File Path | Manifest
 /k/azure-vnet.log | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2019-12-12 22:36:57.040189`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-01-15 21:17:22.178240`*
