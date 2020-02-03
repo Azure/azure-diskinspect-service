@@ -262,7 +262,8 @@ File Path | Manifest
 /Program Files/Microsoft Monitoring Agent/Agent/Health Service State/CT_\*/work/Servi<br>ceState/\*.log | monitor-mgmt 
 /Program Files/Microsoft Monitoring Agent/Agent/Health Service State/Management Packs<br>/\*.xml | monitor-mgmt 
 /Program Files/Microsoft SQL Server/\*/MSSQL/Log/\* | sql-iaas 
-/Program Files/Microsoft SQL Server/\*/Setup Bootstrap/Log/\*/Detail.txt | sql-iaas 
+/Program Files/Microsoft SQL Server/\*/Setup Bootstrap/Log/Summary.txt | sql-iaas 
+/Program Files/Microsoft SQL Server/\*/Setup Bootstrap/Log/\*/Log\*.cab | sql-iaas 
 /ProgramData/ASRSetupLogs/ASRUnifiedAgentConfigurator.log | site-recovery, windowsupdate 
 /ProgramData/ASRSetupLogs/ASRUnifiedAgentInstaller.log | site-recovery, windowsupdate 
 /ProgramData/ASRSetupLogs/UnifiedAgentMSIInstall.log | site-recovery, windowsupdate 
@@ -478,4 +479,4 @@ File Path | Manifest
 /k/azure-vnet.log | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-01-15 21:37:51.359351`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-02-03 12:34:15.044010`*
