@@ -149,6 +149,7 @@ File Path | Manifest
 /var/log/kern.log | servicefabric 
 /var/log/kern\* | diagnostic, eg, normal 
 /var/log/messages\* | diagnostic, eg, monitor-mgmt, normal 
+/var/log/pods/kube-system\*/\*/\*.log | aks 
 /var/log/rsyslog\* | diagnostic, eg, lad, normal 
 /var/log/s2\*.log | site-recovery 
 /var/log/sa/sar\* | performance 
@@ -479,4 +480,4 @@ File Path | Manifest
 /k/azure-vnet.log | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-02-03 12:34:15.044010`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-02-06 16:58:27.776008`*
