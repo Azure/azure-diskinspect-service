@@ -17,3 +17,6 @@ copy,/var/log/journal/*/*
 echo,### CNI logs ###
 copy,/var/log/azure-vnet* 
 copy,/var/run/azure-vnet*
+
+echo,### kube-system pod logs ###
+copy,/var/log/pods/kube-system*/*/*.log
