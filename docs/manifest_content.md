@@ -253,6 +253,7 @@ monitor-mgmt | copy | /var/opt/microsoft/omsagent/\*/run/automationworker/omsupd
 monitor-mgmt | copy | /var/opt/microsoft/omsagent/run/automationworker/worker.log
 monitor-mgmt | copy | /tmp/omsagent\*.tgz
 monitor-mgmt | copy | /etc/opt/omi/conf/omsconfig/configuration/\*.mof
+monitor-mgmt | diskinfo | 
 normal | list | /var/log
 normal | list | /etc/udev/rules.d
 normal | copy | /etc/fstab
@@ -1251,4 +1252,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-02-13 18:01:05.179049`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-02-13 18:28:17.092594`*

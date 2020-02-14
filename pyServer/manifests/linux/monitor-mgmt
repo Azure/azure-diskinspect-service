@@ -44,3 +44,6 @@ copy,/tmp/omsagent*.tgz
 
 echo,# DSC Configuration Files
 copy,/etc/opt/omi/conf/omsconfig/configuration/*.mof
+
+echo,# Disk Info
+diskinfo,

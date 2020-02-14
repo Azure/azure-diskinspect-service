@@ -485,4 +485,4 @@ File Path | Manifest
 /k/azure-vnet.log | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-02-13 18:01:05.179049`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-02-13 18:28:17.092594`*
