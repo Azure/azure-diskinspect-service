@@ -232,18 +232,23 @@ lad | copy | /var/lib/waagent/Microsoft.\*LinuxDiagnostic\*/config/\*.settings
 lad | copy | /var/lib/waagent/Microsoft.\*LinuxDiagnostic\*/xmlCfg.xml
 lad | copy | /etc/opt/microsoft/omsagent/LAD/conf/omsagent.d/\*
 lad | copy | /var/opt/microsoft/omsagent/LAD/log/\*
-monitor-mgmt | copy | /var/opt/microsoft/omsagent/\*/log/omsagent.log
+monitor-mgmt | copy | /var/opt/microsoft/omsagent/\*/log/omsagent\*
 monitor-mgmt | copy | /var/opt/microsoft/omsconfig/omsconfig.log
 monitor-mgmt | copy | /var/opt/microsoft/omsconfig/omsconfigdetailed.log
-monitor-mgmt | copy | /etc/opt/microsoft/omsagent/conf/omsagent.conf
+monitor-mgmt | copy | /etc/opt/microsoft/omsagent/\*/conf/\*.conf
 monitor-mgmt | copy | /etc/opt/microsoft/omsagent/\*/conf/omsagent.d/\*.conf
-monitor-mgmt | copy | /etc/opt/omi/conf/omsconfig/agentid
 monitor-mgmt | copy | /var/log/messages\*
 monitor-mgmt | copy | /var/log/syslog\*
+monitor-mgmt | copy | /etc/rsyslog.d/95-omsagent.conf
+monitor-mgmt | copy | /etc/syslog-ng/syslog-ng.conf
 monitor-mgmt | copy | /var/opt/microsoft/scx/log/scx.log
+monitor-mgmt | copy | /var/opt/microsoft/scx/log/omsagent/scx.log
 monitor-mgmt | copy | /var/opt/omi/log/\*.log
 monitor-mgmt | copy | /var/log/waagent\*.log
+monitor-mgmt | copy | /var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/\*.log
 monitor-mgmt | copy | /var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/\*/\*.log
+monitor-mgmt | copy | /var/lib/waagent/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux-\*/config/\*
+monitor-mgmt | copy | /var/lib/waagent/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux-\*/status/\*
 monitor-mgmt | copy | /var/opt/microsoft/omsagent/\*/run/automationworker/omsupdatemgmt.log
 monitor-mgmt | copy | /var/opt/microsoft/omsagent/run/automationworker/worker.log
 monitor-mgmt | copy | /tmp/omsagent\*.tgz
@@ -1246,4 +1251,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-02-06 19:01:59.770932`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-02-13 18:01:05.179049`*

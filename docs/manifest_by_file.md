@@ -55,11 +55,11 @@ File Path | Manifest
 /etc/network/interfaces.d/\*.cfg | diagnostic, eg 
 /etc/nsswitch.conf | diagnostic 
 /etc/opt/microsoft/omsagent/LAD/conf/omsagent.d/\* | lad 
+/etc/opt/microsoft/omsagent/\*/conf/\*.conf | monitor-mgmt 
 /etc/opt/microsoft/omsagent/\*/conf/omsagent.d/\*.conf | monitor-mgmt 
-/etc/opt/microsoft/omsagent/conf/omsagent.conf | monitor-mgmt 
-/etc/opt/omi/conf/omsconfig/agentid | monitor-mgmt 
 /etc/opt/omi/conf/omsconfig/configuration/\*.mof | monitor-mgmt 
 /etc/resolv.conf | diagnostic, eg 
+/etc/rsyslog.d/95-omsagent.conf | monitor-mgmt 
 /etc/spark/conf/\* | hdinsight 
 /etc/ssh/sshd_config | diagnostic, normal 
 /etc/storm/conf/\* | hdinsight 
@@ -70,6 +70,7 @@ File Path | Manifest
 /etc/sysconfig/network-scripts/route-eth\* | diagnostic, eg 
 /etc/sysconfig/network/ifcfg-eth\* | diagnostic, eg 
 /etc/sysconfig/network/routes | diagnostic, eg 
+/etc/syslog-ng/syslog-ng.conf | monitor-mgmt 
 /etc/ufw/ufw.conf | diagnostic, eg 
 /etc/waagent.conf | agents, diagnostic, eg, site-recovery, workloadbackup 
 /opt/microsoft/servicefabric/bin/Fabric/Fabric.Code/Fabric | servicefabric 
@@ -102,6 +103,8 @@ File Path | Manifest
 /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/Service/curr<br>ent.config | servicefabric 
 /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/config/\*.se<br>ttings | servicefabric 
 /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/heartbeat.lo<br>g | servicefabric, servicefabric 
+/var/lib/waagent/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux-\*/config/\* | monitor-mgmt 
+/var/lib/waagent/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux-\*/status/\* | monitor-mgmt 
 /var/lib/waagent/Microsoft.OSTCExtensions.LinuxDiagnostic-\*/xmlCfg.xml | servicefabric 
 /var/lib/waagent/Microsoft.\*LinuxDiagnostic\*/config/\*.settings | lad 
 /var/lib/waagent/Microsoft.\*LinuxDiagnostic\*/status/\*.status | lad 
@@ -124,6 +127,7 @@ File Path | Manifest
 /var/log/auth\* | agents, diagnostic, eg, normal 
 /var/log/azure-vnet\* | aks 
 /var/log/azure/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode/\*.\*/CommandExec<br>ution.log | servicefabric 
+/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/\*.log | monitor-mgmt 
 /var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/\*/\*.log | monitor-mgmt 
 /var/log/azure/Microsoft.OSTCExtensions.LinuxDiagnostic/\*/mdsd.\* | servicefabric 
 /var/log/azure/Microsoft.\*LinuxDiagnostic/\*/\* | lad 
@@ -166,11 +170,12 @@ File Path | Manifest
 /var/log/waagent\*.log | monitor-mgmt 
 /var/log/yum\* | diagnostic, eg, normal 
 /var/opt/microsoft/omsagent/LAD/log/\* | lad 
-/var/opt/microsoft/omsagent/\*/log/omsagent.log | monitor-mgmt 
+/var/opt/microsoft/omsagent/\*/log/omsagent\* | monitor-mgmt 
 /var/opt/microsoft/omsagent/\*/run/automationworker/omsupdatemgmt.log | monitor-mgmt 
 /var/opt/microsoft/omsagent/run/automationworker/worker.log | monitor-mgmt 
 /var/opt/microsoft/omsconfig/omsconfig.log | monitor-mgmt 
 /var/opt/microsoft/omsconfig/omsconfigdetailed.log | monitor-mgmt 
+/var/opt/microsoft/scx/log/omsagent/scx.log | monitor-mgmt 
 /var/opt/microsoft/scx/log/scx.log | monitor-mgmt 
 /var/opt/omi/log/\*.log | monitor-mgmt 
 /var/run/azure-vnet\* | aks 
@@ -480,4 +485,4 @@ File Path | Manifest
 /k/azure-vnet.log | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-02-06 19:01:59.770932`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-02-13 18:01:05.179049`*

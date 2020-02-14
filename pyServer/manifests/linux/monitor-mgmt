@@ -1,39 +1,46 @@
-echo,#Microsoft Monitoring Agent for Linux Log File
-copy,/var/opt/microsoft/omsagent/*/log/omsagent.log
+echo,# OMS Agent for Linux Log File
+copy,/var/opt/microsoft/omsagent/*/log/omsagent*
 
-echo,#Microsoft Monitoring Agent Configuration Log File
+echo,# DSC Log File
 copy,/var/opt/microsoft/omsconfig/omsconfig.log
 copy,/var/opt/microsoft/omsconfig/omsconfigdetailed.log
 
-echo,#Microsoft Monitoring Agent Configuration File
-copy,/etc/opt/microsoft/omsagent/conf/omsagent.conf
+echo,# OMS Agent Configuration File
+copy,/etc/opt/microsoft/omsagent/*/conf/*.conf
 copy,/etc/opt/microsoft/omsagent/*/conf/omsagent.d/*.conf
 
-echo,#Microsoft Monitoring Agent Agent ID File
-copy,/etc/opt/omi/conf/omsconfig/agentid
-
-echo,#Syslog
+echo,# Syslog Log File
 copy,/var/log/messages*
 copy,/var/log/syslog*
 
-echo,#SCX Logs
-copy,/var/opt/microsoft/scx/log/scx.log
+echo,# Syslog Conf File
+copy,/etc/rsyslog.d/95-omsagent.conf
+copy,/etc/syslog-ng/syslog-ng.conf
 
-echo,#OMI Logs
+echo,# SCX Logs
+copy,/var/opt/microsoft/scx/log/scx.log
+copy,/var/opt/microsoft/scx/log/omsagent/scx.log
+
+echo,# OMI Logs
 copy,/var/opt/omi/log/*.log
 
-echo,#WAAgent Logs
+echo,# WAAgent Logs
 copy,/var/log/waagent*.log
 
-echo,#Microsoft Monitoring Agent Extension Logs
+echo,# OMS Agent Extension Logs
+copy,/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*.log
 copy,/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/*.log
 
-echo,#Update Management Logs
+echo,# OMS Agent Extension Status File
+copy,/var/lib/waagent/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux-*/config/*
+copy,/var/lib/waagent/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux-*/status/*
+
+echo,# Update Management Logs
 copy,/var/opt/microsoft/omsagent/*/run/automationworker/omsupdatemgmt.log
 copy,/var/opt/microsoft/omsagent/run/automationworker/worker.log
 
-echo,#Log Collector Tool Logs
+echo,# Log Collector Tool Logs
 copy,/tmp/omsagent*.tgz
 
-echo,#DSC Files
+echo,# DSC Configuration Files
 copy,/etc/opt/omi/conf/omsconfig/configuration/*.mof
