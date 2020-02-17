@@ -85,6 +85,7 @@ File Path | Manifest
 /opt/msawb/var/lib/catalog/WorkloadSchedules/\*/\*.bin | workloadbackup 
 /opt/msawb/var/log/\*/\*/\* | workloadbackup 
 /opt/msawb/var/log/\*/\*/\*/\*/\* | workloadbackup 
+/run/resolvconf/resolv.conf | diagnostic, eg 
 /run/systemd/resolve/stub-resolv.conf | diagnostic, eg 
 /tmp/omsagent\*.tgz | monitor-mgmt 
 /var/lib/.jupyter/jupyter_notebook_config.py | hdinsight 
@@ -480,4 +481,4 @@ File Path | Manifest
 /k/azure-vnet.log | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-02-06 19:01:59.770932`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-02-17 11:11:19.204815`*
