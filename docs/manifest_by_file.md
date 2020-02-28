@@ -91,6 +91,7 @@ File Path | Manifest
 /var/lib/.jupyter/jupyter_notebook_config.py | hdinsight 
 /var/lib/dhclient/dhclient-eth0.leases | diagnostic, eg 
 /var/lib/dhcp/dhclient.eth0.leases | diagnostic, eg 
+/var/lib/docker/containers/\*/\*-json.log | aks 
 /var/lib/waagent/ExtensionsConfig.\*.xml | diagnostic, lad 
 /var/lib/waagent/GoalState.\*.xml | diagnostic, site-recovery, workloadbackup 
 /var/lib/waagent/HostingEnvironmentConfig.xml | diagnostic 
@@ -481,4 +482,4 @@ File Path | Manifest
 /k/azure-vnet.log | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-02-17 11:11:19.204815`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-02-27 17:38:29.168974`*
