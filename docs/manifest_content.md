@@ -103,6 +103,8 @@ aks | copy | /var/log/journal/\*/\*
 aks | copy | /var/log/azure-vnet\*
 aks | copy | /var/run/azure-vnet\*
 aks | copy | /var/log/pods/kube-system\*/\*/\*.log
+aks | copy | /var/lib/docker/containers/\*/\*-json.log
+aks | list | /var/log/pods/\*/\*
 diagnostic | list | /var/log
 diagnostic | list | /var/lib/waagent
 diagnostic | list | /etc/udev/rules.d
@@ -1248,4 +1250,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-02-17 11:11:19.204815`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-02-27 17:38:29.168974`*
