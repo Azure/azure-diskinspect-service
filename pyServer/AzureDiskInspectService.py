@@ -205,7 +205,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
     """
     def StoregUrlPostFix(self, cloudEnv):
         switcher={
-            'Public':'.blob.core.windows.net',
+            'Prod':'.blob.core.windows.net',
             'Fairfax':'.blob.core.usgovcloudapi.net'
         }
         return switcher.get(cloudEnv,".blob.core.windows.net")
@@ -474,7 +474,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
                 self.telemetryLogger.info('Received Cloud Environment: ' + cloudEnv)
             else:
                 self.telemetryLogger.info('WARNING: Received Cloud Environment is invalid. Default \'Public\' will be used.')
-                cloudEnv = 'Public'
+                cloudEnv = 'Prod'
 
             operationId, mode, modeMajorSkipTo, modeMinorSkipTo, storageAcctName, container_blob_name, storageUrl = self.ParseUrlArguments(self.path, sasKeyStr, cloudEnv)                
 
