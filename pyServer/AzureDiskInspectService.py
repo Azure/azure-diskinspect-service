@@ -201,9 +201,20 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
 
 
     """
+    Select storage url based on cloud environment
+    """
+    def StoregUrlPostFix(self, cloudEnv):
+        switcher={
+            'Prod':'.blob.core.windows.net',
+            'Fairfax':'.blob.core.usgovcloudapi.net'
+        }
+        return switcher.get(cloudEnv,".blob.core.windows.net")
+
+
+    """
     Parse the URL POST parameters
     """
-    def ParseUrlArguments(self, urlPath, sasKey):
+    def ParseUrlArguments(self, urlPath, sasKey, cloudEnv):
         urlObj = urllib.parse.urlparse(urlPath)
         urlSplit = urlObj.path.split('/')
         if not len(urlSplit) >= 5:
@@ -230,9 +241,9 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
         while (urlSplitIndex < len(urlSplit)):
             container_blob_name = container_blob_name + '/' + urlSplit[urlSplitIndex]
             urlSplitIndex = urlSplitIndex + 1
-
+        
         storageUrl = urllib.parse.urlunparse(
-                ('https', storageAcctName + '.blob.core.windows.net', container_blob_name, '', sasKey, None))
+                ('https', storageAcctName + self.StoregUrlPostFix(cloudEnv), container_blob_name, '', sasKey, None))
             
         return operationId, mode, modeMajorSkipTo, modeMinorSkipTo, storageAcctName, container_blob_name, storageUrl
 
@@ -458,7 +469,14 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
             self.telemetryLogger.info('<<STATS>> ' + self.serviceMetrics.getMetrics())
 
             sasKeyStr = str(postvars[b'saskey'][0], encoding='UTF-8')
-            operationId, mode, modeMajorSkipTo, modeMinorSkipTo, storageAcctName, container_blob_name, storageUrl = self.ParseUrlArguments(self.path, sasKeyStr)                
+            if b'cloudenv' in postvars:
+                cloudEnv = str(postvars[b'cloudenv'][0], encoding='UTF-8')
+                self.telemetryLogger.info('Received Cloud Environment: ' + cloudEnv)
+            else:
+                self.telemetryLogger.info('WARNING: Received Cloud Environment is invalid. Default \'Public\' will be used.')
+                cloudEnv = 'Prod'
+
+            operationId, mode, modeMajorSkipTo, modeMinorSkipTo, storageAcctName, container_blob_name, storageUrl = self.ParseUrlArguments(self.path, sasKeyStr, cloudEnv)                
 
             if b'credscan' in postvars:
                 credscanStr = str(postvars[b'credscan'][0], encoding='UTF-8')
