@@ -248,7 +248,7 @@ File Path | Manifest
 /Packages/Plugins/\*/\*/PackageInformation.txt | agents, diagnostic, normal, servicefabric, windowsupdate 
 /Packages/Plugins/\*/\*/RuntimeSettings/\*.settings | agents, diagnostic, normal, servicefabric, windowsupdate 
 /Packages/Plugins/\*/\*/Status/HeartBeat.Json | agents, diagnostic, normal, servicefabric, windowsupdate 
-/Packages/Plugins/\*/\*/Status/\*.status | agents, diagnostic, normal, servicefabric, windowsupdate 
+/Packages/Plugins/\*/\*/Status/\*.status | agents, normal, servicefabric, windowsupdate 
 /Packages/Plugins/\*/\*/config.txt | agents, diagnostic, normal, servicefabric, windowsupdate 
 /Program Files (x86)/Microsoft Azure Site Recovery/agent/AzureRcmCli.log | site-recovery, windowsupdate 
 /Program Files (x86)/Microsoft Azure Site Recovery/agent/evtcollforw\*.log | site-recovery, windowsupdate 
@@ -440,7 +440,7 @@ File Path | Manifest
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.Edp.NetworkWatcherAgentWind<br>ows/\*/\*.txt | agents, diagnostic, normal, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows/<br>\*/\*.log | agents, diagnostic, normal, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows/<br>\*/\*.txt | agents, diagnostic, normal, windowsupdate 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.VMSnapshot/\*/IaaSBcdrExt<br>ension\*.log | agents, diagnostic, normal, windowsupdate 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.VMSnapshot/\*/IaaSBcdrExt<br>ension\*.log | agents, normal, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.IaaSAntimalware/\*/AntimalwareCon<br>fig.log | agents, diagnostic, normal, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.Monitoring/\*/AsmExtension.log | agents, diagnostic, normal, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/FabricM<br>SIInstall\*.log | agents, diagnostic, normal, windowsupdate 
@@ -483,4 +483,4 @@ File Path | Manifest
 /k/azure-vnet.log | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-03-10 12:00:23.854247`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-03-10 16:09:21.563523`*
