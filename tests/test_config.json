@@ -264,6 +264,18 @@
       "partial_result": "false",
       "files_present": [ "/device_0/Windows/Setup/State/State.ini", "/device_0/Windows/Panther/WaSetup.xml", "/device_0/Windows/INF/setupapi.dev.log" ],
       "file_content":{"/device_0/Windows/Setup/State/State.ini":"IMAGE_STATE_COMPLETE"}
+    },
+    {
+      "title": "Invalid storage account: Different cloud environment",
+      "description": "Test to ensure an invalid storage account is handled properly if blob storage is in different cloud environment",
+      "vhd_relative_path": "/linux/UbuntuCore.vhd",
+      "manifest": "normal",
+      "os": "linux",
+      "os_distribution": "",
+      "os_product_name": "",
+      "os_disk_configuration": "",
+      "expected_timeout": "18",
+      "shouldFail" : true
     }
   ]
 }
