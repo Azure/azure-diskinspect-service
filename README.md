@@ -87,6 +87,19 @@ To copy the logs over for examination on the host:
 
 	./scripts/getlogs.sh
 
+## How To Contribute
+
+**Make sure you are a member of this permission group: https://repos.opensource.microsoft.com/Azure/teams/diskinspection-extended
+
+	1.	Create a new branch from master
+
+	2.	Apply your changes in the branch
+
+		*	If you are updating/creating new manifest then: Make sure to run "parse_manifest.py"
+
+	3.	Push changes to your remote branch
+
+	4.	Raise PR to merge into master for review
 -----
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.

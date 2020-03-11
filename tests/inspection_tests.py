@@ -250,6 +250,9 @@ with open(os.path.join(current_directory,'test_config.json'), "r") as json_confi
         if "blob_upload" in inspection_test and inspection_test["blob_upload"] == True:
             input_params.update({"blobsasurl":blob_sas_to_use })
 
+        if inspection_test["title"] == "Invalid storage account: Different cloud environment":
+            input_params.update({"cloudenv": "Fairfax"})
+
         DATA = urllib.parse.urlencode(input_params)
         DATA = DATA.encode('ascii')
         req = urllib.request.Request(url=uri,data=DATA,method='POST')
