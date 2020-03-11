@@ -562,7 +562,6 @@ diagnostic | copy | /Packages/Plugins/\*/\*/config.txt
 diagnostic | copy | /Packages/Plugins/\*/\*/HandlerEnvironment.json
 diagnostic | copy | /Packages/Plugins/\*/\*/HandlerManifest.json
 diagnostic | copy | /Packages/Plugins/\*/\*/RuntimeSettings/\*.settings
-diagnostic | copy | /Packages/Plugins/\*/\*/Status/\*.status
 diagnostic | copy | /Packages/Plugins/\*/\*/Status/HeartBeat.Json
 diagnostic | copy | /Packages/Plugins/\*/\*/PackageInformation.txt
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/\*/Configur<br>ation/Checkpoint.txt
@@ -570,7 +569,6 @@ diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSD
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/\*/Configur<br>ation/MonAgentHost.\*.log
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/Diagnostics<br>Plugin.log
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/Diagnostics<br>PluginLauncher.log
-diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.VMSnapshot/\*/IaaSBcdrExt<br>ension\*.log
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.IaaSAntimalware/\*/AntimalwareCon<br>fig.log
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.Monitoring/\*/AsmExtension.log
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/FabricM<br>SIInstall\*.log
@@ -1250,4 +1248,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-02-27 17:38:29.168974`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-03-11 10:28:14.406536`*
