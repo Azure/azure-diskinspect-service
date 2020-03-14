@@ -8,7 +8,7 @@ import cgi
 import socketserver
 import subprocess
 import threading
-import logging
+import logging as pylogging
 import logging.handlers
 import traceback
 from datetime import datetime
@@ -18,6 +18,7 @@ from GuestFS import InvalidSasException, InvalidVhdNotFoundException, InvalidSto
 from KeepAliveThread import KeepAliveThread
 from applicationinsights import TelemetryClient
 from applicationinsights.logging import LoggingHandler
+from applicationinsights import logging
 import json
 
 from azure.storage.blob import (
@@ -141,14 +142,19 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
     def InitializeAppInsights(self):
         # AppInsights initialization
         cur_thread = threading.current_thread()
-        logFormatter = logging.Formatter("%(asctime)s [%(threadName)-12.12s] [%(levelname)-7.7s]: %(message)s")
+        logFormatter = pylogging.Formatter("%(asctime)s [%(threadName)-12.12s] [%(levelname)-7.7s]: %(message)s")
         appInsightsKey = os.environ['APPINSIGHTS_KEY']
+        if 'APPINSIGHTS_ENDPOINTURL' in os.environ and os.environ['APPINSIGHTS_ENDPOINTURL']:
+            appInsightsEndPointUrl = os.environ['APPINSIGHTS_ENDPOINTURL']
+        else:
+            appInsightsEndPointUrl = 'https://dc.services.visualstudio.com/v2/track'
         self.rootLogger.info("AppInsights key: '" + appInsightsKey + "'")   # log locally
+        self.rootLogger.info("AppInsights endpoint: '" + appInsightsEndPointUrl + "'")
 
         # create a child logger per thread so that we can set the SessionId without collision during concurrent execution
         #  by default logging will propagate to the parent rootLogger
         self.telemetryLogger = self.rootLogger.getChild('AppInsights.{0}'.format(cur_thread) )
-        telemetryhandler = LoggingHandler(appInsightsKey)
+        telemetryhandler = logging.enable(appInsightsKey, endpoint=appInsightsEndPointUrl)
         telemetryhandler.setFormatter(logFormatter)
         telemetryhandler.client.context.application.id = "DiskInspect-Service"
         telemetryhandler.client.context.application.ver = self.containerVersion
