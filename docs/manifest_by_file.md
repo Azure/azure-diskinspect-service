@@ -26,8 +26,6 @@ File Path | Manifest
 /var/lib/waagent/SharedConfig.xml | agents, diagnostic 
 /var/lib/waagent/\*.xml | agents 
 /var/lib/waagent/\*/config/\*.settings | agents, diagnostic 
-/var/lib/waagent/\*/config/HandlerState | agents, diagnostic 
-/var/lib/waagent/\*/config/HandlerStatus | agents, diagnostic
 /var/lib/waagent/\*/status/\*.status | agents, diagnostic 
 /var/lib/waagent/provisioned | diagnostic, genspec 
 /var/log/auth\* | agents, diagnostic, normal 
@@ -115,8 +113,6 @@ File Path | Manifest
 /var/lib/waagent/\*.manifest.xml | diagnostic 
 /var/lib/waagent/\*.xml | agents, site-recovery, workloadbackup 
 /var/lib/waagent/\*/config/\*.settings | agents, diagnostic 
-/var/lib/waagent/\*/config/HandlerState | agents, diagnostic 
-/var/lib/waagent/\*/config/HandlerStatus | agents, diagnostic
 /var/lib/waagent/\*/status/\*.status | agents, diagnostic 
 /var/lib/waagent/error.json | agents, diagnostic 
 /var/lib/waagent/history/\*.zip | agents, diagnostic 
