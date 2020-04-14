@@ -20,8 +20,6 @@ agents | copy | /var/log/azure/\*/\*/\*
 agents | copy | /var/lib/waagent/ExtensionsConfig.\*.xml
 agents | copy | /var/lib/waagent/\*/status/\*.status
 agents | copy | /var/lib/waagent/\*/config/\*.settings
-agents | copy | /var/lib/waagent/\*/config/HandlerState
-agents | copy | /var/lib/waagent/\*/config/HandlerStatus
 agents | copy | /var/lib/waagent/GoalState.\*.xml
 agents | copy | /var/lib/waagent/HostingEnvironmentConfig.xml
 agents | copy | /var/lib/waagent/Microsoft.OSTCExtensions.CustomScriptForLinux.\*.manifest.xml
@@ -50,8 +48,6 @@ diagnostic | copy | /var/log/azure/\*/\*/\*
 diagnostic | copy | /var/lib/waagent/ExtensionsConfig.\*.xml
 diagnostic | copy | /var/lib/waagent/\*/status/\*.status
 diagnostic | copy | /var/lib/waagent/\*/config/\*.settings
-diagnostic | copy | /var/lib/waagent/\*/config/HandlerState
-diagnostic | copy | /var/lib/waagent/\*/config/HandlerStatus
 diagnostic | copy | /var/lib/waagent/GoalState.\*.xml
 diagnostic | copy | /var/lib/waagent/HostingEnvironmentConfig.xml
 diagnostic | copy | /var/lib/waagent/Microsoft.OSTCExtensions.CustomScriptForLinux.\*.manifest.xml
@@ -90,8 +86,6 @@ agents | copy | /var/lib/waagent/\*.xml
 agents | copy | /var/lib/waagent/waagent_status.json
 agents | copy | /var/lib/waagent/\*/status/\*.status
 agents | copy | /var/lib/waagent/\*/config/\*.settings
-agents | copy | /var/lib/waagent/\*/config/HandlerState
-agents | copy | /var/lib/waagent/\*/config/HandlerStatus
 agents | copy | /var/lib/waagent/\*.agentsManifest
 agents | copy | /var/lib/waagent/error.json
 agents | copy | /var/lib/waagent/Incarnation
@@ -160,8 +154,6 @@ diagnostic | copy | /var/log/azure/run-command/handler.log
 diagnostic | copy | /var/lib/waagent/ExtensionsConfig.\*.xml
 diagnostic | copy | /var/lib/waagent/\*/status/\*.status
 diagnostic | copy | /var/lib/waagent/\*/config/\*.settings
-diagnostic | copy | /var/lib/waagent/\*/config/HandlerState
-diagnostic | copy | /var/lib/waagent/\*/config/HandlerStatus
 diagnostic | copy | /var/lib/waagent/GoalState.\*.xml
 diagnostic | copy | /var/lib/waagent/HostingEnvironmentConfig.xml
 diagnostic | copy | /var/lib/waagent/\*.manifest.xml
@@ -1256,4 +1248,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-04-14 23:06:00.867930`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-03-11 10:28:14.406536`*

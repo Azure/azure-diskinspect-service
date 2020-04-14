@@ -25,8 +25,6 @@ File Path | Manifest
 /var/lib/waagent/Prod.\*.manifest.xml | agents, diagnostic 
 /var/lib/waagent/SharedConfig.xml | agents, diagnostic 
 /var/lib/waagent/\*.xml | agents 
-/var/lib/waagent/\*/config/HandlerState | agents, diagnostic 
-/var/lib/waagent/\*/config/HandlerStatus | agents, diagnostic 
 /var/lib/waagent/\*/config/\*.settings | agents, diagnostic 
 /var/lib/waagent/\*/status/\*.status | agents, diagnostic 
 /var/lib/waagent/provisioned | diagnostic, genspec 
@@ -114,8 +112,6 @@ File Path | Manifest
 /var/lib/waagent/\*.agentsManifest | agents 
 /var/lib/waagent/\*.manifest.xml | diagnostic 
 /var/lib/waagent/\*.xml | agents, site-recovery, workloadbackup 
-/var/lib/waagent/\*/config/HandlerState | agents, diagnostic 
-/var/lib/waagent/\*/config/HandlerStatus | agents, diagnostic 
 /var/lib/waagent/\*/config/\*.settings | agents, diagnostic 
 /var/lib/waagent/\*/status/\*.status | agents, diagnostic 
 /var/lib/waagent/error.json | agents, diagnostic 
@@ -486,4 +482,4 @@ File Path | Manifest
 /k/azure-vnet.log | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-04-14 23:06:00.867930`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-03-11 10:28:14.406536`*
