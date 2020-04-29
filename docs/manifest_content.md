@@ -760,6 +760,7 @@ min-diagnostic | copy | /WindowsAzure/Logs/TransparentInstaller.log
 min-diagnostic | copy | /WindowsAzure/Logs/WaAppAgent.log
 min-diagnostic | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 min-diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Compute.VMAccessAgent/\*/JsonVMAccessExtension.l<br>og
+min-diagnostic | copy | /Windows/servicing/sessions/sessions.xml
 min-diagnostic | diskinfo | 
 monitor-mgmt | copy | /Program Files/Microsoft Monitoring Agent/Agent/Health Service State/Management Packs<br>/\*.xml
 monitor-mgmt | copy | /Program Files/Microsoft Monitoring Agent/Agent/Health Service State/CT_\*/work/Servi<br>ceState/\*.log
@@ -1256,4 +1257,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-04-15 23:59:45.102914`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-04-29 11:24:21.484924`*
