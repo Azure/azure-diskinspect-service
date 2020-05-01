@@ -26,5 +26,8 @@ copy,/WindowsAzure/Logs/WaAppAgent.log
 copy,/WindowsAzure/Logs/AggregateStatus/aggregatestatus*.json
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Compute.VMAccessAgent/*/JsonVMAccessExtension.log
 
+echo,### Servicing ###
+copy,/Windows/servicing/sessions/sessions.xml
+
 echo,### Gathering Disk Info ###
 diskinfo,
