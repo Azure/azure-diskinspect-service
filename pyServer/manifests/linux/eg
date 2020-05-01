@@ -1,11 +1,13 @@
 echo,### Probing Directories ###
 ll,/var/log
+ll,/var/lib/cloud
+ll,/run/cloud-init
 ll,/var/lib/waagent
 ll,/etc/udev/rules.d
 
 echo,### Gathering Cloud-init Files ###
 copy,/var/log/cloud-init*
-copy,/var/cloud/cloud.cfg
+copy,/etc/cloud/cloud.cfg
 copy,/etc/cloud/cloud.cfg.d/*.cfg
 copy,/run/cloud-init/cloud.cfg
 copy,/run/cloud-init/ds-identify.log
@@ -13,23 +15,24 @@ copy,/run/cloud-init/result.json
 copy,/run/cloud-init/status.json
 echo,
 
-echo,### Gathering Waagent Files ###
+echo,### Gathering Waagent and Guest Extension Files ###
 copy,/var/log/waagent*
 copy,/etc/waagent.conf
 copy,/var/lib/waagent/provisioned
 copy,/var/lib/waagent/waagent_status.json
+copy,/var/lib/waagent/error.json
 echo,
 
-echo,### Gathering DHCP Files ###
+echo,### Gathering Dhcp and Dhclient Files ###
 copy,/run/systemd/netif/leases/*
-copy,/var/lib/dhcp/*.leases
-copy,/var/lib/dhcp/*.lease
-copy,/var/lib/dhclient/*.leases
-copy,/var/lib/dhclient/*.lease
-copy,/var/lib/NetworkManager/*.leases
 copy,/var/lib/NetworkManager/*.lease
-copy,/run/cloud-init/dhclient.hooks/*.json
+copy,/var/lib/NetworkManager/*.leases
 copy,/var/lib/wicked/lease*
+copy,/var/lib/dhclient/*.lease
+copy,/var/lib/dhclient/*.leases
+copy,/var/lib/dhcp/*.lease
+copy,/var/lib/dhcp/*.leases
+copy,/run/cloud-init/dhclient.hooks/*.json
 echo,
 
 echo,### Gathering Networking Files ###
@@ -38,49 +41,39 @@ copy,/etc/dhcp/*.conf
 copy,/etc/network/interfaces
 copy,/etc/network/interfaces.d/*.cfg
 copy,/etc/ufw/ufw.conf
+copy,/etc/ssh/sshd_config
+copy,/etc/nsswitch.conf
+copy,/etc/resolv.conf
+copy,/run/systemd/resolve/*.conf
+copy,/run/resolvconf/*.conf
 echo,
 
 echo,### Gathering NetworkManager Files ###
-copy,/var/lib/NetworkManager/*.conf
-copy,/var/lib/NetworkManager/conf.d/*.conf
-copy,/var/lib/NetworkManager/*.state
 copy,/usr/lib/NetworkManager/*.conf
 copy,/usr/lib/NetworkManager/conf.d/*.conf
 copy,/run/NetworkManager/*.conf
 copy,/run/NetworkManager/conf.d/*.conf
 copy,/etc/NetworkManager/*.conf
 copy,/etc/NetworkManager/conf.d/*.conf
+copy,/var/lib/NetworkManager/*.conf
+copy,/var/lib/NetworkManager/conf.d/*.conf
+copy,/var/lib/NetworkManager/*.state
 echo,
 
 echo,### Gathering Sysconfig Network Files ###
-copy,/etc/sysconfig/iptables
-copy,/etc/sysconfig/network
-copy,/etc/sysconfig/network/config
 copy,/etc/sysconfig/network/dhcp
-copy,/etc/sysconfig/network/ifcfg-*
-copy,/etc/sysconfig/network/routes
+copy,/etc/sysconfig/network
 copy,/etc/sysconfig/network-scripts/ifcfg-*
 copy,/etc/sysconfig/network-scripts/route-*
+copy,/etc/sysconfig/network/config
+copy,/etc/sysconfig/network/ifcfg-*
+copy,/etc/sysconfig/network/routes
+copy,/etc/sysconfig/iptables
 copy,/etc/sysconfig/SuSEfirewall2
 echo,
 
 echo,### Gathering Wicked Network Files ###
 copy,/etc/wicked/*.xml
-echo,
-
-echo,### Gathering resolv.conf Files ###
-copy,/etc/resolv.conf
-copy,/run/systemd/resolve/*.conf
-copy,/run/resolvconf/*.conf
-echo,
-
-echo,### Gathering System Configuration Files ###
-copy,/etc/fstab
-copy,/boot/grub*/grub.c*
-copy,/boot/grub*/menu.lst
-copy,/etc/*-release
-copy,/etc/HOSTNAME
-copy,/etc/hostname
 echo,
 
 echo,### Gathering Package Management Log Files ###
@@ -98,6 +91,15 @@ copy,/var/log/dmesg*
 copy,/var/log/boot*
 copy,/var/log/auth*
 copy,/var/log/secure*
+echo,
+
+echo,### Gathering System Configuration Files ###
+copy,/etc/fstab
+copy,/boot/grub*/grub.c*
+copy,/boot/grub*/menu.lst
+copy,/etc/*-release
+copy,/etc/HOSTNAME
+copy,/etc/hostname
 echo,
 
 echo,### Gathering Disk Info ###
