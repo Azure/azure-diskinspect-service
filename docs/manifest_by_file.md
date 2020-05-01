@@ -43,16 +43,21 @@ File Path | Manifest
 /boot/grub\*/grub.c\* | diagnostic, eg 
 /boot/grub\*/menu.lst | diagnostic, eg 
 /etc/HOSTNAME | agents, diagnostic, eg, lad, site-recovery, workloadbackup 
+/etc/NetworkManager/\*.conf | eg 
+/etc/NetworkManager/conf.d/\*.conf | eg 
 /etc/\*-release | agents, diagnostic, eg, site-recovery, workloadbackup 
 /etc/ambari-agent/conf/\* | hdinsight 
 /etc/ambari-server/conf/\* | hdinsight 
+/etc/cloud/cloud.cfg.d/\*.cfg | eg 
+/etc/dhcp/\*.conf | eg 
 /etc/fstab | diagnostic, eg, normal 
 /etc/hadoop/conf/\* | hdinsight 
 /etc/hbase/conf/\* | hdinsight 
 /etc/hive2/conf/\* | hdinsight 
 /etc/hostname | agents, diagnostic, eg, genspec, lad, site-recovery, workloadbackup 
 /etc/hosts | hdinsight 
-/etc/netplan/50-cloud-init.yaml | diagnostic, eg 
+/etc/netplan/50-cloud-init.yaml | diagnostic 
+/etc/netplan/\*.yaml | eg 
 /etc/network/interfaces | diagnostic, eg 
 /etc/network/interfaces.d/\*.cfg | diagnostic, eg 
 /etc/nsswitch.conf | diagnostic 
@@ -68,12 +73,18 @@ File Path | Manifest
 /etc/sysconfig/SuSEfirewall2 | diagnostic, eg 
 /etc/sysconfig/iptables | diagnostic, eg 
 /etc/sysconfig/network | diagnostic, eg 
-/etc/sysconfig/network-scripts/ifcfg-eth\* | diagnostic, eg 
-/etc/sysconfig/network-scripts/route-eth\* | diagnostic, eg 
-/etc/sysconfig/network/ifcfg-eth\* | diagnostic, eg 
+/etc/sysconfig/network-scripts/ifcfg-\* | eg 
+/etc/sysconfig/network-scripts/ifcfg-eth\* | diagnostic 
+/etc/sysconfig/network-scripts/route-\* | eg 
+/etc/sysconfig/network-scripts/route-eth\* | diagnostic 
+/etc/sysconfig/network/config | eg 
+/etc/sysconfig/network/dhcp | eg 
+/etc/sysconfig/network/ifcfg-\* | eg 
+/etc/sysconfig/network/ifcfg-eth\* | diagnostic 
 /etc/sysconfig/network/routes | diagnostic, eg 
 /etc/ufw/ufw.conf | diagnostic, eg 
 /etc/waagent.conf | agents, diagnostic, eg, site-recovery, workloadbackup 
+/etc/wicked/\*.xml | eg 
 /opt/microsoft/servicefabric/bin/Fabric/Fabric.Code/Fabric | servicefabric 
 /opt/msawb/bin/AzureWLBackupCommonManagementSettings.json | workloadbackup 
 /opt/msawb/bin/AzureWLBackupMonitoringSync_config.json | workloadbackup 
@@ -87,12 +98,34 @@ File Path | Manifest
 /opt/msawb/var/lib/catalog/WorkloadSchedules/\*/\*.bin | workloadbackup 
 /opt/msawb/var/log/\*/\*/\* | workloadbackup 
 /opt/msawb/var/log/\*/\*/\*/\*/\* | workloadbackup 
-/run/resolvconf/resolv.conf | diagnostic, eg 
-/run/systemd/resolve/stub-resolv.conf | diagnostic, eg 
+/run/NetworkManager/\*.conf | eg 
+/run/NetworkManager/conf.d/\*.conf | eg 
+/run/cloud-init/cloud.cfg | eg 
+/run/cloud-init/dhclient.hooks/\*.json | eg 
+/run/cloud-init/ds-identify.log | eg 
+/run/cloud-init/result.json | eg 
+/run/cloud-init/status.json | eg 
+/run/resolvconf/\*.conf | eg 
+/run/resolvconf/resolv.conf | diagnostic 
+/run/systemd/netif/leases/\* | eg 
+/run/systemd/resolve/\*.conf | eg 
+/run/systemd/resolve/stub-resolv.conf | diagnostic 
 /tmp/omsagent\*.tgz | monitor-mgmt 
+/usr/lib/NetworkManager/\*.conf | eg 
+/usr/lib/NetworkManager/conf.d/\*.conf | eg 
+/var/cloud/cloud.cfg | eg 
 /var/lib/.jupyter/jupyter_notebook_config.py | hdinsight 
-/var/lib/dhclient/dhclient-eth0.leases | diagnostic, eg 
-/var/lib/dhcp/dhclient.eth0.leases | diagnostic, eg 
+/var/lib/NetworkManager/\*.conf | eg 
+/var/lib/NetworkManager/\*.lease | eg 
+/var/lib/NetworkManager/\*.leases | eg 
+/var/lib/NetworkManager/\*.state | eg 
+/var/lib/NetworkManager/conf.d/\*.conf | eg 
+/var/lib/dhclient/\*.lease | eg 
+/var/lib/dhclient/\*.leases | eg 
+/var/lib/dhclient/dhclient-eth0.leases | diagnostic 
+/var/lib/dhcp/\*.lease | eg 
+/var/lib/dhcp/\*.leases | eg 
+/var/lib/dhcp/dhclient.eth0.leases | diagnostic 
 /var/lib/docker/containers/\*/\*-json.log | aks 
 /var/lib/waagent/ExtensionsConfig.\*.xml | diagnostic, lad 
 /var/lib/waagent/GoalState.\*.xml | diagnostic, site-recovery, workloadbackup 
@@ -121,8 +154,9 @@ File Path | Manifest
 /var/lib/waagent/error.json | agents, diagnostic 
 /var/lib/waagent/history/\*.zip | agents, diagnostic 
 /var/lib/waagent/provisioned | diagnostic, eg, genspec 
-/var/lib/waagent/waagent_status.json | agents, diagnostic 
-/var/lib/wicked/lease-eth0-dhcp-ipv4.xml | diagnostic, eg 
+/var/lib/waagent/waagent_status.json | agents, diagnostic, eg 
+/var/lib/wicked/lease-eth0-dhcp-ipv4.xml | diagnostic 
+/var/lib/wicked/lease\* | eg 
 /var/log/AzureRcmCli.log | site-recovery 
 /var/log/ambari-agent/ambari-agent.log | hdinsight 
 /var/log/ambari-server/ambari-audit.log | hdinsight 
@@ -145,6 +179,7 @@ File Path | Manifest
 /var/log/boot\* | diagnostic, eg, normal 
 /var/log/cloud-init\* | aks, diagnostic, eg, normal 
 /var/log/dmesg\* | agents, diagnostic, eg, normal, site-recovery, workloadbackup 
+/var/log/dnf\* | eg 
 /var/log/dpkg.log | servicefabric 
 /var/log/dpkg\* | diagnostic, eg, normal 
 /var/log/evtcollforw\*.log | site-recovery 
@@ -486,4 +521,4 @@ File Path | Manifest
 /k/azure-vnet.log | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-04-29 11:24:21.484924`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-05-01 19:55:49.778694`*
