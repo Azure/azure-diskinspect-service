@@ -1,7 +1,7 @@
 echo,### EXPERIMENTAL FEATURE ###
 echo,### Registry Hives ###
-copy,/Windows/System32/config/SOFTWARE
-copy,/Windows/System32/config/SYSTEM
+copy,/Windows/System32/config/SOFTWARE,noscan
+copy,/Windows/System32/config/SYSTEM,noscan
 
 echo,### Event Logs ###
 copy,/Windows/System32/winevt/Logs/System.evtx

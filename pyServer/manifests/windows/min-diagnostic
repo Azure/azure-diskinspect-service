@@ -1,12 +1,12 @@
 echo,### Registry Hives ###
-copy,/Windows/System32/config/SOFTWARE
-copy,/Windows/System32/config/SYSTEM
+copy,/Windows/System32/config/SOFTWARE,noscan
+copy,/Windows/System32/config/SYSTEM,noscan
 
 echo,### Registry Hive Journals ###
-copy,/Windows/System32/config/SYSTEM.LOG1
-copy,/Windows/System32/config/SYSTEM.LOG2
-copy,/Windows/System32/config/SOFTWARE.LOG1
-copy,/Windows/System32/config/SOFTWARE.LOG2
+copy,/Windows/System32/config/SYSTEM.LOG1,noscan
+copy,/Windows/System32/config/SYSTEM.LOG2,noscan
+copy,/Windows/System32/config/SOFTWARE.LOG1,noscan
+copy,/Windows/System32/config/SOFTWARE.LOG2,noscan
 
 echo,### Event Logs ###
 copy,/Windows/System32/winevt/Logs/System.evtx
