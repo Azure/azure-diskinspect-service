@@ -490,7 +490,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
                 self.cloudEnv = str(postvars[b'cloudenv'][0], encoding='UTF-8')
                 self.telemetryLogger.info('Received Cloud Environment: ' + self.cloudEnv)
             else:
-                self.telemetryLogger.info('WARNING: Received Cloud Environment is invalid. Default \'Public\' will be used.')
+                self.telemetryLogger.info('WARNING: Received Cloud Environment is invalid. Default \'Prod\' will be used.')
                 self.cloudEnv = 'Prod'
 
             operationId, mode, modeMajorSkipTo, modeMinorSkipTo, storageAcctName, container_blob_name, storageUrl = self.ParseUrlArguments(self.path, sasKeyStr)                
