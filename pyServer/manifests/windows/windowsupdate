@@ -1,6 +1,6 @@
 echo,### EXPERIMENTAL FEATURE ###
 echo,### Registry Hives ###
-copy,/Boot/BCD
+copy,/Boot/BCD,noscan
 copy,/Windows/System32/config/SOFTWARE,noscan
 copy,/Windows/System32/config/SYSTEM,noscan
 
@@ -81,7 +81,7 @@ copy,/Windows/System32/Sysprep/Panther/IE/setuperr.log
 copy,/Windows/System32/Sysprep/Sysprep_succeeded.tag
 
 echo,### Plug and Play ###
-copy,/Windows/INF/netcfg*.*etl
+copy,/Windows/INF/netcfg*.*etl,noscan
 copy,/Windows/INF/setupapi.*.log
 
 echo,### Active Directory domain join ###
@@ -199,28 +199,28 @@ copy,/Windows/Logs/CBS/*.log
 copy,/Windows/Logs/CBS/*.cab
 copy,/Windows/Logs/DISM/*.log
 copy,/Windows/windowsupdate*.log
-copy,/Windows/Logs/WindowsUpdate/WindowsUpdate.*.etl
-copy,/Windows/Logs/SIH/SIH.*.etl
-copy,/Windows/Logs/NetSetup/*.etl
+copy,/Windows/Logs/WindowsUpdate/WindowsUpdate.*.etl,noscan
+copy,/Windows/Logs/SIH/SIH.*.etl,noscan
+copy,/Windows/Logs/NetSetup/*.etl,noscan
 copy,/Windows/WinSxS/pending.xml
 copy,/Windows/WinSxS/poqexec.log
 copy,/Users/*/AppData/Local/microsoft/windows/windowsupdate.log
 copy,/Windows/Logs/dpx/*.log
 copy,/Windows/SoftwareDistribution/ReportingEvents.log
 copy,/Windows/SoftwareDistribution/DeliveryOptimization/SavedLogs/*.log
-copy,/Windows/SoftwareDistribution/DeliveryOptimization/SavedLogs/*.etl
+copy,/Windows/SoftwareDistribution/DeliveryOptimization/SavedLogs/*.etl,noscan
 copy,/Windows/SoftwareDistribution/Plugins/7D5F3CBA-03DB-4BE5-B4B36DBED19A6833/TokenRetrieval.log
 copy,/Windows/servicing/sessions/sessions.xml
 copy,/Windows/Logs/MoSetup/UpdateAgent.log
 copy,/Windows/SoftwareDistribution/Download/*/*/*.xml
 copy,/Windows/SoftwareDistribution/Download/*/*/*.log
 copy,/ProgramData/UsoPrivate/UpdateStore/*.xml
-copy,/ProgramData/USOShared/Logs/*.etl
+copy,/ProgramData/USOShared/Logs/*.etl,noscan
 copy,/Users/*/AppData/Local/Temp/winstore.log
 copy,/Users/*/AppData/Local/Packages/WinStore_cw5n1h2txyewy/AC/Temp/winstore.log
-copy,/Windows/SoftwareDistribution/datastore/DataStore.edb
-copy,/WindowsUpdateVerbose.etl
-copy,/Windows/ServiceProfiles/NetworkService/AppData/Local/Microsoft/Windows/DeliveryOptimization/Logs/*.etl
+copy,/Windows/SoftwareDistribution/datastore/DataStore.edb,noscan
+copy,/WindowsUpdateVerbose.etl,noscan
+copy,/Windows/ServiceProfiles/NetworkService/AppData/Local/Microsoft/Windows/DeliveryOptimization/Logs/*.etl,noscan
 copy,/Windows/ServiceProfiles/LocalService/AppData/Local/Microsoft/WSLicense/tokens.dat
 copy,/Windows/SoftwareDistribution/Plugins/7D5F3CBA-03DB-4BE5-B4B36DBED19A6833/117CAB2D-82B1-4B5A-A08C-4D62DBEE7782.cache
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WindowsUpdateClient%%4Operational.evtx
@@ -241,7 +241,7 @@ copy,/$Windows.~BT/Sources/Panther/miglog.xml
 copy,/Windows/Logs/SetupCleanupTask/setupact.log
 copy,/Windows/Logs/SetupCleanupTask/setuperr.log
 copy,/Windows.old/Windows/Logs/mosetup/bluebox.log
-copy,/Windows.old/Windows/Logs/WindowsUpdate/*.etl
+copy,/Windows.old/Windows/Logs/WindowsUpdate/*.etl,noscan
 copy,/Windows.old/Windows/SoftwareDistribution/ReportingEvents.log
 copy,/Windows.old/ProgramData/USOPrivate/UpdateStore
 copy,/Windows.old/ProgramData/USOShared/Logs
@@ -259,7 +259,7 @@ copy,/Program Files (x86)/Microsoft Azure Site Recovery/agent/evtcollforw*.log
 echo,### Windows Firewall ###
 copy,/Windows/System32/LogFiles/Firewall/pfirewall.log
 copy,/Windows/System32/LogFiles/Firewall/pfirewall.log.old
-copy,/Windows/Logs/waasmedic/waasmedic.*.etl
+copy,/Windows/Logs/waasmedic/waasmedic.*.etl,noscan
 
 echo,### System Restore ###
 copy,/Windows/Logs/SystemRestore/*.*

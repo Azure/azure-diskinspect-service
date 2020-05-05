@@ -43,8 +43,7 @@ class GuestFishWrapper:
         self.osType = "unknown"
         self.operationOutFilename = self.outputDirName + os.sep + 'results.txt'
         self.registryFilename= self.outputDirName + os.sep + 'registry.json'
-        #self.scanFileListFilename = self.outputDirName + os.sep + 'scanfilelist.tsv'
-        self.scanFileListFilename = '/home/ciadmin/projects/CredScanProj/' + 'scanfilelist.tsv'
+        self.scanFileListFilename = self.outputDirName + os.sep + 'scanfilelist.tsv'
         # The registry object has a small cache, try to persist across calls to the same VM partition
         self.guest_registry = None
         self.has_registry_file = False
@@ -572,7 +571,7 @@ class GuestFishWrapper:
 
             # Scan results for secrets
             if self.runWithCredscan:
-                self.RunCredentialScanner(self.scanFileListFilename, targetDir, operationOutFile)
+                self.RunCredentialScanner(self.scanFileListFilename, requestDir, operationOutFile)
 
         self.rootLogger.info("Current working directory: " + str(os.getcwd()))     
 
