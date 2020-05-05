@@ -209,12 +209,12 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
     """
     Select storage url based on cloud environment
     """
-    def StoregUrlPostFix(self, cloudEnv):
+    def StoregUrlPostFix(self):
         switcher={
             'Prod':'.blob.core.windows.net',
             'Fairfax':'.blob.core.usgovcloudapi.net'
         }
-        return switcher.get(cloudEnv,".blob.core.windows.net")
+        return switcher.get(self.cloudEnv,".blob.core.windows.net")
 
     """
     Select blob upload storage url suffix based on cloud environment
@@ -230,7 +230,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
     """
     Parse the URL POST parameters
     """
-    def ParseUrlArguments(self, urlPath, sasKey, cloudEnv):
+    def ParseUrlArguments(self, urlPath, sasKey):
         urlObj = urllib.parse.urlparse(urlPath)
         urlSplit = urlObj.path.split('/')
         if not len(urlSplit) >= 5:
@@ -259,7 +259,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
             urlSplitIndex = urlSplitIndex + 1
         
         storageUrl = urllib.parse.urlunparse(
-                ('https', storageAcctName + self.StoregUrlPostFix(cloudEnv), container_blob_name, '', sasKey, None))
+                ('https', storageAcctName + self.StoregUrlPostFix(), container_blob_name, '', sasKey, None))
             
         return operationId, mode, modeMajorSkipTo, modeMinorSkipTo, storageAcctName, container_blob_name, storageUrl
 
@@ -493,7 +493,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
                 self.telemetryLogger.info('WARNING: Received Cloud Environment is invalid. Default \'Public\' will be used.')
                 self.cloudEnv = 'Prod'
 
-            operationId, mode, modeMajorSkipTo, modeMinorSkipTo, storageAcctName, container_blob_name, storageUrl = self.ParseUrlArguments(self.path, sasKeyStr, self.cloudEnv)                
+            operationId, mode, modeMajorSkipTo, modeMinorSkipTo, storageAcctName, container_blob_name, storageUrl = self.ParseUrlArguments(self.path, sasKeyStr)                
 
             if b'credscan' in postvars:
                 credscanStr = str(postvars[b'credscan'][0], encoding='UTF-8')
