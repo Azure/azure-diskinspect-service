@@ -112,23 +112,6 @@ copy,/var/log/azure/custom-script/handler.log
 copy,/var/log/azure/run-command/handler.log
 echo,
 
-<<<<<<< HEAD
-echo,### Gathering Extension Files ###
-copy,/var/lib/waagent/ExtensionsConfig.*.xml
-copy,/var/lib/waagent/*/status/*.status
-copy,/var/lib/waagent/*/config/*.settings
-copy,/var/lib/waagent/*/config/HandlerState
-copy,/var/lib/waagent/*/config/HandlerStatus
-copy,/var/lib/waagent/GoalState.*.xml
-copy,/var/lib/waagent/HostingEnvironmentConfig.xml
-copy,/var/lib/waagent/*.manifest.xml
-copy,/var/lib/waagent/SharedConfig.xml
-copy,/var/lib/waagent/ManagedIdentity-*.json
-copy,/var/lib/waagent/error.json
-copy,/var/lib/waagent/Incarnation
-copy,/var/lib/waagent/waagent_status.json
-copy,/var/lib/waagent/history/*.zip,noscan
-=======
 echo,### Gathering System Configuration Files ###
 copy,/etc/fstab
 copy,/boot/grub*/grub.c*
@@ -136,7 +119,6 @@ copy,/boot/grub*/menu.lst
 copy,/etc/*-release
 copy,/etc/HOSTNAME
 copy,/etc/hostname
->>>>>>> master
 echo,
 
 echo,### Gathering Disk Info ###
