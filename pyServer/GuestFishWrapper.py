@@ -546,7 +546,7 @@ class GuestFishWrapper:
                                         self.do_opcommand_registry(guestfish, opParam1, operationOutFile)
 
                                 # done processing the manifest for this partition, check to see if we need to close
-                                self.registry_close() 
+                                self.registry_close(scanFileListFile) 
             
 
                         finally:                        
@@ -596,10 +596,11 @@ class GuestFishWrapper:
             else:
                 self.WriteToResultFile(operationOutFile, registry_path + " could not be read")  
 
-    def registry_close(self):      
+    def registry_close(self, scanFileListFile):      
         if (self.has_registry_file):
             with open(self.registryFilename, "a", newline="\r\n") as registryOutFile:
                 self.WriteToResultFile(registryOutFile,'}')
+            self.WriteToScanFileListFile(scanFileListFile, self.registryFilename)
             self.guest_registry.clean_up()
             self.has_registry_file = False
 

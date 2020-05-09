@@ -12,7 +12,7 @@ echo,### Docker and Kubelet logs ###
 copy,/var/log/azure/docker-status.log
 copy,/var/log/azure/kubelet-status.log
 copy,/var/log/azure/kern.log
-copy,/var/log/journal/*/*
+copy,/var/log/journal/*/*,noscan
 
 echo,### CNI logs ###
 copy,/var/log/azure-vnet* 

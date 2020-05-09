@@ -17,13 +17,13 @@ copy,/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Runtime.e
 copy,/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Status%4GuestAgent.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Status%4Plugins.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-SMA%4Operational.evtx
-copy,/Windows/System32/winevt/Logs/Microsoft-SMA%4Debug.etl
+copy,/Windows/System32/winevt/Logs/Microsoft-SMA%4Debug.etl,noscan
 copy,/Windows/System32/winevt/Logs/Microsoft-Automation%4Operational.evtx
 
 
 echo,#Windows Update Logs
 copy,/Windows/WindowsUpdate.log
-copy,/Windows/Logs/WindowsUpdate/WindowsUpdate.*.etl
+copy,/Windows/Logs/WindowsUpdate/WindowsUpdate.*.etl,noscan
 copy,/Windows/SoftwareDistribution/ReportingEvents.log
 
 echo,#Agent Trace Logs
