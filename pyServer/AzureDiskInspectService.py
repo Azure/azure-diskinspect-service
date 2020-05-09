@@ -209,18 +209,28 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
     """
     Select storage url based on cloud environment
     """
-    def StoregUrlPostFix(self, cloudEnv):
+    def StoregUrlPostFix(self):
         switcher={
             'Prod':'.blob.core.windows.net',
             'Fairfax':'.blob.core.usgovcloudapi.net'
         }
-        return switcher.get(cloudEnv,".blob.core.windows.net")
+        return switcher.get(self.cloudEnv,".blob.core.windows.net")
+
+    """
+    Select blob upload storage url suffix based on cloud environment
+    """
+    def BlobUploadUrlSuffix(self):
+        switcher={
+            'Prod':'core.windows.net',
+            'Fairfax':'core.usgovcloudapi.net'
+        }
+        return switcher.get(self.cloudEnv,"core.windows.net")
 
 
     """
     Parse the URL POST parameters
     """
-    def ParseUrlArguments(self, urlPath, sasKey, cloudEnv):
+    def ParseUrlArguments(self, urlPath, sasKey):
         urlObj = urllib.parse.urlparse(urlPath)
         urlSplit = urlObj.path.split('/')
         if not len(urlSplit) >= 5:
@@ -249,7 +259,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
             urlSplitIndex = urlSplitIndex + 1
         
         storageUrl = urllib.parse.urlunparse(
-                ('https', storageAcctName + self.StoregUrlPostFix(cloudEnv), container_blob_name, '', sasKey, None))
+                ('https', storageAcctName + self.StoregUrlPostFix(), container_blob_name, '', sasKey, None))
             
         return operationId, mode, modeMajorSkipTo, modeMinorSkipTo, storageAcctName, container_blob_name, storageUrl
 
@@ -315,7 +325,8 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
         retryRemaining = 3
         while retryRemaining > 0:
             try:
-                sas_service = BlockBlobService(account_name=self.destination_storage_account, sas_token=self.destination_sas_token)
+                self.telemetryLogger.info("Cloud Environment: " + self.cloudEnv)
+                sas_service = BlockBlobService(account_name=self.destination_storage_account, sas_token=self.destination_sas_token, endpoint_suffix=self.BlobUploadUrlSuffix())
                 self.telemetryLogger.info('Uploading to Blob starting.')
                 start_time = datetime.now()
                 sas_service.create_blob_from_path(self.destination_container_name, self.destination_blob_name, file_name_full_path)
@@ -476,13 +487,13 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
 
             sasKeyStr = str(postvars[b'saskey'][0], encoding='UTF-8')
             if b'cloudenv' in postvars:
-                cloudEnv = str(postvars[b'cloudenv'][0], encoding='UTF-8')
-                self.telemetryLogger.info('Received Cloud Environment: ' + cloudEnv)
+                self.cloudEnv = str(postvars[b'cloudenv'][0], encoding='UTF-8')
+                self.telemetryLogger.info('Received Cloud Environment: ' + self.cloudEnv)
             else:
-                self.telemetryLogger.info('WARNING: Received Cloud Environment is invalid. Default \'Public\' will be used.')
-                cloudEnv = 'Prod'
+                self.telemetryLogger.info('WARNING: Received Cloud Environment is invalid. Default \'Prod\' will be used.')
+                self.cloudEnv = 'Prod'
 
-            operationId, mode, modeMajorSkipTo, modeMinorSkipTo, storageAcctName, container_blob_name, storageUrl = self.ParseUrlArguments(self.path, sasKeyStr, cloudEnv)                
+            operationId, mode, modeMajorSkipTo, modeMinorSkipTo, storageAcctName, container_blob_name, storageUrl = self.ParseUrlArguments(self.path, sasKeyStr)                
 
             if b'credscan' in postvars:
                 credscanStr = str(postvars[b'credscan'][0], encoding='UTF-8')
