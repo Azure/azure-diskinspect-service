@@ -29,7 +29,7 @@ copy,/Windows/System32/Sysprep/Panther/IE/setuperr.log
 copy,/Windows/System32/Sysprep/Sysprep_succeeded.tag
 
 echo,### Plug and Play ###
-copy,/Windows/Inf/netcfg*.*etl
+copy,/Windows/Inf/netcfg*.*etl,noscan
 copy,/Windows/Inf/setupapi.dev.log
 
 echo,### Active Directory domain join ###

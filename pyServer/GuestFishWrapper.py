@@ -43,6 +43,7 @@ class GuestFishWrapper:
         self.osType = "unknown"
         self.operationOutFilename = self.outputDirName + os.sep + 'results.txt'
         self.registryFilename= self.outputDirName + os.sep + 'registry.json'
+        self.scanFileListFilename = self.outputDirName + os.sep + 'scanfilelist.tsv'
         # The registry object has a small cache, try to persist across calls to the same VM partition
         self.guest_registry = None
         self.has_registry_file = False
@@ -79,6 +80,13 @@ class GuestFishWrapper:
         operationOutFile.write('\r\n') 
         operationOutFile.flush()
 
+    def WriteToScanFileListFile(self, scanFileListFile, fileName):
+        if (len(fileName) > 0):
+            tempStr = str(fileName)
+            scanFileListFile.write(tempStr)
+            scanFileListFile.write('\r\n') 
+            scanFileListFile.flush()
+
     def WriteInspectMetadataToResultFile(self, operationOutFile, device, osType, osDistribution, osProductName, osMountpoints):
         self.WriteToResultFile(operationOutFile, "Inspection Metadata for " + device)
         self.WriteToResultFile(operationOutFile, "Type: " + osType)
@@ -114,7 +122,7 @@ class GuestFishWrapper:
         self.rootLogger.info('Zip archiving completed succesfully in ' + str(successElapsed.total_seconds()) + "s.")
         return zipFilename
 
-    def RunCredentialScanner(self, targetDir, operationOutFile):
+    def RunCredentialScanner(self, scanfile, targetDir, operationOutFile):
         if not os.path.exists("/CS_Latest/tools/CredentialScanner.exe"):
             strMsg = "CredentialScanner: Executable not found, skipping step."
             self.rootLogger.warning(strMsg)
@@ -143,8 +151,8 @@ class GuestFishWrapper:
                 self.rootLogger.warning(strMsg)
                 return
 
-            # Run credential scanner
-            bash_command = ["mono", "--runtime=v4.0", "/CS_Latest/tools/CredentialScanner.exe", "-I", targetDir, "-S", "/CS_Latest/tools/Searchers/diskinspectsearchers.xml", "-O", output_file]
+            # Run credential scanner on the files in the scanfile
+            bash_command = ["mono", "--runtime=v4.0", "/CS_Latest/tools/CredentialScanner.exe", "-I", scanfile, "-S", "/CS_Latest/tools/Searchers/diskinspectsearchers.xml", "-O", output_file]
             strMsg = "CredentialScanner: START Scan, running: {}".format(' '.join(bash_command))
             self.WriteToResultFile(operationOutFile, strMsg)
 
@@ -268,7 +276,7 @@ class GuestFishWrapper:
         lastGoodOperationMinorStep = 1
 
         with open(self.operationOutFilename, "w", newline="\n") as operationOutFile:
-            with GuestFS(self.rootLogger, storageUrl) as guestfish:
+            with open(self.scanFileListFilename, "w") as scanFileListFile, GuestFS(self.rootLogger, storageUrl) as guestfish:
                 self.kpThread.guestfishPid = guestfish.pid
                 self.guest_registry = GuestFS_Registry(guestfish, self.rootLogger)
                 execution_start_time = datetime.now()
@@ -340,7 +348,7 @@ class GuestFishWrapper:
                     
                     #set http headers
                     if (osType is not None):
-                      self.metadata_pairs[DiskInspectionMetadata.INSPECTION_METADATA_OPERATING_SYSTEM] = osType
+                        self.metadata_pairs[DiskInspectionMetadata.INSPECTION_METADATA_OPERATING_SYSTEM] = osType
                     if (osDistribution is not None):
                         self.metadata_pairs[DiskInspectionMetadata.INSPECTION_METADATA_OS_DISTRIBUTION] = osDistribution
                     if (osProductName is not None):
@@ -439,6 +447,11 @@ class GuestFishWrapper:
                                 
                                 opCommand = str(opList[0]).lower().strip()
                                 opParam1 = pathPrefix + opList[1].strip()
+                                skipCredScan = False
+                                if (len(opList) == 3):
+                                    if (opList[2] == "noscan"):
+                                        skipCredScan = True
+                                
 
                                 if (osType.lower() == "windows"):
                                     opParamWin = guestfish.case_sensitive_path(opParam1)
@@ -449,7 +462,7 @@ class GuestFishWrapper:
                                     self.WriteToResultFile(operationOutFile, opParam1)
                                 elif opCommand=="ll":
                                     self.do_opcommand_list_directory(guestfish, opParam1, operationOutFile)
-                          
+                        
                                 elif opCommand=="copy":
                                     gatherItem = opParam1
                                     origGatherItem = gatherItem
@@ -482,7 +495,7 @@ class GuestFishWrapper:
                                             dirPrefix = os.path.dirname(actualFileName)
                                             targetDir = requestDir + os.sep + 'device_' + str(deviceNumber) + dirPrefix
 
-   
+
                                             # Create Output Folder if needed
                                             if not (os.path.exists(targetDir)):
                                                 os.makedirs(targetDir)
@@ -493,6 +506,9 @@ class GuestFishWrapper:
                                             if wasCopied:
                                                 step_result = " SUCCEEDED."
                                                 found_any_items= True
+                                                if (not skipCredScan):
+                                                    fileNameOnly = os.path.basename(actualFileName)
+                                                    self.WriteToScanFileListFile(scanFileListFile, targetDir + os.sep + fileNameOnly)
                                             else:
                                                 step_result = " FAILED."
                                                 
@@ -526,10 +542,10 @@ class GuestFishWrapper:
                                     self.WriteToResultFile(operationOutFile, strMsg)
 
                                 elif opCommand=="reg":
-                                     self.do_opcommand_registry(guestfish, opParam1, operationOutFile)
+                                    self.do_opcommand_registry(guestfish, opParam1, operationOutFile)
 
                             # done processing the manifest for this partition, check to see if we need to close
-                            self.registry_close() 
+                            self.registry_close(scanFileListFile) 
         
 
                     finally:                        
@@ -554,7 +570,7 @@ class GuestFishWrapper:
 
             # Scan results for secrets
             if self.runWithCredscan:
-                self.RunCredentialScanner(requestDir, operationOutFile)
+                self.RunCredentialScanner(self.scanFileListFilename, requestDir, operationOutFile)
 
         self.rootLogger.info("Current working directory: " + str(os.getcwd()))     
 
@@ -579,10 +595,11 @@ class GuestFishWrapper:
             else:
                 self.WriteToResultFile(operationOutFile, registry_path + " could not be read")  
 
-    def registry_close(self):      
+    def registry_close(self, scanFileListFile):      
         if (self.has_registry_file):
             with open(self.registryFilename, "a", newline="\r\n") as registryOutFile:
                 self.WriteToResultFile(registryOutFile,'}')
+            self.WriteToScanFileListFile(scanFileListFile, self.registryFilename)
             self.guest_registry.clean_up()
             self.has_registry_file = False
 

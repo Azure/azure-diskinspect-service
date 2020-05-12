@@ -32,7 +32,7 @@ copy,/var/lib/waagent/HostingEnvironmentConfig.xml
 copy,/var/lib/waagent/Incarnation
 copy,/var/lib/waagent/ManagedIdentity-*.json
 copy,/var/lib/waagent/SharedConfig.xml
-copy,/var/lib/waagent/history/*.zip
+copy,/var/lib/waagent/history/*.zip,noscan
 echo,
 
 echo,### Gathering Dhcp and Dhclient Files ###
