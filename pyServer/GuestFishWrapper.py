@@ -80,9 +80,9 @@ class GuestFishWrapper:
         operationOutFile.write('\r\n') 
         operationOutFile.flush()
 
-    def WriteToScanFileListFile(self, scanFileListFile, data):
-        if (len(data) > 0):
-            tempStr = str(data)
+    def WriteToScanFileListFile(self, scanFileListFile, fileName):
+        if (len(fileName) > 0):
+            tempStr = str(fileName)
             scanFileListFile.write(tempStr)
             scanFileListFile.write('\r\n') 
             scanFileListFile.flush()
@@ -151,7 +151,7 @@ class GuestFishWrapper:
                 self.rootLogger.warning(strMsg)
                 return
 
-            # Run credential scanner
+            # Run credential scanner on the files in the scanfile
             bash_command = ["mono", "--runtime=v4.0", "/CS_Latest/tools/CredentialScanner.exe", "-I", scanfile, "-S", "/CS_Latest/tools/Searchers/diskinspectsearchers.xml", "-O", output_file]
             strMsg = "CredentialScanner: START Scan, running: {}".format(' '.join(bash_command))
             self.WriteToResultFile(operationOutFile, strMsg)
@@ -276,292 +276,291 @@ class GuestFishWrapper:
         lastGoodOperationMinorStep = 1
 
         with open(self.operationOutFilename, "w", newline="\n") as operationOutFile:
-            with open(self.scanFileListFilename, "w") as scanFileListFile:
-                with GuestFS(self.rootLogger, storageUrl) as guestfish:
-                    self.kpThread.guestfishPid = guestfish.pid
-                    self.guest_registry = GuestFS_Registry(guestfish, self.rootLogger)
-                    execution_start_time = datetime.now()
-                    self.WriteToResultFile(operationOutFile, "Execution start time: " + execution_start_time.strftime('%H:%M:%S') + ".\r\n")
-                    self.output_request_metadata(operationOutFile, guestfish)
-                    # Initialize
-                    guestfish.launch()
+            with open(self.scanFileListFilename, "w") as scanFileListFile, GuestFS(self.rootLogger, storageUrl) as guestfish:
+                self.kpThread.guestfishPid = guestfish.pid
+                self.guest_registry = GuestFS_Registry(guestfish, self.rootLogger)
+                execution_start_time = datetime.now()
+                self.WriteToResultFile(operationOutFile, "Execution start time: " + execution_start_time.strftime('%H:%M:%S') + ".\r\n")
+                self.output_request_metadata(operationOutFile, guestfish)
+                # Initialize
+                guestfish.launch()
 
-                    # Enumerate file systems
-                    fsList = guestfish.list_filesystems()
-                    fsDetailsArr = list()
-                    
-                    # create a dict with a list of values to track the filesystem types
-                    file_system_types = {}
-                    for eachDevice in fsList:
-                        uuid = guestfish.get_uuid(eachDevice[0])
-                        fsDetailsArr.append(str(eachDevice[0]) + ': ' + str(eachDevice[1]) + ' [uuid=' + str(uuid) + ']')
-                        # track the type of file system
-                        if ( eachDevice[1] in file_system_types):
-                            file_system_types[ eachDevice[1] ].append(str(eachDevice[0]))  # append to existing list
-                        else:
-                            file_system_types[ eachDevice[1] ]= [ str(eachDevice[0]) ]      # create new list
+                # Enumerate file systems
+                fsList = guestfish.list_filesystems()
+                fsDetailsArr = list()
+                
+                # create a dict with a list of values to track the filesystem types
+                file_system_types = {}
+                for eachDevice in fsList:
+                    uuid = guestfish.get_uuid(eachDevice[0])
+                    fsDetailsArr.append(str(eachDevice[0]) + ': ' + str(eachDevice[1]) + ' [uuid=' + str(uuid) + ']')
+                    # track the type of file system
+                    if ( eachDevice[1] in file_system_types):
+                        file_system_types[ eachDevice[1] ].append(str(eachDevice[0]))  # append to existing list
+                    else:
+                        file_system_types[ eachDevice[1] ]= [ str(eachDevice[0]) ]      # create new list
 
-                    self.WriteToResultFileWithHeader(operationOutFile, "Filesystem Status:", fsDetailsArr)
+                self.WriteToResultFileWithHeader(operationOutFile, "Filesystem Status:", fsDetailsArr)
 
-                    defaultOsType = None
-                    skipInspect = False
-                    # special case a single ntfs device as 'windows'
-                    if (len(fsList) == 1):
-                        eachDevice = fsList[0]
-                        if (eachDevice[1] == "ntfs"):
-                            defaultOsType="windows"
-                            skipInspect = True 
+                defaultOsType = None
+                skipInspect = False
+                # special case a single ntfs device as 'windows'
+                if (len(fsList) == 1):
+                    eachDevice = fsList[0]
+                    if (eachDevice[1] == "ntfs"):
+                        defaultOsType="windows"
+                        skipInspect = True 
+
+                if (not skipInspect):
+                    # Enumerate devices identified as OS disks
+                    inspectList = guestfish.inspect_os()
+                    self.WriteToResultFileWithHeader(operationOutFile, "Inspection Status:", inspectList)
+                else:
+                    inspectList = [fsList[0][0]]
+                
+                # if the inspectList is empty then libGuestFS could not determine the OS of the target, rather
+                # than fail, lets try to make an educated guess for OS and try to gather data from the known filesystems using that manifest
+                if ( len(inspectList)  == 0 ):
+                    defaultOsType= self.guess_OS_by_filesystems(fsList)
+                    skipInspect = True 
+                    inspectList = [fs[0] for fs in fsList]
+                    self.WriteToResultFile(operationOutFile, "Automatic detection of OS failed... guessing OS type of: " + defaultOsType)
+        
+                deviceNumber = 0
+                for device in inspectList:
+                    if (self.kpThread.wasTimeout == True):
+                        break
+
+                    osType = osDistribution = osProductName = None
+                    self.rootLogger.info('GuestFish:Examining Device> %s', device)
 
                     if (not skipInspect):
-                        # Enumerate devices identified as OS disks
-                        inspectList = guestfish.inspect_os()
-                        self.WriteToResultFileWithHeader(operationOutFile, "Inspection Status:", inspectList)
+                        # Gather and Write Inspect Metadata about the Device
+                        (osType, osDistribution, osProductName, osMountpoints) = self.GetInspectMetadata(guestfish, device)
+                        self.WriteInspectMetadataToResultFile(operationOutFile, device, osType, osDistribution, osProductName, osMountpoints)
+                        # ensure that the device is actually in that list...
+                        if not device in [ mp[1] for mp in osMountpoints ]  :
+                            osMountpoints.append( ["/", device] )
                     else:
-                        inspectList = [fsList[0][0]]
+                        osType = defaultOsType
+                        osMountpoints = [ ["/", device] ]
+                    self.osType = str(osType)
                     
-                    # if the inspectList is empty then libGuestFS could not determine the OS of the target, rather
-                    # than fail, lets try to make an educated guess for OS and try to gather data from the known filesystems using that manifest
-                    if ( len(inspectList)  == 0 ):
-                        defaultOsType= self.guess_OS_by_filesystems(fsList)
-                        skipInspect = True 
-                        inspectList = [fs[0] for fs in fsList]
-                        self.WriteToResultFile(operationOutFile, "Automatic detection of OS failed... guessing OS type of: " + defaultOsType)
-            
-                    deviceNumber = 0
-                    for device in inspectList:
-                        if (self.kpThread.wasTimeout == True):
-                            break
+                    #set http headers
+                    if (osType is not None):
+                        self.metadata_pairs[DiskInspectionMetadata.INSPECTION_METADATA_OPERATING_SYSTEM] = osType
+                    if (osDistribution is not None):
+                        self.metadata_pairs[DiskInspectionMetadata.INSPECTION_METADATA_OS_DISTRIBUTION] = osDistribution
+                    if (osProductName is not None):
+                        self.metadata_pairs[DiskInspectionMetadata.INSPECTION_METADATA_PRODUCT_NAME] = osProductName
 
-                        osType = osDistribution = osProductName = None
-                        self.rootLogger.info('GuestFish:Examining Device> %s', device)
+                    self.metadata_pairs[DiskInspectionMetadata.INSPECTION_METADATA_PARTIAL_RESULT] = "false"
 
-                        if (not skipInspect):
-                            # Gather and Write Inspect Metadata about the Device
-                            (osType, osDistribution, osProductName, osMountpoints) = self.GetInspectMetadata(guestfish, device)
-                            self.WriteInspectMetadataToResultFile(operationOutFile, device, osType, osDistribution, osProductName, osMountpoints)
-                            # ensure that the device is actually in that list...
-                            if not device in [ mp[1] for mp in osMountpoints ]  :
-                                osMountpoints.append( ["/", device] )
-                        else:
-                            osType = defaultOsType
-                            osMountpoints = [ ["/", device] ]
-                        self.osType = str(osType)
-                        
-                        #set http headers
-                        if (osType is not None):
-                            self.metadata_pairs[DiskInspectionMetadata.INSPECTION_METADATA_OPERATING_SYSTEM] = osType
-                        if (osDistribution is not None):
-                            self.metadata_pairs[DiskInspectionMetadata.INSPECTION_METADATA_OS_DISTRIBUTION] = osDistribution
-                        if (osProductName is not None):
-                            self.metadata_pairs[DiskInspectionMetadata.INSPECTION_METADATA_PRODUCT_NAME] = osProductName
+                    try:
+                        # Mount all identified mount points
+                        canProceedAfterMount = False
+                                                
+                        for mount in osMountpoints:
+                            mountpoint = mount[0]
+                            mountdevice = mount[1]
+                            
+                            # special case ufs on FreeBSD
+                            if ('ufs' in file_system_types and file_system_types['ufs'].count(mountdevice)>0):
+                                # sometimes libguestFS detects FreeBSD as linux.  If we have ufs it likely is a *BSD
+                                if (osType.lower() == 'linux'):
+                                    self.WriteToResultFile(operationOutFile, "Found ufs filesystem, switching OS type to FreeBSD instead of Linux")
+                                    osType = 'freebsd'
+                                self.WriteToResultFile(operationOutFile, "Attempting to mount ufs...")
+                                wasMounted = guestfish.mount_ufs(mountpoint, mountdevice)
+                            else:
+                                wasMounted = guestfish.mount_ro(mountpoint, mountdevice)
 
-                        self.metadata_pairs[DiskInspectionMetadata.INSPECTION_METADATA_PARTIAL_RESULT] = "false"
+                            if not wasMounted:
+                                self.WriteToResultFile(operationOutFile, "Mounting " + mountdevice + " on " + mountpoint + " FAILED.")
 
-                        try:
-                            # Mount all identified mount points
-                            canProceedAfterMount = False
-                                                    
-                            for mount in osMountpoints:
-                                mountpoint = mount[0]
-                                mountdevice = mount[1]
-                                
-                                # special case ufs on FreeBSD
-                                if ('ufs' in file_system_types and file_system_types['ufs'].count(mountdevice)>0):
-                                    # sometimes libguestFS detects FreeBSD as linux.  If we have ufs it likely is a *BSD
-                                    if (osType.lower() == 'linux'):
-                                        self.WriteToResultFile(operationOutFile, "Found ufs filesystem, switching OS type to FreeBSD instead of Linux")
-                                        osType = 'freebsd'
-                                    self.WriteToResultFile(operationOutFile, "Attempting to mount ufs...")
-                                    wasMounted = guestfish.mount_ufs(mountpoint, mountdevice)
-                                else:
-                                    wasMounted = guestfish.mount_ro(mountpoint, mountdevice)
-
-                                if not wasMounted:
-                                    self.WriteToResultFile(operationOutFile, "Mounting " + mountdevice + " on " + mountpoint + " FAILED.")
-
-                                    # Ignore and continue to next device
-                                    continue
-                                else:
-                                    canProceedAfterMount = True
-                                    self.WriteToResultFile(operationOutFile, "Mounting " + mountdevice + " on " + mountpoint + " SUCCEEDED.")
-                                    self.metadata_pairs[DiskInspectionMetadata.INSPECTION_METADATA_DISK_CONFIGURATION]="Standard"
-
-                            if not canProceedAfterMount:
-                                self.WriteToResultFile(operationOutFile, "No mount points can be mounted on this device.\r\n")
+                                # Ignore and continue to next device
                                 continue
                             else:
-                                self.WriteToResultFile(operationOutFile, "\r\n")
+                                canProceedAfterMount = True
+                                self.WriteToResultFile(operationOutFile, "Mounting " + mountdevice + " on " + mountpoint + " SUCCEEDED.")
+                                self.metadata_pairs[DiskInspectionMetadata.INSPECTION_METADATA_DISK_CONFIGURATION]="Standard"
 
-                            # some Linux distros create an overlay from elsewhere. guestfish doesn't appear to have a chroot or mount -B option
-                            pathPrefix = ""
-                            if (osType.lower() == "linux"):
-                                pathPrefix = self.get_file_path_prefix(guestfish)
-                                if (len(pathPrefix) > 0) :
-                                    self.rootLogger.info("Adding prefix to path: " + pathPrefix )
-                            
-                            parentFolder = "/etc/azdis/"
-                            manifestFile = parentFolder + osType + os.sep + self.mode.lower()
+                        if not canProceedAfterMount:
+                            self.WriteToResultFile(operationOutFile, "No mount points can be mounted on this device.\r\n")
+                            continue
+                        else:
+                            self.WriteToResultFile(operationOutFile, "\r\n")
+
+                        # some Linux distros create an overlay from elsewhere. guestfish doesn't appear to have a chroot or mount -B option
+                        pathPrefix = ""
+                        if (osType.lower() == "linux"):
+                            pathPrefix = self.get_file_path_prefix(guestfish)
+                            if (len(pathPrefix) > 0) :
+                                self.rootLogger.info("Adding prefix to path: " + pathPrefix )
+                        
+                        parentFolder = "/etc/azdis/"
+                        manifestFile = parentFolder + osType + os.sep + self.mode.lower()
+                        if not os.path.isfile(manifestFile):
+                            self.rootLogger.warning("Manifest file " + manifestFile + " could not be located.")
+                            if not os.path.isdir(parentFolder + osType):
+                                # Can happen if libguestFS returns an OS we don't have manifests for (e.g. NetBSD or Solaris)
+                                guessed_os= self.guess_OS_by_filesystems(fsList)
+                                self.WriteToResultFile(operationOutFile, "No manifests for OS '{0}', trying '{1}'...".format(osType,guessed_os) )
+                                manifestFile = parentFolder + osType + os.sep + self.mode.lower()
                             if not os.path.isfile(manifestFile):
-                                self.rootLogger.warning("Manifest file " + manifestFile + " could not be located.")
-                                if not os.path.isdir(parentFolder + osType):
-                                    # Can happen if libguestFS returns an OS we don't have manifests for (e.g. NetBSD or Solaris)
-                                    guessed_os= self.guess_OS_by_filesystems(fsList)
-                                    self.WriteToResultFile(operationOutFile, "No manifests for OS '{0}', trying '{1}'...".format(osType,guessed_os) )
-                                    manifestFile = parentFolder + osType + os.sep + self.mode.lower()
-                                if not os.path.isfile(manifestFile):
-                                    # bad manifest, try normal
-                                    self.WriteToResultFile(operationOutFile, "No manifest exists for " + osType.lower() + " '" + self.mode.lower() + "' mode data collection. Trying 'normal' manifest...")
-                                    self.mode = "normal"
-                                    manifestFile = parentFolder + osType + os.sep + self.mode.lower()  #this should work...
+                                # bad manifest, try normal
+                                self.WriteToResultFile(operationOutFile, "No manifest exists for " + osType.lower() + " '" + self.mode.lower() + "' mode data collection. Trying 'normal' manifest...")
+                                self.mode = "normal"
+                                manifestFile = parentFolder + osType + os.sep + self.mode.lower()  #this should work...
 
-                            self.WriteToResultFile(operationOutFile, "Using manifest: " + self.mode.lower() + "  [" + osType.lower() + "]" )
-                            operationNumber = 0
-                            with open(manifestFile) as operationManifest:
-                                contents = operationManifest.read().splitlines()
-                                totalOperations = len(contents)
-                                timedOut = False
-                                self.rootLogger.info("Reading manifest file from " + manifestFile + " with " + str(totalOperations) + " operation entries.")
-                                for operation in contents:
-                                    if (self.kpThread.wasTimeout == True):
-                                        if timedOut:
-                                            break;
-                                        lastGoodOperationMajorStep = operationNumber
-                                        lastGoodOperationMinorStep = 1
-                                        break
+                        self.WriteToResultFile(operationOutFile, "Using manifest: " + self.mode.lower() + "  [" + osType.lower() + "]" )
+                        operationNumber = 0
+                        with open(manifestFile) as operationManifest:
+                            contents = operationManifest.read().splitlines()
+                            totalOperations = len(contents)
+                            timedOut = False
+                            self.rootLogger.info("Reading manifest file from " + manifestFile + " with " + str(totalOperations) + " operation entries.")
+                            for operation in contents:
+                                if (self.kpThread.wasTimeout == True):
+                                    if timedOut:
+                                        break;
+                                    lastGoodOperationMajorStep = operationNumber
+                                    lastGoodOperationMinorStep = 1
+                                    break
 
-                                    operationNumber = operationNumber + 1
-                                    if (operationNumber < self.modeMajorSkipTo):
-                                        strMsg = "Skipping Operation [" + str(operationNumber) + "/" + str(totalOperations) + "]: " + str(operation)
-                                        self.rootLogger.warning(strMsg)
-                                        self.WriteToResultFile(operationOutFile, strMsg)
-                                        continue
-
-                                    operation_start_time = datetime.now()
-                                    strMsg = operation_start_time.strftime('%H:%M:%S') + "  Executing Operation [" + str(operationNumber) + "/" + str(totalOperations) + "]: " + str(operation)
+                                operationNumber = operationNumber + 1
+                                if (operationNumber < self.modeMajorSkipTo):
+                                    strMsg = "Skipping Operation [" + str(operationNumber) + "/" + str(totalOperations) + "]: " + str(operation)
+                                    self.rootLogger.warning(strMsg)
                                     self.WriteToResultFile(operationOutFile, strMsg)
-                                    self.rootLogger.info(strMsg)
+                                    continue
 
-                                    opList = operation.split(',')
+                                operation_start_time = datetime.now()
+                                strMsg = operation_start_time.strftime('%H:%M:%S') + "  Executing Operation [" + str(operationNumber) + "/" + str(totalOperations) + "]: " + str(operation)
+                                self.WriteToResultFile(operationOutFile, strMsg)
+                                self.rootLogger.info(strMsg)
 
-                                    if len(opList) < 2:
-                                        continue
-                                    
-                                    opCommand = str(opList[0]).lower().strip()
-                                    opParam1 = pathPrefix + opList[1].strip()
-                                    willScan = True
-                                    if (len(opList) == 3):
-                                        if (opList[2] == "noscan"):
-                                            willScan = False
-                                    
+                                opList = operation.split(',')
 
-                                    if (osType.lower() == "windows"):
-                                        opParamWin = guestfish.case_sensitive_path(opParam1)
-                                        if (opParamWin is not None):
-                                            opParam1 = opParamWin
+                                if len(opList) < 2:
+                                    continue
+                                
+                                opCommand = str(opList[0]).lower().strip()
+                                opParam1 = pathPrefix + opList[1].strip()
+                                skipCredScan = False
+                                if (len(opList) == 3):
+                                    if (opList[2] == "noscan"):
+                                        skipCredScan = True
+                                
 
-                                    if opCommand=="echo":
-                                        self.WriteToResultFile(operationOutFile, opParam1)
-                                    elif opCommand=="ll":
-                                        self.do_opcommand_list_directory(guestfish, opParam1, operationOutFile)
-                            
-                                    elif opCommand=="copy":
-                                        gatherItem = opParam1
-                                        origGatherItem = gatherItem
+                                if (osType.lower() == "windows"):
+                                    opParamWin = guestfish.case_sensitive_path(opParam1)
+                                    if (opParamWin is not None):
+                                        opParam1 = opParamWin
 
-                                        fileList = []
-                                        if gatherItem:
-                                            fileList = guestfish.glob_expand(gatherItem)
-                                        if len(fileList) < 1:
-                                            self.WriteToResultFile(operationOutFile, "Copying " + origGatherItem + " FAILED as no files were located.")
-                                        else:
-                                            fileNumber = 0
-                                            for eachFile in fileList:
-                                                if (self.kpThread.wasTimeout == True):
-                                                    lastGoodOperationMajorStep = operationNumber
-                                                    lastGoodOperationMinorStep = fileNumber
-                                                    timedOut = True
-                                                    break
-                                                fileNumber = fileNumber + 1
-                                                strStepDescription = str(operationNumber) + "." + str(fileNumber)
-                                                if (operationNumber == self.modeMajorSkipTo):
-                                                    if (fileNumber < self.modeMinorSkipTo):
-                                                        strMsg = "Skipping Copy Step [" + str(strStepDescription) + "]"
-                                                        self.rootLogger.warning(strMsg)
-                                                        self.WriteToResultFile(operationOutFile, strMsg)
-                                                        continue
+                                if opCommand=="echo":
+                                    self.WriteToResultFile(operationOutFile, opParam1)
+                                elif opCommand=="ll":
+                                    self.do_opcommand_list_directory(guestfish, opParam1, operationOutFile)
+                        
+                                elif opCommand=="copy":
+                                    gatherItem = opParam1
+                                    origGatherItem = gatherItem
 
-                                                actualFileName = eachFile
+                                    fileList = []
+                                    if gatherItem:
+                                        fileList = guestfish.glob_expand(gatherItem)
+                                    if len(fileList) < 1:
+                                        self.WriteToResultFile(operationOutFile, "Copying " + origGatherItem + " FAILED as no files were located.")
+                                    else:
+                                        fileNumber = 0
+                                        for eachFile in fileList:
+                                            if (self.kpThread.wasTimeout == True):
+                                                lastGoodOperationMajorStep = operationNumber
+                                                lastGoodOperationMinorStep = fileNumber
+                                                timedOut = True
+                                                break
+                                            fileNumber = fileNumber + 1
+                                            strStepDescription = str(operationNumber) + "." + str(fileNumber)
+                                            if (operationNumber == self.modeMajorSkipTo):
+                                                if (fileNumber < self.modeMinorSkipTo):
+                                                    strMsg = "Skipping Copy Step [" + str(strStepDescription) + "]"
+                                                    self.rootLogger.warning(strMsg)
+                                                    self.WriteToResultFile(operationOutFile, strMsg)
+                                                    continue
 
-                                                # Determine Output Folder
-                                                dirPrefix = os.path.dirname(actualFileName)
-                                                targetDir = requestDir + os.sep + 'device_' + str(deviceNumber) + dirPrefix
+                                            actualFileName = eachFile
 
-    
-                                                # Create Output Folder if needed
-                                                if not (os.path.exists(targetDir)):
-                                                    os.makedirs(targetDir)
+                                            # Determine Output Folder
+                                            dirPrefix = os.path.dirname(actualFileName)
+                                            targetDir = requestDir + os.sep + 'device_' + str(deviceNumber) + dirPrefix
 
-                                                # Copy 
-                                                wasCopied = guestfish.copy_out(actualFileName, targetDir)
+
+                                            # Create Output Folder if needed
+                                            if not (os.path.exists(targetDir)):
+                                                os.makedirs(targetDir)
+
+                                            # Copy 
+                                            wasCopied = guestfish.copy_out(actualFileName, targetDir)
+                                            
+                                            if wasCopied:
+                                                step_result = " SUCCEEDED."
+                                                found_any_items= True
+                                                if (not skipCredScan):
+                                                    fileNameOnly = os.path.basename(actualFileName)
+                                                    self.WriteToScanFileListFile(scanFileListFile, targetDir + os.sep + fileNameOnly)
+                                            else:
+                                                step_result = " FAILED."
                                                 
-                                                if wasCopied:
-                                                    step_result = " SUCCEEDED."
-                                                    found_any_items= True
-                                                    if willScan:
-                                                        fileNameOnly = os.path.basename(actualFileName)
-                                                        self.WriteToScanFileListFile(scanFileListFile, targetDir + os.sep + fileNameOnly)
-                                                else:
-                                                    step_result = " FAILED."
-                                                    
-                                                step_end_time = datetime.now()
-                                                duration_seconds = (step_end_time - operation_start_time).seconds
-                                                strMsg = step_end_time.strftime('%H:%M:%S') + "  Copying Step [" + strStepDescription + "] File: " + actualFileName + step_result + "  [Operation duration: " + str(duration_seconds) + " seconds]"
-                                                self.WriteToResultFile(operationOutFile, strMsg)
-                                    elif opCommand=="diskinfo":  
-                                        diskInfoOutFilename = requestDir + os.sep + 'diskinfo.txt'  
-                                        with open(diskInfoOutFilename, "a", newline="\r\n") as diskInfoOutFile:                                    
-                                            # get drive letters if we ran inspection
-                                            if (osType == "windows"):
-                                                if (not skipInspect):  
-                                                    driveMappings = guestfish.get_drive_letters(device)
-                                                    self.WriteToResultFileWithHeader(diskInfoOutFile, "Windows drive letter mappings:", driveMappings)
-                                                else:
-                                                    self.WriteToResultFileWithHeader(diskInfoOutFile, "Windows drive letter mappings [Inspect skipped]:", "C: " + device)
-                                            #df-h
-                                            diskInfo = guestfish.df()
-                                            self.WriteToResultFile(diskInfoOutFile, diskInfo)
-                                            #statvfs                                       
-                                            self.WriteToResultFile(diskInfoOutFile, "\r\nFor decoder ring for data below see: http://man.he.net/man2/statvfs \r\n")
-                                            for mount in osMountpoints:
-                                                mountpoint = mount[0]
-                                                mountdevice = mount[1]
-                                                diskstats=guestfish.statvfs(mountpoint)
-                                                self.WriteToResultFileWithHeader(diskInfoOutFile, "[Device: " + mountdevice + ", mountpoint: " + mountpoint + " ]", diskstats)
-                                        step_end_time = datetime.now() 
-                                        duration_seconds = (step_end_time - operation_start_time).seconds                                    
-                                        strMsg = step_end_time.strftime('%H:%M:%S') + "  DiskInfo gathered and written to diskinfo.txt. [Operation duration: " + str(duration_seconds) + " seconds]"
-                                        self.WriteToResultFile(operationOutFile, strMsg)
+                                            step_end_time = datetime.now()
+                                            duration_seconds = (step_end_time - operation_start_time).seconds
+                                            strMsg = step_end_time.strftime('%H:%M:%S') + "  Copying Step [" + strStepDescription + "] File: " + actualFileName + step_result + "  [Operation duration: " + str(duration_seconds) + " seconds]"
+                                            self.WriteToResultFile(operationOutFile, strMsg)
+                                elif opCommand=="diskinfo":  
+                                    diskInfoOutFilename = requestDir + os.sep + 'diskinfo.txt'  
+                                    with open(diskInfoOutFilename, "a", newline="\r\n") as diskInfoOutFile:                                    
+                                        # get drive letters if we ran inspection
+                                        if (osType == "windows"):
+                                            if (not skipInspect):  
+                                                driveMappings = guestfish.get_drive_letters(device)
+                                                self.WriteToResultFileWithHeader(diskInfoOutFile, "Windows drive letter mappings:", driveMappings)
+                                            else:
+                                                self.WriteToResultFileWithHeader(diskInfoOutFile, "Windows drive letter mappings [Inspect skipped]:", "C: " + device)
+                                        #df-h
+                                        diskInfo = guestfish.df()
+                                        self.WriteToResultFile(diskInfoOutFile, diskInfo)
+                                        #statvfs                                       
+                                        self.WriteToResultFile(diskInfoOutFile, "\r\nFor decoder ring for data below see: http://man.he.net/man2/statvfs \r\n")
+                                        for mount in osMountpoints:
+                                            mountpoint = mount[0]
+                                            mountdevice = mount[1]
+                                            diskstats=guestfish.statvfs(mountpoint)
+                                            self.WriteToResultFileWithHeader(diskInfoOutFile, "[Device: " + mountdevice + ", mountpoint: " + mountpoint + " ]", diskstats)
+                                    step_end_time = datetime.now() 
+                                    duration_seconds = (step_end_time - operation_start_time).seconds                                    
+                                    strMsg = step_end_time.strftime('%H:%M:%S') + "  DiskInfo gathered and written to diskinfo.txt. [Operation duration: " + str(duration_seconds) + " seconds]"
+                                    self.WriteToResultFile(operationOutFile, strMsg)
 
-                                    elif opCommand=="reg":
-                                        self.do_opcommand_registry(guestfish, opParam1, operationOutFile)
+                                elif opCommand=="reg":
+                                    self.do_opcommand_registry(guestfish, opParam1, operationOutFile)
 
-                                # done processing the manifest for this partition, check to see if we need to close
-                                self.registry_close(scanFileListFile) 
-            
+                            # done processing the manifest for this partition, check to see if we need to close
+                            self.registry_close(scanFileListFile) 
+        
 
-                        finally:                        
-                            # Unmount all mountpoints
-                            guestfish.unmount_all()
+                    finally:                        
+                        # Unmount all mountpoints
+                        guestfish.unmount_all()
 
-                        deviceNumber = deviceNumber + 1
+                    deviceNumber = deviceNumber + 1
 
-                    if not found_any_items:   # no items found
-                        self.WriteToResultFile(operationOutFile, "No manifest items were found.")
-                        self.check_for_disk_encryption(file_system_types, guestfish, operationOutFile)
+                if not found_any_items:   # no items found
+                    self.WriteToResultFile(operationOutFile, "No manifest items were found.")
+                    self.check_for_disk_encryption(file_system_types, guestfish, operationOutFile)
 
-                    execution_end_time = datetime.now()
-                    duration_seconds = (execution_end_time - execution_start_time).seconds
-                    self.WriteToResultFile(operationOutFile, "Execution end time: " + execution_end_time.strftime('%H:%M:%S') + "  [Execution duration: " + str(duration_seconds) + " seconds]\r\n")
+                execution_end_time = datetime.now()
+                duration_seconds = (execution_end_time - execution_start_time).seconds
+                self.WriteToResultFile(operationOutFile, "Execution end time: " + execution_end_time.strftime('%H:%M:%S') + "  [Execution duration: " + str(duration_seconds) + " seconds]\r\n")
 
             self.kpThread.guestfishPid = None
             if (self.kpThread.wasTimeout):
