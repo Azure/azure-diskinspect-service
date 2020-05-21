@@ -102,5 +102,13 @@ copy,/etc/HOSTNAME
 copy,/etc/hostname
 echo,
 
+echo,### Gathering System Info ###
+copy,/proc/version
+copy,/proc/net/route
+copy,/proc/net/ipv6_route
+copy,/proc/partitions
+copy,/proc/mounts
+echo,
+
 echo,### Gathering Disk Info ###
 diskinfo,

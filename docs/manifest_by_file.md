@@ -95,6 +95,11 @@ File Path | Manifest
 /opt/msawb/var/lib/catalog/WorkloadSchedules/\*/\*.bin | workloadbackup 
 /opt/msawb/var/log/\*/\*/\* | workloadbackup 
 /opt/msawb/var/log/\*/\*/\*/\*/\* | workloadbackup 
+/proc/mounts | diagnostic, eg 
+/proc/net/ipv6_route | diagnostic, eg 
+/proc/net/route | diagnostic, eg 
+/proc/partitions | diagnostic, eg 
+/proc/version | diagnostic, eg 
 /run/NetworkManager/\*.conf | diagnostic, eg 
 /run/NetworkManager/conf.d/\*.conf | diagnostic, eg 
 /run/cloud-init/cloud.cfg | diagnostic, eg 
@@ -512,4 +517,4 @@ File Path | Manifest
 /k/azure-vnet.log | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-05-01 22:19:04.924851`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-05-21 01:47:02.740399`*

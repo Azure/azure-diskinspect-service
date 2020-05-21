@@ -199,6 +199,11 @@ diagnostic | copy | /boot/grub\*/menu.lst
 diagnostic | copy | /etc/\*-release
 diagnostic | copy | /etc/HOSTNAME
 diagnostic | copy | /etc/hostname
+diagnostic | copy | /proc/version
+diagnostic | copy | /proc/net/route
+diagnostic | copy | /proc/net/ipv6_route
+diagnostic | copy | /proc/partitions
+diagnostic | copy | /proc/mounts
 diagnostic | diskinfo | 
 eg | list | /var/log
 eg | list | /var/lib/cloud
@@ -272,6 +277,11 @@ eg | copy | /boot/grub\*/menu.lst
 eg | copy | /etc/\*-release
 eg | copy | /etc/HOSTNAME
 eg | copy | /etc/hostname
+eg | copy | /proc/version
+eg | copy | /proc/net/route
+eg | copy | /proc/net/ipv6_route
+eg | copy | /proc/partitions
+eg | copy | /proc/mounts
 eg | diskinfo | 
 genspec | copy | /etc/hostname
 genspec | copy | /var/lib/waagent/provisioned
@@ -1317,4 +1327,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-05-01 22:19:04.924851`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-05-21 01:47:02.740399`*
