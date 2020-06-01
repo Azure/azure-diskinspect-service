@@ -212,7 +212,9 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
     def StoregUrlPostFix(self):
         switcher={
             'Prod':'.blob.core.windows.net',
-            'Fairfax':'.blob.core.usgovcloudapi.net'
+            'Fairfax':'.blob.core.usgovcloudapi.net',
+            'USNat':'.blob.core.eaglex.ic.gov',
+            'USSec':'.blob.core.microsoft.scloud'
         }
         return switcher.get(self.cloudEnv,".blob.core.windows.net")
 
@@ -222,7 +224,9 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
     def BlobUploadUrlSuffix(self):
         switcher={
             'Prod':'core.windows.net',
-            'Fairfax':'core.usgovcloudapi.net'
+            'Fairfax':'core.usgovcloudapi.net',
+            'USNat':'core.eaglex.ic.gov',
+            'USSec':'core.microsoft.scloud'
         }
         return switcher.get(self.cloudEnv,"core.windows.net")
 
