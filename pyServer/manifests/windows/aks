@@ -5,6 +5,7 @@ copy,/Windows/System32/winevt/Logs/Application.evtx
 echo,## Kubelet and Kube proxy Logs ##
 copy,/k/*.log
 copy,/k/*.err
+copy,/k/config
 
 echo,## CNI logs ##
 copy,/k/azure-vnet.log

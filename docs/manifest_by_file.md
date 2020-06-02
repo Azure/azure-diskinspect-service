@@ -510,6 +510,7 @@ File Path | Manifest
 /k/azure-vnet-ipam.log | aks 
 /k/azure-vnet.json | aks 
 /k/azure-vnet.log | aks 
+/k/config | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-05-01 22:19:04.924851`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-06-02 17:33:03.074356`*
