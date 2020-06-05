@@ -807,16 +807,20 @@ min-diagnostic | copy | /Windows/System32/config/SYSTEM.LOG1
 min-diagnostic | copy | /Windows/System32/config/SYSTEM.LOG2
 min-diagnostic | copy | /Windows/System32/config/SOFTWARE.LOG1
 min-diagnostic | copy | /Windows/System32/config/SOFTWARE.LOG2
-min-diagnostic | copy | /Windows/System32/winevt/Logs/System.evtx
 min-diagnostic | copy | /Windows/System32/winevt/Logs/Application.evtx
+min-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnP%4Configuration.evtx
 min-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-NetworkProfile%4Operational.evtx
 min-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RdpCoreTS%4Oper<br>ational.evtx
 min-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-LocalSessionManager%<br>4Admin.evtx
 min-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-RemoteConnectionMana<br>ger%4Admin.evtx
 min-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-RemoteConnectionMana<br>ger%4Operational.evtx
 min-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Windows Firewall With Advanced Securi<br>ty%4Firewall.evtx
-min-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnP%4Configuration.evtx
+min-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-WindowsUpdateClient%4Operational.evtx
 min-diagnostic | copy | /Windows/System32/winevt/Logs/Security.evtx
+min-diagnostic | copy | /Windows/System32/winevt/Logs/Setup.evtx
+min-diagnostic | copy | /Windows/System32/winevt/Logs/System.evtx
+min-diagnostic | copy | /Windows/Microsoft.NET/Framework/v4.0.30319/Config/machine.config
+min-diagnostic | copy | /Windows/Microsoft.NET/Framework64/v4.0.30319/Config/machine.config
 min-diagnostic | copy | /WindowsAzure/Logs/TransparentInstaller.log
 min-diagnostic | copy | /WindowsAzure/Logs/WaAppAgent.log
 min-diagnostic | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json

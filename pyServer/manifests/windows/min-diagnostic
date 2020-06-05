@@ -9,16 +9,22 @@ copy,/Windows/System32/config/SOFTWARE.LOG1,noscan
 copy,/Windows/System32/config/SOFTWARE.LOG2,noscan
 
 echo,### Event Logs ###
-copy,/Windows/System32/winevt/Logs/System.evtx
 copy,/Windows/System32/winevt/Logs/Application.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnP%4Configuration.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-NetworkProfile%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RdpCoreTS%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-LocalSessionManager%4Admin.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-RemoteConnectionManager%4Admin.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-RemoteConnectionManager%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Windows Firewall With Advanced Security%4Firewall.evtx
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnP%4Configuration.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WindowsUpdateClient%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Security.evtx
+copy,/Windows/System32/winevt/Logs/Setup.evtx
+copy,/Windows/System32/winevt/Logs/System.evtx
+
+echo,### .NET ###
+copy,/Windows/Microsoft.NET/Framework/v4.0.30319/Config/machine.config
+copy,/Windows/Microsoft.NET/Framework64/v4.0.30319/Config/machine.config
 
 echo,### Guest Agent ###
 copy,/WindowsAzure/Logs/TransparentInstaller.log

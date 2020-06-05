@@ -331,8 +331,8 @@ File Path | Manifest
 /Windows/Logs/dpx/\*.log | windowsupdate 
 /Windows/Logs/mosetup/bluebox.log | windowsupdate 
 /Windows/Logs/waasmedic/waasmedic.\*.etl | windowsupdate 
-/Windows/Microsoft.NET/Framework/v4.0.30319/Config/machine.config | diagnostic, windowsupdate 
-/Windows/Microsoft.NET/Framework64/v4.0.30319/Config/machine.config | diagnostic, windowsupdate 
+/Windows/Microsoft.NET/Framework/v4.0.30319/Config/machine.config | diagnostic, min-diagnostic, windowsupdate 
+/Windows/Microsoft.NET/Framework64/v4.0.30319/Config/machine.config | diagnostic, min-diagnostic, windowsupdate 
 /Windows/Minidump/\*.dmp | windowsupdate 
 /Windows/Panther/FastCleanup/setupact.log | diagnostic, eg, normal, windowsupdate 
 /Windows/Panther/UnattendGC/setupact.log | diagnostic, eg, normal, windowsupdate 
@@ -427,7 +427,7 @@ File Path | Manifest
 /Windows/System32/winevt/Logs/Microsoft-Windows-Windows Firewall With Advanced Securi<br>ty%4ConnectionSecurity.evtx | agents, diagnostic, eg, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Windows Firewall With Advanced Securi<br>ty%4Firewall.evtx | agents, diagnostic, eg, min-diagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-WindowsUpdateClient%%4Operational.evt<br>x | windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-WindowsUpdateClient%4Operational.evtx | diagnostic, eg, windowsupdate 
+/Windows/System32/winevt/Logs/Microsoft-Windows-WindowsUpdateClient%4Operational.evtx | diagnostic, eg, min-diagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Bootstrapper.evtx | agents, diagnostic, eg, monitor-mgmt, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4GuestAgent.evtx | agents, diagnostic, eg, monitor-mgmt, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Heartbeat.evtx | agents, diagnostic, eg, monitor-mgmt, windowsupdate 
@@ -436,7 +436,7 @@ File Path | Manifest
 /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Status%4Plugins.evtx | agents, diagnostic, eg, monitor-mgmt, windowsupdate 
 /Windows/System32/winevt/Logs/MicrosoftAzureRecoveryServices-Replication.evtx | diagnostic, eg, windowsupdate 
 /Windows/System32/winevt/Logs/Security.evtx | diagnostic, eg, min-diagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Setup.evtx | diagnostic, eg, windowsupdate 
+/Windows/System32/winevt/Logs/Setup.evtx | diagnostic, eg, min-diagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/System.evtx | agents, aks, diagnostic, eg, min-diagnostic, normal, servicefabric, site-recovery, sql-iaas, windowsupdate, workloadbackup 
 /Windows/System32/winevt/Logs/Windows Azure.evtx | agents, diagnostic, eg, monitor-mgmt, normal, site-recovery, windowsupdate, workloadbackup 
 /Windows/System32/winevt/Logs/Windows PowerShell.evtx | monitor-mgmt 
