@@ -91,15 +91,24 @@ To copy the logs over for examination on the host:
 
 **Make sure you are a member of this permission group: https://repos.opensource.microsoft.com/Azure/teams/diskinspection-extended
 
-	1.	Create a new branch from master
+	1.	Clone github repo locally
+		 $ git clone https://github.com/Azure/azure-diskinspect-service <local_path>
+	
+	2.	Create a new branch from master
+		 $ cd <local_path>
+		 $ git checkout -b <new_branch>
 
-	2.	Apply your changes in the branch
+	4.	Apply your changes in the branch
 
-		*	If you are updating/creating new manifest then: Make sure to run "parse_manifest.py"
+		-If you are updating/creating new manifest then: Make sure to run "parse_manifest.py"
+		 $ python ./parse_manifest.py
 
-	3.	Push changes to your remote branch
+	5.	Push changes to your remote branch by following below sequesnce of commands
+		$ git add <file_changed>
+		$ git commit -m "<Commit_message>"
+		$ git push --set-upstream origin <new_branch> 
 
-	4.	Raise PR to merge into master for review
+	6.	Raise PR to merge into master for review
 -----
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
