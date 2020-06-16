@@ -161,7 +161,7 @@ File Path | Manifest
 /var/log/azure/\* | site-recovery, workloadbackup 
 /var/log/azure/\*/\* | agents, diagnostic 
 /var/log/azure/\*/\*/\* | agents, diagnostic 
-/var/log/azure/cluster-provision.log | aks 
+/var/log/azure/cluster-provision.log | aks, diagnostic 
 /var/log/azure/custom-script/handler.log | agents, diagnostic 
 /var/log/azure/docker-status.log | aks 
 /var/log/azure/kern.log | aks 
@@ -513,4 +513,4 @@ File Path | Manifest
 /k/config | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-06-02 17:33:03.074356`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-06-16 17:57:40.646912`*

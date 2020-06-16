@@ -193,6 +193,7 @@ diagnostic | copy | /var/log/azure/\*/\*
 diagnostic | copy | /var/log/azure/\*/\*/\*
 diagnostic | copy | /var/log/azure/custom-script/handler.log
 diagnostic | copy | /var/log/azure/run-command/handler.log
+diagnostic | copy | /var/log/azure/cluster-provision.log
 diagnostic | copy | /etc/fstab
 diagnostic | copy | /boot/grub\*/grub.c\*
 diagnostic | copy | /boot/grub\*/menu.lst
@@ -1322,4 +1323,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-06-02 17:33:03.074356`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-06-16 17:57:40.646912`*
