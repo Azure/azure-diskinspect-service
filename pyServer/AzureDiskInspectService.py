@@ -209,7 +209,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
     """
     Select storage url based on cloud environment
     """
-    def StoregUrlPostFix(self):
+    def StorageUrlPostFix(self):
         switcher={
             'Prod':'.blob.core.windows.net',
             'Fairfax':'.blob.core.usgovcloudapi.net',
@@ -263,7 +263,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
             urlSplitIndex = urlSplitIndex + 1
         
         storageUrl = urllib.parse.urlunparse(
-                ('https', storageAcctName + self.StoregUrlPostFix(), container_blob_name, '', sasKey, None))
+                ('https', storageAcctName + self.StorageUrlPostFix(), container_blob_name, '', sasKey, None))
             
         return operationId, mode, modeMajorSkipTo, modeMinorSkipTo, storageAcctName, container_blob_name, storageUrl
 
