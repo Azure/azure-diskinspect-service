@@ -7,6 +7,7 @@ FROM ubuntu:18.04
 # package dependencies
 COPY conf/sources.list /etc/apt/sources.list
 RUN apt-get update \
+ && DEBIAN_FRONTEND=noninteractive apt-get upgrade -y \
  && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     build-essential \
     autoconf \
