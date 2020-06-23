@@ -17,7 +17,23 @@ copy,/WindowsAzure/Logs/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/*/Ex
 copy,/WindowsAzure/Logs/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/*/SqlCustomerSupportLogs/*
 
 echo,### Sql Server Logs ### 
-copy,/WindowsAzure/Logs/SqlServerLogs/*
-copy,/Program Files/Microsoft SQL Server/*/MSSQL/Log/*
-copy,/Program Files/Microsoft SQL Server/*/Setup Bootstrap/Log/*/Log*.cab
+copy,/WindowsAzure/Logs/SqlServerLogs/ERRORLOG
+copy,/WindowsAzure/Logs/SqlServerLogs/*.txt
+copy,/WindowsAzure/Logs/SqlServerLogs/*.xel,noscan
+copy,/Program Files/Microsoft SQL Server/*/MSSQL/Log/ExtensibilityLog/ExtensibilityLog/EXTLAUNCHERRORLOG
+copy,/Program Files/Microsoft SQL Server/*/MSSQL/Log/ExtensibilityLog/ExtensibilityLog/*.log
+copy,/Program Files/Microsoft SQL Server/*/MSSQL/Log/ExtensibilityLog/ExtensibilityLog/*.bin,noscan
+copy,/Program Files/Microsoft SQL Server/*/MSSQL/Log/ERRORLOG
+copy,/Program Files/Microsoft SQL Server/*/MSSQL/Log/ERRORLOG.*
+copy,/Program Files/Microsoft SQL Server/*/MSSQL/Log/fd
+copy,/Program Files/Microsoft SQL Server/*/MSSQL/Log/fd.*
+copy,/Program Files/Microsoft SQL Server/*/MSSQL/Log/FDLAUNCHERRORLOG
+copy,/Program Files/Microsoft SQL Server/*/MSSQL/Log/FDLAUNCHERRORLOG.*
+copy,/Program Files/Microsoft SQL Server/*/MSSQL/Log/*.xel,noscan
+copy,/Program Files/Microsoft SQL Server/*/MSSQL/Log/*.txt
+copy,/Program Files/Microsoft SQL Server/*/MSSQL/Log/*.trc,noscan
+copy,/Program Files/Microsoft SQL Server/*/MSSQL/Log/SQLAGENT.*
+copy,/Program Files/Microsoft SQL Server/*/MSSQL/Log/*.log
+copy,/Program Files/Microsoft SQL Server/*/MSSQL/Log/*.mdmp,noscan
+copy,/Program Files/Microsoft SQL Server/*/Setup Bootstrap/Log/*/Log*.cab,noscan
 copy,/Program Files/Microsoft SQL Server/*/Setup Bootstrap/Log/Summary.txt
