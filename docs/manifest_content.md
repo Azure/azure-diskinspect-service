@@ -201,6 +201,67 @@ diagnostic | copy | /etc/\*-release
 diagnostic | copy | /etc/HOSTNAME
 diagnostic | copy | /etc/hostname
 diagnostic | diskinfo | 
+diagnostic-bk | list | /var/log
+diagnostic-bk | list | /var/lib/waagent
+diagnostic-bk | list | /etc/udev/rules.d
+diagnostic-bk | copy | /var/lib/waagent/provisioned
+diagnostic-bk | copy | /etc/fstab
+diagnostic-bk | copy | /etc/ssh/sshd_config
+diagnostic-bk | copy | /boot/grub\*/grub.c\*
+diagnostic-bk | copy | /boot/grub\*/menu.lst
+diagnostic-bk | copy | /etc/\*-release
+diagnostic-bk | copy | /etc/HOSTNAME
+diagnostic-bk | copy | /etc/hostname
+diagnostic-bk | copy | /etc/network/interfaces
+diagnostic-bk | copy | /etc/network/interfaces.d/\*.cfg
+diagnostic-bk | copy | /etc/netplan/50-cloud-init.yaml
+diagnostic-bk | copy | /etc/nsswitch.conf
+diagnostic-bk | copy | /etc/resolv.conf
+diagnostic-bk | copy | /run/systemd/resolve/stub-resolv.conf
+diagnostic-bk | copy | /run/resolvconf/resolv.conf
+diagnostic-bk | copy | /etc/sysconfig/iptables
+diagnostic-bk | copy | /etc/sysconfig/network
+diagnostic-bk | copy | /etc/sysconfig/network/ifcfg-eth\*
+diagnostic-bk | copy | /etc/sysconfig/network/routes
+diagnostic-bk | copy | /etc/sysconfig/network-scripts/ifcfg-eth\*
+diagnostic-bk | copy | /etc/sysconfig/network-scripts/route-eth\*
+diagnostic-bk | copy | /etc/sysconfig/SuSEfirewall2
+diagnostic-bk | copy | /etc/ufw/ufw.conf
+diagnostic-bk | copy | /etc/waagent.conf
+diagnostic-bk | copy | /var/lib/dhcp/dhclient.eth0.leases
+diagnostic-bk | copy | /var/lib/dhclient/dhclient-eth0.leases
+diagnostic-bk | copy | /var/lib/wicked/lease-eth0-dhcp-ipv4.xml
+diagnostic-bk | copy | /var/log/waagent\*
+diagnostic-bk | copy | /var/log/syslog\*
+diagnostic-bk | copy | /var/log/rsyslog\*
+diagnostic-bk | copy | /var/log/messages\*
+diagnostic-bk | copy | /var/log/kern\*
+diagnostic-bk | copy | /var/log/dmesg\*
+diagnostic-bk | copy | /var/log/dpkg\*
+diagnostic-bk | copy | /var/log/yum\*
+diagnostic-bk | copy | /var/log/cloud-init\*
+diagnostic-bk | copy | /var/log/boot\*
+diagnostic-bk | copy | /var/log/auth\*
+diagnostic-bk | copy | /var/log/secure\*
+diagnostic-bk | copy | /var/log/azure/\*/\*
+diagnostic-bk | copy | /var/log/azure/\*/\*/\*
+diagnostic-bk | copy | /var/log/azure/custom-script/handler.log
+diagnostic-bk | copy | /var/log/azure/run-command/handler.log
+diagnostic-bk | copy | /var/lib/waagent/ExtensionsConfig.\*.xml
+diagnostic-bk | copy | /var/lib/waagent/\*/status/\*.status
+diagnostic-bk | copy | /var/lib/waagent/\*/config/\*.settings
+diagnostic-bk | copy | /var/lib/waagent/\*/config/HandlerState
+diagnostic-bk | copy | /var/lib/waagent/\*/config/HandlerStatus
+diagnostic-bk | copy | /var/lib/waagent/GoalState.\*.xml
+diagnostic-bk | copy | /var/lib/waagent/HostingEnvironmentConfig.xml
+diagnostic-bk | copy | /var/lib/waagent/\*.manifest.xml
+diagnostic-bk | copy | /var/lib/waagent/SharedConfig.xml
+diagnostic-bk | copy | /var/lib/waagent/ManagedIdentity-\*.json
+diagnostic-bk | copy | /var/lib/waagent/error.json
+diagnostic-bk | copy | /var/lib/waagent/Incarnation
+diagnostic-bk | copy | /var/lib/waagent/waagent_status.json
+diagnostic-bk | copy | /var/lib/waagent/history/\*.zip
+diagnostic-bk | diskinfo | 
 eg | list | /var/log
 eg | list | /var/lib/cloud
 eg | list | /run/cloud-init
@@ -355,7 +416,6 @@ servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFab
 servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/HandlerManif<br>est.json
 servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/config/\*.se<br>ttings
 servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*.\*/status/\*<br>.status
-servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/heartbeat.lo<br>g
 servicefabric | copy | /var/lib/waagent/Microsoft.OSTCExtensions.LinuxDiagnostic-\*/xmlCfg.xml
 servicefabric | copy | /var/log/azure/Microsoft.OSTCExtensions.LinuxDiagnostic/\*/mdsd.\*
 site-recovery | copy | /etc/\*-release
@@ -1060,8 +1120,24 @@ sql-iaas | copy | /Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/
 sql-iaas | copy | /WindowsAzure/Logs/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/\*/CommandExec<br>ution\*.log
 sql-iaas | copy | /WindowsAzure/Logs/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/\*/ExtensionLo<br>g\*.log
 sql-iaas | copy | /WindowsAzure/Logs/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/\*/SqlCustomer<br>SupportLogs/\*
-sql-iaas | copy | /WindowsAzure/Logs/SqlServerLogs/\*
-sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*
+sql-iaas | copy | /WindowsAzure/Logs/SqlServerLogs/ERRORLOG
+sql-iaas | copy | /WindowsAzure/Logs/SqlServerLogs/\*.txt
+sql-iaas | copy | /WindowsAzure/Logs/SqlServerLogs/\*.xel
+sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/ExtensibilityLog/ExtensibilityLog/EX<br>TLAUNCHERRORLOG
+sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/ExtensibilityLog/ExtensibilityLog/\*<br>.log
+sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/ExtensibilityLog/ExtensibilityLog/\*<br>.bin
+sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/ERRORLOG
+sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/ERRORLOG.\*
+sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/fd
+sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/fd.\*
+sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/FDLAUNCHERRORLOG
+sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/FDLAUNCHERRORLOG.\*
+sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.xel
+sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.txt
+sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.trc
+sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/SQLAGENT.\*
+sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.log
+sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.mdmp
 sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/Setup Bootstrap/Log/\*/Log\*.cab
 sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/Setup Bootstrap/Log/Summary.txt
 windowsupdate | copy | /Boot/BCD
@@ -1323,4 +1399,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-06-16 17:57:40.646912`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-06-24 01:50:54.736190`*
