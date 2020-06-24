@@ -40,51 +40,47 @@ File Path | Manifest
 ## linux 
 File Path | Manifest 
 ------------- | ------------- 
-/boot/grub\*/grub.c\* | diagnostic, diagnostic-bk, eg 
-/boot/grub\*/menu.lst | diagnostic, diagnostic-bk, eg 
-/etc/HOSTNAME | agents, diagnostic, diagnostic-bk, eg, lad, site-recovery, workloadbackup 
+/boot/grub\*/grub.c\* | diagnostic, eg 
+/boot/grub\*/menu.lst | diagnostic, eg 
+/etc/HOSTNAME | agents, diagnostic, eg, lad, site-recovery, workloadbackup 
 /etc/NetworkManager/\*.conf | diagnostic, eg 
 /etc/NetworkManager/conf.d/\*.conf | diagnostic, eg 
-/etc/\*-release | agents, diagnostic, diagnostic-bk, eg, site-recovery, workloadbackup 
+/etc/\*-release | agents, diagnostic, eg, site-recovery, workloadbackup 
 /etc/ambari-agent/conf/\* | hdinsight 
 /etc/ambari-server/conf/\* | hdinsight 
 /etc/cloud/cloud.cfg | diagnostic, eg 
 /etc/cloud/cloud.cfg.d/\*.cfg | diagnostic, eg 
 /etc/dhcp/\*.conf | diagnostic, eg 
-/etc/fstab | diagnostic, diagnostic-bk, eg, normal 
+/etc/fstab | diagnostic, eg, normal 
 /etc/hadoop/conf/\* | hdinsight 
 /etc/hbase/conf/\* | hdinsight 
 /etc/hive2/conf/\* | hdinsight 
-/etc/hostname | agents, diagnostic, diagnostic-bk, eg, genspec, lad, site-recovery, workloadbackup 
+/etc/hostname | agents, diagnostic, eg, genspec, lad, site-recovery, workloadbackup 
 /etc/hosts | hdinsight 
-/etc/netplan/50-cloud-init.yaml | diagnostic-bk 
 /etc/netplan/\*.yaml | diagnostic, eg 
-/etc/network/interfaces | diagnostic, diagnostic-bk, eg 
-/etc/network/interfaces.d/\*.cfg | diagnostic, diagnostic-bk, eg 
-/etc/nsswitch.conf | diagnostic, diagnostic-bk, eg 
+/etc/network/interfaces | diagnostic, eg 
+/etc/network/interfaces.d/\*.cfg | diagnostic, eg 
+/etc/nsswitch.conf | diagnostic, eg 
 /etc/opt/microsoft/omsagent/LAD/conf/omsagent.d/\* | lad 
 /etc/opt/microsoft/omsagent/\*/conf/omsagent.d/\*.conf | monitor-mgmt 
 /etc/opt/microsoft/omsagent/conf/omsagent.conf | monitor-mgmt 
 /etc/opt/omi/conf/omsconfig/agentid | monitor-mgmt 
 /etc/opt/omi/conf/omsconfig/configuration/\*.mof | monitor-mgmt 
-/etc/resolv.conf | diagnostic, diagnostic-bk, eg 
+/etc/resolv.conf | diagnostic, eg 
 /etc/spark/conf/\* | hdinsight 
-/etc/ssh/sshd_config | diagnostic, diagnostic-bk, eg, normal 
+/etc/ssh/sshd_config | diagnostic, eg, normal 
 /etc/storm/conf/\* | hdinsight 
-/etc/sysconfig/SuSEfirewall2 | diagnostic, diagnostic-bk, eg 
-/etc/sysconfig/iptables | diagnostic, diagnostic-bk, eg 
-/etc/sysconfig/network | diagnostic, diagnostic-bk, eg 
+/etc/sysconfig/SuSEfirewall2 | diagnostic, eg 
+/etc/sysconfig/iptables | diagnostic, eg 
+/etc/sysconfig/network | diagnostic, eg 
 /etc/sysconfig/network-scripts/ifcfg-\* | diagnostic, eg 
-/etc/sysconfig/network-scripts/ifcfg-eth\* | diagnostic-bk 
 /etc/sysconfig/network-scripts/route-\* | diagnostic, eg 
-/etc/sysconfig/network-scripts/route-eth\* | diagnostic-bk 
 /etc/sysconfig/network/config | diagnostic, eg 
 /etc/sysconfig/network/dhcp | diagnostic, eg 
 /etc/sysconfig/network/ifcfg-\* | diagnostic, eg 
-/etc/sysconfig/network/ifcfg-eth\* | diagnostic-bk 
-/etc/sysconfig/network/routes | diagnostic, diagnostic-bk, eg 
-/etc/ufw/ufw.conf | diagnostic, diagnostic-bk, eg 
-/etc/waagent.conf | agents, diagnostic, diagnostic-bk, eg, site-recovery, workloadbackup 
+/etc/sysconfig/network/routes | diagnostic, eg 
+/etc/ufw/ufw.conf | diagnostic, eg 
+/etc/waagent.conf | agents, diagnostic, eg, site-recovery, workloadbackup 
 /etc/wicked/\*.xml | diagnostic, eg 
 /opt/microsoft/servicefabric/bin/Fabric/Fabric.Code/Fabric | servicefabric 
 /opt/msawb/bin/AzureWLBackupCommonManagementSettings.json | workloadbackup 
@@ -107,10 +103,8 @@ File Path | Manifest
 /run/cloud-init/result.json | diagnostic, eg 
 /run/cloud-init/status.json | diagnostic, eg 
 /run/resolvconf/\*.conf | diagnostic, eg 
-/run/resolvconf/resolv.conf | diagnostic-bk 
 /run/systemd/netif/leases/\* | diagnostic, eg 
 /run/systemd/resolve/\*.conf | diagnostic, eg 
-/run/systemd/resolve/stub-resolv.conf | diagnostic-bk 
 /tmp/omsagent\*.tgz | monitor-mgmt 
 /usr/lib/NetworkManager/\*.conf | diagnostic, eg 
 /usr/lib/NetworkManager/conf.d/\*.conf | diagnostic, eg 
@@ -122,16 +116,14 @@ File Path | Manifest
 /var/lib/NetworkManager/conf.d/\*.conf | diagnostic, eg 
 /var/lib/dhclient/\*.lease | diagnostic, eg 
 /var/lib/dhclient/\*.leases | diagnostic, eg 
-/var/lib/dhclient/dhclient-eth0.leases | diagnostic-bk 
 /var/lib/dhcp/\*.lease | diagnostic, eg 
 /var/lib/dhcp/\*.leases | diagnostic, eg 
-/var/lib/dhcp/dhclient.eth0.leases | diagnostic-bk 
 /var/lib/docker/containers/\*/\*-json.log | aks 
-/var/lib/waagent/ExtensionsConfig.\*.xml | diagnostic, diagnostic-bk, lad 
-/var/lib/waagent/GoalState.\*.xml | diagnostic, diagnostic-bk, site-recovery, workloadbackup 
-/var/lib/waagent/HostingEnvironmentConfig.xml | diagnostic, diagnostic-bk 
-/var/lib/waagent/Incarnation | agents, diagnostic, diagnostic-bk 
-/var/lib/waagent/ManagedIdentity-\*.json | diagnostic, diagnostic-bk 
+/var/lib/waagent/ExtensionsConfig.\*.xml | diagnostic, lad 
+/var/lib/waagent/GoalState.\*.xml | diagnostic, site-recovery, workloadbackup 
+/var/lib/waagent/HostingEnvironmentConfig.xml | diagnostic 
+/var/lib/waagent/Incarnation | agents, diagnostic 
+/var/lib/waagent/ManagedIdentity-\*.json | diagnostic 
 /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-1.1.0.2 | servicefabric 
 /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*.\*/HandlerEn<br>vironment.json | servicefabric 
 /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*.\*/status/\*<br>.status | servicefabric 
@@ -143,69 +135,68 @@ File Path | Manifest
 /var/lib/waagent/Microsoft.\*LinuxDiagnostic\*/config/\*.settings | lad 
 /var/lib/waagent/Microsoft.\*LinuxDiagnostic\*/status/\*.status | lad 
 /var/lib/waagent/Microsoft.\*LinuxDiagnostic\*/xmlCfg.xml | lad 
-/var/lib/waagent/SharedConfig.xml | diagnostic, diagnostic-bk 
+/var/lib/waagent/SharedConfig.xml | diagnostic 
 /var/lib/waagent/\*.agentsManifest | agents 
-/var/lib/waagent/\*.manifest.xml | diagnostic, diagnostic-bk 
+/var/lib/waagent/\*.manifest.xml | diagnostic 
 /var/lib/waagent/\*.xml | agents, site-recovery, workloadbackup 
-/var/lib/waagent/\*/config/HandlerState | agents, diagnostic, diagnostic-bk 
-/var/lib/waagent/\*/config/HandlerStatus | agents, diagnostic, diagnostic-bk 
-/var/lib/waagent/\*/config/\*.settings | agents, diagnostic, diagnostic-bk 
-/var/lib/waagent/\*/status/\*.status | agents, diagnostic, diagnostic-bk 
-/var/lib/waagent/error.json | agents, diagnostic, diagnostic-bk, eg 
-/var/lib/waagent/history/\*.zip | agents, diagnostic, diagnostic-bk 
-/var/lib/waagent/provisioned | diagnostic, diagnostic-bk, eg, genspec 
-/var/lib/waagent/waagent_status.json | agents, diagnostic, diagnostic-bk, eg 
-/var/lib/wicked/lease-eth0-dhcp-ipv4.xml | diagnostic-bk 
+/var/lib/waagent/\*/config/HandlerState | agents, diagnostic 
+/var/lib/waagent/\*/config/HandlerStatus | agents, diagnostic 
+/var/lib/waagent/\*/config/\*.settings | agents, diagnostic 
+/var/lib/waagent/\*/status/\*.status | agents, diagnostic 
+/var/lib/waagent/error.json | agents, diagnostic, eg 
+/var/lib/waagent/history/\*.zip | agents, diagnostic 
+/var/lib/waagent/provisioned | diagnostic, eg, genspec 
+/var/lib/waagent/waagent_status.json | agents, diagnostic, eg 
 /var/lib/wicked/lease\* | diagnostic, eg 
 /var/log/AzureRcmCli.log | site-recovery 
 /var/log/ambari-agent/ambari-agent.log | hdinsight 
 /var/log/ambari-server/ambari-audit.log | hdinsight 
 /var/log/ambari-server/ambari-server.log | hdinsight 
-/var/log/auth\* | agents, diagnostic, diagnostic-bk, eg, normal 
+/var/log/auth\* | agents, diagnostic, eg, normal 
 /var/log/azure-vnet\* | aks 
 /var/log/azure/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode/\*.\*/CommandExec<br>ution.log | servicefabric 
 /var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/\*/\*.log | monitor-mgmt 
 /var/log/azure/Microsoft.OSTCExtensions.LinuxDiagnostic/\*/mdsd.\* | servicefabric 
 /var/log/azure/Microsoft.\*LinuxDiagnostic/\*/\* | lad 
 /var/log/azure/\* | site-recovery, workloadbackup 
-/var/log/azure/\*/\* | agents, diagnostic, diagnostic-bk 
-/var/log/azure/\*/\*/\* | agents, diagnostic, diagnostic-bk 
+/var/log/azure/\*/\* | agents, diagnostic 
+/var/log/azure/\*/\*/\* | agents, diagnostic 
 /var/log/azure/cluster-provision.log | aks, diagnostic 
-/var/log/azure/custom-script/handler.log | agents, diagnostic, diagnostic-bk 
+/var/log/azure/custom-script/handler.log | agents, diagnostic 
 /var/log/azure/docker-status.log | aks 
 /var/log/azure/kern.log | aks 
 /var/log/azure/kubelet-status.log | aks 
-/var/log/azure/run-command/handler.log | diagnostic, diagnostic-bk 
-/var/log/boot\* | diagnostic, diagnostic-bk, eg, normal 
-/var/log/cloud-init\* | aks, diagnostic, diagnostic-bk, eg, normal 
-/var/log/dmesg\* | agents, diagnostic, diagnostic-bk, eg, normal, site-recovery, workloadbackup 
+/var/log/azure/run-command/handler.log | diagnostic 
+/var/log/boot\* | diagnostic, eg, normal 
+/var/log/cloud-init\* | aks, diagnostic, eg, normal 
+/var/log/dmesg\* | agents, diagnostic, eg, normal, site-recovery, workloadbackup 
 /var/log/dnf\* | diagnostic, eg 
 /var/log/dpkg.log | servicefabric 
-/var/log/dpkg\* | diagnostic, diagnostic-bk, eg, normal 
+/var/log/dpkg\* | diagnostic, eg, normal 
 /var/log/evtcollforw\*.log | site-recovery 
 /var/log/hadoop-yarn/yarn/\*.log | hdinsight 
 /var/log/hive/hivemetastore.log | hdinsight 
 /var/log/hive/hiveserver2.log | hdinsight 
 /var/log/journal/\*/\* | aks 
 /var/log/kern.log | servicefabric 
-/var/log/kern\* | diagnostic, diagnostic-bk, eg, normal 
-/var/log/messages\* | diagnostic, diagnostic-bk, eg, monitor-mgmt, normal 
+/var/log/kern\* | diagnostic, eg, normal 
+/var/log/messages\* | diagnostic, eg, monitor-mgmt, normal 
 /var/log/pods/kube-system\*/\*/\*.log | aks 
-/var/log/rsyslog\* | diagnostic, diagnostic-bk, eg, lad, normal 
+/var/log/rsyslog\* | diagnostic, eg, lad, normal 
 /var/log/s2\*.log | site-recovery 
 /var/log/sa/sar\* | performance 
-/var/log/secure\* | diagnostic, diagnostic-bk, eg, normal 
+/var/log/secure\* | diagnostic, eg, normal 
 /var/log/sfnode/handler.trace | servicefabric 
 /var/log/sfnode/loguploader.trace | servicefabric 
 /var/log/sfnode/sfnodelog.trace | servicefabric 
 /var/log/svagents\*.log | site-recovery 
 /var/log/syslog | aks, servicefabric 
-/var/log/syslog\* | agents, diagnostic, diagnostic-bk, eg, lad, monitor-mgmt, normal, site-recovery, workloadbackup 
+/var/log/syslog\* | agents, diagnostic, eg, lad, monitor-mgmt, normal, site-recovery, workloadbackup 
 /var/log/ua_install.log | site-recovery 
 /var/log/waagent.log | servicefabric 
-/var/log/waagent\* | agents, diagnostic, diagnostic-bk, eg, lad, normal, site-recovery, workloadbackup 
+/var/log/waagent\* | agents, diagnostic, eg, lad, normal, site-recovery, workloadbackup 
 /var/log/waagent\*.log | monitor-mgmt 
-/var/log/yum\* | diagnostic, diagnostic-bk, eg, normal 
+/var/log/yum\* | diagnostic, eg, normal 
 /var/opt/microsoft/omsagent/LAD/log/\* | lad 
 /var/opt/microsoft/omsagent/\*/log/omsagent.log | monitor-mgmt 
 /var/opt/microsoft/omsagent/\*/run/automationworker/omsupdatemgmt.log | monitor-mgmt 
@@ -538,4 +529,4 @@ File Path | Manifest
 /k/config | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-06-24 01:50:54.736190`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-06-24 07:35:05.510611`*
