@@ -33,7 +33,7 @@ copy,/WindowsAzure/Logs/AggregateStatus/aggregatestatus*.json
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Compute.VMAccessAgent/*/JsonVMAccessExtension.log
 
 echo,### Servicing ###
-copy,/Windows/servicing/sessions/sessions.xml
+copy,/Windows/servicing/sessions/sessions.xml,noscan
 
 echo,### Gathering Disk Info ###
 diskinfo,

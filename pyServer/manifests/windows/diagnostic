@@ -173,11 +173,11 @@ copy,/Packages/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/*/Service
 copy,/Packages/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/*/Service/ServiceFabricNodeBootstrapAgent.InstallState
 copy,/Packages/Plugins/Microsoft.Compute.BGInfo/*/BGInfo.def.xml
 copy,/Packages/Plugins/Microsoft.Compute.BGInfo/*/PluginManifest.xml
-copy,/Packages/Plugins/Microsoft.Compute.BGInfo/*/config.bgi
-copy,/Packages/Plugins/Microsoft.Compute.BGInfo/*/emptyConfig.bgi
+copy,/Packages/Plugins/Microsoft.Compute.BGInfo/*/config.bgi,noscan
+copy,/Packages/Plugins/Microsoft.Compute.BGInfo/*/emptyConfig.bgi,noscan
 copy,/Packages/Plugins/Microsoft.Powershell.DSC/*/DSCWork/*.dsc
-copy,/Packages/Plugins/Microsoft.Powershell.DSC/*/DSCWork/*.log
-copy,/Packages/Plugins/Microsoft.Powershell.DSC/*/DSCWork/*.dpx
+copy,/Packages/Plugins/Microsoft.Powershell.DSC/*/DSCWork/*.log,noscan
+copy,/Packages/Plugins/Microsoft.Powershell.DSC/*/DSCWork/*.dpx,noscan
 copy,/Packages/Plugins/Microsoft.Powershell.DSC/*/DSCVersion.xml
 copy,/Packages/Plugins/Microsoft.Powershell.DSC/*/DSCWork/HotfixInstallInProgress.dsc
 copy,/Packages/Plugins/Microsoft.Powershell.DSC/*/DSCWork/PreInstallDone.dsc
@@ -193,7 +193,7 @@ copy,/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.RunCommandWindows/*/*.log
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ActiveDirectory.AADLoginForWindows/*/*.log
 
 echo,### Servicing ###
-copy,/Windows/servicing/sessions/sessions.xml
+copy,/Windows/servicing/sessions/sessions.xml,noscan
 
 echo,### Gathering Disk Info ###
 diskinfo,

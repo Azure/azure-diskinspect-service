@@ -130,7 +130,7 @@ File Path | Manifest
 /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/HandlerManif<br>est.json | servicefabric 
 /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/Service/curr<br>ent.config | servicefabric 
 /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/config/\*.se<br>ttings | servicefabric 
-/var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/heartbeat.lo<br>g | servicefabric, servicefabric 
+/var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/heartbeat.lo<br>g | servicefabric 
 /var/lib/waagent/Microsoft.OSTCExtensions.LinuxDiagnostic-\*/xmlCfg.xml | servicefabric 
 /var/lib/waagent/Microsoft.\*LinuxDiagnostic\*/config/\*.settings | lad 
 /var/lib/waagent/Microsoft.\*LinuxDiagnostic\*/status/\*.status | lad 
@@ -294,7 +294,21 @@ File Path | Manifest
 /Program Files/Microsoft Dependency Agent/logs/\*.\* | monitor-mgmt 
 /Program Files/Microsoft Monitoring Agent/Agent/Health Service State/CT_\*/work/Servi<br>ceState/\*.log | monitor-mgmt 
 /Program Files/Microsoft Monitoring Agent/Agent/Health Service State/Management Packs<br>/\*.xml | monitor-mgmt 
-/Program Files/Microsoft SQL Server/\*/MSSQL/Log/\* | sql-iaas 
+/Program Files/Microsoft SQL Server/\*/MSSQL/Log/ERRORLOG | sql-iaas 
+/Program Files/Microsoft SQL Server/\*/MSSQL/Log/ERRORLOG.\* | sql-iaas 
+/Program Files/Microsoft SQL Server/\*/MSSQL/Log/ExtensibilityLog/ExtensibilityLog/EX<br>TLAUNCHERRORLOG | sql-iaas 
+/Program Files/Microsoft SQL Server/\*/MSSQL/Log/ExtensibilityLog/ExtensibilityLog/\*<br>.bin | sql-iaas 
+/Program Files/Microsoft SQL Server/\*/MSSQL/Log/ExtensibilityLog/ExtensibilityLog/\*<br>.log | sql-iaas 
+/Program Files/Microsoft SQL Server/\*/MSSQL/Log/FDLAUNCHERRORLOG | sql-iaas 
+/Program Files/Microsoft SQL Server/\*/MSSQL/Log/FDLAUNCHERRORLOG.\* | sql-iaas 
+/Program Files/Microsoft SQL Server/\*/MSSQL/Log/SQLAGENT.\* | sql-iaas 
+/Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.log | sql-iaas 
+/Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.mdmp | sql-iaas 
+/Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.trc | sql-iaas 
+/Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.txt | sql-iaas 
+/Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.xel | sql-iaas 
+/Program Files/Microsoft SQL Server/\*/MSSQL/Log/fd | sql-iaas 
+/Program Files/Microsoft SQL Server/\*/MSSQL/Log/fd.\* | sql-iaas 
 /Program Files/Microsoft SQL Server/\*/Setup Bootstrap/Log/Summary.txt | sql-iaas 
 /Program Files/Microsoft SQL Server/\*/Setup Bootstrap/Log/\*/Log\*.cab | sql-iaas 
 /ProgramData/ASRSetupLogs/ASRUnifiedAgentConfigurator.log | site-recovery, windowsupdate 
@@ -495,7 +509,9 @@ File Path | Manifest
 /WindowsAzure/Logs/Plugins/\*/\*/Heartbeat.log | agents, diagnostic, eg, normal, servicefabric, windowsupdate 
 /WindowsAzure/Logs/Plugins/\*/\*/Install.log | agents, diagnostic, eg, normal, servicefabric, windowsupdate 
 /WindowsAzure/Logs/Plugins/\*/\*/Update.log | agents, diagnostic, eg, normal, servicefabric, windowsupdate 
-/WindowsAzure/Logs/SqlServerLogs/\* | sql-iaas 
+/WindowsAzure/Logs/SqlServerLogs/ERRORLOG | sql-iaas 
+/WindowsAzure/Logs/SqlServerLogs/\*.txt | sql-iaas 
+/WindowsAzure/Logs/SqlServerLogs/\*.xel | sql-iaas 
 /WindowsAzure/Logs/Telemetry.log | agents, diagnostic, eg, normal, site-recovery, windowsupdate, workloadbackup 
 /WindowsAzure/Logs/TransparentInstaller.log | agents, asc-vmhealth, diagnostic, eg, min-diagnostic, normal, site-recovery, windowsupdate, workloadbackup 
 /WindowsAzure/Logs/VFPlugin/\*.log | monitor-mgmt 
@@ -513,4 +529,4 @@ File Path | Manifest
 /k/config | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-06-16 17:57:40.646912`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-06-24 07:35:05.510611`*

@@ -177,8 +177,8 @@ copy,/Packages/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/*/Service
 copy,/Packages/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/*/Service/ServiceFabricNodeBootstrapAgent.InstallState
 copy,/Packages/Plugins/Microsoft.Compute.BGInfo/*/BGInfo.def.xml
 copy,/Packages/Plugins/Microsoft.Compute.BGInfo/*/PluginManifest.xml
-copy,/Packages/Plugins/Microsoft.Compute.BGInfo/*/config.bgi
-copy,/Packages/Plugins/Microsoft.Compute.BGInfo/*/emptyConfig.bgi
+copy,/Packages/Plugins/Microsoft.Compute.BGInfo/*/config.bgi,noscan
+copy,/Packages/Plugins/Microsoft.Compute.BGInfo/*/emptyConfig.bgi,noscan
 copy,/Packages/Plugins/Microsoft.Powershell.DSC/*/DSCWork/*.dsc
 copy,/Packages/Plugins/Microsoft.Powershell.DSC/*/DSCWork/*.log
 copy,/Packages/Plugins/Microsoft.Powershell.DSC/*/DSCWork/*.dpx
@@ -196,7 +196,7 @@ copy,/WindowsAzure/Logs/Plugins/Microsoft.Compute.CustomScriptExtension/*/*.log
 
 echo,### Windows Update ###
 copy,/Windows/Logs/CBS/*.log
-copy,/Windows/Logs/CBS/*.cab
+copy,/Windows/Logs/CBS/*.cab,noscan
 copy,/Windows/Logs/DISM/*.log
 copy,/Windows/windowsupdate*.log
 copy,/Windows/Logs/WindowsUpdate/WindowsUpdate.*.etl,noscan
@@ -210,7 +210,7 @@ copy,/Windows/SoftwareDistribution/ReportingEvents.log
 copy,/Windows/SoftwareDistribution/DeliveryOptimization/SavedLogs/*.log
 copy,/Windows/SoftwareDistribution/DeliveryOptimization/SavedLogs/*.etl,noscan
 copy,/Windows/SoftwareDistribution/Plugins/7D5F3CBA-03DB-4BE5-B4B36DBED19A6833/TokenRetrieval.log
-copy,/Windows/servicing/sessions/sessions.xml
+copy,/Windows/servicing/sessions/sessions.xml,noscan
 copy,/Windows/Logs/MoSetup/UpdateAgent.log
 copy,/Windows/SoftwareDistribution/Download/*/*/*.xml
 copy,/Windows/SoftwareDistribution/Download/*/*/*.log
@@ -221,7 +221,7 @@ copy,/Users/*/AppData/Local/Packages/WinStore_cw5n1h2txyewy/AC/Temp/winstore.log
 copy,/Windows/SoftwareDistribution/datastore/DataStore.edb,noscan
 copy,/WindowsUpdateVerbose.etl,noscan
 copy,/Windows/ServiceProfiles/NetworkService/AppData/Local/Microsoft/Windows/DeliveryOptimization/Logs/*.etl,noscan
-copy,/Windows/ServiceProfiles/LocalService/AppData/Local/Microsoft/WSLicense/tokens.dat
+copy,/Windows/ServiceProfiles/LocalService/AppData/Local/Microsoft/WSLicense/tokens.dat,noscan
 copy,/Windows/SoftwareDistribution/Plugins/7D5F3CBA-03DB-4BE5-B4B36DBED19A6833/117CAB2D-82B1-4B5A-A08C-4D62DBEE7782.cache
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WindowsUpdateClient%%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TaskScheduler%%4Operational.evtx
@@ -265,7 +265,7 @@ echo,### System Restore ###
 copy,/Windows/Logs/SystemRestore/*.*
 
 echo,### Windows Minidump ###
-copy,/Windows/Minidump/*.dmp
+copy,/Windows/Minidump/*.dmp,noscan
 
 echo,### Gathering Disk Info ###
 diskinfo,

@@ -355,7 +355,6 @@ servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFab
 servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/HandlerManif<br>est.json
 servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/config/\*.se<br>ttings
 servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*.\*/status/\*<br>.status
-servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/heartbeat.lo<br>g
 servicefabric | copy | /var/lib/waagent/Microsoft.OSTCExtensions.LinuxDiagnostic-\*/xmlCfg.xml
 servicefabric | copy | /var/log/azure/Microsoft.OSTCExtensions.LinuxDiagnostic/\*/mdsd.\*
 site-recovery | copy | /etc/\*-release
@@ -1060,8 +1059,24 @@ sql-iaas | copy | /Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/
 sql-iaas | copy | /WindowsAzure/Logs/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/\*/CommandExec<br>ution\*.log
 sql-iaas | copy | /WindowsAzure/Logs/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/\*/ExtensionLo<br>g\*.log
 sql-iaas | copy | /WindowsAzure/Logs/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/\*/SqlCustomer<br>SupportLogs/\*
-sql-iaas | copy | /WindowsAzure/Logs/SqlServerLogs/\*
-sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*
+sql-iaas | copy | /WindowsAzure/Logs/SqlServerLogs/ERRORLOG
+sql-iaas | copy | /WindowsAzure/Logs/SqlServerLogs/\*.txt
+sql-iaas | copy | /WindowsAzure/Logs/SqlServerLogs/\*.xel
+sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/ExtensibilityLog/ExtensibilityLog/EX<br>TLAUNCHERRORLOG
+sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/ExtensibilityLog/ExtensibilityLog/\*<br>.log
+sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/ExtensibilityLog/ExtensibilityLog/\*<br>.bin
+sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/ERRORLOG
+sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/ERRORLOG.\*
+sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/fd
+sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/fd.\*
+sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/FDLAUNCHERRORLOG
+sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/FDLAUNCHERRORLOG.\*
+sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.xel
+sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.txt
+sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.trc
+sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/SQLAGENT.\*
+sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.log
+sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.mdmp
 sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/Setup Bootstrap/Log/\*/Log\*.cab
 sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/Setup Bootstrap/Log/Summary.txt
 windowsupdate | copy | /Boot/BCD
@@ -1323,4 +1338,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-06-16 17:57:40.646912`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-06-24 07:35:05.510611`*
