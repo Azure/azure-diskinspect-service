@@ -265,6 +265,7 @@ File Path | Manifest
 /Packages/Plugins/Microsoft.Powershell.DSC/\*/DSCWork/\*.dpx | agents, diagnostic, normal, windowsupdate 
 /Packages/Plugins/Microsoft.Powershell.DSC/\*/DSCWork/\*.dsc | agents, diagnostic, normal, windowsupdate 
 /Packages/Plugins/Microsoft.Powershell.DSC/\*/DSCWork/\*.log | agents, diagnostic, normal, windowsupdate 
+/Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/\*/CommandExecution\*.l<br>og | sql-iaas 
 /Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/\*/HandlerEnvironment.j<br>son | sql-iaas 
 /Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/\*/HandlerManifest.json | sql-iaas 
 /Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/\*/PackageDefinition.xm<br>l | agents, diagnostic, normal, sql-iaas, windowsupdate 
@@ -529,4 +530,4 @@ File Path | Manifest
 /k/config | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-06-24 07:35:05.510611`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-07-14 13:39:06.041523`*

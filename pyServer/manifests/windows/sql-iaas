@@ -11,6 +11,7 @@ copy,/Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/*/Status/*.st
 copy,/Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/*/Status/HeartBeat.Json 
 copy,/Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/*/PackageDefinition.xml
 copy,/Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/*/installation_log
+copy,/Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/*/CommandExecution*.log
 
 copy,/WindowsAzure/Logs/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/*/CommandExecution*.log
 copy,/WindowsAzure/Logs/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/*/ExtensionLog*.log
