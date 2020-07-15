@@ -52,13 +52,7 @@ RUN pip3 install applicationinsights==0.11.9
 # Expose port 8080 for nginx
 EXPOSE 8080
 
-#Setup docker entrypoint
+#Setup docker entrypoint and start the nginx service
 COPY ./entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
-
-# Start the nginx service
-#CMD service nginx start && python /azureDiskInspectSvc/main.py
-
-
-

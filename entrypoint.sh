@@ -1,7 +1,9 @@
 #!/bin/bash 
 ###########################################################################################
 # This script pulls the CA bundle from the host wireserver, parses it,                    #
-# and installs them in the Ubuntu CA bundle. Recommended execution method                 #
+# and installs them in the Ubuntu CA bundle for the specialized clouds                    #
+# where CA bundle is completely different from normal production clouds.                  #
+# Recommended execution method                                                            #
 # is cloud-init or VM custom-data for execution at provisioning time                      #
 #                                                                                         #
 # NOTES:                                                                                  #
