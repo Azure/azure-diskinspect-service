@@ -98,6 +98,7 @@ File Path | Manifest
 /opt/msawb/var/log/\*/\*/\*/\*/\* | workloadbackup 
 /run/NetworkManager/\*.conf | diagnostic, eg 
 /run/NetworkManager/conf.d/\*.conf | diagnostic, eg 
+/run/azure-vnet\* | aks 
 /run/cloud-init/cloud.cfg | diagnostic, eg 
 /run/cloud-init/dhclient.hooks/\*.json | diagnostic, eg 
 /run/cloud-init/ds-identify.log | diagnostic, eg 
@@ -531,4 +532,4 @@ File Path | Manifest
 /k/config | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-07-19 16:10:33.532021`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-07-19 16:15:50.721070`*

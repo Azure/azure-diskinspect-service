@@ -97,7 +97,6 @@ agents | copy | /var/lib/waagent/error.json
 agents | copy | /var/lib/waagent/Incarnation
 agents | copy | /var/lib/waagent/history/\*.zip
 aks | list | /var/log
-aks | list | /var/run/azure-vnet\*
 aks | list | /var/log/azure/
 aks | list | /opt/azure/containers/
 aks | copy | /var/log/azure/cluster-provision.log
@@ -109,6 +108,7 @@ aks | copy | /var/log/azure/kern.log
 aks | copy | /var/log/journal/\*/\*
 aks | copy | /var/log/azure-vnet\*
 aks | copy | /var/run/azure-vnet\*
+aks | copy | /run/azure-vnet\*
 aks | copy | /etc/cni/net.d/10-azure.conflist
 aks | copy | /var/log/pods/kube-system\*/\*/\*.log
 aks | copy | /var/lib/docker/containers/\*/\*-json.log
@@ -1341,4 +1341,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-07-19 16:10:33.532021`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-07-19 16:15:50.721070`*
