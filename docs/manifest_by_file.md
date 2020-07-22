@@ -50,6 +50,7 @@ File Path | Manifest
 /etc/ambari-server/conf/\* | hdinsight 
 /etc/cloud/cloud.cfg | diagnostic, eg 
 /etc/cloud/cloud.cfg.d/\*.cfg | diagnostic, eg 
+/etc/cni/net.d/10-azure.conflist | aks 
 /etc/dhcp/\*.conf | diagnostic, eg 
 /etc/fstab | diagnostic, eg, normal 
 /etc/hadoop/conf/\* | hdinsight 
@@ -97,6 +98,7 @@ File Path | Manifest
 /opt/msawb/var/log/\*/\*/\*/\*/\* | workloadbackup 
 /run/NetworkManager/\*.conf | diagnostic, eg 
 /run/NetworkManager/conf.d/\*.conf | diagnostic, eg 
+/run/azure-vnet\* | aks 
 /run/cloud-init/cloud.cfg | diagnostic, eg 
 /run/cloud-init/dhclient.hooks/\*.json | diagnostic, eg 
 /run/cloud-init/ds-identify.log | diagnostic, eg 
@@ -530,4 +532,4 @@ File Path | Manifest
 /k/config | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-07-14 13:39:06.041523`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-07-19 16:15:50.721070`*

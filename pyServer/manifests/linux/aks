@@ -17,6 +17,8 @@ copy,/var/log/journal/*/*,noscan
 echo,### CNI logs ###
 copy,/var/log/azure-vnet* 
 copy,/var/run/azure-vnet*
+copy,/run/azure-vnet*
+copy,/etc/cni/net.d/10-azure.conflist
 
 echo,### kube-system pod logs ###
 copy,/var/log/pods/kube-system*/*/*.log
