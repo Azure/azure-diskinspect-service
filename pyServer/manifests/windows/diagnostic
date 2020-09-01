@@ -63,6 +63,7 @@ copy,/AzureData/CustomData.bin
 copy,/Windows/Setup/State/State.ini
 copy,/Windows/Panther/WaSetup.xml
 copy,/Windows/Panther/WaSetup.log
+copy,/Windows/Panther/VmAgentInstaller.xml
 copy,/Windows/Panther/unattend.xml
 copy,/unattend.xml
 copy,/Windows/Panther/setupact.log

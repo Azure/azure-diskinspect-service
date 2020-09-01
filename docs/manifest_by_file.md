@@ -353,6 +353,7 @@ File Path | Manifest
 /Windows/Minidump/\*.dmp | windowsupdate 
 /Windows/Panther/FastCleanup/setupact.log | diagnostic, eg, normal, windowsupdate 
 /Windows/Panther/UnattendGC/setupact.log | diagnostic, eg, normal, windowsupdate 
+/Windows/Panther/VmAgentInstaller.xml | agents, diagnostic, normal, windowsupdate 
 /Windows/Panther/WaSetup.log | diagnostic, eg, normal, windowsupdate 
 /Windows/Panther/WaSetup.xml | agents, diagnostic, eg, genspec, normal, site-recovery, windowsupdate 
 /Windows/Panther/miglog.xml | windowsupdate 
@@ -532,4 +533,4 @@ File Path | Manifest
 /k/config | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-07-19 16:15:50.721070`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-08-21 11:30:21.751351`*

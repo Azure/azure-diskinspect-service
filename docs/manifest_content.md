@@ -426,6 +426,7 @@ agents | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-DSC%4Operational
 agents | copy | /AzureData/CustomData.bin
 agents | copy | /Windows/Setup/State/state.ini
 agents | copy | /Windows/Panther/WaSetup.xml
+agents | copy | /Windows/Panther/VmAgentInstaller.xml
 agents | list | /WindowsAzure
 agents | list | /Packages/Plugins
 agents | copy | /WindowsAzure/Logs/Telemetry.log
@@ -592,6 +593,7 @@ diagnostic | copy | /AzureData/CustomData.bin
 diagnostic | copy | /Windows/Setup/State/State.ini
 diagnostic | copy | /Windows/Panther/WaSetup.xml
 diagnostic | copy | /Windows/Panther/WaSetup.log
+diagnostic | copy | /Windows/Panther/VmAgentInstaller.xml
 diagnostic | copy | /Windows/Panther/unattend.xml
 diagnostic | copy | /unattend.xml
 diagnostic | copy | /Windows/Panther/setupact.log
@@ -866,6 +868,7 @@ normal | copy | /AzureData/CustomData.bin
 normal | copy | /Windows/Setup/State/state.ini
 normal | copy | /Windows/Panther/WaSetup.xml
 normal | copy | /Windows/Panther/WaSetup.log
+normal | copy | /Windows/Panther/VmAgentInstaller.xml
 normal | copy | /Windows/Panther/unattend.xml
 normal | copy | /unattend.xml
 normal | copy | /Windows/Panther/setupact.log
@@ -1141,6 +1144,7 @@ windowsupdate | copy | /AzureData/CustomData.bin
 windowsupdate | copy | /Windows/Setup/State/State.ini
 windowsupdate | copy | /Windows/Panther/WaSetup.xml
 windowsupdate | copy | /Windows/Panther/WaSetup.log
+windowsupdate | copy | /Windows/Panther/VmAgentInstaller.xml
 windowsupdate | copy | /Windows/Panther/unattend.xml
 windowsupdate | copy | /unattend.xml
 windowsupdate | copy | /Windows/Panther/setupact.log
@@ -1341,4 +1345,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-07-19 16:15:50.721070`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-08-21 11:30:21.751351`*
