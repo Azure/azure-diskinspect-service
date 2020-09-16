@@ -182,7 +182,7 @@ File Path | Manifest
 /var/log/hdinsight-provisioning-agent/hdinsight-provisioning-agent.log | hdinsight 
 /var/log/hdinsight-startupagent/hdinsight-startupagent.log | hdinsight 
 /var/log/hdinsight-startupagent/hdinsight-startupagent.out | hdinsight 
-/var/log/hive/hivemetastore.log | hdinsight, hdinsight 
+/var/log/hive/hivemetastore.log | hdinsight 
 /var/log/hive/hiveserver2.log | hdinsight 
 /var/log/journal/\*/\* | aks 
 /var/log/kern.log | servicefabric 
@@ -538,4 +538,4 @@ File Path | Manifest
 /k/config | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-09-15 14:05:47.151985`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-09-15 22:46:14.816650`*

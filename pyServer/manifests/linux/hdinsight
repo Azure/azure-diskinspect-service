@@ -25,4 +25,3 @@ copy,/var/log/hdinsight-agent/hdinsight-agent.out
 copy,/var/log/hdinsight-startupagent/hdinsight-startupagent.log
 copy,/var/log/hdinsight-startupagent/hdinsight-startupagent.out
 copy,/var/log/hdinsight-provisioning-agent/hdinsight-provisioning-agent.log
-copy,/var/log/hive/hivemetastore.log
