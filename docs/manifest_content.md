@@ -112,6 +112,7 @@ aks | copy | /run/azure-vnet\*
 aks | copy | /etc/cni/net.d/10-azure.conflist
 aks | copy | /var/log/pods/kube-system\*/\*/\*.log
 aks | copy | /var/lib/docker/containers/\*/\*-json.log
+aks | copy | /var/log/nvidia\*.log
 aks | list | /var/log/pods/\*/\*
 diagnostic | list | /var/log
 diagnostic | list | /var/lib/cloud

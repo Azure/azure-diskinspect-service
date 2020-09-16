@@ -188,6 +188,7 @@ File Path | Manifest
 /var/log/kern.log | servicefabric 
 /var/log/kern\* | diagnostic, eg, normal 
 /var/log/messages\* | diagnostic, eg, monitor-mgmt, normal 
+/var/log/nvidia\*.log | aks 
 /var/log/pods/kube-system\*/\*/\*.log | aks 
 /var/log/rsyslog\* | diagnostic, eg, lad, normal 
 /var/log/s2\*.log | site-recovery 

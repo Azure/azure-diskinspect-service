@@ -24,5 +24,8 @@ echo,### kube-system pod logs ###
 copy,/var/log/pods/kube-system*/*/*.log
 copy,/var/lib/docker/containers/*/*-json.log
 
+echo,### NVidia installer logs for GPU nodes ###
+copy,/var/log/nvidia*.log,noscan
+
 echo,### list of pods and associated symlink to nav the container logs ###
 ll,/var/log/pods/*/*
