@@ -294,6 +294,11 @@ hdinsight | copy | /var/log/ambari-agent/ambari-agent.log
 hdinsight | copy | /var/log/hadoop-yarn/yarn/\*.log
 hdinsight | copy | /var/log/hive/hiveserver2.log
 hdinsight | copy | /var/log/hive/hivemetastore.log
+hdinsight | copy | /var/log/hdinsight-agent/hdinsight-agent.log
+hdinsight | copy | /var/log/hdinsight-agent/hdinsight-agent.out
+hdinsight | copy | /var/log/hdinsight-startupagent/hdinsight-startupagent.log
+hdinsight | copy | /var/log/hdinsight-startupagent/hdinsight-startupagent.out
+hdinsight | copy | /var/log/hdinsight-provisioning-agent/hdinsight-provisioning-agent.log
 lad | list | /var/log
 lad | list | /etc/udev/rules.d
 lad | copy | /etc/HOSTNAME
@@ -1346,4 +1351,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-09-14 11:30:21.751351`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-09-15 22:46:14.816650`*
