@@ -20,3 +20,4 @@ copy,/var/log/cloud-init*
 copy,/var/log/boot*
 copy,/var/log/auth*
 copy,/var/log/secure*
+copy,/var/log/xrdp*,noscan
