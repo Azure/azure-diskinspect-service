@@ -204,6 +204,7 @@ File Path | Manifest
 /var/log/waagent.log | servicefabric 
 /var/log/waagent\* | agents, diagnostic, eg, lad, normal, site-recovery, workloadbackup 
 /var/log/waagent\*.log | monitor-mgmt 
+/var/log/xrdp\* | normal 
 /var/log/yum\* | diagnostic, eg, normal 
 /var/opt/microsoft/omsagent/LAD/log/\* | lad 
 /var/opt/microsoft/omsagent/\*/log/omsagent.log | monitor-mgmt 
@@ -539,4 +540,4 @@ File Path | Manifest
 /k/config | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-09-15 22:46:14.816650`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-09-29 11:44:46.829901`*
