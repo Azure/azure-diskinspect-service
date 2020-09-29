@@ -345,6 +345,7 @@ normal | copy | /var/log/cloud-init\*
 normal | copy | /var/log/boot\*
 normal | copy | /var/log/auth\*
 normal | copy | /var/log/secure\*
+normal | copy | /var/log/xrdp\*
 performance | list | /var/log/sa
 performance | copy | /var/log/sa/sar\*
 servicefabric | copy | /opt/microsoft/servicefabric/bin/Fabric/Fabric.Code/Fabric
@@ -1351,4 +1352,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-09-15 22:46:14.816650`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-09-29 11:44:46.829901`*
