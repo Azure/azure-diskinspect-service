@@ -26,11 +26,7 @@ versioning:
   commands:
 
 build:
-  commands: 
-    # Build
-#    - !!defaultcommand
-#      name: 'Build ComputeDiagnostics'
-#      command: 'deploy/service/build_CDPx.sh'
+  commands:
 
 package:
   commands:
