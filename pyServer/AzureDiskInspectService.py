@@ -262,7 +262,12 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
             container_blob_name = container_blob_name + '/' + urlSplit[urlSplitIndex]
             urlSplitIndex = urlSplitIndex + 1
         
-        storageUrl = urllib.parse.urlunparse(
+        self.telemetryLogger.info("Storage Account from requestUri: " + storageAcctName)
+        if ".blob." in storageAcctName:
+            storageUrl = urllib.parse.urlunparse(
+                ('https', storageAcctName, container_blob_name, '', sasKey, None))
+        else:
+            storageUrl = urllib.parse.urlunparse(
                 ('https', storageAcctName + self.StorageUrlPostFix(), container_blob_name, '', sasKey, None))
             
         return operationId, mode, modeMajorSkipTo, modeMinorSkipTo, storageAcctName, container_blob_name, storageUrl
