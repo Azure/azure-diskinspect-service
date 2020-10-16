@@ -144,8 +144,9 @@ File Path | Manifest
 /var/lib/waagent/\*/config/HandlerState | agents, diagnostic 
 /var/lib/waagent/\*/config/HandlerStatus | agents, diagnostic 
 /var/lib/waagent/\*/config/\*.settings | agents, diagnostic 
+/var/lib/waagent/\*/error.json | diagnostic 
 /var/lib/waagent/\*/status/\*.status | agents, diagnostic 
-/var/lib/waagent/error.json | agents, diagnostic, eg 
+/var/lib/waagent/error.json | agents, eg 
 /var/lib/waagent/history/\*.zip | agents, diagnostic 
 /var/lib/waagent/provisioned | diagnostic, eg, genspec 
 /var/lib/waagent/waagent_status.json | agents, diagnostic, eg 
@@ -539,4 +540,4 @@ File Path | Manifest
 /k/config | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-09-15 22:46:14.816650`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-10-16 13:37:59.098382`*
