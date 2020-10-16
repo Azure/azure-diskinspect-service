@@ -276,6 +276,19 @@
       "os_disk_configuration": "",
       "expected_timeout": "18",
       "shouldFail" : true
+    },
+    {
+      "title": "Storage account with blob DNS",
+      "description": "Test to ensure request uri with full storage account endpoint works",
+      "vhd_relative_path": "/linux/SuSE12SP1.vhd",
+      "manifest": "genspec",
+      "os": "linux",
+      "os_distribution": "sles",
+      "os_product_name": "SUSE Linux Enterprise Server 12 SP1",
+      "os_disk_configuration": "Standard",
+      "expected_timeout": "18",
+      "files_present": ["/device_0/etc/hostname"],
+      "file_content":{"/device_0/etc/hostname":"suse12-sp1"}
     }
   ]
 }

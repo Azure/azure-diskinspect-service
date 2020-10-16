@@ -226,7 +226,11 @@ with open(os.path.join(current_directory,'test_config.json'), "r") as json_confi
         if inspection_test["title"] == "Invalid storage account":
             uri = "{0}/{1}/{2}/{3}{4}".format(service_host, operation_id, inspection_test["manifest"], "nosuchAccount",inspection_test["vhd_relative_path"]) 
         else:
-            uri = "{0}/{1}/{2}/{3}{4}".format(service_host, operation_id, inspection_test["manifest"], storage_acct,inspection_test["vhd_relative_path"]) 
+            if inspection_test["title"] == "Storage account with blob DNS":
+                storage_endpoint = ".blob.core.windows.net"
+                uri = "{0}/{1}/{2}/{3}{4}{5}".format(service_host, operation_id, inspection_test["manifest"], storage_acct, storage_endpoint, inspection_test["vhd_relative_path"]) 
+            else:
+                uri = "{0}/{1}/{2}/{3}{4}".format(service_host, operation_id, inspection_test["manifest"], storage_acct,inspection_test["vhd_relative_path"])
 
         print(uri)
 
