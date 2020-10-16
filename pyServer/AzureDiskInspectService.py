@@ -263,6 +263,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
             urlSplitIndex = urlSplitIndex + 1
         
         self.telemetryLogger.info("Storage Account from requestUri: " + storageAcctName)
+        # If storageAcctName in requestUri is full storage url then do not add StorageUrlPostFix while generating storageuri with SAS.
         if ".blob." in storageAcctName:
             storageUrl = urllib.parse.urlunparse(
                 ('https', storageAcctName, container_blob_name, '', sasKey, None))
