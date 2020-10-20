@@ -130,7 +130,7 @@ diagnostic | copy | /var/log/waagent\*
 diagnostic | copy | /etc/waagent.conf
 diagnostic | copy | /var/lib/waagent/provisioned
 diagnostic | copy | /var/lib/waagent/waagent_status.json
-diagnostic | copy | /var/lib/waagent/error.json
+diagnostic | copy | /var/lib/waagent/\*/error.json
 diagnostic | copy | /var/lib/waagent/\*.manifest.xml
 diagnostic | copy | /var/lib/waagent/\*/config/\*.settings
 diagnostic | copy | /var/lib/waagent/\*/config/HandlerState
@@ -1351,4 +1351,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-09-15 22:46:14.816650`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-10-16 13:37:59.098382`*
