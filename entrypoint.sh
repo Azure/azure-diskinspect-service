@@ -18,7 +18,7 @@
 # This script will run in a container, but does require sed so that must be installed     #
 ###########################################################################################
 echo "Cloud Environment: $CLOUD"
-if [ "$CLOUD" == "USNat" ]; then
+if [ "$CLOUD" == "USNat" ] || [ "$CLOUD" == "USSec" ]; then
     mkdir -p /root/AzureCACertificates
     # http://168.63.129.16 is a constant for the host's wireserver endpoint
     certs=$(curl "http://168.63.129.16/machine?comp=acmspackage&type=cacertificates&ext=json")
