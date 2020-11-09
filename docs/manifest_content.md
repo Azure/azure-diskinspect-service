@@ -1071,6 +1071,7 @@ sql-iaas | copy | /Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/
 sql-iaas | copy | /WindowsAzure/Logs/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/\*/CommandExec<br>ution\*.log
 sql-iaas | copy | /WindowsAzure/Logs/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/\*/ExtensionLo<br>g\*.log
 sql-iaas | copy | /WindowsAzure/Logs/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/\*/SqlCustomer<br>SupportLogs/\*
+sql-iaas | copy | /SQLIaaSExtension/Log/\*
 sql-iaas | copy | /WindowsAzure/Logs/SqlServerLogs/ERRORLOG
 sql-iaas | copy | /WindowsAzure/Logs/SqlServerLogs/\*.txt
 sql-iaas | copy | /WindowsAzure/Logs/SqlServerLogs/\*.xel
@@ -1351,4 +1352,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-10-16 13:37:59.098382`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-11-08 21:08:10.997779`*

@@ -328,6 +328,7 @@ File Path | Manifest
 /ProgramData/Microsoft/System Center/Orchestrator/7.2/SMA/\*.\* | monitor-mgmt 
 /ProgramData/USOShared/Logs/\*.etl | windowsupdate 
 /ProgramData/UsoPrivate/UpdateStore/\*.xml | windowsupdate 
+/SQLIaaSExtension/Log/\* | sql-iaas 
 /Users/\*/AppData/Local/Packages/WinStore_cw5n1h2txyewy/AC/Temp/winstore.log | windowsupdate 
 /Users/\*/AppData/Local/Temp/winstore.log | windowsupdate 
 /Users/\*/AppData/Local/microsoft/windows/windowsupdate.log | windowsupdate 
@@ -540,4 +541,4 @@ File Path | Manifest
 /k/config | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-10-16 13:37:59.098382`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-11-08 21:08:10.997779`*
