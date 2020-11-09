@@ -20,6 +20,9 @@ copy,/var/run/azure-vnet*
 copy,/run/azure-vnet*
 copy,/etc/cni/net.d/10-azure.conflist
 
+echo,### NPM logs ###
+copy,/var/log/azure-npm.log,noscan
+
 echo,### kube-system pod logs ###
 copy,/var/log/pods/kube-system*/*/*.log
 copy,/var/lib/docker/containers/*/*-json.log
