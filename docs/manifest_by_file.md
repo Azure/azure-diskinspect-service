@@ -25,10 +25,10 @@ File Path | Manifest
 /var/lib/waagent/Prod.\*.manifest.xml | agents, diagnostic 
 /var/lib/waagent/SharedConfig.xml | agents, diagnostic 
 /var/lib/waagent/\*.xml | agents 
-/var/lib/waagent/\*/config/HandlerState | agents, diagnostic 
-/var/lib/waagent/\*/config/HandlerStatus | agents, diagnostic 
-/var/lib/waagent/\*/config/\*.settings | agents, diagnostic 
-/var/lib/waagent/\*/status/\*.status | agents, diagnostic 
+/var/lib/waagent/\*/config/HandlerState | agents, diagnostic, aks 
+/var/lib/waagent/\*/config/HandlerStatus | agents, diagnostic, aks 
+/var/lib/waagent/\*/config/\*.settings | agents, diagnostic, aks 
+/var/lib/waagent/\*/status/\*.status | agents, diagnostic, aks 
 /var/lib/waagent/provisioned | diagnostic, genspec 
 /var/log/auth\* | agents, diagnostic, normal 
 /var/log/azure/\*/\*/\* | agents, diagnostic 
@@ -141,11 +141,11 @@ File Path | Manifest
 /var/lib/waagent/\*.agentsManifest | agents 
 /var/lib/waagent/\*.manifest.xml | diagnostic 
 /var/lib/waagent/\*.xml | agents, site-recovery, workloadbackup 
-/var/lib/waagent/\*/config/HandlerState | agents, diagnostic 
-/var/lib/waagent/\*/config/HandlerStatus | agents, diagnostic 
-/var/lib/waagent/\*/config/\*.settings | agents, diagnostic 
-/var/lib/waagent/\*/error.json | diagnostic 
-/var/lib/waagent/\*/status/\*.status | agents, diagnostic 
+/var/lib/waagent/\*/config/HandlerState | agents, diagnostic, aks 
+/var/lib/waagent/\*/config/HandlerStatus | agents, diagnostic, aks 
+/var/lib/waagent/\*/config/\*.settings | agents, diagnostic, aks 
+/var/lib/waagent/\*/error.json | diagnostic, aks
+/var/lib/waagent/\*/status/\*.status | agents, diagnostic, aks 
 /var/lib/waagent/error.json | agents, eg 
 /var/lib/waagent/history/\*.zip | agents, diagnostic 
 /var/lib/waagent/provisioned | diagnostic, eg, genspec 

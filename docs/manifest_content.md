@@ -114,6 +114,11 @@ aks | copy | /var/log/azure-npm.log
 aks | copy | /var/log/pods/kube-system\*/\*/\*.log
 aks | copy | /var/lib/docker/containers/\*/\*-json.log
 aks | copy | /var/log/nvidia\*.log
+aks | copy | /var/lib/waagent/\*/error.json
+aks | copy | /var/lib/waagent/\*/status/\*.status
+aks | copy | /var/lib/waagent/\*/config/\*.settings
+aks | copy | /var/lib/waagent/\*/config/HandlerState
+aks | copy | /var/lib/waagent/\*/config/HandlerStatus
 aks | list | /var/log/pods/\*/\*
 diagnostic | list | /var/log
 diagnostic | list | /var/lib/cloud
