@@ -30,7 +30,7 @@ build:
 
 package:
   commands:
-    # Docker build Credscan image
+    # Docker build InspectDisk image
     - !!dockerbuildcommand
       name: 'Build Credscan Image'
       context_folder: '.'
