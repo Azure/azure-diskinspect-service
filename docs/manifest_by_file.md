@@ -144,7 +144,7 @@ File Path | Manifest
 /var/lib/waagent/\*/config/HandlerState | agents, diagnostic, aks 
 /var/lib/waagent/\*/config/HandlerStatus | agents, diagnostic, aks 
 /var/lib/waagent/\*/config/\*.settings | agents, diagnostic, aks 
-/var/lib/waagent/\*/error.json | diagnostic, aks
+/var/lib/waagent/\*/error.json | diagnostic, aks 
 /var/lib/waagent/\*/status/\*.status | agents, diagnostic, aks 
 /var/lib/waagent/error.json | agents, eg 
 /var/lib/waagent/history/\*.zip | agents, diagnostic 
