@@ -1,0 +1,51 @@
+# For full annotated example, please visit
+#  https://onebranch.visualstudio.com/Pipeline/_wiki/wikis/Pipeline.wiki?wikiVersion=GBwikiMaster&pagePath=%2FWelcome%20to%20OneBranch%20Pipeline%2FCross%20Platform%20Cloud%20Delivery%20Pipeline%20(CDPx)%2FYAML%20Format%2FAnnotated%20Example
+
+# The following section is a metadata section that describes what kind of environment this pipeline should be executing in. 
+environment:
+  host:
+    os: 'linux'
+    flavor: 'ubuntu'
+    version: '16.04'
+  runtime:
+    provider: 'appcontainer'
+    image: 'cdpxlinux.azurecr.io/legacy/global/ubuntu-1604-all:1.0'
+    source_mode: 'link'
+                                                                        
+workspace_options:
+  enable_legacy_networking: true
+
+version:
+  name: 'AzureDiskInspect'
+  major: 1
+  minor: 0
+  tag: 'alpha'
+  system: 'patch'
+
+versioning:
+  commands:
+
+build:
+  commands:
+
+package:
+  commands:
+    # Docker build InspectDisk image
+    - !!dockerbuildcommand
+      name: 'Build Credscan Image'
+      context_folder: '.'
+      dockerfile_name: 'Dockerfile'
+      repository_name: 'azdis/diskinspect'
+      publish: true
+      publish_build_tag: true
+      metadata_file:
+        artifact_path: 'images/AzdisDiskInspect.json'  
+            
+test:
+  commands:
+
+publish:
+  commands:
+
+user_cleanup:
+  commands:
