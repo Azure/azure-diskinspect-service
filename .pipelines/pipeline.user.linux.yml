@@ -14,6 +14,7 @@ environment:
                                                                         
 workspace_options:
   enable_legacy_networking: true
+  enable_service_tree_acr_path: true
 
 version:
   name: 'AzureDiskInspect'
