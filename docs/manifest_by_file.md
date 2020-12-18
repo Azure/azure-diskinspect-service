@@ -42,10 +42,10 @@ File Path | Manifest
 ------------- | ------------- 
 /boot/grub\*/grub.c\* | diagnostic, eg 
 /boot/grub\*/menu.lst | diagnostic, eg 
-/etc/HOSTNAME | agents, diagnostic, eg, lad, site-recovery, workloadbackup 
+/etc/HOSTNAME | agents, diagnostic, eg, lad, site-recovery, sql-iaas, workloadbackup 
 /etc/NetworkManager/\*.conf | diagnostic, eg 
 /etc/NetworkManager/conf.d/\*.conf | diagnostic, eg 
-/etc/\*-release | agents, diagnostic, eg, site-recovery, workloadbackup 
+/etc/\*-release | agents, diagnostic, eg, site-recovery, sql-iaas, workloadbackup 
 /etc/ambari-agent/conf/\* | hdinsight 
 /etc/ambari-server/conf/\* | hdinsight 
 /etc/cloud/cloud.cfg | diagnostic, eg 
@@ -56,7 +56,7 @@ File Path | Manifest
 /etc/hadoop/conf/\* | hdinsight 
 /etc/hbase/conf/\* | hdinsight 
 /etc/hive2/conf/\* | hdinsight 
-/etc/hostname | agents, diagnostic, eg, genspec, lad, site-recovery, workloadbackup 
+/etc/hostname | agents, diagnostic, eg, genspec, lad, site-recovery, sql-iaas, workloadbackup 
 /etc/hosts | hdinsight 
 /etc/netplan/\*.yaml | diagnostic, eg 
 /etc/network/interfaces | diagnostic, eg 
@@ -96,6 +96,7 @@ File Path | Manifest
 /opt/msawb/var/lib/catalog/WorkloadSchedules/\*/\*.bin | workloadbackup 
 /opt/msawb/var/log/\*/\*/\* | workloadbackup 
 /opt/msawb/var/log/\*/\*/\*/\*/\* | workloadbackup 
+/opt/mssql/bin/mssql-conf | sql-iaas 
 /run/NetworkManager/\*.conf | diagnostic, eg 
 /run/NetworkManager/conf.d/\*.conf | diagnostic, eg 
 /run/azure-vnet\* | aks 
@@ -134,6 +135,11 @@ File Path | Manifest
 /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/config/\*.se<br>ttings | servicefabric 
 /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/heartbeat.lo<br>g | servicefabric 
 /var/lib/waagent/Microsoft.OSTCExtensions.LinuxDiagnostic-\*/xmlCfg.xml | servicefabric 
+/var/lib/waagent/Microsoft.SqlServer.Management.SqlIaaSAgentLinux\*/HandlerEnvironmen<br>t.json | sql-iaas 
+/var/lib/waagent/Microsoft.SqlServer.Management.SqlIaaSAgentLinux\*/HandlerManifest.j<br>son | sql-iaas 
+/var/lib/waagent/Microsoft.SqlServer.Management.SqlIaaSAgentLinux\*/config/\* | sql-iaas 
+/var/lib/waagent/Microsoft.SqlServer.Management.SqlIaaSAgentLinux\*/deployer.log | sql-iaas 
+/var/lib/waagent/Microsoft.SqlServer.Management.SqlIaaSAgentLinux\*/status/\* | sql-iaas 
 /var/lib/waagent/Microsoft.\*LinuxDiagnostic\*/config/\*.settings | lad 
 /var/lib/waagent/Microsoft.\*LinuxDiagnostic\*/status/\*.status | lad 
 /var/lib/waagent/Microsoft.\*LinuxDiagnostic\*/xmlCfg.xml | lad 
@@ -161,6 +167,7 @@ File Path | Manifest
 /var/log/azure/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode/\*.\*/CommandExec<br>ution.log | servicefabric 
 /var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/\*/\*.log | monitor-mgmt 
 /var/log/azure/Microsoft.OSTCExtensions.LinuxDiagnostic/\*/mdsd.\* | servicefabric 
+/var/log/azure/Microsoft.SqlServer.Management.SqlIaaSAgentLinux\* | sql-iaas 
 /var/log/azure/Microsoft.\*LinuxDiagnostic/\*/\* | lad 
 /var/log/azure/\* | site-recovery, workloadbackup 
 /var/log/azure/\*/\* | agents, diagnostic 
@@ -214,9 +221,13 @@ File Path | Manifest
 /var/opt/microsoft/omsconfig/omsconfig.log | monitor-mgmt 
 /var/opt/microsoft/omsconfig/omsconfigdetailed.log | monitor-mgmt 
 /var/opt/microsoft/scx/log/scx.log | monitor-mgmt 
+/var/opt/mssql/log/\*.tar.gz2 | sql-iaas 
+/var/opt/mssql/log/errorlog\* | sql-iaas 
+/var/opt/mssql/setup\* | sql-iaas 
 /var/opt/omi/log/\*.log | monitor-mgmt 
 /var/run/azure-vnet\* | aks 
 /var/spool/cron/tabs/root | workloadbackup 
+copy | sql-iaas 
 ## windows 
 File Path | Manifest 
 ------------- | ------------- 
@@ -541,4 +552,4 @@ File Path | Manifest
 /k/config | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-11-06 05:23:04.068814`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-12-17 16:49:06.090451`*
