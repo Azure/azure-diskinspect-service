@@ -10,15 +10,15 @@ copy,/etc/hostname
 echo,
 
 echo,### Gathering Extension Log Files ###
-copy,/var/log/azure/Microsoft.SqlServer.Management.SqlIaaSAgentLinux*
-copy,/var/lib/waagent/Microsoft.SqlServer.Management.SqlIaaSAgentLinux*/deployer.log
+copy,/var/log/azure/Microsoft.SqlServer.Management.SqlIaaSAgentLinux*,noscan
+copy,/var/lib/waagent/Microsoft.SqlServer.Management.SqlIaaSAgentLinux*/deployer.log,noscan
 echo,
 
 echo,### Gathering Extension config Files ###
 copy,/var/lib/waagent/Microsoft.SqlServer.Management.SqlIaaSAgentLinux*/status/*
-copy,/var/lib/waagent/Microsoft.SqlServer.Management.SqlIaaSAgentLinux*/config/*
-copy,/var/lib/waagent/Microsoft.SqlServer.Management.SqlIaaSAgentLinux*/HandlerManifest.json
-copy,/var/lib/waagent/Microsoft.SqlServer.Management.SqlIaaSAgentLinux*/HandlerEnvironment.json
+copy,/var/lib/waagent/Microsoft.SqlServer.Management.SqlIaaSAgentLinux*/config/*,noscan
+copy,/var/lib/waagent/Microsoft.SqlServer.Management.SqlIaaSAgentLinux*/HandlerManifest.json,noscan
+copy,/var/lib/waagent/Microsoft.SqlServer.Management.SqlIaaSAgentLinux*/HandlerEnvironment.json,noscan
 echo,
 
 echo,### Gather SQL server installation logs ###
