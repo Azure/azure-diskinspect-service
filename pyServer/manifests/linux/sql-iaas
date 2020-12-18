@@ -1,0 +1,34 @@
+echo,### Probing Directories ###
+ll,/var/opt/mssql
+ll,/var/lib/waagent
+
+echo,### Gathering Configuration Files ###
+copy,/etc/*-release
+copy,/etc/HOSTNAME
+copy,/etc/hostname
+echo,
+
+echo,### Gathering Extension Log Files ###
+copy,/var/log/azure/Microsoft.SqlServer.Management.SqlIaaSAgentLinux*
+copy,/var/lib/waagent/Microsoft.SqlServer.Management.SqlIaaSAgentLinux*/deployer.log
+echo,
+
+echo,### Gathering Extension config Files ###
+copy,/var/lib/waagent/Microsoft.SqlServer.Management.SqlIaaSAgentLinux*/status/*
+copy,/var/lib/waagent/Microsoft.SqlServer.Management.SqlIaaSAgentLinux*/config/*
+copy,/var/lib/waagent/Microsoft.SqlServer.Management.SqlIaaSAgentLinux*/HandlerManifest.json
+copy,/var/lib/waagent/Microsoft.SqlServer.Management.SqlIaaSAgentLinux*/HandlerEnvironment.json
+echo,
+
+echo,### Gather SQL server installation logs ###
+copy,/var/opt/mssql/setup*
+echo,
+
+echo,### Gather SQL server configurations and logs ###
+copy,/opt/mssql/bin/mssql-conf
+copy,/var/opt/mssql/log/errorlog*
+echo,
+
+echo,### Gather SQL server dumps if any ###
+copy,/var/opt/mssql/log/*.tar.gz2
+copy,copy,/var/opt/mssql/log/*.mdmp
