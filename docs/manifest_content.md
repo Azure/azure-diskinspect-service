@@ -381,6 +381,22 @@ site-recovery | copy | /var/log/AzureRcmCli.log
 site-recovery | copy | /var/log/svagents\*.log
 site-recovery | copy | /var/log/s2\*.log
 site-recovery | copy | /var/log/evtcollforw\*.log
+sql-iaas | list | /var/opt/mssql
+sql-iaas | list | /var/lib/waagent
+sql-iaas | copy | /etc/\*-release
+sql-iaas | copy | /etc/HOSTNAME
+sql-iaas | copy | /etc/hostname
+sql-iaas | copy | /var/log/azure/Microsoft.SqlServer.Management.SqlIaaSAgentLinux\*
+sql-iaas | copy | /var/lib/waagent/Microsoft.SqlServer.Management.SqlIaaSAgentLinux\*/deployer.log
+sql-iaas | copy | /var/lib/waagent/Microsoft.SqlServer.Management.SqlIaaSAgentLinux\*/status/\*
+sql-iaas | copy | /var/lib/waagent/Microsoft.SqlServer.Management.SqlIaaSAgentLinux\*/config/\*
+sql-iaas | copy | /var/lib/waagent/Microsoft.SqlServer.Management.SqlIaaSAgentLinux\*/HandlerManifest.j<br>son
+sql-iaas | copy | /var/lib/waagent/Microsoft.SqlServer.Management.SqlIaaSAgentLinux\*/HandlerEnvironmen<br>t.json
+sql-iaas | copy | /var/opt/mssql/setup\*
+sql-iaas | copy | /opt/mssql/bin/mssql-conf
+sql-iaas | copy | /var/opt/mssql/log/errorlog\*
+sql-iaas | copy | /var/opt/mssql/log/\*.tar.gz2
+sql-iaas | copy | copy
 workloadbackup | copy | /etc/\*-release
 workloadbackup | copy | /etc/HOSTNAME
 workloadbackup | copy | /etc/hostname
@@ -1352,4 +1368,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-11-06 05:23:04.068814`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-12-17 16:49:06.090451`*
