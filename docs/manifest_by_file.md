@@ -173,6 +173,7 @@ File Path | Manifest
 /var/log/azure/\*/\* | agents, diagnostic 
 /var/log/azure/\*/\*/\* | agents, diagnostic 
 /var/log/azure/cluster-provision.log | aks, diagnostic 
+/var/log/azure/containerd-status.log | aks 
 /var/log/azure/custom-script/handler.log | agents, diagnostic 
 /var/log/azure/docker-status.log | aks 
 /var/log/azure/kern.log | aks 
@@ -552,4 +553,4 @@ File Path | Manifest
 /k/config | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-12-17 16:49:06.090451`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-01-11 12:59:20.499599`*

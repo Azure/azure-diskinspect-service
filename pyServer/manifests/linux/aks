@@ -14,6 +14,9 @@ copy,/var/log/azure/kubelet-status.log
 copy,/var/log/azure/kern.log
 copy,/var/log/journal/*/*,noscan
 
+echo,### containerd ###
+copy,/var/log/azure/containerd-status.log
+
 echo,### CNI logs ###
 copy,/var/log/azure-vnet* 
 copy,/var/run/azure-vnet*
