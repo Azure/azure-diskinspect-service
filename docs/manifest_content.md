@@ -106,6 +106,7 @@ aks | copy | /var/log/azure/docker-status.log
 aks | copy | /var/log/azure/kubelet-status.log
 aks | copy | /var/log/azure/kern.log
 aks | copy | /var/log/journal/\*/\*
+aks | copy | /var/log/azure/containerd-status.log
 aks | copy | /var/log/azure-vnet\*
 aks | copy | /var/run/azure-vnet\*
 aks | copy | /run/azure-vnet\*
@@ -1368,4 +1369,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2020-12-17 16:49:06.090451`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-01-11 12:59:20.499599`*
