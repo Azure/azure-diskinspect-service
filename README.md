@@ -101,7 +101,9 @@ To copy the logs over for examination on the host:
 	4.	Apply your changes in the branch
 
 		-If you are updating/creating new manifest then: Make sure to run "parse_manifest.py"
+		 $ cd ./tools/
 		 $ python ./parse_manifest.py
+		 $ cd -
 
 	5.	Push changes to your remote branch by following below sequesnce of commands
 		$ git add <file_changed>

@@ -239,6 +239,7 @@ File Path | Manifest
 /AzureData/CustomDataSetupScript.log | aks 
 /AzureData/CustomDataSetupScript.ps1 | aks 
 /Boot/BCD | windowsupdate 
+/CalicoWindows/logs/\*.log | aks 
 /Packages/Plugins/ESET.FileSecurity/\*/agent_version.txt | agents, diagnostic, normal, windowsupdate 
 /Packages/Plugins/ESET.FileSecurity/\*/extension_version.txt | agents, diagnostic, normal, windowsupdate 
 /Packages/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/AnalyzerConfigTempla<br>te.xml | agents, diagnostic, normal, windowsupdate 
@@ -553,4 +554,4 @@ File Path | Manifest
 /k/config | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-01-11 12:59:20.499599`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-01-29 14:14:20.394498`*
