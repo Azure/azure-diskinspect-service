@@ -557,6 +557,7 @@ aks | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Host-Network-Servic
 aks | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Hyper-V-Compute-Admin.evtx
 aks | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Hyper-V-Compute-Operational.evtx
 aks | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Host-Network-Service-Operational.evtx
+aks | copy | /CalicoWindows/logs/\*.log
 aks | copy | /AzureData/CustomDataSetupScript.log
 aks | copy | /AzureData/CustomDataSetupScript.ps1
 asc-vmhealth | copy | /WindowsAzure/Logs/TransparentInstaller.log
@@ -1369,4 +1370,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-01-11 12:59:20.499599`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-02-03 08:55:03.499169`*

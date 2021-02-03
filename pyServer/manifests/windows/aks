@@ -19,8 +19,8 @@ copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Hyper-V-Compute-Admin.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Hyper-V-Compute-Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Host-Network-Service-Operational.evtx
 
-
-
+echo,### Calico Windows logs
+copy,/CalicoWindows/logs/*.log
 
 echo,## Cluster provision logs ##
 copy,/AzureData/CustomDataSetupScript.log
