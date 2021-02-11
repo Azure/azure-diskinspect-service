@@ -50,9 +50,7 @@ File Path | Manifest
 /etc/ambari-server/conf/\* | hdinsight 
 /etc/cloud/cloud.cfg | diagnostic, eg 
 /etc/cloud/cloud.cfg.d/\*.cfg | diagnostic, eg 
-/etc/cni/net.d/10-azure.conflist | aks 
-/etc/cni/net.d/10-calico.conflist | aks 
-/etc/cni/net.d/10-containerd-net.conflist | aks 
+/etc/cni/net.d/\*.conflist | aks 
 /etc/dhcp/\*.conf | diagnostic, eg 
 /etc/fstab | diagnostic, eg, normal 
 /etc/hadoop/conf/\* | hdinsight 
@@ -556,4 +554,4 @@ File Path | Manifest
 /k/config | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-02-11 15:57:32.807940`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-02-11 15:58:57.807965`*
