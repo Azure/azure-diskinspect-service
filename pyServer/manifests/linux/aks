@@ -21,7 +21,7 @@ echo,### CNI logs ###
 copy,/var/log/azure-vnet* 
 copy,/var/run/azure-vnet*
 copy,/run/azure-vnet*
-copy,/etc/cni/net.d/*.conflist
+copy,/etc/cni/net.d/*.conflist,noscan
 
 echo,### NPM logs ###
 copy,/var/log/azure-npm.log,noscan
