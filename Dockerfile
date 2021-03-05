@@ -19,6 +19,7 @@ RUN apt-get update \
     libhivex-ocaml-dev \
     python3-pip \
     libssl-dev \
+    wget \
  && DEBIAN_FRONTEND=noninteractive apt-get build-dep -y \
     libguestfs
 
