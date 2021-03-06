@@ -19,6 +19,7 @@ RUN apt-get update \
     libhivex-ocaml-dev \
     python3-pip \
     libssl-dev \
+    wget \
  && DEBIAN_FRONTEND=noninteractive apt-get build-dep -y \
     libguestfs
 
@@ -35,6 +36,14 @@ WORKDIR /libguestfs
 RUN ./autogen.sh \
  && make ; rm -f po-docs/podfiles; make -C po-docs update-po 
 RUN make
+
+# Remove old version and install latest golang version
+RUN DEBIAN_FRONTEND=noninteractive apt-get remove -y \
+    golang-go \
+    --auto-remove golang-go
+RUN rm -rf /usr/local/go
+RUN wget -qO- https://golang.org/dl/go1.16.linux-amd64.tar.gz | tar -xzv -C /usr/local
+ENV PATH $PATH:/usr/local/go/bin
 
 # extractor service
 RUN rm -v /etc/nginx/nginx.conf
