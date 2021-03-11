@@ -16,18 +16,9 @@ workspace_options:
   enable_legacy_networking: true
   enable_service_tree_acr_path: true
 
-version:
-  name: 'AzureDiskInspect'
-  major: 1
-  minor: 0
-  tag: 'alpha'
-  system: 'patch'
-
-versioning:
-  commands:
-
 build:
   commands:
+    #NO OP
 
 package:
   commands:
@@ -44,9 +35,12 @@ package:
             
 test:
   commands:
+    #NO OP
 
 publish:
   commands:
+    #NO OP
 
 user_cleanup:
   commands:
+    #NO OP
