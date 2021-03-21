@@ -33,7 +33,7 @@ package:
           publish: true
           publish_build_tag: true
           metadata_file:
-          artifact_path: 'images/AzdisDiskInspect.json' 
+            artifact_path: 'images/AzdisDiskInspect.json' 
             
 # An optional user defined stage for running tests that need network access. Note that unit tests and others that do not need network access
 # can be run in build or package stages itself. Any artifacts built in this stage will be separated out and will not be signed.
