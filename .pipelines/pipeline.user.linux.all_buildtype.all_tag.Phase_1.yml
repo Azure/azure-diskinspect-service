@@ -6,28 +6,19 @@ environment:
   host:
     os: 'linux'
     flavor: 'ubuntu'
-    version: '16.04'
+    version: '18.04'
   runtime:
     provider: 'appcontainer'
-    image: 'cdpxlinux.azurecr.io/legacy/global/ubuntu-1604-all:1.0'
+    image: 'cdpxlinux.azurecr.io/global/ubuntu-1804-all:5.0'
     source_mode: 'link'
                                                                         
 workspace_options:
   enable_legacy_networking: true
   enable_service_tree_acr_path: true
 
-version:
-  name: 'AzureDiskInspect'
-  major: 1
-  minor: 0
-  tag: 'alpha'
-  system: 'patch'
-
-versioning:
-  commands:
-
 build:
   commands:
+    #NO OP
 
 package:
   commands:
@@ -44,9 +35,12 @@ package:
             
 test:
   commands:
+    #NO OP
 
 publish:
   commands:
+    #NO OP
 
 user_cleanup:
   commands:
+    #NO OP
