@@ -18,6 +18,13 @@ workspace_options:
   download_current_artifacts: true         # Default is always false
   enable_service_tree_acr_path: true
 
+static_analysis_options:
+  binskim_options:
+    files_to_scan:
+      - from: 'cdpx-artifacts'
+        exclude:
+          - '*'
+
 # An optional user defined stage for performing any compilation, code generation etc.
 # All files in the artifacts sections will be collected, saved off and signed.
 # The signed files will be restored back to the original locations before the next stage is invoked.
@@ -33,7 +40,14 @@ build:
 # Eventually, network access will be limited or cut-off in this stage.
 package:
   commands:
-      # NO OP
+    # Package deploy/ev2 scripts
+    - !!buildcommand
+      name: 'Copy Artifacts'
+      command: 'copyBuild.cmd'
+      artifacts:
+        - from: 'cdpx-artifacts'
+          include:
+            - '**/*'
             
 # An optional user defined stage for running tests that need network access. Note that unit tests and others that do not need network access
 # can be run in build or package stages itself. Any artifacts built in this stage will be separated out and will not be signed.

@@ -2,10 +2,10 @@ environment:
   host:
     os: 'linux'
     flavor: 'ubuntu'
-    version: '16.04'
+    version: '18.04'
   runtime:
     provider: 'appcontainer'
-    image: 'cdpxlinux.azurecr.io/legacy/global/ubuntu-1604-all:1.0'
+    image: 'cdpxlinux.azurecr.io/global/ubuntu-1804-all:5.0'
     source_mode: 'link'
 
 version:
@@ -34,16 +34,6 @@ artifact_publish_options:                  # Metadata section
 # Eventually, network access will be limited or cut-off in this stage.
 package:
   commands:
-      # Docker build InspectDisk image
-      - !!dockerbuildcommand
-          name: 'Build Credscan Image'
-          context_folder: '.'
-          dockerfile_name: 'Dockerfile'
-          repository_name: 'azdis/diskinspect'
-          publish: true
-          publish_build_tag: true
-          metadata_file:
-            artifact_path: 'images/AzdisDiskInspect.json' 
             
 # An optional user defined stage for running tests that need network access. Note that unit tests and others that do not need network access
 # can be run in build or package stages itself. Any artifacts built in this stage will be separated out and will not be signed.
