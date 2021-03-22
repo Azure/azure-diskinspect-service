@@ -43,7 +43,7 @@ package:
     # Package deploy/ev2 scripts
     - !!buildcommand
       name: 'Copy Artifacts'
-      command: 'copyBuild.cmd'
+      command: 'scripts\copyBuild.cmd'
       artifacts:
         - from: 'cdpx-artifacts'
           include:
