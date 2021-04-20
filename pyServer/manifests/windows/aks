@@ -23,7 +23,7 @@ echo,### Calico Windows logs ###
 copy,/CalicoWindows/logs/*.log,noscan
 
 echo,### Contained panic log ###
-copy,/ProgramData/containerd/root/panic.log
+copy,/ProgramData/containerd/root/panic.log,noscan
 
 echo,### Cluster provision logs ###
 copy,/AzureData/CustomDataSetupScript.log

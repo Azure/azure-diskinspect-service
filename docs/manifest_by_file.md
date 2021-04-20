@@ -555,4 +555,4 @@ File Path | Manifest
 /k/config | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-04-19 13:45:24.098091`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-04-20 15:14:56.985533`*
