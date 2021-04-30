@@ -5,6 +5,7 @@ ll,/etc/udev/rules.d
 echo,### Gathering Configuration Files ###
 copy,/etc/fstab
 copy,/etc/ssh/sshd_config
+copy,/etc/sysconfig/network-scripts/ifcfg-eth0
 echo,
 
 echo,### Gathering Log Files ###

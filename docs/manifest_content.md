@@ -335,6 +335,7 @@ normal | list | /var/log
 normal | list | /etc/udev/rules.d
 normal | copy | /etc/fstab
 normal | copy | /etc/ssh/sshd_config
+normal | copy | /etc/sysconfig/network-scripts/ifcfg-eth0
 normal | copy | /var/log/waagent\*
 normal | copy | /var/log/syslog\*
 normal | copy | /var/log/rsyslog\*
@@ -1371,4 +1372,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-04-20 15:14:56.985533`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-04-29 12:32:20.276331`*

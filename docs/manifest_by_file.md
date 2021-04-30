@@ -75,6 +75,7 @@ File Path | Manifest
 /etc/sysconfig/iptables | diagnostic, eg 
 /etc/sysconfig/network | diagnostic, eg 
 /etc/sysconfig/network-scripts/ifcfg-\* | diagnostic, eg 
+/etc/sysconfig/network-scripts/ifcfg-eth0 | normal 
 /etc/sysconfig/network-scripts/route-\* | diagnostic, eg 
 /etc/sysconfig/network/config | diagnostic, eg 
 /etc/sysconfig/network/dhcp | diagnostic, eg 
@@ -555,4 +556,4 @@ File Path | Manifest
 /k/config | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-04-20 15:14:56.985533`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-04-29 12:32:20.276331`*
