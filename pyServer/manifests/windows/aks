@@ -6,6 +6,7 @@ echo,### Logs of services including but not limited to Kubelet, Kube proxy and c
 copy,/k/*.log
 copy,/k/*.err
 copy,/k/config
+copy,/k/kubeclusterconfig.json
 
 echo,### CNI logs ###
 copy,/k/azure-vnet.log

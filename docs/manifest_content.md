@@ -550,6 +550,7 @@ aks | copy | /Windows/System32/winevt/Logs/Application.evtx
 aks | copy | /k/\*.log
 aks | copy | /k/\*.err
 aks | copy | /k/config
+aks | copy | /k/kubeclusterconfig.json
 aks | copy | /k/azure-vnet.log
 aks | copy | /k/azure-vnet-ipam.log
 aks | copy | /k/azure-vnet.json
@@ -1372,4 +1373,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-04-29 12:32:20.276331`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-05-06 09:59:21.183339`*

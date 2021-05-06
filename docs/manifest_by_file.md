@@ -554,6 +554,7 @@ File Path | Manifest
 /k/azure-vnet.json | aks 
 /k/azure-vnet.log | aks 
 /k/config | aks 
+/k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-04-29 12:32:20.276331`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-05-06 09:59:21.183339`*
