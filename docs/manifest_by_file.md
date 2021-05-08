@@ -336,6 +336,7 @@ File Path | Manifest
 /Program Files/Microsoft SQL Server/\*/MSSQL/Log/fd.\* | sql-iaas 
 /Program Files/Microsoft SQL Server/\*/Setup Bootstrap/Log/Summary.txt | sql-iaas 
 /Program Files/Microsoft SQL Server/\*/Setup Bootstrap/Log/\*/Log\*.cab | sql-iaas 
+/Program Files/containerd/config.toml | aks 
 /ProgramData/ASRSetupLogs/ASRUnifiedAgentConfigurator.log | site-recovery, windowsupdate 
 /ProgramData/ASRSetupLogs/ASRUnifiedAgentInstaller.log | site-recovery, windowsupdate 
 /ProgramData/ASRSetupLogs/UnifiedAgentMSIInstall.log | site-recovery, windowsupdate 
@@ -557,4 +558,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-05-06 09:59:21.183339`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-05-08 09:49:06.378357`*
