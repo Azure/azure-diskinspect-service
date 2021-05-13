@@ -4,6 +4,8 @@ ll,/var/lib/cloud
 ll,/run/cloud-init
 ll,/var/lib/waagent
 ll,/etc/udev/rules.d
+ll,/etc/alternatives
+ll,/boot
 
 echo,### Gathering Cloud-init Files ###
 copy,/var/log/cloud-init*
@@ -58,6 +60,9 @@ copy,/etc/nsswitch.conf
 copy,/etc/resolv.conf
 copy,/run/systemd/resolve/*.conf
 copy,/run/resolvconf/*.conf
+copy,/etc/hosts
+copy,/etc/hosts.allow
+copy,/etc/hosts.deny
 echo,
 
 echo,### Gathering NetworkManager Files ###
@@ -92,6 +97,7 @@ echo,### Gathering Package Management Log Files ###
 copy,/var/log/dpkg*
 copy,/var/log/yum*
 copy,/var/log/dnf*
+copy,/var/log/zypp/history
 echo,
 
 echo,### Gathering System Log Files ###
@@ -103,6 +109,7 @@ copy,/var/log/dmesg*
 copy,/var/log/boot*
 copy,/var/log/auth*
 copy,/var/log/secure*
+copy,/var/log/cloudregister
 echo,
 
 echo,### Gathering Azure Files ###
@@ -117,9 +124,30 @@ echo,### Gathering System Configuration Files ###
 copy,/etc/fstab
 copy,/boot/grub*/grub.c*
 copy,/boot/grub*/menu.lst
+copy,/boot/grub*/grubenv
 copy,/etc/*-release
 copy,/etc/HOSTNAME
 copy,/etc/hostname
+copy,/etc/localtime
+copy,/etc/sudoers
+copy,/etc/sudoers.d/*
+copy,/etc/sysctl.conf
+copy,/etc/sysctl.d/*.conf
+copy,/etc/default/grub
+copy,/etc/default/grub.d/*.cfg
+copy,/etc/udev/rules.d/*.rules
+copy,/etc/modprobe.d/*.conf
+copy,/etc/security/limits.conf
+copy,/etc/selinux/config
+copy,/sys/kernel/security/apparmor/profiles
+echo,
+
+echo,### Gathering Repository Configuration Files ###
+copy,/etc/products.d/*.prod
+copy,/etc/zypp/repos.d/*.repo
+copy,/etc/yum.repos.d/*.repo
+copy,/etc/apt/sources.list
+copy,/etc/apt/sources.list.d/*.list
 echo,
 
 echo,### Gathering Disk Info ###

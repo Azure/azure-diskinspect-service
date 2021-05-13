@@ -41,6 +41,7 @@ File Path | Manifest
 File Path | Manifest 
 ------------- | ------------- 
 /boot/grub\*/grub.c\* | diagnostic, eg 
+/boot/grub\*/grubenv | diagnostic 
 /boot/grub\*/menu.lst | diagnostic, eg 
 /etc/HOSTNAME | agents, diagnostic, eg, lad, site-recovery, sql-iaas, workloadbackup 
 /etc/NetworkManager/\*.conf | diagnostic, eg 
@@ -48,16 +49,24 @@ File Path | Manifest
 /etc/\*-release | agents, diagnostic, eg, site-recovery, sql-iaas, workloadbackup 
 /etc/ambari-agent/conf/\* | hdinsight 
 /etc/ambari-server/conf/\* | hdinsight 
+/etc/apt/sources.list | diagnostic 
+/etc/apt/sources.list.d/\*.list | diagnostic 
 /etc/cloud/cloud.cfg | diagnostic, eg 
 /etc/cloud/cloud.cfg.d/\*.cfg | diagnostic, eg 
 /etc/cni/net.d/\*.conflist | aks 
+/etc/default/grub | diagnostic 
+/etc/default/grub.d/\*.cfg | diagnostic 
 /etc/dhcp/\*.conf | diagnostic, eg 
 /etc/fstab | diagnostic, eg, normal 
 /etc/hadoop/conf/\* | hdinsight 
 /etc/hbase/conf/\* | hdinsight 
 /etc/hive2/conf/\* | hdinsight 
 /etc/hostname | agents, diagnostic, eg, genspec, lad, site-recovery, sql-iaas, workloadbackup 
-/etc/hosts | hdinsight 
+/etc/hosts | diagnostic, hdinsight 
+/etc/hosts.allow | diagnostic 
+/etc/hosts.deny | diagnostic 
+/etc/localtime | diagnostic 
+/etc/modprobe.d/\*.conf | diagnostic 
 /etc/netplan/\*.yaml | diagnostic, eg 
 /etc/network/interfaces | diagnostic, eg 
 /etc/network/interfaces.d/\*.cfg | diagnostic, eg 
@@ -67,10 +76,15 @@ File Path | Manifest
 /etc/opt/microsoft/omsagent/conf/omsagent.conf | monitor-mgmt 
 /etc/opt/omi/conf/omsconfig/agentid | monitor-mgmt 
 /etc/opt/omi/conf/omsconfig/configuration/\*.mof | monitor-mgmt 
+/etc/products.d/\*.prod | diagnostic 
 /etc/resolv.conf | diagnostic, eg 
+/etc/security/limits.conf | diagnostic 
+/etc/selinux/config | diagnostic 
 /etc/spark/conf/\* | hdinsight 
 /etc/ssh/sshd_config | diagnostic, eg, normal 
 /etc/storm/conf/\* | hdinsight 
+/etc/sudoers | diagnostic 
+/etc/sudoers.d/\* | diagnostic 
 /etc/sysconfig/SuSEfirewall2 | diagnostic, eg 
 /etc/sysconfig/iptables | diagnostic, eg 
 /etc/sysconfig/network | diagnostic, eg 
@@ -81,9 +95,14 @@ File Path | Manifest
 /etc/sysconfig/network/dhcp | diagnostic, eg 
 /etc/sysconfig/network/ifcfg-\* | diagnostic, eg 
 /etc/sysconfig/network/routes | diagnostic, eg 
+/etc/sysctl.conf | diagnostic 
+/etc/sysctl.d/\*.conf | diagnostic 
+/etc/udev/rules.d/\*.rules | diagnostic 
 /etc/ufw/ufw.conf | diagnostic, eg 
 /etc/waagent.conf | agents, diagnostic, eg, site-recovery, workloadbackup 
 /etc/wicked/\*.xml | diagnostic, eg 
+/etc/yum.repos.d/\*.repo | diagnostic 
+/etc/zypp/repos.d/\*.repo | diagnostic 
 /opt/microsoft/servicefabric/bin/Fabric/Fabric.Code/Fabric | servicefabric 
 /opt/msawb/bin/AzureWLBackupCommonManagementSettings.json | workloadbackup 
 /opt/msawb/bin/AzureWLBackupMonitoringSync_config.json | workloadbackup 
@@ -109,6 +128,7 @@ File Path | Manifest
 /run/resolvconf/\*.conf | diagnostic, eg 
 /run/systemd/netif/leases/\* | diagnostic, eg 
 /run/systemd/resolve/\*.conf | diagnostic, eg 
+/sys/kernel/security/apparmor/profiles | diagnostic 
 /tmp/omsagent\*.tgz | monitor-mgmt 
 /usr/lib/NetworkManager/\*.conf | diagnostic, eg 
 /usr/lib/NetworkManager/conf.d/\*.conf | diagnostic, eg 
@@ -182,6 +202,7 @@ File Path | Manifest
 /var/log/azure/run-command/handler.log | diagnostic 
 /var/log/boot\* | diagnostic, eg, normal 
 /var/log/cloud-init\* | aks, diagnostic, eg, normal 
+/var/log/cloudregister | diagnostic 
 /var/log/dmesg\* | agents, diagnostic, eg, normal, site-recovery, workloadbackup 
 /var/log/dnf\* | diagnostic, eg 
 /var/log/dpkg.log | servicefabric 
@@ -216,6 +237,7 @@ File Path | Manifest
 /var/log/waagent\* | agents, diagnostic, eg, lad, normal, site-recovery, workloadbackup 
 /var/log/waagent\*.log | monitor-mgmt 
 /var/log/yum\* | diagnostic, eg, normal 
+/var/log/zypp/history | diagnostic 
 /var/opt/microsoft/omsagent/LAD/log/\* | lad 
 /var/opt/microsoft/omsagent/\*/log/omsagent.log | monitor-mgmt 
 /var/opt/microsoft/omsagent/\*/run/automationworker/omsupdatemgmt.log | monitor-mgmt 
@@ -558,4 +580,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-05-08 09:49:06.378357`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-05-13 13:29:55.936766`*

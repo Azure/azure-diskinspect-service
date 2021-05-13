@@ -121,6 +121,8 @@ diagnostic | list | /var/lib/cloud
 diagnostic | list | /run/cloud-init
 diagnostic | list | /var/lib/waagent
 diagnostic | list | /etc/udev/rules.d
+diagnostic | list | /etc/alternatives
+diagnostic | list | /boot
 diagnostic | copy | /var/log/cloud-init\*
 diagnostic | copy | /etc/cloud/cloud.cfg
 diagnostic | copy | /etc/cloud/cloud.cfg.d/\*.cfg
@@ -164,6 +166,9 @@ diagnostic | copy | /etc/nsswitch.conf
 diagnostic | copy | /etc/resolv.conf
 diagnostic | copy | /run/systemd/resolve/\*.conf
 diagnostic | copy | /run/resolvconf/\*.conf
+diagnostic | copy | /etc/hosts
+diagnostic | copy | /etc/hosts.allow
+diagnostic | copy | /etc/hosts.deny
 diagnostic | copy | /usr/lib/NetworkManager/\*.conf
 diagnostic | copy | /usr/lib/NetworkManager/conf.d/\*.conf
 diagnostic | copy | /run/NetworkManager/\*.conf
@@ -186,6 +191,7 @@ diagnostic | copy | /etc/wicked/\*.xml
 diagnostic | copy | /var/log/dpkg\*
 diagnostic | copy | /var/log/yum\*
 diagnostic | copy | /var/log/dnf\*
+diagnostic | copy | /var/log/zypp/history
 diagnostic | copy | /var/log/syslog\*
 diagnostic | copy | /var/log/rsyslog\*
 diagnostic | copy | /var/log/messages\*
@@ -194,6 +200,7 @@ diagnostic | copy | /var/log/dmesg\*
 diagnostic | copy | /var/log/boot\*
 diagnostic | copy | /var/log/auth\*
 diagnostic | copy | /var/log/secure\*
+diagnostic | copy | /var/log/cloudregister
 diagnostic | copy | /var/log/azure/\*/\*
 diagnostic | copy | /var/log/azure/\*/\*/\*
 diagnostic | copy | /var/log/azure/custom-script/handler.log
@@ -202,9 +209,27 @@ diagnostic | copy | /var/log/azure/cluster-provision.log
 diagnostic | copy | /etc/fstab
 diagnostic | copy | /boot/grub\*/grub.c\*
 diagnostic | copy | /boot/grub\*/menu.lst
+diagnostic | copy | /boot/grub\*/grubenv
 diagnostic | copy | /etc/\*-release
 diagnostic | copy | /etc/HOSTNAME
 diagnostic | copy | /etc/hostname
+diagnostic | copy | /etc/localtime
+diagnostic | copy | /etc/sudoers
+diagnostic | copy | /etc/sudoers.d/\*
+diagnostic | copy | /etc/sysctl.conf
+diagnostic | copy | /etc/sysctl.d/\*.conf
+diagnostic | copy | /etc/default/grub
+diagnostic | copy | /etc/default/grub.d/\*.cfg
+diagnostic | copy | /etc/udev/rules.d/\*.rules
+diagnostic | copy | /etc/modprobe.d/\*.conf
+diagnostic | copy | /etc/security/limits.conf
+diagnostic | copy | /etc/selinux/config
+diagnostic | copy | /sys/kernel/security/apparmor/profiles
+diagnostic | copy | /etc/products.d/\*.prod
+diagnostic | copy | /etc/zypp/repos.d/\*.repo
+diagnostic | copy | /etc/yum.repos.d/\*.repo
+diagnostic | copy | /etc/apt/sources.list
+diagnostic | copy | /etc/apt/sources.list.d/\*.list
 diagnostic | diskinfo | 
 eg | list | /var/log
 eg | list | /var/lib/cloud
@@ -1374,4 +1399,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-05-08 09:49:06.378357`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-05-13 13:29:55.936766`*
