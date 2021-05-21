@@ -122,9 +122,6 @@ echo,
 
 echo,### Gathering System Configuration Files ###
 copy,/etc/fstab
-copy,/boot/grub*/grub.c*
-copy,/boot/grub*/menu.lst
-copy,/boot/grub*/grubenv
 copy,/etc/*-release
 copy,/etc/HOSTNAME
 copy,/etc/hostname
@@ -133,21 +130,11 @@ copy,/etc/sudoers
 copy,/etc/sudoers.d/*
 copy,/etc/sysctl.conf
 copy,/etc/sysctl.d/*.conf
-copy,/etc/default/grub
-copy,/etc/default/grub.d/*.cfg
 copy,/etc/udev/rules.d/*.rules
 copy,/etc/modprobe.d/*.conf
 copy,/etc/security/limits.conf
 copy,/etc/selinux/config
 copy,/sys/kernel/security/apparmor/profiles
-echo,
-
-echo,### Gathering Repository Configuration Files ###
-copy,/etc/products.d/*.prod
-copy,/etc/zypp/repos.d/*.repo
-copy,/etc/yum.repos.d/*.repo
-copy,/etc/apt/sources.list
-copy,/etc/apt/sources.list.d/*.list
 echo,
 
 echo,### Gathering Disk Info ###

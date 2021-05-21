@@ -207,9 +207,6 @@ diagnostic | copy | /var/log/azure/custom-script/handler.log
 diagnostic | copy | /var/log/azure/run-command/handler.log
 diagnostic | copy | /var/log/azure/cluster-provision.log
 diagnostic | copy | /etc/fstab
-diagnostic | copy | /boot/grub\*/grub.c\*
-diagnostic | copy | /boot/grub\*/menu.lst
-diagnostic | copy | /boot/grub\*/grubenv
 diagnostic | copy | /etc/\*-release
 diagnostic | copy | /etc/HOSTNAME
 diagnostic | copy | /etc/hostname
@@ -218,18 +215,11 @@ diagnostic | copy | /etc/sudoers
 diagnostic | copy | /etc/sudoers.d/\*
 diagnostic | copy | /etc/sysctl.conf
 diagnostic | copy | /etc/sysctl.d/\*.conf
-diagnostic | copy | /etc/default/grub
-diagnostic | copy | /etc/default/grub.d/\*.cfg
 diagnostic | copy | /etc/udev/rules.d/\*.rules
 diagnostic | copy | /etc/modprobe.d/\*.conf
 diagnostic | copy | /etc/security/limits.conf
 diagnostic | copy | /etc/selinux/config
 diagnostic | copy | /sys/kernel/security/apparmor/profiles
-diagnostic | copy | /etc/products.d/\*.prod
-diagnostic | copy | /etc/zypp/repos.d/\*.repo
-diagnostic | copy | /etc/yum.repos.d/\*.repo
-diagnostic | copy | /etc/apt/sources.list
-diagnostic | copy | /etc/apt/sources.list.d/\*.list
 diagnostic | diskinfo | 
 eg | list | /var/log
 eg | list | /var/lib/cloud
@@ -340,6 +330,22 @@ lad | copy | /var/lib/waagent/Microsoft.\*LinuxDiagnostic\*/config/\*.settings
 lad | copy | /var/lib/waagent/Microsoft.\*LinuxDiagnostic\*/xmlCfg.xml
 lad | copy | /etc/opt/microsoft/omsagent/LAD/conf/omsagent.d/\*
 lad | copy | /var/opt/microsoft/omsagent/LAD/log/\*
+linux-bootconfig | list | /boot
+linux-bootconfig | list | /boot/grub
+linux-bootconfig | copy | /boot/grub\*/grub.c\*
+linux-bootconfig | copy | /boot/grub\*/menu.lst
+linux-bootconfig | copy | /boot/grub\*/grubenv
+linux-bootconfig | copy | /etc/default/grub
+linux-bootconfig | copy | /etc/default/grub.d/\*.cfg-
+linux-repoconfig | list | /etc/products.d/
+linux-repoconfig | list | /etc/zypp/repos.d/
+linux-repoconfig | list | /etc/yum.repos.d/
+linux-repoconfig | list | /etc/apt
+linux-repoconfig | copy | /etc/products.d/\*.prod
+linux-repoconfig | copy | /etc/zypp/repos.d/\*.repo
+linux-repoconfig | copy | /etc/yum.repos.d/\*.repo
+linux-repoconfig | copy | /etc/apt/sources.list
+linux-repoconfig | copy | /etc/apt/sources.list.d/\*.list
 monitor-mgmt | copy | /var/opt/microsoft/omsagent/\*/log/omsagent.log
 monitor-mgmt | copy | /var/opt/microsoft/omsconfig/omsconfig.log
 monitor-mgmt | copy | /var/opt/microsoft/omsconfig/omsconfigdetailed.log
@@ -1399,4 +1405,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-05-13 13:29:55.936766`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-05-21 15:32:54.127797`*

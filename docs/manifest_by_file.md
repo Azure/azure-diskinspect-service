@@ -40,22 +40,22 @@ File Path | Manifest
 ## linux 
 File Path | Manifest 
 ------------- | ------------- 
-/boot/grub\*/grub.c\* | diagnostic, eg 
-/boot/grub\*/grubenv | diagnostic 
-/boot/grub\*/menu.lst | diagnostic, eg 
+/boot/grub\*/grub.c\* | eg, linux-bootconfig 
+/boot/grub\*/grubenv | linux-bootconfig 
+/boot/grub\*/menu.lst | eg, linux-bootconfig 
 /etc/HOSTNAME | agents, diagnostic, eg, lad, site-recovery, sql-iaas, workloadbackup 
 /etc/NetworkManager/\*.conf | diagnostic, eg 
 /etc/NetworkManager/conf.d/\*.conf | diagnostic, eg 
 /etc/\*-release | agents, diagnostic, eg, site-recovery, sql-iaas, workloadbackup 
 /etc/ambari-agent/conf/\* | hdinsight 
 /etc/ambari-server/conf/\* | hdinsight 
-/etc/apt/sources.list | diagnostic 
-/etc/apt/sources.list.d/\*.list | diagnostic 
+/etc/apt/sources.list | linux-repoconfig 
+/etc/apt/sources.list.d/\*.list | linux-repoconfig 
 /etc/cloud/cloud.cfg | diagnostic, eg 
 /etc/cloud/cloud.cfg.d/\*.cfg | diagnostic, eg 
 /etc/cni/net.d/\*.conflist | aks 
-/etc/default/grub | diagnostic 
-/etc/default/grub.d/\*.cfg | diagnostic 
+/etc/default/grub | linux-bootconfig 
+/etc/default/grub.d/\*.cfg- | linux-bootconfig 
 /etc/dhcp/\*.conf | diagnostic, eg 
 /etc/fstab | diagnostic, eg, normal 
 /etc/hadoop/conf/\* | hdinsight 
@@ -76,7 +76,7 @@ File Path | Manifest
 /etc/opt/microsoft/omsagent/conf/omsagent.conf | monitor-mgmt 
 /etc/opt/omi/conf/omsconfig/agentid | monitor-mgmt 
 /etc/opt/omi/conf/omsconfig/configuration/\*.mof | monitor-mgmt 
-/etc/products.d/\*.prod | diagnostic 
+/etc/products.d/\*.prod | linux-repoconfig 
 /etc/resolv.conf | diagnostic, eg 
 /etc/security/limits.conf | diagnostic 
 /etc/selinux/config | diagnostic 
@@ -101,8 +101,8 @@ File Path | Manifest
 /etc/ufw/ufw.conf | diagnostic, eg 
 /etc/waagent.conf | agents, diagnostic, eg, site-recovery, workloadbackup 
 /etc/wicked/\*.xml | diagnostic, eg 
-/etc/yum.repos.d/\*.repo | diagnostic 
-/etc/zypp/repos.d/\*.repo | diagnostic 
+/etc/yum.repos.d/\*.repo | linux-repoconfig 
+/etc/zypp/repos.d/\*.repo | linux-repoconfig 
 /opt/microsoft/servicefabric/bin/Fabric/Fabric.Code/Fabric | servicefabric 
 /opt/msawb/bin/AzureWLBackupCommonManagementSettings.json | workloadbackup 
 /opt/msawb/bin/AzureWLBackupMonitoringSync_config.json | workloadbackup 
@@ -580,4 +580,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-05-13 13:29:55.936766`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-05-21 15:32:54.127797`*
