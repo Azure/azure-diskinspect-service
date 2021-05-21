@@ -1,0 +1,15 @@
+echo,### Probing Directories ###
+ll,/etc/products.d/
+ll,/etc/zypp/repos.d/
+ll,/etc/yum.repos.d/
+ll,/etc/apt
+
+echo,### Gathering Repository Configuration Files ###
+copy,/etc/products.d/*.prod
+copy,/etc/zypp/repos.d/*.repo
+copy,/etc/yum.repos.d/*.repo
+copy,/etc/apt/sources.list
+copy,/etc/apt/sources.list.d/*.list
+echo,
+
+
