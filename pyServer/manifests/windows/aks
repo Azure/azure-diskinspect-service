@@ -7,7 +7,6 @@ copy,/k/*.log
 copy,/k/*.err
 
 echo,### Cluster configurations ###
-copy,/k/config
 copy,/k/kubeclusterconfig.json
 copy,/Program Files/containerd/config.toml
 
