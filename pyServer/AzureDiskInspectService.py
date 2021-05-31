@@ -535,6 +535,8 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
 
             if b'blobsasurl' in postvars:
                 blobSasUrl = str(postvars[b'blobsasurl'][0], encoding='UTF-8')
+                self.telemetryLogger.info('Blob Sas url for upload:' + blobSasUrl)
+                self.telemetryLogger.info('Blob Sas url for upload in past content:' + postvars[b'blobsasurl'][0])
                 self.ValidateAndParseBlobSasUrl(blobSasUrl)
                 self.telemetryLogger.info('Received a valid Blob Sas url for upload. Result will be uploaded to Blob directly instead of Http response.')
             else:
