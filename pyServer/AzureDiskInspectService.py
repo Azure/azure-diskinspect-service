@@ -322,7 +322,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
         
         self.destination_container_name = urlSplit[0]
         self.destination_blob_name = urlSplit[1]
-        self.destination_sas_token = urlParts.query
+        self.destination_sas_token = urlParts.query.replace("+", "%2B")
 
         self.telemetryLogger.info("Destination Blob Storage Account: " + self.destination_storage_account)
         self.telemetryLogger.info("Container Name: " + self.destination_container_name)
