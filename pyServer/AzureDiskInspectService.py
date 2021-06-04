@@ -322,6 +322,8 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
         
         self.destination_container_name = urlSplit[0]
         self.destination_blob_name = urlSplit[1]
+        
+        # Adding special encoding for '+' sign as storage lib is not able to handle that.
         self.destination_sas_token = urlParts.query.replace("+", "%2B")
 
         self.telemetryLogger.info("Destination Blob Storage Account: " + self.destination_storage_account)
@@ -535,8 +537,6 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
 
             if b'blobsasurl' in postvars:
                 blobSasUrl = str(postvars[b'blobsasurl'][0], encoding='UTF-8')
-                self.telemetryLogger.info('Blob Sas url for upload:' + blobSasUrl)
-                self.telemetryLogger.info('Blob Sas url for upload in post content:' + str(postvars[b'blobsasurl'][0]))
                 self.ValidateAndParseBlobSasUrl(blobSasUrl)
                 self.telemetryLogger.info('Received a valid Blob Sas url for upload. Result will be uploaded to Blob directly instead of Http response.')
             else:
