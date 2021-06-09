@@ -17,7 +17,11 @@ jobs:
       script: travis_wait 60 ./build.sh ~/docker_build.txt $AZ_REGISTRY
       after_failure:
         - cat ~/docker_build.txt
-    - stage: deploy  
+    - stage: deploy
+      before_install:
+        - echo 'DOCKER_OPTS="$DOCKER_OPTS --debug --registry-mirror=https://mirror.gcr.io"'
+        - sudo service docker restart
+        - docker system info
       install: 
         - pip3 install azure-storage-blob==1.4.0
         - echo "$REG_PASS" | docker login -u $REG_USER $AZ_REGISTRY --password-stdin
