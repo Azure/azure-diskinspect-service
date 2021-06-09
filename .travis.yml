@@ -8,6 +8,10 @@ python:
 jobs:
   include:
     - stage: build
+      before_install:
+        - echo 'DOCKER_OPTS="$DOCKER_OPTS --debug --registry-mirror=https://mirror.gcr.io"'
+        - sudo service docker restart
+        - docker system info
       before_script: 
         - echo "$REG_PASS" | docker login -u $REG_USER $AZ_REGISTRY --password-stdin
       script: travis_wait 60 ./build.sh ~/docker_build.txt $AZ_REGISTRY
