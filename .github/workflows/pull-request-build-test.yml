@@ -1,24 +1,11 @@
-name: GitHub Actions Demo
-on: [push]
+name: Azure DiskInspect Build and Test
+on: [push, pull_request]
 jobs:
-  Explore-GitHub-Actions:
+  Build-Azdis-Image:
     runs-on: ubuntu-latest
-    env: 
-      LIBGUESTFS_SAS_KEY: ${{ secrets.LIBGUESTFS_SAS_KEY }}
-      BLOB_UPLOAD_SAS_URL: ${{ secrets.BLOB_UPLOAD_SAS_URL }}
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       - name: Check out repository code
         uses: actions/checkout@v2
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status }}."
-      - run: echo "Github actions ${{ env.GITHUB_ACTIONS }}."
       - name: Log in to Azure Container Registry
         uses: docker/login-action@v1
         with:
@@ -26,15 +13,20 @@ jobs:
           username: ${{ secrets.REG_USER }}
           password: ${{ secrets.REG_PASS }}
       - name: Build container image
-        run: echo "Bulding container image for registry ${{ secrets.AZ_REGISTRY }}"
-      - name: Run build script
         run: ./build.sh ~/docker_build.txt ${{ secrets.AZ_REGISTRY }}
         shell: bash
+  Test-Azdis-Image:
+    needs: Build-Azdis-Image
+    runs-on: ubuntu-latest
+    env: 
+      LIBGUESTFS_SAS_KEY: ${{ secrets.LIBGUESTFS_SAS_KEY }}
+      BLOB_UPLOAD_SAS_URL: ${{ secrets.BLOB_UPLOAD_SAS_URL }}
+    steps:
       - name: Install azure storage python SDK
         run: pip3 install azure-storage-blob==1.4.0
       - run: mkdir $HOME/azdis_ssl
       - run: openssl req -x509 -newkey rsa:2048 -keyout $HOME/azdis_ssl/azdis_private.rsa -out $HOME/azdis_ssl/azdis_public.crt -days 365 -nodes -subj "/CN=localhost"
-      - name: validate manifest changes
+      - name: Validate Manifest changes
         run: ./tests/requires_doc_change.sh
         shell: bash
       - name: Create Azdis Container
