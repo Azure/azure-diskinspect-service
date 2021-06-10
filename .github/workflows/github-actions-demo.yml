@@ -23,4 +23,7 @@ jobs:
           password: ${{ secrets.REG_PASS }}
       - name: Build container image
         run: echo "Bulding container image for registry ${{ secrets.AZ_REGISTRY }}"
+      - name: Run build script
+        run: ./build.sh ~/docker_build.txt ${{ secrets.AZ_REGISTRY }}
+        shell: bash
         
