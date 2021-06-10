@@ -3,6 +3,9 @@ on: [push]
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
+    env: 
+      LIBGUESTFS_SAS_KEY: ${{ secrets.LIBGUESTFS_SAS_KEY }}
+      BLOB_UPLOAD_SAS_URL: ${{ BLOB_UPLOAD_SAS_URL }}
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
