@@ -27,4 +27,16 @@ jobs:
       - name: Run build script
         run: ./build.sh ~/docker_build.txt ${{ secrets.AZ_REGISTRY }}
         shell: bash
-        
+      - name: Install azure storage python SDK
+        run: pip3 install azure-storage-blob==1.4.0
+      - run: mkdir $HOME/azdis_ssl
+      - run: openssl req -x509 -newkey rsa:2048 -keyout $HOME/azdis_ssl/azdis_private.rsa -out $HOME/azdis_ssl/azdis_public.crt -days 365 -nodes -subj "/CN=localhost"
+      - name: validate manifest changes
+        run: ./tests/requires_doc_change.sh
+        shell: bash
+      - name: Create Azdis Container
+        run: ./scripts/run.sh ${{ secrets.AZ_REGISTRY }}
+        shell: bash
+      - run: docker ps | grep -q AzureDiskInspectSvc_US
+      - name: Run unite test on docker container
+        run: python3 ./tests/inspection_tests.py ~ 'https://localhost:8080'
