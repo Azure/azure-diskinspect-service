@@ -19,7 +19,7 @@ then
   exit 1
 fi
 
-if [ $TRAVIS || $GITHUB_ACTIONS ]; then
+if [[ $TRAVIS || $GITHUB_ACTIONS ]]; then
   docker pull $az_registry/$CONTAINERREPO
   CONTAINERNAME=$az_registry/$CONTAINERREPO
   CONTAINERTAG="latest"
