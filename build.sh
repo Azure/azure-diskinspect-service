@@ -5,13 +5,6 @@ echo "Docker build settings:"
 echo "- Container Name: $CONTAINERNAME"
 echo ""
 echo "Starting Docker build..."
-echo "Github actions env: $GITHUB_ACTIONS"
-if [ $GITHUB_ACTIONS ]; then
-  echo "Github actions true"
-else
-  echo "fasle"
-fi
-
 
 file_output=$1
 az_registry=$2
