@@ -28,12 +28,12 @@ else
   echo "FAILED."
 fi
 
-if  [ ! $TRAVIS ] && [ ! -f $HOME/azdis_ssl/azdis_private.rsa ]; then   
+if  [ ! $TRAVIS || ! $GITHUB_ACTIONS ] && [ ! -f $HOME/azdis_ssl/azdis_private.rsa ]; then   
   mkdir $HOME/azdis_ssl
   openssl req -x509 -newkey rsa:2048 -keyout $HOME/azdis_ssl/azdis_private.rsa -out $HOME/azdis_ssl/azdis_public.crt -days 365 -nodes -subj "/CN=localhost"
 fi
 
-if [ $TRAVIS ]; then
+if [ $TRAVIS || $GITHUB_ACTIONS ]; then
   docker tag $CONTAINERNAME $az_registry/$CONTAINERREPO
   docker push $az_registry/$CONTAINERREPO
 fi
