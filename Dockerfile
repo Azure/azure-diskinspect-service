@@ -65,3 +65,8 @@ EXPOSE 8080
 COPY ./entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
+
+
+# Set the locale
+ENV LANG=C.UTF-8
+
