@@ -157,6 +157,7 @@ File Path | Manifest
 /var/lib/waagent/history/\*.zip | agents, diagnostic 
 /var/lib/waagent/provisioned | diagnostic, eg, genspec 
 /var/lib/waagent/waagent_status.json | agents, diagnostic, eg 
+/var/lib/waagent/waagent_status.\*.json | agents, diagnostic, eg 
 /var/lib/wicked/lease\* | diagnostic, eg 
 /var/log/AzureRcmCli.log | site-recovery 
 /var/log/ambari-agent/ambari-agent.log | hdinsight 
