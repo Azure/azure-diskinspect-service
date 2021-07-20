@@ -88,6 +88,7 @@ agents | copy | /var/log/azure/\*/\*/\*
 agents | copy | /var/log/azure/custom-script/handler.log
 agents | copy | /var/lib/waagent/\*.xml
 agents | copy | /var/lib/waagent/waagent_status.json
+agents | copy | /var/lib/waagent/waagent_status.\*.json
 agents | copy | /var/lib/waagent/\*/status/\*.status
 agents | copy | /var/lib/waagent/\*/config/\*.settings
 agents | copy | /var/lib/waagent/\*/config/HandlerState
@@ -132,6 +133,7 @@ diagnostic | copy | /var/log/waagent\*
 diagnostic | copy | /etc/waagent.conf
 diagnostic | copy | /var/lib/waagent/provisioned
 diagnostic | copy | /var/lib/waagent/waagent_status.json
+diagnostic | copy | /var/lib/waagent/waagent_status.\*.json
 diagnostic | copy | /var/lib/waagent/\*/error.json
 diagnostic | copy | /var/lib/waagent/\*.manifest.xml
 diagnostic | copy | /var/lib/waagent/\*/config/\*.settings
@@ -222,6 +224,7 @@ eg | copy | /var/log/waagent\*
 eg | copy | /etc/waagent.conf
 eg | copy | /var/lib/waagent/provisioned
 eg | copy | /var/lib/waagent/waagent_status.json
+eg | copy | /var/lib/waagent/waagent_status.\*.json
 eg | copy | /var/lib/waagent/error.json
 eg | copy | /run/systemd/netif/leases/\*
 eg | copy | /var/lib/NetworkManager/\*.lease
@@ -1374,4 +1377,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-07-07 17:19:11.452946`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-07-20 13:27:13.805782`*

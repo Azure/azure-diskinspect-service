@@ -156,6 +156,7 @@ File Path | Manifest
 /var/lib/waagent/error.json | agents, eg 
 /var/lib/waagent/history/\*.zip | agents, diagnostic 
 /var/lib/waagent/provisioned | diagnostic, eg, genspec 
+/var/lib/waagent/waagent_status.\*.json | agents, diagnostic, eg 
 /var/lib/waagent/waagent_status.json | agents, diagnostic, eg 
 /var/lib/wicked/lease\* | diagnostic, eg 
 /var/log/AzureRcmCli.log | site-recovery 
@@ -558,4 +559,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-07-07 17:19:11.452946`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-07-20 13:27:13.805782`*
