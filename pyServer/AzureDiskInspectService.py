@@ -86,7 +86,7 @@ class ResponseHeaderMetadata:
     KEEPALIVETHREAD_TIMEOUT_IN_MINS = "KeepAliveThread-Timeout-In-Mins"
 
 """
-Error response model
+Error response entity model in compliance with ARM RPC protocol
 """
 class ErrorDetails:
     def __init__(self, code, message):
@@ -680,7 +680,8 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
             failureStatusText = 'Server Error'
         finally:
             if (not requestSucceeded):
-                # Change error response default format from html to json
+                # Change error response default format from html to json. 
+                # Reference: https://docs.python.org/3/library/http.server.html#http.server.BaseHTTPRequestHandler.send_error
                 self.error_message_format = json.dumps(ErrorDetails("%(explain)s", "%(message)s").__dict__)
                 self.error_content_type = "application/json"
                 self.send_error(failureResultCode, "%s- %s" % (failureStatusText, str(telemetryException)), failureErrorCode)
