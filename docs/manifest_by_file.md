@@ -176,6 +176,7 @@ File Path | Manifest
 /var/lib/waagent/error.json | agents, eg 
 /var/lib/waagent/history/\*.zip | agents, diagnostic 
 /var/lib/waagent/provisioned | diagnostic, eg, genspec 
+/var/lib/waagent/waagent_status.\*.json | agents, diagnostic, eg 
 /var/lib/waagent/waagent_status.json | agents, diagnostic, eg 
 /var/lib/wicked/lease\* | diagnostic, eg 
 /var/log/AzureRcmCli.log | site-recovery 
@@ -534,6 +535,7 @@ File Path | Manifest
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows/<br>\*/\*.log | agents, diagnostic, normal, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows/<br>\*/\*.txt | agents, diagnostic, normal, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.VMSnapshot/\*/IaaSBcdrExt<br>ension\*.log | agents, normal, windowsupdate 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.AzureDiskEncryption/\*/BitlockerE<br>xtension.log | diagnostic 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.IaaSAntimalware/\*/AntimalwareCon<br>fig.log | agents, diagnostic, normal, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.Monitoring/\*/AsmExtension.log | agents, diagnostic, normal, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/FabricM<br>SIInstall\*.log | agents, diagnostic, normal, windowsupdate 
@@ -576,8 +578,7 @@ File Path | Manifest
 /k/azure-vnet-ipam.log | aks 
 /k/azure-vnet.json | aks 
 /k/azure-vnet.log | aks 
-/k/config | aks 
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-05-21 15:32:54.127797`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-07-20 13:27:13.805782`*

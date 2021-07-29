@@ -86,6 +86,14 @@ class ResponseHeaderMetadata:
     KEEPALIVETHREAD_TIMEOUT_IN_MINS = "KeepAliveThread-Timeout-In-Mins"
 
 """
+Error response entity model in compliance with ARM RPC protocol
+"""
+class ErrorDetails:
+    def __init__(self, code, message):
+        self.code = code
+        self.message = message
+
+"""
 Threading server to handle multiple web requests.
 """
 class ThreadingServer(socketserver.ThreadingMixIn, http.server.HTTPServer):
@@ -487,6 +495,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
         requestSucceeded = False
         unexpectedError = False  # certain exception should not affect view of server health
         failureResultCode = 500
+        failureErrorCode = 'InternalServerError'
         telemetryException = None
         failureStatusText = None
         fatal_exit = False
@@ -607,41 +616,49 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
         except InvalidVhdNotFoundException as ex:
             unexpectedError = False
             failureResultCode = 404
+            failureErrorCode = 'VhdNotFound'
             telemetryException = ex
             failureStatusText = 'Vhd not found'
             self.telemetryLogger.error(failureStatusText)  # don't raise exception            
         except InvalidStorageAccountException as ex:
             unexpectedError = False
             failureResultCode = 400
+            failureErrorCode = 'InvalidStorageAccount'
             telemetryException = ex
             failureStatusText = 'Invalid storage account'
             self.telemetryLogger.error(failureStatusText)  # don't raise exception  
         except InvalidSasException as ex:
             unexpectedError = False
             failureResultCode = 400
+            failureErrorCode = 'InvalidSASUri'
             telemetryException = ex
             failureStatusText = 'Invalid SAS uri'
             self.telemetryLogger.error(failureStatusText)  # don't raise exception  
         except InvalidBlobSasUrlException as ex:
             unexpectedError = False
             failureResultCode = 400
+            failureErrorCode = 'InvalidBlobUploadSASUri'
             telemetryException = ex
             failureStatusText = 'Invalid Blob SAS uri for upload'
             self.telemetryLogger.error(failureStatusText)
         except BlobUploadException as ex:
             unexpectedError = False
             failureResultCode = 500
+            failureErrorCode = 'BlobUploadError'
             telemetryException = ex
             failureStatusText = 'Error encountered during blob upload'
             self.telemetryLogger.error(failureStatusText)
         except ValueError as ex:
             unexpectedError = True
+            failureResultCode = 400
+            failureErrorCode = 'InsufficientArguments'
             telemetryException = ex
             self.logException(ex, customProperties)
             failureStatusText = 'ValueError'
         except (IndexError, FileNotFoundError) as ex:
             unexpectedError = True
             failureResultCode = 404
+            failureErrorCode = 'NotFound'
             telemetryException = ex
             self.logException(ex, customProperties)
             failureStatusText = 'Not Found'
@@ -663,7 +680,11 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
             failureStatusText = 'Server Error'
         finally:
             if (not requestSucceeded):
-                self.send_error(failureResultCode, "%s: %s" % (failureStatusText, str(telemetryException)))
+                # Change error response default format from html to json. 
+                # Reference: https://docs.python.org/3/library/http.server.html#http.server.BaseHTTPRequestHandler.send_error
+                self.error_message_format = json.dumps(ErrorDetails("%(explain)s", "%(message)s").__dict__)
+                self.error_content_type = "application/json"
+                self.send_error(failureResultCode, "%s- %s" % (failureStatusText, str(telemetryException)), failureErrorCode)
                 self.telemetryClient.track_metric("HttpResponseCode", failureResultCode, count=1, properties={"HOSTNAME": os.environ['HOSTNAME'], 'StatusText':failureStatusText, 'Method':'POST'})
                 self.telemetryClient.track_request('POST ' + failureStatusText, self.path, requestSucceeded, start_time.isoformat(), (datetime.now() - start_time).total_seconds() * 1000, 500, 'POST', customProperties)
                 failedElapsed = datetime.now() - start_time

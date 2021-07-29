@@ -22,6 +22,7 @@ copy,/var/log/waagent*
 copy,/etc/waagent.conf
 copy,/var/lib/waagent/provisioned
 copy,/var/lib/waagent/waagent_status.json
+copy,/var/lib/waagent/waagent_status.*.json
 copy,/var/lib/waagent/*/error.json
 copy,/var/lib/waagent/*.manifest.xml
 copy,/var/lib/waagent/*/config/*.settings

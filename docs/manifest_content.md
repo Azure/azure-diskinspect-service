@@ -88,6 +88,7 @@ agents | copy | /var/log/azure/\*/\*/\*
 agents | copy | /var/log/azure/custom-script/handler.log
 agents | copy | /var/lib/waagent/\*.xml
 agents | copy | /var/lib/waagent/waagent_status.json
+agents | copy | /var/lib/waagent/waagent_status.\*.json
 agents | copy | /var/lib/waagent/\*/status/\*.status
 agents | copy | /var/lib/waagent/\*/config/\*.settings
 agents | copy | /var/lib/waagent/\*/config/HandlerState
@@ -134,6 +135,7 @@ diagnostic | copy | /var/log/waagent\*
 diagnostic | copy | /etc/waagent.conf
 diagnostic | copy | /var/lib/waagent/provisioned
 diagnostic | copy | /var/lib/waagent/waagent_status.json
+diagnostic | copy | /var/lib/waagent/waagent_status.\*.json
 diagnostic | copy | /var/lib/waagent/\*/error.json
 diagnostic | copy | /var/lib/waagent/\*.manifest.xml
 diagnostic | copy | /var/lib/waagent/\*/config/\*.settings
@@ -237,6 +239,7 @@ eg | copy | /var/log/waagent\*
 eg | copy | /etc/waagent.conf
 eg | copy | /var/lib/waagent/provisioned
 eg | copy | /var/lib/waagent/waagent_status.json
+eg | copy | /var/lib/waagent/waagent_status.\*.json
 eg | copy | /var/lib/waagent/error.json
 eg | copy | /run/systemd/netif/leases/\*
 eg | copy | /var/lib/NetworkManager/\*.lease
@@ -580,7 +583,6 @@ aks | copy | /Windows/System32/winevt/Logs/System.evtx
 aks | copy | /Windows/System32/winevt/Logs/Application.evtx
 aks | copy | /k/\*.log
 aks | copy | /k/\*.err
-aks | copy | /k/config
 aks | copy | /k/kubeclusterconfig.json
 aks | copy | /Program Files/containerd/config.toml
 aks | copy | /k/azure-vnet.log
@@ -774,6 +776,7 @@ diagnostic | copy | /WindowsAzure/GuestAgent\*/CommonAgentConfig.config
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Compute.CustomScriptExtension/\*/\*.log
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.RunCommandWindows/\*/\*.log
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ActiveDirectory.AADLoginForWindows/\*/\*.l<br>og
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.AzureDiskEncryption/\*/BitlockerE<br>xtension.log
 diagnostic | copy | /Windows/servicing/sessions/sessions.xml
 diagnostic | diskinfo | 
 eg | copy | /Windows/System32/winevt/Logs/System.evtx
@@ -1405,4 +1408,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-05-21 15:32:54.127797`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-07-20 13:27:13.805782`*
