@@ -42,7 +42,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get remove -y \
     golang-go \
     --auto-remove golang-go
 RUN rm -rf /usr/local/go
-RUN wget -qO- https://golang.org/dl/go1.16.linux-amd64.tar.gz | tar -xzv -C /usr/local
+RUN wget -qO- https://golang.org/dl/go1.16.7.linux-amd64.tar.gz | tar -xzv -C /usr/local
 ENV PATH $PATH:/usr/local/go/bin
 
 # extractor service
