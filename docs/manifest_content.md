@@ -1,8 +1,10 @@
 This file documents the various files collected, or directory listed or registry key queried by disk inspection manifests used by Microsoft Azure support.  Any data collected by Microsoft using this tooling is done according to the policy outlined in the [Azure Trust Center](https://azure.microsoft.com/en-us/support/trust-center/).
 
-* [freebsd](#freebsd)
-* [linux](#linux)
-* [windows](#windows)
+* [supportability](#supportability)
+* [vminspector](#vminspector)
+## supportability 
+ Manifest | Operation | File Path 
+ ------------- | ------------- | ------------- 
 ## freebsd 
  Manifest | Operation | File Path 
  ------------- | ------------- | ------------- 
@@ -1376,5 +1378,319 @@ workloadbackup | copy | /WindowsAzure/Logs/WaAppAgent.log
 workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
+## vminspector 
+ Manifest | Operation | File Path 
+ ------------- | ------------- | ------------- 
+## freebsd 
+ Manifest | Operation | File Path 
+ ------------- | ------------- | ------------- 
+diagnostic | list | /var/log
+diagnostic | list | /etc/rc.d
+diagnostic | copy | /var/lib/waagent/provisioned
+diagnostic | copy | /etc/fstab
+diagnostic | copy | /etc/ssh/sshd_config
+diagnostic | copy | /boot/loader.conf
+diagnostic | copy | /etc/dhclient.conf
+diagnostic | copy | /etc/networks
+diagnostic | copy | /etc/nsswitch.conf
+diagnostic | copy | /etc/resolv.conf
+diagnostic | copy | /run/systemd/resolve/stub-resolv.conf
+diagnostic | copy | /etc/rc.conf
+diagnostic | copy | /etc/syslog.conf
+diagnostic | copy | /etc/waagent.conf
+diagnostic | copy | /var/log/waagent\*
+diagnostic | copy | /var/log/messages\*
+diagnostic | copy | /var/log/dmesg\*
+diagnostic | copy | /var/log/auth\*
+diagnostic | copy | /var/log/secure\*
+diagnostic | copy | /var/log/azure/\*/\*/\*
+diagnostic | copy | /var/lib/waagent/ExtensionsConfig.\*.xml
+diagnostic | copy | /var/lib/waagent/\*/status/\*.status
+diagnostic | copy | /var/lib/waagent/\*/config/\*.settings
+diagnostic | copy | /var/lib/waagent/\*/config/HandlerState
+diagnostic | copy | /var/lib/waagent/\*/config/HandlerStatus
+diagnostic | copy | /var/lib/waagent/GoalState.\*.xml
+diagnostic | copy | /var/lib/waagent/HostingEnvironmentConfig.xml
+diagnostic | copy | /var/lib/waagent/Microsoft.OSTCExtensions.CustomScriptForLinux.\*.manifest.xml
+diagnostic | copy | /var/lib/waagent/Prod.\*.manifest.xml
+diagnostic | copy | /var/lib/waagent/SharedConfig.xml
+## linux 
+ Manifest | Operation | File Path 
+ ------------- | ------------- | ------------- 
+diagnostic | list | /var/log
+diagnostic | list | /var/lib/cloud
+diagnostic | list | /run/cloud-init
+diagnostic | list | /var/lib/waagent
+diagnostic | list | /etc/udev/rules.d
+diagnostic | copy | /var/log/cloud-init\*
+diagnostic | copy | /etc/cloud/cloud.cfg
+diagnostic | copy | /etc/cloud/cloud.cfg.d/\*.cfg
+diagnostic | copy | /run/cloud-init/cloud.cfg
+diagnostic | copy | /run/cloud-init/ds-identify.log
+diagnostic | copy | /run/cloud-init/result.json
+diagnostic | copy | /run/cloud-init/status.json
+diagnostic | copy | /var/log/waagent\*
+diagnostic | copy | /etc/waagent.conf
+diagnostic | copy | /var/lib/waagent/provisioned
+diagnostic | copy | /var/lib/waagent/waagent_status.json
+diagnostic | copy | /var/lib/waagent/waagent_status.\*.json
+diagnostic | copy | /var/lib/waagent/\*/error.json
+diagnostic | copy | /var/lib/waagent/\*.manifest.xml
+diagnostic | copy | /var/lib/waagent/\*/config/\*.settings
+diagnostic | copy | /var/lib/waagent/\*/config/HandlerState
+diagnostic | copy | /var/lib/waagent/\*/config/HandlerStatus
+diagnostic | copy | /var/lib/waagent/\*/status/\*.status
+diagnostic | copy | /var/lib/waagent/ExtensionsConfig.\*.xml
+diagnostic | copy | /var/lib/waagent/GoalState.\*.xml
+diagnostic | copy | /var/lib/waagent/HostingEnvironmentConfig.xml
+diagnostic | copy | /var/lib/waagent/Incarnation
+diagnostic | copy | /var/lib/waagent/ManagedIdentity-\*.json
+diagnostic | copy | /var/lib/waagent/SharedConfig.xml
+diagnostic | copy | /var/lib/waagent/history/\*.zip
+diagnostic | copy | /run/systemd/netif/leases/\*
+diagnostic | copy | /var/lib/NetworkManager/\*.lease
+diagnostic | copy | /var/lib/NetworkManager/\*.leases
+diagnostic | copy | /var/lib/wicked/lease\*
+diagnostic | copy | /var/lib/dhclient/\*.lease
+diagnostic | copy | /var/lib/dhclient/\*.leases
+diagnostic | copy | /var/lib/dhcp/\*.lease
+diagnostic | copy | /var/lib/dhcp/\*.leases
+diagnostic | copy | /run/cloud-init/dhclient.hooks/\*.json
+diagnostic | copy | /etc/netplan/\*.yaml
+diagnostic | copy | /etc/dhcp/\*.conf
+diagnostic | copy | /etc/network/interfaces
+diagnostic | copy | /etc/network/interfaces.d/\*.cfg
+diagnostic | copy | /etc/ufw/ufw.conf
+diagnostic | copy | /etc/ssh/sshd_config
+diagnostic | copy | /etc/nsswitch.conf
+diagnostic | copy | /etc/resolv.conf
+diagnostic | copy | /run/systemd/resolve/\*.conf
+diagnostic | copy | /run/resolvconf/\*.conf
+diagnostic | copy | /usr/lib/NetworkManager/\*.conf
+diagnostic | copy | /usr/lib/NetworkManager/conf.d/\*.conf
+diagnostic | copy | /run/NetworkManager/\*.conf
+diagnostic | copy | /run/NetworkManager/conf.d/\*.conf
+diagnostic | copy | /etc/NetworkManager/\*.conf
+diagnostic | copy | /etc/NetworkManager/conf.d/\*.conf
+diagnostic | copy | /var/lib/NetworkManager/\*.conf
+diagnostic | copy | /var/lib/NetworkManager/conf.d/\*.conf
+diagnostic | copy | /var/lib/NetworkManager/\*.state
+diagnostic | copy | /etc/sysconfig/network/dhcp
+diagnostic | copy | /etc/sysconfig/network
+diagnostic | copy | /etc/sysconfig/network-scripts/ifcfg-\*
+diagnostic | copy | /etc/sysconfig/network-scripts/route-\*
+diagnostic | copy | /etc/sysconfig/network/config
+diagnostic | copy | /etc/sysconfig/network/ifcfg-\*
+diagnostic | copy | /etc/sysconfig/network/routes
+diagnostic | copy | /etc/sysconfig/iptables
+diagnostic | copy | /etc/sysconfig/SuSEfirewall2
+diagnostic | copy | /etc/wicked/\*.xml
+diagnostic | copy | /var/log/dpkg\*
+diagnostic | copy | /var/log/yum\*
+diagnostic | copy | /var/log/dnf\*
+diagnostic | copy | /var/log/syslog\*
+diagnostic | copy | /var/log/rsyslog\*
+diagnostic | copy | /var/log/messages\*
+diagnostic | copy | /var/log/kern\*
+diagnostic | copy | /var/log/dmesg\*
+diagnostic | copy | /var/log/boot\*
+diagnostic | copy | /var/log/auth\*
+diagnostic | copy | /var/log/secure\*
+diagnostic | copy | /var/log/azure/\*/\*
+diagnostic | copy | /var/log/azure/\*/\*/\*
+diagnostic | copy | /var/log/azure/custom-script/handler.log
+diagnostic | copy | /var/log/azure/run-command/handler.log
+diagnostic | copy | /var/log/azure/cluster-provision.log
+diagnostic | copy | /etc/fstab
+diagnostic | copy | /boot/grub\*/grub.c\*
+diagnostic | copy | /boot/grub\*/menu.lst
+diagnostic | copy | /etc/\*-release
+diagnostic | copy | /etc/HOSTNAME
+diagnostic | copy | /etc/hostname
+diagnostic | diskinfo | 
+## windows 
+ Manifest | Operation | File Path 
+ ------------- | ------------- | ------------- 
+diagnostic | copy | /Windows/System32/config/SOFTWARE
+diagnostic | copy | /Windows/System32/config/SYSTEM
+diagnostic | copy | /Windows/System32/winevt/Logs/System.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Application.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-ServiceFabric%4Admin.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-ServiceFabric%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-ServiceFabric-Lease%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-ServiceFabric-Lease%4Admin.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Windows Azure.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-CAPI2%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnPConfig%4Configuration.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnP%4Configuration.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-NdisImPlatform%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-NetworkLocationWizard%4Operational.ev<br>tx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-NetworkProfile%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-NetworkProvider%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-NlaSvc%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RdpCoreTS%4Oper<br>ational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RdpCoreTS%4Admi<br>n.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RemoteDesktopSe<br>ssionManager%4Admin.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-SessionServices<br>%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Resource-Exhaustion-Detector%4Operati<br>onal.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-SmbClient%4Connectivity.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-SMBClient%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-SMBServer%4Connectivity.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-SMBServer%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-ServerManager%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TCPIP%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-LocalSessionManager%<br>4Admin.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-LocalSessionManager%<br>4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-PnPDevices%4Operatio<br>nal.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-PnPDevices%4Admin.ev<br>tx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-RDPClient%4Operation<br>al.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-RemoteConnectionMana<br>ger%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-RemoteConnectionMana<br>ger%4Admin.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-SessionBroker-Client<br>%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-SessionBroker-Client<br>%4Admin.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-UserPnp%4DeviceInstall.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Windows Firewall With Advanced Securi<br>ty%4ConnectionSecurity.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Windows Firewall With Advanced Securi<br>ty%4Firewall.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-WindowsUpdateClient%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4GuestAgent.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Heartbeat.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Runtime.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Bootstrapper.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Status%4GuestAgent.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Status%4Plugins.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/MicrosoftAzureRecoveryServices-Replication.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Security.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Setup.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-DSC%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker%4BitLocker Management.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker-DrivePreparationTool%4Opera<br>tional.evtx
+diagnostic | copy | /AzureData/CustomData.bin
+diagnostic | copy | /Windows/Setup/State/State.ini
+diagnostic | copy | /Windows/Panther/WaSetup.xml
+diagnostic | copy | /Windows/Panther/WaSetup.log
+diagnostic | copy | /Windows/Panther/VmAgentInstaller.xml
+diagnostic | copy | /Windows/Panther/unattend.xml
+diagnostic | copy | /unattend.xml
+diagnostic | copy | /Windows/Panther/setupact.log
+diagnostic | copy | /Windows/Panther/setuperr.log
+diagnostic | copy | /Windows/Panther/UnattendGC/setupact.log
+diagnostic | copy | /Windows/Panther/FastCleanup/setupact.log
+diagnostic | copy | /Windows/System32/Sysprep/ActionFiles/Generalize.xml
+diagnostic | copy | /Windows/System32/Sysprep/ActionFiles/Specialize.xml
+diagnostic | copy | /Windows/System32/Sysprep/ActionFiles/Respecialize.xml
+diagnostic | copy | /Windows/System32/Sysprep/Panther/setupact.log
+diagnostic | copy | /Windows/System32/Sysprep/Panther/IE/setupact.log
+diagnostic | copy | /Windows/System32/Sysprep/Panther/setuperr.log
+diagnostic | copy | /Windows/System32/Sysprep/Panther/IE/setuperr.log
+diagnostic | copy | /Windows/System32/Sysprep/Sysprep_succeeded.tag
+diagnostic | copy | /Windows/INF/netcfg\*.\*etl
+diagnostic | copy | /Windows/INF/setupapi.dev.log
+diagnostic | copy | /Windows/debug/netlogon.log
+diagnostic | copy | /Windows/debug/NetSetup.LOG
+diagnostic | copy | /Windows/debug/mrt.log
+diagnostic | copy | /Windows/debug/DCPROMO.LOG
+diagnostic | copy | /Windows/debug/dcpromoui.log
+diagnostic | copy | /Windows/debug/PASSWD.LOG
+diagnostic | copy | /Windows/Microsoft.NET/Framework/v4.0.30319/Config/machine.config
+diagnostic | copy | /Windows/Microsoft.NET/Framework64/v4.0.30319/Config/machine.config
+diagnostic | list | /WindowsAzure
+diagnostic | list | /Packages/Plugins
+diagnostic | copy | /WindowsAzure/Logs/Telemetry.log
+diagnostic | copy | /WindowsAzure/Logs/TransparentInstaller.log
+diagnostic | copy | /WindowsAzure/Logs/WaAppAgent.log
+diagnostic | copy | /WindowsAzure/config/\*.xml
+diagnostic | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
+diagnostic | copy | /WindowsAzure/Logs/AppAgentRuntime.log
+diagnostic | copy | /WindowsAzure/Logs/MonitoringAgent.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/\*/\*/CommandExecution.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/\*/\*/Install.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/\*/\*/Update.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/\*/\*/Heartbeat.log
+diagnostic | copy | /Packages/Plugins/\*/\*/config.txt
+diagnostic | copy | /Packages/Plugins/\*/\*/HandlerEnvironment.json
+diagnostic | copy | /Packages/Plugins/\*/\*/HandlerManifest.json
+diagnostic | copy | /Packages/Plugins/\*/\*/RuntimeSettings/\*.settings
+diagnostic | copy | /Packages/Plugins/\*/\*/Status/HeartBeat.Json
+diagnostic | copy | /Packages/Plugins/\*/\*/PackageInformation.txt
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/\*/Configur<br>ation/Checkpoint.txt
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/\*/Configur<br>ation/MaConfig.xml
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/\*/Configur<br>ation/MonAgentHost.\*.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/Diagnostics<br>Plugin.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/Diagnostics<br>PluginLauncher.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.IaaSAntimalware/\*/AntimalwareCon<br>fig.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.Monitoring/\*/AsmExtension.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/FabricM<br>SIInstall\*.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/Infrast<br>ructureManifest.xml
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/TempClu<br>sterManifest.xml
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/VCRunti<br>meInstall\*.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Compute.BGInfo/\*/BGInfo\*.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Compute.JsonADDomainExtension/\*/ADDomainExtensi<br>on.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Compute.VMAccessAgent/\*/JsonVMAccessExtension.l<br>og
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAg<br>ent/\*/0.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Powershell.DSC/\*/DSCLOG\*.json
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Powershell.DSC/\*/DscExtensionHandler\*.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Symantec.SymantecEndpointProtection/\*/sepManagedAzure.txt
+diagnostic | copy | /WindowsAzure/Logs/Plugins/TrendMicro.DeepSecurity.TrendMicroDSA/\*/\*.log
+diagnostic | copy | /Packages/Plugins/ESET.FileSecurity/\*/agent_version.txt
+diagnostic | copy | /Packages/Plugins/ESET.FileSecurity/\*/extension_version.txt
+diagnostic | copy | /Packages/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/AnalyzerConfigTempla<br>te.xml
+diagnostic | copy | /Packages/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/\*.config
+diagnostic | copy | /Packages/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/Logs/\*DiagnosticsPl<br>ugin\*.log
+diagnostic | copy | /Packages/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/schema/wad\*.json
+diagnostic | copy | /Packages/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/StatusMonitor/Applic<br>ationInsightsPackagesVersion.json
+diagnostic | copy | /Packages/Plugins/Microsoft.Azure.RecoveryServices.VMSnapshot/\*/SeqNumber.txt
+diagnostic | copy | /Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Microsoft.WindowsAzure.Stora<br>ge.xml
+diagnostic | copy | /Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/AsmExtensio<br>nMonitoringConfig\*.xml
+diagnostic | copy | /Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/Extensions/<br>AzureSecurityPack/ASM.Azure.OSBaseline.xml
+diagnostic | copy | /Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/Extensions/<br>AzureSecurityPack/AsmExtensionSecurityPackStartupConfig.xml
+diagnostic | copy | /Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/Extensions/<br>AzureSecurityPack/AsmScan.log
+diagnostic | copy | /Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/Extensions/<br>AzureSecurityPack/AsmScannerConfiguration.xml
+diagnostic | copy | /Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/Extensions/<br>AzureSecurityPack/Azure.Common.scm.xml
+diagnostic | copy | /Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/Extensions/<br>AzureSecurityPack/SecurityPackStartup.log
+diagnostic | copy | /Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/Extensions/<br>AzureSecurityPack/SecurityScanLoggerManifest.man
+diagnostic | copy | /Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/initconfig/<br>\*/Standard/AgentStandardEvents.xml
+diagnostic | copy | /Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/initconfig/<br>\*/Standard/AgentStandardEventsMin.xml
+diagnostic | copy | /Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/initconfig/<br>\*/Standard/AgentStandardExtensions.xml
+diagnostic | copy | /Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/initconfig/<br>\*/Standard/AntiMalwareEvents.xml
+diagnostic | copy | /Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/initconfig/<br>\*/Standard/MonitoringEwsEvents.xml
+diagnostic | copy | /Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/initconfig/<br>\*/Standard/MonitoringEwsEventsCore.xml
+diagnostic | copy | /Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/initconfig/<br>\*/Standard/MonitoringEwsRootEvents.xml
+diagnostic | copy | /Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/initconfig/<br>\*/Standard/MonitoringStandardEvents.xml
+diagnostic | copy | /Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/initconfig/<br>\*/Standard/MonitoringStandardEvents2.xml
+diagnostic | copy | /Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/initconfig/<br>\*/Standard/MonitoringStandardEvents3.xml
+diagnostic | copy | /Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/initconfig/<br>\*/Standard/SecurityStandardEvents.xml
+diagnostic | copy | /Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/initconfig/<br>\*/Standard/SecurityStandardEvents2.xml
+diagnostic | copy | /Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/initconfig/<br>\*/Standard/SecurityStandardEvents3.xml
+diagnostic | copy | /Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/MonAgent-Pk<br>g-Manifest.xml
+diagnostic | copy | /Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/MonitoringAgentCertThumbprin<br>ts.txt
+diagnostic | copy | /Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/MonitoringAgentScheduledServ<br>ice.txt
+diagnostic | copy | /Packages/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/InstallUtil.Inst<br>allLog
+diagnostic | copy | /Packages/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/Service/current.<br>config
+diagnostic | copy | /Packages/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/Service/Infrastr<br>uctureManifest.template.xml
+diagnostic | copy | /Packages/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/Service/ServiceF<br>abricNodeBootstrapAgent.InstallLog
+diagnostic | copy | /Packages/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/Service/ServiceF<br>abricNodeBootstrapAgent.InstallState
+diagnostic | copy | /Packages/Plugins/Microsoft.Compute.BGInfo/\*/BGInfo.def.xml
+diagnostic | copy | /Packages/Plugins/Microsoft.Compute.BGInfo/\*/PluginManifest.xml
+diagnostic | copy | /Packages/Plugins/Microsoft.Compute.BGInfo/\*/config.bgi
+diagnostic | copy | /Packages/Plugins/Microsoft.Compute.BGInfo/\*/emptyConfig.bgi
+diagnostic | copy | /Packages/Plugins/Microsoft.Powershell.DSC/\*/DSCWork/\*.dsc
+diagnostic | copy | /Packages/Plugins/Microsoft.Powershell.DSC/\*/DSCWork/\*.log
+diagnostic | copy | /Packages/Plugins/Microsoft.Powershell.DSC/\*/DSCWork/\*.dpx
+diagnostic | copy | /Packages/Plugins/Microsoft.Powershell.DSC/\*/DSCVersion.xml
+diagnostic | copy | /Packages/Plugins/Microsoft.Powershell.DSC/\*/DSCWork/HotfixInstallInProgress.dsc
+diagnostic | copy | /Packages/Plugins/Microsoft.Powershell.DSC/\*/DSCWork/PreInstallDone.dsc
+diagnostic | copy | /Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/\*/PackageDefinition.xm<br>l
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.Edp.NetworkWatcherAgentWind<br>ows/\*/\*.txt
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.Edp.NetworkWatcherAgentWind<br>ows/\*/\*.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows/<br>\*/\*.txt
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows/<br>\*/\*.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.ManagedIdentity.ManagedIdentityExtensionForWindo<br>ws/\*/RuntimeSettings/\*.xml
+diagnostic | copy | /WindowsAzure/GuestAgent\*/CommonAgentConfig.config
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Compute.CustomScriptExtension/\*/\*.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.RunCommandWindows/\*/\*.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ActiveDirectory.AADLoginForWindows/\*/\*.l<br>og
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.AzureDiskEncryption/\*/BitlockerE<br>xtension.log
+diagnostic | copy | /Windows/servicing/sessions/sessions.xml
+diagnostic | diskinfo | 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-07-20 13:27:13.805782`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-08-11 01:33:16.255023`*
