@@ -1,0 +1,40 @@
+echo,### Probing Directories ###
+ll,/var/log
+ll,/etc/rc.d
+
+echo,### Gathering Configuration Files ###
+copy,/var/lib/waagent/provisioned
+copy,/etc/fstab
+copy,/etc/ssh/sshd_config
+copy,/boot/loader.conf
+copy,/etc/dhclient.conf
+copy,/etc/networks
+copy,/etc/nsswitch.conf
+copy,/etc/resolv.conf
+copy,/run/systemd/resolve/stub-resolv.conf
+copy,/etc/rc.conf
+copy,/etc/syslog.conf
+copy,/etc/waagent.conf
+echo,
+
+echo,### Gathering Log Files ###
+copy,/var/log/waagent*
+copy,/var/log/messages*
+copy,/var/log/dmesg*
+copy,/var/log/auth*
+copy,/var/log/secure*
+copy,/var/log/azure/*/*/*
+echo,
+
+echo,### Gathering Extension Files ###
+copy,/var/lib/waagent/ExtensionsConfig.*.xml
+copy,/var/lib/waagent/*/status/*.status
+copy,/var/lib/waagent/*/config/*.settings
+copy,/var/lib/waagent/*/config/HandlerState
+copy,/var/lib/waagent/*/config/HandlerStatus
+copy,/var/lib/waagent/GoalState.*.xml
+copy,/var/lib/waagent/HostingEnvironmentConfig.xml
+copy,/var/lib/waagent/Microsoft.OSTCExtensions.CustomScriptForLinux.*.manifest.xml
+copy,/var/lib/waagent/Prod.*.manifest.xml
+copy,/var/lib/waagent/SharedConfig.xml
+echo,
