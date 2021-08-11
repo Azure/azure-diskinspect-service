@@ -11,6 +11,7 @@ import subprocess
 import csv
 from collections import defaultdict
 import signal
+from Constants import Constants
 """
 LibGuestFS Wrapper for Disk Information Extraction 
 
@@ -408,8 +409,8 @@ class GuestFishWrapper:
                             self.rootLogger.warning("Manifest file " + manifestFile + " could not be located.")
                             if not os.path.isdir(parentFolder + self.clientType.lower()):
                                 # bad clientType in request payload
-                                self.WriteToResultFile(operationOutFile, "No manifests exists for client '" + self.clientType + "', trying 'supportability' as client...")
-                                self.clientType = "supportability"
+                                self.WriteToResultFile(operationOutFile, "No manifests exists for client type '" + self.clientType + "', trying '"+ Constants.CLIENTTYPE_SUPPORTABILITY + "' as client type...")
+                                self.clientType = Constants.CLIENTTYPE_SUPPORTABILITY
                                 clientFolder = parentFolder + self.clientType.lower() + os.sep
                                 manifestFile = clientFolder + osType + os.sep + self.mode.lower()
                             if not os.path.isdir(clientFolder + osType):
@@ -419,8 +420,8 @@ class GuestFishWrapper:
                                 manifestFile = clientFolder + osType + os.sep + self.mode.lower()
                             if not os.path.isfile(manifestFile):
                                 # bad manifest, try normal
-                                self.WriteToResultFile(operationOutFile, "No manifest exists for " + osType.lower() + " '" + self.mode.lower() + "' mode data collection. Trying 'normal' manifest...")
-                                self.mode = "diagnostic"
+                                self.WriteToResultFile(operationOutFile, "No manifest exists for " + osType.lower() + " '" + self.mode.lower() + "' mode data collection. Trying '" + Constants.MANIFEST_DIAGNOSTIC + "' manifest...")
+                                self.mode = Constants.MANIFEST_DIAGNOSTIC
                                 manifestFile = clientFolder + osType + os.sep + self.mode.lower()  #this should work...
 
                         self.WriteToResultFile(operationOutFile, "Using manifest: " + self.mode.lower() + "  [" + osType.lower() + "]" )

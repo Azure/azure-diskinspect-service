@@ -20,6 +20,7 @@ from applicationinsights import TelemetryClient
 from applicationinsights.logging import LoggingHandler
 from applicationinsights import logging
 import json
+from Constants import Constants
 
 from azure.storage.blob import (
     BlockBlobService,
@@ -553,8 +554,8 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
                 clientType = str(postvars[b'client'][0], encoding='UTF-8')
                 self.telemetryLogger.info('Received Client Type: ' + clientType)
             else:
-                self.telemetryLogger.info('WARNING: Received empty ClientType. Default \'supportability\' will be used.')
-                clientType = "supportability"
+                self.telemetryLogger.info('WARNING: Received empty ClientType. Default \'' + Constants.CLIENTTYPE_SUPPORTABILITY + '\' will be used.')
+                clientType = Constants.CLIENTTYPE_SUPPORTABILITY
 
             # update the fields in the telemetry client
             for h in self.telemetryLogger.handlers:
