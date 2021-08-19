@@ -430,6 +430,7 @@ File Path | Manifest
 /Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker-DrivePreparationTool%4Opera<br>tional.evtx | diagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Bits-Client%%4Operational.evtx | windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-CAPI2%4Operational.evtx | agents, diagnostic, eg, windowsupdate 
+/Windows/System32/winevt/Logs/Microsoft-Windows-Containers-CCG%4Admin.evtx | aks 
 /Windows/System32/winevt/Logs/Microsoft-Windows-DSC%4Operational.evtx | agents, diagnostic, eg, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-DeliveryOptimization%%4Operational.ev<br>tx | windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Dhcp-Client%4Admin.evtx | eg 
@@ -864,4 +865,4 @@ File Path | Manifest
 /WindowsAzure/config/\*.xml | diagnostic 
 /unattend.xml | diagnostic 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-08-11 01:33:16.255023`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-08-19 13:31:53.009704`*
