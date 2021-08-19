@@ -568,6 +568,7 @@ aks | copy | /CalicoWindows/logs/\*.log
 aks | copy | /ProgramData/containerd/root/panic.log
 aks | copy | /AzureData/CustomDataSetupScript.log
 aks | copy | /AzureData/CustomDataSetupScript.ps1
+aks | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Containers-CCG%4Admin.evtx
 asc-vmhealth | copy | /WindowsAzure/Logs/TransparentInstaller.log
 diagnostic | copy | /Windows/System32/config/SOFTWARE
 diagnostic | copy | /Windows/System32/config/SYSTEM
@@ -1693,4 +1694,4 @@ diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.AzureDis
 diagnostic | copy | /Windows/servicing/sessions/sessions.xml
 diagnostic | diskinfo | 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-08-11 01:33:16.255023`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-08-19 13:31:53.009704`*

@@ -32,5 +32,7 @@ echo,### Cluster provision logs ###
 copy,/AzureData/CustomDataSetupScript.log
 copy,/AzureData/CustomDataSetupScript.ps1
 
+echo,### Windows CCGPlugin logs ###
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Containers-CCG%4Admin.evtx
 
 
