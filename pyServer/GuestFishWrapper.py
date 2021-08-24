@@ -28,9 +28,8 @@ class GuestFishWrapper:
     mode = None
     kpThread = None
     osType = None
-    clientType = None
 
-    def __init__(self, rootLogger, handler, storageUrl, outputDirName, operationId, mode, modeMajorSkipTo, modeMinorSkipTo, kpThread, runWithCredscan, clientType):
+    def __init__(self, rootLogger, handler, storageUrl, outputDirName, operationId, mode, modeMajorSkipTo, modeMinorSkipTo, kpThread, runWithCredscan):
         self.environment = None
         self.httpRequestHandler = handler
         self.storageUrl = storageUrl
@@ -42,7 +41,6 @@ class GuestFishWrapper:
         self.modeMinorSkipTo = modeMinorSkipTo
         self.kpThread = kpThread
         self.runWithCredscan = runWithCredscan
-        self.clientType = clientType
         self.osType = "unknown"
         self.operationOutFilename = self.outputDirName + os.sep + 'results.txt'
         self.registryFilename= self.outputDirName + os.sep + 'registry.json'
@@ -401,28 +399,20 @@ class GuestFishWrapper:
                             if (len(pathPrefix) > 0) :
                                 self.rootLogger.info("Adding prefix to path: " + pathPrefix )
                         
-                        # choose manifest based on request clientType and osType
                         parentFolder = "/etc/azdis/"
-                        clientFolder = parentFolder + self.clientType.lower() + os.sep
-                        manifestFile = clientFolder + osType + os.sep + self.mode.lower()
+                        manifestFile = parentFolder + osType + os.sep + self.mode.lower()
                         if not os.path.isfile(manifestFile):
                             self.rootLogger.warning("Manifest file " + manifestFile + " could not be located.")
-                            if not os.path.isdir(parentFolder + self.clientType.lower()):
-                                # bad clientType in request payload
-                                self.WriteToResultFile(operationOutFile, "No manifests exists for client type '" + self.clientType + "', trying '"+ Constants.CLIENTTYPE_SUPPORTABILITY + "' as client type...")
-                                self.clientType = Constants.CLIENTTYPE_SUPPORTABILITY
-                                clientFolder = parentFolder + self.clientType.lower() + os.sep
-                                manifestFile = clientFolder + osType + os.sep + self.mode.lower()
-                            if not os.path.isdir(clientFolder + osType):
+                            if not os.path.isdir(parentFolder + osType):
                                 # Can happen if libguestFS returns an OS we don't have manifests for (e.g. NetBSD or Solaris)
                                 guessed_os= self.guess_OS_by_filesystems(fsList)
                                 self.WriteToResultFile(operationOutFile, "No manifests for OS '{0}', trying '{1}'...".format(osType,guessed_os) )
-                                manifestFile = clientFolder + osType + os.sep + self.mode.lower()
+                                manifestFile = parentFolder + osType + os.sep + self.mode.lower()
                             if not os.path.isfile(manifestFile):
                                 # bad manifest, try normal
                                 self.WriteToResultFile(operationOutFile, "No manifest exists for " + osType.lower() + " '" + self.mode.lower() + "' mode data collection. Trying '" + Constants.MANIFEST_DIAGNOSTIC + "' manifest...")
                                 self.mode = Constants.MANIFEST_DIAGNOSTIC
-                                manifestFile = clientFolder + osType + os.sep + self.mode.lower()  #this should work...
+                                manifestFile = parentFolder + osType + os.sep + self.mode.lower()  #this should work...
 
                         self.WriteToResultFile(operationOutFile, "Using manifest: " + self.mode.lower() + "  [" + osType.lower() + "]" )
                         operationNumber = 0
