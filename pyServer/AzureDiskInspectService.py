@@ -550,13 +550,6 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
             else:
                 blobSasUrl = ""
 
-            if b'client' in postvars:
-                clientType = str(postvars[b'client'][0], encoding='UTF-8')
-                self.telemetryLogger.info('Received Client Type: ' + clientType)
-            else:
-                self.telemetryLogger.info('WARNING: Received empty ClientType. Default \'' + Constants.CLIENTTYPE_SUPPORTABILITY + '\' will be used.')
-                clientType = Constants.CLIENTTYPE_SUPPORTABILITY
-
             # update the fields in the telemetry client
             for h in self.telemetryLogger.handlers:
                 if h.__class__.__name__ == 'LoggingHandler':
@@ -585,7 +578,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
 
             # Invoke LibGuestFS Wrapper for prorcessing
             with KeepAliveThread(self.telemetryLogger, self, threading.current_thread().getName(), timeoutInMins) as kpThread:
-                with GuestFishWrapper(self.telemetryLogger, self, storageUrl, OUTPUTDIRNAME, operationId, mode, modeMajorSkipTo, modeMinorSkipTo, kpThread, runWithCredscan, clientType) as gfWrapper:
+                with GuestFishWrapper(self.telemetryLogger, self, storageUrl, OUTPUTDIRNAME, operationId, mode, modeMajorSkipTo, modeMinorSkipTo, kpThread, runWithCredscan) as gfWrapper:
                     gfWrapper.start()
                     # Upload the ZIP file
                     if gfWrapper.outputFileName:
