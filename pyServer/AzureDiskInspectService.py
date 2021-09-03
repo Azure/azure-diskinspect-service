@@ -22,17 +22,7 @@ from applicationinsights import logging
 import json
 from Constants import Constants
 
-from azure.storage.blob import (
-    BlockBlobService,
-    ContainerPermissions,
-    BlobPermissions,
-    PublicAccess,
-)
-from azure.storage.common import (
-    AccessPolicy,
-    ResourceTypes,
-    AccountPermissions,
-)
+from azure.storage.blob import BlobClient
 
 OUTPUTDIRNAME = '/output'
 DEFAULT_TIMEOUT_IN_MINS = 19
@@ -340,15 +330,18 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
     """
     Upload the given file to destination Blob storage using the given Sas Url.
     """
-    def uploadFileWithBlobSasUrl(self, file_name_full_path):
+    def uploadFileWithBlobSasUrl(self, blobSasUrl, file_name_full_path):
         retryRemaining = 3
         while retryRemaining > 0:
             try:
                 self.telemetryLogger.info("Cloud Environment: " + self.cloudEnv)
-                sas_service = BlockBlobService(account_name=self.destination_storage_account, sas_token=self.destination_sas_token, endpoint_suffix=self.BlobUploadUrlSuffix())
+                blob_client = BlobClient.from_blob_url(blobSasUrl)
+                #sas_service = BlockBlobService(account_name=self.destination_storage_account, sas_token=self.destination_sas_token, endpoint_suffix=self.BlobUploadUrlSuffix())
                 self.telemetryLogger.info('Uploading to Blob starting.')
                 start_time = datetime.now()
-                sas_service.create_blob_from_path(self.destination_container_name, self.destination_blob_name, file_name_full_path)
+                with open(file_name_full_path, "rb") as data:
+                    blob_client.upload_blob(data, blob_type='BlockBlob', overwrite=True)
+                #sas_service.create_blob_from_path(self.destination_container_name, self.destination_blob_name, file_name_full_path)
                 self.telemetryLogger.info('Uploading to Blob completed. Time take: ' + str((datetime.now() - start_time).total_seconds() * 1000) + ' ms')
                 break
             except Exception as ex:
@@ -367,7 +360,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
 
         if blobSasUrl:
             self.telemetryLogger.info('Uploading result to Blob storage.')
-            self.uploadFileWithBlobSasUrl(file_name_full_path=outputFileName)
+            self.uploadFileWithBlobSasUrl(blobSasUrl, file_name_full_path=outputFileName)
             self.PrepareHttpResponseHeaders(http_headers)
             self.wfile.write(bytes('Content-Type: text/plain\r\n', 'utf-8'))
             statinfo = os.stat(outputFileName)
