@@ -336,12 +336,10 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
             try:
                 self.telemetryLogger.info("Cloud Environment: " + self.cloudEnv)
                 blob_client = BlobClient.from_blob_url(blobSasUrl)
-                #sas_service = BlockBlobService(account_name=self.destination_storage_account, sas_token=self.destination_sas_token, endpoint_suffix=self.BlobUploadUrlSuffix())
                 self.telemetryLogger.info('Uploading to Blob starting.')
                 start_time = datetime.now()
                 with open(file_name_full_path, "rb") as data:
                     blob_client.upload_blob(data, blob_type='BlockBlob', overwrite=True)
-                #sas_service.create_blob_from_path(self.destination_container_name, self.destination_blob_name, file_name_full_path)
                 self.telemetryLogger.info('Uploading to Blob completed. Time take: ' + str((datetime.now() - start_time).total_seconds() * 1000) + ' ms')
                 break
             except Exception as ex:
