@@ -5,11 +5,11 @@ ll,/etc/yum.repos.d/
 ll,/etc/apt
 
 echo,### Gathering Repository Configuration Files ###
-copy,/etc/products.d/*.prod
-copy,/etc/zypp/repos.d/*.repo
-copy,/etc/yum.repos.d/*.repo
-copy,/etc/apt/sources.list
-copy,/etc/apt/sources.list.d/*.list
+copy,/etc/products.d/*.prod,noscan
+copy,/etc/zypp/repos.d/*.repo,noscan
+copy,/etc/yum.repos.d/*.repo,noscan
+copy,/etc/apt/sources.list,noscan
+copy,/etc/apt/sources.list.d/*.list,noscan
 echo,
 
 
