@@ -42,7 +42,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get remove -y \
     golang-go \
     --auto-remove golang-go
 RUN rm -rf /usr/local/go
-RUN wget -qO- https://golang.org/dl/go1.16.linux-amd64.tar.gz | tar -xzv -C /usr/local
+RUN wget -qO- https://golang.org/dl/go1.16.7.linux-amd64.tar.gz | tar -xzv -C /usr/local
 ENV PATH $PATH:/usr/local/go/bin
 
 # extractor service
@@ -55,7 +55,7 @@ COPY pyServer/manifests/ /etc/azdis/
 RUN ln -s -f /usr/bin/python3 /usr/bin/python
 
 # Install AppInsights 
-RUN pip3 install azure-storage-blob==1.4.0
+RUN pip3 install azure-storage-blob==12.8.1
 RUN pip3 install applicationinsights==0.11.9
 
 # Expose port 8080 for nginx

@@ -11,6 +11,7 @@ import subprocess
 import csv
 from collections import defaultdict
 import signal
+from Constants import Constants
 """
 LibGuestFS Wrapper for Disk Information Extraction 
 
@@ -409,8 +410,8 @@ class GuestFishWrapper:
                                 manifestFile = parentFolder + osType + os.sep + self.mode.lower()
                             if not os.path.isfile(manifestFile):
                                 # bad manifest, try normal
-                                self.WriteToResultFile(operationOutFile, "No manifest exists for " + osType.lower() + " '" + self.mode.lower() + "' mode data collection. Trying 'normal' manifest...")
-                                self.mode = "normal"
+                                self.WriteToResultFile(operationOutFile, "No manifest exists for " + osType.lower() + " '" + self.mode.lower() + "' mode data collection. Trying '" + Constants.MANIFEST_DIAGNOSTIC + "' manifest...")
+                                self.mode = Constants.MANIFEST_DIAGNOSTIC
                                 manifestFile = parentFolder + osType + os.sep + self.mode.lower()  #this should work...
 
                         self.WriteToResultFile(operationOutFile, "Using manifest: " + self.mode.lower() + "  [" + osType.lower() + "]" )
