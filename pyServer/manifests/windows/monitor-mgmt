@@ -5,6 +5,12 @@ copy,/WindowsAzure/Logs/*.log
 copy,/WindowsAzure/Logs/AggregateStatus/*.json
 copy,/WindowsAzure/Logs/plugins/*/*/*.log
 copy,/WindowsAzure/Logs/VFPlugin/*.log
+copy,/Program Files/Microsoft Monitoring Agent/Agent/Health Service State/FCT_*/work/localhost.mof
+copy,/Program Files/Microsoft Monitoring Agent/Agent/Health Service State/FCT_*/work/localhost.prevmof
+copy,/Program Files/Microsoft Monitoring Agent/Agent/Health Service State/FCT_*/work/asmhost.log
+copy,/Program Files/Microsoft Monitoring Agent/Agent/Health Service State/FCT_*/work/Inventory/asmhost.log
+copy,/Program Files/Microsoft Monitoring Agent/Agent/Health Service State/FCT_*/work/Inventory/localhost.json
+copy,/Program Files/Microsoft Monitoring Agent/Agent/Health Service State/FCT_*/work/Inventory/localhost.mof
 
 echo,#Event Logs
 copy,/Windows/system32/winevt/Logs/Operations Manager.evtx
@@ -20,7 +26,6 @@ copy,/Windows/System32/winevt/Logs/Microsoft-SMA%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-SMA%4Debug.etl,noscan
 copy,/Windows/System32/winevt/Logs/Microsoft-Automation%4Operational.evtx
 
-
 echo,#Windows Update Logs
 copy,/Windows/WindowsUpdate.log
 copy,/Windows/Logs/WindowsUpdate/WindowsUpdate.*.etl,noscan
@@ -32,3 +37,8 @@ copy,/ProgramData/Microsoft/System Center/Orchestrator/7.2/SMA/*.*
 copy,/Windows/Logs/OpsMgrTrace/*.*
 copy,/Windows/Temp/MonitoringAgent.log
 copy,/Windows/Temp/MOMPerfCtrsInstall.log
+copy,/ProgramData/GuestConfig/gc_agent_logs/*.log
+
+echo,#General
+copy,/Packages/Plugins/*
+copy,/WindowsAzure/Config/*

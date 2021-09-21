@@ -1,5 +1,7 @@
 echo,#Microsoft Monitoring Agent for Linux Log File
 copy,/var/opt/microsoft/omsagent/*/log/omsagent.log
+copy,/var/lib/waagent/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux.*.manifest.xml
+copy,/var/lib/waagent/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux-*/*
 
 echo,#Microsoft Monitoring Agent Configuration Log File
 copy,/var/opt/microsoft/omsconfig/omsconfig.log
@@ -8,6 +10,7 @@ copy,/var/opt/microsoft/omsconfig/omsconfigdetailed.log
 echo,#Microsoft Monitoring Agent Configuration File
 copy,/etc/opt/microsoft/omsagent/conf/omsagent.conf
 copy,/etc/opt/microsoft/omsagent/*/conf/omsagent.d/*.conf
+copy,/etc/opt/microsoft/omsagent/conf/omsadmin.conf  
 
 echo,#Microsoft Monitoring Agent Agent ID File
 copy,/etc/opt/omi/conf/omsconfig/agentid
@@ -21,9 +24,12 @@ copy,/var/opt/microsoft/scx/log/scx.log
 
 echo,#OMI Logs
 copy,/var/opt/omi/log/*.log
+copy,/etc/opt/omi/conf/*
 
 echo,#WAAgent Logs
 copy,/var/log/waagent*.log
+copy,/var/lib/waagent/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux.*.manifest.xml
+copy,/var/lib/waagent/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux-*/*
 
 echo,#Microsoft Monitoring Agent Extension Logs
 copy,/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/*.log
@@ -37,3 +43,7 @@ copy,/tmp/omsagent*.tgz
 
 echo,#DSC Files
 copy,/etc/opt/omi/conf/omsconfig/configuration/*.mof
+copy,/var/log/azure/Microsoft.OSTCExtensions.DSCForLinux/extension.log
+
+echo,#Guest Config
+copy,/var/lib/GuestConfig/gc_agent_logs/*.log
