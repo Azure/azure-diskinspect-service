@@ -64,8 +64,7 @@ File Path | Manifest
 /etc/nsswitch.conf | diagnostic, eg, vmdiagnostic 
 /etc/opt/microsoft/omsagent/LAD/conf/omsagent.d/\* | lad 
 /etc/opt/microsoft/omsagent/\*/conf/omsagent.d/\*.conf | monitor-mgmt 
-/etc/opt/microsoft/omsagent/conf/omsadmin.confÂ Â | monitor-mgmt 
-/etc/opt/microsoft/omsagent/conf/omsagent.conf | monitor-mgmt 
+/etc/opt/microsoft/omsagent/conf/\*.conf | monitor-mgmt 
 /etc/opt/omi/conf/\* | monitor-mgmt 
 /etc/opt/omi/conf/omsconfig/agentid | monitor-mgmt 
 /etc/opt/omi/conf/omsconfig/configuration/\*.mof | monitor-mgmt 
@@ -575,4 +574,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-09-21 10:56:05.270000`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-09-21 14:04:09.377000`*

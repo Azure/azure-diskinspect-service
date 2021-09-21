@@ -8,9 +8,8 @@ copy,/var/opt/microsoft/omsconfig/omsconfig.log
 copy,/var/opt/microsoft/omsconfig/omsconfigdetailed.log
 
 echo,#Microsoft Monitoring Agent Configuration File
-copy,/etc/opt/microsoft/omsagent/conf/omsagent.conf
+copy,/etc/opt/microsoft/omsagent/conf/*.conf
 copy,/etc/opt/microsoft/omsagent/*/conf/omsagent.d/*.conf
-copy,/etc/opt/microsoft/omsagent/conf/omsadmin.conf  
 
 echo,#Microsoft Monitoring Agent Agent ID File
 copy,/etc/opt/omi/conf/omsconfig/agentid

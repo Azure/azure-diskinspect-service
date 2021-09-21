@@ -353,9 +353,8 @@ monitor-mgmt | copy | /var/lib/waagent/Microsoft.EnterpriseCloud.Monitoring.OmsA
 monitor-mgmt | copy | /var/lib/waagent/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux-\*/\*
 monitor-mgmt | copy | /var/opt/microsoft/omsconfig/omsconfig.log
 monitor-mgmt | copy | /var/opt/microsoft/omsconfig/omsconfigdetailed.log
-monitor-mgmt | copy | /etc/opt/microsoft/omsagent/conf/omsagent.conf
+monitor-mgmt | copy | /etc/opt/microsoft/omsagent/conf/\*.conf
 monitor-mgmt | copy | /etc/opt/microsoft/omsagent/\*/conf/omsagent.d/\*.conf
-monitor-mgmt | copy | /etc/opt/microsoft/omsagent/conf/omsadmin.confÂ Â
 monitor-mgmt | copy | /etc/opt/omi/conf/omsconfig/agentid
 monitor-mgmt | copy | /var/log/messages\*
 monitor-mgmt | copy | /var/log/syslog\*
@@ -1697,4 +1696,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-09-21 10:56:05.270000`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-09-21 14:04:09.377000`*
