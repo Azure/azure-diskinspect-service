@@ -14,13 +14,7 @@ import socket
 import inspect
 import re
 import subprocess
-
-from azure.storage.blob import (
-    BlockBlobService,
-    ContainerPermissions,
-    BlobPermissions,
-    PublicAccess,
-)
+from azure.storage.blob import BlobClient
 
 class InvalidBlobSasUrlException(Exception):
    """Raised when an invalid Blob Sas Url is received as parameter input"""
@@ -145,13 +139,10 @@ def download_result_blob(blobSasUrl, local_file_path):
     destination_blob_name = urlSplit[1]
     destination_sas_token = urlParts.query
 
-    blob_service = BlockBlobService(
-        account_name = destination_storage_account,
-        sas_token = destination_sas_token,
-    )
-
+    blob_client = BlobClient.from_blob_url(blobSasUrl)
     print("\nDownloading blob to " + local_file_path)
-    blob_service.get_blob_to_path(destination_container_name, destination_blob_name, local_file_path)
+    with open(local_file_path, "wb") as download_file:
+        download_file.write(blob_client.download_blob().readall())
 
         
 header_to_json_mappings = {"os":"InspectionMetadata-Operating-System",
