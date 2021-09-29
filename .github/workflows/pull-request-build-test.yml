@@ -31,7 +31,7 @@ jobs:
           username: ${{ secrets.REG_USER }}
           password: ${{ secrets.REG_PASS }}
       - name: Install azure storage python SDK
-        run: pip3 install azure-storage-blob==1.4.0
+        run: pip3 install azure-storage-blob==12.8.1
       - run: mkdir $HOME/azdis_ssl
       - run: openssl req -x509 -newkey rsa:2048 -keyout $HOME/azdis_ssl/azdis_private.rsa -out $HOME/azdis_ssl/azdis_public.crt -days 365 -nodes -subj "/CN=localhost"
       - name: Validate Manifest changes
