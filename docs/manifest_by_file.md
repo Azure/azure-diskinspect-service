@@ -73,7 +73,8 @@ File Path | Manifest
 /etc/nsswitch.conf | diagnostic, eg 
 /etc/opt/microsoft/omsagent/LAD/conf/omsagent.d/\* | lad 
 /etc/opt/microsoft/omsagent/\*/conf/omsagent.d/\*.conf | monitor-mgmt 
-/etc/opt/microsoft/omsagent/conf/omsagent.conf | monitor-mgmt 
+/etc/opt/microsoft/omsagent/conf/\*.conf | monitor-mgmt 
+/etc/opt/omi/conf/\* | monitor-mgmt 
 /etc/opt/omi/conf/omsconfig/agentid | monitor-mgmt 
 /etc/opt/omi/conf/omsconfig/configuration/\*.mof | monitor-mgmt 
 /etc/products.d/\*.prod | linux-repoconfig 
@@ -133,6 +134,7 @@ File Path | Manifest
 /usr/lib/NetworkManager/\*.conf | diagnostic, eg, vmdiagnostic 
 /usr/lib/NetworkManager/conf.d/\*.conf | diagnostic, eg, vmdiagnostic 
 /var/lib/.jupyter/jupyter_notebook_config.py | hdinsight 
+/var/lib/GuestConfig/gc_agent_logs/\*.log | monitor-mgmt 
 /var/lib/NetworkManager/\*.conf | diagnostic, eg, vmdiagnostic 
 /var/lib/NetworkManager/\*.lease | diagnostic, eg, vmdiagnostic 
 /var/lib/NetworkManager/\*.leases | diagnostic, eg, vmdiagnostic 
@@ -155,6 +157,8 @@ File Path | Manifest
 /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/Service/curr<br>ent.config | servicefabric 
 /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/config/\*.se<br>ttings | servicefabric 
 /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/heartbeat.lo<br>g | servicefabric 
+/var/lib/waagent/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux-\*/\* | monitor-mgmt, monitor-mgmt 
+/var/lib/waagent/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux.\*.manifest.xm<br>l | monitor-mgmt, monitor-mgmt 
 /var/lib/waagent/Microsoft.OSTCExtensions.LinuxDiagnostic-\*/xmlCfg.xml | servicefabric 
 /var/lib/waagent/Microsoft.SqlServer.Management.SqlIaaSAgentLinux\*/HandlerEnvironmen<br>t.json | sql-iaas 
 /var/lib/waagent/Microsoft.SqlServer.Management.SqlIaaSAgentLinux\*/HandlerManifest.j<br>son | sql-iaas 
@@ -188,6 +192,7 @@ File Path | Manifest
 /var/log/azure-vnet\* | aks 
 /var/log/azure/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode/\*.\*/CommandExec<br>ution.log | servicefabric 
 /var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/\*/\*.log | monitor-mgmt 
+/var/log/azure/Microsoft.OSTCExtensions.DSCForLinux/extension.log | monitor-mgmt 
 /var/log/azure/Microsoft.OSTCExtensions.LinuxDiagnostic/\*/mdsd.\* | servicefabric 
 /var/log/azure/Microsoft.SqlServer.Management.SqlIaaSAgentLinux\* | sql-iaas 
 /var/log/azure/Microsoft.\*LinuxDiagnostic/\*/\* | lad 
@@ -321,6 +326,7 @@ File Path | Manifest
 /Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/\*/Status/\*.status | sql-iaas 
 /Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/\*/config.txt | sql-iaas 
 /Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/\*/installation_log | sql-iaas 
+/Packages/Plugins/\* | monitor-mgmt 
 /Packages/Plugins/\*/\*/HandlerEnvironment.json | agents, diagnostic, normal, servicefabric, vmdiagnostic, windowsupdate 
 /Packages/Plugins/\*/\*/HandlerManifest.json | agents, diagnostic, normal, servicefabric, servicefabric, vmdiagnostic, windowsupdate 
 /Packages/Plugins/\*/\*/PackageInformation.txt | agents, diagnostic, normal, servicefabric, vmdiagnostic, windowsupdate 
@@ -341,6 +347,12 @@ File Path | Manifest
 /Program Files/Azure Workload Backup/bin/AzureWLBackupMonitoringSync_config.json | workloadbackup 
 /Program Files/Microsoft Dependency Agent/logs/\*.\* | monitor-mgmt 
 /Program Files/Microsoft Monitoring Agent/Agent/Health Service State/CT_\*/work/Servi<br>ceState/\*.log | monitor-mgmt 
+/Program Files/Microsoft Monitoring Agent/Agent/Health Service State/FCT_\*/work/Inve<br>ntory/asmhost.log | monitor-mgmt 
+/Program Files/Microsoft Monitoring Agent/Agent/Health Service State/FCT_\*/work/Inve<br>ntory/localhost.json | monitor-mgmt 
+/Program Files/Microsoft Monitoring Agent/Agent/Health Service State/FCT_\*/work/Inve<br>ntory/localhost.mof | monitor-mgmt 
+/Program Files/Microsoft Monitoring Agent/Agent/Health Service State/FCT_\*/work/asmh<br>ost.log | monitor-mgmt 
+/Program Files/Microsoft Monitoring Agent/Agent/Health Service State/FCT_\*/work/loca<br>lhost.mof | monitor-mgmt 
+/Program Files/Microsoft Monitoring Agent/Agent/Health Service State/FCT_\*/work/loca<br>lhost.prevmof | monitor-mgmt 
 /Program Files/Microsoft Monitoring Agent/Agent/Health Service State/Management Packs<br>/\*.xml | monitor-mgmt 
 /Program Files/Microsoft SQL Server/\*/MSSQL/Log/ERRORLOG | sql-iaas 
 /Program Files/Microsoft SQL Server/\*/MSSQL/Log/ERRORLOG.\* | sql-iaas 
@@ -364,6 +376,7 @@ File Path | Manifest
 /ProgramData/ASRSetupLogs/ASRUnifiedAgentInstaller.log | site-recovery, windowsupdate 
 /ProgramData/ASRSetupLogs/UnifiedAgentMSIInstall.log | site-recovery, windowsupdate 
 /ProgramData/ASRSetupLogs/WrapperUnifiedAgent.log | site-recovery, windowsupdate 
+/ProgramData/GuestConfig/gc_agent_logs/\*.log | monitor-mgmt 
 /ProgramData/Microsoft/System Center/Orchestrator/7.2/SMA/\*.\* | monitor-mgmt 
 /ProgramData/USOShared/Logs/\*.etl | windowsupdate 
 /ProgramData/UsoPrivate/UpdateStore/\*.xml | windowsupdate 
@@ -520,6 +533,7 @@ File Path | Manifest
 /Windows/servicing/sessions/sessions.xml | diagnostic, min-diagnostic, vmdiagnostic, windowsupdate 
 /Windows/system32/winevt/Logs/Operations Manager.evtx | monitor-mgmt 
 /Windows/windowsupdate\*.log | windowsupdate 
+/WindowsAzure/Config/\* | monitor-mgmt 
 /WindowsAzure/GuestAgent\*/CommonAgentConfig.config | diagnostic, vmdiagnostic, windowsupdate 
 /WindowsAzure/Logs/AggregateStatus/\*.json | monitor-mgmt 
 /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json | agents, diagnostic, eg, min-diagnostic, normal, vmdiagnostic, windowsupdate, workloadbackup 
@@ -582,4 +596,6 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-09-15 09:00:01.098047`*
+
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-09-21 14:04:09.377000`*
+
