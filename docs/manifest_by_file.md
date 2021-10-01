@@ -40,24 +40,33 @@ File Path | Manifest
 ## linux 
 File Path | Manifest 
 ------------- | ------------- 
-/boot/grub\*/grub.c\* | diagnostic, eg, vmdiagnostic 
-/boot/grub\*/menu.lst | diagnostic, eg, vmdiagnostic 
+/boot/grub\*/grub.c\* | eg, linux-bootconfig, vmdiagnostic 
+/boot/grub\*/grubenv | linux-bootconfig 
+/boot/grub\*/menu.lst | eg, linux-bootconfig, vmdiagnostic 
 /etc/HOSTNAME | agents, diagnostic, eg, lad, site-recovery, sql-iaas, vmdiagnostic, workloadbackup 
 /etc/NetworkManager/\*.conf | diagnostic, eg, vmdiagnostic 
 /etc/NetworkManager/conf.d/\*.conf | diagnostic, eg, vmdiagnostic 
 /etc/\*-release | agents, diagnostic, eg, site-recovery, sql-iaas, vmdiagnostic, workloadbackup 
 /etc/ambari-agent/conf/\* | hdinsight 
 /etc/ambari-server/conf/\* | hdinsight 
+/etc/apt/sources.list | linux-repoconfig 
+/etc/apt/sources.list.d/\*.list | linux-repoconfig 
 /etc/cloud/cloud.cfg | diagnostic, eg, vmdiagnostic 
 /etc/cloud/cloud.cfg.d/\*.cfg | diagnostic, eg, vmdiagnostic 
 /etc/cni/net.d/\*.conflist | aks 
+/etc/default/grub | linux-bootconfig 
+/etc/default/grub.d/\*.cfg- | linux-bootconfig 
 /etc/dhcp/\*.conf | diagnostic, eg, vmdiagnostic 
 /etc/fstab | diagnostic, eg, normal, vmdiagnostic 
 /etc/hadoop/conf/\* | hdinsight 
 /etc/hbase/conf/\* | hdinsight 
 /etc/hive2/conf/\* | hdinsight 
 /etc/hostname | agents, diagnostic, eg, genspec, lad, site-recovery, sql-iaas, vmdiagnostic, workloadbackup 
-/etc/hosts | hdinsight 
+/etc/hosts | diagnostic, hdinsight 
+/etc/hosts.allow | diagnostic 
+/etc/hosts.deny | diagnostic 
+/etc/localtime | diagnostic 
+/etc/modprobe.d/\*.conf | diagnostic 
 /etc/netplan/\*.yaml | diagnostic, eg, vmdiagnostic 
 /etc/network/interfaces | diagnostic, eg, vmdiagnostic 
 /etc/network/interfaces.d/\*.cfg | diagnostic, eg, vmdiagnostic 
@@ -68,10 +77,15 @@ File Path | Manifest
 /etc/opt/omi/conf/\* | monitor-mgmt 
 /etc/opt/omi/conf/omsconfig/agentid | monitor-mgmt 
 /etc/opt/omi/conf/omsconfig/configuration/\*.mof | monitor-mgmt 
+/etc/products.d/\*.prod | linux-repoconfig 
 /etc/resolv.conf | diagnostic, eg, vmdiagnostic 
+/etc/security/limits.conf | diagnostic 
+/etc/selinux/config | diagnostic 
 /etc/spark/conf/\* | hdinsight 
 /etc/ssh/sshd_config | diagnostic, eg, normal, vmdiagnostic 
 /etc/storm/conf/\* | hdinsight 
+/etc/sudoers | diagnostic 
+/etc/sudoers.d/\* | diagnostic 
 /etc/sysconfig/SuSEfirewall2 | diagnostic, eg, vmdiagnostic 
 /etc/sysconfig/iptables | diagnostic, eg, vmdiagnostic 
 /etc/sysconfig/network | diagnostic, eg, vmdiagnostic 
@@ -82,9 +96,14 @@ File Path | Manifest
 /etc/sysconfig/network/dhcp | diagnostic, eg, vmdiagnostic 
 /etc/sysconfig/network/ifcfg-\* | diagnostic, eg, vmdiagnostic 
 /etc/sysconfig/network/routes | diagnostic, eg, vmdiagnostic 
+/etc/sysctl.conf | diagnostic 
+/etc/sysctl.d/\*.conf | diagnostic 
+/etc/udev/rules.d/\*.rules | diagnostic 
 /etc/ufw/ufw.conf | diagnostic, eg, vmdiagnostic 
 /etc/waagent.conf | agents, diagnostic, eg, site-recovery, vmdiagnostic, workloadbackup 
 /etc/wicked/\*.xml | diagnostic, eg, vmdiagnostic 
+/etc/yum.repos.d/\*.repo | linux-repoconfig 
+/etc/zypp/repos.d/\*.repo | linux-repoconfig 
 /opt/microsoft/servicefabric/bin/Fabric/Fabric.Code/Fabric | servicefabric 
 /opt/msawb/bin/AzureWLBackupCommonManagementSettings.json | workloadbackup 
 /opt/msawb/bin/AzureWLBackupMonitoringSync_config.json | workloadbackup 
@@ -110,6 +129,7 @@ File Path | Manifest
 /run/resolvconf/\*.conf | diagnostic, eg, vmdiagnostic 
 /run/systemd/netif/leases/\* | diagnostic, eg, vmdiagnostic 
 /run/systemd/resolve/\*.conf | diagnostic, eg, vmdiagnostic 
+/sys/kernel/security/apparmor/profiles | diagnostic 
 /tmp/omsagent\*.tgz | monitor-mgmt 
 /usr/lib/NetworkManager/\*.conf | diagnostic, eg, vmdiagnostic 
 /usr/lib/NetworkManager/conf.d/\*.conf | diagnostic, eg, vmdiagnostic 
@@ -188,6 +208,7 @@ File Path | Manifest
 /var/log/azure/run-command/handler.log | diagnostic, vmdiagnostic 
 /var/log/boot\* | diagnostic, eg, normal, vmdiagnostic 
 /var/log/cloud-init\* | aks, diagnostic, eg, normal, vmdiagnostic 
+/var/log/cloudregister | diagnostic 
 /var/log/dmesg\* | agents, diagnostic, eg, normal, site-recovery, vmdiagnostic, workloadbackup 
 /var/log/dnf\* | diagnostic, eg, vmdiagnostic 
 /var/log/dpkg.log | servicefabric 
@@ -222,6 +243,7 @@ File Path | Manifest
 /var/log/waagent\* | agents, diagnostic, eg, lad, normal, site-recovery, vmdiagnostic, workloadbackup 
 /var/log/waagent\*.log | monitor-mgmt 
 /var/log/yum\* | diagnostic, eg, normal, vmdiagnostic 
+/var/log/zypp/history | diagnostic 
 /var/opt/microsoft/omsagent/LAD/log/\* | lad 
 /var/opt/microsoft/omsagent/\*/log/omsagent.log | monitor-mgmt 
 /var/opt/microsoft/omsagent/\*/run/automationworker/omsupdatemgmt.log | monitor-mgmt 
@@ -574,4 +596,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-09-21 14:04:09.377000`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-09-30 15:11:48.954341`*

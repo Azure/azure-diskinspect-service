@@ -4,6 +4,8 @@ ll,/var/lib/cloud
 ll,/run/cloud-init
 ll,/var/lib/waagent
 ll,/etc/udev/rules.d
+ll,/etc/alternatives
+ll,/boot
 
 echo,### Gathering Cloud-init Files ###
 copy,/var/log/cloud-init*
@@ -18,7 +20,7 @@ echo,
 echo,### Gathering Waagent and Guest Extension Files ###
 copy,/var/log/waagent*
 copy,/etc/waagent.conf
-copy,/var/lib/waagent/provisioned
+copy,/var/lib/waagent/provisioned,noscan
 copy,/var/lib/waagent/waagent_status.json
 copy,/var/lib/waagent/waagent_status.*.json
 copy,/var/lib/waagent/*/error.json
@@ -37,62 +39,66 @@ copy,/var/lib/waagent/history/*.zip,noscan
 echo,
 
 echo,### Gathering Dhcp and Dhclient Files ###
-copy,/run/systemd/netif/leases/*
-copy,/var/lib/NetworkManager/*.lease
-copy,/var/lib/NetworkManager/*.leases
-copy,/var/lib/wicked/lease*
-copy,/var/lib/dhclient/*.lease
-copy,/var/lib/dhclient/*.leases
-copy,/var/lib/dhcp/*.lease
-copy,/var/lib/dhcp/*.leases
-copy,/run/cloud-init/dhclient.hooks/*.json
+copy,/run/systemd/netif/leases/*,noscan
+copy,/var/lib/NetworkManager/*.lease,noscan
+copy,/var/lib/NetworkManager/*.leases,noscan
+copy,/var/lib/wicked/lease*,noscan
+copy,/var/lib/dhclient/*.lease,noscan
+copy,/var/lib/dhclient/*.leases,noscan
+copy,/var/lib/dhcp/*.lease,noscan
+copy,/var/lib/dhcp/*.leases,noscan
+copy,/run/cloud-init/dhclient.hooks/*.json,noscan
 echo,
 
 echo,### Gathering Networking Files ###
-copy,/etc/netplan/*.yaml
-copy,/etc/dhcp/*.conf
-copy,/etc/network/interfaces
-copy,/etc/network/interfaces.d/*.cfg
-copy,/etc/ufw/ufw.conf
+copy,/etc/netplan/*.yaml,noscan
+copy,/etc/dhcp/*.conf,noscan
+copy,/etc/network/interfaces,noscan
+copy,/etc/network/interfaces.d/*.cfg,noscan
+copy,/etc/ufw/ufw.conf,noscan
 copy,/etc/ssh/sshd_config
-copy,/etc/nsswitch.conf
-copy,/etc/resolv.conf
-copy,/run/systemd/resolve/*.conf
-copy,/run/resolvconf/*.conf
+copy,/etc/nsswitch.conf,noscan
+copy,/etc/resolv.conf,noscan
+copy,/run/systemd/resolve/*.conf,noscan
+copy,/run/resolvconf/*.conf,noscan
+copy,/etc/hosts,noscan
+copy,/etc/hosts.allow,noscan
+copy,/etc/hosts.deny,noscan
 echo,
 
 echo,### Gathering NetworkManager Files ###
-copy,/usr/lib/NetworkManager/*.conf
-copy,/usr/lib/NetworkManager/conf.d/*.conf
-copy,/run/NetworkManager/*.conf
-copy,/run/NetworkManager/conf.d/*.conf
-copy,/etc/NetworkManager/*.conf
-copy,/etc/NetworkManager/conf.d/*.conf
-copy,/var/lib/NetworkManager/*.conf
-copy,/var/lib/NetworkManager/conf.d/*.conf
-copy,/var/lib/NetworkManager/*.state
+copy,/usr/lib/NetworkManager/*.conf,noscan
+copy,/usr/lib/NetworkManager/conf.d/*.conf,noscan
+copy,/run/NetworkManager/*.conf,noscan
+copy,/run/NetworkManager/conf.d/*.conf,noscan
+copy,/etc/NetworkManager/*.conf,noscan
+copy,/etc/NetworkManager/conf.d/*.conf,noscan
+copy,/var/lib/NetworkManager/*.conf,noscan
+copy,/var/lib/NetworkManager/conf.d/*.conf,noscan
+copy,/var/lib/NetworkManager/*.state,noscan
 echo,
 
 echo,### Gathering Sysconfig Network Files ###
-copy,/etc/sysconfig/network/dhcp
-copy,/etc/sysconfig/network
-copy,/etc/sysconfig/network-scripts/ifcfg-*
-copy,/etc/sysconfig/network-scripts/route-*
-copy,/etc/sysconfig/network/config
-copy,/etc/sysconfig/network/ifcfg-*
-copy,/etc/sysconfig/network/routes
-copy,/etc/sysconfig/iptables
-copy,/etc/sysconfig/SuSEfirewall2
+copy,/etc/sysconfig/network/dhcp,noscan
+copy,/etc/sysconfig/network,noscan
+copy,/etc/sysconfig/network-scripts/ifcfg-*,noscan
+copy,/etc/sysconfig/network-scripts/route-*,noscan
+copy,/etc/sysconfig/network/config,noscan
+copy,/etc/sysconfig/network/ifcfg-*,noscan
+copy,/etc/sysconfig/network/routes,noscan
+copy,/etc/sysconfig/iptables,noscan
+copy,/etc/sysconfig/SuSEfirewall2,noscan
 echo,
 
 echo,### Gathering Wicked Network Files ###
-copy,/etc/wicked/*.xml
+copy,/etc/wicked/*.xml,noscan
 echo,
 
 echo,### Gathering Package Management Log Files ###
-copy,/var/log/dpkg*
-copy,/var/log/yum*
-copy,/var/log/dnf*
+copy,/var/log/dpkg*,noscan
+copy,/var/log/yum*,noscan
+copy,/var/log/dnf*,noscan
+copy,/var/log/zypp/history,noscan
 echo,
 
 echo,### Gathering System Log Files ###
@@ -104,6 +110,7 @@ copy,/var/log/dmesg*
 copy,/var/log/boot*
 copy,/var/log/auth*
 copy,/var/log/secure*
+copy,/var/log/cloudregister
 echo,
 
 echo,### Gathering Azure Files ###
@@ -116,11 +123,19 @@ echo,
 
 echo,### Gathering System Configuration Files ###
 copy,/etc/fstab
-copy,/boot/grub*/grub.c*
-copy,/boot/grub*/menu.lst
-copy,/etc/*-release
-copy,/etc/HOSTNAME
-copy,/etc/hostname
+copy,/etc/*-release,noscan
+copy,/etc/HOSTNAME,noscan
+copy,/etc/hostname,noscan
+copy,/etc/localtime,noscan
+copy,/etc/sudoers,noscan
+copy,/etc/sudoers.d/*,noscan
+copy,/etc/sysctl.conf,noscan
+copy,/etc/sysctl.d/*.conf,noscan
+copy,/etc/udev/rules.d/*.rules
+copy,/etc/modprobe.d/*.conf,noscan
+copy,/etc/security/limits.conf,noscan
+copy,/etc/selinux/config,noscan
+copy,/sys/kernel/security/apparmor/profiles,noscan
 echo,
 
 echo,### Gathering Disk Info ###

@@ -1,0 +1,11 @@
+echo,### Probing Directories ###
+ll,/boot
+ll,/boot/grub
+
+echo,### Gathering Boot Configuration Files ###
+copy,/boot/grub*/grub.c*,noscan
+copy,/boot/grub*/menu.lst,noscan
+copy,/boot/grub*/grubenv,noscan
+copy,/etc/default/grub,noscan
+copy,/etc/default/grub.d/*.cfg-,noscan
+echo,
