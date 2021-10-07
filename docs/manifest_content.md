@@ -726,6 +726,7 @@ aks | copy | /ProgramData/containerd/root/panic.log
 aks | copy | /AzureData/CustomDataSetupScript.log
 aks | copy | /AzureData/CustomDataSetupScript.ps1
 aks | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Containers-CCG%4Admin.evtx
+aks | copy | /Windows/System32/winevt/Logs/Microsoft-AKSGMSAPlugin%4Admin.evtx
 asc-vmhealth | copy | /WindowsAzure/Logs/TransparentInstaller.log
 diagnostic | copy | /Windows/System32/config/SOFTWARE
 diagnostic | copy | /Windows/System32/config/SYSTEM
@@ -1727,4 +1728,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-09-30 15:11:48.954341`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-10-08 15:06:34.683751`*

@@ -452,6 +452,7 @@ File Path | Manifest
 /Windows/System32/config/SYSTEM.LOG1 | min-diagnostic 
 /Windows/System32/config/SYSTEM.LOG2 | min-diagnostic 
 /Windows/System32/winevt/Logs/Application.evtx | agents, aks, diagnostic, eg, min-diagnostic, normal, servicefabric, site-recovery, sql-iaas, vmdiagnostic, windowsupdate, workloadbackup 
+/Windows/System32/winevt/Logs/Microsoft-AKSGMSAPlugin%4Admin.evtx | aks 
 /Windows/System32/winevt/Logs/Microsoft-Automation%4Operational.evtx | monitor-mgmt 
 /Windows/System32/winevt/Logs/Microsoft-SMA%4Debug.etl | monitor-mgmt 
 /Windows/System32/winevt/Logs/Microsoft-SMA%4Operational.evtx | monitor-mgmt 
@@ -596,4 +597,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-09-30 15:11:48.954341`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-10-08 15:06:34.683751`*
