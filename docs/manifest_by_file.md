@@ -51,8 +51,8 @@ File Path | Manifest
 /etc/ambari-server/conf/\* | hdinsight 
 /etc/apt/sources.list | linux-repoconfig 
 /etc/apt/sources.list.d/\*.list | linux-repoconfig 
-/etc/cloud/cloud.cfg | diagnostic, eg, vmdiagnostic 
-/etc/cloud/cloud.cfg.d/\*.cfg | diagnostic, eg, vmdiagnostic 
+/etc/cloud/cloud.cfg | diagnostic, diskpool, eg, vmdiagnostic 
+/etc/cloud/cloud.cfg.d/\*.cfg | diagnostic, diskpool, eg, vmdiagnostic 
 /etc/cni/net.d/\*.conflist | aks 
 /etc/default/grub | linux-bootconfig 
 /etc/default/grub.d/\*.cfg- | linux-bootconfig 
@@ -121,11 +121,11 @@ File Path | Manifest
 /run/NetworkManager/\*.conf | diagnostic, eg, vmdiagnostic 
 /run/NetworkManager/conf.d/\*.conf | diagnostic, eg, vmdiagnostic 
 /run/azure-vnet\* | aks 
-/run/cloud-init/cloud.cfg | diagnostic, eg, vmdiagnostic 
+/run/cloud-init/cloud.cfg | diagnostic, diskpool, eg, vmdiagnostic 
 /run/cloud-init/dhclient.hooks/\*.json | diagnostic, eg, vmdiagnostic 
-/run/cloud-init/ds-identify.log | diagnostic, eg, vmdiagnostic 
-/run/cloud-init/result.json | diagnostic, eg, vmdiagnostic 
-/run/cloud-init/status.json | diagnostic, eg, vmdiagnostic 
+/run/cloud-init/ds-identify.log | diagnostic, diskpool, eg, vmdiagnostic 
+/run/cloud-init/result.json | diagnostic, diskpool, eg, vmdiagnostic 
+/run/cloud-init/status.json | diagnostic, diskpool, eg, vmdiagnostic 
 /run/resolvconf/\*.conf | diagnostic, eg, vmdiagnostic 
 /run/systemd/netif/leases/\* | diagnostic, eg, vmdiagnostic 
 /run/systemd/resolve/\*.conf | diagnostic, eg, vmdiagnostic 
@@ -207,12 +207,14 @@ File Path | Manifest
 /var/log/azure/kubelet-status.log | aks 
 /var/log/azure/run-command/handler.log | diagnostic, vmdiagnostic 
 /var/log/boot\* | diagnostic, eg, normal, vmdiagnostic 
-/var/log/cloud-init\* | aks, diagnostic, eg, normal, vmdiagnostic 
+/var/log/cloud-init\* | aks, diagnostic, diskpool, eg, normal, vmdiagnostic 
 /var/log/cloudregister | diagnostic 
+/var/log/diskpool-agent\* | diskpool 
+/var/log/diskpool/bootstrapper.log\* | diskpool 
 /var/log/dmesg\* | agents, diagnostic, eg, normal, site-recovery, vmdiagnostic, workloadbackup 
 /var/log/dnf\* | diagnostic, eg, vmdiagnostic 
 /var/log/dpkg.log | servicefabric 
-/var/log/dpkg\* | diagnostic, eg, normal, vmdiagnostic 
+/var/log/dpkg\* | diagnostic, diskpool, eg, normal, vmdiagnostic 
 /var/log/evtcollforw\*.log | site-recovery 
 /var/log/hadoop-yarn/yarn/\*.log | hdinsight 
 /var/log/hdinsight-agent/hdinsight-agent.log | hdinsight 
@@ -224,7 +226,7 @@ File Path | Manifest
 /var/log/hive/hiveserver2.log | hdinsight 
 /var/log/journal/\*/\* | aks 
 /var/log/kern.log | servicefabric 
-/var/log/kern\* | diagnostic, eg, normal, vmdiagnostic 
+/var/log/kern\* | diagnostic, diskpool, eg, normal, vmdiagnostic 
 /var/log/messages\* | diagnostic, eg, monitor-mgmt, normal, vmdiagnostic 
 /var/log/nvidia\*.log | aks 
 /var/log/pods/kube-system\*/\*/\*.log | aks 
@@ -237,7 +239,7 @@ File Path | Manifest
 /var/log/sfnode/sfnodelog.trace | servicefabric 
 /var/log/svagents\*.log | site-recovery 
 /var/log/syslog | aks, servicefabric 
-/var/log/syslog\* | agents, diagnostic, eg, lad, monitor-mgmt, normal, site-recovery, vmdiagnostic, workloadbackup 
+/var/log/syslog\* | agents, diagnostic, diskpool, eg, lad, monitor-mgmt, normal, site-recovery, vmdiagnostic, workloadbackup 
 /var/log/ua_install.log | site-recovery 
 /var/log/waagent.log | servicefabric 
 /var/log/waagent\* | agents, diagnostic, eg, lad, normal, site-recovery, vmdiagnostic, workloadbackup 
@@ -597,4 +599,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-10-08 15:06:34.683751`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-11-02 14:13:58.689093`*
