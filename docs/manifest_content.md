@@ -253,6 +253,29 @@ diagnostic | copy | /etc/security/limits.conf
 diagnostic | copy | /etc/selinux/config
 diagnostic | copy | /sys/kernel/security/apparmor/profiles
 diagnostic | diskinfo | 
+diskpool | list | /etc/cron.daily
+diskpool | list | /etc/cron.hourly
+diskpool | list | /etc/rsyslog.d
+diskpool | list | /etc/udev/rules.d
+diskpool | list | /run/cloud-init
+diskpool | list | /var/lib/cloud
+diskpool | list | /var/lib/waagent
+diskpool | list | /var/log
+diskpool | list | /var/log/diskpool
+diskpool | list | /var/log/td-agent
+diskpool | copy | /etc/cloud/cloud.cfg
+diskpool | copy | /etc/cloud/cloud.cfg.d/\*.cfg
+diskpool | copy | /run/cloud-init/cloud.cfg
+diskpool | copy | /run/cloud-init/ds-identify.log
+diskpool | copy | /run/cloud-init/result.json
+diskpool | copy | /run/cloud-init/status.json
+diskpool | copy | /var/log/cloud-init\*
+diskpool | copy | /var/log/dpkg\*
+diskpool | copy | /var/log/kern\*
+diskpool | copy | /var/log/syslog\*
+diskpool | copy | /var/log/diskpool-agent\*
+diskpool | copy | /var/log/diskpool/bootstrapper.log\*
+diskpool | diskinfo | 
 eg | list | /var/log
 eg | list | /var/lib/cloud
 eg | list | /run/cloud-init
@@ -1728,4 +1751,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-10-08 15:06:34.683751`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-11-02 14:13:58.689093`*
