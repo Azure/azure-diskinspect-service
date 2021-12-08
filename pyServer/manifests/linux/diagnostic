@@ -1,11 +1,16 @@
 echo,### Probing Directories ###
+ll,/boot
 ll,/var/log
 ll,/var/lib/cloud
 ll,/run/cloud-init
 ll,/var/lib/waagent
+ll,/etc
 ll,/etc/udev/rules.d
 ll,/etc/alternatives
-ll,/boot
+ll,/etc/systemd/system
+ll,/etc/systemd/user
+ll,/usr/lib/systemd/system
+ll,/usr/lib/systemd/user
 
 echo,### Gathering Cloud-init Files ###
 copy,/var/log/cloud-init*
