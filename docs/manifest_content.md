@@ -147,13 +147,18 @@ aks | copy | /var/log/pods/kube-system\*/\*/\*.log
 aks | copy | /var/lib/docker/containers/\*/\*-json.log
 aks | copy | /var/log/nvidia\*.log
 aks | list | /var/log/pods/\*/\*
+diagnostic | list | /boot
 diagnostic | list | /var/log
 diagnostic | list | /var/lib/cloud
 diagnostic | list | /run/cloud-init
 diagnostic | list | /var/lib/waagent
+diagnostic | list | /etc
 diagnostic | list | /etc/udev/rules.d
 diagnostic | list | /etc/alternatives
-diagnostic | list | /boot
+diagnostic | list | /etc/systemd/system
+diagnostic | list | /etc/systemd/user
+diagnostic | list | /usr/lib/systemd/system
+diagnostic | list | /usr/lib/systemd/user
 diagnostic | copy | /var/log/cloud-init\*
 diagnostic | copy | /etc/cloud/cloud.cfg
 diagnostic | copy | /etc/cloud/cloud.cfg.d/\*.cfg
@@ -1751,4 +1756,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-11-02 14:13:58.689093`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-12-08 17:57:07.058119`*
