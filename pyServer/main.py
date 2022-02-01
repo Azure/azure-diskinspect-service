@@ -3,10 +3,11 @@ import os
 import sys
 import logging
 import logging.handlers
+from pythonjsonlogger import jsonlogger
 from ServiceMetrics import ServiceMetrics
 from AzureDiskInspectService import AzureDiskInspectService
 from AzureDiskInspectService import ThreadingServer
-
+from AzureDiskInspectService import RequestFilter
 
 """
 Globals
@@ -19,9 +20,11 @@ LOG_FILE = "/var/log/azureDiskInspectSvc.log"
 """
 Logger Initialization
 """
-logFormatter = logging.Formatter("%(asctime)s [%(threadName)-12.12s] [%(levelname)-7.7s]: %(message)s")
+#logFormatter = logging.Formatter("%(asctime)s [%(threadName)-12.12s] [%(levelname)-7.7s]: %(message)s")
+logFormatter = jsonlogger.JsonFormatter("%(asctime)s [%(threadName)-12.12s] [%(levelname)-7.7s] [%(requestId)s] %(name)s %(message)s")
 rootLogger = logging.getLogger()
 rootLogger.setLevel(logging.DEBUG)
+rootLogger.addFilter(RequestFilter())
 
 fileHandler = logging.handlers.RotatingFileHandler(LOG_FILE, maxBytes=(1048576*5), backupCount=7)
 fileHandler.setFormatter(logFormatter)
