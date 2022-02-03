@@ -203,13 +203,13 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
     send an exception object to telemetry with the desired dimensions
     '''
     
-    def logException(self, ex, properties=None, failureResultCode=500):
+    def logException(self, ex, properties=None, failureResultCode=500, httpMethod='POST'):
         customProperties =  {"HOSTNAME": os.environ['HOSTNAME'] if 'HOSTNAME' in os.environ  else ""}
         if properties:
             customProperties.update(properties)  # combine with any passed in
         self.telemetryLogger.error(traceback.format_exc())
         self.rootLogger.exception(str(ex))  # note this is rootLogger not the child telemetryLogger
-        self.requestLogger.exception(StructuredLogs(log = str(ex), url = self.path, success = False, starTime = None, durationInMs = None, responseCode = 500, HttpMethod = 'POST', customProperties = customProperties, ExceptionType = str(ex.__class__.__name__)))
+        self.requestLogger.exception(StructuredLogs(log = str(ex), url = self.path, success = False, starTime = None, durationInMs = None, responseCode = failureResultCode, HttpMethod = httpMethod, customProperties = customProperties, ExceptionType = str(ex.__class__.__name__)))
         self.telemetryClient.track_exception(*sys.exc_info(), properties=customProperties)
 
     """
@@ -450,7 +450,6 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
                         "HOSTNAME": os.environ['HOSTNAME'] if 'HOSTNAME' in os.environ  else "",
                         'containerName' : self.containerId,
                         'containerVersion' : self.containerVersion,
-                        'HostMetadata' : self.hostMetadata,
                         'HttpMethod':'GET'
                         }
 
@@ -484,7 +483,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
                 self.telemetryClient.track_metric("HttpResponseCode", 400, count=1, properties={"HOSTNAME": os.environ['HOSTNAME'], 'StatusText':'BAD_REQUEST', 'Method':'GET'})
                 self.telemetryClient.track_request('Invalid GET', self.path, False, start_time.isoformat(), (datetime.now() - start_time).total_seconds() * 1000, 400, 'GET', customProperties)
         except Exception as ex:
-            self.logException(ex, customProperties, 500)
+            self.logException(ex, customProperties, 500, 'GET')
             self.send_error(500, str(ex)) 
             self.requestLogger.error(StructuredLogs(log = 'GET Exception', url = self.path, success = False, starTime = start_time.isoformat(), durationInMs = (datetime.now() - start_time).total_seconds() * 1000, responseCode = 500, HttpMethod = 'GET', customProperties = customProperties))
             self.metricLogger.error(StructuredLogs(HttpResponseCode = 500, count=1, properties={"HOSTNAME": os.environ['HOSTNAME'], 'StatusText':'INTERNAL_SERVER_ERROR', 'Method':'GET'}))
@@ -590,7 +589,6 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
                                 'MinorSkipTo' : modeMinorSkipTo,
                                 'containerName' : self.containerId,
                                 'containerVersion' : self.containerVersion,
-                                'HostMetadata' : self.hostMetadata,
                                 'HttpMethod':'POST'
                                 }
 
