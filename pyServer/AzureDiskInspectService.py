@@ -209,7 +209,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
             customProperties.update(properties)  # combine with any passed in
         self.telemetryLogger.error(traceback.format_exc())
         self.rootLogger.exception(str(ex))  # note this is rootLogger not the child telemetryLogger
-        self.requestLogger.exception(StructuredLogs(log = str(ex), url = self.path, success = False, starTime = None, durationInMs = None, responseCode = failureResultCode, HttpMethod = httpMethod, customProperties = customProperties, ExceptionType = str(ex.__class__.__name__)))
+        self.requestLogger.exception(StructuredLogs(log = str(ex), url = self.path, success = False, starTime = None, durationInMs = None, responseCode = failureResultCode, HttpMethod = httpMethod, customProperties = str(json.dumps(customProperties)), ExceptionType = str(ex.__class__.__name__)))
         self.telemetryClient.track_exception(*sys.exc_info(), properties=customProperties)
 
     """
@@ -450,6 +450,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
                         "HOSTNAME": os.environ['HOSTNAME'] if 'HOSTNAME' in os.environ  else "",
                         'containerName' : self.containerId,
                         'containerVersion' : self.containerVersion,
+                        'HostMetadata' : self.hostMetadata,
                         'HttpMethod':'GET'
                         }
 
@@ -471,21 +472,21 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
                 self.wfile.write(bytes("</p></body></html>", "utf-8"))
                 self.wfile.flush()
                 self.telemetryLogger.info('Health query requested by ' + str(self.client_address) + ' and responded with ' + response)
-                self.requestLogger.info(StructuredLogs(log = 'Health query', url = self.path, success = True, starTime = start_time.isoformat(), durationInMs = (datetime.now() - start_time).total_seconds() * 1000, responseCode = 200, HttpMethod = 'GET', customProperties = customProperties))
+                self.requestLogger.info(StructuredLogs(log = 'Health query', url = self.path, success = True, starTime = start_time.isoformat(), durationInMs = (datetime.now() - start_time).total_seconds() * 1000, responseCode = 200, HttpMethod = 'GET', customProperties = str(json.dumps(customProperties))))
                 self.metricLogger.info(StructuredLogs(HttpResponseCode = 200, count=1, properties={"HOSTNAME": os.environ['HOSTNAME'], 'StatusText':'OK', 'Method':'GET'}))
                 self.telemetryClient.track_request('Health query', self.path, True, start_time.isoformat(), (datetime.now() - start_time).total_seconds() * 1000, 200, 'GET', customProperties)
                 self.telemetryClient.track_metric("HttpResponseCode", 200,count=1, properties={"HOSTNAME": os.environ['HOSTNAME'], 'StatusText':'OK', 'Method':'GET'})
             else:
                 self.telemetryLogger.info('Invalid GET query path requested by ' + str(self.client_address) + ' for path ' + self.path) 
                 self.send_error(400)
-                self.requestLogger.error(StructuredLogs(log = 'Invalid GET', url = self.path, success = False, starTime = start_time.isoformat(), durationInMs = (datetime.now() - start_time).total_seconds() * 1000, responseCode = 400, HttpMethod = 'GET', customProperties = customProperties))
+                self.requestLogger.error(StructuredLogs(log = 'Invalid GET', url = self.path, success = False, starTime = start_time.isoformat(), durationInMs = (datetime.now() - start_time).total_seconds() * 1000, responseCode = 400, HttpMethod = 'GET', customProperties = str(json.dumps(customProperties))))
                 self.metricLogger.error(StructuredLogs(HttpResponseCode = 400, count=1, properties={"HOSTNAME": os.environ['HOSTNAME'], 'StatusText':'BAD_REQUEST', 'Method':'GET'}))
                 self.telemetryClient.track_metric("HttpResponseCode", 400, count=1, properties={"HOSTNAME": os.environ['HOSTNAME'], 'StatusText':'BAD_REQUEST', 'Method':'GET'})
                 self.telemetryClient.track_request('Invalid GET', self.path, False, start_time.isoformat(), (datetime.now() - start_time).total_seconds() * 1000, 400, 'GET', customProperties)
         except Exception as ex:
             self.logException(ex, customProperties, 500, 'GET')
             self.send_error(500, str(ex)) 
-            self.requestLogger.error(StructuredLogs(log = 'GET Exception', url = self.path, success = False, starTime = start_time.isoformat(), durationInMs = (datetime.now() - start_time).total_seconds() * 1000, responseCode = 500, HttpMethod = 'GET', customProperties = customProperties))
+            self.requestLogger.error(StructuredLogs(log = 'GET Exception', url = self.path, success = False, starTime = start_time.isoformat(), durationInMs = (datetime.now() - start_time).total_seconds() * 1000, responseCode = 500, HttpMethod = 'GET', customProperties = str(json.dumps(customProperties))))
             self.metricLogger.error(StructuredLogs(HttpResponseCode = 500, count=1, properties={"HOSTNAME": os.environ['HOSTNAME'], 'StatusText':'INTERNAL_SERVER_ERROR', 'Method':'GET'}))
             self.telemetryClient.track_metric("HttpResponseCode", 500, count=1, properties={"HOSTNAME": os.environ['HOSTNAME'], 'StatusText':'INTERNAL_SERVER_ERROR', 'Method':'GET'})
             self.telemetryClient.track_request('GET Exception', self.path, False, start_time.isoformat(), (datetime.now() - start_time).total_seconds() * 1000, 500, 'GET', customProperties)
@@ -589,6 +590,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
                                 'MinorSkipTo' : modeMinorSkipTo,
                                 'containerName' : self.containerId,
                                 'containerVersion' : self.containerVersion,
+                                'HostMetadata' : self.hostMetadata,
                                 'HttpMethod':'POST'
                                 }
 
@@ -625,7 +627,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
                             if len( metadata_value ) > 0:
                                 customProperties[metadata] = metadata_value 
                         # track request and metrics
-                        self.requestLogger.info(StructuredLogs(log = 'Request Success', url = self.path, success = requestSucceeded, starTime = start_time.isoformat(), durationInMs = successElapsed.total_seconds() * 1000, responseCode = 200, HttpMethod = 'POST', customProperties = customProperties))
+                        self.requestLogger.info(StructuredLogs(log = 'Request Success', url = self.path, success = requestSucceeded, starTime = start_time.isoformat(), durationInMs = successElapsed.total_seconds() * 1000, responseCode = 200, HttpMethod = 'POST', customProperties = str(json.dumps(customProperties))))
                         self.metricLogger.info(StructuredLogs(HttpResponseCode = 200, count=1, properties={"HOSTNAME": os.environ['HOSTNAME'], 'StatusText':'OK', 'Method':'POST'}))
                         self.metricLogger.info(StructuredLogs(RequestSuccessDuration = successElapsed.total_seconds(), count=1, properties={"HOSTNAME": os.environ['HOSTNAME'], 'StatusText':'OK', 'Method':'POST'}))
                         self.telemetryClient.track_request('Request Success', self.path, requestSucceeded, start_time.isoformat(), successElapsed.total_seconds() * 1000, 200, 'POST', customProperties)
@@ -636,7 +638,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
                         self.telemetryLogger.error(error_string)
                         self.send_error(500, error_string)
                         self.metricLogger.error(StructuredLogs(HttpResponseCode = 500, count=1, properties={"HOSTNAME": os.environ['HOSTNAME'], 'StatusText':'INTERNAL_SERVER_ERROR', 'Method':'POST'}))
-                        self.requestLogger.error(StructuredLogs(log = error_string, url = self.path, success = requestSucceeded, starTime = start_time.isoformat(), durationInMs = successElapsed.total_seconds() * 1000, responseCode = 500, HttpMethod = 'POST', customProperties = customProperties, ErrorDetail = error_string))
+                        self.requestLogger.error(StructuredLogs(log = error_string, url = self.path, success = requestSucceeded, starTime = start_time.isoformat(), durationInMs = successElapsed.total_seconds() * 1000, responseCode = 500, HttpMethod = 'POST', customProperties = str(json.dumps(customProperties)), ErrorDetail = error_string))
                         self.telemetryClient.track_metric("HttpResponseCode", 500, count=1, properties={"HOSTNAME": os.environ['HOSTNAME'], 'StatusText':'INTERNAL_SERVER_ERROR', 'Method':'POST'})
                         self.telemetryClient.track_request(error_string, self.path, requestSucceeded, start_time.isoformat(), successElapsed.total_seconds() * 1000, 500, 'POST', customProperties)                        
 
@@ -714,7 +716,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
                 self.send_error(failureResultCode, "%s- %s" % (failureStatusText, str(telemetryException)), failureErrorCode)
                 
                 self.metricLogger.error(StructuredLogs(HttpResponseCode = failureResultCode, count=1, properties={"HOSTNAME": os.environ['HOSTNAME'], 'StatusText': failureStatusText, 'Method': 'POST'}))
-                self.requestLogger.error(StructuredLogs(log = 'POST ' + failureStatusText, url = self.path, success = requestSucceeded, starTime = start_time.isoformat(), durationInMs = (datetime.now() - start_time).total_seconds() * 1000, responseCode = 500, HttpMethod = 'POST', customProperties = customProperties, ErrorDetail = str(telemetryException), ErrorCode = failureErrorCode))
+                self.requestLogger.error(StructuredLogs(log = 'POST ' + failureStatusText, url = self.path, success = requestSucceeded, starTime = start_time.isoformat(), durationInMs = (datetime.now() - start_time).total_seconds() * 1000, responseCode = 500, HttpMethod = 'POST', customProperties = str(json.dumps(customProperties)), ErrorDetail = str(telemetryException), ErrorCode = failureErrorCode))
                 self.telemetryClient.track_metric("HttpResponseCode", failureResultCode, count=1, properties={"HOSTNAME": os.environ['HOSTNAME'], 'StatusText':failureStatusText, 'Method':'POST'})
                 self.telemetryClient.track_request('POST ' + failureStatusText, self.path, requestSucceeded, start_time.isoformat(), (datetime.now() - start_time).total_seconds() * 1000, 500, 'POST', customProperties)
                 failedElapsed = datetime.now() - start_time
