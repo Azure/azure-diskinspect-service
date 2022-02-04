@@ -98,7 +98,12 @@ class BlobUploadException(Exception):
    """Raised when an error is encountered during uploading result to Blob via Sas Url"""
    pass
 
+# Creating instnace of thread local to store attributes for thread/request specific
 tlocal = threading.local()
+
+"""
+Python logging Filter to add request contexual info in log records.
+"""
 class RequestFilter(pylogging.Filter):
     def filter(self, record):
         try:
@@ -111,6 +116,10 @@ class RequestFilter(pylogging.Filter):
             record.SessionId = None
         return True
 
+"""
+Model to format key-value pair into json structure.
+Used to format log messages.
+"""
 class StructuredLogs(object):
     def __init__(self, **kwargs):
         self.kwargs = kwargs
@@ -171,9 +180,10 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
         self.rootLogger.info("AppInsights key: '" + appInsightsKey + "'")   # log locally
         self.rootLogger.info("AppInsights endpoint: '" + appInsightsEndPointUrl + "'")
 
-        # create a child logger per thread so that we can set the SessionId without collision during concurrent execution
-        #  by default logging will propagate to the parent rootLogger
-        #self.telemetryLogger = self.rootLogger.getChild('AppInsights.{0}'.format(cur_thread) )
+        # TODO: AppInsights referances and comments needs to modify
+        # create a child logger for appInsights per thread so that we can set the SessionId without collision during concurrent execution
+        # by default logging will propagate to the parent rootLogger
+        # create child loggers for trace events, ApiQos and Metrics for each requests.
         self.telemetryLogger = self.rootLogger.getChild(json.dumps({'TracerType': 'AZDIS_REQUEST_EVENT_TRACER', 'Component': __name__}))
         self.telemetryLogger.addFilter(RequestFilter())
         self.requestLogger = self.rootLogger.getChild(json.dumps({'TracerType': 'AZDIS_APIQOS_TRACER', 'applicationId': 'DiskInspect-Service', 'applicationVersion': self.containerVersion, 'releaseName': self.releaseName}))
@@ -268,6 +278,7 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
             raise ValueError('Request has insufficient number of POST parameter arguments.')
 
         operationId = urlSplit[1]
+        # assign parsed operationId to thread SessionId attribute used for logging
         tlocal.operationId = operationId
         mode = str(urlSplit[2])
         modeMajorSkipTo = 1
