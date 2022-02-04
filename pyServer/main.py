@@ -21,7 +21,7 @@ LOG_FILE = "/var/log/azureDiskInspectSvc.log"
 Logger Initialization
 """
 #logFormatter = logging.Formatter("%(asctime)s [%(threadName)-12.12s] [%(levelname)-7.7s]: %(message)s")
-logFormatter = jsonlogger.JsonFormatter("%(asctime)s [%(threadName)-12.12s] [%(levelname)-7.7s] [%(requestId)s] %(name)s %(message)s")
+logFormatter = jsonlogger.JsonFormatter("%(asctime)s [%(threadName)-12.12s] [%(levelname)-7.7s] [%(RequestId)s] [%(SessionId)s] %(name)s %(message)s")
 rootLogger = logging.getLogger()
 rootLogger.setLevel(logging.DEBUG)
 rootLogger.addFilter(RequestFilter())
