@@ -180,10 +180,10 @@ class AzureDiskInspectService(http.server.BaseHTTPRequestHandler):
         self.rootLogger.info("AppInsights key: '" + appInsightsKey + "'")   # log locally
         self.rootLogger.info("AppInsights endpoint: '" + appInsightsEndPointUrl + "'")
 
-        # TODO: AppInsights referances and comments needs to modify
+        # TODO: AppInsights referances and comments need to be modified
         # create a child logger for appInsights per thread so that we can set the SessionId without collision during concurrent execution
         # by default logging will propagate to the parent rootLogger
-        # create child loggers for trace events, ApiQos and Metrics for each requests.
+        # create child loggers for RequestEvent, ApiQoS and Metrics for each requests.
         self.telemetryLogger = self.rootLogger.getChild(json.dumps({'TracerType': 'AZDIS_REQUEST_EVENT_TRACER', 'Component': 'AppInsights.{0}'.format(cur_thread)}))
         self.telemetryLogger.addFilter(RequestFilter())
         self.requestLogger = self.rootLogger.getChild(json.dumps({'TracerType': 'AZDIS_APIQOS_TRACER', 'applicationId': 'DiskInspect-Service', 'applicationVersion': self.containerVersion, 'releaseName': self.releaseName}))

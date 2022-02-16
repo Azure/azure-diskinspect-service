@@ -20,7 +20,7 @@ LOG_FILE = "/var/log/azureDiskInspectSvc.log"
 """
 Logger Initialization
 """
-# Use JsonFormatter to structure all log recods into json format.
+# Use JsonFormatter to structure all log records into json format.
 logFormatter = jsonlogger.JsonFormatter("%(asctime)s [%(threadName)-12.12s] [%(levelname)-7.7s] [%(RequestId)s] [%(SessionId)s] %(name)s %(message)s")
 rootLogger = logging.getLogger()
 rootLogger.setLevel(logging.DEBUG)
