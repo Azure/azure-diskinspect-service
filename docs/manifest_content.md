@@ -123,6 +123,8 @@ agents | copy | /var/lib/waagent/\*/status/\*.status
 agents | copy | /var/lib/waagent/\*/config/\*.settings
 agents | copy | /var/lib/waagent/\*/config/HandlerState
 agents | copy | /var/lib/waagent/\*/config/HandlerStatus
+agents | copy | /var/lib/waagent/\*/config/VMApp.lockfile
+agents | copy | /var/lib/waagent/\*/config/applicationRegistry.active
 agents | copy | /var/lib/waagent/\*.agentsManifest
 agents | copy | /var/lib/waagent/error.json
 agents | copy | /var/lib/waagent/Incarnation
@@ -147,13 +149,18 @@ aks | copy | /var/log/pods/kube-system\*/\*/\*.log
 aks | copy | /var/lib/docker/containers/\*/\*-json.log
 aks | copy | /var/log/nvidia\*.log
 aks | list | /var/log/pods/\*/\*
+diagnostic | list | /boot
 diagnostic | list | /var/log
 diagnostic | list | /var/lib/cloud
 diagnostic | list | /run/cloud-init
 diagnostic | list | /var/lib/waagent
+diagnostic | list | /etc
 diagnostic | list | /etc/udev/rules.d
 diagnostic | list | /etc/alternatives
-diagnostic | list | /boot
+diagnostic | list | /etc/systemd/system
+diagnostic | list | /etc/systemd/user
+diagnostic | list | /usr/lib/systemd/system
+diagnostic | list | /usr/lib/systemd/user
 diagnostic | copy | /var/log/cloud-init\*
 diagnostic | copy | /etc/cloud/cloud.cfg
 diagnostic | copy | /etc/cloud/cloud.cfg.d/\*.cfg
@@ -253,6 +260,29 @@ diagnostic | copy | /etc/security/limits.conf
 diagnostic | copy | /etc/selinux/config
 diagnostic | copy | /sys/kernel/security/apparmor/profiles
 diagnostic | diskinfo | 
+diskpool | list | /etc/cron.daily
+diskpool | list | /etc/cron.hourly
+diskpool | list | /etc/rsyslog.d
+diskpool | list | /etc/udev/rules.d
+diskpool | list | /run/cloud-init
+diskpool | list | /var/lib/cloud
+diskpool | list | /var/lib/waagent
+diskpool | list | /var/log
+diskpool | list | /var/log/diskpool
+diskpool | list | /var/log/td-agent
+diskpool | copy | /etc/cloud/cloud.cfg
+diskpool | copy | /etc/cloud/cloud.cfg.d/\*.cfg
+diskpool | copy | /run/cloud-init/cloud.cfg
+diskpool | copy | /run/cloud-init/ds-identify.log
+diskpool | copy | /run/cloud-init/result.json
+diskpool | copy | /run/cloud-init/status.json
+diskpool | copy | /var/log/cloud-init\*
+diskpool | copy | /var/log/dpkg\*
+diskpool | copy | /var/log/kern\*
+diskpool | copy | /var/log/syslog\*
+diskpool | copy | /var/log/diskpool-agent\*
+diskpool | copy | /var/log/diskpool/bootstrapper.log\*
+diskpool | diskinfo | 
 eg | list | /var/log
 eg | list | /var/lib/cloud
 eg | list | /run/cloud-init
@@ -731,6 +761,7 @@ aks | copy | /ProgramData/containerd/root/panic.log
 aks | copy | /AzureData/CustomDataSetupScript.log
 aks | copy | /AzureData/CustomDataSetupScript.ps1
 aks | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Containers-CCG%4Admin.evtx
+aks | copy | /Windows/System32/winevt/Logs/Microsoft-AKSGMSAPlugin%4Admin.evtx
 asc-vmhealth | copy | /WindowsAzure/Logs/TransparentInstaller.log
 diagnostic | copy | /Windows/System32/config/SOFTWARE
 diagnostic | copy | /Windows/System32/config/SYSTEM
@@ -1190,6 +1221,10 @@ normal | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.Edp.Ne
 normal | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.Edp.NetworkWatcherAgentWind<br>ows/\*/\*.log
 normal | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows/<br>\*/\*.txt
 normal | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows/<br>\*/\*.log
+normal | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/\*.log
+normal | copy | /Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/RuntimeSettings<br>/applicationRegistry.active
+normal | copy | /Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/RuntimeSettings<br>/applicationRegistry.backup
+normal | copy | /Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/RuntimeSettings<br>/VMApp.lockfile
 rdp-registry | registry query | HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\fDenyTSConnections
 rdp-registry | registry query | HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp\PortNumber
 rdp-registry | registry query | HKLM\SYSTEM\CurrentControlSet\Services\Dhcp\Start
@@ -1731,5 +1766,6 @@ workloadbackup | copy | /WindowsAzure/Logs/WaAppAgent.log
 workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
+
 
 *File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-02-24 10:35:17.758270`*

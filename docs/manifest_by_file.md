@@ -51,8 +51,8 @@ File Path | Manifest
 /etc/ambari-server/conf/\* | hdinsight 
 /etc/apt/sources.list | linux-repoconfig 
 /etc/apt/sources.list.d/\*.list | linux-repoconfig 
-/etc/cloud/cloud.cfg | diagnostic, eg, vmdiagnostic 
-/etc/cloud/cloud.cfg.d/\*.cfg | diagnostic, eg, vmdiagnostic 
+/etc/cloud/cloud.cfg | diagnostic, diskpool, eg, vmdiagnostic 
+/etc/cloud/cloud.cfg.d/\*.cfg | diagnostic, diskpool, eg, vmdiagnostic 
 /etc/cni/net.d/\*.conflist | aks 
 /etc/default/grub | linux-bootconfig 
 /etc/default/grub.d/\*.cfg | linux-bootconfig 
@@ -125,11 +125,11 @@ File Path | Manifest
 /run/NetworkManager/\*.conf | diagnostic, eg, vmdiagnostic 
 /run/NetworkManager/conf.d/\*.conf | diagnostic, eg, vmdiagnostic 
 /run/azure-vnet\* | aks 
-/run/cloud-init/cloud.cfg | diagnostic, eg, vmdiagnostic 
+/run/cloud-init/cloud.cfg | diagnostic, diskpool, eg, vmdiagnostic 
 /run/cloud-init/dhclient.hooks/\*.json | diagnostic, eg, vmdiagnostic 
-/run/cloud-init/ds-identify.log | diagnostic, eg, vmdiagnostic 
-/run/cloud-init/result.json | diagnostic, eg, vmdiagnostic 
-/run/cloud-init/status.json | diagnostic, eg, vmdiagnostic 
+/run/cloud-init/ds-identify.log | diagnostic, diskpool, eg, vmdiagnostic 
+/run/cloud-init/result.json | diagnostic, diskpool, eg, vmdiagnostic 
+/run/cloud-init/status.json | diagnostic, diskpool, eg, vmdiagnostic 
 /run/resolvconf/\*.conf | diagnostic, eg, vmdiagnostic 
 /run/systemd/netif/leases/\* | diagnostic, eg, vmdiagnostic 
 /run/systemd/resolve/\*.conf | diagnostic, eg, vmdiagnostic 
@@ -178,7 +178,9 @@ File Path | Manifest
 /var/lib/waagent/\*.xml | agents, site-recovery, workloadbackup 
 /var/lib/waagent/\*/config/HandlerState | agents, diagnostic, vmdiagnostic 
 /var/lib/waagent/\*/config/HandlerStatus | agents, diagnostic, vmdiagnostic 
+/var/lib/waagent/\*/config/VMApp.lockfile | agents 
 /var/lib/waagent/\*/config/\*.settings | agents, diagnostic, vmdiagnostic 
+/var/lib/waagent/\*/config/applicationRegistry.active | agents 
 /var/lib/waagent/\*/error.json | diagnostic, vmdiagnostic 
 /var/lib/waagent/\*/status/\*.status | agents, diagnostic, vmdiagnostic 
 /var/lib/waagent/error.json | agents, eg 
@@ -211,12 +213,14 @@ File Path | Manifest
 /var/log/azure/kubelet-status.log | aks 
 /var/log/azure/run-command/handler.log | diagnostic, vmdiagnostic 
 /var/log/boot\* | diagnostic, eg, normal, vmdiagnostic 
-/var/log/cloud-init\* | aks, diagnostic, eg, normal, vmdiagnostic 
+/var/log/cloud-init\* | aks, diagnostic, diskpool, eg, normal, vmdiagnostic 
 /var/log/cloudregister | diagnostic 
+/var/log/diskpool-agent\* | diskpool 
+/var/log/diskpool/bootstrapper.log\* | diskpool 
 /var/log/dmesg\* | agents, diagnostic, eg, normal, site-recovery, vmdiagnostic, workloadbackup 
 /var/log/dnf\* | diagnostic, eg, vmdiagnostic 
 /var/log/dpkg.log | servicefabric 
-/var/log/dpkg\* | diagnostic, eg, normal, vmdiagnostic 
+/var/log/dpkg\* | diagnostic, diskpool, eg, normal, vmdiagnostic 
 /var/log/evtcollforw\*.log | site-recovery 
 /var/log/hadoop-yarn/yarn/\*.log | hdinsight 
 /var/log/hdinsight-agent/hdinsight-agent.log | hdinsight 
@@ -228,7 +232,7 @@ File Path | Manifest
 /var/log/hive/hiveserver2.log | hdinsight 
 /var/log/journal/\*/\* | aks 
 /var/log/kern.log | servicefabric 
-/var/log/kern\* | diagnostic, eg, normal, vmdiagnostic 
+/var/log/kern\* | diagnostic, diskpool, eg, normal, vmdiagnostic 
 /var/log/messages\* | diagnostic, eg, monitor-mgmt, normal, vmdiagnostic 
 /var/log/nvidia\*.log | aks 
 /var/log/pods/kube-system\*/\*/\*.log | aks 
@@ -241,7 +245,7 @@ File Path | Manifest
 /var/log/sfnode/sfnodelog.trace | servicefabric 
 /var/log/svagents\*.log | site-recovery 
 /var/log/syslog | aks, servicefabric 
-/var/log/syslog\* | agents, diagnostic, eg, lad, monitor-mgmt, normal, site-recovery, vmdiagnostic, workloadbackup 
+/var/log/syslog\* | agents, diagnostic, diskpool, eg, lad, monitor-mgmt, normal, site-recovery, vmdiagnostic, workloadbackup 
 /var/log/ua_install.log | site-recovery 
 /var/log/waagent.log | servicefabric 
 /var/log/waagent\* | agents, diagnostic, eg, lad, normal, site-recovery, vmdiagnostic, workloadbackup 
@@ -311,6 +315,9 @@ File Path | Manifest
 /Packages/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/Service/ServiceF<br>abricNodeBootstrapAgent.InstallLog | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
 /Packages/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/Service/ServiceF<br>abricNodeBootstrapAgent.InstallState | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
 /Packages/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/Service/current.<br>config | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
+/Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/RuntimeSettings<br>/VMApp.lockfile | normal 
+/Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/RuntimeSettings<br>/applicationRegistry.active | normal 
+/Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/RuntimeSettings<br>/applicationRegistry.backup | normal 
 /Packages/Plugins/Microsoft.Compute.BGInfo/\*/BGInfo.def.xml | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
 /Packages/Plugins/Microsoft.Compute.BGInfo/\*/PluginManifest.xml | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
 /Packages/Plugins/Microsoft.Compute.BGInfo/\*/config.bgi | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
@@ -456,6 +463,7 @@ File Path | Manifest
 /Windows/System32/config/SYSTEM.LOG1 | min-diagnostic 
 /Windows/System32/config/SYSTEM.LOG2 | min-diagnostic 
 /Windows/System32/winevt/Logs/Application.evtx | agents, aks, diagnostic, eg, min-diagnostic, normal, servicefabric, site-recovery, sql-iaas, vmdiagnostic, windowsupdate, workloadbackup 
+/Windows/System32/winevt/Logs/Microsoft-AKSGMSAPlugin%4Admin.evtx | aks 
 /Windows/System32/winevt/Logs/Microsoft-Automation%4Operational.evtx | monitor-mgmt 
 /Windows/System32/winevt/Logs/Microsoft-SMA%4Debug.etl | monitor-mgmt 
 /Windows/System32/winevt/Logs/Microsoft-SMA%4Operational.evtx | monitor-mgmt 
@@ -562,6 +570,7 @@ File Path | Manifest
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/TempClu<br>sterManifest.xml | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/VCRunti<br>meInstall\*.log | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.RunCommandWindows/\*/\*.log | diagnostic, vmdiagnostic 
+/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/\*.log | normal 
 /WindowsAzure/Logs/Plugins/Microsoft.Compute.BGInfo/\*/BGInfo\*.log | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.Compute.CustomScriptExtension/\*/\*.log | diagnostic, vmdiagnostic, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.Compute.JsonADDomainExtension/\*/ADDomainExtensi<br>on.log | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
@@ -600,4 +609,6 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
+
 *File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-02-24 10:35:17.758270`*
+

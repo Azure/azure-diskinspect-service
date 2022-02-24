@@ -1,0 +1,37 @@
+echo,### Probing Directories ###
+ll,/etc/cron.daily
+ll,/etc/cron.hourly
+ll,/etc/rsyslog.d
+ll,/etc/udev/rules.d
+ll,/run/cloud-init
+ll,/var/lib/cloud
+ll,/var/lib/waagent
+ll,/var/log
+ll,/var/log/diskpool
+ll,/var/log/td-agent
+
+echo,### Gathering Cloud-init Files ###
+copy,/etc/cloud/cloud.cfg
+copy,/etc/cloud/cloud.cfg.d/*.cfg
+copy,/run/cloud-init/cloud.cfg
+copy,/run/cloud-init/ds-identify.log
+copy,/run/cloud-init/result.json
+copy,/run/cloud-init/status.json
+copy,/var/log/cloud-init*
+echo,
+
+echo,### Gathering Package Management Log Files ###
+copy,/var/log/dpkg*
+echo,
+
+echo,### Gathering System Log Files ###
+copy,/var/log/kern*
+copy,/var/log/syslog*
+echo,
+
+echo,### Gathering Disk Pool Log Files ###
+copy,/var/log/diskpool-agent*
+copy,/var/log/diskpool/bootstrapper.log*
+
+echo,### Gathering Disk Info ###
+diskinfo,

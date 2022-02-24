@@ -33,17 +33,18 @@ RUN apt-get update && apt-get install -y mono-complete
 WORKDIR /
 RUN git clone https://github.com/chintanrp/libguestfs.git
 WORKDIR /libguestfs
-RUN ./autogen.sh \
+RUN ./autogen.sh --disable-gobject --disable-golang \
  && make ; rm -f po-docs/podfiles; make -C po-docs update-po 
 RUN make
 
-# Remove old version and install latest golang version
+# Remove old version 
 RUN DEBIAN_FRONTEND=noninteractive apt-get remove -y \
     golang-go \
     --auto-remove golang-go
 RUN rm -rf /usr/local/go
-RUN wget -qO- https://golang.org/dl/go1.16.7.linux-amd64.tar.gz | tar -xzv -C /usr/local
-ENV PATH $PATH:/usr/local/go/bin
+# Install latest golang version
+#RUN wget -qO- https://golang.org/dl/go1.17.3.linux-amd64.tar.gz | tar -xzv -C /usr/local
+#ENV PATH $PATH:/usr/local/go/bin
 
 # extractor service
 RUN rm -v /etc/nginx/nginx.conf
