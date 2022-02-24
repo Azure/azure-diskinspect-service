@@ -55,14 +55,15 @@ File Path | Manifest
 /etc/cloud/cloud.cfg.d/\*.cfg | diagnostic, diskpool, eg, vmdiagnostic 
 /etc/cni/net.d/\*.conflist | aks 
 /etc/default/grub | linux-bootconfig 
-/etc/default/grub.d/\*.cfg- | linux-bootconfig 
+/etc/default/grub.d/\*.cfg | linux-bootconfig 
 /etc/dhcp/\*.conf | diagnostic, eg, vmdiagnostic 
+/etc/dnf/dnf.conf | linux-repoconfig 
 /etc/fstab | diagnostic, eg, normal, vmdiagnostic 
 /etc/hadoop/conf/\* | hdinsight 
 /etc/hbase/conf/\* | hdinsight 
 /etc/hive2/conf/\* | hdinsight 
 /etc/hostname | agents, diagnostic, eg, genspec, lad, site-recovery, sql-iaas, vmdiagnostic, workloadbackup 
-/etc/hosts | diagnostic, hdinsight 
+/etc/hosts | diagnostic, hdinsight, linux-repoconfig 
 /etc/hosts.allow | diagnostic 
 /etc/hosts.deny | diagnostic 
 /etc/localtime | diagnostic 
@@ -78,6 +79,7 @@ File Path | Manifest
 /etc/opt/omi/conf/omsconfig/agentid | monitor-mgmt 
 /etc/opt/omi/conf/omsconfig/configuration/\*.mof | monitor-mgmt 
 /etc/products.d/\*.prod | linux-repoconfig 
+/etc/regionserverclnt.cfg | linux-repoconfig 
 /etc/resolv.conf | diagnostic, eg, vmdiagnostic 
 /etc/security/limits.conf | diagnostic 
 /etc/selinux/config | diagnostic 
@@ -103,6 +105,8 @@ File Path | Manifest
 /etc/waagent.conf | agents, diagnostic, eg, site-recovery, vmdiagnostic, workloadbackup 
 /etc/wicked/\*.xml | diagnostic, eg, vmdiagnostic 
 /etc/yum.repos.d/\*.repo | linux-repoconfig 
+/etc/yum/vars/releasever | linux-repoconfig 
+/etc/yum/yum.conf | linux-repoconfig 
 /etc/zypp/repos.d/\*.repo | linux-repoconfig 
 /opt/microsoft/servicefabric/bin/Fabric/Fabric.Code/Fabric | servicefabric 
 /opt/msawb/bin/AzureWLBackupCommonManagementSettings.json | workloadbackup 
@@ -605,4 +609,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-01-07 15:17:21.573073`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-02-24 14:29:52.554204`*
