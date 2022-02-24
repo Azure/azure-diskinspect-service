@@ -369,16 +369,21 @@ linux-bootconfig | copy | /boot/grub\*/grub.c\*
 linux-bootconfig | copy | /boot/grub\*/menu.lst
 linux-bootconfig | copy | /boot/grub\*/grubenv
 linux-bootconfig | copy | /etc/default/grub
-linux-bootconfig | copy | /etc/default/grub.d/\*.cfg-
+linux-bootconfig | copy | /etc/default/grub.d/\*.cfg
 linux-repoconfig | list | /etc/products.d/
 linux-repoconfig | list | /etc/zypp/repos.d/
 linux-repoconfig | list | /etc/yum.repos.d/
 linux-repoconfig | list | /etc/apt
 linux-repoconfig | copy | /etc/products.d/\*.prod
 linux-repoconfig | copy | /etc/zypp/repos.d/\*.repo
+linux-repoconfig | copy | /etc/regionserverclnt.cfg
 linux-repoconfig | copy | /etc/yum.repos.d/\*.repo
+linux-repoconfig | copy | /etc/yum/vars/releasever
+linux-repoconfig | copy | /etc/yum/yum.conf
+linux-repoconfig | copy | /etc/dnf/dnf.conf
 linux-repoconfig | copy | /etc/apt/sources.list
 linux-repoconfig | copy | /etc/apt/sources.list.d/\*.list
+linux-repoconfig | copy | /etc/hosts
 monitor-mgmt | copy | /var/opt/microsoft/omsagent/\*/log/omsagent.log
 monitor-mgmt | copy | /var/lib/waagent/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux.\*.manifest.xm<br>l
 monitor-mgmt | copy | /var/lib/waagent/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux-\*/\*
@@ -1727,4 +1732,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2021-09-30 15:11:48.954341`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-02-24 10:35:17.758270`*
