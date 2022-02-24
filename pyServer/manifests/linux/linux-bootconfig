@@ -7,5 +7,5 @@ copy,/boot/grub*/grub.c*,noscan
 copy,/boot/grub*/menu.lst,noscan
 copy,/boot/grub*/grubenv,noscan
 copy,/etc/default/grub,noscan
-copy,/etc/default/grub.d/*.cfg-,noscan
+copy,/etc/default/grub.d/*.cfg,noscan
 echo,
