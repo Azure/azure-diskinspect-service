@@ -748,6 +748,7 @@ aks | copy | /k/\*.log
 aks | copy | /k/\*.err
 aks | copy | /k/kubeclusterconfig.json
 aks | copy | /Program Files/containerd/config.toml
+aks | copy | /k/bootstrap-config
 aks | copy | /k/azure-vnet.log
 aks | copy | /k/azure-vnet-ipam.log
 aks | copy | /k/azure-vnet.json
@@ -1767,4 +1768,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-02-24 14:29:52.554204`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-03-01 15:16:39.108184`*

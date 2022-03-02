@@ -10,6 +10,9 @@ echo,### Cluster configurations ###
 copy,/k/kubeclusterconfig.json
 copy,/Program Files/containerd/config.toml
 
+echo,### Kubelet bootstrap config ###
+copy,/k/bootstrap-config
+
 echo,### CNI logs ###
 copy,/k/azure-vnet.log
 copy,/k/azure-vnet-ipam.log
