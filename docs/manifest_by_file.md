@@ -611,4 +611,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-03-22 17:08:51.141690`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-03-22 18:43:36.426685`*

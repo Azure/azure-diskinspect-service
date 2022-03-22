@@ -1506,6 +1506,7 @@ vmdiagnostic | copy | /WindowsAzure/GuestAgent\*/CommonAgentConfig.config
 vmdiagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Compute.CustomScriptExtension/\*/\*.log
 vmdiagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.RunCommandWindows/\*/\*.log
 vmdiagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ActiveDirectory.AADLoginForWindows/\*/\*.l<br>og
+vmdiagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ActiveDirectory.AADLoginForWindows/\*/\*.t<br>xt
 vmdiagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.AzureDiskEncryption/\*/BitlockerE<br>xtension.log
 vmdiagnostic | copy | /Windows/servicing/sessions/sessions.xml
 vmdiagnostic | diskinfo | 
@@ -1769,4 +1770,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-03-22 17:08:51.141690`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-03-22 18:43:36.426685`*
