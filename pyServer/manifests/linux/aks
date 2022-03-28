@@ -35,3 +35,7 @@ copy,/var/log/nvidia*.log,noscan
 
 echo,### list of pods and associated symlink to nav the container logs ###
 ll,/var/log/pods/*/*
+
+echo,### AKSNode extension logs ###
+copy,/var/log/azure/Microsoft.AKS.Compute.AKS.Linux.AKSNode/extension.log
+
