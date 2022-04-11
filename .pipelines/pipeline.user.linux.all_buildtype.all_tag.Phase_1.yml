@@ -16,6 +16,12 @@ workspace_options:
   enable_legacy_networking: true
   enable_service_tree_acr_path: true
 
+restore:
+  commands:
+    - !!defaultcommand
+      name: 'Download packages'
+      command: '.pipelines/downloadpackages.sh'
+
 build:
   commands:
     #NO OP
