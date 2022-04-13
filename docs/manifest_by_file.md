@@ -196,6 +196,7 @@ File Path | Manifest
 /var/log/auth\* | agents, diagnostic, eg, normal, vmdiagnostic 
 /var/log/azure-npm.log | aks 
 /var/log/azure-vnet\* | aks 
+/var/log/azure/Microsoft.AKS.Compute.AKS.Linux.AKSNode/extension.log | aks 
 /var/log/azure/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode/\*.\*/CommandExec<br>ution.log | servicefabric 
 /var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/\*/\*.log | monitor-mgmt 
 /var/log/azure/Microsoft.OSTCExtensions.DSCForLinux/extension.log | monitor-mgmt 
@@ -612,3 +613,4 @@ File Path | Manifest
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
 *File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-04-13 09:01:47.122846`*
+
