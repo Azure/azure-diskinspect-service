@@ -455,7 +455,7 @@ normal | copy | /var/log/boot\*
 normal | copy | /var/log/auth\*
 normal | copy | /var/log/secure\*
 performance | list | /var/log/sa
-performance | copy | /var/log/sa/sar\*
+performance | copy | /var/log/sa/sa\*
 servicefabric | copy | /opt/microsoft/servicefabric/bin/Fabric/Fabric.Code/Fabric
 servicefabric | copy | /var/log/syslog
 servicefabric | copy | /var/log/dpkg.log
@@ -1767,4 +1767,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-02-24 14:29:52.554204`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-04-13 08:14:53.292614`*
