@@ -58,6 +58,7 @@ RUN ln -s -f /usr/bin/python3 /usr/bin/python
 # Install AppInsights 
 RUN pip3 install azure-storage-blob==12.8.1
 RUN pip3 install applicationinsights==0.11.9
+RUN pip3 install python-json-logger
 
 # Expose port 8080 for nginx
 EXPOSE 8080

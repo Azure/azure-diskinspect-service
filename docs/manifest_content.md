@@ -748,6 +748,7 @@ aks | copy | /k/\*.log
 aks | copy | /k/\*.err
 aks | copy | /k/kubeclusterconfig.json
 aks | copy | /Program Files/containerd/config.toml
+aks | copy | /k/bootstrap-config
 aks | copy | /k/azure-vnet.log
 aks | copy | /k/azure-vnet-ipam.log
 aks | copy | /k/azure-vnet.json
@@ -941,6 +942,7 @@ diagnostic | copy | /WindowsAzure/GuestAgent\*/CommonAgentConfig.config
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Compute.CustomScriptExtension/\*/\*.log
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.RunCommandWindows/\*/\*.log
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ActiveDirectory.AADLoginForWindows/\*/\*.l<br>og
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ActiveDirectory.AADLoginForWindows/\*/\*.t<br>xt
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.AzureDiskEncryption/\*/BitlockerE<br>xtension.log
 diagnostic | copy | /Windows/servicing/sessions/sessions.xml
 diagnostic | diskinfo | 
@@ -1504,6 +1506,7 @@ vmdiagnostic | copy | /WindowsAzure/GuestAgent\*/CommonAgentConfig.config
 vmdiagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Compute.CustomScriptExtension/\*/\*.log
 vmdiagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.RunCommandWindows/\*/\*.log
 vmdiagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ActiveDirectory.AADLoginForWindows/\*/\*.l<br>og
+vmdiagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ActiveDirectory.AADLoginForWindows/\*/\*.t<br>xt
 vmdiagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.AzureDiskEncryption/\*/BitlockerE<br>xtension.log
 vmdiagnostic | copy | /Windows/servicing/sessions/sessions.xml
 vmdiagnostic | diskinfo | 
@@ -1766,5 +1769,6 @@ workloadbackup | copy | /WindowsAzure/Logs/WaAppAgent.log
 workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
+
 
 *File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-04-13 08:14:53.292614`*
