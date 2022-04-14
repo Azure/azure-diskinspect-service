@@ -1,29 +1,17 @@
-# Docker
-# Build a Docker image
-# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
 
 trigger:
 - master
 
-resources:
-- repo: self
+pool:
+  vmImage: ubuntu-latest
 
-variables:
-  tag: '$(Build.BuildId)'
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
 
-stages:
-- stage: Build
-  displayName: Build image
-  jobs:
-  - job: Build
-    displayName: Build
-    pool:
-      vmImage: ubuntu-latest
-    steps:
-    - script: echo "Running restore"
-      workingDirectory: $(Agent.BuildDirectory)
-      displayName: List contents of a folder
-    - task: Bash@3
-      displayName: Restore packages
-      inputs:
-        filePath: '$(Build.SourcesDirectory)/.pipelines/downloadpackages.sh'
+- script: $(Build.SourcesDirectory)/.pipelines/downloadpackages.sh
+  displayName: 'Run a multi-line script'
