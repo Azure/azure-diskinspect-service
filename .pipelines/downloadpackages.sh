@@ -4,12 +4,12 @@
 # only purplose of the scripts to allow Component Governance to scan all the packages
 
 echo "**********Copy source repositories list to apt.**********"
-cp conf/sources.list /etc/apt/sources.list
+sudo cp conf/sources.list /etc/apt/sources.list
 
 echo "**********Install debian apt packages.**********"
-apt-get update \
-&& DEBIAN_FRONTEND=noninteractive apt-get upgrade -y \
-&& DEBIAN_FRONTEND=noninteractive apt-get install -y \
+sudo apt-get update \
+&& DEBIAN_FRONTEND=noninteractive sudo apt-get upgrade -y \
+&& DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
     build-essential \
     autoconf \
     git \
@@ -21,13 +21,13 @@ apt-get update \
     python3-pip \
     libssl-dev \
     wget \
- && DEBIAN_FRONTEND=noninteractive apt-get build-dep -y \
+ && DEBIAN_FRONTEND=noninteractive sudo apt-get build-dep -y \
     libguestfs
 
 echo "**********Install Credential Scanner dependencies.**********"
-apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
 echo "deb http://download.mono-project.com/repo/ubuntu bionic main" | tee /etc/apt/sources.list.d/mono-official.list
-apt-get update && apt-get install -y mono-complete
+sudo apt-get update && apt-get install -y mono-complete
 
 echo "**********Clone forked libguesfs repo and build.**********"
 git clone https://github.com/chintanrp/libguestfs.git
