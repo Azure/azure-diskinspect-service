@@ -36,5 +36,5 @@ steps:
   inputs:
     scanType: 'Register'
     verbosity: 'Verbose'
-    dockerImagesToScan: 'diskinspect:$(tag)'
+    dockerImagesToScan: $(tag)
     alertWarningLevel: 'High'
