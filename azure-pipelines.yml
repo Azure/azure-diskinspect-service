@@ -22,3 +22,8 @@ steps:
   displayName: Restore packages
   inputs:
     filePath: '$(Build.SourcesDirectory)/.pipelines/downloadpackages.sh'
+- task: ComponentGovernanceComponentDetection@0
+  inputs:
+    scanType: 'Register'
+    verbosity: 'Verbose'
+    alertWarningLevel: 'High'
