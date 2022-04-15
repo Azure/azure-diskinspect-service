@@ -29,8 +29,7 @@ steps:
     alertWarningLevel: 'High'
 - task: Docker@2
   inputs:
-    repository: 'diskinspect'
-    command: 'buildAndPush'
+    command: 'build'
     Dockerfile: '**/Dockerfile'
     tags: $(tag)
 - task: ComponentGovernanceComponentDetection@0
