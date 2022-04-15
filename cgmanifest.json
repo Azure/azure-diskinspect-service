@@ -1,0 +1,14 @@
+{
+    "Registrations":[
+        {
+            "Component": {
+                "Type": "git",
+                "Git": {
+                    "RepositoryUrl": "https://github.com/chintanrp/libguestfs",
+                    "CommitHash": "a159ffb9c734f53a264c039a6a55460c3bc4d003"
+                }
+            },
+            "DevelopmentDependency" : false
+        }
+    ]
+}
