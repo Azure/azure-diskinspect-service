@@ -13,5 +13,7 @@ steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
-- script: $(Build.SourcesDirectory)/.pipelines/downloadpackages.sh
-  displayName: 'Run a multi-line script'
+- task: Bash@3
+  displayName: Restore packages
+  inputs:
+    filePath: '$(Build.SourcesDirectory)/.pipelines/downloadpackages.sh'
