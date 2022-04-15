@@ -36,5 +36,4 @@ steps:
   inputs:
     scanType: 'Register'
     verbosity: 'Verbose'
-    dockerImagesToScan: $(tag)
     alertWarningLevel: 'High'
