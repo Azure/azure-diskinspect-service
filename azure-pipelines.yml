@@ -18,12 +18,24 @@ steps:
 - script: echo "Running restore"
   workingDirectory: $(Agent.BuildDirectory)
   displayName: List contents of a folder
-- task: Bash@3
-  displayName: Restore packages
-  inputs:
-    filePath: '$(Build.SourcesDirectory)/.pipelines/downloadpackages.sh'
+#- task: Bash@3
+#  displayName: Restore packages
+#  inputs:
+#    filePath: '$(Build.SourcesDirectory)/.pipelines/downloadpackages.sh'
 - task: ComponentGovernanceComponentDetection@0
   inputs:
     scanType: 'Register'
     verbosity: 'Verbose'
+    alertWarningLevel: 'High'
+- task: Docker@2
+  inputs:
+    repository: 'diskinspect'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
+    tags: $(tag)
+- task: ComponentGovernanceComponentDetection@0
+  inputs:
+    scanType: 'Register'
+    verbosity: 'Verbose'
+    dockerImagesToScan: 'diskinspect:$(tag)'
     alertWarningLevel: 'High'
