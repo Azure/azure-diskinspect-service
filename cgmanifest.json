@@ -9,6 +9,36 @@
                 }
             },
             "DevelopmentDependency" : false
+        },
+        {
+            "Component": {
+                "Type": "pip",
+                "Pip": {
+                    "Name": "azure-storage-blob",
+                    "Version": "12.8.1"
+                }
+            },
+            "DevelopmentDependency" : false
+        },
+        {
+            "Component": {
+                "Type": "pip",
+                "Pip": {
+                    "Name": "applicationinsights",
+                    "Version": "0.11.9"
+                }
+            },
+            "DevelopmentDependency" : false
+        },
+        {
+            "Component": {
+                "Type": "pip",
+                "Pip": {
+                    "Name": "python-json-logger",
+                    "Version": "12.8.1"
+                }
+            },
+            "DevelopmentDependency" : false
         }
     ]
 }
