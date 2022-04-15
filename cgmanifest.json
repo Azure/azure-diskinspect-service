@@ -39,6 +39,17 @@
                 }
             },
             "DevelopmentDependency" : false
+        },
+        {
+            "Component": {
+                "Type": "linux",
+                "Linux": {
+                    "Name": "build-essential",
+                    "Distribution": "Ubuntu",
+                    "Release": "18.04"
+                }
+            },
+            "DevelopmentDependency" : false
         }
     ]
 }
