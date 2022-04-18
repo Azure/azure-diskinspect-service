@@ -15,18 +15,6 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: echo "Running restore"
-  workingDirectory: $(Agent.BuildDirectory)
-  displayName: List contents of a folder
-#- task: Bash@3
-#  displayName: Restore packages
-#  inputs:
-#    filePath: '$(Build.SourcesDirectory)/.pipelines/downloadpackages.sh'
-- task: ComponentGovernanceComponentDetection@0
-  inputs:
-    scanType: 'Register'
-    verbosity: 'Verbose'
-    alertWarningLevel: 'High'
 - task: Docker@2
   inputs:
     command: 'build'
