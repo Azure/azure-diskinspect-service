@@ -239,7 +239,7 @@ File Path | Manifest
 /var/log/pods/kube-system\*/\*/\*.log | aks 
 /var/log/rsyslog\* | diagnostic, eg, lad, normal, vmdiagnostic 
 /var/log/s2\*.log | site-recovery 
-/var/log/sa/sar\* | performance 
+/var/log/sa/sa\* | performance 
 /var/log/secure\* | diagnostic, eg, normal, vmdiagnostic 
 /var/log/sfnode/handler.trace | servicefabric 
 /var/log/sfnode/loguploader.trace | servicefabric 
@@ -612,4 +612,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-03-28 13:22:01.702364`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-04-21 14:37:16.296385`*
