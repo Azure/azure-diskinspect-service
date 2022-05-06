@@ -194,6 +194,7 @@ File Path | Manifest
 /var/log/ambari-server/ambari-audit.log | hdinsight 
 /var/log/ambari-server/ambari-server.log | hdinsight 
 /var/log/auth\* | agents, diagnostic, eg, normal, vmdiagnostic 
+/var/log/azure-cns\* | aks 
 /var/log/azure-npm.log | aks 
 /var/log/azure-vnet\* | aks 
 /var/log/azure/Microsoft.AKS.Compute.AKS.Linux.AKSNode/extension.log | aks 
@@ -612,4 +613,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-04-21 14:37:16.296385`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-05-06 10:37:01.838628`*
