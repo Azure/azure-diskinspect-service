@@ -1,4 +1,4 @@
-name: Azure DiskInspect Build and Test
+name: Azure DiskInspect Manifest Validation
 on: [pull_request]
 jobs:
   Validate_Manifest_changes:
