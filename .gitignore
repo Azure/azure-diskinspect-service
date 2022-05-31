@@ -1,0 +1,9 @@
+.idea/.gitignore
+.idea/azure-diskinspect-service.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/inspectionProfiles/profiles_settings.xml
+.vs/slnx.sqlite
+.vs/VSWorkspaceState.json
+.vs/azure-diskinspect-service/v16/.suo

@@ -1,45 +1,9 @@
 name: Azure DiskInspect Build and Test
 on: [pull_request]
 jobs:
-  Build-Azdis-Image:
+  Validate Manifest changes:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository code
-        uses: actions/checkout@v2
-      - name: Log in to Azure Container Registry
-        uses: docker/login-action@v1
-        with:
-          registry: ${{ secrets.AZ_REGISTRY }}
-          username: ${{ secrets.REG_USER }}
-          password: ${{ secrets.REG_PASS }}
-      - name: Build container image
-        run: ./build.sh ~/docker_build.txt ${{ secrets.AZ_REGISTRY }}
-        shell: bash
-  Test-Azdis-Image:
-    needs: Build-Azdis-Image
-    runs-on: ubuntu-latest
-    env: 
-      LIBGUESTFS_SAS_KEY: ${{ secrets.LIBGUESTFS_SAS_KEY }}
-      BLOB_UPLOAD_SAS_URL: ${{ secrets.BLOB_UPLOAD_SAS_URL }}
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@v2
-      - name: Log in to Azure Container Registry
-        uses: docker/login-action@v1
-        with:
-          registry: ${{ secrets.AZ_REGISTRY }}
-          username: ${{ secrets.REG_USER }}
-          password: ${{ secrets.REG_PASS }}
-      - name: Install azure storage python SDK
-        run: pip3 install azure-storage-blob==12.8.1
-      - run: mkdir $HOME/azdis_ssl
-      - run: openssl req -x509 -newkey rsa:2048 -keyout $HOME/azdis_ssl/azdis_private.rsa -out $HOME/azdis_ssl/azdis_public.crt -days 365 -nodes -subj "/CN=localhost"
       - name: Validate Manifest changes
         run: ./tests/requires_doc_change.sh
         shell: bash
-      - name: Create Azdis Container
-        run: ./scripts/run.sh ${{ secrets.AZ_REGISTRY }}
-        shell: bash
-      - run: docker ps | grep -q AzureDiskInspectSvc_US
-      - name: Run unite test on docker container
-        run: python3 ./tests/inspection_tests.py ~ 'https://localhost:8080'
