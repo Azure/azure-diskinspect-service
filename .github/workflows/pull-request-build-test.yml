@@ -4,6 +4,8 @@ jobs:
   Validate_Manifest_changes:
     runs-on: ubuntu-latest
     steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
       - name: Validate Manifest changes
         run: ./tests/requires_doc_change.sh
         shell: bash
