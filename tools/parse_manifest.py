@@ -27,7 +27,7 @@ def return_line_with_breaks(text_line):
 This scripts creates two doc files by different pivots
 """
 
-manifest_folder = "../pyServer/manifests"
+manifest_folder = "../manifests"
 documentation_folder = "../docs"
 if len(sys.argv) > 1:
     documentation_folder = sys.argv[1]
