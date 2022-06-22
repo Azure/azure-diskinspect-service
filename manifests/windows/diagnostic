@@ -194,6 +194,10 @@ copy,/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.RunCommandWindows/*/*.log
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ActiveDirectory.AADLoginForWindows/*/*.log
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ActiveDirectory.AADLoginForWindows/*/*.txt
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.AzureDiskEncryption/*/BitlockerExtension.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/*/*.log
+copy,/Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/*/RuntimeSettings/applicationRegistry.active
+copy,/Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/*/RuntimeSettings/applicationRegistry.backup
+copy,/Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/*/RuntimeSettings/VMApp.lockfile
 
 echo,### Servicing ###
 copy,/Windows/servicing/sessions/sessions.xml,noscan
