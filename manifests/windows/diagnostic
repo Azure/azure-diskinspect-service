@@ -195,9 +195,16 @@ copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ActiveDirectory.AADLoginForWindo
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ActiveDirectory.AADLoginForWindows/*/*.txt
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.AzureDiskEncryption/*/BitlockerExtension.log
 copy,/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/*/*.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/*/log_*
 copy,/Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/*/RuntimeSettings/applicationRegistry.active
 copy,/Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/*/RuntimeSettings/applicationRegistry.backup
 copy,/Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/*/RuntimeSettings/VMApp.lockfile
+copy,/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/*/*.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/*/log_*
+copy,/Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/*/RuntimeSettings/applicationRegistry.active
+copy,/Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/*/RuntimeSettings/applicationRegistry.backup
+copy,/Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/*/RuntimeSettings/VMApp.lockfile
+
 
 echo,### Servicing ###
 copy,/Windows/servicing/sessions/sessions.xml,noscan
