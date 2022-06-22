@@ -205,8 +205,8 @@ File Path | Manifest
 /var/log/azure/Microsoft.SqlServer.Management.SqlIaaSAgentLinux\* | sql-iaas 
 /var/log/azure/Microsoft.\*LinuxDiagnostic/\*/\* | lad 
 /var/log/azure/\* | site-recovery, workloadbackup 
-/var/log/azure/\*/\* | agents, diagnostic, vmdiagnostic 
-/var/log/azure/\*/\*/\* | agents, diagnostic, vmdiagnostic 
+/var/log/azure/\*/\* | agents, diagnostic, normal, vmdiagnostic 
+/var/log/azure/\*/\*/\* | agents, diagnostic, normal, vmdiagnostic 
 /var/log/azure/cluster-provision.log | aks, diagnostic, vmdiagnostic 
 /var/log/azure/containerd-status.log | aks 
 /var/log/azure/custom-script/handler.log | agents, diagnostic, vmdiagnostic 
@@ -619,4 +619,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-06-22 10:22:06.793958`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-06-22 13:08:52.231908`*
