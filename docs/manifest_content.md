@@ -146,7 +146,7 @@ aks | copy | /run/azure-vnet\*
 aks | copy | /etc/cni/net.d/\*.conflist
 aks | copy | /var/log/azure-cns\*
 aks | copy | /var/log/azure-npm.log
-aks | copy | /var/log/pods/kube-system\*/\*/\*.log
+aks | copy | /var/log/pods/kube-system\*/\*/\*.log\*
 aks | copy | /var/lib/docker/containers/\*/\*-json.log
 aks | copy | /var/log/nvidia\*.log
 aks | list | /var/log/pods/\*/\*
@@ -1794,4 +1794,8 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
+<<<<<<< HEAD
 *File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-07-19 17:28:07.744805`*
+=======
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-07-19 15:22:47.261126`*
+>>>>>>> The AKS manifest has been updated to "copy,/var/log/pods/kube-system*/*/*.log*" in order to add historical logs that are being written as .log.<date-created>
