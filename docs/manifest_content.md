@@ -188,6 +188,8 @@ diagnostic | copy | /var/lib/waagent/Incarnation
 diagnostic | copy | /var/lib/waagent/ManagedIdentity-\*.json
 diagnostic | copy | /var/lib/waagent/SharedConfig.xml
 diagnostic | copy | /var/lib/waagent/history/\*.zip
+diagnostic | copy | /var/lib/waagent/\*/config/VMApp.lockfile
+diagnostic | copy | /var/lib/waagent/\*/config/applicationRegistry.active
 diagnostic | copy | /run/systemd/netif/leases/\*
 diagnostic | copy | /var/lib/NetworkManager/\*.lease
 diagnostic | copy | /var/lib/NetworkManager/\*.leases
@@ -744,6 +746,16 @@ agents | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.Edp.Ne
 agents | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.Edp.NetworkWatcherAgentWind<br>ows/\*/\*.log
 agents | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows/<br>\*/\*.txt
 agents | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows/<br>\*/\*.log
+agents | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/\*.log
+agents | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/log_\*
+agents | copy | /Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/RuntimeSettings<br>/applicationRegistry.active
+agents | copy | /Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/RuntimeSettings<br>/applicationRegistry.backup
+agents | copy | /Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/RuntimeSettings<br>/VMApp.lockfile
+agents | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/\*<br>.log
+agents | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/lo<br>g_\*
+agents | copy | /Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/RuntimeSett<br>ings/applicationRegistry.active
+agents | copy | /Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/RuntimeSett<br>ings/applicationRegistry.backup
+agents | copy | /Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/RuntimeSett<br>ings/VMApp.lockfile
 aks | copy | /Windows/System32/winevt/Logs/System.evtx
 aks | copy | /Windows/System32/winevt/Logs/Application.evtx
 aks | copy | /k/\*.log
@@ -946,6 +958,16 @@ diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.RunCommandWi
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ActiveDirectory.AADLoginForWindows/\*/\*.l<br>og
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ActiveDirectory.AADLoginForWindows/\*/\*.t<br>xt
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.AzureDiskEncryption/\*/BitlockerE<br>xtension.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/\*.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/log_\*
+diagnostic | copy | /Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/RuntimeSettings<br>/applicationRegistry.active
+diagnostic | copy | /Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/RuntimeSettings<br>/applicationRegistry.backup
+diagnostic | copy | /Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/RuntimeSettings<br>/VMApp.lockfile
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/\*<br>.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/lo<br>g_\*
+diagnostic | copy | /Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/RuntimeSett<br>ings/applicationRegistry.active
+diagnostic | copy | /Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/RuntimeSett<br>ings/applicationRegistry.backup
+diagnostic | copy | /Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/RuntimeSett<br>ings/VMApp.lockfile
 diagnostic | copy | /Windows/servicing/sessions/sessions.xml
 diagnostic | diskinfo | 
 eg | copy | /Windows/System32/winevt/Logs/System.evtx
@@ -1772,4 +1794,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-05-06 10:37:01.838628`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-07-19 17:28:07.744805`*
