@@ -174,15 +174,15 @@ File Path | Manifest
 /var/lib/waagent/Microsoft.\*LinuxDiagnostic\*/xmlCfg.xml | lad 
 /var/lib/waagent/SharedConfig.xml | diagnostic, vmdiagnostic 
 /var/lib/waagent/\*.agentsManifest | agents 
-/var/lib/waagent/\*.manifest.xml | diagnostic, normal, vmdiagnostic 
+/var/lib/waagent/\*.manifest.xml | diagnostic, vmdiagnostic 
 /var/lib/waagent/\*.xml | agents, site-recovery, workloadbackup 
-/var/lib/waagent/\*/config/HandlerState | agents, diagnostic, normal, vmdiagnostic 
-/var/lib/waagent/\*/config/HandlerStatus | agents, diagnostic, normal, vmdiagnostic 
-/var/lib/waagent/\*/config/VMApp.lockfile | agents, diagnostic, normal 
-/var/lib/waagent/\*/config/\*.settings | agents, diagnostic, normal, vmdiagnostic 
-/var/lib/waagent/\*/config/applicationRegistry.active | agents, diagnostic, normal 
-/var/lib/waagent/\*/error.json | diagnostic, normal, vmdiagnostic 
-/var/lib/waagent/\*/status/\*.status | agents, diagnostic, normal, vmdiagnostic 
+/var/lib/waagent/\*/config/HandlerState | agents, diagnostic, vmdiagnostic 
+/var/lib/waagent/\*/config/HandlerStatus | agents, diagnostic, vmdiagnostic 
+/var/lib/waagent/\*/config/VMApp.lockfile | agents, diagnostic 
+/var/lib/waagent/\*/config/\*.settings | agents, diagnostic, vmdiagnostic 
+/var/lib/waagent/\*/config/applicationRegistry.active | agents, diagnostic 
+/var/lib/waagent/\*/error.json | diagnostic, vmdiagnostic 
+/var/lib/waagent/\*/status/\*.status | agents, diagnostic, vmdiagnostic 
 /var/lib/waagent/error.json | agents, eg 
 /var/lib/waagent/history/\*.zip | agents, diagnostic, vmdiagnostic 
 /var/lib/waagent/provisioned | diagnostic, eg, genspec, vmdiagnostic 
@@ -205,8 +205,8 @@ File Path | Manifest
 /var/log/azure/Microsoft.SqlServer.Management.SqlIaaSAgentLinux\* | sql-iaas 
 /var/log/azure/Microsoft.\*LinuxDiagnostic/\*/\* | lad 
 /var/log/azure/\* | site-recovery, workloadbackup 
-/var/log/azure/\*/\* | agents, diagnostic, normal, vmdiagnostic 
-/var/log/azure/\*/\*/\* | agents, diagnostic, normal, vmdiagnostic 
+/var/log/azure/\*/\* | agents, diagnostic, vmdiagnostic 
+/var/log/azure/\*/\*/\* | agents, diagnostic, vmdiagnostic 
 /var/log/azure/cluster-provision.log | aks, diagnostic, vmdiagnostic 
 /var/log/azure/containerd-status.log | aks 
 /var/log/azure/custom-script/handler.log | agents, diagnostic, vmdiagnostic 
@@ -317,9 +317,9 @@ File Path | Manifest
 /Packages/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/Service/ServiceF<br>abricNodeBootstrapAgent.InstallLog | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
 /Packages/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/Service/ServiceF<br>abricNodeBootstrapAgent.InstallState | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
 /Packages/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/Service/current.<br>config | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/RuntimeSett<br>ings/VMApp.lockfile | agents, diagnostic, normal 
-/Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/RuntimeSett<br>ings/applicationRegistry.active | agents, diagnostic, normal 
-/Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/RuntimeSett<br>ings/applicationRegistry.backup | agents, diagnostic, normal 
+/Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/RuntimeSett<br>ings/VMApp.lockfile | agents, diagnostic 
+/Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/RuntimeSett<br>ings/applicationRegistry.active | agents, diagnostic 
+/Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/RuntimeSett<br>ings/applicationRegistry.backup | agents, diagnostic 
 /Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/RuntimeSettings<br>/VMApp.lockfile | agents, diagnostic, normal 
 /Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/RuntimeSettings<br>/applicationRegistry.active | agents, diagnostic, normal 
 /Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/RuntimeSettings<br>/applicationRegistry.backup | agents, diagnostic, normal 
@@ -575,11 +575,11 @@ File Path | Manifest
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/Infrast<br>ructureManifest.xml | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/TempClu<br>sterManifest.xml | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/VCRunti<br>meInstall\*.log | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/\*<br>.log | agents, diagnostic, normal 
-/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/lo<br>g_\* | agents, diagnostic, normal 
+/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/\*<br>.log | agents, diagnostic 
+/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/lo<br>g_\* | agents, diagnostic 
 /WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.RunCommandWindows/\*/\*.log | diagnostic, vmdiagnostic 
 /WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/\*.log | agents, diagnostic, normal 
-/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/log_\* | agents, diagnostic, normal 
+/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/log_\* | agents, diagnostic 
 /WindowsAzure/Logs/Plugins/Microsoft.Compute.BGInfo/\*/BGInfo\*.log | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.Compute.CustomScriptExtension/\*/\*.log | diagnostic, vmdiagnostic, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.Compute.JsonADDomainExtension/\*/ADDomainExtensi<br>on.log | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
@@ -619,4 +619,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-06-22 13:08:52.231908`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-07-19 17:28:07.744805`*

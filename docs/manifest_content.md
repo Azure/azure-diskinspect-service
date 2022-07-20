@@ -458,16 +458,6 @@ normal | copy | /var/log/cloud-init\*
 normal | copy | /var/log/boot\*
 normal | copy | /var/log/auth\*
 normal | copy | /var/log/secure\*
-normal | copy | /var/log/azure/\*/\*
-normal | copy | /var/log/azure/\*/\*/\*
-normal | copy | /var/lib/waagent/\*/error.json
-normal | copy | /var/lib/waagent/\*.manifest.xml
-normal | copy | /var/lib/waagent/\*/config/\*.settings
-normal | copy | /var/lib/waagent/\*/config/HandlerState
-normal | copy | /var/lib/waagent/\*/config/HandlerStatus
-normal | copy | /var/lib/waagent/\*/status/\*.status
-normal | copy | /var/lib/waagent/\*/config/VMApp.lockfile
-normal | copy | /var/lib/waagent/\*/config/applicationRegistry.active
 performance | list | /var/log/sa
 performance | copy | /var/log/sa/sa\*
 servicefabric | copy | /opt/microsoft/servicefabric/bin/Fabric/Fabric.Code/Fabric
@@ -1258,15 +1248,9 @@ normal | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.Edp.Ne
 normal | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows/<br>\*/\*.txt
 normal | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows/<br>\*/\*.log
 normal | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/\*.log
-normal | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/log_\*
 normal | copy | /Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/RuntimeSettings<br>/applicationRegistry.active
 normal | copy | /Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/RuntimeSettings<br>/applicationRegistry.backup
 normal | copy | /Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/RuntimeSettings<br>/VMApp.lockfile
-normal | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/\*<br>.log
-normal | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/lo<br>g_\*
-normal | copy | /Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/RuntimeSett<br>ings/applicationRegistry.active
-normal | copy | /Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/RuntimeSett<br>ings/applicationRegistry.backup
-normal | copy | /Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/RuntimeSett<br>ings/VMApp.lockfile
 rdp-registry | registry query | HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\fDenyTSConnections
 rdp-registry | registry query | HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp\PortNumber
 rdp-registry | registry query | HKLM\SYSTEM\CurrentControlSet\Services\Dhcp\Start
@@ -1810,4 +1794,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-06-22 13:08:52.231908`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-07-19 17:28:07.744805`*

@@ -41,7 +41,7 @@ copy,/var/lib/waagent/Incarnation
 copy,/var/lib/waagent/ManagedIdentity-*.json
 copy,/var/lib/waagent/SharedConfig.xml
 copy,/var/lib/waagent/history/*.zip,noscan
-copy,/var/lib/waagent/*/config/VMApp.lockfile
+copy,/var/lib/waagent/*/config/VMApp.lockfile,noscan
 copy,/var/lib/waagent/*/config/applicationRegistry.active
 echo,
 

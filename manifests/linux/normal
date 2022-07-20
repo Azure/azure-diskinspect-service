@@ -21,15 +21,3 @@ copy,/var/log/cloud-init*
 copy,/var/log/boot*
 copy,/var/log/auth*
 copy,/var/log/secure*
-copy,/var/log/azure/*/*
-copy,/var/log/azure/*/*/*
-
-echo,### Gathering Waagent and Guest Extension Files ###
-copy,/var/lib/waagent/*/error.json
-copy,/var/lib/waagent/*.manifest.xml
-copy,/var/lib/waagent/*/config/*.settings
-copy,/var/lib/waagent/*/config/HandlerState
-copy,/var/lib/waagent/*/config/HandlerStatus
-copy,/var/lib/waagent/*/status/*.status
-copy,/var/lib/waagent/*/config/VMApp.lockfile
-copy,/var/lib/waagent/*/config/applicationRegistry.active
