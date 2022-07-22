@@ -18,7 +18,9 @@ echo,### containerd ###
 copy,/var/log/azure/containerd-status.log
 
 echo,### CNI logs ###
-copy,/var/log/azure-vnet* 
+copy,/var/log/azure-vnet*
+copy,/var/log/azure-ipam*
+copy,/var/log/cilium-cni*
 copy,/var/run/azure-vnet*
 copy,/run/azure-vnet*
 copy,/etc/cni/net.d/*.conflist,noscan
