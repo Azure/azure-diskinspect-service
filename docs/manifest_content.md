@@ -141,12 +141,14 @@ aks | copy | /var/log/azure/kern.log
 aks | copy | /var/log/journal/\*/\*
 aks | copy | /var/log/azure/containerd-status.log
 aks | copy | /var/log/azure-vnet\*
+aks | copy | /var/log/azure-ipam\*
+aks | copy | /var/log/cilium-cni\*
 aks | copy | /var/run/azure-vnet\*
 aks | copy | /run/azure-vnet\*
 aks | copy | /etc/cni/net.d/\*.conflist
 aks | copy | /var/log/azure-cns\*
 aks | copy | /var/log/azure-npm.log
-aks | copy | /var/log/pods/kube-system\*/\*/\*.log
+aks | copy | /var/log/pods/kube-system\*/\*/\*.log\*
 aks | copy | /var/lib/docker/containers/\*/\*-json.log
 aks | copy | /var/log/nvidia\*.log
 aks | list | /var/log/pods/\*/\*
@@ -1794,4 +1796,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-07-19 17:28:07.744805`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-07-22 15:37:01.604293`*

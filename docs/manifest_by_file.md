@@ -195,6 +195,7 @@ File Path | Manifest
 /var/log/ambari-server/ambari-server.log | hdinsight 
 /var/log/auth\* | agents, diagnostic, eg, normal, vmdiagnostic 
 /var/log/azure-cns\* | aks 
+/var/log/azure-ipam\* | aks 
 /var/log/azure-npm.log | aks 
 /var/log/azure-vnet\* | aks 
 /var/log/azure/Microsoft.AKS.Compute.AKS.Linux.AKSNode/extension.log | aks 
@@ -215,6 +216,7 @@ File Path | Manifest
 /var/log/azure/kubelet-status.log | aks 
 /var/log/azure/run-command/handler.log | diagnostic, vmdiagnostic 
 /var/log/boot\* | diagnostic, eg, normal, vmdiagnostic 
+/var/log/cilium-cni\* | aks 
 /var/log/cloud-init\* | aks, diagnostic, diskpool, eg, normal, vmdiagnostic 
 /var/log/cloudregister | diagnostic 
 /var/log/diskpool-agent\* | diskpool 
@@ -237,7 +239,7 @@ File Path | Manifest
 /var/log/kern\* | diagnostic, diskpool, eg, normal, vmdiagnostic 
 /var/log/messages\* | diagnostic, eg, monitor-mgmt, normal, vmdiagnostic 
 /var/log/nvidia\*.log | aks 
-/var/log/pods/kube-system\*/\*/\*.log | aks 
+/var/log/pods/kube-system\*/\*/\*.log\* | aks 
 /var/log/rsyslog\* | diagnostic, eg, lad, normal, vmdiagnostic 
 /var/log/s2\*.log | site-recovery 
 /var/log/sa/sa\* | performance 
@@ -619,4 +621,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-07-19 17:28:07.744805`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-07-22 15:37:01.604293`*
