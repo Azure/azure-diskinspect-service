@@ -27,6 +27,7 @@ copy,/etc/cni/net.d/*.conflist,noscan
 
 echo,### CNS logs ###
 copy,/var/log/azure-cns*,noscan
+copy,/var/run/azure-cns/*
 
 echo,### NPM logs ###
 copy,/var/log/azure-npm.log,noscan

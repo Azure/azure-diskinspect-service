@@ -147,6 +147,7 @@ aks | copy | /var/run/azure-vnet\*
 aks | copy | /run/azure-vnet\*
 aks | copy | /etc/cni/net.d/\*.conflist
 aks | copy | /var/log/azure-cns\*
+aks | copy | /var/run/azure-cns/\*
 aks | copy | /var/log/azure-npm.log
 aks | copy | /var/log/pods/kube-system\*/\*/\*.log\*
 aks | copy | /var/lib/docker/containers/\*/\*-json.log
@@ -1797,4 +1798,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-07-28 10:04:15.655909`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-08-26 09:30:49.663944`*

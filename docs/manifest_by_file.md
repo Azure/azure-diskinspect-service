@@ -267,6 +267,7 @@ File Path | Manifest
 /var/opt/mssql/log/errorlog\* | sql-iaas 
 /var/opt/mssql/setup\* | sql-iaas 
 /var/opt/omi/log/\*.log | monitor-mgmt 
+/var/run/azure-cns/\* | aks 
 /var/run/azure-vnet\* | aks 
 /var/spool/cron/tabs/root | workloadbackup 
 copy | sql-iaas 
@@ -622,4 +623,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-07-28 10:04:15.655909`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-08-26 09:30:49.663944`*
