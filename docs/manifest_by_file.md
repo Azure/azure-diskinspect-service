@@ -239,7 +239,9 @@ File Path | Manifest
 /var/log/kern\* | diagnostic, diskpool, eg, normal, vmdiagnostic 
 /var/log/messages\* | diagnostic, eg, monitor-mgmt, normal, vmdiagnostic 
 /var/log/nvidia\*.log | aks 
+/var/log/pods/calico-system/\*/\*.log\* | aks 
 /var/log/pods/kube-system\*/\*/\*.log\* | aks 
+/var/log/pods/tigera-operator/\*/\*.log\* | aks 
 /var/log/rsyslog\* | diagnostic, eg, lad, normal, vmdiagnostic 
 /var/log/s2\*.log | site-recovery 
 /var/log/sa/sa\* | performance 
@@ -622,4 +624,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-07-28 10:04:15.655909`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-09-19 22:36:09.787263`*
