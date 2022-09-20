@@ -149,6 +149,8 @@ aks | copy | /etc/cni/net.d/\*.conflist
 aks | copy | /var/log/azure-cns\*
 aks | copy | /var/log/azure-npm.log
 aks | copy | /var/log/pods/kube-system\*/\*/\*.log\*
+aks | copy | /var/log/pods/calico-system/\*/\*.log\*
+aks | copy | /var/log/pods/tigera-operator/\*/\*.log\*
 aks | copy | /var/lib/docker/containers/\*/\*-json.log
 aks | copy | /var/log/nvidia\*.log
 aks | list | /var/log/pods/\*/\*
@@ -1797,4 +1799,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-07-28 10:04:15.655909`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-09-19 22:36:09.787263`*
