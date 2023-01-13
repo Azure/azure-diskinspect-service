@@ -143,6 +143,7 @@ copy,/etc/modprobe.d/*.conf,noscan
 copy,/etc/security/limits.conf,noscan
 copy,/etc/selinux/config,noscan
 copy,/sys/kernel/security/apparmor/profiles,noscan
+copy,/etc/idmapd.conf,noscan
 echo,
 
 echo,### Gathering Disk Info ###
