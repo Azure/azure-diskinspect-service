@@ -66,6 +66,7 @@ File Path | Manifest
 /etc/hosts | diagnostic, hdinsight, linux-repoconfig 
 /etc/hosts.allow | diagnostic 
 /etc/hosts.deny | diagnostic 
+/etc/idmapd.conf | diagnostic, vmdiagnostic 
 /etc/localtime | diagnostic 
 /etc/modprobe.d/\*.conf | diagnostic 
 /etc/netplan/\*.yaml | diagnostic, eg, vmdiagnostic 
@@ -624,4 +625,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-09-19 22:36:09.787263`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-02-25 15:36:39.110872`*
