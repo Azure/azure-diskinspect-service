@@ -1,0 +1,3 @@
+echo,### Gathering Customer Support Files ###
+copy,/var/log/scc*
+copy,/tmp/sosreport*

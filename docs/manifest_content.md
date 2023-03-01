@@ -497,6 +497,8 @@ site-recovery | copy | /var/log/AzureRcmCli.log
 site-recovery | copy | /var/log/svagents\*.log
 site-recovery | copy | /var/log/s2\*.log
 site-recovery | copy | /var/log/evtcollforw\*.log
+sos-supportconfig | copy | /var/log/scc\*
+sos-supportconfig | copy | /tmp/sosreport\*
 sql-iaas | list | /var/opt/mssql
 sql-iaas | list | /var/lib/waagent
 sql-iaas | copy | /etc/\*-release
@@ -1799,4 +1801,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-09-19 22:36:09.787263`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-02-28 18:17:11.381242`*
