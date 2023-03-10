@@ -133,6 +133,7 @@ aks | list | /var/log
 aks | list | /var/log/azure/
 aks | list | /opt/azure/containers/
 aks | copy | /var/log/azure/cluster-provision.log
+aks | copy | /var/log/azure/cluster-provision-cse-output.log
 aks | copy | /var/log/syslog
 aks | copy | /var/log/cloud-init\*
 aks | copy | /var/log/azure/docker-status.log
@@ -1799,4 +1800,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-09-19 22:36:09.787263`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-03-09 17:26:59.021095`*

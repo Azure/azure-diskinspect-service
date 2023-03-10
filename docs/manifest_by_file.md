@@ -208,6 +208,7 @@ File Path | Manifest
 /var/log/azure/\* | site-recovery, workloadbackup 
 /var/log/azure/\*/\* | agents, diagnostic, vmdiagnostic 
 /var/log/azure/\*/\*/\* | agents, diagnostic, vmdiagnostic 
+/var/log/azure/cluster-provision-cse-output.log | aks 
 /var/log/azure/cluster-provision.log | aks, diagnostic, vmdiagnostic 
 /var/log/azure/containerd-status.log | aks 
 /var/log/azure/custom-script/handler.log | agents, diagnostic, vmdiagnostic 
@@ -624,4 +625,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2022-09-19 22:36:09.787263`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-03-09 17:26:59.021095`*

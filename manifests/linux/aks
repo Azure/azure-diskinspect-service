@@ -5,6 +5,7 @@ ll,/opt/azure/containers/
 
 echo,### cluster provisioning logs ###
 copy,/var/log/azure/cluster-provision.log
+copy,/var/log/azure/cluster-provision-cse-output.log
 copy,/var/log/syslog
 copy,/var/log/cloud-init*
 
