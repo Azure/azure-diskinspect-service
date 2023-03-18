@@ -268,6 +268,7 @@ diagnostic | copy | /etc/security/limits.conf
 diagnostic | copy | /etc/selinux/config
 diagnostic | copy | /sys/kernel/security/apparmor/profiles
 diagnostic | copy | /etc/idmapd.conf
+diagnostic | copy | /etc/chrony/chrony.conf
 diagnostic | diskinfo | 
 diskpool | list | /etc/cron.daily
 diskpool | list | /etc/cron.hourly
@@ -605,6 +606,7 @@ vmdiagnostic | copy | /etc/\*-release
 vmdiagnostic | copy | /etc/HOSTNAME
 vmdiagnostic | copy | /etc/hostname
 vmdiagnostic | copy | /etc/idmapd.conf
+vmdiagnostic | copy | /etc/chrony/chrony.conf
 vmdiagnostic | diskinfo | 
 workloadbackup | copy | /etc/\*-release
 workloadbackup | copy | /etc/HOSTNAME
@@ -1801,4 +1803,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-02-25 15:36:39.110872`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-03-18 08:17:40.732357`*

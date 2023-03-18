@@ -121,6 +121,8 @@ copy,/boot/grub*/menu.lst
 copy,/etc/*-release
 copy,/etc/HOSTNAME
 copy,/etc/hostname
+copy,/etc/idmapd.conf
+copy,/etc/chrony/chrony.conf
 echo,
 
 echo,### Gathering Disk Info ###
