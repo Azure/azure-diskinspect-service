@@ -51,6 +51,7 @@ File Path | Manifest
 /etc/ambari-server/conf/\* | hdinsight 
 /etc/apt/sources.list | linux-repoconfig 
 /etc/apt/sources.list.d/\*.list | linux-repoconfig 
+/etc/chrony/chrony.conf | diagnostic, vmdiagnostic 
 /etc/cloud/cloud.cfg | diagnostic, diskpool, eg, vmdiagnostic 
 /etc/cloud/cloud.cfg.d/\*.cfg | diagnostic, diskpool, eg, vmdiagnostic 
 /etc/cni/net.d/\*.conflist | aks 
@@ -66,6 +67,7 @@ File Path | Manifest
 /etc/hosts | diagnostic, hdinsight, linux-repoconfig 
 /etc/hosts.allow | diagnostic 
 /etc/hosts.deny | diagnostic 
+/etc/idmapd.conf | diagnostic, vmdiagnostic 
 /etc/localtime | diagnostic 
 /etc/modprobe.d/\*.conf | diagnostic 
 /etc/netplan/\*.yaml | diagnostic, eg, vmdiagnostic 
@@ -625,4 +627,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-03-09 17:26:59.021095`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-03-18 08:35:56.629776`*
