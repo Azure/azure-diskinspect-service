@@ -605,6 +605,8 @@ vmdiagnostic | copy | /etc/\*-release
 vmdiagnostic | copy | /etc/HOSTNAME
 vmdiagnostic | copy | /etc/hostname
 vmdiagnostic | diskinfo | 
+vmdiagnostic | copy | /var/log/scc\*
+vmdiagnostic | copy | /tmp/sosreport\*
 workloadbackup | copy | /etc/\*-release
 workloadbackup | copy | /etc/HOSTNAME
 workloadbackup | copy | /etc/hostname
@@ -1800,4 +1802,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-03-09 17:26:59.021095`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-03-21 08:03:45.199116`*
