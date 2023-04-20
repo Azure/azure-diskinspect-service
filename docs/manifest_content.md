@@ -423,6 +423,10 @@ linux-repoconfig | copy | /etc/dnf/dnf.conf
 linux-repoconfig | copy | /etc/apt/sources.list
 linux-repoconfig | copy | /etc/apt/sources.list.d/\*.list
 linux-repoconfig | copy | /etc/hosts
+linux-sos-scc | list | /var/tmp
+linux-sos-scc | list | /var/log
+linux-sos-scc | copy | /var/tmp/sosreport\*.tar.xz
+linux-sos-scc | copy | /var/log/scc\*.txz
 monitor-mgmt | copy | /var/opt/microsoft/omsagent/\*/log/omsagent.log
 monitor-mgmt | copy | /var/lib/waagent/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux.\*.manifest.xm<br>l
 monitor-mgmt | copy | /var/lib/waagent/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux-\*/\*
@@ -1801,4 +1805,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-04-12 10:11:39.690896`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-04-20 12:20:21.073556`*
