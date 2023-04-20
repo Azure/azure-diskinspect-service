@@ -246,6 +246,7 @@ File Path | Manifest
 /var/log/rsyslog\* | diagnostic, eg, lad, normal, vmdiagnostic 
 /var/log/s2\*.log | site-recovery 
 /var/log/sa/sa\* | performance 
+/var/log/scc\*.txz | linux-sos-scc 
 /var/log/secure\* | diagnostic, eg, normal, vmdiagnostic 
 /var/log/sfnode/handler.trace | servicefabric 
 /var/log/sfnode/loguploader.trace | servicefabric 
@@ -272,6 +273,7 @@ File Path | Manifest
 /var/opt/omi/log/\*.log | monitor-mgmt 
 /var/run/azure-vnet\* | aks 
 /var/spool/cron/tabs/root | workloadbackup 
+/var/tmp/sosreport\*.tar.xz | linux-sos-scc 
 copy | sql-iaas 
 ## windows 
 File Path | Manifest 
@@ -626,4 +628,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-04-12 10:11:39.690896`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-04-20 12:20:21.073556`*
