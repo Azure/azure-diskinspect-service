@@ -210,6 +210,7 @@ diagnostic | copy | /etc/network/interfaces
 diagnostic | copy | /etc/network/interfaces.d/\*.cfg
 diagnostic | copy | /etc/ufw/ufw.conf
 diagnostic | copy | /etc/ssh/sshd_config
+diagnostic | copy | /etc/ssh/sshd_config.d/\*
 diagnostic | copy | /etc/nsswitch.conf
 diagnostic | copy | /etc/resolv.conf
 diagnostic | copy | /run/systemd/resolve/\*.conf
@@ -1805,4 +1806,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-04-20 12:20:21.073556`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-05-19 14:56:51.883004`*

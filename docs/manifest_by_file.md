@@ -85,6 +85,7 @@ File Path | Manifest
 /etc/selinux/config | diagnostic 
 /etc/spark/conf/\* | hdinsight 
 /etc/ssh/sshd_config | diagnostic, eg, normal, vmdiagnostic 
+/etc/ssh/sshd_config.d/\* | diagnostic 
 /etc/storm/conf/\* | hdinsight 
 /etc/sudoers | diagnostic 
 /etc/sudoers.d/\* | diagnostic 
@@ -628,4 +629,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-04-20 12:20:21.073556`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-05-19 14:56:51.883004`*

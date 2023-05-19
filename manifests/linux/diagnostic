@@ -64,6 +64,7 @@ copy,/etc/network/interfaces,noscan
 copy,/etc/network/interfaces.d/*.cfg,noscan
 copy,/etc/ufw/ufw.conf,noscan
 copy,/etc/ssh/sshd_config
+copy,/etc/ssh/sshd_config.d/*
 copy,/etc/nsswitch.conf,noscan
 copy,/etc/resolv.conf,noscan
 copy,/run/systemd/resolve/*.conf,noscan
