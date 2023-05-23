@@ -61,7 +61,7 @@ copy,/Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker-DrivePreparationT
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Dhcp-Client%4Operational.evtx
 
 echo,### Provisioning ###
-copy,/AzureData/CustomData.bin
+ll,/AzureData/CustomData.bin
 copy,/Windows/Setup/State/State.ini
 copy,/Windows/Panther/WaSetup.xml
 copy,/Windows/Panther/WaSetup.log

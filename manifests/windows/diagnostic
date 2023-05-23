@@ -59,7 +59,7 @@ copy,/Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker%4BitLocker Manage
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker-DrivePreparationTool%4Operational.evtx
 
 echo,### Provisioning ###
-copy,/AzureData/CustomData.bin
+ll,/AzureData/CustomData.bin
 copy,/Windows/Setup/State/State.ini
 copy,/Windows/Panther/WaSetup.xml
 copy,/Windows/Panther/WaSetup.log

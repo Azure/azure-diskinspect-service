@@ -9,7 +9,7 @@ copy,/Windows/System32/winevt/Logs/Microsoft-ServiceFabric-Lease%4Admin.evtx
 copy,/Windows/System32/winevt/Logs/Windows Azure.evtx
 
 echo,### Provisioning ###
-copy,/AzureData/CustomData.bin
+ll,/AzureData/CustomData.bin
 copy,/Windows/Setup/State/state.ini
 copy,/Windows/Panther/WaSetup.xml
 copy,/Windows/Panther/WaSetup.log
