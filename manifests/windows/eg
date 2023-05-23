@@ -56,7 +56,7 @@ copy,/Windows/System32/winevt/Logs/Setup.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-DSC%4Operational.evtx
 
 echo,### Provisioning ###
-copy,/AzureData/CustomData.bin
+ll,/AzureData/CustomData.bin
 copy,/Windows/Setup/State/State.ini
 copy,/Windows/Panther/WaSetup.xml
 copy,/Windows/Panther/WaSetup.log

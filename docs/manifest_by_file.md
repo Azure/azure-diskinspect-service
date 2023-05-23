@@ -281,7 +281,6 @@ File Path | Manifest
 /$Windows.~BT/Sources/Panther/miglog.xml | windowsupdate 
 /$Windows.~BT/Sources/Panther/setupact.log | windowsupdate 
 /$Windows.~BT/Sources/Panther/setuperr.log | windowsupdate 
-/AzureData/CustomData.bin | agents, diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 /AzureData/CustomDataSetupScript.log | aks 
 /AzureData/CustomDataSetupScript.ps1 | aks 
 /Boot/BCD | windowsupdate 
@@ -628,4 +627,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-04-20 12:20:21.073556`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-05-23 11:17:34.053080`*

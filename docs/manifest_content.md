@@ -658,7 +658,7 @@ agents | copy | /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics
 agents | copy | /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Status%4GuestAgent.evtx
 agents | copy | /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Status%4Plugins.evtx
 agents | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-DSC%4Operational.evtx
-agents | copy | /AzureData/CustomData.bin
+agents | list | /AzureData/CustomData.bin
 agents | copy | /Windows/Setup/State/state.ini
 agents | copy | /Windows/Panther/WaSetup.xml
 agents | copy | /Windows/Panther/VmAgentInstaller.xml
@@ -840,7 +840,7 @@ diagnostic | copy | /Windows/System32/winevt/Logs/Setup.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-DSC%4Operational.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker%4BitLocker Management.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker-DrivePreparationTool%4Opera<br>tional.evtx
-diagnostic | copy | /AzureData/CustomData.bin
+diagnostic | list | /AzureData/CustomData.bin
 diagnostic | copy | /Windows/Setup/State/State.ini
 diagnostic | copy | /Windows/Panther/WaSetup.xml
 diagnostic | copy | /Windows/Panther/WaSetup.log
@@ -1032,7 +1032,7 @@ eg | copy | /Windows/System32/winevt/Logs/MicrosoftAzureRecoveryServices-Replica
 eg | copy | /Windows/System32/winevt/Logs/Security.evtx
 eg | copy | /Windows/System32/winevt/Logs/Setup.evtx
 eg | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-DSC%4Operational.evtx
-eg | copy | /AzureData/CustomData.bin
+eg | list | /AzureData/CustomData.bin
 eg | copy | /Windows/Setup/State/State.ini
 eg | copy | /Windows/Panther/WaSetup.xml
 eg | copy | /Windows/Panther/WaSetup.log
@@ -1138,7 +1138,7 @@ normal | copy | /Windows/System32/winevt/Logs/Microsoft-ServiceFabric%4Operation
 normal | copy | /Windows/System32/winevt/Logs/Microsoft-ServiceFabric-Lease%4Operational.evtx
 normal | copy | /Windows/System32/winevt/Logs/Microsoft-ServiceFabric-Lease%4Admin.evtx
 normal | copy | /Windows/System32/winevt/Logs/Windows Azure.evtx
-normal | copy | /AzureData/CustomData.bin
+normal | list | /AzureData/CustomData.bin
 normal | copy | /Windows/Setup/State/state.ini
 normal | copy | /Windows/Panther/WaSetup.xml
 normal | copy | /Windows/Panther/WaSetup.log
@@ -1416,7 +1416,7 @@ vmdiagnostic | copy | /Windows/System32/winevt/Logs/Setup.evtx
 vmdiagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-DSC%4Operational.evtx
 vmdiagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker%4BitLocker Management.evtx
 vmdiagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker-DrivePreparationTool%4Opera<br>tional.evtx
-vmdiagnostic | copy | /AzureData/CustomData.bin
+vmdiagnostic | list | /AzureData/CustomData.bin
 vmdiagnostic | copy | /Windows/Setup/State/State.ini
 vmdiagnostic | copy | /Windows/Panther/WaSetup.xml
 vmdiagnostic | copy | /Windows/Panther/WaSetup.log
@@ -1600,7 +1600,7 @@ windowsupdate | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-DSC%4Oper
 windowsupdate | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker%4BitLocker Management.evtx
 windowsupdate | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker-DrivePreparationTool%4Opera<br>tional.evtx
 windowsupdate | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Dhcp-Client%4Operational.evtx
-windowsupdate | copy | /AzureData/CustomData.bin
+windowsupdate | list | /AzureData/CustomData.bin
 windowsupdate | copy | /Windows/Setup/State/State.ini
 windowsupdate | copy | /Windows/Panther/WaSetup.xml
 windowsupdate | copy | /Windows/Panther/WaSetup.log
@@ -1805,4 +1805,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-04-20 12:20:21.073556`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-05-23 11:17:34.053080`*

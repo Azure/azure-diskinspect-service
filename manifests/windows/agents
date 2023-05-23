@@ -27,7 +27,7 @@ copy,/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Status%4Plugins.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-DSC%4Operational.evtx
 
 echo,### Provisioning ###
-copy,/AzureData/CustomData.bin
+ll,/AzureData/CustomData.bin
 copy,/Windows/Setup/State/state.ini
 copy,/Windows/Panther/WaSetup.xml
 copy,/Windows/Panther/VmAgentInstaller.xml
