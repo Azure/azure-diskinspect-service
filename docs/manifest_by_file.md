@@ -398,7 +398,8 @@ File Path | Manifest
 /ProgramData/ASRSetupLogs/ASRUnifiedAgentInstaller.log | site-recovery, windowsupdate 
 /ProgramData/ASRSetupLogs/UnifiedAgentMSIInstall.log | site-recovery, windowsupdate 
 /ProgramData/ASRSetupLogs/WrapperUnifiedAgent.log | site-recovery, windowsupdate 
-/ProgramData/GuestConfig/gc_agent_logs/\*.log | monitor-mgmt 
+/ProgramData/GuestConfig/Configuration/\* | monitor-mgmt 
+/ProgramData/GuestConfig/gc_agent_logs/\* | monitor-mgmt 
 /ProgramData/Microsoft/System Center/Orchestrator/7.2/SMA/\*.\* | monitor-mgmt 
 /ProgramData/USOShared/Logs/\*.etl | windowsupdate 
 /ProgramData/UsoPrivate/UpdateStore/\*.xml | windowsupdate 
@@ -627,4 +628,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-05-23 11:17:34.053080`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-08-29 11:16:14.554951`*

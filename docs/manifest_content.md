@@ -1128,7 +1128,8 @@ monitor-mgmt | copy | /ProgramData/Microsoft/System Center/Orchestrator/7.2/SMA/
 monitor-mgmt | copy | /Windows/Logs/OpsMgrTrace/\*.\*
 monitor-mgmt | copy | /Windows/Temp/MonitoringAgent.log
 monitor-mgmt | copy | /Windows/Temp/MOMPerfCtrsInstall.log
-monitor-mgmt | copy | /ProgramData/GuestConfig/gc_agent_logs/\*.log
+monitor-mgmt | copy | /ProgramData/GuestConfig/Configuration/\*
+monitor-mgmt | copy | /ProgramData/GuestConfig/gc_agent_logs/\*
 monitor-mgmt | copy | /Packages/Plugins/\*
 monitor-mgmt | copy | /WindowsAzure/Config/\*
 normal | copy | /Windows/System32/winevt/Logs/System.evtx
@@ -1805,4 +1806,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-05-23 11:17:34.053080`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-08-29 11:16:14.554951`*
