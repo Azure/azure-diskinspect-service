@@ -37,7 +37,10 @@ copy,/ProgramData/Microsoft/System Center/Orchestrator/7.2/SMA/*.*
 copy,/Windows/Logs/OpsMgrTrace/*.*
 copy,/Windows/Temp/MonitoringAgent.log
 copy,/Windows/Temp/MOMPerfCtrsInstall.log
-copy,/ProgramData/GuestConfig/gc_agent_logs/*.log
+
+echo,#Guest Configuration Logs
+copy,/ProgramData/GuestConfig/Configuration/*
+copy,/ProgramData/GuestConfig/gc_agent_logs/*
 
 echo,#General
 copy,/Packages/Plugins/*
