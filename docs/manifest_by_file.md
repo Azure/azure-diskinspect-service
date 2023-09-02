@@ -138,7 +138,8 @@ File Path | Manifest
 /usr/lib/NetworkManager/\*.conf | diagnostic, eg, vmdiagnostic 
 /usr/lib/NetworkManager/conf.d/\*.conf | diagnostic, eg, vmdiagnostic 
 /var/lib/.jupyter/jupyter_notebook_config.py | hdinsight 
-/var/lib/GuestConfig/gc_agent_logs/\*.log | monitor-mgmt 
+/var/lib/GuestConfig/Configuration/\* | monitor-mgmt 
+/var/lib/GuestConfig/gc_agent_logs/\* | monitor-mgmt 
 /var/lib/NetworkManager/\*.conf | diagnostic, eg, vmdiagnostic 
 /var/lib/NetworkManager/\*.lease | diagnostic, eg, vmdiagnostic 
 /var/lib/NetworkManager/\*.leases | diagnostic, eg, vmdiagnostic 
@@ -628,4 +629,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-08-29 11:16:14.554951`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-09-01 23:18:38.671676`*

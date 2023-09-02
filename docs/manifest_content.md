@@ -449,7 +449,8 @@ monitor-mgmt | copy | /var/opt/microsoft/omsagent/run/automationworker/worker.lo
 monitor-mgmt | copy | /tmp/omsagent\*.tgz
 monitor-mgmt | copy | /etc/opt/omi/conf/omsconfig/configuration/\*.mof
 monitor-mgmt | copy | /var/log/azure/Microsoft.OSTCExtensions.DSCForLinux/extension.log
-monitor-mgmt | copy | /var/lib/GuestConfig/gc_agent_logs/\*.log
+monitor-mgmt | copy | /var/lib/GuestConfig/gc_agent_logs/\*
+monitor-mgmt | copy | /var/lib/GuestConfig/Configuration/\*
 normal | list | /var/log
 normal | list | /etc/udev/rules.d
 normal | copy | /etc/fstab
@@ -1806,4 +1807,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-08-29 11:16:14.554951`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-09-01 23:18:38.671676`*
