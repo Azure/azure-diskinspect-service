@@ -138,7 +138,8 @@ File Path | Manifest
 /usr/lib/NetworkManager/\*.conf | diagnostic, eg, vmdiagnostic 
 /usr/lib/NetworkManager/conf.d/\*.conf | diagnostic, eg, vmdiagnostic 
 /var/lib/.jupyter/jupyter_notebook_config.py | hdinsight 
-/var/lib/GuestConfig/gc_agent_logs/\*.log | monitor-mgmt 
+/var/lib/GuestConfig/Configuration/\* | monitor-mgmt 
+/var/lib/GuestConfig/gc_agent_logs/\* | monitor-mgmt 
 /var/lib/NetworkManager/\*.conf | diagnostic, eg, vmdiagnostic 
 /var/lib/NetworkManager/\*.lease | diagnostic, eg, vmdiagnostic 
 /var/lib/NetworkManager/\*.leases | diagnostic, eg, vmdiagnostic 
@@ -398,7 +399,8 @@ File Path | Manifest
 /ProgramData/ASRSetupLogs/ASRUnifiedAgentInstaller.log | site-recovery, windowsupdate 
 /ProgramData/ASRSetupLogs/UnifiedAgentMSIInstall.log | site-recovery, windowsupdate 
 /ProgramData/ASRSetupLogs/WrapperUnifiedAgent.log | site-recovery, windowsupdate 
-/ProgramData/GuestConfig/gc_agent_logs/\*.log | monitor-mgmt 
+/ProgramData/GuestConfig/Configuration/\* | monitor-mgmt 
+/ProgramData/GuestConfig/gc_agent_logs/\* | monitor-mgmt 
 /ProgramData/Microsoft/System Center/Orchestrator/7.2/SMA/\*.\* | monitor-mgmt 
 /ProgramData/USOShared/Logs/\*.etl | windowsupdate 
 /ProgramData/UsoPrivate/UpdateStore/\*.xml | windowsupdate 
@@ -627,4 +629,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-05-23 11:17:34.053080`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-09-01 23:18:38.671676`*

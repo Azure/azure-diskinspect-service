@@ -45,4 +45,5 @@ copy,/etc/opt/omi/conf/omsconfig/configuration/*.mof
 copy,/var/log/azure/Microsoft.OSTCExtensions.DSCForLinux/extension.log
 
 echo,#Guest Config
-copy,/var/lib/GuestConfig/gc_agent_logs/*.log
+copy,/var/lib/GuestConfig/gc_agent_logs/*
+copy,/var/lib/GuestConfig/Configuration/*

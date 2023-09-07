@@ -449,7 +449,8 @@ monitor-mgmt | copy | /var/opt/microsoft/omsagent/run/automationworker/worker.lo
 monitor-mgmt | copy | /tmp/omsagent\*.tgz
 monitor-mgmt | copy | /etc/opt/omi/conf/omsconfig/configuration/\*.mof
 monitor-mgmt | copy | /var/log/azure/Microsoft.OSTCExtensions.DSCForLinux/extension.log
-monitor-mgmt | copy | /var/lib/GuestConfig/gc_agent_logs/\*.log
+monitor-mgmt | copy | /var/lib/GuestConfig/gc_agent_logs/\*
+monitor-mgmt | copy | /var/lib/GuestConfig/Configuration/\*
 normal | list | /var/log
 normal | list | /etc/udev/rules.d
 normal | copy | /etc/fstab
@@ -1128,7 +1129,8 @@ monitor-mgmt | copy | /ProgramData/Microsoft/System Center/Orchestrator/7.2/SMA/
 monitor-mgmt | copy | /Windows/Logs/OpsMgrTrace/\*.\*
 monitor-mgmt | copy | /Windows/Temp/MonitoringAgent.log
 monitor-mgmt | copy | /Windows/Temp/MOMPerfCtrsInstall.log
-monitor-mgmt | copy | /ProgramData/GuestConfig/gc_agent_logs/\*.log
+monitor-mgmt | copy | /ProgramData/GuestConfig/Configuration/\*
+monitor-mgmt | copy | /ProgramData/GuestConfig/gc_agent_logs/\*
 monitor-mgmt | copy | /Packages/Plugins/\*
 monitor-mgmt | copy | /WindowsAzure/Config/\*
 normal | copy | /Windows/System32/winevt/Logs/System.evtx
@@ -1805,4 +1807,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-05-23 11:17:34.053080`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-09-01 23:18:38.671676`*
