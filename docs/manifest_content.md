@@ -427,6 +427,7 @@ linux-sos-scc | list | /var/tmp
 linux-sos-scc | list | /var/log
 linux-sos-scc | copy | /var/tmp/sosreport\*.tar.xz
 linux-sos-scc | copy | /var/log/scc\*.txz
+linux-sos-scc | copy | /tmp/sosreport\*.tar.xz
 monitor-mgmt | copy | /var/opt/microsoft/omsagent/\*/log/omsagent.log
 monitor-mgmt | copy | /var/lib/waagent/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux.\*.manifest.xm<br>l
 monitor-mgmt | copy | /var/lib/waagent/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux-\*/\*
@@ -1807,4 +1808,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-09-01 23:18:38.671676`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-09-13 19:55:13.441098`*
