@@ -6,5 +6,3 @@ echo,### Gathering sosreports and support config files from default location and
 copy,/var/tmp/sosreport*.tar.xz,noscan
 copy,/var/log/scc*.txz,noscan
 copy,/tmp/sosreport*.tar.xz,noscan
-
-echo,
