@@ -5,5 +5,4 @@ ll,/var/log
 echo,### Gathering sosreports and support config files from default location and names ###
 copy,/var/tmp/sosreport*.tar.xz,noscan
 copy,/var/log/scc*.txz,noscan
-
-echo,
+copy,/tmp/sosreport*.tar.xz,noscan

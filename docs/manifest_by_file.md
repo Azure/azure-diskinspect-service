@@ -135,6 +135,7 @@ File Path | Manifest
 /run/systemd/resolve/\*.conf | diagnostic, eg, vmdiagnostic 
 /sys/kernel/security/apparmor/profiles | diagnostic 
 /tmp/omsagent\*.tgz | monitor-mgmt 
+/tmp/sosreport\*.tar.xz | linux-sos-scc 
 /usr/lib/NetworkManager/\*.conf | diagnostic, eg, vmdiagnostic 
 /usr/lib/NetworkManager/conf.d/\*.conf | diagnostic, eg, vmdiagnostic 
 /var/lib/.jupyter/jupyter_notebook_config.py | hdinsight 
@@ -629,4 +630,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-09-01 23:18:38.671676`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-09-13 19:55:13.441098`*
