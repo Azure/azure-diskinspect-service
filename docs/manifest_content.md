@@ -159,7 +159,6 @@ aks | copy | /var/log/azure/Microsoft.AKS.Compute.AKS.Linux.AKSNode/extension.lo
 diagnostic | list | /boot
 diagnostic | list | /var/log
 diagnostic | list | /var/lib/cloud
-diagnostic | list | /run/cloud-init
 diagnostic | list | /var/lib/waagent
 diagnostic | list | /etc
 diagnostic | list | /etc/udev/rules.d
@@ -171,10 +170,6 @@ diagnostic | list | /usr/lib/systemd/user
 diagnostic | copy | /var/log/cloud-init\*
 diagnostic | copy | /etc/cloud/cloud.cfg
 diagnostic | copy | /etc/cloud/cloud.cfg.d/\*.cfg
-diagnostic | copy | /run/cloud-init/cloud.cfg
-diagnostic | copy | /run/cloud-init/ds-identify.log
-diagnostic | copy | /run/cloud-init/result.json
-diagnostic | copy | /run/cloud-init/status.json
 diagnostic | copy | /var/log/waagent\*
 diagnostic | copy | /etc/waagent.conf
 diagnostic | copy | /var/lib/waagent/provisioned
@@ -195,7 +190,6 @@ diagnostic | copy | /var/lib/waagent/SharedConfig.xml
 diagnostic | copy | /var/lib/waagent/history/\*.zip
 diagnostic | copy | /var/lib/waagent/\*/config/VMApp.lockfile
 diagnostic | copy | /var/lib/waagent/\*/config/applicationRegistry.active
-diagnostic | copy | /run/systemd/netif/leases/\*
 diagnostic | copy | /var/lib/NetworkManager/\*.lease
 diagnostic | copy | /var/lib/NetworkManager/\*.leases
 diagnostic | copy | /var/lib/wicked/lease\*
@@ -203,24 +197,20 @@ diagnostic | copy | /var/lib/dhclient/\*.lease
 diagnostic | copy | /var/lib/dhclient/\*.leases
 diagnostic | copy | /var/lib/dhcp/\*.lease
 diagnostic | copy | /var/lib/dhcp/\*.leases
-diagnostic | copy | /run/cloud-init/dhclient.hooks/\*.json
 diagnostic | copy | /etc/netplan/\*.yaml
 diagnostic | copy | /etc/dhcp/\*.conf
 diagnostic | copy | /etc/network/interfaces
 diagnostic | copy | /etc/network/interfaces.d/\*.cfg
 diagnostic | copy | /etc/ufw/ufw.conf
 diagnostic | copy | /etc/ssh/sshd_config
+diagnostic | copy | /etc/ssh/sshd_config.d/\*
 diagnostic | copy | /etc/nsswitch.conf
 diagnostic | copy | /etc/resolv.conf
-diagnostic | copy | /run/systemd/resolve/\*.conf
-diagnostic | copy | /run/resolvconf/\*.conf
 diagnostic | copy | /etc/hosts
 diagnostic | copy | /etc/hosts.allow
 diagnostic | copy | /etc/hosts.deny
 diagnostic | copy | /usr/lib/NetworkManager/\*.conf
 diagnostic | copy | /usr/lib/NetworkManager/conf.d/\*.conf
-diagnostic | copy | /run/NetworkManager/\*.conf
-diagnostic | copy | /run/NetworkManager/conf.d/\*.conf
 diagnostic | copy | /etc/NetworkManager/\*.conf
 diagnostic | copy | /etc/NetworkManager/conf.d/\*.conf
 diagnostic | copy | /var/lib/NetworkManager/\*.conf
@@ -259,6 +249,8 @@ diagnostic | copy | /etc/\*-release
 diagnostic | copy | /etc/HOSTNAME
 diagnostic | copy | /etc/hostname
 diagnostic | copy | /etc/localtime
+diagnostic | copy | /etc/chrony/chrony.conf
+diagnostic | copy | /etc/idmapd.conf
 diagnostic | copy | /etc/sudoers
 diagnostic | copy | /etc/sudoers.d/\*
 diagnostic | copy | /etc/sysctl.conf
@@ -1812,4 +1804,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-09-15 15:16:30.705733`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-09-15 18:53:03.293959`*

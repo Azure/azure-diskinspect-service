@@ -51,6 +51,7 @@ File Path | Manifest
 /etc/ambari-server/conf/\* | hdinsight 
 /etc/apt/sources.list | linux-repoconfig 
 /etc/apt/sources.list.d/\*.list | linux-repoconfig 
+/etc/chrony/chrony.conf | diagnostic 
 /etc/cloud/cloud.cfg | diagnostic, diskpool, eg, vmdiagnostic 
 /etc/cloud/cloud.cfg.d/\*.cfg | diagnostic, diskpool, eg, vmdiagnostic 
 /etc/cni/net.d/\*.conflist | aks 
@@ -67,6 +68,7 @@ File Path | Manifest
 /etc/hosts | diagnostic, hdinsight, linux-repoconfig 
 /etc/hosts.allow | diagnostic 
 /etc/hosts.deny | diagnostic 
+/etc/idmapd.conf | diagnostic 
 /etc/localtime | diagnostic 
 /etc/modprobe.d/\*.conf | diagnostic 
 /etc/netplan/\*.yaml | diagnostic, eg, vmdiagnostic 
@@ -88,6 +90,7 @@ File Path | Manifest
 /etc/selinux/config | diagnostic 
 /etc/spark/conf/\* | hdinsight 
 /etc/ssh/sshd_config | diagnostic, eg, normal, vmdiagnostic 
+/etc/ssh/sshd_config.d/\* | diagnostic 
 /etc/storm/conf/\* | hdinsight 
 /etc/sudoers | diagnostic 
 /etc/sudoers.d/\* | diagnostic 
@@ -126,17 +129,17 @@ File Path | Manifest
 /opt/msawb/var/log/\*/\*/\* | workloadbackup 
 /opt/msawb/var/log/\*/\*/\*/\*/\* | workloadbackup 
 /opt/mssql/bin/mssql-conf | sql-iaas 
-/run/NetworkManager/\*.conf | diagnostic, eg, vmdiagnostic 
-/run/NetworkManager/conf.d/\*.conf | diagnostic, eg, vmdiagnostic 
+/run/NetworkManager/\*.conf | eg, vmdiagnostic 
+/run/NetworkManager/conf.d/\*.conf | eg, vmdiagnostic 
 /run/azure-vnet\* | aks 
-/run/cloud-init/cloud.cfg | diagnostic, diskpool, eg, vmdiagnostic 
-/run/cloud-init/dhclient.hooks/\*.json | diagnostic, eg, vmdiagnostic 
-/run/cloud-init/ds-identify.log | diagnostic, diskpool, eg, vmdiagnostic 
-/run/cloud-init/result.json | diagnostic, diskpool, eg, vmdiagnostic 
-/run/cloud-init/status.json | diagnostic, diskpool, eg, vmdiagnostic 
-/run/resolvconf/\*.conf | diagnostic, eg, vmdiagnostic 
-/run/systemd/netif/leases/\* | diagnostic, eg, vmdiagnostic 
-/run/systemd/resolve/\*.conf | diagnostic, eg, vmdiagnostic 
+/run/cloud-init/cloud.cfg | diskpool, eg, vmdiagnostic 
+/run/cloud-init/dhclient.hooks/\*.json | eg, vmdiagnostic 
+/run/cloud-init/ds-identify.log | diskpool, eg, vmdiagnostic 
+/run/cloud-init/result.json | diskpool, eg, vmdiagnostic 
+/run/cloud-init/status.json | diskpool, eg, vmdiagnostic 
+/run/resolvconf/\*.conf | eg, vmdiagnostic 
+/run/systemd/netif/leases/\* | eg, vmdiagnostic 
+/run/systemd/resolve/\*.conf | eg, vmdiagnostic 
 /sys/kernel/security/apparmor/profiles | diagnostic 
 /tmp/omsagent\*.tgz | monitor-mgmt 
 /tmp/sosreport\*.tar.xz | linux-sos-scc 
@@ -634,4 +637,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-09-15 15:16:30.705733`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-09-15 18:53:03.293959`*

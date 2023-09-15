@@ -2,7 +2,6 @@ echo,### Probing Directories ###
 ll,/boot
 ll,/var/log
 ll,/var/lib/cloud
-ll,/run/cloud-init
 ll,/var/lib/waagent
 ll,/etc
 ll,/etc/udev/rules.d
@@ -16,10 +15,6 @@ echo,### Gathering Cloud-init Files ###
 copy,/var/log/cloud-init*
 copy,/etc/cloud/cloud.cfg
 copy,/etc/cloud/cloud.cfg.d/*.cfg
-copy,/run/cloud-init/cloud.cfg
-copy,/run/cloud-init/ds-identify.log
-copy,/run/cloud-init/result.json
-copy,/run/cloud-init/status.json
 echo,
 
 echo,### Gathering Waagent and Guest Extension Files ###
@@ -46,7 +41,6 @@ copy,/var/lib/waagent/*/config/applicationRegistry.active
 echo,
 
 echo,### Gathering Dhcp and Dhclient Files ###
-copy,/run/systemd/netif/leases/*,noscan
 copy,/var/lib/NetworkManager/*.lease,noscan
 copy,/var/lib/NetworkManager/*.leases,noscan
 copy,/var/lib/wicked/lease*,noscan
@@ -54,7 +48,6 @@ copy,/var/lib/dhclient/*.lease,noscan
 copy,/var/lib/dhclient/*.leases,noscan
 copy,/var/lib/dhcp/*.lease,noscan
 copy,/var/lib/dhcp/*.leases,noscan
-copy,/run/cloud-init/dhclient.hooks/*.json,noscan
 echo,
 
 echo,### Gathering Networking Files ###
@@ -64,10 +57,9 @@ copy,/etc/network/interfaces,noscan
 copy,/etc/network/interfaces.d/*.cfg,noscan
 copy,/etc/ufw/ufw.conf,noscan
 copy,/etc/ssh/sshd_config
+copy,/etc/ssh/sshd_config.d/*
 copy,/etc/nsswitch.conf,noscan
 copy,/etc/resolv.conf,noscan
-copy,/run/systemd/resolve/*.conf,noscan
-copy,/run/resolvconf/*.conf,noscan
 copy,/etc/hosts,noscan
 copy,/etc/hosts.allow,noscan
 copy,/etc/hosts.deny,noscan
@@ -76,8 +68,6 @@ echo,
 echo,### Gathering NetworkManager Files ###
 copy,/usr/lib/NetworkManager/*.conf,noscan
 copy,/usr/lib/NetworkManager/conf.d/*.conf,noscan
-copy,/run/NetworkManager/*.conf,noscan
-copy,/run/NetworkManager/conf.d/*.conf,noscan
 copy,/etc/NetworkManager/*.conf,noscan
 copy,/etc/NetworkManager/conf.d/*.conf,noscan
 copy,/var/lib/NetworkManager/*.conf,noscan
@@ -134,6 +124,9 @@ copy,/etc/*-release,noscan
 copy,/etc/HOSTNAME,noscan
 copy,/etc/hostname,noscan
 copy,/etc/localtime,noscan
+copy,/etc/chrony/chrony.conf,noscan
+copy,/etc/idmapd.conf,noscan
+
 copy,/etc/sudoers,noscan
 copy,/etc/sudoers.d/*,noscan
 copy,/etc/sysctl.conf,noscan
