@@ -58,6 +58,7 @@ File Path | Manifest
 /etc/default/grub.d/\*.cfg | linux-bootconfig 
 /etc/dhcp/\*.conf | diagnostic, eg, vmdiagnostic 
 /etc/dnf/dnf.conf | linux-repoconfig 
+/etc/dnf/vars/releasever | linux-repoconfig 
 /etc/fstab | diagnostic, eg, normal, vmdiagnostic 
 /etc/hadoop/conf/\* | hdinsight 
 /etc/hbase/conf/\* | hdinsight 
@@ -78,6 +79,8 @@ File Path | Manifest
 /etc/opt/omi/conf/\* | monitor-mgmt 
 /etc/opt/omi/conf/omsconfig/agentid | monitor-mgmt 
 /etc/opt/omi/conf/omsconfig/configuration/\*.mof | monitor-mgmt 
+/etc/pki/rhui/key-rhel\*.pem | linux-repoconfig 
+/etc/pki/rhui/product/content-rhel\*.crt | linux-repoconfig 
 /etc/products.d/\*.prod | linux-repoconfig 
 /etc/regionserverclnt.cfg | linux-repoconfig 
 /etc/resolv.conf | diagnostic, eg, vmdiagnostic 
@@ -104,9 +107,10 @@ File Path | Manifest
 /etc/ufw/ufw.conf | diagnostic, eg, vmdiagnostic 
 /etc/waagent.conf | agents, diagnostic, eg, site-recovery, vmdiagnostic, workloadbackup 
 /etc/wicked/\*.xml | diagnostic, eg, vmdiagnostic 
+/etc/yum.conf | linux-repoconfig 
 /etc/yum.repos.d/\*.repo | linux-repoconfig 
+/etc/yum.repos.d/rh-cloud-rhel\*.repo | linux-repoconfig 
 /etc/yum/vars/releasever | linux-repoconfig 
-/etc/yum/yum.conf | linux-repoconfig 
 /etc/zypp/repos.d/\*.repo | linux-repoconfig 
 /opt/microsoft/servicefabric/bin/Fabric/Fabric.Code/Fabric | servicefabric 
 /opt/msawb/bin/AzureWLBackupCommonManagementSettings.json | workloadbackup 
@@ -630,4 +634,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-09-13 19:55:13.441098`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-09-15 15:16:30.705733`*

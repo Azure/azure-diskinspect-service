@@ -416,13 +416,17 @@ linux-repoconfig | list | /etc/apt
 linux-repoconfig | copy | /etc/products.d/\*.prod
 linux-repoconfig | copy | /etc/zypp/repos.d/\*.repo
 linux-repoconfig | copy | /etc/regionserverclnt.cfg
+linux-repoconfig | copy | /etc/yum.conf
 linux-repoconfig | copy | /etc/yum.repos.d/\*.repo
 linux-repoconfig | copy | /etc/yum/vars/releasever
-linux-repoconfig | copy | /etc/yum/yum.conf
 linux-repoconfig | copy | /etc/dnf/dnf.conf
+linux-repoconfig | copy | /etc/dnf/vars/releasever
+linux-repoconfig | copy | /etc/yum.repos.d/rh-cloud-rhel\*.repo
 linux-repoconfig | copy | /etc/apt/sources.list
 linux-repoconfig | copy | /etc/apt/sources.list.d/\*.list
 linux-repoconfig | copy | /etc/hosts
+linux-repoconfig | copy | /etc/pki/rhui/product/content-rhel\*.crt
+linux-repoconfig | copy | /etc/pki/rhui/key-rhel\*.pem
 linux-sos-scc | list | /var/tmp
 linux-sos-scc | list | /var/log
 linux-sos-scc | copy | /var/tmp/sosreport\*.tar.xz
@@ -1808,4 +1812,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-09-13 19:55:13.441098`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-09-15 15:16:30.705733`*
