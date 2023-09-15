@@ -126,7 +126,6 @@ copy,/etc/hostname,noscan
 copy,/etc/localtime,noscan
 copy,/etc/chrony/chrony.conf,noscan
 copy,/etc/idmapd.conf,noscan
-
 copy,/etc/sudoers,noscan
 copy,/etc/sudoers.d/*,noscan
 copy,/etc/sysctl.conf,noscan
