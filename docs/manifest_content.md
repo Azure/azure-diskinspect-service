@@ -518,16 +518,13 @@ sql-iaas | copy | /var/opt/mssql/log/\*.tar.gz2
 sql-iaas | copy | copy
 vmdiagnostic | list | /var/log
 vmdiagnostic | list | /var/lib/cloud
-vmdiagnostic | list | /run/cloud-init
 vmdiagnostic | list | /var/lib/waagent
 vmdiagnostic | list | /etc/udev/rules.d
+vmdiagnostic | list | /etc/systemd/system
+vmdiagnostic | list | /etc/systemd/system/multi-user.target.wants
 vmdiagnostic | copy | /var/log/cloud-init\*
 vmdiagnostic | copy | /etc/cloud/cloud.cfg
 vmdiagnostic | copy | /etc/cloud/cloud.cfg.d/\*.cfg
-vmdiagnostic | copy | /run/cloud-init/cloud.cfg
-vmdiagnostic | copy | /run/cloud-init/ds-identify.log
-vmdiagnostic | copy | /run/cloud-init/result.json
-vmdiagnostic | copy | /run/cloud-init/status.json
 vmdiagnostic | copy | /var/log/waagent\*
 vmdiagnostic | copy | /etc/waagent.conf
 vmdiagnostic | copy | /var/lib/waagent/provisioned
@@ -546,7 +543,6 @@ vmdiagnostic | copy | /var/lib/waagent/Incarnation
 vmdiagnostic | copy | /var/lib/waagent/ManagedIdentity-\*.json
 vmdiagnostic | copy | /var/lib/waagent/SharedConfig.xml
 vmdiagnostic | copy | /var/lib/waagent/history/\*.zip
-vmdiagnostic | copy | /run/systemd/netif/leases/\*
 vmdiagnostic | copy | /var/lib/NetworkManager/\*.lease
 vmdiagnostic | copy | /var/lib/NetworkManager/\*.leases
 vmdiagnostic | copy | /var/lib/wicked/lease\*
@@ -554,21 +550,20 @@ vmdiagnostic | copy | /var/lib/dhclient/\*.lease
 vmdiagnostic | copy | /var/lib/dhclient/\*.leases
 vmdiagnostic | copy | /var/lib/dhcp/\*.lease
 vmdiagnostic | copy | /var/lib/dhcp/\*.leases
-vmdiagnostic | copy | /run/cloud-init/dhclient.hooks/\*.json
+vmdiagnostic | copy | /etc/dhclient\*.conf
 vmdiagnostic | copy | /etc/netplan/\*.yaml
 vmdiagnostic | copy | /etc/dhcp/\*.conf
 vmdiagnostic | copy | /etc/network/interfaces
 vmdiagnostic | copy | /etc/network/interfaces.d/\*.cfg
 vmdiagnostic | copy | /etc/ufw/ufw.conf
 vmdiagnostic | copy | /etc/ssh/sshd_config
+vmdiagnostic | copy | /etc/ssh/sshd_config.d/\*.conf
 vmdiagnostic | copy | /etc/nsswitch.conf
 vmdiagnostic | copy | /etc/resolv.conf
-vmdiagnostic | copy | /run/systemd/resolve/\*.conf
-vmdiagnostic | copy | /run/resolvconf/\*.conf
+vmdiagnostic | copy | /etc/idmapd.conf
+vmdiagnostic | copy | /etc/chrony/chrony.conf
 vmdiagnostic | copy | /usr/lib/NetworkManager/\*.conf
 vmdiagnostic | copy | /usr/lib/NetworkManager/conf.d/\*.conf
-vmdiagnostic | copy | /run/NetworkManager/\*.conf
-vmdiagnostic | copy | /run/NetworkManager/conf.d/\*.conf
 vmdiagnostic | copy | /etc/NetworkManager/\*.conf
 vmdiagnostic | copy | /etc/NetworkManager/conf.d/\*.conf
 vmdiagnostic | copy | /var/lib/NetworkManager/\*.conf
@@ -1804,4 +1799,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-09-15 18:53:03.293959`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-09-18 11:03:00.240571`*
