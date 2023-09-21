@@ -10,4 +10,3 @@ copy,/boot/grub*/grubenv,noscan
 copy,/etc/default/grub,noscan
 copy,/boot/loader/entries/*.conf
 copy,/etc/default/grub.d/*.cfg,noscan
-echo,
