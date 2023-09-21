@@ -396,10 +396,12 @@ lad | copy | /etc/opt/microsoft/omsagent/LAD/conf/omsagent.d/\*
 lad | copy | /var/opt/microsoft/omsagent/LAD/log/\*
 linux-bootconfig | list | /boot
 linux-bootconfig | list | /boot/grub
+linux-bootconfig | list | /boot/loader/entries
 linux-bootconfig | copy | /boot/grub\*/grub.c\*
 linux-bootconfig | copy | /boot/grub\*/menu.lst
 linux-bootconfig | copy | /boot/grub\*/grubenv
 linux-bootconfig | copy | /etc/default/grub
+linux-bootconfig | copy | /boot/loader/entries/\*.conf
 linux-bootconfig | copy | /etc/default/grub.d/\*.cfg
 linux-repoconfig | list | /etc/products.d/
 linux-repoconfig | list | /etc/zypp/repos.d/
@@ -1799,4 +1801,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-09-18 11:03:00.240571`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-09-21 16:49:19.878671`*

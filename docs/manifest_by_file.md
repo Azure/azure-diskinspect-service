@@ -43,6 +43,7 @@ File Path | Manifest
 /boot/grub\*/grub.c\* | eg, linux-bootconfig, vmdiagnostic 
 /boot/grub\*/grubenv | linux-bootconfig 
 /boot/grub\*/menu.lst | eg, linux-bootconfig, vmdiagnostic 
+/boot/loader/entries/\*.conf | linux-bootconfig 
 /etc/HOSTNAME | agents, diagnostic, eg, lad, site-recovery, sql-iaas, vmdiagnostic, workloadbackup 
 /etc/NetworkManager/\*.conf | diagnostic, eg, vmdiagnostic 
 /etc/NetworkManager/conf.d/\*.conf | diagnostic, eg, vmdiagnostic 
@@ -639,4 +640,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-09-18 11:03:00.240571`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-09-21 16:49:19.878671`*
