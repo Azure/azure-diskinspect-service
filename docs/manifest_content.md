@@ -156,6 +156,32 @@ aks | copy | /var/lib/docker/containers/\*/\*-json.log
 aks | copy | /var/log/nvidia\*.log
 aks | list | /var/log/pods/\*/\*
 aks | copy | /var/log/azure/Microsoft.AKS.Compute.AKS.Linux.AKSNode/extension.log
+azuremonitoragent | list | /var/opt/microsoft/azuremonitoragent/events
+azuremonitoragent | copy | /etc/rsyslog.conf
+azuremonitoragent | copy | /etc/rsyslog.d/\*.conf
+azuremonitoragent | copy | /etc/syslog-ng/\*
+azuremonitoragent | copy | /var/log/syslog\*
+azuremonitoragent | copy | /var/log/messages\*
+azuremonitoragent | copy | /etc/default/azuremonitoragent
+azuremonitoragent | copy | /etc/opt/microsoft/azuremonitoragent/dmiinfo.txt
+azuremonitoragent | copy | /etc/opt/microsoft/azuremonitoragent/amacoreagent/\*
+azuremonitoragent | copy | /etc/opt/microsoft/azuremonitoragent/config-cache/configchunks/\*
+azuremonitoragent | copy | /etc/opt/microsoft/azuremonitoragent/config-cache/configtransformid.txt
+azuremonitoragent | copy | /etc/opt/microsoft/azuremonitoragent/config-cache/fluentbit/\*.conf
+azuremonitoragent | copy | /etc/opt/microsoft/azuremonitoragent/config-cache/mcsconfig\*
+azuremonitoragent | copy | /etc/opt/microsoft/azuremonitoragent/config-cache/mdsd\*
+azuremonitoragent | copy | /etc/opt/microsoft/azuremonitoragent/config-cache/metricCounters.json
+azuremonitoragent | copy | /etc/opt/microsoft/azuremonitoragent/config-cache/syslog\*
+azuremonitoragent | copy | /var/opt/microsoft/azuremonitoragent/log/\*
+azuremonitoragent | copy | /var/opt/microsoft/azuremonitoragent/events/taskstate.json
+azuremonitoragent | copy | /var/lib/waagent/Microsoft.Azure.Monitor.AzureMonitorLinuxAgent-\*/config/telegraf_co<br>nfigs/telegraf.conf
+azuremonitoragent | copy | /var/lib/waagent/Microsoft.Azure.Monitor.AzureMonitorLinuxAgent-\*/config/telegraf_co<br>nfigs/telegraf.d/\*
+azuremonitoragent | copy | /var/lib/waagent/Microsoft.Azure.Monitor.AzureMonitorLinuxAgent-\*/config/metrics_con<br>figs/\*Configuration.json
+azuremonitoragent | copy | /var/lib/waagent/Microsoft.Azure.Monitor.AzureMonitorLinuxAgent-\*/\*
+azuremonitoragent | copy | /var/lib/waagent/Microsoft.Azure.Monitor.AzureMonitorLinuxAgent-\*/config/\*.settings
+azuremonitoragent | copy | /var/lib/waagent/Microsoft.Azure.Monitor.AzureMonitorLinuxAgent-\*/status/\*.status
+azuremonitoragent | copy | /var/log/azure/Microsoft.Azure.Monitor.AzureMonitorLinuxAgent/\*/\*.log
+azuremonitoragent | copy | /var/log/waagent\*.log
 diagnostic | list | /boot
 diagnostic | list | /var/log
 diagnostic | list | /var/lib/cloud
@@ -1801,4 +1827,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-09-21 16:49:19.878671`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-10-03 13:47:16.735303`*

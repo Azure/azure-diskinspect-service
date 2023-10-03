@@ -1,0 +1,49 @@
+echo,# Azure Monitor Linux Agent
+
+echo,# Azure Monitor Agent Event Cache
+ll,/var/opt/microsoft/azuremonitoragent/events
+
+echo,# Syslog Configuration
+copy,/etc/rsyslog.conf
+copy,/etc/rsyslog.d/*.conf
+copy,/etc/syslog-ng/*
+
+echo,# Syslog Logs
+copy,/var/log/syslog*
+copy,/var/log/messages*
+
+echo,# Azure Monitor Agent / Agent Launcher / Core Agent / Fluent Bit Configuration
+copy,/etc/default/azuremonitoragent
+copy,/etc/opt/microsoft/azuremonitoragent/dmiinfo.txt
+copy,/etc/opt/microsoft/azuremonitoragent/amacoreagent/*
+copy,/etc/opt/microsoft/azuremonitoragent/config-cache/configchunks/*
+copy,/etc/opt/microsoft/azuremonitoragent/config-cache/configtransformid.txt
+copy,/etc/opt/microsoft/azuremonitoragent/config-cache/fluentbit/*.conf
+copy,/etc/opt/microsoft/azuremonitoragent/config-cache/mcsconfig*
+copy,/etc/opt/microsoft/azuremonitoragent/config-cache/mdsd*
+copy,/etc/opt/microsoft/azuremonitoragent/config-cache/metricCounters.json
+copy,/etc/opt/microsoft/azuremonitoragent/config-cache/syslog*
+
+echo,# Azure Monitor Agent / Agent Launcher / Core Agent / Fluent Bit Logs
+copy,/var/opt/microsoft/azuremonitoragent/log/*
+
+echo,# Azure Monitor Agent State
+copy,/var/opt/microsoft/azuremonitoragent/events/taskstate.json
+
+echo,# Telegraf Configuration
+copy,/var/lib/waagent/Microsoft.Azure.Monitor.AzureMonitorLinuxAgent-*/config/telegraf_configs/telegraf.conf
+copy,/var/lib/waagent/Microsoft.Azure.Monitor.AzureMonitorLinuxAgent-*/config/telegraf_configs/telegraf.d/*
+
+echo,# MetricsExtension Configuration
+copy,/var/lib/waagent/Microsoft.Azure.Monitor.AzureMonitorLinuxAgent-*/config/metrics_configs/*Configuration.json
+
+echo,# Azure Monitor Agent Extension Configuration
+copy,/var/lib/waagent/Microsoft.Azure.Monitor.AzureMonitorLinuxAgent-*/*
+copy,/var/lib/waagent/Microsoft.Azure.Monitor.AzureMonitorLinuxAgent-*/config/*.settings
+copy,/var/lib/waagent/Microsoft.Azure.Monitor.AzureMonitorLinuxAgent-*/status/*.status
+
+echo,# Azure Monitor Agent Extension Logs
+copy,/var/log/azure/Microsoft.Azure.Monitor.AzureMonitorLinuxAgent/*/*.log
+
+echo,# Guest Agent Logs
+copy,/var/log/waagent*.log
