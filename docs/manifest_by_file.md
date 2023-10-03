@@ -56,6 +56,7 @@ File Path | Manifest
 /etc/cloud/cloud.cfg | diagnostic, diskpool, eg, vmdiagnostic 
 /etc/cloud/cloud.cfg.d/\*.cfg | diagnostic, diskpool, eg, vmdiagnostic 
 /etc/cni/net.d/\*.conflist | aks 
+/etc/default/azuremonitoragent | azuremonitoragent 
 /etc/default/grub | linux-bootconfig 
 /etc/default/grub.d/\*.cfg | linux-bootconfig 
 /etc/dhclient\*.conf | vmdiagnostic 
@@ -77,6 +78,15 @@ File Path | Manifest
 /etc/network/interfaces | diagnostic, eg, vmdiagnostic 
 /etc/network/interfaces.d/\*.cfg | diagnostic, eg, vmdiagnostic 
 /etc/nsswitch.conf | diagnostic, eg, vmdiagnostic 
+/etc/opt/microsoft/azuremonitoragent/amacoreagent/\* | azuremonitoragent 
+/etc/opt/microsoft/azuremonitoragent/config-cache/configchunks/\* | azuremonitoragent 
+/etc/opt/microsoft/azuremonitoragent/config-cache/configtransformid.txt | azuremonitoragent 
+/etc/opt/microsoft/azuremonitoragent/config-cache/fluentbit/\*.conf | azuremonitoragent 
+/etc/opt/microsoft/azuremonitoragent/config-cache/mcsconfig\* | azuremonitoragent 
+/etc/opt/microsoft/azuremonitoragent/config-cache/mdsd\* | azuremonitoragent 
+/etc/opt/microsoft/azuremonitoragent/config-cache/metricCounters.json | azuremonitoragent 
+/etc/opt/microsoft/azuremonitoragent/config-cache/syslog\* | azuremonitoragent 
+/etc/opt/microsoft/azuremonitoragent/dmiinfo.txt | azuremonitoragent 
 /etc/opt/microsoft/omsagent/LAD/conf/omsagent.d/\* | lad 
 /etc/opt/microsoft/omsagent/\*/conf/omsagent.d/\*.conf | monitor-mgmt 
 /etc/opt/microsoft/omsagent/conf/\*.conf | monitor-mgmt 
@@ -88,6 +98,8 @@ File Path | Manifest
 /etc/products.d/\*.prod | linux-repoconfig 
 /etc/regionserverclnt.cfg | linux-repoconfig 
 /etc/resolv.conf | diagnostic, eg, vmdiagnostic 
+/etc/rsyslog.conf | azuremonitoragent 
+/etc/rsyslog.d/\*.conf | azuremonitoragent 
 /etc/security/limits.conf | diagnostic 
 /etc/selinux/config | diagnostic 
 /etc/spark/conf/\* | hdinsight 
@@ -109,6 +121,7 @@ File Path | Manifest
 /etc/sysconfig/network/routes | diagnostic, eg, vmdiagnostic 
 /etc/sysctl.conf | diagnostic 
 /etc/sysctl.d/\*.conf | diagnostic 
+/etc/syslog-ng/\* | azuremonitoragent 
 /etc/udev/rules.d/\*.rules | diagnostic 
 /etc/ufw/ufw.conf | diagnostic, eg, vmdiagnostic 
 /etc/waagent.conf | agents, diagnostic, eg, site-recovery, vmdiagnostic, workloadbackup 
@@ -166,6 +179,12 @@ File Path | Manifest
 /var/lib/waagent/HostingEnvironmentConfig.xml | diagnostic, vmdiagnostic 
 /var/lib/waagent/Incarnation | agents, diagnostic, vmdiagnostic 
 /var/lib/waagent/ManagedIdentity-\*.json | diagnostic, vmdiagnostic 
+/var/lib/waagent/Microsoft.Azure.Monitor.AzureMonitorLinuxAgent-\*/\* | azuremonitoragent 
+/var/lib/waagent/Microsoft.Azure.Monitor.AzureMonitorLinuxAgent-\*/config/\*.settings | azuremonitoragent 
+/var/lib/waagent/Microsoft.Azure.Monitor.AzureMonitorLinuxAgent-\*/config/metrics_con<br>figs/\*Configuration.json | azuremonitoragent 
+/var/lib/waagent/Microsoft.Azure.Monitor.AzureMonitorLinuxAgent-\*/config/telegraf_co<br>nfigs/telegraf.conf | azuremonitoragent 
+/var/lib/waagent/Microsoft.Azure.Monitor.AzureMonitorLinuxAgent-\*/config/telegraf_co<br>nfigs/telegraf.d/\* | azuremonitoragent 
+/var/lib/waagent/Microsoft.Azure.Monitor.AzureMonitorLinuxAgent-\*/status/\*.status | azuremonitoragent 
 /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-1.1.0.2 | servicefabric 
 /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*.\*/HandlerEn<br>vironment.json | servicefabric 
 /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*.\*/status/\*<br>.status | servicefabric 
@@ -211,6 +230,7 @@ File Path | Manifest
 /var/log/azure-npm.log | aks 
 /var/log/azure-vnet\* | aks 
 /var/log/azure/Microsoft.AKS.Compute.AKS.Linux.AKSNode/extension.log | aks 
+/var/log/azure/Microsoft.Azure.Monitor.AzureMonitorLinuxAgent/\*/\*.log | azuremonitoragent 
 /var/log/azure/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode/\*.\*/CommandExec<br>ution.log | servicefabric 
 /var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/\*/\*.log | monitor-mgmt 
 /var/log/azure/Microsoft.OSTCExtensions.DSCForLinux/extension.log | monitor-mgmt 
@@ -250,7 +270,7 @@ File Path | Manifest
 /var/log/journal/\*/\* | aks 
 /var/log/kern.log | servicefabric 
 /var/log/kern\* | diagnostic, diskpool, eg, normal, vmdiagnostic 
-/var/log/messages\* | diagnostic, eg, monitor-mgmt, normal, vmdiagnostic 
+/var/log/messages\* | azuremonitoragent, diagnostic, eg, monitor-mgmt, normal, vmdiagnostic 
 /var/log/nvidia\*.log | aks 
 /var/log/pods/calico-system/\*/\*.log\* | aks 
 /var/log/pods/kube-system\*/\*/\*.log\* | aks 
@@ -265,13 +285,15 @@ File Path | Manifest
 /var/log/sfnode/sfnodelog.trace | servicefabric 
 /var/log/svagents\*.log | site-recovery 
 /var/log/syslog | aks, servicefabric 
-/var/log/syslog\* | agents, diagnostic, diskpool, eg, lad, monitor-mgmt, normal, site-recovery, vmdiagnostic, workloadbackup 
+/var/log/syslog\* | agents, azuremonitoragent, diagnostic, diskpool, eg, lad, monitor-mgmt, normal, site-recovery, vmdiagnostic, workloadbackup 
 /var/log/ua_install.log | site-recovery 
 /var/log/waagent.log | servicefabric 
 /var/log/waagent\* | agents, diagnostic, eg, lad, normal, site-recovery, vmdiagnostic, workloadbackup 
-/var/log/waagent\*.log | monitor-mgmt 
+/var/log/waagent\*.log | azuremonitoragent, monitor-mgmt 
 /var/log/yum\* | diagnostic, eg, normal, vmdiagnostic 
 /var/log/zypp/history | diagnostic 
+/var/opt/microsoft/azuremonitoragent/events/taskstate.json | azuremonitoragent 
+/var/opt/microsoft/azuremonitoragent/log/\* | azuremonitoragent 
 /var/opt/microsoft/omsagent/LAD/log/\* | lad 
 /var/opt/microsoft/omsagent/\*/log/omsagent.log | monitor-mgmt 
 /var/opt/microsoft/omsagent/\*/run/automationworker/omsupdatemgmt.log | monitor-mgmt 
@@ -640,4 +662,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-09-21 16:49:19.878671`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-10-03 13:47:16.735303`*
