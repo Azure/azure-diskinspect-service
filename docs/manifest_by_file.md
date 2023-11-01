@@ -173,7 +173,6 @@ File Path | Manifest
 /var/lib/dhclient/\*.leases | diagnostic, eg, vmdiagnostic 
 /var/lib/dhcp/\*.lease | diagnostic, eg, vmdiagnostic 
 /var/lib/dhcp/\*.leases | diagnostic, eg, vmdiagnostic 
-/var/lib/docker/containers/\*/\*-json.log | aks 
 /var/lib/waagent/ExtensionsConfig.\*.xml | diagnostic, lad, vmdiagnostic 
 /var/lib/waagent/GoalState.\*.xml | diagnostic, site-recovery, vmdiagnostic, workloadbackup 
 /var/lib/waagent/HostingEnvironmentConfig.xml | diagnostic, vmdiagnostic 
@@ -272,9 +271,10 @@ File Path | Manifest
 /var/log/kern\* | diagnostic, diskpool, eg, normal, vmdiagnostic 
 /var/log/messages\* | azuremonitoragent, diagnostic, eg, monitor-mgmt, normal, vmdiagnostic 
 /var/log/nvidia\*.log | aks 
-/var/log/pods/calico-system/\*/\*.log\* | aks 
+/var/log/pods/calico-system\*/\*/\*.log\* | aks 
 /var/log/pods/kube-system\*/\*/\*.log\* | aks 
-/var/log/pods/tigera-operator/\*/\*.log\* | aks 
+/var/log/pods/kured\*/\*/\*.log\* | aks 
+/var/log/pods/tigera-operator\*/\*/\*.log\* | aks 
 /var/log/rsyslog\* | diagnostic, eg, lad, normal, vmdiagnostic 
 /var/log/s2\*.log | site-recovery 
 /var/log/sa/sa\* | performance 
@@ -662,4 +662,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-10-03 13:47:16.735303`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-11-01 11:36:24.463055`*

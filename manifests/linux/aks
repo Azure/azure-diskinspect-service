@@ -34,9 +34,9 @@ copy,/var/log/azure-npm.log,noscan
 
 echo,### kube-system pod logs ###
 copy,/var/log/pods/kube-system*/*/*.log*
-copy,/var/log/pods/calico-system/*/*.log*
-copy,/var/log/pods/tigera-operator/*/*.log*
-copy,/var/lib/docker/containers/*/*-json.log
+copy,/var/log/pods/calico-system*/*/*.log*
+copy,/var/log/pods/tigera-operator*/*/*.log*
+copy,/var/log/pods/kured*/*/*.log*
 
 echo,### NVidia installer logs for GPU nodes ###
 copy,/var/log/nvidia*.log,noscan
