@@ -1,0 +1,4 @@
+
+echo,### Gathering crash dump files ###
+copy,/var/crash/*,noscan
+copy,/etc/kdump.conf

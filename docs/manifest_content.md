@@ -182,6 +182,8 @@ azuremonitoragent | copy | /var/lib/waagent/Microsoft.Azure.Monitor.AzureMonitor
 azuremonitoragent | copy | /var/lib/waagent/Microsoft.Azure.Monitor.AzureMonitorLinuxAgent-\*/status/\*.status
 azuremonitoragent | copy | /var/log/azure/Microsoft.Azure.Monitor.AzureMonitorLinuxAgent/\*/\*.log
 azuremonitoragent | copy | /var/log/waagent\*.log
+crashdump | copy | /var/crash/\*
+crashdump | copy | /etc/kdump.conf
 diagnostic | list | /boot
 diagnostic | list | /var/log
 diagnostic | list | /var/lib/cloud
@@ -271,6 +273,7 @@ diagnostic | copy | /var/log/azure/custom-script/handler.log
 diagnostic | copy | /var/log/azure/run-command/handler.log
 diagnostic | copy | /var/log/azure/cluster-provision.log
 diagnostic | copy | /etc/fstab
+diagnostic | copy | /etc/crypttab
 diagnostic | copy | /etc/\*-release
 diagnostic | copy | /etc/HOSTNAME
 diagnostic | copy | /etc/hostname
@@ -1827,4 +1830,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-11-01 11:36:24.463055`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-01-08 16:13:52.407698`*

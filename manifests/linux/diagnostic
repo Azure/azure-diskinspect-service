@@ -120,6 +120,7 @@ echo,
 
 echo,### Gathering System Configuration Files ###
 copy,/etc/fstab
+copy,/etc/crypttab
 copy,/etc/*-release,noscan
 copy,/etc/HOSTNAME,noscan
 copy,/etc/hostname,noscan
