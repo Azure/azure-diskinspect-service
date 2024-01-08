@@ -56,6 +56,7 @@ File Path | Manifest
 /etc/cloud/cloud.cfg | diagnostic, diskpool, eg, vmdiagnostic 
 /etc/cloud/cloud.cfg.d/\*.cfg | diagnostic, diskpool, eg, vmdiagnostic 
 /etc/cni/net.d/\*.conflist | aks 
+/etc/crypttab | diagnostic 
 /etc/default/azuremonitoragent | azuremonitoragent 
 /etc/default/grub | linux-bootconfig 
 /etc/default/grub.d/\*.cfg | linux-bootconfig 
@@ -72,6 +73,7 @@ File Path | Manifest
 /etc/hosts.allow | diagnostic 
 /etc/hosts.deny | diagnostic 
 /etc/idmapd.conf | diagnostic, vmdiagnostic 
+/etc/kdump.conf | crashdump 
 /etc/localtime | diagnostic 
 /etc/modprobe.d/\*.conf | diagnostic 
 /etc/netplan/\*.yaml | diagnostic, eg, vmdiagnostic 
@@ -161,6 +163,7 @@ File Path | Manifest
 /tmp/sosreport\*.tar.xz | linux-sos-scc 
 /usr/lib/NetworkManager/\*.conf | diagnostic, eg, vmdiagnostic 
 /usr/lib/NetworkManager/conf.d/\*.conf | diagnostic, eg, vmdiagnostic 
+/var/crash/\* | crashdump 
 /var/lib/.jupyter/jupyter_notebook_config.py | hdinsight 
 /var/lib/GuestConfig/Configuration/\* | monitor-mgmt 
 /var/lib/GuestConfig/gc_agent_logs/\* | monitor-mgmt 
@@ -662,4 +665,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2023-11-01 11:36:24.463055`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-01-08 16:13:52.407698`*
