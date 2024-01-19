@@ -21,3 +21,7 @@ copy,/var/log/cloud-init*
 copy,/var/log/boot*
 copy,/var/log/auth*
 copy,/var/log/secure*
+
+echo,### Gathering Guest ProxyAgent Log Files ###
+copy,/var/log/azure-proxy-agent/*
+echo,
