@@ -141,5 +141,5 @@ copy,/Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/*/Runtim
 copy,/Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/*/RuntimeSettings/VMApp.lockfile
 
 echo,### Gathering Guest ProxyAgent Log Files ###
-copy,/WindowsAzure/ProxyAgent/Logs/*.*
-copy,/Windows/Logs/eBPF/committed/*.*
+copy,/WindowsAzure/ProxyAgent/Logs/*
+copy,/Windows/Logs/eBPF/committed/*
