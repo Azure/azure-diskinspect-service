@@ -129,6 +129,7 @@ agents | copy | /var/lib/waagent/\*.agentsManifest
 agents | copy | /var/lib/waagent/error.json
 agents | copy | /var/lib/waagent/Incarnation
 agents | copy | /var/lib/waagent/history/\*.zip
+agents | copy | /var/log/azure-proxy-agent/\*
 aks | list | /var/log
 aks | list | /var/log/azure/
 aks | list | /opt/azure/containers/
@@ -496,6 +497,7 @@ normal | copy | /var/log/cloud-init\*
 normal | copy | /var/log/boot\*
 normal | copy | /var/log/auth\*
 normal | copy | /var/log/secure\*
+normal | copy | /var/log/azure-proxy-agent/\*
 performance | list | /var/log/sa
 performance | copy | /var/log/sa/sa\*
 servicefabric | copy | /opt/microsoft/servicefabric/bin/Fabric/Fabric.Code/Fabric
@@ -789,6 +791,8 @@ agents | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.EDP.VMApplicatio
 agents | copy | /Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/RuntimeSett<br>ings/applicationRegistry.active
 agents | copy | /Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/RuntimeSett<br>ings/applicationRegistry.backup
 agents | copy | /Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/RuntimeSett<br>ings/VMApp.lockfile
+agents | copy | /WindowsAzure/ProxyAgent/Logs/\*
+agents | copy | /Windows/Logs/eBPF/committed/\*
 aks | copy | /Windows/System32/winevt/Logs/System.evtx
 aks | copy | /Windows/System32/winevt/Logs/Application.evtx
 aks | copy | /k/\*.log
@@ -1287,6 +1291,8 @@ normal | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.VMApplicationMan
 normal | copy | /Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/RuntimeSettings<br>/applicationRegistry.active
 normal | copy | /Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/RuntimeSettings<br>/applicationRegistry.backup
 normal | copy | /Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/RuntimeSettings<br>/VMApp.lockfile
+normal | copy | /WindowsAzure/ProxyAgent/Logs/\*
+normal | copy | /Windows/Logs/eBPF/committed/\*
 rdp-registry | registry query | HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\fDenyTSConnections
 rdp-registry | registry query | HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp\PortNumber
 rdp-registry | registry query | HKLM\SYSTEM\CurrentControlSet\Services\Dhcp\Start
@@ -1830,4 +1836,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-01-08 16:13:52.407698`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-01-19 12:50:45.397424`*

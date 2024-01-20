@@ -139,3 +139,7 @@ copy,/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows
 copy,/Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/*/RuntimeSettings/applicationRegistry.active
 copy,/Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/*/RuntimeSettings/applicationRegistry.backup
 copy,/Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/*/RuntimeSettings/VMApp.lockfile
+
+echo,### Gathering Guest ProxyAgent Log Files ###
+copy,/WindowsAzure/ProxyAgent/Logs/*
+copy,/Windows/Logs/eBPF/committed/*
