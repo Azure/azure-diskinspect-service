@@ -255,6 +255,9 @@ File Path | Manifest
 /var/log/cilium-cni\* | aks 
 /var/log/cloud-init\* | aks, diagnostic, diskpool, eg, normal, vmdiagnostic 
 /var/log/cloudregister | diagnostic 
+/var/log/cluster/\* | diagnostic 
+/var/log/corosync/\* | diagnostic 
+/var/log/corosync\* | diagnostic 
 /var/log/diskpool-agent\* | diskpool 
 /var/log/diskpool/bootstrapper.log\* | diskpool 
 /var/log/dmesg\* | agents, diagnostic, eg, normal, site-recovery, vmdiagnostic, workloadbackup 
@@ -275,6 +278,8 @@ File Path | Manifest
 /var/log/kern\* | diagnostic, diskpool, eg, normal, vmdiagnostic 
 /var/log/messages\* | azuremonitoragent, diagnostic, eg, monitor-mgmt, normal, vmdiagnostic 
 /var/log/nvidia\*.log | aks 
+/var/log/pacemaker/\* | diagnostic 
+/var/log/pacemaker\* | diagnostic 
 /var/log/pods/calico-system\*/\*/\*.log\* | aks 
 /var/log/pods/kube-system\*/\*/\*.log\* | aks 
 /var/log/pods/kured\*/\*/\*.log\* | aks 
@@ -668,4 +673,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-01-19 12:50:45.397424`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-03-06 13:34:37.866096`*
