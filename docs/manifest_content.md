@@ -268,6 +268,11 @@ diagnostic | copy | /var/log/boot\*
 diagnostic | copy | /var/log/auth\*
 diagnostic | copy | /var/log/secure\*
 diagnostic | copy | /var/log/cloudregister
+diagnostic | copy | /var/log/pacemaker\*
+diagnostic | copy | /var/log/corosync\*
+diagnostic | copy | /var/log/cluster/\*
+diagnostic | copy | /var/log/pacemaker/\*
+diagnostic | copy | /var/log/corosync/\*
 diagnostic | copy | /var/log/azure/\*/\*
 diagnostic | copy | /var/log/azure/\*/\*/\*
 diagnostic | copy | /var/log/azure/custom-script/handler.log
@@ -1836,4 +1841,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-01-19 12:50:45.397424`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-03-06 13:34:37.866096`*

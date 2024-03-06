@@ -108,6 +108,11 @@ copy,/var/log/boot*
 copy,/var/log/auth*
 copy,/var/log/secure*
 copy,/var/log/cloudregister
+copy,/var/log/pacemaker*
+copy,/var/log/corosync*
+copy,/var/log/cluster/*
+copy,/var/log/pacemaker/*
+copy,/var/log/corosync/*
 echo,
 
 echo,### Gathering Azure Files ###
