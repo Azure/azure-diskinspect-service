@@ -19,3 +19,9 @@ copy,/etc/apt/sources.list.d/*.list,noscan
 copy,/etc/hosts,noscan
 copy,/etc/pki/rhui/product/content-rhel*.crt,noscan
 copy,/etc/pki/rhui/key-rhel*.pem,noscan
+
+echo,### Gathering SuSE repocheck output, if present ###
+copy,/var/log/sc-repocheck*,noscan
+
+echo,### Gathering relevant system configs ###
+copy,/etc/*-release,noscan
