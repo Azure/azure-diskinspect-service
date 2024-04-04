@@ -47,7 +47,7 @@ File Path | Manifest
 /etc/HOSTNAME | agents, diagnostic, eg, lad, site-recovery, sql-iaas, vmdiagnostic, workloadbackup 
 /etc/NetworkManager/\*.conf | diagnostic, eg, vmdiagnostic 
 /etc/NetworkManager/conf.d/\*.conf | diagnostic, eg, vmdiagnostic 
-/etc/\*-release | agents, diagnostic, eg, site-recovery, sql-iaas, vmdiagnostic, workloadbackup 
+/etc/\*-release | agents, diagnostic, eg, linux-repoconfig, site-recovery, sql-iaas, vmdiagnostic, workloadbackup 
 /etc/ambari-agent/conf/\* | hdinsight 
 /etc/ambari-server/conf/\* | hdinsight 
 /etc/apt/sources.list | linux-repoconfig 
@@ -96,7 +96,7 @@ File Path | Manifest
 /etc/opt/omi/conf/omsconfig/agentid | monitor-mgmt 
 /etc/opt/omi/conf/omsconfig/configuration/\*.mof | monitor-mgmt 
 /etc/pki/rhui/key-rhel\*.pem | linux-repoconfig 
-/etc/pki/rhui/product/content-rhel\*.crt | linux-repoconfig 
+/etc/pki/rhui/product/content-\*.crt | linux-repoconfig 
 /etc/products.d/\*.prod | linux-repoconfig 
 /etc/regionserverclnt.cfg | linux-repoconfig 
 /etc/resolv.conf | diagnostic, eg, vmdiagnostic 
@@ -287,6 +287,7 @@ File Path | Manifest
 /var/log/rsyslog\* | diagnostic, eg, lad, normal, vmdiagnostic 
 /var/log/s2\*.log | site-recovery 
 /var/log/sa/sa\* | performance 
+/var/log/sc-repocheck\* | linux-repoconfig 
 /var/log/scc\*.txz | linux-sos-scc 
 /var/log/secure\* | diagnostic, eg, normal, vmdiagnostic 
 /var/log/sfnode/handler.trace | servicefabric 
@@ -673,4 +674,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-03-06 13:34:37.866096`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-04-04 10:19:48.105215`*

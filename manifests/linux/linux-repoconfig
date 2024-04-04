@@ -5,17 +5,26 @@ ll,/etc/yum.repos.d/
 ll,/etc/apt
 
 echo,### Gathering Repository Configuration Files ###
-copy,/etc/products.d/*.prod,noscan
-copy,/etc/zypp/repos.d/*.repo,noscan
-copy,/etc/regionserverclnt.cfg,noscan
+echo,### RHEL ###
 copy,/etc/yum.conf
 copy,/etc/yum.repos.d/*.repo,noscan
 copy,/etc/yum/vars/releasever,noscan
 copy,/etc/dnf/dnf.conf
 copy,/etc/dnf/vars/releasever,noscan
 copy,/etc/yum.repos.d/rh-cloud-rhel*.repo,noscan
+copy,/etc/pki/rhui/product/content-*.crt,noscan
+copy,/etc/pki/rhui/key-rhel*.pem,noscan
+echo,### SUSE ###
+copy,/etc/products.d/*.prod,noscan
+copy,/etc/zypp/repos.d/*.repo,noscan
+copy,/etc/regionserverclnt.cfg,noscan
+echo,### Ubuntu ###
 copy,/etc/apt/sources.list,noscan
 copy,/etc/apt/sources.list.d/*.list,noscan
+
+echo,### Gathering SuSE repocheck diagnostic output, if present ###
+copy,/var/log/sc-repocheck*,noscan
+ 
+echo,### Gathering relevant system configs ###
+copy,/etc/*-release,noscan
 copy,/etc/hosts,noscan
-copy,/etc/pki/rhui/product/content-rhel*.crt,noscan
-copy,/etc/pki/rhui/key-rhel*.pem,noscan
