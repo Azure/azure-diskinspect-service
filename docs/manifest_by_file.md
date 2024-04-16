@@ -95,8 +95,8 @@ File Path | Manifest
 /etc/opt/omi/conf/\* | monitor-mgmt 
 /etc/opt/omi/conf/omsconfig/agentid | monitor-mgmt 
 /etc/opt/omi/conf/omsconfig/configuration/\*.mof | monitor-mgmt 
-/etc/pki/rhui/key-rhel\*.pem | linux-repoconfig 
-/etc/pki/rhui/product/content-rhel\*.crt | linux-repoconfig 
+/etc/pki/rhui/\*.pem | linux-repoconfig 
+/etc/pki/rhui/product/\*.crt | linux-repoconfig 
 /etc/products.d/\*.prod | linux-repoconfig 
 /etc/regionserverclnt.cfg | linux-repoconfig 
 /etc/resolv.conf | diagnostic, eg, vmdiagnostic 
@@ -673,4 +673,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-03-06 13:34:37.866096`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-04-16 14:53:13.615051`*

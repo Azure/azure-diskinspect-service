@@ -9,7 +9,7 @@ copy,/etc/products.d/*.prod,noscan
 copy,/etc/zypp/repos.d/*.repo,noscan
 copy,/etc/regionserverclnt.cfg,noscan
 copy,/etc/yum.conf
-copy,/etc/yum.repos.d/*.repo,noscan
+copy,/etc/yum.repos.d/*.repo
 copy,/etc/yum/vars/releasever,noscan
 copy,/etc/dnf/dnf.conf
 copy,/etc/dnf/vars/releasever,noscan
@@ -17,5 +17,5 @@ copy,/etc/yum.repos.d/rh-cloud-rhel*.repo,noscan
 copy,/etc/apt/sources.list,noscan
 copy,/etc/apt/sources.list.d/*.list,noscan
 copy,/etc/hosts,noscan
-copy,/etc/pki/rhui/product/content-rhel*.crt,noscan
-copy,/etc/pki/rhui/key-rhel*.pem,noscan
+copy,/etc/pki/rhui/product/*.crt,noscan
+copy,/etc/pki/rhui/*.pem,noscan
