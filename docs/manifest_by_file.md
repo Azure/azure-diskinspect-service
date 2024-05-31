@@ -95,8 +95,7 @@ File Path | Manifest
 /etc/opt/omi/conf/\* | monitor-mgmt 
 /etc/opt/omi/conf/omsconfig/agentid | monitor-mgmt 
 /etc/opt/omi/conf/omsconfig/configuration/\*.mof | monitor-mgmt 
-/etc/pki/rhui/key-rhel\*.pem | linux-repoconfig 
-/etc/pki/rhui/product/content-rhel\*.crt | linux-repoconfig 
+/etc/pam.d/\* | diagnostic 
 /etc/products.d/\*.prod | linux-repoconfig 
 /etc/regionserverclnt.cfg | linux-repoconfig 
 /etc/resolv.conf | diagnostic, eg, vmdiagnostic 
@@ -284,6 +283,7 @@ File Path | Manifest
 /var/log/pods/kube-system\*/\*/\*.log\* | aks 
 /var/log/pods/kured\*/\*/\*.log\* | aks 
 /var/log/pods/tigera-operator\*/\*/\*.log\* | aks 
+/var/log/rhuicheck.log | linux-repoconfig 
 /var/log/rsyslog\* | diagnostic, eg, lad, normal, vmdiagnostic 
 /var/log/s2\*.log | site-recovery 
 /var/log/sa/sa\* | performance 
@@ -673,4 +673,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-03-06 13:34:37.866096`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-05-31 16:54:08.065129`*
