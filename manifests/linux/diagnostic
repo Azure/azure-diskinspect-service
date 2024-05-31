@@ -63,7 +63,7 @@ copy,/etc/resolv.conf,noscan
 copy,/etc/hosts,noscan
 copy,/etc/hosts.allow,noscan
 copy,/etc/hosts.deny,noscan
-copy,/etc/pam.d/*
+copy,/etc/pam.d/* 
 echo,
 
 echo,### Gathering NetworkManager Files ###
