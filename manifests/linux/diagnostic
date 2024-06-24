@@ -8,6 +8,7 @@ ll,/etc/udev/rules.d
 ll,/etc/alternatives
 ll,/etc/systemd/system
 ll,/etc/systemd/user
+ll,/etc/yum.repos.d
 ll,/usr/lib/systemd/system
 ll,/usr/lib/systemd/user
 
