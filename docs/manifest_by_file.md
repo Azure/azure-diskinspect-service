@@ -40,46 +40,46 @@ File Path | Manifest
 ## linux 
 File Path | Manifest 
 ------------- | ------------- 
-/boot/grub\*/grub.c\* | eg, linux-bootconfig, vmdiagnostic 
+/boot/grub\*/grub.c\* | eg, linux-bootconfig, provisioning, vmdiagnostic 
 /boot/grub\*/grubenv | linux-bootconfig 
-/boot/grub\*/menu.lst | eg, linux-bootconfig, vmdiagnostic 
+/boot/grub\*/menu.lst | eg, linux-bootconfig, provisioning, vmdiagnostic 
 /boot/loader/entries/\*.conf | linux-bootconfig 
-/etc/HOSTNAME | agents, diagnostic, eg, lad, site-recovery, sql-iaas, vmdiagnostic, workloadbackup 
-/etc/NetworkManager/\*.conf | diagnostic, eg, vmdiagnostic 
-/etc/NetworkManager/conf.d/\*.conf | diagnostic, eg, vmdiagnostic 
-/etc/\*-release | agents, diagnostic, eg, site-recovery, sql-iaas, vmdiagnostic, workloadbackup 
+/etc/HOSTNAME | agents, diagnostic, eg, lad, provisioning, site-recovery, sql-iaas, vmdiagnostic, workloadbackup 
+/etc/NetworkManager/\*.conf | diagnostic, eg, provisioning, vmdiagnostic 
+/etc/NetworkManager/conf.d/\*.conf | diagnostic, eg, provisioning, vmdiagnostic 
+/etc/\*-release | agents, diagnostic, eg, provisioning, site-recovery, sql-iaas, vmdiagnostic, workloadbackup 
 /etc/ambari-agent/conf/\* | hdinsight 
 /etc/ambari-server/conf/\* | hdinsight 
 /etc/apt/sources.list | linux-repoconfig 
 /etc/apt/sources.list.d/\*.list | linux-repoconfig 
-/etc/chrony/chrony.conf | diagnostic, vmdiagnostic 
-/etc/cloud/cloud.cfg | diagnostic, diskpool, eg, vmdiagnostic 
-/etc/cloud/cloud.cfg.d/\*.cfg | diagnostic, diskpool, eg, vmdiagnostic 
+/etc/chrony/chrony.conf | diagnostic, provisioning, vmdiagnostic 
+/etc/cloud/cloud.cfg | diagnostic, diskpool, eg, provisioning, vmdiagnostic 
+/etc/cloud/cloud.cfg.d/\*.cfg | diagnostic, diskpool, eg, provisioning, vmdiagnostic 
 /etc/cni/net.d/\*.conflist | aks 
 /etc/crypttab | diagnostic 
 /etc/default/azuremonitoragent | azuremonitoragent 
 /etc/default/grub | linux-bootconfig 
 /etc/default/grub.d/\*.cfg | linux-bootconfig 
-/etc/dhclient\*.conf | vmdiagnostic 
-/etc/dhcp/\*.conf | diagnostic, eg, vmdiagnostic 
+/etc/dhclient\*.conf | provisioning, vmdiagnostic 
+/etc/dhcp/\*.conf | diagnostic, eg, provisioning, vmdiagnostic 
 /etc/dnf/dnf.conf | linux-repoconfig 
 /etc/dnf/vars/releasever | linux-repoconfig 
-/etc/fstab | diagnostic, eg, normal, vmdiagnostic 
+/etc/fstab | diagnostic, eg, normal, provisioning, vmdiagnostic 
 /etc/hadoop/conf/\* | hdinsight 
 /etc/hbase/conf/\* | hdinsight 
 /etc/hive2/conf/\* | hdinsight 
-/etc/hostname | agents, diagnostic, eg, genspec, lad, site-recovery, sql-iaas, vmdiagnostic, workloadbackup 
+/etc/hostname | agents, diagnostic, eg, genspec, lad, provisioning, site-recovery, sql-iaas, vmdiagnostic, workloadbackup 
 /etc/hosts | diagnostic, hdinsight, linux-repoconfig 
 /etc/hosts.allow | diagnostic 
 /etc/hosts.deny | diagnostic 
-/etc/idmapd.conf | diagnostic, vmdiagnostic 
+/etc/idmapd.conf | diagnostic, provisioning, vmdiagnostic 
 /etc/kdump.conf | crashdump 
 /etc/localtime | diagnostic 
 /etc/modprobe.d/\*.conf | diagnostic 
-/etc/netplan/\*.yaml | diagnostic, eg, vmdiagnostic 
-/etc/network/interfaces | diagnostic, eg, vmdiagnostic 
-/etc/network/interfaces.d/\*.cfg | diagnostic, eg, vmdiagnostic 
-/etc/nsswitch.conf | diagnostic, eg, vmdiagnostic 
+/etc/netplan/\*.yaml | diagnostic, eg, provisioning, vmdiagnostic 
+/etc/network/interfaces | diagnostic, eg, provisioning, vmdiagnostic 
+/etc/network/interfaces.d/\*.cfg | diagnostic, eg, provisioning, vmdiagnostic 
+/etc/nsswitch.conf | diagnostic, eg, provisioning, vmdiagnostic 
 /etc/opt/microsoft/azuremonitoragent/amacoreagent/\* | azuremonitoragent 
 /etc/opt/microsoft/azuremonitoragent/config-cache/configchunks/\* | azuremonitoragent 
 /etc/opt/microsoft/azuremonitoragent/config-cache/configtransformid.txt | azuremonitoragent 
@@ -98,35 +98,35 @@ File Path | Manifest
 /etc/pam.d/\* | diagnostic 
 /etc/products.d/\*.prod | linux-repoconfig 
 /etc/regionserverclnt.cfg | linux-repoconfig 
-/etc/resolv.conf | diagnostic, eg, vmdiagnostic 
+/etc/resolv.conf | diagnostic, eg, provisioning, vmdiagnostic 
 /etc/rsyslog.conf | azuremonitoragent 
 /etc/rsyslog.d/\*.conf | azuremonitoragent 
 /etc/security/limits.conf | diagnostic 
 /etc/selinux/config | diagnostic 
 /etc/spark/conf/\* | hdinsight 
-/etc/ssh/sshd_config | diagnostic, eg, normal, vmdiagnostic 
+/etc/ssh/sshd_config | diagnostic, eg, normal, provisioning, vmdiagnostic 
 /etc/ssh/sshd_config.d/\* | diagnostic 
-/etc/ssh/sshd_config.d/\*.conf | vmdiagnostic 
+/etc/ssh/sshd_config.d/\*.conf | provisioning, vmdiagnostic 
 /etc/storm/conf/\* | hdinsight 
 /etc/sudoers | diagnostic 
 /etc/sudoers.d/\* | diagnostic 
-/etc/sysconfig/SuSEfirewall2 | diagnostic, eg, vmdiagnostic 
-/etc/sysconfig/iptables | diagnostic, eg, vmdiagnostic 
-/etc/sysconfig/network | diagnostic, eg, vmdiagnostic 
-/etc/sysconfig/network-scripts/ifcfg-\* | diagnostic, eg, vmdiagnostic 
+/etc/sysconfig/SuSEfirewall2 | diagnostic, eg, provisioning, vmdiagnostic 
+/etc/sysconfig/iptables | diagnostic, eg, provisioning, vmdiagnostic 
+/etc/sysconfig/network | diagnostic, eg, provisioning, vmdiagnostic 
+/etc/sysconfig/network-scripts/ifcfg-\* | diagnostic, eg, provisioning, vmdiagnostic 
 /etc/sysconfig/network-scripts/ifcfg-eth0 | normal 
-/etc/sysconfig/network-scripts/route-\* | diagnostic, eg, vmdiagnostic 
-/etc/sysconfig/network/config | diagnostic, eg, vmdiagnostic 
-/etc/sysconfig/network/dhcp | diagnostic, eg, vmdiagnostic 
-/etc/sysconfig/network/ifcfg-\* | diagnostic, eg, vmdiagnostic 
-/etc/sysconfig/network/routes | diagnostic, eg, vmdiagnostic 
+/etc/sysconfig/network-scripts/route-\* | diagnostic, eg, provisioning, vmdiagnostic 
+/etc/sysconfig/network/config | diagnostic, eg, provisioning, vmdiagnostic 
+/etc/sysconfig/network/dhcp | diagnostic, eg, provisioning, vmdiagnostic 
+/etc/sysconfig/network/ifcfg-\* | diagnostic, eg, provisioning, vmdiagnostic 
+/etc/sysconfig/network/routes | diagnostic, eg, provisioning, vmdiagnostic 
 /etc/sysctl.conf | diagnostic 
 /etc/sysctl.d/\*.conf | diagnostic 
 /etc/syslog-ng/\* | azuremonitoragent 
 /etc/udev/rules.d/\*.rules | diagnostic 
-/etc/ufw/ufw.conf | diagnostic, eg, vmdiagnostic 
-/etc/waagent.conf | agents, diagnostic, eg, site-recovery, vmdiagnostic, workloadbackup 
-/etc/wicked/\*.xml | diagnostic, eg, vmdiagnostic 
+/etc/ufw/ufw.conf | diagnostic, eg, provisioning, vmdiagnostic 
+/etc/waagent.conf | agents, diagnostic, eg, provisioning, site-recovery, vmdiagnostic, workloadbackup 
+/etc/wicked/\*.xml | diagnostic, eg, provisioning, vmdiagnostic 
 /etc/yum.conf | linux-repoconfig 
 /etc/yum.repos.d/\*.repo | linux-repoconfig 
 /etc/yum.repos.d/rh-cloud-rhel\*.repo | linux-repoconfig 
@@ -160,26 +160,26 @@ File Path | Manifest
 /sys/kernel/security/apparmor/profiles | diagnostic 
 /tmp/omsagent\*.tgz | monitor-mgmt 
 /tmp/sosreport\*.tar.xz | linux-sos-scc 
-/usr/lib/NetworkManager/\*.conf | diagnostic, eg, vmdiagnostic 
-/usr/lib/NetworkManager/conf.d/\*.conf | diagnostic, eg, vmdiagnostic 
+/usr/lib/NetworkManager/\*.conf | diagnostic, eg, provisioning, vmdiagnostic 
+/usr/lib/NetworkManager/conf.d/\*.conf | diagnostic, eg, provisioning, vmdiagnostic 
 /var/crash/\* | crashdump 
 /var/lib/.jupyter/jupyter_notebook_config.py | hdinsight 
 /var/lib/GuestConfig/Configuration/\* | monitor-mgmt 
 /var/lib/GuestConfig/gc_agent_logs/\* | monitor-mgmt 
-/var/lib/NetworkManager/\*.conf | diagnostic, eg, vmdiagnostic 
-/var/lib/NetworkManager/\*.lease | diagnostic, eg, vmdiagnostic 
-/var/lib/NetworkManager/\*.leases | diagnostic, eg, vmdiagnostic 
-/var/lib/NetworkManager/\*.state | diagnostic, eg, vmdiagnostic 
-/var/lib/NetworkManager/conf.d/\*.conf | diagnostic, eg, vmdiagnostic 
-/var/lib/dhclient/\*.lease | diagnostic, eg, vmdiagnostic 
-/var/lib/dhclient/\*.leases | diagnostic, eg, vmdiagnostic 
-/var/lib/dhcp/\*.lease | diagnostic, eg, vmdiagnostic 
-/var/lib/dhcp/\*.leases | diagnostic, eg, vmdiagnostic 
-/var/lib/waagent/ExtensionsConfig.\*.xml | diagnostic, lad, vmdiagnostic 
-/var/lib/waagent/GoalState.\*.xml | diagnostic, site-recovery, vmdiagnostic, workloadbackup 
-/var/lib/waagent/HostingEnvironmentConfig.xml | diagnostic, vmdiagnostic 
-/var/lib/waagent/Incarnation | agents, diagnostic, vmdiagnostic 
-/var/lib/waagent/ManagedIdentity-\*.json | diagnostic, vmdiagnostic 
+/var/lib/NetworkManager/\*.conf | diagnostic, eg, provisioning, vmdiagnostic 
+/var/lib/NetworkManager/\*.lease | diagnostic, eg, provisioning, vmdiagnostic 
+/var/lib/NetworkManager/\*.leases | diagnostic, eg, provisioning, vmdiagnostic 
+/var/lib/NetworkManager/\*.state | diagnostic, eg, provisioning, vmdiagnostic 
+/var/lib/NetworkManager/conf.d/\*.conf | diagnostic, eg, provisioning, vmdiagnostic 
+/var/lib/dhclient/\*.lease | diagnostic, eg, provisioning, vmdiagnostic 
+/var/lib/dhclient/\*.leases | diagnostic, eg, provisioning, vmdiagnostic 
+/var/lib/dhcp/\*.lease | diagnostic, eg, provisioning, vmdiagnostic 
+/var/lib/dhcp/\*.leases | diagnostic, eg, provisioning, vmdiagnostic 
+/var/lib/waagent/ExtensionsConfig.\*.xml | diagnostic, lad, provisioning, vmdiagnostic 
+/var/lib/waagent/GoalState.\*.xml | diagnostic, provisioning, site-recovery, vmdiagnostic, workloadbackup 
+/var/lib/waagent/HostingEnvironmentConfig.xml | diagnostic, provisioning, vmdiagnostic 
+/var/lib/waagent/Incarnation | agents, diagnostic, provisioning, vmdiagnostic 
+/var/lib/waagent/ManagedIdentity-\*.json | diagnostic, provisioning, vmdiagnostic 
 /var/lib/waagent/Microsoft.Azure.Monitor.AzureMonitorLinuxAgent-\*/\* | azuremonitoragent 
 /var/lib/waagent/Microsoft.Azure.Monitor.AzureMonitorLinuxAgent-\*/config/\*.settings | azuremonitoragent 
 /var/lib/waagent/Microsoft.Azure.Monitor.AzureMonitorLinuxAgent-\*/config/metrics_con<br>figs/\*Configuration.json | azuremonitoragent 
@@ -204,28 +204,28 @@ File Path | Manifest
 /var/lib/waagent/Microsoft.\*LinuxDiagnostic\*/config/\*.settings | lad 
 /var/lib/waagent/Microsoft.\*LinuxDiagnostic\*/status/\*.status | lad 
 /var/lib/waagent/Microsoft.\*LinuxDiagnostic\*/xmlCfg.xml | lad 
-/var/lib/waagent/SharedConfig.xml | diagnostic, vmdiagnostic 
+/var/lib/waagent/SharedConfig.xml | diagnostic, provisioning, vmdiagnostic 
 /var/lib/waagent/\*.agentsManifest | agents 
-/var/lib/waagent/\*.manifest.xml | diagnostic, vmdiagnostic 
+/var/lib/waagent/\*.manifest.xml | diagnostic, provisioning, vmdiagnostic 
 /var/lib/waagent/\*.xml | agents, site-recovery, workloadbackup 
-/var/lib/waagent/\*/config/HandlerState | agents, diagnostic, vmdiagnostic 
-/var/lib/waagent/\*/config/HandlerStatus | agents, diagnostic, vmdiagnostic 
+/var/lib/waagent/\*/config/HandlerState | agents, diagnostic, provisioning, vmdiagnostic 
+/var/lib/waagent/\*/config/HandlerStatus | agents, diagnostic, provisioning, vmdiagnostic 
 /var/lib/waagent/\*/config/VMApp.lockfile | agents, diagnostic 
-/var/lib/waagent/\*/config/\*.settings | agents, diagnostic, vmdiagnostic 
+/var/lib/waagent/\*/config/\*.settings | agents, diagnostic, provisioning, vmdiagnostic 
 /var/lib/waagent/\*/config/applicationRegistry.active | agents, diagnostic 
-/var/lib/waagent/\*/error.json | diagnostic, vmdiagnostic 
-/var/lib/waagent/\*/status/\*.status | agents, diagnostic, vmdiagnostic 
+/var/lib/waagent/\*/error.json | diagnostic, provisioning, vmdiagnostic 
+/var/lib/waagent/\*/status/\*.status | agents, diagnostic, provisioning, vmdiagnostic 
 /var/lib/waagent/error.json | agents, eg 
-/var/lib/waagent/history/\*.zip | agents, diagnostic, vmdiagnostic 
-/var/lib/waagent/provisioned | diagnostic, eg, genspec, vmdiagnostic 
-/var/lib/waagent/waagent_status.\*.json | agents, diagnostic, eg, vmdiagnostic 
-/var/lib/waagent/waagent_status.json | agents, diagnostic, eg, vmdiagnostic 
-/var/lib/wicked/lease\* | diagnostic, eg, vmdiagnostic 
+/var/lib/waagent/history/\*.zip | agents, diagnostic, provisioning, vmdiagnostic 
+/var/lib/waagent/provisioned | diagnostic, eg, genspec, provisioning, vmdiagnostic 
+/var/lib/waagent/waagent_status.\*.json | agents, diagnostic, eg, provisioning, vmdiagnostic 
+/var/lib/waagent/waagent_status.json | agents, diagnostic, eg, provisioning, vmdiagnostic 
+/var/lib/wicked/lease\* | diagnostic, eg, provisioning, vmdiagnostic 
 /var/log/AzureRcmCli.log | site-recovery 
 /var/log/ambari-agent/ambari-agent.log | hdinsight 
 /var/log/ambari-server/ambari-audit.log | hdinsight 
 /var/log/ambari-server/ambari-server.log | hdinsight 
-/var/log/auth\* | agents, diagnostic, eg, normal, vmdiagnostic 
+/var/log/auth\* | agents, diagnostic, eg, normal, provisioning, vmdiagnostic 
 /var/log/azure-cns\* | aks 
 /var/log/azure-ipam\* | aks 
 /var/log/azure-npm.log | aks 
@@ -240,29 +240,29 @@ File Path | Manifest
 /var/log/azure/Microsoft.SqlServer.Management.SqlIaaSAgentLinux\* | sql-iaas 
 /var/log/azure/Microsoft.\*LinuxDiagnostic/\*/\* | lad 
 /var/log/azure/\* | site-recovery, workloadbackup 
-/var/log/azure/\*/\* | agents, diagnostic, vmdiagnostic 
-/var/log/azure/\*/\*/\* | agents, diagnostic, vmdiagnostic 
+/var/log/azure/\*/\* | agents, diagnostic, provisioning, vmdiagnostic 
+/var/log/azure/\*/\*/\* | agents, diagnostic, provisioning, vmdiagnostic 
 /var/log/azure/cluster-provision-cse-output.log | aks 
-/var/log/azure/cluster-provision.log | aks, diagnostic, vmdiagnostic 
+/var/log/azure/cluster-provision.log | aks, diagnostic, provisioning, vmdiagnostic 
 /var/log/azure/containerd-status.log | aks 
-/var/log/azure/custom-script/handler.log | agents, diagnostic, vmdiagnostic 
+/var/log/azure/custom-script/handler.log | agents, diagnostic, provisioning, vmdiagnostic 
 /var/log/azure/docker-status.log | aks 
 /var/log/azure/kern.log | aks 
 /var/log/azure/kubelet-status.log | aks 
-/var/log/azure/run-command/handler.log | diagnostic, vmdiagnostic 
-/var/log/boot\* | diagnostic, eg, normal, vmdiagnostic 
+/var/log/azure/run-command/handler.log | diagnostic, provisioning, vmdiagnostic 
+/var/log/boot\* | diagnostic, eg, normal, provisioning, vmdiagnostic 
 /var/log/cilium-cni\* | aks 
-/var/log/cloud-init\* | aks, diagnostic, diskpool, eg, normal, vmdiagnostic 
+/var/log/cloud-init\* | aks, diagnostic, diskpool, eg, normal, provisioning, vmdiagnostic 
 /var/log/cloudregister | diagnostic 
 /var/log/cluster/\* | diagnostic 
 /var/log/corosync/\* | diagnostic 
 /var/log/corosync\* | diagnostic 
 /var/log/diskpool-agent\* | diskpool 
 /var/log/diskpool/bootstrapper.log\* | diskpool 
-/var/log/dmesg\* | agents, diagnostic, eg, normal, site-recovery, vmdiagnostic, workloadbackup 
-/var/log/dnf\* | diagnostic, eg, vmdiagnostic 
+/var/log/dmesg\* | agents, diagnostic, eg, normal, provisioning, site-recovery, vmdiagnostic, workloadbackup 
+/var/log/dnf\* | diagnostic, eg, provisioning, vmdiagnostic 
 /var/log/dpkg.log | servicefabric 
-/var/log/dpkg\* | diagnostic, diskpool, eg, normal, vmdiagnostic 
+/var/log/dpkg\* | diagnostic, diskpool, eg, normal, provisioning, vmdiagnostic 
 /var/log/evtcollforw\*.log | site-recovery 
 /var/log/hadoop-yarn/yarn/\*.log | hdinsight 
 /var/log/hdinsight-agent/hdinsight-agent.log | hdinsight 
@@ -272,10 +272,10 @@ File Path | Manifest
 /var/log/hdinsight-startupagent/hdinsight-startupagent.out | hdinsight 
 /var/log/hive/hivemetastore.log | hdinsight 
 /var/log/hive/hiveserver2.log | hdinsight 
-/var/log/journal/\*/\* | aks 
+/var/log/journal/\*/\* | aks, provisioning 
 /var/log/kern.log | servicefabric 
-/var/log/kern\* | diagnostic, diskpool, eg, normal, vmdiagnostic 
-/var/log/messages\* | azuremonitoragent, diagnostic, eg, monitor-mgmt, normal, vmdiagnostic 
+/var/log/kern\* | diagnostic, diskpool, eg, normal, provisioning, vmdiagnostic 
+/var/log/messages\* | azuremonitoragent, diagnostic, eg, monitor-mgmt, normal, provisioning, vmdiagnostic 
 /var/log/nvidia\*.log | aks 
 /var/log/pacemaker/\* | diagnostic 
 /var/log/pacemaker\* | diagnostic 
@@ -284,22 +284,22 @@ File Path | Manifest
 /var/log/pods/kured\*/\*/\*.log\* | aks 
 /var/log/pods/tigera-operator\*/\*/\*.log\* | aks 
 /var/log/rhuicheck.log | linux-repoconfig 
-/var/log/rsyslog\* | diagnostic, eg, lad, normal, vmdiagnostic 
+/var/log/rsyslog\* | diagnostic, eg, lad, normal, provisioning, vmdiagnostic 
 /var/log/s2\*.log | site-recovery 
 /var/log/sa/sa\* | performance 
 /var/log/scc\*.txz | linux-sos-scc 
-/var/log/secure\* | diagnostic, eg, normal, vmdiagnostic 
+/var/log/secure\* | diagnostic, eg, normal, provisioning, vmdiagnostic 
 /var/log/sfnode/handler.trace | servicefabric 
 /var/log/sfnode/loguploader.trace | servicefabric 
 /var/log/sfnode/sfnodelog.trace | servicefabric 
 /var/log/svagents\*.log | site-recovery 
 /var/log/syslog | aks, servicefabric 
-/var/log/syslog\* | agents, azuremonitoragent, diagnostic, diskpool, eg, lad, monitor-mgmt, normal, site-recovery, vmdiagnostic, workloadbackup 
+/var/log/syslog\* | agents, azuremonitoragent, diagnostic, diskpool, eg, lad, monitor-mgmt, normal, provisioning, site-recovery, vmdiagnostic, workloadbackup 
 /var/log/ua_install.log | site-recovery 
 /var/log/waagent.log | servicefabric 
-/var/log/waagent\* | agents, diagnostic, eg, lad, normal, site-recovery, vmdiagnostic, workloadbackup 
+/var/log/waagent\* | agents, diagnostic, eg, lad, normal, provisioning, site-recovery, vmdiagnostic, workloadbackup 
 /var/log/waagent\*.log | azuremonitoragent, monitor-mgmt 
-/var/log/yum\* | diagnostic, eg, normal, vmdiagnostic 
+/var/log/yum\* | diagnostic, eg, normal, provisioning, vmdiagnostic 
 /var/log/zypp/history | diagnostic 
 /var/opt/microsoft/azuremonitoragent/events/taskstate.json | azuremonitoragent 
 /var/opt/microsoft/azuremonitoragent/log/\* | azuremonitoragent 
@@ -673,4 +673,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-06-24 15:04:03.189644`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-07-10 13:36:09.710239`*
