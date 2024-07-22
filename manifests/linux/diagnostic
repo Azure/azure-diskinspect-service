@@ -78,13 +78,9 @@ copy,/var/lib/NetworkManager/*.state,noscan
 echo,
 
 echo,### Gathering Sysconfig Network Files ###
-copy,/etc/sysconfig/network/dhcp,noscan
 copy,/etc/sysconfig/network,noscan
 copy,/etc/sysconfig/network-scripts/ifcfg-*,noscan
 copy,/etc/sysconfig/network-scripts/route-*,noscan
-copy,/etc/sysconfig/network/config,noscan
-copy,/etc/sysconfig/network/ifcfg-*,noscan
-copy,/etc/sysconfig/network/routes,noscan
 copy,/etc/sysconfig/iptables,noscan
 copy,/etc/sysconfig/SuSEfirewall2,noscan
 echo,

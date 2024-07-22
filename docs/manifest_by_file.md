@@ -116,10 +116,10 @@ File Path | Manifest
 /etc/sysconfig/network-scripts/ifcfg-\* | diagnostic, eg, vmdiagnostic 
 /etc/sysconfig/network-scripts/ifcfg-eth0 | normal 
 /etc/sysconfig/network-scripts/route-\* | diagnostic, eg, vmdiagnostic 
-/etc/sysconfig/network/config | diagnostic, eg, vmdiagnostic 
-/etc/sysconfig/network/dhcp | diagnostic, eg, vmdiagnostic 
-/etc/sysconfig/network/ifcfg-\* | diagnostic, eg, vmdiagnostic 
-/etc/sysconfig/network/routes | diagnostic, eg, vmdiagnostic 
+/etc/sysconfig/network/config | eg, vmdiagnostic 
+/etc/sysconfig/network/dhcp | eg, vmdiagnostic 
+/etc/sysconfig/network/ifcfg-\* | eg, vmdiagnostic 
+/etc/sysconfig/network/routes | eg, vmdiagnostic 
 /etc/sysctl.conf | diagnostic 
 /etc/sysctl.d/\*.conf | diagnostic 
 /etc/syslog-ng/\* | azuremonitoragent 
@@ -673,4 +673,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-06-24 15:04:03.189644`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-07-22 15:12:48.366181`*
