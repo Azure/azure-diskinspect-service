@@ -293,6 +293,8 @@ diagnostic | copy | /etc/modprobe.d/\*.conf
 diagnostic | copy | /etc/security/limits.conf
 diagnostic | copy | /etc/selinux/config
 diagnostic | copy | /sys/kernel/security/apparmor/profiles
+diagnostic | copy | user.rules
+diagnostic | copy | user6.rules
 diagnostic | diskinfo | 
 diskpool | list | /etc/cron.daily
 diskpool | list | /etc/cron.hourly
@@ -1838,4 +1840,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-07-22 15:12:48.366181`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-08-28 10:19:13.661170`*

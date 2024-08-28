@@ -141,5 +141,9 @@ copy,/etc/selinux/config,noscan
 copy,/sys/kernel/security/apparmor/profiles,noscan
 echo,
 
+echo,### Gathering User Rules files ###
+copy,user.rules
+copy,user6.rules
+
 echo,### Gathering Disk Info ###
 diskinfo,
