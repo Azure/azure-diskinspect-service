@@ -125,6 +125,8 @@ File Path | Manifest
 /etc/syslog-ng/\* | azuremonitoragent 
 /etc/udev/rules.d/\*.rules | diagnostic 
 /etc/ufw/ufw.conf | diagnostic, eg, vmdiagnostic 
+/etc/ufw/user.rules | diagnostic 
+/etc/ufw/user6.rules | diagnostic 
 /etc/waagent.conf | agents, diagnostic, eg, site-recovery, vmdiagnostic, workloadbackup 
 /etc/wicked/\*.xml | diagnostic, eg, vmdiagnostic 
 /etc/yum.conf | linux-repoconfig 
@@ -318,8 +320,6 @@ File Path | Manifest
 /var/spool/cron/tabs/root | workloadbackup 
 /var/tmp/sosreport\*.tar.xz | linux-sos-scc 
 copy | sql-iaas 
-user.rules | diagnostic 
-user6.rules | diagnostic 
 ## windows 
 File Path | Manifest 
 ------------- | ------------- 
@@ -675,4 +675,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-08-28 10:19:13.661170`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-08-28 10:29:40.331135`*
