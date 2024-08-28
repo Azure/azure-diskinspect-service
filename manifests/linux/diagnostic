@@ -57,6 +57,8 @@ copy,/etc/dhcp/*.conf,noscan
 copy,/etc/network/interfaces,noscan
 copy,/etc/network/interfaces.d/*.cfg,noscan
 copy,/etc/ufw/ufw.conf,noscan
+copy,/etc/ufw/user.rules
+copy,/etc/ufw/user6.rules
 copy,/etc/ssh/sshd_config
 copy,/etc/ssh/sshd_config.d/*
 copy,/etc/nsswitch.conf,noscan

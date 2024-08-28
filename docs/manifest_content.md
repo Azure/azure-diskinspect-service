@@ -232,6 +232,8 @@ diagnostic | copy | /etc/dhcp/\*.conf
 diagnostic | copy | /etc/network/interfaces
 diagnostic | copy | /etc/network/interfaces.d/\*.cfg
 diagnostic | copy | /etc/ufw/ufw.conf
+diagnostic | copy | /etc/ufw/user.rules
+diagnostic | copy | /etc/ufw/user6.rules
 diagnostic | copy | /etc/ssh/sshd_config
 diagnostic | copy | /etc/ssh/sshd_config.d/\*
 diagnostic | copy | /etc/nsswitch.conf
@@ -1838,4 +1840,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-07-22 15:12:48.366181`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-08-28 10:29:40.331135`*
