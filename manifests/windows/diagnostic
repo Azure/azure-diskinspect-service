@@ -183,6 +183,7 @@ copy,/Packages/Plugins/Microsoft.Powershell.DSC/*/DSCVersion.xml
 copy,/Packages/Plugins/Microsoft.Powershell.DSC/*/DSCWork/HotfixInstallInProgress.dsc
 copy,/Packages/Plugins/Microsoft.Powershell.DSC/*/DSCWork/PreInstallDone.dsc
 copy,/Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/*/PackageDefinition.xml
+copy,/WindowsAzure/Logs/Plugins/Microsoft.ManagedServices.ApplicationHealthWindows/*/*
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.Edp.NetworkWatcherAgentWindows/*/*.txt
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.Edp.NetworkWatcherAgentWindows/*/*.log
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows/*/*.txt
