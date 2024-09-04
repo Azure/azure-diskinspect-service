@@ -988,6 +988,7 @@ diagnostic | copy | /Packages/Plugins/Microsoft.Powershell.DSC/\*/DSCVersion.xml
 diagnostic | copy | /Packages/Plugins/Microsoft.Powershell.DSC/\*/DSCWork/HotfixInstallInProgress.dsc
 diagnostic | copy | /Packages/Plugins/Microsoft.Powershell.DSC/\*/DSCWork/PreInstallDone.dsc
 diagnostic | copy | /Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/\*/PackageDefinition.xm<br>l
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.ManagedServices.ApplicationHealthWindows/\*/\*
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.Edp.NetworkWatcherAgentWind<br>ows/\*/\*.txt
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.Edp.NetworkWatcherAgentWind<br>ows/\*/\*.log
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows/<br>\*/\*.txt
@@ -1840,4 +1841,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-08-28 10:29:40.331135`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-09-04 14:05:29.616858`*
