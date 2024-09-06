@@ -595,9 +595,11 @@ File Path | Manifest
 /Windows/WinSxS/poqexec.log | windowsupdate 
 /Windows/WindowsUpdate.log | monitor-mgmt 
 /Windows/debug/DCPROMO.LOG | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
+/Windows/debug/DCPROMO.log | min-diagnostic 
 /Windows/debug/NetSetup.LOG | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
+/Windows/debug/NetSetup.log | min-diagnostic 
 /Windows/debug/PASSWD.LOG | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
-/Windows/debug/dcpromoui.log | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
+/Windows/debug/dcpromoui.log | diagnostic, eg, min-diagnostic, normal, vmdiagnostic, windowsupdate 
 /Windows/debug/mrt.log | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 /Windows/debug/netlogon.log | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 /Windows/servicing/sessions/sessions.xml | diagnostic, min-diagnostic, vmdiagnostic, windowsupdate 
@@ -676,4 +678,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-09-05 12:28:00.188403`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-09-06 11:11:49.836003`*
