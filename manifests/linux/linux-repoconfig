@@ -16,5 +16,6 @@ copy,/etc/dnf/vars/releasever,noscan
 copy,/etc/yum.repos.d/rh-cloud-rhel*.repo
 copy,/etc/apt/sources.list,noscan
 copy,/etc/apt/sources.list.d/*.list,noscan
+copy,/etc/apt/sources.list.d/*.sources,noscan
 copy,/etc/hosts,noscan
 copy,/var/log/rhuicheck.log
