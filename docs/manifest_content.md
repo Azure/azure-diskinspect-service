@@ -453,6 +453,7 @@ linux-repoconfig | copy | /etc/dnf/vars/releasever
 linux-repoconfig | copy | /etc/yum.repos.d/rh-cloud-rhel\*.repo
 linux-repoconfig | copy | /etc/apt/sources.list
 linux-repoconfig | copy | /etc/apt/sources.list.d/\*.list
+linux-repoconfig | copy | /etc/apt/sources.list.d/\*.sources
 linux-repoconfig | copy | /etc/hosts
 linux-repoconfig | copy | /var/log/rhuicheck.log
 linux-sos-scc | list | /var/tmp
@@ -1844,4 +1845,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-09-06 11:11:49.836003`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-09-11 14:57:31.185418`*

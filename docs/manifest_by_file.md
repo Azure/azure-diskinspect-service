@@ -52,6 +52,7 @@ File Path | Manifest
 /etc/ambari-server/conf/\* | hdinsight 
 /etc/apt/sources.list | linux-repoconfig 
 /etc/apt/sources.list.d/\*.list | linux-repoconfig 
+/etc/apt/sources.list.d/\*.sources | linux-repoconfig 
 /etc/chrony/chrony.conf | diagnostic, vmdiagnostic 
 /etc/cloud/cloud.cfg | diagnostic, diskpool, eg, vmdiagnostic 
 /etc/cloud/cloud.cfg.d/\*.cfg | diagnostic, diskpool, eg, vmdiagnostic 
@@ -678,4 +679,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-09-06 11:11:49.836003`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-09-11 14:57:31.185418`*
