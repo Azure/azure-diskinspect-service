@@ -422,6 +422,7 @@ File Path | Manifest
 /Program Files/Microsoft Monitoring Agent/Agent/Health Service State/FCT_\*/work/loca<br>lhost.mof | monitor-mgmt 
 /Program Files/Microsoft Monitoring Agent/Agent/Health Service State/FCT_\*/work/loca<br>lhost.prevmof | monitor-mgmt 
 /Program Files/Microsoft Monitoring Agent/Agent/Health Service State/Management Packs<br>/\*.xml | monitor-mgmt 
+/Program Files/Microsoft SQL Server/90/Shared/SqlWriterLogger\*.txt | sql-iaas 
 /Program Files/Microsoft SQL Server/\*/MSSQL/Log/ERRORLOG | sql-iaas 
 /Program Files/Microsoft SQL Server/\*/MSSQL/Log/ERRORLOG.\* | sql-iaas 
 /Program Files/Microsoft SQL Server/\*/MSSQL/Log/ExtensibilityLog/ExtensibilityLog/EX<br>TLAUNCHERRORLOG | sql-iaas 
@@ -679,4 +680,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-09-11 14:57:31.185418`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-09-24 14:50:17.425615`*
