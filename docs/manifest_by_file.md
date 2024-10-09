@@ -232,7 +232,7 @@ File Path | Manifest
 /var/log/azure-cns\* | aks 
 /var/log/azure-ipam\* | aks 
 /var/log/azure-npm.log | aks 
-/var/log/azure-proxy-agent/\* | agents, normal 
+/var/log/azure-proxy-agent/\* | agents, diagnostic, normal 
 /var/log/azure-vnet\* | aks 
 /var/log/azure/Microsoft.AKS.Compute.AKS.Linux.AKSNode/extension.log | aks 
 /var/log/azure/Microsoft.Azure.Monitor.AzureMonitorLinuxAgent/\*/\*.log | azuremonitoragent 
@@ -476,7 +476,7 @@ File Path | Manifest
 /Windows/Logs/SystemRestore/\*.\* | windowsupdate 
 /Windows/Logs/WindowsUpdate/WindowsUpdate.\*.etl | monitor-mgmt, windowsupdate 
 /Windows/Logs/dpx/\*.log | windowsupdate 
-/Windows/Logs/eBPF/committed/\* | agents, normal 
+/Windows/Logs/eBPF/committed/\* | agents, diagnostic, normal 
 /Windows/Logs/mosetup/bluebox.log | windowsupdate 
 /Windows/Logs/waasmedic/waasmedic.\*.etl | windowsupdate 
 /Windows/Microsoft.NET/Framework/v4.0.30319/Config/machine.config | diagnostic, min-diagnostic, vmdiagnostic, windowsupdate 
@@ -667,7 +667,7 @@ File Path | Manifest
 /WindowsAzure/Logs/WaAppAgent.log | agents, diagnostic, eg, min-diagnostic, normal, site-recovery, vmdiagnostic, windowsupdate, workloadbackup 
 /WindowsAzure/Logs/\*.log | monitor-mgmt 
 /WindowsAzure/Logs/plugins/\*/\*/\*.log | monitor-mgmt 
-/WindowsAzure/ProxyAgent/Logs/\* | agents, normal 
+/WindowsAzure/ProxyAgent/Logs/\* | agents, diagnostic, normal 
 /WindowsAzure/config/\*.xml | agents, diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 /WindowsUpdateVerbose.etl | windowsupdate 
 /k/\*.err | aks 
@@ -680,4 +680,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-09-24 14:50:17.425615`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-10-09 13:54:48.913393`*

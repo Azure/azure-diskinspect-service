@@ -296,6 +296,7 @@ diagnostic | copy | /etc/security/limits.conf
 diagnostic | copy | /etc/selinux/config
 diagnostic | copy | /sys/kernel/security/apparmor/profiles
 diagnostic | diskinfo | 
+diagnostic | copy | /var/log/azure-proxy-agent/\*
 diskpool | list | /etc/cron.daily
 diskpool | list | /etc/cron.hourly
 diskpool | list | /etc/rsyslog.d
@@ -1015,6 +1016,8 @@ diagnostic | copy | /Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationMana
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.WindowsPatchExtension/\*/windowsUpdat<br>eLog/\*
 diagnostic | copy | /Windows/servicing/sessions/sessions.xml
 diagnostic | diskinfo | 
+diagnostic | copy | /WindowsAzure/ProxyAgent/Logs/\*
+diagnostic | copy | /Windows/Logs/eBPF/committed/\*
 eg | copy | /Windows/System32/winevt/Logs/System.evtx
 eg | copy | /Windows/System32/winevt/Logs/Application.evtx
 eg | copy | /Windows/System32/winevt/Logs/Microsoft-ServiceFabric%4Admin.evtx
@@ -1846,4 +1849,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-09-24 14:50:17.425615`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-10-09 13:54:48.913393`*
