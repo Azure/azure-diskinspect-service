@@ -213,3 +213,7 @@ copy,/Windows/servicing/sessions/sessions.xml,noscan
 
 echo,### Gathering Disk Info ###
 diskinfo,
+
+echo,### Gathering Guest ProxyAgent Log Files ###
+copy,/WindowsAzure/ProxyAgent/Logs/*
+copy,/Windows/Logs/eBPF/committed/*
