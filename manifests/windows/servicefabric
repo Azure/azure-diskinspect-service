@@ -23,3 +23,4 @@ copy,/Packages/Plugins/*/*/PackageInformation.txt
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/*/*/Configuration/Checkpoint.txt
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/*/*/Configuration/MaConfig.xml
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/*/*/Configuration/MonAgentHost.*.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/*/*.log
