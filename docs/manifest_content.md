@@ -940,10 +940,24 @@ diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSD
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/Diagnostics<br>PluginLauncher.log
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.IaaSAntimalware/\*/AntimalwareCon<br>fig.log
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.Monitoring/\*/AsmExtension.log
-diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/FabricM<br>SIInstall\*.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.ServiceFabricMCNode/\*/\*<br>.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.ServiceFabricMCNode/Event<br>s/sfmcnodeagent_Temp/Raw/sfmcnodeagent\*.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.Test.ServiceFabricMCNode-<br>Test/\*/\*.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.Test.ServiceFabricMCNode-<br>Test/Events/sfmcnodeagent_Temp/Raw/sfmcnodeagent\*.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.SfmcSetup/\*/\*.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.SfmcSetup/Events/sfmcsetu<br>pextagent_Temp/Raw/sfmcsetupextagent\*.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.Test.SfmcSetup-Test/\*/\*<br>.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.Test.SfmcSetup-Test/Event<br>s/sfmcsetupextagent_Temp/Raw/sfmcsetupextagent\*.log
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/Infrast<br>ructureManifest.xml
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/TempClu<br>sterManifest.xml
-diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/VCRunti<br>meInstall\*.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/\*.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/Events/Boo<br>tstrapAgent_Temp/Raw/BootstrapAgent\*.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/Events/Upg<br>radeAgent_Temp/Raw/UpgradeAgent\*.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.Test.ServiceFabricNode/\*/In<br>frastructureManifest.xml
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.Test.ServiceFabricNode/\*/Te<br>mpClusterManifest.xml
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.Test.ServiceFabricNode/\*/\*<br>.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.Test.ServiceFabricNode/Event<br>s/BootstrapAgent_Temp/Raw/BootstrapAgent\*.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.Test.ServiceFabricNode/Event<br>s/UpgradeAgent_Temp/Raw/UpgradeAgent\*.log
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Compute.BGInfo/\*/BGInfo\*.log
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Compute.JsonADDomainExtension/\*/ADDomainExtensi<br>on.log
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Compute.VMAccessAgent/\*/JsonVMAccessExtension.l<br>og
@@ -1871,4 +1885,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-10-29 14:19:14.632046`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-10-29 16:52:46.549509`*

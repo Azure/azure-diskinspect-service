@@ -641,16 +641,32 @@ File Path | Manifest
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.AzureDiskEncryption/\*/BitlockerE<br>xtension.log | diagnostic, vmdiagnostic 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.IaaSAntimalware/\*/AntimalwareCon<br>fig.log | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.Monitoring/\*/AsmExtension.log | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.ServiceFabricMCNode/Event<br>s/sfmcnodeagent_Temp/Raw/sfmcnodeagent\*.log | diagnostic 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.ServiceFabricMCNode/\*/\*<br>.log | diagnostic 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.SfmcSetup/Events/sfmcsetu<br>pextagent_Temp/Raw/sfmcsetupextagent\*.log | diagnostic 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.SfmcSetup/\*/\*.log | diagnostic 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.Test.ServiceFabricMCNode-<br>Test/Events/sfmcnodeagent_Temp/Raw/sfmcnodeagent\*.log | diagnostic 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.Test.ServiceFabricMCNode-<br>Test/\*/\*.log | diagnostic 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.Test.SfmcSetup-Test/Event<br>s/sfmcsetupextagent_Temp/Raw/sfmcsetupextagent\*.log | diagnostic 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.Test.SfmcSetup-Test/\*/\*<br>.log | diagnostic 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.\*ServiceFabricMCNode\*/E<br>vents/\* | servicefabric 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.\*ServiceFabricMCNode\*/\<br>*/\*.log | servicefabric 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.\*ServiceFabricMCNode\*/\<br>*/\*.xml | servicefabric 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.\*SfmcSetup\*/Events/\* | servicefabric 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.\*SfmcSetup\*/\*/\*.log | servicefabric 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.\*SfmcSetup\*/\*/\*.xml | servicefabric 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/FabricM<br>SIInstall\*.log | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/Events/Boo<br>tstrapAgent_Temp/Raw/BootstrapAgent\*.log | diagnostic 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/Events/Upg<br>radeAgent_Temp/Raw/UpgradeAgent\*.log | diagnostic 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/FabricM<br>SIInstall\*.log | agents, normal, vmdiagnostic, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/Infrast<br>ructureManifest.xml | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/TempClu<br>sterManifest.xml | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/VCRunti<br>meInstall\*.log | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/VCRunti<br>meInstall\*.log | agents, normal, vmdiagnostic, windowsupdate 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/\*.log | diagnostic 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.Test.ServiceFabricNode/Event<br>s/BootstrapAgent_Temp/Raw/BootstrapAgent\*.log | diagnostic 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.Test.ServiceFabricNode/Event<br>s/UpgradeAgent_Temp/Raw/UpgradeAgent\*.log | diagnostic 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.Test.ServiceFabricNode/\*/In<br>frastructureManifest.xml | diagnostic 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.Test.ServiceFabricNode/\*/Te<br>mpClusterManifest.xml | diagnostic 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.Test.ServiceFabricNode/\*/\*<br>.log | diagnostic 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.\*ServiceFabricNode\*/Events<br>/\* | servicefabric 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.\*ServiceFabricNode\*/\*/\*.<br>log | servicefabric 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.\*ServiceFabricNode\*/\*/\*.<br>xml | servicefabric 
@@ -702,4 +718,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-10-29 14:19:14.632046`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-10-29 16:52:46.549509`*
