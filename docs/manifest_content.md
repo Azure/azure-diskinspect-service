@@ -511,17 +511,26 @@ servicefabric | copy | /var/log/syslog
 servicefabric | copy | /var/log/dpkg.log
 servicefabric | copy | /var/log/kern.log
 servicefabric | copy | /var/log/waagent.log
-servicefabric | copy | /var/log/sfnode/sfnodelog.trace
-servicefabric | copy | /var/log/sfnode/loguploader.trace
-servicefabric | copy | /var/log/sfnode/handler.trace
-servicefabric | copy | /var/log/azure/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode/\*.\*/CommandExec<br>ution.log
-servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-1.1.0.2
-servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/heartbeat.lo<br>g
-servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/Service/curr<br>ent.config
-servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*.\*/HandlerEn<br>vironment.json
-servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/HandlerManif<br>est.json
-servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/config/\*.se<br>ttings
-servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*.\*/status/\*<br>.status
+servicefabric | copy | /var/log/azure/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode/extension.log
+servicefabric | copy | /var/log/azure/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode/handler.log
+servicefabric | copy | /var/log/azure/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode/ServiceFabricLi<br>nuxExtension.log
+servicefabric | copy | /var/log/azure/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode/CommandExecutio<br>n\*.log
+servicefabric | copy | /var/log/azure/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode/sfbootstrapagen<br>t\*.log
+servicefabric | copy | /var/log/azure/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode/loguploader\*.l<br>og     - heck
+servicefabric | copy | /var/log/azure/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode/InfrastructureM<br>anifest.xml
+servicefabric | copy | /var/log/azure/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode/TempClusterMani<br>fest.xml
+servicefabric | copy | /var/log/azure/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode/events/\*
+servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode-\*/heartbeat.<br>log
+servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode-\*.\*/Handler<br>Environment.json
+servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode-\*/HandlerMan<br>ifest.json
+servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode-\*/background<br>_installer.log
+servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode-\*/dotnet-uni<br>nstall-log-\*.log
+servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode-\*/sfbootstra<br>pagentdebdownload.log
+servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode-\*/WindowsFab<br>ricLinuxExtension_enable.log
+servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode-\*/ServiceFab<br>ricLinuxExtension_install.log
+servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode-\*/Service/cu<br>rrent.config
+servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode-\*/config/\*.<br>settings
+servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode-\*.\*/status/<br>\*.status
 servicefabric | copy | /var/lib/waagent/Microsoft.OSTCExtensions.LinuxDiagnostic-\*/xmlCfg.xml
 servicefabric | copy | /var/log/azure/Microsoft.OSTCExtensions.LinuxDiagnostic/\*/mdsd.\*
 site-recovery | copy | /etc/\*-release
@@ -1356,6 +1365,15 @@ servicefabric | copy | /Packages/Plugins/\*/\*/PackageInformation.txt
 servicefabric | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/\*/Configur<br>ation/Checkpoint.txt
 servicefabric | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/\*/Configur<br>ation/MaConfig.xml
 servicefabric | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/\*/Configur<br>ation/MonAgentHost.\*.log
+servicefabric | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.\*ServiceFabricNode\*/\*/\*.<br>log
+servicefabric | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.\*ServiceFabricNode\*/\*/\*.<br>xml
+servicefabric | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.\*ServiceFabricNode\*/Events<br>/\*
+servicefabric | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.\*ServiceFabricMCNode\*/\<br>*/\*.log
+servicefabric | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.\*ServiceFabricMCNode\*/\<br>*/\*.xml
+servicefabric | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.\*ServiceFabricMCNode\*/E<br>vents/\*
+servicefabric | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.\*SfmcSetup\*/\*/\*.log
+servicefabric | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.\*SfmcSetup\*/\*/\*.xml
+servicefabric | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.\*SfmcSetup\*/Events/\*
 site-recovery | copy | /Windows/System32/winevt/Logs/System.evtx
 site-recovery | copy | /Windows/System32/winevt/Logs/Application.evtx
 site-recovery | copy | /Windows/System32/winevt/Logs/Windows Azure.evtx
@@ -1849,4 +1867,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-10-09 13:54:48.913393`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-10-29 12:29:24.994623`*
