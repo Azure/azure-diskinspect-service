@@ -9,7 +9,6 @@ copy,/var/log/azure/Microsoft.Azure.ServiceFabric.*ServiceFabricLinuxNode/handle
 copy,/var/log/azure/Microsoft.Azure.ServiceFabric.*ServiceFabricLinuxNode/ServiceFabricLinuxExtension.log
 copy,/var/log/azure/Microsoft.Azure.ServiceFabric.*ServiceFabricLinuxNode/CommandExecution*.log
 copy,/var/log/azure/Microsoft.Azure.ServiceFabric.*ServiceFabricLinuxNode/sfbootstrapagent*.log
-copy,/var/log/azure/Microsoft.Azure.ServiceFabric.*ServiceFabricLinuxNode/loguploader*.log     - heck
 copy,/var/log/azure/Microsoft.Azure.ServiceFabric.*ServiceFabricLinuxNode/InfrastructureManifest.xml
 copy,/var/log/azure/Microsoft.Azure.ServiceFabric.*ServiceFabricLinuxNode/TempClusterManifest.xml
 copy,/var/log/azure/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode/events/*

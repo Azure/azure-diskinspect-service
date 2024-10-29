@@ -249,7 +249,6 @@ File Path | Manifest
 /var/log/azure/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode/TempClusterMani<br>fest.xml | servicefabric 
 /var/log/azure/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode/extension.log | servicefabric 
 /var/log/azure/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode/handler.log | servicefabric 
-/var/log/azure/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode/loguploader\*.l<br>og     - heck | servicefabric 
 /var/log/azure/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode/sfbootstrapagen<br>t\*.log | servicefabric 
 /var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/\*/\*.log | monitor-mgmt 
 /var/log/azure/Microsoft.OSTCExtensions.DSCForLinux/extension.log | monitor-mgmt 
@@ -718,4 +717,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-10-29 16:52:46.549509`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-10-29 17:06:17.088335`*

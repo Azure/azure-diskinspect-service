@@ -517,7 +517,6 @@ servicefabric | copy | /var/log/azure/Microsoft.Azure.ServiceFabric.\*ServiceFab
 servicefabric | copy | /var/log/azure/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode/ServiceFabricLi<br>nuxExtension.log
 servicefabric | copy | /var/log/azure/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode/CommandExecutio<br>n\*.log
 servicefabric | copy | /var/log/azure/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode/sfbootstrapagen<br>t\*.log
-servicefabric | copy | /var/log/azure/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode/loguploader\*.l<br>og     - heck
 servicefabric | copy | /var/log/azure/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode/InfrastructureM<br>anifest.xml
 servicefabric | copy | /var/log/azure/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode/TempClusterMani<br>fest.xml
 servicefabric | copy | /var/log/azure/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode/events/\*
@@ -1885,4 +1884,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-10-29 16:52:46.549509`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-10-29 17:06:17.088335`*
