@@ -24,5 +24,11 @@ copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/*/*/
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/*/*/Configuration/MaConfig.xml
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/*/*/Configuration/MonAgentHost.*.log
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.*ServiceFabricNode*/*/*.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.*ServiceFabricNode*/*/*.xml
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.*ServiceFabricNode*/Events/*
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.*ServiceFabricMCNode*/*/*.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.*ServiceFabricMCNode*/*/*.xml
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.*ServiceFabricMCNode*/Events/*
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.*SfmcSetup*/*/*.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.*SfmcSetup*/*/*.xml
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.*SfmcSetup*/Events/*
