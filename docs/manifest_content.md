@@ -511,6 +511,7 @@ servicefabric | copy | /var/log/syslog
 servicefabric | copy | /var/log/dpkg.log
 servicefabric | copy | /var/log/kern.log
 servicefabric | copy | /var/log/waagent.log
+servicefabric | copy | /var/log/azure/Microsoft.Azure.KeyVault.KeyVaultForLinux/\*
 servicefabric | copy | /var/log/azure/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode/extension.log
 servicefabric | copy | /var/log/azure/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode/handler.log
 servicefabric | copy | /var/log/azure/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode/ServiceFabricLi<br>nuxExtension.log
@@ -520,6 +521,7 @@ servicefabric | copy | /var/log/azure/Microsoft.Azure.ServiceFabric.\*ServiceFab
 servicefabric | copy | /var/log/azure/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode/InfrastructureM<br>anifest.xml
 servicefabric | copy | /var/log/azure/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode/TempClusterMani<br>fest.xml
 servicefabric | copy | /var/log/azure/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode/events/\*
+servicefabric | copy | /var/lib/waagent/Microsoft.Azure.KeyVault.KeyVaultForLinux-\*/config/\*
 servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode-\*/heartbeat.<br>log
 servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode-\*.\*/Handler<br>Environment.json
 servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode-\*/HandlerMan<br>ifest.json
@@ -1365,6 +1367,8 @@ servicefabric | copy | /Packages/Plugins/\*/\*/PackageInformation.txt
 servicefabric | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/\*/Configur<br>ation/Checkpoint.txt
 servicefabric | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/\*/Configur<br>ation/MaConfig.xml
 servicefabric | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/\*/Configur<br>ation/MonAgentHost.\*.log
+servicefabric | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.KeyVault.KeyVaultForWindows\*/\*.log
+servicefabric | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.KeyVault.KeyVaultForWindows\*/Events/\*
 servicefabric | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.\*ServiceFabricNode\*/\*/\*.<br>log
 servicefabric | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.\*ServiceFabricNode\*/\*/\*.<br>xml
 servicefabric | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.\*ServiceFabricNode\*/Events<br>/\*
@@ -1867,4 +1871,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-10-29 12:29:24.994623`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-10-29 14:19:14.632046`*

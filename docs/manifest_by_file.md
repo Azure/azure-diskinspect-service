@@ -183,6 +183,7 @@ File Path | Manifest
 /var/lib/waagent/HostingEnvironmentConfig.xml | diagnostic, vmdiagnostic 
 /var/lib/waagent/Incarnation | agents, diagnostic, vmdiagnostic 
 /var/lib/waagent/ManagedIdentity-\*.json | diagnostic, vmdiagnostic 
+/var/lib/waagent/Microsoft.Azure.KeyVault.KeyVaultForLinux-\*/config/\* | servicefabric 
 /var/lib/waagent/Microsoft.Azure.Monitor.AzureMonitorLinuxAgent-\*/\* | azuremonitoragent 
 /var/lib/waagent/Microsoft.Azure.Monitor.AzureMonitorLinuxAgent-\*/config/\*.settings | azuremonitoragent 
 /var/lib/waagent/Microsoft.Azure.Monitor.AzureMonitorLinuxAgent-\*/config/metrics_con<br>figs/\*Configuration.json | azuremonitoragent 
@@ -239,6 +240,7 @@ File Path | Manifest
 /var/log/azure-proxy-agent/\* | agents, diagnostic, normal 
 /var/log/azure-vnet\* | aks 
 /var/log/azure/Microsoft.AKS.Compute.AKS.Linux.AKSNode/extension.log | aks 
+/var/log/azure/Microsoft.Azure.KeyVault.KeyVaultForLinux/\* | servicefabric 
 /var/log/azure/Microsoft.Azure.Monitor.AzureMonitorLinuxAgent/\*/\*.log | azuremonitoragent 
 /var/log/azure/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode/events/\* | servicefabric 
 /var/log/azure/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode/CommandExecutio<br>n\*.log | servicefabric 
@@ -629,6 +631,8 @@ File Path | Manifest
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/\*/Configur<br>ation/Checkpoint.txt | agents, diagnostic, normal, servicefabric, vmdiagnostic, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/\*/Configur<br>ation/MaConfig.xml | agents, diagnostic, normal, servicefabric, vmdiagnostic, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/\*/Configur<br>ation/MonAgentHost.\*.log | agents, diagnostic, normal, servicefabric, vmdiagnostic, windowsupdate 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.KeyVault.KeyVaultForWindows\*/Events/\* | servicefabric 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.KeyVault.KeyVaultForWindows\*/\*.log | servicefabric 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.Edp.NetworkWatcherAgentWind<br>ows/\*/\*.log | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.Edp.NetworkWatcherAgentWind<br>ows/\*/\*.txt | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows/<br>\*/\*.log | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
@@ -698,4 +702,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-10-29 12:29:24.994623`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-10-29 14:19:14.632046`*
