@@ -35,5 +35,10 @@ copy,/WindowsAzure/Logs/Plugins/Microsoft.Compute.VMAccessAgent/*/JsonVMAccessEx
 echo,### Servicing ###
 copy,/Windows/servicing/sessions/sessions.xml,noscan
 
+echo,### Windows Debug logs ###
+copy,/Windows/debug/NetSetup.log
+copy,/Windows/debug/DCPROMO.log
+copy,/Windows/debug/dcpromoui.log
+
 echo,### Gathering Disk Info ###
 diskinfo,

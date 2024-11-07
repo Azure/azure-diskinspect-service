@@ -234,6 +234,8 @@ diagnostic | copy | /etc/dhcp/\*.conf
 diagnostic | copy | /etc/network/interfaces
 diagnostic | copy | /etc/network/interfaces.d/\*.cfg
 diagnostic | copy | /etc/ufw/ufw.conf
+diagnostic | copy | /etc/ufw/user.rules
+diagnostic | copy | /etc/ufw/user6.rules
 diagnostic | copy | /etc/ssh/sshd_config
 diagnostic | copy | /etc/ssh/sshd_config.d/\*
 diagnostic | copy | /etc/nsswitch.conf
@@ -249,13 +251,9 @@ diagnostic | copy | /etc/NetworkManager/conf.d/\*.conf
 diagnostic | copy | /var/lib/NetworkManager/\*.conf
 diagnostic | copy | /var/lib/NetworkManager/conf.d/\*.conf
 diagnostic | copy | /var/lib/NetworkManager/\*.state
-diagnostic | copy | /etc/sysconfig/network/dhcp
 diagnostic | copy | /etc/sysconfig/network
 diagnostic | copy | /etc/sysconfig/network-scripts/ifcfg-\*
 diagnostic | copy | /etc/sysconfig/network-scripts/route-\*
-diagnostic | copy | /etc/sysconfig/network/config
-diagnostic | copy | /etc/sysconfig/network/ifcfg-\*
-diagnostic | copy | /etc/sysconfig/network/routes
 diagnostic | copy | /etc/sysconfig/iptables
 diagnostic | copy | /etc/sysconfig/SuSEfirewall2
 diagnostic | copy | /etc/wicked/\*.xml
@@ -300,6 +298,7 @@ diagnostic | copy | /etc/security/limits.conf
 diagnostic | copy | /etc/selinux/config
 diagnostic | copy | /sys/kernel/security/apparmor/profiles
 diagnostic | diskinfo | 
+diagnostic | copy | /var/log/azure-proxy-agent/\*
 diskpool | list | /etc/cron.daily
 diskpool | list | /etc/cron.hourly
 diskpool | list | /etc/rsyslog.d
@@ -457,6 +456,7 @@ linux-repoconfig | copy | /etc/dnf/vars/releasever
 linux-repoconfig | copy | /etc/yum.repos.d/rh-cloud-rhel\*.repo
 linux-repoconfig | copy | /etc/apt/sources.list
 linux-repoconfig | copy | /etc/apt/sources.list.d/\*.list
+linux-repoconfig | copy | /etc/apt/sources.list.d/\*.sources
 linux-repoconfig | copy | /etc/hosts
 linux-repoconfig | copy | /var/log/rhuicheck.log
 linux-sos-scc | list | /var/tmp
@@ -513,17 +513,27 @@ servicefabric | copy | /var/log/syslog
 servicefabric | copy | /var/log/dpkg.log
 servicefabric | copy | /var/log/kern.log
 servicefabric | copy | /var/log/waagent.log
-servicefabric | copy | /var/log/sfnode/sfnodelog.trace
-servicefabric | copy | /var/log/sfnode/loguploader.trace
-servicefabric | copy | /var/log/sfnode/handler.trace
-servicefabric | copy | /var/log/azure/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode/\*.\*/CommandExec<br>ution.log
-servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-1.1.0.2
-servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/heartbeat.lo<br>g
-servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/Service/curr<br>ent.config
-servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*.\*/HandlerEn<br>vironment.json
-servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/HandlerManif<br>est.json
-servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*/config/\*.se<br>ttings
-servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode-\*.\*/status/\*<br>.status
+servicefabric | copy | /var/log/azure/Microsoft.Azure.KeyVault.KeyVaultForLinux/\*
+servicefabric | copy | /var/log/azure/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode/extension.log
+servicefabric | copy | /var/log/azure/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode/handler.log
+servicefabric | copy | /var/log/azure/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode/ServiceFabricLi<br>nuxExtension.log
+servicefabric | copy | /var/log/azure/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode/CommandExecutio<br>n\*.log
+servicefabric | copy | /var/log/azure/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode/sfbootstrapagen<br>t\*.log
+servicefabric | copy | /var/log/azure/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode/InfrastructureM<br>anifest.xml
+servicefabric | copy | /var/log/azure/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode/TempClusterMani<br>fest.xml
+servicefabric | copy | /var/log/azure/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode/events/\*
+servicefabric | copy | /var/lib/waagent/Microsoft.Azure.KeyVault.KeyVaultForLinux-\*/config/\*
+servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode-\*/heartbeat.<br>log
+servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode-\*.\*/Handler<br>Environment.json
+servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode-\*/HandlerMan<br>ifest.json
+servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode-\*/background<br>_installer.log
+servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode-\*/dotnet-uni<br>nstall-log-\*.log
+servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode-\*/sfbootstra<br>pagentdebdownload.log
+servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode-\*/WindowsFab<br>ricLinuxExtension_enable.log
+servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode-\*/ServiceFab<br>ricLinuxExtension_install.log
+servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode-\*/Service/cu<br>rrent.config
+servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode-\*/config/\*.<br>settings
+servicefabric | copy | /var/lib/waagent/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode-\*.\*/status/<br>\*.status
 servicefabric | copy | /var/lib/waagent/Microsoft.OSTCExtensions.LinuxDiagnostic-\*/xmlCfg.xml
 servicefabric | copy | /var/log/azure/Microsoft.OSTCExtensions.LinuxDiagnostic/\*/mdsd.\*
 site-recovery | copy | /etc/\*-release
@@ -931,10 +941,24 @@ diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSD
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/Diagnostics<br>PluginLauncher.log
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.IaaSAntimalware/\*/AntimalwareCon<br>fig.log
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.Monitoring/\*/AsmExtension.log
-diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/FabricM<br>SIInstall\*.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.ServiceFabricMCNode/\*/\*<br>.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.ServiceFabricMCNode/Event<br>s/sfmcnodeagent_Temp/Raw/sfmcnodeagent\*.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.Test.ServiceFabricMCNode-<br>Test/\*/\*.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.Test.ServiceFabricMCNode-<br>Test/Events/sfmcnodeagent_Temp/Raw/sfmcnodeagent\*.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.SfmcSetup/\*/\*.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.SfmcSetup/Events/sfmcsetu<br>pextagent_Temp/Raw/sfmcsetupextagent\*.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.Test.SfmcSetup-Test/\*/\*<br>.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.Test.SfmcSetup-Test/Event<br>s/sfmcsetupextagent_Temp/Raw/sfmcsetupextagent\*.log
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/Infrast<br>ructureManifest.xml
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/TempClu<br>sterManifest.xml
-diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/VCRunti<br>meInstall\*.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/\*.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/Events/Boo<br>tstrapAgent_Temp/Raw/BootstrapAgent\*.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/Events/Upg<br>radeAgent_Temp/Raw/UpgradeAgent\*.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.Test.ServiceFabricNode/\*/In<br>frastructureManifest.xml
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.Test.ServiceFabricNode/\*/Te<br>mpClusterManifest.xml
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.Test.ServiceFabricNode/\*/\*<br>.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.Test.ServiceFabricNode/Event<br>s/BootstrapAgent_Temp/Raw/BootstrapAgent\*.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.Test.ServiceFabricNode/Event<br>s/UpgradeAgent_Temp/Raw/UpgradeAgent\*.log
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Compute.BGInfo/\*/BGInfo\*.log
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Compute.JsonADDomainExtension/\*/ADDomainExtensi<br>on.log
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Compute.VMAccessAgent/\*/JsonVMAccessExtension.l<br>og
@@ -992,6 +1016,7 @@ diagnostic | copy | /Packages/Plugins/Microsoft.Powershell.DSC/\*/DSCVersion.xml
 diagnostic | copy | /Packages/Plugins/Microsoft.Powershell.DSC/\*/DSCWork/HotfixInstallInProgress.dsc
 diagnostic | copy | /Packages/Plugins/Microsoft.Powershell.DSC/\*/DSCWork/PreInstallDone.dsc
 diagnostic | copy | /Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/\*/PackageDefinition.xm<br>l
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.ManagedServices.ApplicationHealthWindows/\*/\*.l<br>og
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.Edp.NetworkWatcherAgentWind<br>ows/\*/\*.txt
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.Edp.NetworkWatcherAgentWind<br>ows/\*/\*.log
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows/<br>\*/\*.txt
@@ -1017,6 +1042,8 @@ diagnostic | copy | /Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationMana
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.WindowsPatchExtension/\*/windowsUpdat<br>eLog/\*
 diagnostic | copy | /Windows/servicing/sessions/sessions.xml
 diagnostic | diskinfo | 
+diagnostic | copy | /WindowsAzure/ProxyAgent/Logs/\*
+diagnostic | copy | /Windows/Logs/eBPF/committed/\*
 eg | copy | /Windows/System32/winevt/Logs/System.evtx
 eg | copy | /Windows/System32/winevt/Logs/Application.evtx
 eg | copy | /Windows/System32/winevt/Logs/Microsoft-ServiceFabric%4Admin.evtx
@@ -1131,6 +1158,9 @@ min-diagnostic | copy | /WindowsAzure/Logs/WaAppAgent.log
 min-diagnostic | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 min-diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Compute.VMAccessAgent/\*/JsonVMAccessExtension.l<br>og
 min-diagnostic | copy | /Windows/servicing/sessions/sessions.xml
+min-diagnostic | copy | /Windows/debug/NetSetup.log
+min-diagnostic | copy | /Windows/debug/DCPROMO.log
+min-diagnostic | copy | /Windows/debug/dcpromoui.log
 min-diagnostic | diskinfo | 
 monitor-mgmt | copy | /Program Files/Microsoft Monitoring Agent/Agent/Health Service State/Management Packs<br>/\*.xml
 monitor-mgmt | copy | /Program Files/Microsoft Monitoring Agent/Agent/Health Service State/CT_\*/work/Servi<br>ceState/\*.log
@@ -1352,6 +1382,17 @@ servicefabric | copy | /Packages/Plugins/\*/\*/PackageInformation.txt
 servicefabric | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/\*/Configur<br>ation/Checkpoint.txt
 servicefabric | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/\*/Configur<br>ation/MaConfig.xml
 servicefabric | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/\*/Configur<br>ation/MonAgentHost.\*.log
+servicefabric | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.KeyVault.KeyVaultForWindows\*/\*.log
+servicefabric | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.KeyVault.KeyVaultForWindows\*/Events/\*
+servicefabric | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.\*ServiceFabricNode\*/\*/\*.<br>log
+servicefabric | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.\*ServiceFabricNode\*/\*/\*.<br>xml
+servicefabric | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.\*ServiceFabricNode\*/Events<br>/\*
+servicefabric | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.\*ServiceFabricMCNode\*/\<br>*/\*.log
+servicefabric | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.\*ServiceFabricMCNode\*/\<br>*/\*.xml
+servicefabric | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.\*ServiceFabricMCNode\*/E<br>vents/\*
+servicefabric | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.\*SfmcSetup\*/\*/\*.log
+servicefabric | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.\*SfmcSetup\*/\*/\*.xml
+servicefabric | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.\*SfmcSetup\*/Events/\*
 site-recovery | copy | /Windows/System32/winevt/Logs/System.evtx
 site-recovery | copy | /Windows/System32/winevt/Logs/Application.evtx
 site-recovery | copy | /Windows/System32/winevt/Logs/Windows Azure.evtx
@@ -1402,6 +1443,7 @@ sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.log
 sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.mdmp
 sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/Setup Bootstrap/Log/\*/Log\*.cab
 sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/Setup Bootstrap/Log/Summary.txt
+sql-iaas | copy | /Program Files/Microsoft SQL Server/90/Shared/SqlWriterLogger\*.txt
 vmdiagnostic | copy | /Windows/System32/config/SOFTWARE
 vmdiagnostic | copy | /Windows/System32/config/SYSTEM
 vmdiagnostic | copy | /Windows/System32/winevt/Logs/System.evtx
@@ -1845,3 +1887,4 @@ workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.jso
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
 *File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-11-07 16:19:19.814858`*
+

@@ -59,6 +59,8 @@ copy,/etc/dhcp/*.conf,noscan
 copy,/etc/network/interfaces,noscan
 copy,/etc/network/interfaces.d/*.cfg,noscan
 copy,/etc/ufw/ufw.conf,noscan
+copy,/etc/ufw/user.rules
+copy,/etc/ufw/user6.rules
 copy,/etc/ssh/sshd_config
 copy,/etc/ssh/sshd_config.d/*
 copy,/etc/nsswitch.conf,noscan
@@ -80,13 +82,9 @@ copy,/var/lib/NetworkManager/*.state,noscan
 echo,
 
 echo,### Gathering Sysconfig Network Files ###
-copy,/etc/sysconfig/network/dhcp,noscan
 copy,/etc/sysconfig/network,noscan
 copy,/etc/sysconfig/network-scripts/ifcfg-*,noscan
 copy,/etc/sysconfig/network-scripts/route-*,noscan
-copy,/etc/sysconfig/network/config,noscan
-copy,/etc/sysconfig/network/ifcfg-*,noscan
-copy,/etc/sysconfig/network/routes,noscan
 copy,/etc/sysconfig/iptables,noscan
 copy,/etc/sysconfig/SuSEfirewall2,noscan
 echo,
@@ -149,3 +147,8 @@ echo,
 
 echo,### Gathering Disk Info ###
 diskinfo,
+echo,
+
+echo,### Gathering Guest ProxyAgent Log Files ###
+copy,/var/log/azure-proxy-agent/*
+echo,

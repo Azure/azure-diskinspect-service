@@ -38,3 +38,4 @@ copy,/Program Files/Microsoft SQL Server/*/MSSQL/Log/*.log
 copy,/Program Files/Microsoft SQL Server/*/MSSQL/Log/*.mdmp,noscan
 copy,/Program Files/Microsoft SQL Server/*/Setup Bootstrap/Log/*/Log*.cab,noscan
 copy,/Program Files/Microsoft SQL Server/*/Setup Bootstrap/Log/Summary.txt
+copy,/Program Files/Microsoft SQL Server/90/Shared/SqlWriterLogger*.txt
