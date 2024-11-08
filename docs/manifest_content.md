@@ -193,6 +193,8 @@ diagnostic | list | /etc
 diagnostic | list | /etc/udev/rules.d
 diagnostic | list | /etc/alternatives
 diagnostic | list | /etc/systemd/system
+diagnostic | list | /etc/systemd/system/multi-user.target.wants
+diagnostic | list | /etc/systemd/system/graphical.target.wants
 diagnostic | list | /etc/systemd/user
 diagnostic | list | /etc/yum.repos.d
 diagnostic | list | /usr/lib/systemd/system
@@ -1884,4 +1886,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-10-29 17:06:17.088335`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-11-07 23:24:30.047485`*
