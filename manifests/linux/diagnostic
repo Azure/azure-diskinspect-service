@@ -7,6 +7,8 @@ ll,/etc
 ll,/etc/udev/rules.d
 ll,/etc/alternatives
 ll,/etc/systemd/system
+ll,/etc/systemd/system/multi-user.target.wants
+ll,/etc/systemd/system/graphical.target.wants
 ll,/etc/systemd/user
 ll,/etc/yum.repos.d
 ll,/usr/lib/systemd/system
