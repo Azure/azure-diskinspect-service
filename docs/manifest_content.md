@@ -641,6 +641,7 @@ vmdiagnostic | copy | /var/log/dmesg\*
 vmdiagnostic | copy | /var/log/boot\*
 vmdiagnostic | copy | /var/log/auth\*
 vmdiagnostic | copy | /var/log/secure\*
+vmdiagnostic | copy | /var/log/journal/\*/\*
 vmdiagnostic | copy | /var/log/azure/\*/\*
 vmdiagnostic | copy | /var/log/azure/\*/\*/\*
 vmdiagnostic | copy | /var/log/azure/custom-script/handler.log
@@ -1886,4 +1887,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-11-07 23:24:30.047485`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-01-09 17:15:50.960566`*

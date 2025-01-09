@@ -99,6 +99,7 @@ copy,/var/log/dmesg*
 copy,/var/log/boot*
 copy,/var/log/auth*
 copy,/var/log/secure*
+copy,/var/log/journal/*/*,noscan
 echo,
 
 echo,### Gathering Azure Files ###

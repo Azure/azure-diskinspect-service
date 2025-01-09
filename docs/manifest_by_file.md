@@ -288,7 +288,7 @@ File Path | Manifest
 /var/log/hdinsight-startupagent/hdinsight-startupagent.out | hdinsight 
 /var/log/hive/hivemetastore.log | hdinsight 
 /var/log/hive/hiveserver2.log | hdinsight 
-/var/log/journal/\*/\* | aks 
+/var/log/journal/\*/\* | aks, vmdiagnostic 
 /var/log/kern.log | servicefabric 
 /var/log/kern\* | diagnostic, diskpool, eg, normal, vmdiagnostic 
 /var/log/messages\* | azuremonitoragent, diagnostic, eg, monitor-mgmt, normal, vmdiagnostic 
@@ -717,4 +717,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2024-11-07 23:24:30.047485`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-01-09 17:15:50.960566`*
