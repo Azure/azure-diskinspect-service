@@ -13,7 +13,23 @@ copy,/Windows/System32/winevt/Logs/Microsoft-ServiceFabric-Lease%4Admin.evtx
 copy,/Windows/System32/winevt/Logs/Windows Azure.evtx
 
 echo,### Additional Event Logs ###
+copy,/Windows/System32/winevt/Logs/Active Directory Web Services.evtx
+copy,/Windows/System32/winevt/Logs/DFS Replication.evtx
+copy,/Windows/System32/winevt/Logs/DNS Server.evtx
+copy,/Windows/System32/winevt/Logs/Directory Service.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-CAPI2%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker%4BitLocker Management.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker-DrivePreparationTool%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-CAPI2%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-CodeIntegrity%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-DNSServer%4Audit.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-DNS-Client%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-DSC%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-FSLogic-Apps%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-FSLogic-Apps%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-FSLogic-CloudCache%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-FSLogic-CloudCache%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-GroupPolicy%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnPConfig%4Configuration.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnP%4Configuration.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-NdisImPlatform%4Operational.evtx
@@ -21,14 +37,17 @@ copy,/Windows/System32/winevt/Logs/Microsoft-Windows-NetworkLocationWizard%4Oper
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-NetworkProfile%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-NetworkProvider%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-NlaSvc%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-NTLM%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RdpCoreTS%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RdpCoreTS%4Admin.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RemoteDesktopSessionManager%4Admin.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-SessionServices%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Resource-Exhaustion-Detector%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-SmbClient%4Connectivity.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-SmbClient%4Security.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-SMBClient%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-SMBServer%4Connectivity.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-SmbServer%4Security.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-SMBServer%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-ServerManager%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TCPIP%4Operational.evtx
@@ -42,6 +61,7 @@ copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-RemoteConn
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-SessionBroker-Client%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-SessionBroker-Client%4Admin.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-UserPnp%4DeviceInstall.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-User Profile Service%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Windows Firewall With Advanced Security%4ConnectionSecurity.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Windows Firewall With Advanced Security%4Firewall.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WindowsUpdateClient%4Operational.evtx
@@ -52,11 +72,10 @@ copy,/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Bootstrap
 copy,/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Status%4GuestAgent.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Status%4Plugins.evtx
 copy,/Windows/System32/winevt/Logs/MicrosoftAzureRecoveryServices-Replication.evtx
+copy,/Windows/System32/winevt/Logs/OpenSSH%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/OpenSSH%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Security.evtx
 copy,/Windows/System32/winevt/Logs/Setup.evtx
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-DSC%4Operational.evtx
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker%4BitLocker Management.evtx
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker-DrivePreparationTool%4Operational.evtx
 
 echo,### Provisioning ###
 ll,/AzureData/CustomData.bin
@@ -122,10 +141,24 @@ copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/*/Di
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/*/DiagnosticsPluginLauncher.log
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.IaaSAntimalware/*/AntimalwareConfig.log
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.Monitoring/*/AsmExtension.log
-copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/*/FabricMSIInstall*.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.ServiceFabricMCNode/*/*.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.ServiceFabricMCNode/Events/sfmcnodeagent_Temp/Raw/sfmcnodeagent*.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.Test.ServiceFabricMCNode-Test/*/*.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.Test.ServiceFabricMCNode-Test/Events/sfmcnodeagent_Temp/Raw/sfmcnodeagent*.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.SfmcSetup/*/*.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.SfmcSetup/Events/sfmcsetupextagent_Temp/Raw/sfmcsetupextagent*.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.Test.SfmcSetup-Test/*/*.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.Test.SfmcSetup-Test/Events/sfmcsetupextagent_Temp/Raw/sfmcsetupextagent*.log
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/*/InfrastructureManifest.xml
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/*/TempClusterManifest.xml
-copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/*/VCRuntimeInstall*.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/*/*.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/Events/BootstrapAgent_Temp/Raw/BootstrapAgent*.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/Events/UpgradeAgent_Temp/Raw/UpgradeAgent*.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.Test.ServiceFabricNode/*/InfrastructureManifest.xml
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.Test.ServiceFabricNode/*/TempClusterManifest.xml
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.Test.ServiceFabricNode/*/*.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.Test.ServiceFabricNode/Events/BootstrapAgent_Temp/Raw/BootstrapAgent*.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.Test.ServiceFabricNode/Events/UpgradeAgent_Temp/Raw/UpgradeAgent*.log
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Compute.BGInfo/*/BGInfo*.log
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Compute.JsonADDomainExtension/*/ADDomainExtension.log
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Compute.VMAccessAgent/*/JsonVMAccessExtension.log
@@ -183,6 +216,7 @@ copy,/Packages/Plugins/Microsoft.Powershell.DSC/*/DSCVersion.xml
 copy,/Packages/Plugins/Microsoft.Powershell.DSC/*/DSCWork/HotfixInstallInProgress.dsc
 copy,/Packages/Plugins/Microsoft.Powershell.DSC/*/DSCWork/PreInstallDone.dsc
 copy,/Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/*/PackageDefinition.xml
+copy,/WindowsAzure/Logs/Plugins/Microsoft.ManagedServices.ApplicationHealthWindows/*/*.log
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.Edp.NetworkWatcherAgentWindows/*/*.txt
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.Edp.NetworkWatcherAgentWindows/*/*.log
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows/*/*.txt
@@ -191,12 +225,28 @@ copy,/WindowsAzure/Logs/Plugins/Microsoft.ManagedIdentity.ManagedIdentityExtensi
 copy,/WindowsAzure/GuestAgent*/CommonAgentConfig.config
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Compute.CustomScriptExtension/*/*.log
 copy,/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.RunCommandWindows/*/*.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.RunCommandHandlerWindows/*/*.log
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ActiveDirectory.AADLoginForWindows/*/*.log
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ActiveDirectory.AADLoginForWindows/*/*.txt
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.AzureDiskEncryption/*/BitlockerExtension.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/*/*.log,noscan
+copy,/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/*/log_*
+copy,/Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/*/RuntimeSettings/applicationRegistry.active
+copy,/Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/*/RuntimeSettings/applicationRegistry.backup
+copy,/Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/*/RuntimeSettings/VMApp.lockfile,noscan
+copy,/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/*/*.log,noscan
+copy,/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/*/log_*
+copy,/Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/*/RuntimeSettings/applicationRegistry.active
+copy,/Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/*/RuntimeSettings/applicationRegistry.backup
+copy,/Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/*/RuntimeSettings/VMApp.lockfile,noscan
+copy,/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.WindowsPatchExtension/*/windowsUpdateLog/*
 
 echo,### Servicing ###
 copy,/Windows/servicing/sessions/sessions.xml,noscan
+
+echo,### Gathering Guest ProxyAgent Log Files ###
+copy,/WindowsAzure/ProxyAgent/Logs/*
+copy,/Windows/Logs/eBPF/committed/*
 
 echo,### Gathering Disk Info ###
 diskinfo,
