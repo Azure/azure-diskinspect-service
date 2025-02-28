@@ -810,6 +810,10 @@ agents | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.EDP.VMApplicatio
 agents | copy | /Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/RuntimeSett<br>ings/applicationRegistry.active
 agents | copy | /Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/RuntimeSett<br>ings/applicationRegistry.backup
 agents | copy | /Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/RuntimeSett<br>ings/VMApp.lockfile
+agents | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.ProxyAgent.ProxyAgentWindowsTest/\*/\*.log
+agents | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.ProxyAgent.ProxyAgentWindows/\*/\*.log
+agents | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.ProxyAgent.ProxyAgentWindowsARM64Test/\*/\<br>*.log
+agents | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.ProxyAgent.ProxyAgentWindowsARM64/\*/\*.lo<br>g
 agents | copy | /WindowsAzure/ProxyAgent/Logs/\*
 agents | copy | /Windows/Logs/eBPF/committed/\*
 aks | copy | /Windows/System32/winevt/Logs/System.evtx
@@ -1041,6 +1045,10 @@ diagnostic | copy | /Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationMana
 diagnostic | copy | /Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/RuntimeSett<br>ings/applicationRegistry.backup
 diagnostic | copy | /Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/RuntimeSett<br>ings/VMApp.lockfile
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.WindowsPatchExtension/\*/windowsUpdat<br>eLog/\*
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.ProxyAgent.ProxyAgentWindowsTest/\*/\*.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.ProxyAgent.ProxyAgentWindows/\*/\*.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.ProxyAgent.ProxyAgentWindowsARM64Test/\*/\<br>*.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.ProxyAgent.ProxyAgentWindowsARM64/\*/\*.lo<br>g
 diagnostic | copy | /Windows/servicing/sessions/sessions.xml
 diagnostic | diskinfo | 
 diagnostic | copy | /WindowsAzure/ProxyAgent/Logs/\*
@@ -1887,4 +1895,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-01-09 17:15:50.960566`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-02-27 17:00:47.265252`*

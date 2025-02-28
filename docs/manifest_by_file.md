@@ -676,6 +676,10 @@ File Path | Manifest
 /WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/\*.log | agents, diagnostic, normal 
 /WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/log_\* | agents, diagnostic 
 /WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.WindowsPatchExtension/\*/windowsUpdat<br>eLog/\* | diagnostic 
+/WindowsAzure/Logs/Plugins/Microsoft.CPlat.ProxyAgent.ProxyAgentWindows/\*/\*.log | agents, diagnostic 
+/WindowsAzure/Logs/Plugins/Microsoft.CPlat.ProxyAgent.ProxyAgentWindowsARM64/\*/\*.lo<br>g | agents, diagnostic 
+/WindowsAzure/Logs/Plugins/Microsoft.CPlat.ProxyAgent.ProxyAgentWindowsARM64Test/\*/\<br>*.log | agents, diagnostic 
+/WindowsAzure/Logs/Plugins/Microsoft.CPlat.ProxyAgent.ProxyAgentWindowsTest/\*/\*.log | agents, diagnostic 
 /WindowsAzure/Logs/Plugins/Microsoft.Compute.BGInfo/\*/BGInfo\*.log | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.Compute.CustomScriptExtension/\*/\*.log | diagnostic, vmdiagnostic, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.Compute.JsonADDomainExtension/\*/ADDomainExtensi<br>on.log | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
@@ -717,4 +721,4 @@ File Path | Manifest
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-01-09 17:15:50.960566`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-02-27 17:00:47.265252`*
