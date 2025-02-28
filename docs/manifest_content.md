@@ -1958,4 +1958,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-01-28 13:30:44.157648`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-02-28 09:29:12.085107`*
