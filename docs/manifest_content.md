@@ -1703,6 +1703,10 @@ vmdiagnostic | copy | /Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationMa
 vmdiagnostic | copy | /Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/RuntimeSett<br>ings/applicationRegistry.backup
 vmdiagnostic | copy | /Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/RuntimeSett<br>ings/VMApp.lockfile
 vmdiagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.WindowsPatchExtension/\*/windowsUpdat<br>eLog/\*
+vmdiagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.ProxyAgent.ProxyAgentWindowsTest/\*/\*.log
+vmdiagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.ProxyAgent.ProxyAgentWindows/\*/\*.log
+vmdiagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.ProxyAgent.ProxyAgentWindowsARM64Test/\*/\<br>*.log
+vmdiagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.ProxyAgent.ProxyAgentWindowsARM64/\*/\*.lo<br>g
 vmdiagnostic | copy | /Windows/servicing/sessions/sessions.xml
 vmdiagnostic | copy | /WindowsAzure/ProxyAgent/Logs/\*
 vmdiagnostic | copy | /Windows/Logs/eBPF/committed/\*
@@ -1967,4 +1971,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-02-28 09:29:12.085107`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-03-03 15:54:10.543166`*
