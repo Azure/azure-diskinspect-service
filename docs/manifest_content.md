@@ -641,6 +641,7 @@ vmdiagnostic | copy | /var/log/dmesg\*
 vmdiagnostic | copy | /var/log/boot\*
 vmdiagnostic | copy | /var/log/auth\*
 vmdiagnostic | copy | /var/log/secure\*
+vmdiagnostic | copy | /var/log/journal/\*/\*
 vmdiagnostic | copy | /var/log/azure/\*/\*
 vmdiagnostic | copy | /var/log/azure/\*/\*/\*
 vmdiagnostic | copy | /var/log/azure/custom-script/handler.log
@@ -809,6 +810,10 @@ agents | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.EDP.VMApplicatio
 agents | copy | /Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/RuntimeSett<br>ings/applicationRegistry.active
 agents | copy | /Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/RuntimeSett<br>ings/applicationRegistry.backup
 agents | copy | /Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/RuntimeSett<br>ings/VMApp.lockfile
+agents | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.ProxyAgent.ProxyAgentWindowsTest/\*/\*.log
+agents | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.ProxyAgent.ProxyAgentWindows/\*/\*.log
+agents | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.ProxyAgent.ProxyAgentWindowsARM64Test/\*/\<br>*.log
+agents | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.ProxyAgent.ProxyAgentWindowsARM64/\*/\*.lo<br>g
 agents | copy | /WindowsAzure/ProxyAgent/Logs/\*
 agents | copy | /Windows/Logs/eBPF/committed/\*
 aks | copy | /Windows/System32/winevt/Logs/System.evtx
@@ -1059,6 +1064,10 @@ diagnostic | copy | /Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationMana
 diagnostic | copy | /Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/RuntimeSett<br>ings/applicationRegistry.backup
 diagnostic | copy | /Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/RuntimeSett<br>ings/VMApp.lockfile
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.WindowsPatchExtension/\*/windowsUpdat<br>eLog/\*
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.ProxyAgent.ProxyAgentWindowsTest/\*/\*.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.ProxyAgent.ProxyAgentWindows/\*/\*.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.ProxyAgent.ProxyAgentWindowsARM64Test/\*/\<br>*.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.ProxyAgent.ProxyAgentWindowsARM64/\*/\*.lo<br>g
 diagnostic | copy | /Windows/servicing/sessions/sessions.xml
 diagnostic | copy | /WindowsAzure/ProxyAgent/Logs/\*
 diagnostic | copy | /Windows/Logs/eBPF/committed/\*

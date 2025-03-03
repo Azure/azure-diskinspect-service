@@ -288,7 +288,7 @@ File Path | Manifest
 /var/log/hdinsight-startupagent/hdinsight-startupagent.out | hdinsight 
 /var/log/hive/hivemetastore.log | hdinsight 
 /var/log/hive/hiveserver2.log | hdinsight 
-/var/log/journal/\*/\* | aks 
+/var/log/journal/\*/\* | aks, vmdiagnostic 
 /var/log/kern.log | servicefabric 
 /var/log/kern\* | diagnostic, diskpool, eg, normal, vmdiagnostic 
 /var/log/messages\* | azuremonitoragent, diagnostic, eg, monitor-mgmt, normal, vmdiagnostic 

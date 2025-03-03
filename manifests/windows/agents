@@ -136,6 +136,10 @@ copy,/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWin
 copy,/Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/*/RuntimeSettings/applicationRegistry.active
 copy,/Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/*/RuntimeSettings/applicationRegistry.backup
 copy,/Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/*/RuntimeSettings/VMApp.lockfile,noscan
+copy,/WindowsAzure/Logs/Plugins/Microsoft.CPlat.ProxyAgent.ProxyAgentWindowsTest/*/*.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.CPlat.ProxyAgent.ProxyAgentWindows/*/*.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.CPlat.ProxyAgent.ProxyAgentWindowsARM64Test/*/*.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.CPlat.ProxyAgent.ProxyAgentWindowsARM64/*/*.log
 
 echo,### Gathering Guest ProxyAgent Log Files ###
 copy,/WindowsAzure/ProxyAgent/Logs/*
