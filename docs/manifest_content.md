@@ -916,6 +916,7 @@ diagnostic | copy | /Windows/Panther/WaSetup.xml
 diagnostic | copy | /Windows/Panther/WaSetup.log
 diagnostic | copy | /Windows/Panther/VmAgentInstaller.xml
 diagnostic | copy | /Windows/Panther/unattend.xml
+diagnostic | copy | /windows/Panther/setup.etl
 diagnostic | copy | /unattend.xml
 diagnostic | copy | /Windows/Panther/setupact.log
 diagnostic | copy | /Windows/Panther/setuperr.log
@@ -1568,6 +1569,7 @@ vmdiagnostic | copy | /Windows/System32/Sysprep/Panther/IE/setupact.log
 vmdiagnostic | copy | /Windows/System32/Sysprep/Panther/setuperr.log
 vmdiagnostic | copy | /Windows/System32/Sysprep/Panther/IE/setuperr.log
 vmdiagnostic | copy | /Windows/System32/Sysprep/Sysprep_succeeded.tag
+vmdiagnostic | copy | /windows/Panther/setup.etl
 vmdiagnostic | copy | /Windows/INF/netcfg\*.\*etl
 vmdiagnostic | copy | /Windows/INF/setupapi.dev.log
 vmdiagnostic | copy | /Windows/debug/netlogon.log
@@ -1971,4 +1973,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-03-03 15:54:10.543166`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-03-05 13:36:04.211432`*

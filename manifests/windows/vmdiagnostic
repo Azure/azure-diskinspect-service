@@ -97,6 +97,7 @@ copy,/Windows/System32/Sysprep/Panther/IE/setupact.log
 copy,/Windows/System32/Sysprep/Panther/setuperr.log
 copy,/Windows/System32/Sysprep/Panther/IE/setuperr.log
 copy,/Windows/System32/Sysprep/Sysprep_succeeded.tag
+copy,/windows/Panther/setup.etl
 
 echo,### Plug and Play ###
 copy,/Windows/INF/netcfg*.*etl

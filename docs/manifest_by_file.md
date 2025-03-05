@@ -738,5 +738,6 @@ File Path | Manifest
 /k/bootstrap-config | aks 
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
+/windows/Panther/setup.etl | diagnostic, vmdiagnostic 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-03-03 15:54:10.543166`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-03-05 13:36:04.211432`*
