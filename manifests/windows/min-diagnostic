@@ -40,5 +40,14 @@ copy,/Windows/debug/NetSetup.log
 copy,/Windows/debug/DCPROMO.log
 copy,/Windows/debug/dcpromoui.log
 
+echo,### Windows Update ###
+copy,/Windows/Logs/CBS/*.log
+copy,/Windows/Logs/DISM/*.log
+copy,/Windows/windowsupdate*.log
+
+echo,### Gathering Guest ProxyAgent Log Files ###
+copy,/WindowsAzure/ProxyAgent/Logs/*
+copy,/Windows/Logs/eBPF/committed/*
+
 echo,### Gathering Disk Info ###
 diskinfo,
