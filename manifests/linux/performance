@@ -1,5 +1,7 @@
 echo,### Probing Directories ###
 ll,/var/log/sa
+ll,/var/log/sysstat
 
 echo,### Gathering Log Files ###
 copy,/var/log/sa/sa*
+copy,/var/log/sysstat/*
