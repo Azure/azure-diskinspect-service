@@ -1775,6 +1775,7 @@ windowsupdate | copy | /Windows/Panther/WaSetup.log
 windowsupdate | copy | /Windows/Panther/VmAgentInstaller.xml
 windowsupdate | copy | /Windows/Panther/unattend.xml
 windowsupdate | copy | /unattend.xml
+windowsupdate | copy | /windows/Panther/setup.etl
 windowsupdate | copy | /Windows/Panther/setupact.log
 windowsupdate | copy | /Windows/Panther/setuperr.log
 windowsupdate | copy | /Windows/Panther/UnattendGC/setupact.log
@@ -1973,4 +1974,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-03-05 13:36:04.211432`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-03-05 14:44:30.712831`*
