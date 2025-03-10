@@ -548,7 +548,7 @@ File Path | Manifest
 /Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker%4BitLocker Management.evtx | diagnostic, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker-DrivePreparationTool%4Opera<br>tional.evtx | diagnostic, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Bits-Client%%4Operational.evtx | windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-CAPI2%4Operational.evtx | agents, diagnostic, diagnostic, eg, vmdiagnostic, vmdiagnostic, windowsupdate 
+/Windows/System32/winevt/Logs/Microsoft-Windows-CAPI2%4Operational.evtx | agents, diagnostic, eg, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-CodeIntegrity%4Operational.evtx | diagnostic, vmdiagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Containers-CCG%4Admin.evtx | aks 
 /Windows/System32/winevt/Logs/Microsoft-Windows-DNS-Client%4Operational.evtx | diagnostic, vmdiagnostic 
@@ -740,4 +740,4 @@ File Path | Manifest
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 /windows/Panther/setup.etl | diagnostic, vmdiagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-03-05 14:44:30.712831`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-03-10 13:03:27.871495`*

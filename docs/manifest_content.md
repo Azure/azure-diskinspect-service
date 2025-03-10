@@ -854,7 +854,6 @@ diagnostic | copy | /Windows/System32/winevt/Logs/Directory Service.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-CAPI2%4Operational.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker%4BitLocker Management.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker-DrivePreparationTool%4Opera<br>tional.evtx
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-CAPI2%4Operational.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-CodeIntegrity%4Operational.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-DNSServer%4Audit.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-DNS-Client%4Operational.evtx
@@ -1494,7 +1493,6 @@ vmdiagnostic | copy | /Windows/System32/winevt/Logs/Directory Service.evtx
 vmdiagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-CAPI2%4Operational.evtx
 vmdiagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker%4BitLocker Management.evtx
 vmdiagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker-DrivePreparationTool%4Opera<br>tional.evtx
-vmdiagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-CAPI2%4Operational.evtx
 vmdiagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-CodeIntegrity%4Operational.evtx
 vmdiagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-DNSServer%4Audit.evtx
 vmdiagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-DNS-Client%4Operational.evtx
@@ -1974,4 +1972,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-03-05 14:44:30.712831`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-03-10 13:03:27.871495`*

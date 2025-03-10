@@ -20,7 +20,6 @@ copy,/Windows/System32/winevt/Logs/Directory Service.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-CAPI2%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker%4BitLocker Management.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker-DrivePreparationTool%4Operational.evtx
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-CAPI2%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-CodeIntegrity%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-DNSServer%4Audit.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-DNS-Client%4Operational.evtx
