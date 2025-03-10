@@ -122,24 +122,10 @@ copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/*/Di
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/*/DiagnosticsPluginLauncher.log
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.IaaSAntimalware/*/AntimalwareConfig.log
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.Monitoring/*/AsmExtension.log
-copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.ServiceFabricMCNode/*/*.log
-copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.ServiceFabricMCNode/Events/sfmcnodeagent_Temp/Raw/sfmcnodeagent*.log
-copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.Test.ServiceFabricMCNode-Test/*/*.log
-copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.Test.ServiceFabricMCNode-Test/Events/sfmcnodeagent_Temp/Raw/sfmcnodeagent*.log
-copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.SfmcSetup/*/*.log
-copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.SfmcSetup/Events/sfmcsetupextagent_Temp/Raw/sfmcsetupextagent*.log
-copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.Test.SfmcSetup-Test/*/*.log
-copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.Test.SfmcSetup-Test/Events/sfmcsetupextagent_Temp/Raw/sfmcsetupextagent*.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/*/FabricMSIInstall*.log
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/*/InfrastructureManifest.xml
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/*/TempClusterManifest.xml
-copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/*/*.log
-copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/Events/BootstrapAgent_Temp/Raw/BootstrapAgent*.log
-copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/Events/UpgradeAgent_Temp/Raw/UpgradeAgent*.log
-copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.Test.ServiceFabricNode/*/InfrastructureManifest.xml
-copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.Test.ServiceFabricNode/*/TempClusterManifest.xml
-copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.Test.ServiceFabricNode/*/*.log
-copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.Test.ServiceFabricNode/Events/BootstrapAgent_Temp/Raw/BootstrapAgent*.log
-copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.Test.ServiceFabricNode/Events/UpgradeAgent_Temp/Raw/UpgradeAgent*.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/*/VCRuntimeInstall*.log
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Compute.BGInfo/*/BGInfo*.log
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Compute.JsonADDomainExtension/*/ADDomainExtension.log
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Compute.VMAccessAgent/*/JsonVMAccessExtension.log
@@ -197,7 +183,6 @@ copy,/Packages/Plugins/Microsoft.Powershell.DSC/*/DSCVersion.xml
 copy,/Packages/Plugins/Microsoft.Powershell.DSC/*/DSCWork/HotfixInstallInProgress.dsc
 copy,/Packages/Plugins/Microsoft.Powershell.DSC/*/DSCWork/PreInstallDone.dsc
 copy,/Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/*/PackageDefinition.xml
-copy,/WindowsAzure/Logs/Plugins/Microsoft.ManagedServices.ApplicationHealthWindows/*/*.log
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.Edp.NetworkWatcherAgentWindows/*/*.txt
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.Edp.NetworkWatcherAgentWindows/*/*.log
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows/*/*.txt
@@ -206,32 +191,12 @@ copy,/WindowsAzure/Logs/Plugins/Microsoft.ManagedIdentity.ManagedIdentityExtensi
 copy,/WindowsAzure/GuestAgent*/CommonAgentConfig.config
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Compute.CustomScriptExtension/*/*.log
 copy,/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.RunCommandWindows/*/*.log
-copy,/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.RunCommandHandlerWindows/*/*.log
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ActiveDirectory.AADLoginForWindows/*/*.log
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ActiveDirectory.AADLoginForWindows/*/*.txt
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.AzureDiskEncryption/*/BitlockerExtension.log
-copy,/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/*/*.log,noscan
-copy,/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/*/log_*
-copy,/Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/*/RuntimeSettings/applicationRegistry.active
-copy,/Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/*/RuntimeSettings/applicationRegistry.backup
-copy,/Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/*/RuntimeSettings/VMApp.lockfile,noscan
-copy,/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/*/*.log,noscan
-copy,/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/*/log_*
-copy,/Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/*/RuntimeSettings/applicationRegistry.active
-copy,/Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/*/RuntimeSettings/applicationRegistry.backup
-copy,/Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/*/RuntimeSettings/VMApp.lockfile,noscan
-copy,/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.WindowsPatchExtension/*/windowsUpdateLog/*
-copy,/WindowsAzure/Logs/Plugins/Microsoft.CPlat.ProxyAgent.ProxyAgentWindowsTest/*/*.log
-copy,/WindowsAzure/Logs/Plugins/Microsoft.CPlat.ProxyAgent.ProxyAgentWindows/*/*.log
-copy,/WindowsAzure/Logs/Plugins/Microsoft.CPlat.ProxyAgent.ProxyAgentWindowsARM64Test/*/*.log
-copy,/WindowsAzure/Logs/Plugins/Microsoft.CPlat.ProxyAgent.ProxyAgentWindowsARM64/*/*.log
 
 echo,### Servicing ###
 copy,/Windows/servicing/sessions/sessions.xml,noscan
 
 echo,### Gathering Disk Info ###
 diskinfo,
-
-echo,### Gathering Guest ProxyAgent Log Files ###
-copy,/WindowsAzure/ProxyAgent/Logs/*
-copy,/Windows/Logs/eBPF/committed/*
