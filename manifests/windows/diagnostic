@@ -3,6 +3,12 @@ echo,### Registry Hives ###
 copy,/Windows/System32/config/SOFTWARE,noscan
 copy,/Windows/System32/config/SYSTEM,noscan
 
+echo,### Registry Hive Journals ###
+copy,/Windows/System32/config/SYSTEM.LOG1,noscan
+copy,/Windows/System32/config/SYSTEM.LOG2,noscan
+copy,/Windows/System32/config/SOFTWARE.LOG1,noscan
+copy,/Windows/System32/config/SOFTWARE.LOG2,noscan
+
 echo,### Event Logs ###
 copy,/Windows/System32/winevt/Logs/System.evtx
 copy,/Windows/System32/winevt/Logs/Application.evtx
@@ -249,6 +255,11 @@ copy,/WindowsAzure/Logs/Plugins/Microsoft.CPlat.ProxyAgent.ProxyAgentWindowsARM6
 
 echo,### Servicing ###
 copy,/Windows/servicing/sessions/sessions.xml,noscan
+
+echo,### Windows Update ###
+copy,/Windows/Logs/CBS/*.log
+copy,/Windows/Logs/DISM/*.log
+copy,/Windows/windowsupdate*.log
 
 echo,### Gathering Guest ProxyAgent Log Files ###
 copy,/WindowsAzure/ProxyAgent/Logs/*
