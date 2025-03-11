@@ -840,6 +840,10 @@ aks | copy | /Windows/System32/winevt/Logs/Microsoft-AKSGMSAPlugin%4Admin.evtx
 asc-vmhealth | copy | /WindowsAzure/Logs/TransparentInstaller.log
 diagnostic | copy | /Windows/System32/config/SOFTWARE
 diagnostic | copy | /Windows/System32/config/SYSTEM
+diagnostic | copy | /Windows/System32/config/SYSTEM.LOG1
+diagnostic | copy | /Windows/System32/config/SYSTEM.LOG2
+diagnostic | copy | /Windows/System32/config/SOFTWARE.LOG1
+diagnostic | copy | /Windows/System32/config/SOFTWARE.LOG2
 diagnostic | copy | /Windows/System32/winevt/Logs/System.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Application.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-ServiceFabric%4Admin.evtx
@@ -847,7 +851,22 @@ diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-ServiceFabric%4Opera
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-ServiceFabric-Lease%4Operational.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-ServiceFabric-Lease%4Admin.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Windows Azure.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Active Directory Web Services.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/DFS Replication.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/DNS Server.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Directory Service.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-CAPI2%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker%4BitLocker Management.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker-DrivePreparationTool%4Opera<br>tional.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-CodeIntegrity%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-DNSServer%4Audit.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-DNS-Client%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-DSC%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-FSLogic-Apps%4Admin.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-FSLogic-Apps%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-FSLogic-CloudCache%4Admin.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-FSLogic-CloudCache%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-GroupPolicy%4Operational.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnPConfig%4Configuration.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnP%4Configuration.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-NdisImPlatform%4Operational.evtx
@@ -855,14 +874,17 @@ diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-NetworkLocat
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-NetworkProfile%4Operational.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-NetworkProvider%4Operational.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-NlaSvc%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-NTLM%4Operational.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RdpCoreTS%4Oper<br>ational.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RdpCoreTS%4Admi<br>n.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RemoteDesktopSe<br>ssionManager%4Admin.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-SessionServices<br>%4Operational.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Resource-Exhaustion-Detector%4Operati<br>onal.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-SmbClient%4Connectivity.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-SmbClient%4Security.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-SMBClient%4Operational.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-SMBServer%4Connectivity.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-SmbServer%4Security.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-SMBServer%4Operational.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-ServerManager%4Operational.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TCPIP%4Operational.evtx
@@ -876,6 +898,7 @@ diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServ
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-SessionBroker-Client<br>%4Operational.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-SessionBroker-Client<br>%4Admin.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-UserPnp%4DeviceInstall.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-User Profile Service%4Operational.evt<br>x
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Windows Firewall With Advanced Securi<br>ty%4ConnectionSecurity.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Windows Firewall With Advanced Securi<br>ty%4Firewall.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-WindowsUpdateClient%4Operational.evtx
@@ -886,17 +909,17 @@ diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnos
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Status%4GuestAgent.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Status%4Plugins.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/MicrosoftAzureRecoveryServices-Replication.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/OpenSSH%4Admin.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/OpenSSH%4Operational.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Security.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Setup.evtx
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-DSC%4Operational.evtx
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker%4BitLocker Management.evtx
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker-DrivePreparationTool%4Opera<br>tional.evtx
 diagnostic | list | /AzureData/CustomData.bin
 diagnostic | copy | /Windows/Setup/State/State.ini
 diagnostic | copy | /Windows/Panther/WaSetup.xml
 diagnostic | copy | /Windows/Panther/WaSetup.log
 diagnostic | copy | /Windows/Panther/VmAgentInstaller.xml
 diagnostic | copy | /Windows/Panther/unattend.xml
+diagnostic | copy | /windows/Panther/setup.etl
 diagnostic | copy | /unattend.xml
 diagnostic | copy | /Windows/Panther/setupact.log
 diagnostic | copy | /Windows/Panther/setuperr.log
@@ -1050,9 +1073,12 @@ diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.ProxyAgent.ProxyA
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.ProxyAgent.ProxyAgentWindowsARM64Test/\*/\<br>*.log
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.ProxyAgent.ProxyAgentWindowsARM64/\*/\*.lo<br>g
 diagnostic | copy | /Windows/servicing/sessions/sessions.xml
-diagnostic | diskinfo | 
+diagnostic | copy | /Windows/Logs/CBS/\*.log
+diagnostic | copy | /Windows/Logs/DISM/\*.log
+diagnostic | copy | /Windows/windowsupdate\*.log
 diagnostic | copy | /WindowsAzure/ProxyAgent/Logs/\*
 diagnostic | copy | /Windows/Logs/eBPF/committed/\*
+diagnostic | diskinfo | 
 eg | copy | /Windows/System32/winevt/Logs/System.evtx
 eg | copy | /Windows/System32/winevt/Logs/Application.evtx
 eg | copy | /Windows/System32/winevt/Logs/Microsoft-ServiceFabric%4Admin.evtx
@@ -1170,6 +1196,11 @@ min-diagnostic | copy | /Windows/servicing/sessions/sessions.xml
 min-diagnostic | copy | /Windows/debug/NetSetup.log
 min-diagnostic | copy | /Windows/debug/DCPROMO.log
 min-diagnostic | copy | /Windows/debug/dcpromoui.log
+min-diagnostic | copy | /Windows/Logs/CBS/\*.log
+min-diagnostic | copy | /Windows/Logs/DISM/\*.log
+min-diagnostic | copy | /Windows/windowsupdate\*.log
+min-diagnostic | copy | /WindowsAzure/ProxyAgent/Logs/\*
+min-diagnostic | copy | /Windows/Logs/eBPF/committed/\*
 min-diagnostic | diskinfo | 
 monitor-mgmt | copy | /Program Files/Microsoft Monitoring Agent/Agent/Health Service State/Management Packs<br>/\*.xml
 monitor-mgmt | copy | /Program Files/Microsoft Monitoring Agent/Agent/Health Service State/CT_\*/work/Servi<br>ceState/\*.log
@@ -1697,6 +1728,7 @@ windowsupdate | copy | /Windows/Panther/WaSetup.log
 windowsupdate | copy | /Windows/Panther/VmAgentInstaller.xml
 windowsupdate | copy | /Windows/Panther/unattend.xml
 windowsupdate | copy | /unattend.xml
+windowsupdate | copy | /windows/Panther/setup.etl
 windowsupdate | copy | /Windows/Panther/setupact.log
 windowsupdate | copy | /Windows/Panther/setuperr.log
 windowsupdate | copy | /Windows/Panther/UnattendGC/setupact.log
@@ -1895,4 +1927,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-02-27 17:00:47.265252`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-03-10 13:50:47.376270`*
