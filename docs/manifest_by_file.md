@@ -475,8 +475,8 @@ File Path | Manifest
 /Windows/Inf/netcfg\*.\*etl | normal 
 /Windows/Inf/setupapi.dev.log | normal 
 /Windows/Logs/CBS/\*.cab | windowsupdate 
-/Windows/Logs/CBS/\*.log | windowsupdate 
-/Windows/Logs/DISM/\*.log | windowsupdate 
+/Windows/Logs/CBS/\*.log | diagnostic, min-diagnostic, windowsupdate 
+/Windows/Logs/DISM/\*.log | diagnostic, min-diagnostic, windowsupdate 
 /Windows/Logs/MoSetup/UpdateAgent.log | windowsupdate 
 /Windows/Logs/NetSetup/\*.etl | windowsupdate 
 /Windows/Logs/OpsMgrTrace/\*.\* | monitor-mgmt 
@@ -486,7 +486,7 @@ File Path | Manifest
 /Windows/Logs/SystemRestore/\*.\* | windowsupdate 
 /Windows/Logs/WindowsUpdate/WindowsUpdate.\*.etl | monitor-mgmt, windowsupdate 
 /Windows/Logs/dpx/\*.log | windowsupdate 
-/Windows/Logs/eBPF/committed/\* | agents, diagnostic, normal 
+/Windows/Logs/eBPF/committed/\* | agents, diagnostic, min-diagnostic, normal 
 /Windows/Logs/mosetup/bluebox.log | windowsupdate 
 /Windows/Logs/waasmedic/waasmedic.\*.etl | windowsupdate 
 /Windows/Microsoft.NET/Framework/v4.0.30319/Config/machine.config | diagnostic, min-diagnostic, vmdiagnostic, windowsupdate 
@@ -527,12 +527,16 @@ File Path | Manifest
 /Windows/System32/Winevt/Logs/Microsoft-WS-Licensing%%4Admin.evtx | windowsupdate 
 /Windows/System32/Winevt/Logs/\*AppX\*.evtx | windowsupdate 
 /Windows/System32/config/SOFTWARE | diagnostic, min-diagnostic, vmdiagnostic, windowsupdate 
-/Windows/System32/config/SOFTWARE.LOG1 | min-diagnostic 
-/Windows/System32/config/SOFTWARE.LOG2 | min-diagnostic 
+/Windows/System32/config/SOFTWARE.LOG1 | diagnostic, min-diagnostic 
+/Windows/System32/config/SOFTWARE.LOG2 | diagnostic, min-diagnostic 
 /Windows/System32/config/SYSTEM | diagnostic, min-diagnostic, vmdiagnostic, windowsupdate 
-/Windows/System32/config/SYSTEM.LOG1 | min-diagnostic 
-/Windows/System32/config/SYSTEM.LOG2 | min-diagnostic 
+/Windows/System32/config/SYSTEM.LOG1 | diagnostic, min-diagnostic 
+/Windows/System32/config/SYSTEM.LOG2 | diagnostic, min-diagnostic 
+/Windows/System32/winevt/Logs/Active Directory Web Services.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Application.evtx | agents, aks, diagnostic, eg, min-diagnostic, normal, servicefabric, site-recovery, sql-iaas, vmdiagnostic, windowsupdate, workloadbackup 
+/Windows/System32/winevt/Logs/DFS Replication.evtx | diagnostic 
+/Windows/System32/winevt/Logs/DNS Server.evtx | diagnostic 
+/Windows/System32/winevt/Logs/Directory Service.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-AKSGMSAPlugin%4Admin.evtx | aks 
 /Windows/System32/winevt/Logs/Microsoft-Automation%4Operational.evtx | monitor-mgmt 
 /Windows/System32/winevt/Logs/Microsoft-SMA%4Debug.etl | monitor-mgmt 
@@ -545,11 +549,19 @@ File Path | Manifest
 /Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker-DrivePreparationTool%4Opera<br>tional.evtx | diagnostic, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Bits-Client%%4Operational.evtx | windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-CAPI2%4Operational.evtx | agents, diagnostic, eg, vmdiagnostic, windowsupdate 
+/Windows/System32/winevt/Logs/Microsoft-Windows-CodeIntegrity%4Operational.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Containers-CCG%4Admin.evtx | aks 
+/Windows/System32/winevt/Logs/Microsoft-Windows-DNS-Client%4Operational.evtx | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-Windows-DNSServer%4Audit.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-DSC%4Operational.evtx | agents, diagnostic, eg, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-DeliveryOptimization%%4Operational.ev<br>tx | windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Dhcp-Client%4Admin.evtx | eg 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Dhcp-Client%4Operational.evtx | eg, windowsupdate 
+/Windows/System32/winevt/Logs/Microsoft-Windows-FSLogic-Apps%4Admin.evtx | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-Windows-FSLogic-Apps%4Operational.evtx | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-Windows-FSLogic-CloudCache%4Admin.evtx | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-Windows-FSLogic-CloudCache%4Operational.evtx | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-Windows-GroupPolicy%4Operational.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Host-Network-Service-Admin.evtx | aks 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Host-Network-Service-Operational.evtx | aks 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Hyper-V-Compute-Admin.evtx | aks 
@@ -557,6 +569,7 @@ File Path | Manifest
 /Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnP%%4Configuration.evtx | windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnP%4Configuration.evtx | agents, diagnostic, eg, min-diagnostic, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnPConfig%4Configuration.evtx | agents, diagnostic, eg, vmdiagnostic, windowsupdate 
+/Windows/System32/winevt/Logs/Microsoft-Windows-NTLM%4Operational.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-NdisImPlatform%4Operational.evtx | agents, diagnostic, eg, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-NetworkLocationWizard%4Operational.ev<br>tx | agents, diagnostic, eg, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-NetworkProfile%4Operational.evtx | agents, diagnostic, eg, min-diagnostic, vmdiagnostic, windowsupdate 
@@ -572,6 +585,8 @@ File Path | Manifest
 /Windows/System32/winevt/Logs/Microsoft-Windows-SMBServer%4Operational.evtx | diagnostic, eg, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-ServerManager%4Operational.evtx | diagnostic, eg, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-SmbClient%4Connectivity.evtx | diagnostic, eg, vmdiagnostic, windowsupdate 
+/Windows/System32/winevt/Logs/Microsoft-Windows-SmbClient%4Security.evtx | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-Windows-SmbServer%4Security.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Store%%4Operational.evtx | windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-TCPIP%4Operational.evtx | agents, diagnostic, eg, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-TaskScheduler%%4Operational.evtx | windowsupdate 
@@ -584,6 +599,7 @@ File Path | Manifest
 /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-RemoteConnectionMana<br>ger%4Operational.evtx | diagnostic, eg, min-diagnostic, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-SessionBroker-Client<br>%4Admin.evtx | diagnostic, eg, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-SessionBroker-Client<br>%4Operational.evtx | diagnostic, eg, vmdiagnostic, windowsupdate 
+/Windows/System32/winevt/Logs/Microsoft-Windows-User Profile Service%4Operational.evt<br>x | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-UserPnp%4DeviceInstall.evtx | agents, diagnostic, eg, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Windows Firewall With Advanced Securi<br>ty%4ConnectionSecurity.evtx | agents, diagnostic, eg, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Windows Firewall With Advanced Securi<br>ty%4Firewall.evtx | agents, diagnostic, eg, min-diagnostic, vmdiagnostic, windowsupdate 
@@ -596,6 +612,8 @@ File Path | Manifest
 /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Status%4GuestAgent.evtx | agents, diagnostic, eg, monitor-mgmt, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Status%4Plugins.evtx | agents, diagnostic, eg, monitor-mgmt, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/MicrosoftAzureRecoveryServices-Replication.evtx | diagnostic, eg, vmdiagnostic, windowsupdate 
+/Windows/System32/winevt/Logs/OpenSSH%4Admin.evtx | diagnostic 
+/Windows/System32/winevt/Logs/OpenSSH%4Operational.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Security.evtx | diagnostic, eg, min-diagnostic, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Setup.evtx | diagnostic, eg, min-diagnostic, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/System.evtx | agents, aks, diagnostic, eg, min-diagnostic, normal, servicefabric, site-recovery, sql-iaas, vmdiagnostic, windowsupdate, workloadbackup 
@@ -616,7 +634,7 @@ File Path | Manifest
 /Windows/debug/netlogon.log | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 /Windows/servicing/sessions/sessions.xml | diagnostic, min-diagnostic, vmdiagnostic, windowsupdate 
 /Windows/system32/winevt/Logs/Operations Manager.evtx | monitor-mgmt 
-/Windows/windowsupdate\*.log | windowsupdate 
+/Windows/windowsupdate\*.log | diagnostic, min-diagnostic, windowsupdate 
 /WindowsAzure/Config/\* | monitor-mgmt 
 /WindowsAzure/GuestAgent\*/CommonAgentConfig.config | diagnostic, vmdiagnostic, windowsupdate 
 /WindowsAzure/Logs/AggregateStatus/\*.json | monitor-mgmt 
@@ -708,7 +726,7 @@ File Path | Manifest
 /WindowsAzure/Logs/WaAppAgent.log | agents, diagnostic, eg, min-diagnostic, normal, site-recovery, vmdiagnostic, windowsupdate, workloadbackup 
 /WindowsAzure/Logs/\*.log | monitor-mgmt 
 /WindowsAzure/Logs/plugins/\*/\*/\*.log | monitor-mgmt 
-/WindowsAzure/ProxyAgent/Logs/\* | agents, diagnostic, normal 
+/WindowsAzure/ProxyAgent/Logs/\* | agents, diagnostic, min-diagnostic, normal 
 /WindowsAzure/config/\*.xml | agents, diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 /WindowsUpdateVerbose.etl | windowsupdate 
 /k/\*.err | aks 
@@ -720,5 +738,6 @@ File Path | Manifest
 /k/bootstrap-config | aks 
 /k/kubeclusterconfig.json | aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
+/windows/Panther/setup.etl | diagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-02-27 17:00:47.265252`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-03-10 13:50:47.376270`*

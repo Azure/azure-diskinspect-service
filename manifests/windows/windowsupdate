@@ -68,6 +68,7 @@ copy,/Windows/Panther/WaSetup.log
 copy,/Windows/Panther/VmAgentInstaller.xml
 copy,/Windows/Panther/unattend.xml
 copy,/unattend.xml
+copy,/windows/Panther/setup.etl
 copy,/Windows/Panther/setupact.log
 copy,/Windows/Panther/setuperr.log
 copy,/Windows/Panther/UnattendGC/setupact.log
