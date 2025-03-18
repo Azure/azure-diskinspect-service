@@ -53,8 +53,8 @@ echo,### WindowsAzure GuestAgent logs ###
 copy,/WindowsAzure/TransparentInstaller.log
 copy,/WindowsAzure/WaAppAgent.log
 copy,/WindowsAzure/Logs/aks/*.log
-copy./WindowsAzure/Logs/aks/*.txt
+copy,/WindowsAzure/Logs/aks/*.txt
 
-echo,### Last bugcheck minidump (less than 10MB) ###
+echo,### Last bugcheck minidump ###
 copy,/WindowsAzure/Logs/aks/*.dmp
 
