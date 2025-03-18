@@ -5,10 +5,21 @@ copy,/Windows/System32/winevt/Logs/Application.evtx
 echo,### Logs of services including but not limited to Kubelet, Kube proxy and containerd ###
 copy,/k/*.log
 copy,/k/*.err
+copy,/k/kubeclusterconfig.json
+
+echo,### AzureCNI config ###
+copy,/k/azurecni/netconf/10-azure.conflist
+
+echo,### AzureCNS logs ###
+copy,/k/azurecns/*.log
+copy,/k/azurecns/*.json
 
 echo,### Cluster configurations ###
 copy,/k/kubeclusterconfig.json
 copy,/Program Files/containerd/config.toml
+
+echo,### Nvidia logs ###
+copy,/AzureData/NvidiaInstallLog/*.log
 
 echo,### Kubelet bootstrap config ###
 copy,/k/bootstrap-config
@@ -33,10 +44,17 @@ copy,/ProgramData/containerd/root/panic.log,noscan
 
 echo,### Cluster provision logs ###
 copy,/AzureData/CustomDataSetupScript.log
-copy,/AzureData/CustomDataSetupScript.ps1
 
 echo,### Windows CCGPlugin logs ###
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Containers-CCG%4Admin.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-AKSGMSAPlugin%4Admin.evtx
 
+echo,### WindowsAzure GuestAgent logs ###
+copy,/WindowsAzure/TransparentInstaller.log
+copy,/WindowsAzure/WaAppAgent.log
+copy,/WindowsAzure/Logs/aks/*.log
+copy,/WindowsAzure/Logs/aks/*.txt
+
+echo,### Last bugcheck minidump ###
+copy,/WindowsAzure/Logs/aks/*.dmp
 

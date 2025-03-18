@@ -338,7 +338,7 @@ File Path | Manifest
 /$Windows.~BT/Sources/Panther/setupact.log | windowsupdate 
 /$Windows.~BT/Sources/Panther/setuperr.log | windowsupdate 
 /AzureData/CustomDataSetupScript.log | aks 
-/AzureData/CustomDataSetupScript.ps1 | aks 
+/AzureData/NvidiaInstallLog/\*.log | aks 
 /Boot/BCD | windowsupdate 
 /CalicoWindows/logs/\*.log | aks 
 /Packages/Plugins/ESET.FileSecurity/\*/agent_version.txt | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
@@ -725,8 +725,13 @@ File Path | Manifest
 /WindowsAzure/Logs/VFPlugin/\*.log | monitor-mgmt 
 /WindowsAzure/Logs/WaAppAgent.log | agents, diagnostic, eg, min-diagnostic, normal, site-recovery, vmdiagnostic, windowsupdate, workloadbackup 
 /WindowsAzure/Logs/\*.log | monitor-mgmt 
+/WindowsAzure/Logs/aks/\*.dmp | aks 
+/WindowsAzure/Logs/aks/\*.log | aks 
+/WindowsAzure/Logs/aks/\*.txt | aks 
 /WindowsAzure/Logs/plugins/\*/\*/\*.log | monitor-mgmt 
 /WindowsAzure/ProxyAgent/Logs/\* | agents, diagnostic, min-diagnostic, normal 
+/WindowsAzure/TransparentInstaller.log | aks 
+/WindowsAzure/WaAppAgent.log | aks 
 /WindowsAzure/config/\*.xml | agents, diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 /WindowsUpdateVerbose.etl | windowsupdate 
 /k/\*.err | aks 
@@ -735,9 +740,12 @@ File Path | Manifest
 /k/azure-vnet-ipam.log | aks 
 /k/azure-vnet.json | aks 
 /k/azure-vnet.log | aks 
+/k/azurecni/netconf/10-azure.conflist | aks 
+/k/azurecns/\*.json | aks 
+/k/azurecns/\*.log | aks 
 /k/bootstrap-config | aks 
-/k/kubeclusterconfig.json | aks 
+/k/kubeclusterconfig.json | aks, aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 /windows/Panther/setup.etl | diagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-03-10 13:50:47.376270`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-03-18 12:25:25.128179`*
