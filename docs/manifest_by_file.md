@@ -334,9 +334,13 @@ copy | sql-iaas
 ## windows 
 File Path | Manifest 
 ------------- | ------------- 
+/$Windows.~BT/Sources/Panther/CompatData\*.xml | windowsupdate 
 /$Windows.~BT/Sources/Panther/miglog.xml | windowsupdate 
 /$Windows.~BT/Sources/Panther/setupact.log | windowsupdate 
 /$Windows.~BT/Sources/Panther/setuperr.log | windowsupdate 
+/$Windows.~BT/Sources/Rollback/diagerr.xml | windowsupdate 
+/$Windows.~BT/Sources/Rollback/diagwrn.xml | windowsupdate 
+/$Windows.~BT/Sources/Rollback/setuperr.log | windowsupdate 
 /AzureData/CustomDataSetupScript.log | aks 
 /AzureData/NvidiaInstallLog/\*.log | aks 
 /Boot/BCD | windowsupdate 
@@ -477,6 +481,7 @@ File Path | Manifest
 /Windows/Logs/CBS/\*.cab | windowsupdate 
 /Windows/Logs/CBS/\*.log | diagnostic, min-diagnostic, windowsupdate 
 /Windows/Logs/DISM/\*.log | diagnostic, min-diagnostic, windowsupdate 
+/Windows/Logs/MoSetup/MoSetup.log | windowsupdate 
 /Windows/Logs/MoSetup/UpdateAgent.log | windowsupdate 
 /Windows/Logs/NetSetup/\*.etl | windowsupdate 
 /Windows/Logs/OpsMgrTrace/\*.\* | monitor-mgmt 
@@ -632,6 +637,7 @@ File Path | Manifest
 /Windows/debug/dcpromoui.log | diagnostic, eg, min-diagnostic, normal, vmdiagnostic, windowsupdate 
 /Windows/debug/mrt.log | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 /Windows/debug/netlogon.log | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
+/Windows/inf/setupapi.app.log | diagnostic, windowsupdate 
 /Windows/servicing/sessions/sessions.xml | diagnostic, min-diagnostic, vmdiagnostic, windowsupdate 
 /Windows/system32/winevt/Logs/Operations Manager.evtx | monitor-mgmt 
 /Windows/windowsupdate\*.log | diagnostic, min-diagnostic, windowsupdate 
@@ -748,4 +754,4 @@ File Path | Manifest
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 /windows/Panther/setup.etl | diagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-03-18 12:25:25.128179`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-03-26 13:03:21.697799`*
