@@ -86,6 +86,9 @@ echo,### Plug and Play ###
 copy,/Windows/INF/netcfg*.*etl,noscan
 copy,/Windows/INF/setupapi.*.log
 
+echo,### App Install ###
+copy,/Windows/inf/setupapi.app.log	
+
 echo,### Active Directory domain join ###
 copy,/Windows/debug/netlogon.log
 copy,/Windows/debug/NetSetup.LOG
@@ -237,9 +240,14 @@ copy,/Windows/System32/winevt/Logs/Microsoft-Windows-DeliveryOptimization%%4Oper
 echo,### Windows Update - in-place upgrade ###
 copy,/Windows/Panther/miglog.xml
 copy,/Windows/Logs/mosetup/bluebox.log
+copy,/Windows/Logs/MoSetup/MoSetup.log	
+copy,/$Windows.~BT/Sources/Panther/CompatData*.xml
 copy,/$Windows.~BT/Sources/Panther/setupact.log
 copy,/$Windows.~BT/Sources/Panther/setuperr.log
 copy,/$Windows.~BT/Sources/Panther/miglog.xml
+copy,/$Windows.~BT/Sources/Rollback/setuperr.log
+copy,/$Windows.~BT/Sources/Rollback/diagerr.xml
+copy,/$Windows.~BT/Sources/Rollback/diagwrn.xml
 copy,/Windows/Logs/SetupCleanupTask/setupact.log
 copy,/Windows/Logs/SetupCleanupTask/setuperr.log
 copy,/Windows.old/Windows/Logs/mosetup/bluebox.log
