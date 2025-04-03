@@ -241,6 +241,7 @@ echo,### Windows Update - in-place upgrade ###
 copy,/Windows/Panther/miglog.xml
 copy,/Windows/Logs/mosetup/bluebox.log
 copy,/Windows/Logs/MoSetup/MoSetup.log	
+copy,/$WINDOWS.~BT/Sources/Panther/scanresult.xml 
 copy,/$Windows.~BT/Sources/Panther/CompatData*.xml
 copy,/$Windows.~BT/Sources/Panther/setupact.log
 copy,/$Windows.~BT/Sources/Panther/setuperr.log

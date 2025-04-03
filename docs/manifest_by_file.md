@@ -334,6 +334,7 @@ copy | sql-iaas
 ## windows 
 File Path | Manifest 
 ------------- | ------------- 
+/$WINDOWS.~BT/Sources/Panther/scanresult.xml | windowsupdate 
 /$Windows.~BT/Sources/Panther/CompatData\*.xml | windowsupdate 
 /$Windows.~BT/Sources/Panther/miglog.xml | windowsupdate 
 /$Windows.~BT/Sources/Panther/setupact.log | windowsupdate 
@@ -754,4 +755,4 @@ File Path | Manifest
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 /windows/Panther/setup.etl | diagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-03-26 13:03:21.697799`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-04-03 13:07:17.793320`*

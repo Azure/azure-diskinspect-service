@@ -1897,6 +1897,7 @@ windowsupdate | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-DeliveryO
 windowsupdate | copy | /Windows/Panther/miglog.xml
 windowsupdate | copy | /Windows/Logs/mosetup/bluebox.log
 windowsupdate | copy | /Windows/Logs/MoSetup/MoSetup.log
+windowsupdate | copy | /$WINDOWS.~BT/Sources/Panther/scanresult.xml
 windowsupdate | copy | /$Windows.~BT/Sources/Panther/CompatData\*.xml
 windowsupdate | copy | /$Windows.~BT/Sources/Panther/setupact.log
 windowsupdate | copy | /$Windows.~BT/Sources/Panther/setuperr.log
@@ -1943,4 +1944,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-03-26 13:03:21.697799`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-04-03 13:07:17.793320`*
