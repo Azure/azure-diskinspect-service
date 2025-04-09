@@ -142,6 +142,7 @@ aks | copy | /var/log/azure/kubelet-status.log
 aks | copy | /var/log/azure/kern.log
 aks | copy | /var/log/journal/\*/\*
 aks | copy | /var/log/azure/containerd-status.log
+aks | copy | /var/log/azure-cni\*
 aks | copy | /var/log/azure-vnet\*
 aks | copy | /var/log/azure-ipam\*
 aks | copy | /var/log/cilium-cni\*
@@ -823,7 +824,12 @@ aks | copy | /Windows/System32/winevt/Logs/Application.evtx
 aks | copy | /k/\*.log
 aks | copy | /k/\*.err
 aks | copy | /k/kubeclusterconfig.json
+aks | copy | /k/azurecni/netconf/10-azure.conflist
+aks | copy | /k/azurecns/\*.log
+aks | copy | /k/azurecns/\*.json
+aks | copy | /k/kubeclusterconfig.json
 aks | copy | /Program Files/containerd/config.toml
+aks | copy | /AzureData/NvidiaInstallLog/\*.log
 aks | copy | /k/bootstrap-config
 aks | copy | /k/azure-vnet.log
 aks | copy | /k/azure-vnet-ipam.log
@@ -836,9 +842,13 @@ aks | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Host-Network-Servic
 aks | copy | /CalicoWindows/logs/\*.log
 aks | copy | /ProgramData/containerd/root/panic.log
 aks | copy | /AzureData/CustomDataSetupScript.log
-aks | copy | /AzureData/CustomDataSetupScript.ps1
 aks | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Containers-CCG%4Admin.evtx
 aks | copy | /Windows/System32/winevt/Logs/Microsoft-AKSGMSAPlugin%4Admin.evtx
+aks | copy | /WindowsAzure/TransparentInstaller.log
+aks | copy | /WindowsAzure/WaAppAgent.log
+aks | copy | /WindowsAzure/Logs/aks/\*.log
+aks | copy | /WindowsAzure/Logs/aks/\*.txt
+aks | copy | /WindowsAzure/Logs/aks/\*.dmp
 asc-vmhealth | copy | /WindowsAzure/Logs/TransparentInstaller.log
 diagnostic | copy | /Windows/System32/config/SOFTWARE
 diagnostic | copy | /Windows/System32/config/SYSTEM
@@ -1928,5 +1938,3 @@ workloadbackup | copy | /WindowsAzure/Logs/WaAppAgent.log
 workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
-
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-04-09 19:02:51.563997`*
