@@ -234,6 +234,7 @@ File Path | Manifest
 /var/log/ambari-server/ambari-audit.log | hdinsight 
 /var/log/ambari-server/ambari-server.log | hdinsight 
 /var/log/auth\* | agents, diagnostic, eg, normal, vmdiagnostic 
+/var/log/azure-cni\* | aks 
 /var/log/azure-cns\* | aks 
 /var/log/azure-ipam\* | aks 
 /var/log/azure-npm.log | aks 
@@ -748,4 +749,4 @@ File Path | Manifest
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 /windows/Panther/setup.etl | diagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-03-18 12:25:25.128179`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-04-09 11:17:09.256164`*
