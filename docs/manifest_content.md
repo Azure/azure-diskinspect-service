@@ -142,6 +142,7 @@ aks | copy | /var/log/azure/kubelet-status.log
 aks | copy | /var/log/azure/kern.log
 aks | copy | /var/log/journal/\*/\*
 aks | copy | /var/log/azure/containerd-status.log
+aks | copy | /var/log/azure-cni\*
 aks | copy | /var/log/azure-vnet\*
 aks | copy | /var/log/azure-ipam\*
 aks | copy | /var/log/cilium-cni\*
@@ -1936,4 +1937,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-03-18 12:25:25.128179`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-04-09 11:17:09.256164`*
