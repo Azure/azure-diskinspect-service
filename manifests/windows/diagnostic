@@ -269,5 +269,81 @@ echo,### Gathering Guest ProxyAgent Log Files ###
 copy,/WindowsAzure/ProxyAgent/Logs/*
 copy,/Windows/Logs/eBPF/committed/*
 
+echo,### MSRDCOllect ###
+copy,/Program Files/Microsoft RDInfra/AgentInstall.txt
+copy,/Program Files/Microsoft RDInfra/GenevaInstall.txt
+copy,/Program Files/Microsoft RDInfra/MsRdcWebRTCSvc.txt
+copy,/Program Files/Microsoft RDInfra/MsRdcWebRTCSvcMsiInstall.txt
+copy,/Program Files/Microsoft RDInfra/MsRdcWebRTCSvcMsiUninstall.txt
+copy,/Program Files/Microsoft RDInfra/SXSStackInstall.txt
+copy,/Program Files/Microsoft RDInfra/WVDAgentManagerInstall.txt
+copy,/Program Files/MsRDCMMRHost/MsRDCMMRHostInstall.log
+copy,/Windows/Temp/MsRDCMMRHostInstall.log
+copy,/Windows/Temp/ScriptLog.log
+copy,/Windows/Logs/RDMSDeploymentUI.txt
+copy,/Windows/Logs/RDMSDeploymentUI.txt
+copy,/Windows/System32/tssesdir/*.xml
+copy,/Windows/web/rdweb/App_Data/rdweb.log
+copy,/Windows/inf/setupapi.app.log
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AAD%4Operational
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4EXE and DLL
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4Packaged app-Execution
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4Packaged app-Deployment
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4MSI and Script
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppModel-Runtime%4Admin
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppReadiness%4Admin
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppReadiness%4Operational
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeployment%4Operational
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeploymentServer%4Operational
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeploymentServer%4Restricted
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppxPackaging%4Operational
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Diagnostics-Performance%4Operational
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-GroupPolicy%4Operational
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-HelloForBusiness%4Operational
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-PowerShell%4Operational
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Shell-Core%4Operational
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TaskScheduler%4Operational
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-TSV-VmHostAgent%4Admin
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-TSV-VmHostAgent%4Operational
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-User Device Registration%4Admin
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WER-Diagnostics%4Operational
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WinINet-Config%4ProxyConfigChanged
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Winlogon%4Operational
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WinRM%4Operational
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WMI-Activity%4Operational
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Workplace Join%4Admin
+copy,/Windows/System32/winevt/Logs/PowerShellCore%4Operational
+
+ll,/Windows/RemotePackages
+ll,/Program Files/Microsoft RDInfra
+
+## FXLogic ##
+copy,/Windows/System32/winevt/Logs/Microsoft-FSLogix-Apps%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-FSLogix-Apps%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-FSLogix-CloudCache%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-FSLogix-CloudCache%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Ntfs%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-VHDMP%4Operational.evtx
+copy,/Program Files/FSLogix/Apps/Rules
+ll,/Program Files/FSLogix/Apps/Rules
+ll,/Program Files/FSLogix/Apps/CompiledRules
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteAssistance%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteAssistance%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteHelp%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Kerberos-KDCProxy%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-SmartCard-Audit%4Authentication.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-SmartCard-DeviceEnum%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-SmartCard-TPM-VCard-Module%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-SmartCard-TPM-VCard-Module%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/icrosoft-Windows-AppxPackaging%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeploymentServer%4Operational.evtx
+ll,/Windows/System32/IME
+ll,/Windows/IME
+copy,/Program Files/AzureConnectedMachineAgent/Log/himds.log
+copy,/Program Files/AzureConnectedMachineAgent/Log/azcmagent.log
+copy,/Program Files/GuestConfig/arc_policy_logs/gc_agent.log
+copy,/Program Files/GuestConfig/ext_mgr_logs/gc_ext.log
+
 echo,### Gathering Disk Info ###
 diskinfo,
