@@ -313,7 +313,6 @@ copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WinRM%4Operational
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WMI-Activity%4Operational
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Workplace Join%4Admin
 copy,/Windows/System32/winevt/Logs/PowerShellCore%4Operational
-
 ll,/Windows/RemotePackages
 ll,/Program Files/Microsoft RDInfra
 
