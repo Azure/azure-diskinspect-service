@@ -110,6 +110,10 @@ echo,### Plug and Play ###
 copy,/Windows/INF/netcfg*.*etl
 copy,/Windows/INF/setupapi.dev.log
 
+
+echo,### App Install ###
+copy,/Windows/inf/setupapi.app.log	
+
 echo,### Active Directory domain join ###
 copy,/Windows/debug/netlogon.log
 copy,/Windows/debug/NetSetup.LOG
