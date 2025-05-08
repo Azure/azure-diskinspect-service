@@ -284,7 +284,6 @@ copy,/Windows/Logs/RDMSDeploymentUI.txt
 copy,/Windows/Logs/RDMSDeploymentUI.txt
 copy,/Windows/System32/tssesdir/*.xml
 copy,/Windows/web/rdweb/App_Data/rdweb.log
-copy,/Windows/inf/setupapi.app.log
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AAD%4Operational
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4EXE and DLL
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4Packaged app-Execution
