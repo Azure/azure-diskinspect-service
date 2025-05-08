@@ -945,6 +945,7 @@ diagnostic | copy | /Windows/System32/Sysprep/Panther/IE/setuperr.log
 diagnostic | copy | /Windows/System32/Sysprep/Sysprep_succeeded.tag
 diagnostic | copy | /Windows/INF/netcfg\*.\*etl
 diagnostic | copy | /Windows/INF/setupapi.dev.log
+diagnostic | copy | /Windows/inf/setupapi.app.log
 diagnostic | copy | /Windows/debug/netlogon.log
 diagnostic | copy | /Windows/debug/NetSetup.LOG
 diagnostic | copy | /Windows/debug/mrt.log
@@ -1753,6 +1754,7 @@ windowsupdate | copy | /Windows/System32/Sysprep/Panther/IE/setuperr.log
 windowsupdate | copy | /Windows/System32/Sysprep/Sysprep_succeeded.tag
 windowsupdate | copy | /Windows/INF/netcfg\*.\*etl
 windowsupdate | copy | /Windows/INF/setupapi.\*.log
+windowsupdate | copy | /Windows/inf/setupapi.app.log
 windowsupdate | copy | /Windows/debug/netlogon.log
 windowsupdate | copy | /Windows/debug/NetSetup.LOG
 windowsupdate | copy | /Windows/debug/mrt.log
@@ -1895,9 +1897,15 @@ windowsupdate | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Store%%4O
 windowsupdate | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-DeliveryOptimization%%4Operational.ev<br>tx
 windowsupdate | copy | /Windows/Panther/miglog.xml
 windowsupdate | copy | /Windows/Logs/mosetup/bluebox.log
+windowsupdate | copy | /Windows/Logs/MoSetup/MoSetup.log
+windowsupdate | copy | /$WINDOWS.~BT/Sources/Panther/scanresult.xml
+windowsupdate | copy | /$Windows.~BT/Sources/Panther/CompatData\*.xml
 windowsupdate | copy | /$Windows.~BT/Sources/Panther/setupact.log
 windowsupdate | copy | /$Windows.~BT/Sources/Panther/setuperr.log
 windowsupdate | copy | /$Windows.~BT/Sources/Panther/miglog.xml
+windowsupdate | copy | /$Windows.~BT/Sources/Rollback/setuperr.log
+windowsupdate | copy | /$Windows.~BT/Sources/Rollback/diagerr.xml
+windowsupdate | copy | /$Windows.~BT/Sources/Rollback/diagwrn.xml
 windowsupdate | copy | /Windows/Logs/SetupCleanupTask/setupact.log
 windowsupdate | copy | /Windows/Logs/SetupCleanupTask/setuperr.log
 windowsupdate | copy | /Windows.old/Windows/Logs/mosetup/bluebox.log
@@ -1937,4 +1945,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-04-09 11:17:09.256164`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-05-08 11:21:10.739288`*
