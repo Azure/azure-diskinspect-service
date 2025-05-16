@@ -41,6 +41,7 @@ copy,/var/log/pods/kured*/*/*.log*
 
 echo,## Blob Fuse ##
 copy,/var/log/blobfuse2.log
+copy,/var/log/blobfuse2.log*
 echo,
 
 echo,### NVidia installer logs for GPU nodes ###

@@ -156,6 +156,7 @@ aks | copy | /var/log/pods/calico-system\*/\*/\*.log\*
 aks | copy | /var/log/pods/tigera-operator\*/\*/\*.log\*
 aks | copy | /var/log/pods/kured\*/\*/\*.log\*
 aks | copy | /var/log/blobfuse2.log
+aks | copy | /var/log/blobfuse2.log\*
 aks | copy | /var/log/nvidia\*.log
 aks | list | /var/log/pods/\*/\*
 aks | copy | /var/log/azure/Microsoft.AKS.Compute.AKS.Linux.AKSNode/extension.log
@@ -2016,4 +2017,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-05-16 10:28:50.308576`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-05-16 10:32:46.526647`*
