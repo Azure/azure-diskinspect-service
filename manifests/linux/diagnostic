@@ -145,6 +145,10 @@ copy,/etc/selinux/config,noscan
 copy,/sys/kernel/security/apparmor/profiles,noscan
 echo,
 
+echo,## Blob Fuse ##
+copy,/var/log/blobfuse2.log
+copy,/var/log/blobfuse2.log-*
+
 echo,### Gathering Disk Info ###
 diskinfo,
 echo,
