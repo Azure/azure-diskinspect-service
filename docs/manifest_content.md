@@ -155,6 +155,8 @@ aks | copy | /var/log/pods/kube-system\*/\*/\*.log\*
 aks | copy | /var/log/pods/calico-system\*/\*/\*.log\*
 aks | copy | /var/log/pods/tigera-operator\*/\*/\*.log\*
 aks | copy | /var/log/pods/kured\*/\*/\*.log\*
+aks | copy | /var/log/blobfuse2.log
+aks | copy | /var/log/blobfuse2.log\*
 aks | copy | /var/log/nvidia\*.log
 aks | list | /var/log/pods/\*/\*
 aks | copy | /var/log/azure/Microsoft.AKS.Compute.AKS.Linux.AKSNode/extension.log
@@ -298,6 +300,8 @@ diagnostic | copy | /etc/modprobe.d/\*.conf
 diagnostic | copy | /etc/security/limits.conf
 diagnostic | copy | /etc/selinux/config
 diagnostic | copy | /sys/kernel/security/apparmor/profiles
+diagnostic | copy | /var/log/blobfuse2.log
+diagnostic | copy | /var/log/blobfuse2.log\*
 diagnostic | diskinfo | 
 diagnostic | copy | /var/log/azure-proxy-agent/\*
 diskpool | list | /etc/cron.daily
@@ -847,6 +851,8 @@ aks | copy | /WindowsAzure/WaAppAgent.log
 aks | copy | /WindowsAzure/Logs/aks/\*.log
 aks | copy | /WindowsAzure/Logs/aks/\*.txt
 aks | copy | /WindowsAzure/Logs/aks/\*.dmp
+aks | copy | /WindowsAzure/Logs/blobfuse2.log
+aks | copy | /WindowsAzure/Logs/blobfuse2.log\*
 asc-vmhealth | copy | /WindowsAzure/Logs/TransparentInstaller.log
 diagnostic | copy | /Windows/System32/config/SOFTWARE
 diagnostic | copy | /Windows/System32/config/SYSTEM
@@ -1089,6 +1095,78 @@ diagnostic | copy | /Windows/Logs/DISM/\*.log
 diagnostic | copy | /Windows/windowsupdate\*.log
 diagnostic | copy | /WindowsAzure/ProxyAgent/Logs/\*
 diagnostic | copy | /Windows/Logs/eBPF/committed/\*
+diagnostic | copy | /Program Files/Microsoft RDInfra/AgentInstall.txt
+diagnostic | copy | /Program Files/Microsoft RDInfra/GenevaInstall.txt
+diagnostic | copy | /Program Files/Microsoft RDInfra/MsRdcWebRTCSvc.txt
+diagnostic | copy | /Program Files/Microsoft RDInfra/MsRdcWebRTCSvcMsiInstall.txt
+diagnostic | copy | /Program Files/Microsoft RDInfra/MsRdcWebRTCSvcMsiUninstall.txt
+diagnostic | copy | /Program Files/Microsoft RDInfra/SXSStackInstall.txt
+diagnostic | copy | /Program Files/Microsoft RDInfra/WVDAgentManagerInstall.txt
+diagnostic | copy | /Program Files/MsRDCMMRHost/MsRDCMMRHostInstall.log
+diagnostic | copy | /Windows/Temp/MsRDCMMRHostInstall.log
+diagnostic | copy | /Windows/Temp/ScriptLog.log
+diagnostic | copy | /Windows/Logs/RDMSDeploymentUI.txt
+diagnostic | copy | /Windows/Logs/RDMSDeploymentUI.txt
+diagnostic | copy | /Windows/System32/tssesdir/\*.xml
+diagnostic | copy | /Windows/web/rdweb/App_Data/rdweb.log
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-AAD%4Operational
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4EXE and DLL
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4Packaged app-Execution
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4Packaged app-Deployment
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4MSI and Script
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-AppModel-Runtime%4Admin
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-AppReadiness%4Admin
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-AppReadiness%4Operational
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeployment%4Operational
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeploymentServer%4Operational
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeploymentServer%4Restricted
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-AppxPackaging%4Operational
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Diagnostics-Performance%4Operational
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-GroupPolicy%4Operational
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-HelloForBusiness%4Operational
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-PowerShell%4Operational
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Shell-Core%4Operational
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TaskScheduler%4Operational
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-TSV-VmHostAgent%4Adm<br>in
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-TSV-VmHostAgent%4Ope<br>rational
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-User Device Registration%4Admin
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-WER-Diagnostics%4Operational
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-WinINet-Config%4ProxyConfigChanged
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Winlogon%4Operational
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-WinRM%4Operational
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-WMI-Activity%4Operational
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Workplace Join%4Admin
+diagnostic | copy | /Windows/System32/winevt/Logs/PowerShellCore%4Operational
+diagnostic | list | /Windows/RemotePackages
+diagnostic | list | /Program Files/Microsoft RDInfra
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-FSLogix-Apps%4Admin.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-FSLogix-Apps%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-FSLogix-CloudCache%4Admin.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-FSLogix-CloudCache%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Ntfs%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-VHDMP%4Operational.evtx
+diagnostic | copy | /Program Files/FSLogix/Apps/Rules
+diagnostic | list | /Program Files/FSLogix/Apps/Rules
+diagnostic | list | /Program Files/FSLogix/Apps/CompiledRules
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteAssistance%4Admin.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteAssistance%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteHelp%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Kerberos-KDCProxy%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-SmartCard-Audit%4Authentication.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-SmartCard-DeviceEnum%4Operational.evt<br>x
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-SmartCard-TPM-VCard-Module%4Admin.evt<br>x
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-SmartCard-TPM-VCard-Module%4Operation<br>al.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/icrosoft-Windows-AppxPackaging%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeploymentServer%4Operational.evt<br>x
+diagnostic | list | /Windows/System32/IME
+diagnostic | list | /Windows/IME
+diagnostic | copy | /Program Files/AzureConnectedMachineAgent/Log/himds.log
+diagnostic | copy | /Program Files/AzureConnectedMachineAgent/Log/azcmagent.log
+diagnostic | copy | /Program Files/GuestConfig/arc_policy_logs/gc_agent.log
+diagnostic | copy | /Program Files/GuestConfig/ext_mgr_logs/gc_ext.log
+diagnostic | copy | /var/log/blobfuse2.log
+diagnostic | copy | /var/log/blobfuse2.log\*
 diagnostic | diskinfo | 
 eg | copy | /Windows/System32/winevt/Logs/System.evtx
 eg | copy | /Windows/System32/winevt/Logs/Application.evtx
@@ -1945,4 +2023,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-05-08 11:21:10.739288`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-05-16 11:00:40.852507`*
