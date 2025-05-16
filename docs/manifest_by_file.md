@@ -268,6 +268,7 @@ File Path | Manifest
 /var/log/azure/kubelet-status.log | aks 
 /var/log/azure/run-command/handler.log | diagnostic, vmdiagnostic 
 /var/log/blobfuse2.log | aks 
+/var/log/blobfuse2.log\* | aks 
 /var/log/boot\* | diagnostic, eg, normal, vmdiagnostic 
 /var/log/cilium-cni\* | aks 
 /var/log/cloud-init\* | aks, diagnostic, diskpool, eg, normal, vmdiagnostic 
@@ -801,6 +802,7 @@ File Path | Manifest
 /WindowsAzure/Logs/aks/\*.log | aks 
 /WindowsAzure/Logs/aks/\*.txt | aks 
 /WindowsAzure/Logs/blobfuse2.log | aks 
+/WindowsAzure/Logs/blobfuse2.log\* | aks 
 /WindowsAzure/Logs/plugins/\*/\*/\*.log | monitor-mgmt 
 /WindowsAzure/ProxyAgent/Logs/\* | agents, diagnostic, min-diagnostic, normal 
 /WindowsAzure/TransparentInstaller.log | aks 
@@ -821,4 +823,4 @@ File Path | Manifest
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 /windows/Panther/setup.etl | diagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-05-16 10:51:41.913535`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-05-16 10:54:35.978769`*

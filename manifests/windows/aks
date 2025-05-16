@@ -60,4 +60,5 @@ copy,/WindowsAzure/Logs/aks/*.dmp
 
 echo,## Blob Fuse ##
 copy,/WindowsAzure/Logs/blobfuse2.log
+copy,/WindowsAzure/Logs/blobfuse2.log*
 echo,
