@@ -39,6 +39,10 @@ copy,/var/log/pods/calico-system*/*/*.log*
 copy,/var/log/pods/tigera-operator*/*/*.log*
 copy,/var/log/pods/kured*/*/*.log*
 
+echo,## Blob Fuse ##
+copy,/var/log/blobfuse2.log
+echo,
+
 echo,### NVidia installer logs for GPU nodes ###
 copy,/var/log/nvidia*.log,noscan
 

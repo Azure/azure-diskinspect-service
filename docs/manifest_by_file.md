@@ -267,6 +267,7 @@ File Path | Manifest
 /var/log/azure/kern.log | aks 
 /var/log/azure/kubelet-status.log | aks 
 /var/log/azure/run-command/handler.log | diagnostic, vmdiagnostic 
+/var/log/blobfuse2.log | aks 
 /var/log/boot\* | diagnostic, eg, normal, vmdiagnostic 
 /var/log/cilium-cni\* | aks 
 /var/log/cloud-init\* | aks, diagnostic, diskpool, eg, normal, vmdiagnostic 
@@ -819,4 +820,4 @@ File Path | Manifest
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 /windows/Panther/setup.etl | diagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-05-16 10:25:22.400584`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-05-16 10:28:50.308576`*
