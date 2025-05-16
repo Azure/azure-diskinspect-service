@@ -156,7 +156,6 @@ aks | copy | /var/log/pods/calico-system\*/\*/\*.log\*
 aks | copy | /var/log/pods/tigera-operator\*/\*/\*.log\*
 aks | copy | /var/log/pods/kured\*/\*/\*.log\*
 aks | copy | /var/log/blobfuse2.log
-aks | copy | /var/log/blobfuse2.log\*
 aks | copy | /var/log/nvidia\*.log
 aks | list | /var/log/pods/\*/\*
 aks | copy | /var/log/azure/Microsoft.AKS.Compute.AKS.Linux.AKSNode/extension.log
@@ -300,10 +299,8 @@ diagnostic | copy | /etc/modprobe.d/\*.conf
 diagnostic | copy | /etc/security/limits.conf
 diagnostic | copy | /etc/selinux/config
 diagnostic | copy | /sys/kernel/security/apparmor/profiles
-diagnostic | copy | /var/log/blobfuse2.log
-diagnostic | copy | /var/log/blobfuse2.log\*
-diagnostic | copy | /var/log/azure-proxy-agent/\*
 diagnostic | diskinfo | 
+diagnostic | copy | /var/log/azure-proxy-agent/\*
 diskpool | list | /etc/cron.daily
 diskpool | list | /etc/cron.hourly
 diskpool | list | /etc/rsyslog.d
@@ -851,6 +848,7 @@ aks | copy | /WindowsAzure/WaAppAgent.log
 aks | copy | /WindowsAzure/Logs/aks/\*.log
 aks | copy | /WindowsAzure/Logs/aks/\*.txt
 aks | copy | /WindowsAzure/Logs/aks/\*.dmp
+aks | copy | /WindowsAzure/Logs/blobfuse2.log
 asc-vmhealth | copy | /WindowsAzure/Logs/TransparentInstaller.log
 diagnostic | copy | /Windows/System32/config/SOFTWARE
 diagnostic | copy | /Windows/System32/config/SYSTEM
@@ -2019,4 +2017,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-05-16 10:35:13.659973`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-05-16 10:51:41.913535`*
