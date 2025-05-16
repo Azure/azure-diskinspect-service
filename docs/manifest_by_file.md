@@ -267,8 +267,8 @@ File Path | Manifest
 /var/log/azure/kern.log | aks 
 /var/log/azure/kubelet-status.log | aks 
 /var/log/azure/run-command/handler.log | diagnostic, vmdiagnostic 
-/var/log/blobfuse2.log | aks 
-/var/log/blobfuse2.log\* | aks 
+/var/log/blobfuse2.log | aks, diagnostic 
+/var/log/blobfuse2.log\* | aks, diagnostic 
 /var/log/boot\* | diagnostic, eg, normal, vmdiagnostic 
 /var/log/cilium-cni\* | aks 
 /var/log/cloud-init\* | aks, diagnostic, diskpool, eg, normal, vmdiagnostic 
@@ -821,6 +821,8 @@ File Path | Manifest
 /k/bootstrap-config | aks 
 /k/kubeclusterconfig.json | aks, aks 
 /unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
+/var/log/blobfuse2.log | diagnostic 
+/var/log/blobfuse2.log\* | diagnostic 
 /windows/Panther/setup.etl | diagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-05-16 10:54:35.978769`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-05-16 11:00:40.852507`*

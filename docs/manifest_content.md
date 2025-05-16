@@ -300,6 +300,8 @@ diagnostic | copy | /etc/modprobe.d/\*.conf
 diagnostic | copy | /etc/security/limits.conf
 diagnostic | copy | /etc/selinux/config
 diagnostic | copy | /sys/kernel/security/apparmor/profiles
+diagnostic | copy | /var/log/blobfuse2.log
+diagnostic | copy | /var/log/blobfuse2.log\*
 diagnostic | diskinfo | 
 diagnostic | copy | /var/log/azure-proxy-agent/\*
 diskpool | list | /etc/cron.daily
@@ -1163,6 +1165,8 @@ diagnostic | copy | /Program Files/AzureConnectedMachineAgent/Log/himds.log
 diagnostic | copy | /Program Files/AzureConnectedMachineAgent/Log/azcmagent.log
 diagnostic | copy | /Program Files/GuestConfig/arc_policy_logs/gc_agent.log
 diagnostic | copy | /Program Files/GuestConfig/ext_mgr_logs/gc_ext.log
+diagnostic | copy | /var/log/blobfuse2.log
+diagnostic | copy | /var/log/blobfuse2.log\*
 diagnostic | diskinfo | 
 eg | copy | /Windows/System32/winevt/Logs/System.evtx
 eg | copy | /Windows/System32/winevt/Logs/Application.evtx
@@ -2019,4 +2023,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-05-16 10:54:35.978769`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-05-16 11:00:40.852507`*

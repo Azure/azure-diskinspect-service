@@ -353,6 +353,11 @@ copy,/Program Files/GuestConfig/arc_policy_logs/gc_agent.log
 copy,/Program Files/GuestConfig/ext_mgr_logs/gc_ext.log
 echo,
 
+echo,## Blob Fuse ##
+copy,/var/log/blobfuse2.log
+copy,/var/log/blobfuse2.log*
+echo,
+
 echo,### Gathering Disk Info ###
 diskinfo,
 echo,
