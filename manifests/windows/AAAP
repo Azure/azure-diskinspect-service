@@ -1,0 +1,76 @@
+echo,#AAAP Logs
+copy,/WindowsAzure/Logs/*.log
+copy,/WindowsAzure/Logs/AggregateStatus/*.json
+copy,/WindowsAzure/Logs/plugins/*/*/*.log
+copy,/WindowsAzure/Logs/VFPlugin/*.log
+copy,/WindowsAzure/config/*.xml
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Powershell.DSC/*/DSCLOG*.json
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Powershell.DSC/*/DscExtensionHandler*.log
+copy,/Packages/Plugins/Microsoft.Powershell.DSC/*/DSCWork/*.dsc
+copy,/Packages/Plugins/Microsoft.Powershell.DSC/*/DSCWork/*.log,noscan
+copy,/Packages/Plugins/Microsoft.Powershell.DSC/*/DSCWork/*.dpx,noscan
+copy,/Packages/Plugins/Microsoft.Powershell.DSC/*/DSCVersion.xml
+copy,/Packages/Plugins/Microsoft.Powershell.DSC/*/DSCWork/HotfixInstallInProgress.dsc
+copy,/Packages/Plugins/Microsoft.Powershell.DSC/*/DSCWork/PreInstallDone.dsc
+
+echo,#Azure Update Manager logs
+copy,/Packages/Plugins/Microsoft.CPlat.Core.WindowsPatchExtension/*/status/*.status
+copy,/Packages/Plugins/Microsoft.CPlat.Core.WindowsPatchExtension/*/RuntimeSettings/*.settings
+copy,/Packages/Plugins/Microsoft.CPlat.Core.WindowsPatchExtension/*/*.json
+
+echo,#Event Logs
+copy,/Windows/system32/winevt/Logs/Operations Manager.evtx
+copy,/Windows/System32/winevt/Logs/Windows PowerShell.evtx
+copy,/Windows/System32/winevt/Logs/Windows Azure.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Bootstrapper.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4GuestAgent.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Heartbeat.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Runtime.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Status%4GuestAgent.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Status%4Plugins.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-SMA%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-SMA%4Debug.etl,noscan
+copy,/Windows/System32/winevt/Logs/Microsoft-Automation%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WindowsUpdateClient%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-DSC%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-CAPI2%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-GroupPolicy%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Resource-Exhaustion-Detector%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TCPIP%4Operational.evtx
+
+echo,#Windows Update Logs
+copy,/Windows/WindowsUpdate.log
+copy,/Windows/Logs/WindowsUpdate/WindowsUpdate.*.etl,noscan
+copy,/Windows/SoftwareDistribution/ReportingEvents.log
+copy,/Windows/Logs/CBS/*.log
+copy,/Windows/Logs/CBS/*.cab,noscan
+copy,/Windows/Logs/DISM/*.log
+copy,/Users/*/AppData/Local/microsoft/windows/windowsupdate.log
+
+echo,#Windows Update Service Logs
+copy,/Program Files/Update Services/LogFiles/WSUSSetup.log
+copy,/Program Files/Update Services/LogFiles/SoftwareDistribution.log
+copy,/Program Files/Update Services/LogFiles/WSyncMgr.log
+
+echo,#Hybrid Runbook Worker Logs
+copy,Packages/Plugins/Microsoft.Azure.Automation.HybridWorker.HybridWorkerForWindows/*/RuntimeSettings/*.settings
+copy,Packages/Plugins/Microsoft.Azure.Automation.HybridWorker.HybridWorkerForWindows/*/status/*.status
+copy,Packages/Plugins/Microsoft.Azure.Automation.HybridWorker.HybridWorkerForWindows/*/*.json
+copy,/HybridWorkerExtensionLogs/*
+
+echo,#Azure Machine Configuration Logs
+copy,/ProgramData/GuestConfig/Configuration/*
+copy,/ProgramData/GuestConfig/gc_agent_logs/*
+copy,/Packages/Plugins/Microsoft.GuestConfiguration.ConfigurationforWindows/*/status/*.status
+copy,/Packages/Plugins/Microsoft.GuestConfiguration.ConfigurationforWindows/*/RuntimeSettings/*.settings
+copy,/Packages/Plugins/Microsoft.GuestConfiguration.ConfigurationforWindows/*/*.json
+
+echo,#Arc logs which should not be on an Azure Machine
+copy,/Program Files/AzureConnectedMachineAgent/Log/himds.log
+copy,/Program Files/AzureConnectedMachineAgent/Log/azcmagent.log
+copy,/Program Files/GuestConfig/arc_policy_logs/gc_agent.log
+copy,/Program Files/GuestConfig/ext_mgr_logs/gc_ext.log
+
+echo,### Registry Hives ###
+copy,/Windows/System32/config/SOFTWARE,noscan
+copy,/Windows/System32/config/SYSTEM,noscan
