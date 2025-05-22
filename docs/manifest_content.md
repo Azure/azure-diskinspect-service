@@ -1149,6 +1149,7 @@ diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-FSLogix-CloudCache%4
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-FSLogix-CloudCache%4Operational.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Ntfs%4Operational.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-VHDMP%4Operational.evtx
+diagnostic | copy | /Program Files/FSLogix/Logs/Profile_\*.log
 diagnostic | copy | /Program Files/FSLogix/Apps/Rules
 diagnostic | list | /Program Files/FSLogix/Apps/Rules
 diagnostic | list | /Program Files/FSLogix/Apps/CompiledRules
@@ -2026,4 +2027,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-05-22 08:43:27.746504`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-05-22 08:51:24.259333`*

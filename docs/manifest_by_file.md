@@ -434,6 +434,7 @@ File Path | Manifest
 /Program Files/AzureConnectedMachineAgent/Log/azcmagent.log | diagnostic 
 /Program Files/AzureConnectedMachineAgent/Log/himds.log | diagnostic 
 /Program Files/FSLogix/Apps/Rules | diagnostic 
+/Program Files/FSLogix/Logs/Profile_\*.log | diagnostic 
 /Program Files/GuestConfig/arc_policy_logs/gc_agent.log | diagnostic 
 /Program Files/GuestConfig/ext_mgr_logs/gc_ext.log | diagnostic 
 /Program Files/Microsoft Dependency Agent/logs/\*.\* | monitor-mgmt 
@@ -828,4 +829,4 @@ File Path | Manifest
 /var/log/blobfuse2.log\* | diagnostic 
 /windows/Panther/setup.etl | diagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-05-22 08:43:27.746504`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-05-22 08:51:24.259333`*

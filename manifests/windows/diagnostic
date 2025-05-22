@@ -335,6 +335,7 @@ copy,/Windows/System32/winevt/Logs/Microsoft-FSLogix-CloudCache%4Admin.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-FSLogix-CloudCache%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Ntfs%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-VHDMP%4Operational.evtx
+copy,/Program Files/FSLogix/Logs/Profile_*.log
 copy,/Program Files/FSLogix/Apps/Rules
 ll,/Program Files/FSLogix/Apps/Rules
 ll,/Program Files/FSLogix/Apps/CompiledRules
