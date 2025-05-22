@@ -1136,6 +1136,9 @@ diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-WinINet-Conf
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Winlogon%4Operational
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-WinRM%4Operational
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-WMI-Activity%4Operational
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-DeviceManagement-Enterprise-Diagnosti<br>cs-Provider%4Sync
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-DeviceManagement-Enterprise-Diagnosti<br>cs-Provider%4Enrollment
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-DeviceManagement-Enterprise-Diagnosti<br>cs-Provider%4Admin
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Workplace Join%4Admin
 diagnostic | copy | /Windows/System32/winevt/Logs/PowerShellCore%4Operational
 diagnostic | list | /Windows/RemotePackages
@@ -2023,4 +2026,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-05-16 11:00:40.852507`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-05-22 08:43:27.746504`*
