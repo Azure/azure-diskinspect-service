@@ -434,6 +434,7 @@ File Path | Manifest
 /Program Files/AzureConnectedMachineAgent/Log/azcmagent.log | diagnostic 
 /Program Files/AzureConnectedMachineAgent/Log/himds.log | diagnostic 
 /Program Files/FSLogix/Apps/Rules | diagnostic 
+/Program Files/FSLogix/Logs/Profile_\*.log | diagnostic 
 /Program Files/GuestConfig/arc_policy_logs/gc_agent.log | diagnostic 
 /Program Files/GuestConfig/ext_mgr_logs/gc_ext.log | diagnostic 
 /Program Files/Microsoft Dependency Agent/logs/\*.\* | monitor-mgmt 
@@ -596,6 +597,9 @@ File Path | Manifest
 /Windows/System32/winevt/Logs/Microsoft-Windows-DNSServer%4Audit.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-DSC%4Operational.evtx | agents, diagnostic, eg, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-DeliveryOptimization%%4Operational.ev<br>tx | windowsupdate 
+/Windows/System32/winevt/Logs/Microsoft-Windows-DeviceManagement-Enterprise-Diagnosti<br>cs-Provider%4Admin | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-Windows-DeviceManagement-Enterprise-Diagnosti<br>cs-Provider%4Enrollment | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-Windows-DeviceManagement-Enterprise-Diagnosti<br>cs-Provider%4Sync | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Dhcp-Client%4Admin.evtx | eg 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Dhcp-Client%4Operational.evtx | eg, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Diagnostics-Performance%4Operational | diagnostic 
@@ -825,4 +829,4 @@ File Path | Manifest
 /var/log/blobfuse2.log\* | diagnostic 
 /windows/Panther/setup.etl | diagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-05-16 11:00:40.852507`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-05-22 08:51:24.259333`*

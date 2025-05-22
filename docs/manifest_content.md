@@ -1136,6 +1136,9 @@ diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-WinINet-Conf
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Winlogon%4Operational
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-WinRM%4Operational
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-WMI-Activity%4Operational
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-DeviceManagement-Enterprise-Diagnosti<br>cs-Provider%4Sync
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-DeviceManagement-Enterprise-Diagnosti<br>cs-Provider%4Enrollment
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-DeviceManagement-Enterprise-Diagnosti<br>cs-Provider%4Admin
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Workplace Join%4Admin
 diagnostic | copy | /Windows/System32/winevt/Logs/PowerShellCore%4Operational
 diagnostic | list | /Windows/RemotePackages
@@ -1146,6 +1149,7 @@ diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-FSLogix-CloudCache%4
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-FSLogix-CloudCache%4Operational.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Ntfs%4Operational.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-VHDMP%4Operational.evtx
+diagnostic | copy | /Program Files/FSLogix/Logs/Profile_\*.log
 diagnostic | copy | /Program Files/FSLogix/Apps/Rules
 diagnostic | list | /Program Files/FSLogix/Apps/Rules
 diagnostic | list | /Program Files/FSLogix/Apps/CompiledRules
@@ -2023,4 +2027,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-05-16 11:00:40.852507`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-05-22 08:51:24.259333`*
