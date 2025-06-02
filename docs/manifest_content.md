@@ -685,6 +685,84 @@ workloadbackup | copy | /var/lib/waagent/GoalState.\*.xml
 ## windows 
  Manifest | Operation | File Path 
  ------------- | ------------- | ------------- 
+aaap | copy | /Windows/System32/winevt/Logs/Application.evtx
+aaap | copy | /Windows/System32/winevt/Logs/System.evtx
+aaap | copy | /Windows/System32/winevt/Logs/Windows Azure.evtx
+aaap | copy | /Windows/System32/winevt/Logs/Microsoft-SMA%4Operational.evtx
+aaap | copy | /Windows/System32/winevt/Logs/Microsoft-SMA%4Debug.etl
+aaap | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-DSC%4Operational.evtx
+aaap | copy | /WindowsAzure/Logs/Plugins/Microsoft.Powershell.DSC/\*/DSCLOG\*.json
+aaap | copy | /WindowsAzure/Logs/Plugins/Microsoft.Powershell.DSC/\*/DscExtensionHandler\*.log
+aaap | copy | /Packages/Plugins/Microsoft.Powershell.DSC/\*/DSCWork/\*.dsc
+aaap | copy | /Packages/Plugins/Microsoft.Powershell.DSC/\*/DSCWork/\*.log
+aaap | copy | /Packages/Plugins/Microsoft.Powershell.DSC/\*/DSCWork/\*.dpx
+aaap | copy | /Packages/Plugins/Microsoft.Powershell.DSC/\*/DSCVersion.xml
+aaap | copy | /Packages/Plugins/Microsoft.Powershell.DSC/\*/DSCWork/HotfixInstallInProgress.dsc
+aaap | copy | /Packages/Plugins/Microsoft.Powershell.DSC/\*/DSCWork/PreInstallDone.dsc
+aaap | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-PowerShell%4Operational
+aaap | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Shell-Core%4Operational
+aaap | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-WinRM%4Operational
+aaap | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-WMI-Activity%4Operational
+aaap | copy | /Windows/System32/winevt/Logs/PowerShellCore%4Operational
+aaap | copy | /HybridWorkerExtensionLogs/\*.zip
+aaap | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-CAPI2%4Operational.evtx
+aaap | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Diagnostics-Performance%4Operational
+aaap | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-GroupPolicy%4Operational.evtx
+aaap | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TCPIP%4Operational.evtx
+aaap | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-WER-Diagnostics%4Operational
+aaap | copy | /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4GuestAgent.evtx
+aaap | copy | /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Heartbeat.evtx
+aaap | copy | /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Runtime.evtx
+aaap | copy | /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Bootstrapper.evtx
+aaap | copy | /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Status%4GuestAgent.evtx
+aaap | copy | /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Status%4Plugins.evtx
+aaap | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Resource-Exhaustion-Detector%4Operati<br>onal.evtx
+aaap | list | /WindowsAzure
+aaap | list | /Packages/Plugins
+aaap | copy | /WindowsAzure/Logs/Telemetry.log
+aaap | copy | /WindowsAzure/Logs/TransparentInstaller.log
+aaap | copy | /WindowsAzure/Logs/WaAppAgent.log
+aaap | copy | /WindowsAzure/config/\*.xml
+aaap | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
+aaap | copy | /WindowsAzure/Logs/AppAgentRuntime.log
+aaap | copy | /WindowsAzure/Logs/MonitoringAgent.log
+aaap | copy | /WindowsAzure/Logs/Plugins/\*/\*/CommandExecution.log
+aaap | copy | /WindowsAzure/Logs/Plugins/\*/\*/Install.log
+aaap | copy | /WindowsAzure/Logs/Plugins/\*/\*/Update.log
+aaap | copy | /WindowsAzure/Logs/Plugins/\*/\*/Heartbeat.log
+aaap | copy | /Packages/Plugins/\*/\*/config.txt
+aaap | copy | /Packages/Plugins/\*/\*/HandlerEnvironment.json
+aaap | copy | /Packages/Plugins/\*/\*/HandlerManifest.json
+aaap | copy | /Packages/Plugins/\*/\*/RuntimeSettings/\*.settings
+aaap | copy | /Packages/Plugins/\*/\*/Status/\*.status
+aaap | copy | /Packages/Plugins/\*/\*/Status/HeartBeat.Json
+aaap | copy | /Packages/Plugins/\*/\*/PackageInformation.txt
+aaap | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.WindowsPatchExtension/\*/windowsUpdat<br>eLog/\*
+aaap | copy | /Windows/Logs/CBS/\*.log
+aaap | copy | /Windows/Logs/DISM/\*.log
+aaap | copy | /Windows/servicing/sessions/sessions.xml
+aaap | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-WindowsUpdateClient%4Operational.evtx
+aaap | copy | /Windows/windowsupdate.log
+aaap | copy | /Windows/Logs/WindowsUpdate/WindowsUpdate.\*.etl
+aaap | copy | /Program Files/Update Services/LogFiles/WSUSSetup.log
+aaap | copy | /Program Files/Update Services/LogFiles/SoftwareDistribution.log
+aaap | copy | /Program Files/Update Services/LogFiles/WSyncMgr.log
+aaap | copy | /ProgramData/GuestConfig/Configuration/\*
+aaap | copy | /ProgramData/GuestConfig/gc_agent_logs/\*
+aaap | copy | /WindowsAzure/Logs/Plugins/Microsoft.GuestConfiguration.ConfigurationforWindows/\*
+aaap | copy | /Windows/System32/config/SOFTWARE
+aaap | copy | /Windows/System32/config/SYSTEM
+aaap | registry query | HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\RebootPendin<br>g
+aaap | registry query | HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update\RebootRequir<br>ed
+aaap | registry query | HKLM\SOFTWARE\Microsoft\HybridRunbookWorkerV2
+aaap | registry query | HKLM\SOFTWARE\Microsoft\Azure\HybridWorker
+aaap | registry query | HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AllowRebootlessUpdates
+aaap | registry query | HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\LocalAccountTokenFilte<br>rPolicy
+aaap | registry query | HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU\NoAutoUpdate
+aaap | registry query | HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\DisableWindowsUpdateAccess
+aaap | registry query | HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Cl<br>ient\Enabled
+aaap | registry query | HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.3\Cl<br>ient\Enabled
+aaap | registry query | HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard\EnableVirtualizationBasedSecurity
 agents | copy | /Windows/System32/winevt/Logs/System.evtx
 agents | copy | /Windows/System32/winevt/Logs/Application.evtx
 agents | copy | /Windows/System32/winevt/Logs/Windows Azure.evtx
@@ -2027,4 +2105,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-05-22 08:51:24.259333`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-06-02 11:13:42.839086`*
