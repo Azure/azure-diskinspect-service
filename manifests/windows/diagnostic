@@ -82,6 +82,10 @@ copy,/Windows/System32/winevt/Logs/OpenSSH%4Admin.evtx
 copy,/Windows/System32/winevt/Logs/OpenSSH%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Security.evtx
 copy,/Windows/System32/winevt/Logs/Setup.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-HPC-Management%4Admin
+copy,/Windows/System32/winevt/Logs/Microsoft-HPC-Reporting%4Operational
+copy,/Windows/System32/winevt/Logs/Microsoft-HPC-Scheduler%4Operational
+copy,/Windows/System32/winevt/Logs/Microsoft-HPC-Scheduler%4Admin
 echo,
 
 echo,### Provisioning ###
@@ -108,9 +112,15 @@ copy,/Windows/System32/Sysprep/Sysprep_succeeded.tag
 echo,
 
 echo,### Plug and Play ###
-copy,/Windows/INF/netcfg*.*etl
-copy,/Windows/INF/setupapi.dev.log
+copy,/Windows/INF/netcfg*.*etl,noscan
+copy,/Windows/INF/setupapi.*
 echo,
+
+echo,### Plug and Play ###
+copy,/ProgramData/FSLogix/Logs/Profile/Profile_*.log
+copy,/ProgramData/FSLogix/Logs/*.etl.*
+ll,/ProgramData/FSLogix/Logs
+echo, 
 
 echo,### App Install ###
 copy,/Windows/inf/setupapi.app.log	
@@ -247,6 +257,8 @@ copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ActiveDirectory.AADLoginForWindo
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.AzureDiskEncryption/*/BitlockerExtension.log
 copy,/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/*/*.log,noscan
 copy,/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/*/log_*
+copy,/WindowsAzure/Logs/Plugins/Microsoft.HpcCompute.NvidiaGpuDriverWindows/*/*.log,noscan
+copy,/WindowsAzure/Logs/Plugins/Microsoft.HpcCompute.AmdGpuDriverMicrosoft/*/*.log,noscan
 copy,/Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/*/RuntimeSettings/applicationRegistry.active
 copy,/Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/*/RuntimeSettings/applicationRegistry.backup
 copy,/Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/*/RuntimeSettings/VMApp.lockfile,noscan
@@ -336,6 +348,9 @@ copy,/Windows/System32/winevt/Logs/Microsoft-FSLogix-CloudCache%4Operational.evt
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Ntfs%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-VHDMP%4Operational.evtx
 copy,/Program Files/FSLogix/Logs/Profile_*.log
+ll,/ProgramData/FSLogix/Logs
+copy,/ProgramData/FSLogix/Logs/Profile/Profile_*.log
+copy,/ProgramData/FSLogix/Logs/*.etl.*
 copy,/Program Files/FSLogix/Apps/Rules
 ll,/Program Files/FSLogix/Apps/Rules
 ll,/Program Files/FSLogix/Apps/CompiledRules
@@ -360,6 +375,45 @@ echo,
 echo,## Blob Fuse ##
 copy,/var/log/blobfuse2.log
 copy,/var/log/blobfuse2.log*
+echo,
+
+echo,### HPC###
+copy,/Program Files/NVIDIA Corporation/Installer2/*
+copy,/Program Files/NVIDIA Corporation/Installer2/*
+copy,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Management/*
+opy,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Scheduler/HpcScheduler_*.bin
+copy,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Scheduler/HpcNodeManager_*.bin
+copy,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Scheduler/HpcWebService_*.bin
+copy,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Diagnostics/HpcDiagnostics_*.bin
+copy,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/HpcFrontend/HpcFrontend_*.bin
+copy,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/HpcNaming/HpcNaming_*.bin
+copy,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Management/HpcManagement_*.bin
+copy,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Management/HpcReporting_*.bin
+copy,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Management/HpcSdm_*.bin
+copy,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Monitoring/HpcMonitoringNode_*.bin
+copy,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Monitoring/HpcMonitoringServer_*.bin
+copy,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/SOA/HpcBrokerWorker_*.bin
+copy,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/SOA/HpcBroker_*.bin
+copy,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/SOA/HpcSession_*.bin
+copy,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/SOA/HpcSoaDiagMon_*.bin
+echo,
+
+echo,### HPC Pack 2016 ###
+copy,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Scheduler/HpcScheduler_*.bin
+copy,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Scheduler/HpcNodeManager_*.bin
+copy,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Scheduler/HpcWebService_*.bin
+copy,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Diagnostics/HpcDiagnostics_*.bin
+copy,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/HpcFrontend/HpcFrontend_*.bin
+copy,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/HpcNaming/HpcNaming_*.bin
+copy,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Management/HpcManagement_*.bin
+copy,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Management/HpcReporting_*.bin
+copy,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Management/HpcSdm_*.bin
+copy,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Monitoring/HpcMonitoringNode_*.bin
+copy,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Monitoring/HpcMonitoringServer_*.bin
+copy,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/SOA/HpcBrokerWorker_*.bin
+copy,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/SOA/HpcBroker_*.bin
+copy,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/SOA/HpcSession_*.bin
+copy,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/SOA/HpcSoaDiagMon_*.bin
 echo,
 
 echo,### Gathering Disk Info ###

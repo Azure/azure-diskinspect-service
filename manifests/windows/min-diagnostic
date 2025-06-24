@@ -32,6 +32,9 @@ copy,/WindowsAzure/Logs/WaAppAgent.log
 copy,/WindowsAzure/Logs/AggregateStatus/aggregatestatus*.json
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Compute.VMAccessAgent/*/JsonVMAccessExtension.log
 
+echo,### Plug and Play ###
+copy,/Windows/INF/setupapi.*.log
+
 echo,### Servicing ###
 copy,/Windows/servicing/sessions/sessions.xml,noscan
 

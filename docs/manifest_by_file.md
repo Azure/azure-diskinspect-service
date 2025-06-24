@@ -97,13 +97,15 @@ File Path | Manifest
 /etc/opt/omi/conf/omsconfig/agentid | monitor-mgmt 
 /etc/opt/omi/conf/omsconfig/configuration/\*.mof | monitor-mgmt 
 /etc/pam.d/\* | diagnostic 
+/etc/pbs.conf | diagnostic 
 /etc/products.d/\*.prod | linux-repoconfig 
 /etc/regionserverclnt.cfg | linux-repoconfig 
 /etc/resolv.conf | diagnostic, eg, vmdiagnostic 
 /etc/rsyslog.conf | azuremonitoragent 
 /etc/rsyslog.d/\*.conf | azuremonitoragent 
-/etc/security/limits.conf | diagnostic 
+/etc/security/limits.conf | diagnostic, diagnostic 
 /etc/selinux/config | diagnostic 
+/etc/slurm/\* | diagnostic 
 /etc/spark/conf/\* | hdinsight 
 /etc/ssh/sshd_config | diagnostic, eg, normal, vmdiagnostic 
 /etc/ssh/sshd_config.d/\* | diagnostic 
@@ -121,6 +123,7 @@ File Path | Manifest
 /etc/sysconfig/network/dhcp | eg, vmdiagnostic 
 /etc/sysconfig/network/ifcfg-\* | eg, vmdiagnostic 
 /etc/sysconfig/network/routes | eg, vmdiagnostic 
+/etc/sysconfig/selinux/\* | diagnostic 
 /etc/sysctl.conf | diagnostic 
 /etc/sysctl.d/\*.conf | diagnostic 
 /etc/syslog-ng/\* | azuremonitoragent 
@@ -160,6 +163,40 @@ File Path | Manifest
 /run/resolvconf/\*.conf | eg 
 /run/systemd/netif/leases/\* | eg 
 /run/systemd/resolve/\*.conf | eg 
+/sched/sge/sge-2011.11/default/common/install_logs/\* | diagnostic 
+/sched/sge/sge-2011.11/default/spool/\* | diagnostic 
+/sys/class/infiniband/mlx5_ib0/ports/1/phys_state | diagnostic 
+/sys/class/infiniband/mlx5_ib0/ports/1/pkeys | diagnostic 
+/sys/class/infiniband/mlx5_ib0/ports/1/rate | diagnostic 
+/sys/class/infiniband/mlx5_ib0/ports/1/state | diagnostic 
+/sys/class/infiniband/mlx5_ib1/ports/1/phys_state | diagnostic 
+/sys/class/infiniband/mlx5_ib1/ports/1/pkeys | diagnostic 
+/sys/class/infiniband/mlx5_ib1/ports/1/rate | diagnostic 
+/sys/class/infiniband/mlx5_ib1/ports/1/state | diagnostic 
+/sys/class/infiniband/mlx5_ib2/ports/1/phys_state | diagnostic 
+/sys/class/infiniband/mlx5_ib2/ports/1/pkeys | diagnostic 
+/sys/class/infiniband/mlx5_ib2/ports/1/rate | diagnostic 
+/sys/class/infiniband/mlx5_ib2/ports/1/state | diagnostic 
+/sys/class/infiniband/mlx5_ib3/ports/1/phys_state | diagnostic 
+/sys/class/infiniband/mlx5_ib3/ports/1/pkeys | diagnostic 
+/sys/class/infiniband/mlx5_ib3/ports/1/rate | diagnostic 
+/sys/class/infiniband/mlx5_ib3/ports/1/state | diagnostic 
+/sys/class/infiniband/mlx5_ib4/ports/1/phys_state | diagnostic 
+/sys/class/infiniband/mlx5_ib4/ports/1/pkeys | diagnostic 
+/sys/class/infiniband/mlx5_ib4/ports/1/rate | diagnostic 
+/sys/class/infiniband/mlx5_ib4/ports/1/state | diagnostic 
+/sys/class/infiniband/mlx5_ib5/ports/1/phys_state | diagnostic 
+/sys/class/infiniband/mlx5_ib5/ports/1/pkeys | diagnostic 
+/sys/class/infiniband/mlx5_ib5/ports/1/rate | diagnostic 
+/sys/class/infiniband/mlx5_ib5/ports/1/state | diagnostic 
+/sys/class/infiniband/mlx5_ib6/ports/1/phys_state | diagnostic 
+/sys/class/infiniband/mlx5_ib6/ports/1/pkeys | diagnostic 
+/sys/class/infiniband/mlx5_ib6/ports/1/rate | diagnostic 
+/sys/class/infiniband/mlx5_ib6/ports/1/state | diagnostic 
+/sys/class/infiniband/mlx5_ib7/ports/1/phys_state | diagnostic 
+/sys/class/infiniband/mlx5_ib7/ports/1/pkeys | diagnostic 
+/sys/class/infiniband/mlx5_ib7/ports/1/rate | diagnostic 
+/sys/class/infiniband/mlx5_ib7/ports/1/state | diagnostic 
 /sys/kernel/security/apparmor/profiles | diagnostic 
 /tmp/omsagent\*.tgz | monitor-mgmt 
 /tmp/sosreport\*.tar.xz | linux-sos-scc 
@@ -264,8 +301,10 @@ File Path | Manifest
 /var/log/azure/containerd-status.log | aks 
 /var/log/azure/custom-script/handler.log | agents, diagnostic, vmdiagnostic 
 /var/log/azure/docker-status.log | aks 
+/var/log/azure/ib-vmext-status | diagnostic 
 /var/log/azure/kern.log | aks 
 /var/log/azure/kubelet-status.log | aks 
+/var/log/azure/nvidia-vmext-status/\*.log | diagnostic 
 /var/log/azure/run-command/handler.log | diagnostic, vmdiagnostic 
 /var/log/blobfuse2.log | aks, diagnostic 
 /var/log/blobfuse2.log\* | aks, diagnostic 
@@ -295,6 +334,7 @@ File Path | Manifest
 /var/log/kern.log | servicefabric 
 /var/log/kern\* | diagnostic, diskpool, eg, normal, vmdiagnostic 
 /var/log/messages\* | azuremonitoragent, diagnostic, eg, monitor-mgmt, normal, vmdiagnostic 
+/var/log/nvidia-installer.log | diagnostic 
 /var/log/nvidia\*.log | aks 
 /var/log/pacemaker/\* | diagnostic 
 /var/log/pacemaker\* | diagnostic 
@@ -308,6 +348,8 @@ File Path | Manifest
 /var/log/sa/sa\* | performance 
 /var/log/scc\*.txz | linux-sos-scc 
 /var/log/secure\* | diagnostic, eg, normal, vmdiagnostic 
+/var/log/slurmctld/slurmctld.log | diagnostic 
+/var/log/slurmd/slurmd.log | diagnostic 
 /var/log/svagents\*.log | site-recovery 
 /var/log/syslog | aks, servicefabric 
 /var/log/syslog\* | agents, azuremonitoragent, diagnostic, diskpool, eg, lad, monitor-mgmt, normal, site-recovery, vmdiagnostic, workloadbackup 
@@ -332,6 +374,8 @@ File Path | Manifest
 /var/opt/omi/log/\*.log | monitor-mgmt 
 /var/run/azure-vnet\* | aks 
 /var/spool/cron/tabs/root | workloadbackup 
+/var/spool/pbs/mom_logs/\* | diagnostic 
+/var/spool/pbs/sched_logs/\* | diagnostic 
 /var/tmp/sosreport\*.tar.xz | linux-sos-scc 
 copy | sql-iaas 
 ## windows 
@@ -438,6 +482,36 @@ File Path | Manifest
 /Program Files/GuestConfig/arc_policy_logs/gc_agent.log | diagnostic 
 /Program Files/GuestConfig/ext_mgr_logs/gc_ext.log | diagnostic 
 /Program Files/Microsoft Dependency Agent/logs/\*.\* | monitor-mgmt 
+/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Diagnostics/HpcDiagnostics_\*.bi<br>n | diagnostic 
+/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/HpcFrontend/HpcFrontend_\*.bin | diagnostic 
+/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/HpcNaming/HpcNaming_\*.bin | diagnostic 
+/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Management/HpcManagement_\*.bin | diagnostic 
+/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Management/HpcReporting_\*.bin | diagnostic 
+/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Management/HpcSdm_\*.bin | diagnostic 
+/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Management/\* | diagnostic 
+/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Monitoring/HpcMonitoringNode_\*.<br>bin | diagnostic 
+/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Monitoring/HpcMonitoringServer_\<br>*.bin | diagnostic 
+/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/SOA/HpcBrokerWorker_\*.bin | diagnostic 
+/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/SOA/HpcBroker_\*.bin | diagnostic 
+/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/SOA/HpcSession_\*.bin | diagnostic 
+/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/SOA/HpcSoaDiagMon_\*.bin | diagnostic 
+/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Scheduler/HpcNodeManager_\*.bin | diagnostic 
+/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Scheduler/HpcScheduler_\*.bin | diagnostic 
+/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Scheduler/HpcWebService_\*.bin | diagnostic 
+/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Diagnostics/HpcDiagnostics_\*.bi<br>n | diagnostic 
+/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/HpcFrontend/HpcFrontend_\*.bin | diagnostic 
+/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/HpcNaming/HpcNaming_\*.bin | diagnostic 
+/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Management/HpcManagement_\*.bin | diagnostic 
+/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Management/HpcReporting_\*.bin | diagnostic 
+/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Management/HpcSdm_\*.bin | diagnostic 
+/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Monitoring/HpcMonitoringNode_\*.<br>bin | diagnostic 
+/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Monitoring/HpcMonitoringServer_\<br>*.bin | diagnostic 
+/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/SOA/HpcBrokerWorker_\*.bin | diagnostic 
+/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/SOA/HpcBroker_\*.bin | diagnostic 
+/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/SOA/HpcSession_\*.bin | diagnostic 
+/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/SOA/HpcSoaDiagMon_\*.bin | diagnostic 
+/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Scheduler/HpcNodeManager_\*.bin | diagnostic 
+/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Scheduler/HpcWebService_\*.bin | diagnostic 
 /Program Files/Microsoft Monitoring Agent/Agent/Health Service State/CT_\*/work/Servi<br>ceState/\*.log | monitor-mgmt 
 /Program Files/Microsoft Monitoring Agent/Agent/Health Service State/FCT_\*/work/Inve<br>ntory/asmhost.log | monitor-mgmt 
 /Program Files/Microsoft Monitoring Agent/Agent/Health Service State/FCT_\*/work/Inve<br>ntory/localhost.json | monitor-mgmt 
@@ -472,11 +546,14 @@ File Path | Manifest
 /Program Files/Microsoft SQL Server/\*/Setup Bootstrap/Log/Summary.txt | sql-iaas 
 /Program Files/Microsoft SQL Server/\*/Setup Bootstrap/Log/\*/Log\*.cab | sql-iaas 
 /Program Files/MsRDCMMRHost/MsRDCMMRHostInstall.log | diagnostic 
+/Program Files/NVIDIA Corporation/Installer2/\* | diagnostic, diagnostic 
 /Program Files/containerd/config.toml | aks 
 /ProgramData/ASRSetupLogs/ASRUnifiedAgentConfigurator.log | site-recovery, windowsupdate 
 /ProgramData/ASRSetupLogs/ASRUnifiedAgentInstaller.log | site-recovery, windowsupdate 
 /ProgramData/ASRSetupLogs/UnifiedAgentMSIInstall.log | site-recovery, windowsupdate 
 /ProgramData/ASRSetupLogs/WrapperUnifiedAgent.log | site-recovery, windowsupdate 
+/ProgramData/FSLogix/Logs/Profile/Profile_\*.log | diagnostic, diagnostic 
+/ProgramData/FSLogix/Logs/\*.etl.\* | diagnostic, diagnostic 
 /ProgramData/GuestConfig/Configuration/\* | monitor-mgmt 
 /ProgramData/GuestConfig/gc_agent_logs/\* | monitor-mgmt 
 /ProgramData/Microsoft/System Center/Orchestrator/7.2/SMA/\*.\* | monitor-mgmt 
@@ -492,8 +569,9 @@ File Path | Manifest
 /Windows.old/Windows/Logs/mosetup/bluebox.log | windowsupdate 
 /Windows.old/Windows/SoftwareDistribution/ReportingEvents.log | windowsupdate 
 /Windows/INF/netcfg\*.\*etl | diagnostic, vmdiagnostic, windowsupdate 
-/Windows/INF/setupapi.\*.log | windowsupdate 
-/Windows/INF/setupapi.dev.log | diagnostic, vmdiagnostic 
+/Windows/INF/setupapi.\* | diagnostic 
+/Windows/INF/setupapi.\*.log | min-diagnostic, windowsupdate 
+/Windows/INF/setupapi.dev.log | vmdiagnostic 
 /Windows/Inf/netcfg\*.\*etl | normal 
 /Windows/Inf/setupapi.dev.log | normal 
 /Windows/Logs/CBS/\*.cab | windowsupdate 
@@ -568,6 +646,10 @@ File Path | Manifest
 /Windows/System32/winevt/Logs/Microsoft-FSLogix-Apps%4Operational.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-FSLogix-CloudCache%4Admin.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-FSLogix-CloudCache%4Operational.evtx | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-HPC-Management%4Admin | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-HPC-Reporting%4Operational | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-HPC-Scheduler%4Admin | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-HPC-Scheduler%4Operational | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-SMA%4Debug.etl | monitor-mgmt 
 /Windows/System32/winevt/Logs/Microsoft-SMA%4Operational.evtx | monitor-mgmt 
 /Windows/System32/winevt/Logs/Microsoft-ServiceFabric%4Admin.evtx | diagnostic, eg, normal, servicefabric, vmdiagnostic, windowsupdate 
@@ -780,6 +862,8 @@ File Path | Manifest
 /WindowsAzure/Logs/Plugins/Microsoft.Compute.JsonADDomainExtension/\*/ADDomainExtensi<br>on.log | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.Compute.VMAccessAgent/\*/JsonVMAccessExtension.l<br>og | agents, diagnostic, min-diagnostic, normal, vmdiagnostic, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAg<br>ent/\*/0.log | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
+/WindowsAzure/Logs/Plugins/Microsoft.HpcCompute.AmdGpuDriverMicrosoft/\*/\*.log | diagnostic 
+/WindowsAzure/Logs/Plugins/Microsoft.HpcCompute.NvidiaGpuDriverWindows/\*/\*.log | diagnostic 
 /WindowsAzure/Logs/Plugins/Microsoft.ManagedIdentity.ManagedIdentityExtensionForWindo<br>ws/\*/RuntimeSettings/\*.xml | diagnostic, vmdiagnostic, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.ManagedServices.ApplicationHealthWindows/\*/\*.l<br>og | diagnostic 
 /WindowsAzure/Logs/Plugins/Microsoft.Powershell.DSC/\*/DSCLOG\*.json | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
@@ -829,4 +913,4 @@ File Path | Manifest
 /var/log/blobfuse2.log\* | diagnostic 
 /windows/Panther/setup.etl | diagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-05-22 08:51:24.259333`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-06-24 11:33:15.050600`*

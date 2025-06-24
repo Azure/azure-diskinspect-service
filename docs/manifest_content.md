@@ -302,6 +302,53 @@ diagnostic | copy | /etc/selinux/config
 diagnostic | copy | /sys/kernel/security/apparmor/profiles
 diagnostic | copy | /var/log/blobfuse2.log
 diagnostic | copy | /var/log/blobfuse2.log\*
+diagnostic | copy | /var/log/azure/ib-vmext-status
+diagnostic | copy | /var/log/azure/nvidia-vmext-status/\*.log
+diagnostic | copy | /var/log/nvidia-installer.log
+diagnostic | copy | /var/log/slurmctld/slurmctld.log
+diagnostic | copy | /var/log/slurmd/slurmd.log
+diagnostic | copy | /var/spool/pbs/mom_logs/\*
+diagnostic | copy | /var/spool/pbs/sched_logs/\*
+diagnostic | list | /sched/sge/
+diagnostic | copy | /sched/sge/sge-2011.11/default/common/install_logs/\*
+diagnostic | copy | /sched/sge/sge-2011.11/default/spool/\*
+diagnostic | copy | /etc/sysconfig/selinux/\*
+diagnostic | copy | /etc/security/limits.conf
+diagnostic | copy | /etc/slurm/\*
+diagnostic | copy | /etc/pbs.conf
+diagnostic | list | /sys/class/infiniband/
+diagnostic | copy | /sys/class/infiniband/mlx5_ib0/ports/1/state
+diagnostic | copy | /sys/class/infiniband/mlx5_ib1/ports/1/state
+diagnostic | copy | /sys/class/infiniband/mlx5_ib2/ports/1/state
+diagnostic | copy | /sys/class/infiniband/mlx5_ib3/ports/1/state
+diagnostic | copy | /sys/class/infiniband/mlx5_ib4/ports/1/state
+diagnostic | copy | /sys/class/infiniband/mlx5_ib5/ports/1/state
+diagnostic | copy | /sys/class/infiniband/mlx5_ib6/ports/1/state
+diagnostic | copy | /sys/class/infiniband/mlx5_ib7/ports/1/state
+diagnostic | copy | /sys/class/infiniband/mlx5_ib0/ports/1/rate
+diagnostic | copy | /sys/class/infiniband/mlx5_ib1/ports/1/rate
+diagnostic | copy | /sys/class/infiniband/mlx5_ib2/ports/1/rate
+diagnostic | copy | /sys/class/infiniband/mlx5_ib3/ports/1/rate
+diagnostic | copy | /sys/class/infiniband/mlx5_ib4/ports/1/rate
+diagnostic | copy | /sys/class/infiniband/mlx5_ib5/ports/1/rate
+diagnostic | copy | /sys/class/infiniband/mlx5_ib6/ports/1/rate
+diagnostic | copy | /sys/class/infiniband/mlx5_ib7/ports/1/rate
+diagnostic | copy | /sys/class/infiniband/mlx5_ib0/ports/1/phys_state
+diagnostic | copy | /sys/class/infiniband/mlx5_ib1/ports/1/phys_state
+diagnostic | copy | /sys/class/infiniband/mlx5_ib2/ports/1/phys_state
+diagnostic | copy | /sys/class/infiniband/mlx5_ib3/ports/1/phys_state
+diagnostic | copy | /sys/class/infiniband/mlx5_ib4/ports/1/phys_state
+diagnostic | copy | /sys/class/infiniband/mlx5_ib5/ports/1/phys_state
+diagnostic | copy | /sys/class/infiniband/mlx5_ib6/ports/1/phys_state
+diagnostic | copy | /sys/class/infiniband/mlx5_ib7/ports/1/phys_state
+diagnostic | copy | /sys/class/infiniband/mlx5_ib0/ports/1/pkeys
+diagnostic | copy | /sys/class/infiniband/mlx5_ib1/ports/1/pkeys
+diagnostic | copy | /sys/class/infiniband/mlx5_ib2/ports/1/pkeys
+diagnostic | copy | /sys/class/infiniband/mlx5_ib3/ports/1/pkeys
+diagnostic | copy | /sys/class/infiniband/mlx5_ib4/ports/1/pkeys
+diagnostic | copy | /sys/class/infiniband/mlx5_ib5/ports/1/pkeys
+diagnostic | copy | /sys/class/infiniband/mlx5_ib6/ports/1/pkeys
+diagnostic | copy | /sys/class/infiniband/mlx5_ib7/ports/1/pkeys
 diagnostic | diskinfo | 
 diagnostic | copy | /var/log/azure-proxy-agent/\*
 diskpool | list | /etc/cron.daily
@@ -929,6 +976,10 @@ diagnostic | copy | /Windows/System32/winevt/Logs/OpenSSH%4Admin.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/OpenSSH%4Operational.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Security.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Setup.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-HPC-Management%4Admin
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-HPC-Reporting%4Operational
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-HPC-Scheduler%4Operational
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-HPC-Scheduler%4Admin
 diagnostic | list | /AzureData/CustomData.bin
 diagnostic | copy | /Windows/Setup/State/State.ini
 diagnostic | copy | /Windows/Panther/WaSetup.xml
@@ -950,7 +1001,10 @@ diagnostic | copy | /Windows/System32/Sysprep/Panther/setuperr.log
 diagnostic | copy | /Windows/System32/Sysprep/Panther/IE/setuperr.log
 diagnostic | copy | /Windows/System32/Sysprep/Sysprep_succeeded.tag
 diagnostic | copy | /Windows/INF/netcfg\*.\*etl
-diagnostic | copy | /Windows/INF/setupapi.dev.log
+diagnostic | copy | /Windows/INF/setupapi.\*
+diagnostic | copy | /ProgramData/FSLogix/Logs/Profile/Profile_\*.log
+diagnostic | copy | /ProgramData/FSLogix/Logs/\*.etl.\*
+diagnostic | list | /ProgramData/FSLogix/Logs
 diagnostic | copy | /Windows/inf/setupapi.app.log
 diagnostic | copy | /Windows/debug/netlogon.log
 diagnostic | copy | /Windows/debug/NetSetup.LOG
@@ -1076,6 +1130,8 @@ diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ActiveDirectory.A
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.AzureDiskEncryption/\*/BitlockerE<br>xtension.log
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/\*.log
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/log_\*
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.HpcCompute.NvidiaGpuDriverWindows/\*/\*.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.HpcCompute.AmdGpuDriverMicrosoft/\*/\*.log
 diagnostic | copy | /Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/RuntimeSettings<br>/applicationRegistry.active
 diagnostic | copy | /Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/RuntimeSettings<br>/applicationRegistry.backup
 diagnostic | copy | /Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/RuntimeSettings<br>/VMApp.lockfile
@@ -1150,6 +1206,9 @@ diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-FSLogix-CloudCache%4
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Ntfs%4Operational.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-VHDMP%4Operational.evtx
 diagnostic | copy | /Program Files/FSLogix/Logs/Profile_\*.log
+diagnostic | list | /ProgramData/FSLogix/Logs
+diagnostic | copy | /ProgramData/FSLogix/Logs/Profile/Profile_\*.log
+diagnostic | copy | /ProgramData/FSLogix/Logs/\*.etl.\*
 diagnostic | copy | /Program Files/FSLogix/Apps/Rules
 diagnostic | list | /Program Files/FSLogix/Apps/Rules
 diagnostic | list | /Program Files/FSLogix/Apps/CompiledRules
@@ -1171,6 +1230,39 @@ diagnostic | copy | /Program Files/GuestConfig/arc_policy_logs/gc_agent.log
 diagnostic | copy | /Program Files/GuestConfig/ext_mgr_logs/gc_ext.log
 diagnostic | copy | /var/log/blobfuse2.log
 diagnostic | copy | /var/log/blobfuse2.log\*
+diagnostic | copy | /Program Files/NVIDIA Corporation/Installer2/\*
+diagnostic | copy | /Program Files/NVIDIA Corporation/Installer2/\*
+diagnostic | copy | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Management/\*
+diagnostic | opy | /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Scheduler/HpcScheduler_\*.bin
+diagnostic | copy | /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Scheduler/HpcNodeManager_\*.bin
+diagnostic | copy | /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Scheduler/HpcWebService_\*.bin
+diagnostic | copy | /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Diagnostics/HpcDiagnostics_\*.bi<br>n
+diagnostic | copy | /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/HpcFrontend/HpcFrontend_\*.bin
+diagnostic | copy | /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/HpcNaming/HpcNaming_\*.bin
+diagnostic | copy | /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Management/HpcManagement_\*.bin
+diagnostic | copy | /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Management/HpcReporting_\*.bin
+diagnostic | copy | /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Management/HpcSdm_\*.bin
+diagnostic | copy | /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Monitoring/HpcMonitoringNode_\*.<br>bin
+diagnostic | copy | /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Monitoring/HpcMonitoringServer_\<br>*.bin
+diagnostic | copy | /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/SOA/HpcBrokerWorker_\*.bin
+diagnostic | copy | /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/SOA/HpcBroker_\*.bin
+diagnostic | copy | /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/SOA/HpcSession_\*.bin
+diagnostic | copy | /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/SOA/HpcSoaDiagMon_\*.bin
+diagnostic | copy | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Scheduler/HpcScheduler_\*.bin
+diagnostic | copy | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Scheduler/HpcNodeManager_\*.bin
+diagnostic | copy | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Scheduler/HpcWebService_\*.bin
+diagnostic | copy | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Diagnostics/HpcDiagnostics_\*.bi<br>n
+diagnostic | copy | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/HpcFrontend/HpcFrontend_\*.bin
+diagnostic | copy | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/HpcNaming/HpcNaming_\*.bin
+diagnostic | copy | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Management/HpcManagement_\*.bin
+diagnostic | copy | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Management/HpcReporting_\*.bin
+diagnostic | copy | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Management/HpcSdm_\*.bin
+diagnostic | copy | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Monitoring/HpcMonitoringNode_\*.<br>bin
+diagnostic | copy | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Monitoring/HpcMonitoringServer_\<br>*.bin
+diagnostic | copy | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/SOA/HpcBrokerWorker_\*.bin
+diagnostic | copy | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/SOA/HpcBroker_\*.bin
+diagnostic | copy | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/SOA/HpcSession_\*.bin
+diagnostic | copy | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/SOA/HpcSoaDiagMon_\*.bin
 diagnostic | diskinfo | 
 eg | copy | /Windows/System32/winevt/Logs/System.evtx
 eg | copy | /Windows/System32/winevt/Logs/Application.evtx
@@ -1285,6 +1377,7 @@ min-diagnostic | copy | /WindowsAzure/Logs/TransparentInstaller.log
 min-diagnostic | copy | /WindowsAzure/Logs/WaAppAgent.log
 min-diagnostic | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 min-diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Compute.VMAccessAgent/\*/JsonVMAccessExtension.l<br>og
+min-diagnostic | copy | /Windows/INF/setupapi.\*.log
 min-diagnostic | copy | /Windows/servicing/sessions/sessions.xml
 min-diagnostic | copy | /Windows/debug/NetSetup.log
 min-diagnostic | copy | /Windows/debug/DCPROMO.log
@@ -2027,4 +2120,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-05-22 08:51:24.259333`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-06-24 11:33:15.050600`*
