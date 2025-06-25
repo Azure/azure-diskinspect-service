@@ -511,6 +511,7 @@ File Path | Manifest
 /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/SOA/HpcSession_\*.bin | diagnostic 
 /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/SOA/HpcSoaDiagMon_\*.bin | diagnostic 
 /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Scheduler/HpcNodeManager_\*.bin | diagnostic 
+/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Scheduler/HpcScheduler_\*.bin | diagnostic 
 /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Scheduler/HpcWebService_\*.bin | diagnostic 
 /Program Files/Microsoft Monitoring Agent/Agent/Health Service State/CT_\*/work/Servi<br>ceState/\*.log | monitor-mgmt 
 /Program Files/Microsoft Monitoring Agent/Agent/Health Service State/FCT_\*/work/Inve<br>ntory/asmhost.log | monitor-mgmt 
@@ -913,4 +914,4 @@ File Path | Manifest
 /var/log/blobfuse2.log\* | diagnostic 
 /windows/Panther/setup.etl | diagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-06-24 11:33:15.050600`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-06-25 07:40:59.410613`*

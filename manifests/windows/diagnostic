@@ -381,7 +381,7 @@ echo,### HPC###
 copy,/Program Files/NVIDIA Corporation/Installer2/*
 copy,/Program Files/NVIDIA Corporation/Installer2/*
 copy,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Management/*
-opy,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Scheduler/HpcScheduler_*.bin
+copy,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Scheduler/HpcScheduler_*.bin
 copy,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Scheduler/HpcNodeManager_*.bin
 copy,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Scheduler/HpcWebService_*.bin
 copy,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Diagnostics/HpcDiagnostics_*.bin
