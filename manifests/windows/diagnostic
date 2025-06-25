@@ -82,10 +82,10 @@ copy,/Windows/System32/winevt/Logs/OpenSSH%4Admin.evtx
 copy,/Windows/System32/winevt/Logs/OpenSSH%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Security.evtx
 copy,/Windows/System32/winevt/Logs/Setup.evtx
-copy,/Windows/System32/winevt/Logs/Microsoft-HPC-Management%4Admin
-copy,/Windows/System32/winevt/Logs/Microsoft-HPC-Reporting%4Operational
-copy,/Windows/System32/winevt/Logs/Microsoft-HPC-Scheduler%4Operational
-copy,/Windows/System32/winevt/Logs/Microsoft-HPC-Scheduler%4Admin
+copy,/Windows/System32/winevt/Logs/Microsoft-HPC-Management%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-HPC-Reporting%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-HPC-Scheduler%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-HPC-Scheduler%4Admin.evtx
 echo,
 
 echo,### Provisioning ###
@@ -304,38 +304,38 @@ copy,/Windows/Logs/RDMSDeploymentUI.txt
 copy,/Windows/Logs/RDMSDeploymentUI.txt
 copy,/Windows/System32/tssesdir/*.xml
 copy,/Windows/web/rdweb/App_Data/rdweb.log
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AAD%4Operational
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4EXE and DLL
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4Packaged app-Execution
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4Packaged app-Deployment
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4MSI and Script
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppModel-Runtime%4Admin
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppReadiness%4Admin
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppReadiness%4Operational
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeployment%4Operational
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeploymentServer%4Operational
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeploymentServer%4Restricted
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppxPackaging%4Operational
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Diagnostics-Performance%4Operational
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-GroupPolicy%4Operational
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-HelloForBusiness%4Operational
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-PowerShell%4Operational
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Shell-Core%4Operational
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TaskScheduler%4Operational
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-TSV-VmHostAgent%4Admin
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-TSV-VmHostAgent%4Operational
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-User Device Registration%4Admin
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WER-Diagnostics%4Operational
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WinINet-Config%4ProxyConfigChanged
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Winlogon%4Operational
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WinRM%4Operational
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WMI-Activity%4Operational
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-DeviceManagement-Enterprise-Diagnostics-Provider%4Sync
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-DeviceManagement-Enterprise-Diagnostics-Provider%4Enrollment
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-DeviceManagement-Enterprise-Diagnostics-Provider%4Admin
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Workplace Join%4Admin
-copy,/Windows/System32/winevt/Logs/PowerShellCore%4Operational
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AAD%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4EXE and DLL.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4Packaged app-Execution.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4Packaged app-Deployment.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4MSI and Script.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppModel-Runtime%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppReadiness%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppReadiness%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeployment%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeploymentServer%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeploymentServer%4Restricted.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppxPackaging%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Diagnostics-Performance%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-GroupPolicy%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-HelloForBusiness%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-PowerShell%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Shell-Core%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TaskScheduler%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-TSV-VmHostAgent%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-TSV-VmHostAgent%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-User Device Registration%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WER-Diagnostics%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WinINet-Config%4ProxyConfigChanged.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Winlogon%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WinRM%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WMI-Activity%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-DeviceManagement-Enterprise-Diagnostics-Provider%4Sync.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-DeviceManagement-Enterprise-Diagnostics-Provider%4Enrollment.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-DeviceManagement-Enterprise-Diagnostics-Provider%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Workplace Join%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/PowerShellCore%4Operational.evtx
 ll,/Windows/RemotePackages
 ll,/Program Files/Microsoft RDInfra
 echo,
@@ -379,44 +379,31 @@ echo,
 
 echo,### HPC###
 copy,/Program Files/NVIDIA Corporation/Installer2/*
+copy,/Windows/Temp/HPCSetupLogs/*
+copy,/Windows/Temp/HPCSetupLogs/*/*
 
-echo,### HPC Pack 2016 ###
-copy,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Management/*
-copy,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Scheduler/HpcScheduler_*.bin
-copy,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Scheduler/HpcNodeManager_*.bin
-copy,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Scheduler/HpcWebService_*.bin
-copy,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Diagnostics/HpcDiagnostics_*.bin
-copy,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/HpcFrontend/HpcFrontend_*.bin
-copy,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/HpcNaming/HpcNaming_*.bin
-copy,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Management/HpcManagement_*.bin
-copy,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Management/HpcReporting_*.bin
-copy,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Management/HpcSdm_*.bin
-copy,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Monitoring/HpcMonitoringNode_*.bin
-copy,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Monitoring/HpcMonitoringServer_*.bin
-copy,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/SOA/HpcBrokerWorker_*.bin
-copy,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/SOA/HpcBroker_*.bin
-copy,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/SOA/HpcSession_*.bin
-copy,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/SOA/HpcSoaDiagMon_*.bin
+echo,### HPC Pack 2019 ###
+ll,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Scheduler/
+ll,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Diagnostics/
+ll,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/HpcFrontend/
+ll,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/HpcNaming/
+ll,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Management/
+ll,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Monitoring/
+ll,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/SOA/
 echo,
 
 echo,### HPC Pack 2016 ###
-copy,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Scheduler/HpcScheduler_*.bin
-copy,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Scheduler/HpcNodeManager_*.bin
-copy,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Scheduler/HpcWebService_*.bin
-copy,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Diagnostics/HpcDiagnostics_*.bin
-copy,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/HpcFrontend/HpcFrontend_*.bin
-copy,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/HpcNaming/HpcNaming_*.bin
-copy,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Management/HpcManagement_*.bin
-copy,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Management/HpcReporting_*.bin
-copy,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Management/HpcSdm_*.bin
-copy,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Monitoring/HpcMonitoringNode_*.bin
-copy,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Monitoring/HpcMonitoringServer_*.bin
-copy,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/SOA/HpcBrokerWorker_*.bin
-copy,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/SOA/HpcBroker_*.bin
-copy,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/SOA/HpcSession_*.bin
-copy,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/SOA/HpcSoaDiagMon_*.bin
+ll,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Scheduler
+ll,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Diagnostics
+ll,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/HpcFrontend
+ll,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/HpcNaming
+ll,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Management
+ll,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Management
+ll,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Monitoring
+ll,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/SOA
 echo,
 
 echo,### Gathering Disk Info ###
 diskinfo,
 echo,
+ 

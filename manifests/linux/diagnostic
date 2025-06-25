@@ -153,6 +153,7 @@ echo,
 echo,## HPC ##
 copy,/var/log/azure/ib-vmext-status
 copy,/var/log/azure/nvidia-vmext-status/*.log
+copy,/var/log/cuda-installer.log
 copy,/var/log/nvidia-installer.log
 copy,/var/log/slurmctld/slurmctld.log
 copy,/var/log/slurmd/slurmd.log

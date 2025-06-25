@@ -304,6 +304,7 @@ diagnostic | copy | /var/log/blobfuse2.log
 diagnostic | copy | /var/log/blobfuse2.log\*
 diagnostic | copy | /var/log/azure/ib-vmext-status
 diagnostic | copy | /var/log/azure/nvidia-vmext-status/\*.log
+diagnostic | copy | /var/log/cuda-installer.log
 diagnostic | copy | /var/log/nvidia-installer.log
 diagnostic | copy | /var/log/slurmctld/slurmctld.log
 diagnostic | copy | /var/log/slurmd/slurmd.log
@@ -976,10 +977,10 @@ diagnostic | copy | /Windows/System32/winevt/Logs/OpenSSH%4Admin.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/OpenSSH%4Operational.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Security.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Setup.evtx
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-HPC-Management%4Admin
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-HPC-Reporting%4Operational
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-HPC-Scheduler%4Operational
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-HPC-Scheduler%4Admin
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-HPC-Management%4Admin.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-HPC-Reporting%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-HPC-Scheduler%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-HPC-Scheduler%4Admin.evtx
 diagnostic | list | /AzureData/CustomData.bin
 diagnostic | copy | /Windows/Setup/State/State.ini
 diagnostic | copy | /Windows/Panther/WaSetup.xml
@@ -1165,38 +1166,38 @@ diagnostic | copy | /Windows/Logs/RDMSDeploymentUI.txt
 diagnostic | copy | /Windows/Logs/RDMSDeploymentUI.txt
 diagnostic | copy | /Windows/System32/tssesdir/\*.xml
 diagnostic | copy | /Windows/web/rdweb/App_Data/rdweb.log
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-AAD%4Operational
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4EXE and DLL
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4Packaged app-Execution
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4Packaged app-Deployment
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4MSI and Script
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-AppModel-Runtime%4Admin
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-AppReadiness%4Admin
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-AppReadiness%4Operational
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeployment%4Operational
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeploymentServer%4Operational
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeploymentServer%4Restricted
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-AppxPackaging%4Operational
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Diagnostics-Performance%4Operational
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-GroupPolicy%4Operational
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-HelloForBusiness%4Operational
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-PowerShell%4Operational
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Shell-Core%4Operational
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TaskScheduler%4Operational
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-TSV-VmHostAgent%4Adm<br>in
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-TSV-VmHostAgent%4Ope<br>rational
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-User Device Registration%4Admin
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-WER-Diagnostics%4Operational
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-WinINet-Config%4ProxyConfigChanged
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Winlogon%4Operational
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-WinRM%4Operational
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-WMI-Activity%4Operational
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-DeviceManagement-Enterprise-Diagnosti<br>cs-Provider%4Sync
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-DeviceManagement-Enterprise-Diagnosti<br>cs-Provider%4Enrollment
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-DeviceManagement-Enterprise-Diagnosti<br>cs-Provider%4Admin
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Workplace Join%4Admin
-diagnostic | copy | /Windows/System32/winevt/Logs/PowerShellCore%4Operational
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-AAD%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4EXE and DLL.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4Packaged app-Execution.evt<br>x
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4Packaged app-Deployment.ev<br>tx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4MSI and Script.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-AppModel-Runtime%4Admin.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-AppReadiness%4Admin.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-AppReadiness%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeployment%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeploymentServer%4Operational.evt<br>x
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeploymentServer%4Restricted.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-AppxPackaging%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Diagnostics-Performance%4Operational.<br>evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-GroupPolicy%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-HelloForBusiness%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-PowerShell%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Shell-Core%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TaskScheduler%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-TSV-VmHostAgent%4Adm<br>in.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-TSV-VmHostAgent%4Ope<br>rational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-User Device Registration%4Admin.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-WER-Diagnostics%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-WinINet-Config%4ProxyConfigChanged.ev<br>tx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Winlogon%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-WinRM%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-WMI-Activity%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-DeviceManagement-Enterprise-Diagnosti<br>cs-Provider%4Sync.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-DeviceManagement-Enterprise-Diagnosti<br>cs-Provider%4Enrollment.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-DeviceManagement-Enterprise-Diagnosti<br>cs-Provider%4Admin.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Workplace Join%4Admin.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/PowerShellCore%4Operational.evtx
 diagnostic | list | /Windows/RemotePackages
 diagnostic | list | /Program Files/Microsoft RDInfra
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-FSLogix-Apps%4Admin.evtx
@@ -1231,37 +1232,23 @@ diagnostic | copy | /Program Files/GuestConfig/ext_mgr_logs/gc_ext.log
 diagnostic | copy | /var/log/blobfuse2.log
 diagnostic | copy | /var/log/blobfuse2.log\*
 diagnostic | copy | /Program Files/NVIDIA Corporation/Installer2/\*
-diagnostic | copy | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Management/\*
-diagnostic | copy | /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Scheduler/HpcScheduler_\*.bin
-diagnostic | copy | /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Scheduler/HpcNodeManager_\*.bin
-diagnostic | copy | /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Scheduler/HpcWebService_\*.bin
-diagnostic | copy | /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Diagnostics/HpcDiagnostics_\*.bi<br>n
-diagnostic | copy | /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/HpcFrontend/HpcFrontend_\*.bin
-diagnostic | copy | /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/HpcNaming/HpcNaming_\*.bin
-diagnostic | copy | /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Management/HpcManagement_\*.bin
-diagnostic | copy | /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Management/HpcReporting_\*.bin
-diagnostic | copy | /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Management/HpcSdm_\*.bin
-diagnostic | copy | /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Monitoring/HpcMonitoringNode_\*.<br>bin
-diagnostic | copy | /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Monitoring/HpcMonitoringServer_\<br>*.bin
-diagnostic | copy | /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/SOA/HpcBrokerWorker_\*.bin
-diagnostic | copy | /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/SOA/HpcBroker_\*.bin
-diagnostic | copy | /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/SOA/HpcSession_\*.bin
-diagnostic | copy | /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/SOA/HpcSoaDiagMon_\*.bin
-diagnostic | copy | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Scheduler/HpcScheduler_\*.bin
-diagnostic | copy | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Scheduler/HpcNodeManager_\*.bin
-diagnostic | copy | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Scheduler/HpcWebService_\*.bin
-diagnostic | copy | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Diagnostics/HpcDiagnostics_\*.bi<br>n
-diagnostic | copy | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/HpcFrontend/HpcFrontend_\*.bin
-diagnostic | copy | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/HpcNaming/HpcNaming_\*.bin
-diagnostic | copy | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Management/HpcManagement_\*.bin
-diagnostic | copy | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Management/HpcReporting_\*.bin
-diagnostic | copy | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Management/HpcSdm_\*.bin
-diagnostic | copy | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Monitoring/HpcMonitoringNode_\*.<br>bin
-diagnostic | copy | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Monitoring/HpcMonitoringServer_\<br>*.bin
-diagnostic | copy | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/SOA/HpcBrokerWorker_\*.bin
-diagnostic | copy | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/SOA/HpcBroker_\*.bin
-diagnostic | copy | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/SOA/HpcSession_\*.bin
-diagnostic | copy | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/SOA/HpcSoaDiagMon_\*.bin
+diagnostic | copy | /Windows/Temp/HPCSetupLogs/\*
+diagnostic | copy | /Windows/Temp/HPCSetupLogs/\*/\*
+diagnostic | list | /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Scheduler/
+diagnostic | list | /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Diagnostics/
+diagnostic | list | /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/HpcFrontend/
+diagnostic | list | /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/HpcNaming/
+diagnostic | list | /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Management/
+diagnostic | list | /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Monitoring/
+diagnostic | list | /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/SOA/
+diagnostic | list | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Scheduler
+diagnostic | list | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Diagnostics
+diagnostic | list | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/HpcFrontend
+diagnostic | list | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/HpcNaming
+diagnostic | list | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Management
+diagnostic | list | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Management
+diagnostic | list | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Monitoring
+diagnostic | list | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/SOA
 diagnostic | diskinfo | 
 eg | copy | /Windows/System32/winevt/Logs/System.evtx
 eg | copy | /Windows/System32/winevt/Logs/Application.evtx
@@ -2119,4 +2106,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-06-25 07:41:44.921835`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-06-25 07:55:51.453190`*
