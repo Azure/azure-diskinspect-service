@@ -379,7 +379,8 @@ echo,
 
 echo,### HPC###
 copy,/Program Files/NVIDIA Corporation/Installer2/*
-copy,/Program Files/NVIDIA Corporation/Installer2/*
+
+echo,### HPC Pack 2016 ###
 copy,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Management/*
 copy,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Scheduler/HpcScheduler_*.bin
 copy,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Scheduler/HpcNodeManager_*.bin

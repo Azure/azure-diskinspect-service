@@ -547,7 +547,7 @@ File Path | Manifest
 /Program Files/Microsoft SQL Server/\*/Setup Bootstrap/Log/Summary.txt | sql-iaas 
 /Program Files/Microsoft SQL Server/\*/Setup Bootstrap/Log/\*/Log\*.cab | sql-iaas 
 /Program Files/MsRDCMMRHost/MsRDCMMRHostInstall.log | diagnostic 
-/Program Files/NVIDIA Corporation/Installer2/\* | diagnostic, diagnostic 
+/Program Files/NVIDIA Corporation/Installer2/\* | diagnostic 
 /Program Files/containerd/config.toml | aks 
 /ProgramData/ASRSetupLogs/ASRUnifiedAgentConfigurator.log | site-recovery, windowsupdate 
 /ProgramData/ASRSetupLogs/ASRUnifiedAgentInstaller.log | site-recovery, windowsupdate 
@@ -914,4 +914,4 @@ File Path | Manifest
 /var/log/blobfuse2.log\* | diagnostic 
 /windows/Panther/setup.etl | diagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-06-25 07:40:59.410613`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-06-25 07:41:44.921835`*

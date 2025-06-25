@@ -1231,7 +1231,6 @@ diagnostic | copy | /Program Files/GuestConfig/ext_mgr_logs/gc_ext.log
 diagnostic | copy | /var/log/blobfuse2.log
 diagnostic | copy | /var/log/blobfuse2.log\*
 diagnostic | copy | /Program Files/NVIDIA Corporation/Installer2/\*
-diagnostic | copy | /Program Files/NVIDIA Corporation/Installer2/\*
 diagnostic | copy | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Management/\*
 diagnostic | copy | /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Scheduler/HpcScheduler_\*.bin
 diagnostic | copy | /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Scheduler/HpcNodeManager_\*.bin
@@ -2120,4 +2119,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-06-25 07:40:59.410613`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-06-25 07:41:44.921835`*
