@@ -302,7 +302,7 @@ diagnostic | copy | /etc/selinux/config
 diagnostic | copy | /sys/kernel/security/apparmor/profiles
 diagnostic | copy | /var/log/blobfuse2.log
 diagnostic | copy | /var/log/blobfuse2.log\*
-diagnostic | copy | /var/log/azure/ib-vmext-status
+diagnostic | copy | /var/log/azure/ib-vmext-status/\*log
 diagnostic | copy | /var/log/azure/nvidia-vmext-status/\*.log
 diagnostic | copy | /var/log/cuda-installer.log
 diagnostic | copy | /var/log/nvidia-installer.log
@@ -977,10 +977,6 @@ diagnostic | copy | /Windows/System32/winevt/Logs/OpenSSH%4Admin.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/OpenSSH%4Operational.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Security.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Setup.evtx
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-HPC-Management%4Admin.evtx
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-HPC-Reporting%4Operational.evtx
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-HPC-Scheduler%4Operational.evtx
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-HPC-Scheduler%4Admin.evtx
 diagnostic | list | /AzureData/CustomData.bin
 diagnostic | copy | /Windows/Setup/State/State.ini
 diagnostic | copy | /Windows/Panther/WaSetup.xml
@@ -1234,6 +1230,11 @@ diagnostic | copy | /var/log/blobfuse2.log\*
 diagnostic | copy | /Program Files/NVIDIA Corporation/Installer2/\*
 diagnostic | copy | /Windows/Temp/HPCSetupLogs/\*
 diagnostic | copy | /Windows/Temp/HPCSetupLogs/\*/\*
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft HPC Pack.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-HPC-Management%4Admin.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-HPC-Reporting%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-HPC-Scheduler%4Operational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-HPC-Scheduler%4Admin.evtx
 diagnostic | list | /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Scheduler/
 diagnostic | list | /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Diagnostics/
 diagnostic | list | /Program Files/Microsoft HPC Pack 2019/Data/LogFiles/HpcFrontend/
@@ -1245,7 +1246,6 @@ diagnostic | list | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Schedul
 diagnostic | list | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Diagnostics
 diagnostic | list | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/HpcFrontend
 diagnostic | list | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/HpcNaming
-diagnostic | list | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Management
 diagnostic | list | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Management
 diagnostic | list | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Monitoring
 diagnostic | list | /Program Files/Microsoft HPC Pack 2016/Data/LogFiles/SOA
@@ -2106,4 +2106,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-06-25 07:55:51.453190`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-06-26 11:41:57.366764`*

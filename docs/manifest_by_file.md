@@ -301,7 +301,7 @@ File Path | Manifest
 /var/log/azure/containerd-status.log | aks 
 /var/log/azure/custom-script/handler.log | agents, diagnostic, vmdiagnostic 
 /var/log/azure/docker-status.log | aks 
-/var/log/azure/ib-vmext-status | diagnostic 
+/var/log/azure/ib-vmext-status/\*log | diagnostic 
 /var/log/azure/kern.log | aks 
 /var/log/azure/kubelet-status.log | aks 
 /var/log/azure/nvidia-vmext-status/\*.log | diagnostic 
@@ -611,6 +611,7 @@ File Path | Manifest
 /Windows/System32/winevt/Logs/DFS Replication.evtx | diagnostic 
 /Windows/System32/winevt/Logs/DNS Server.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Directory Service.evtx | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft HPC Pack.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-AKSGMSAPlugin%4Admin.evtx | aks 
 /Windows/System32/winevt/Logs/Microsoft-Automation%4Operational.evtx | monitor-mgmt 
 /Windows/System32/winevt/Logs/Microsoft-FSLogix-Apps%4Admin.evtx | diagnostic 
@@ -884,4 +885,4 @@ File Path | Manifest
 /var/log/blobfuse2.log\* | diagnostic 
 /windows/Panther/setup.etl | diagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-06-25 07:55:51.453190`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-06-26 11:41:57.366764`*

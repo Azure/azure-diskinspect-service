@@ -82,10 +82,6 @@ copy,/Windows/System32/winevt/Logs/OpenSSH%4Admin.evtx
 copy,/Windows/System32/winevt/Logs/OpenSSH%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Security.evtx
 copy,/Windows/System32/winevt/Logs/Setup.evtx
-copy,/Windows/System32/winevt/Logs/Microsoft-HPC-Management%4Admin.evtx
-copy,/Windows/System32/winevt/Logs/Microsoft-HPC-Reporting%4Operational.evtx
-copy,/Windows/System32/winevt/Logs/Microsoft-HPC-Scheduler%4Operational.evtx
-copy,/Windows/System32/winevt/Logs/Microsoft-HPC-Scheduler%4Admin.evtx
 echo,
 
 echo,### Provisioning ###
@@ -381,6 +377,11 @@ echo,### HPC###
 copy,/Program Files/NVIDIA Corporation/Installer2/*
 copy,/Windows/Temp/HPCSetupLogs/*
 copy,/Windows/Temp/HPCSetupLogs/*/*
+copy,/Windows/System32/winevt/Logs/Microsoft HPC Pack.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-HPC-Management%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-HPC-Reporting%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-HPC-Scheduler%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-HPC-Scheduler%4Admin.evtx
 
 echo,### HPC Pack 2019 ###
 ll,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Scheduler/
@@ -397,7 +398,6 @@ ll,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Scheduler
 ll,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Diagnostics
 ll,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/HpcFrontend
 ll,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/HpcNaming
-ll,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Management
 ll,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Management
 ll,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Monitoring
 ll,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/SOA
