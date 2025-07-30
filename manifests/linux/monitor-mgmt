@@ -1,49 +1,106 @@
-echo,#Microsoft Monitoring Agent for Linux Log File
+echo,# Probing Directories #
+ll,/var/log
+ll,/var/lib/waagent
+ll,/etc/products.d/
+ll,/etc/zypp/repos.d/
+ll,/etc/yum.repos.d/
+ll,/etc/apt
+ 
+
+echo,# Gathering Configuration Files #
+copy,/etc/*-release
+copy,/etc/HOSTNAME
+copy,/etc/hostname
+copy,/etc/waagent.conf
+echo,
+
+echo,# Gathering Log Files #
+copy,/var/log/waagent*
+copy,/var/log/dmesg*
+copy,/var/log/syslog*
+copy,/var/log/messages*
+copy,/var/log/auth*
+copy,/var/log/azure/*/*
+copy,/var/log/azure/*/*/*
+copy,/var/log/azure/custom-script/handler.log
+echo,
+
+echo,### Gathering Extension Files ###
+copy,/var/lib/waagent/*.xml
+copy,/var/lib/waagent/waagent_status.json
+copy,/var/lib/waagent/waagent_status.*.json
+copy,/var/lib/waagent/*/status/*.status
+copy,/var/lib/waagent/*/config/*.settings
+copy,/var/lib/waagent/*/config/HandlerState
+copy,/var/lib/waagent/*/config/HandlerStatus
+copy,/var/lib/waagent/*/config/VMApp.lockfile
+copy,/var/lib/waagent/*/config/applicationRegistry.active
+copy,/var/lib/waagent/*.agentsManifest
+copy,/var/lib/waagent/error.json
+copy,/var/lib/waagent/Incarnation
+copy,/var/lib/waagent/history/*.zip,noscan
+echo,
+
+echo,# Microsoft Monitoring Agent for Linux Log File #
 copy,/var/opt/microsoft/omsagent/*/log/omsagent.log
-copy,/var/lib/waagent/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux.*.manifest.xml
 copy,/var/lib/waagent/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux-*/*
 
-echo,#Microsoft Monitoring Agent Configuration Log File
+echo,# Microsoft Monitoring Agent Configuration Log File #
 copy,/var/opt/microsoft/omsconfig/omsconfig.log
 copy,/var/opt/microsoft/omsconfig/omsconfigdetailed.log
 
-echo,#Microsoft Monitoring Agent Configuration File
+echo,# Microsoft Monitoring Agent Configuration File #
 copy,/etc/opt/microsoft/omsagent/conf/*.conf
 copy,/etc/opt/microsoft/omsagent/*/conf/omsagent.d/*.conf
 
-echo,#Microsoft Monitoring Agent Agent ID File
+echo,# Microsoft Monitoring Agent Agent ID File #
 copy,/etc/opt/omi/conf/omsconfig/agentid
 
-echo,#Syslog
-copy,/var/log/messages*
-copy,/var/log/syslog*
-
-echo,#SCX Logs
+echo,# SCX Logs # 
 copy,/var/opt/microsoft/scx/log/scx.log
 
-echo,#OMI Logs
+echo,# OMI Logs #
 copy,/var/opt/omi/log/*.log
 copy,/etc/opt/omi/conf/*
 
-echo,#WAAgent Logs
-copy,/var/log/waagent*.log
-copy,/var/lib/waagent/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux.*.manifest.xml
-copy,/var/lib/waagent/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux-*/*
+echo,# Azure Update Manager #
+copy,/var/lib/waagent/Microsoft.CPlat.Core.LinuxPatchExtension*/*
+copy,/var/log/apt/history.log
+copy,/var/log/apt/term.log
+copy,/var/log/dpkg*
+copy,/var/log/yum*
+copy,/var/log/dnf*
+copy,/var/log/zypp/history
 
-echo,#Microsoft Monitoring Agent Extension Logs
-copy,/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/*.log
+echo,# Gathering Repository Configuration Files #
+copy,/etc/products.d/*.prod,noscan
+copy,/etc/zypp/repos.d/*.repo,noscan
+copy,/etc/regionserverclnt.cfg,noscan
+copy,/etc/yum.conf
+copy,/etc/yum.repos.d/*.repo
+copy,/etc/yum/vars/releasever,noscan
+copy,/etc/dnf/dnf.conf
+copy,/etc/dnf/vars/releasever,noscan
+copy,/etc/yum.repos.d/rh-cloud-rhel*.repo
+copy,/etc/apt/sources.list,noscan
+copy,/etc/apt/sources.list.d/*.list,noscan
+copy,/etc/apt/sources.list.d/*.sources,noscan
+copy,/etc/hosts,noscan
+copy,/var/log/rhuicheck.log
 
-echo,#Update Management Logs
-copy,/var/opt/microsoft/omsagent/*/run/automationworker/omsupdatemgmt.log
-copy,/var/opt/microsoft/omsagent/run/automationworker/worker.log
-
-echo,#Log Collector Tool Logs
+echo,# Log Collector Tool Logs #
 copy,/tmp/omsagent*.tgz
 
-echo,#DSC Files
+echo,# DSC Files #
 copy,/etc/opt/omi/conf/omsconfig/configuration/*.mof
-copy,/var/log/azure/Microsoft.OSTCExtensions.DSCForLinux/extension.log
 
-echo,#Guest Config
+echo,# Azure Machine Config #
 copy,/var/lib/GuestConfig/gc_agent_logs/*
 copy,/var/lib/GuestConfig/Configuration/*
+
+echo,# Gathering Disk Info #
+diskinfo,
+
+echo,### Automation HRW logs ###
+copy,/home/hweautomation/run/worker.log
+copy,/var/lib/waagent/Microsoft.Azure.Automation.HybridWorker.HybridWorkerForLinux-*
