@@ -469,30 +469,76 @@ linux-sos-scc | list | /var/log
 linux-sos-scc | copy | /var/tmp/sosreport\*.tar.xz
 linux-sos-scc | copy | /var/log/scc\*.txz
 linux-sos-scc | copy | /tmp/sosreport\*.tar.xz
+monitor-mgmt | list | /var/log
+monitor-mgmt | list | /var/lib/waagent
+monitor-mgmt | list | /etc/products.d/
+monitor-mgmt | list | /etc/zypp/repos.d/
+monitor-mgmt | list | /etc/yum.repos.d/
+monitor-mgmt | list | /etc/apt
+monitor-mgmt | copy | /etc/\*-release
+monitor-mgmt | copy | /etc/HOSTNAME
+monitor-mgmt | copy | /etc/hostname
+monitor-mgmt | copy | /etc/waagent.conf
+monitor-mgmt | copy | /var/log/waagent\*
+monitor-mgmt | copy | /var/log/dmesg\*
+monitor-mgmt | copy | /var/log/syslog\*
+monitor-mgmt | copy | /var/log/messages\*
+monitor-mgmt | copy | /var/log/auth\*
+monitor-mgmt | copy | /var/log/azure/\*/\*
+monitor-mgmt | copy | /var/log/azure/\*/\*/\*
+monitor-mgmt | copy | /var/log/azure/custom-script/handler.log
+monitor-mgmt | copy | /var/lib/waagent/\*.xml
+monitor-mgmt | copy | /var/lib/waagent/waagent_status.json
+monitor-mgmt | copy | /var/lib/waagent/waagent_status.\*.json
+monitor-mgmt | copy | /var/lib/waagent/\*/status/\*.status
+monitor-mgmt | copy | /var/lib/waagent/\*/config/\*.settings
+monitor-mgmt | copy | /var/lib/waagent/\*/config/HandlerState
+monitor-mgmt | copy | /var/lib/waagent/\*/config/HandlerStatus
+monitor-mgmt | copy | /var/lib/waagent/\*/config/VMApp.lockfile
+monitor-mgmt | copy | /var/lib/waagent/\*/config/applicationRegistry.active
+monitor-mgmt | copy | /var/lib/waagent/\*.agentsManifest
+monitor-mgmt | copy | /var/lib/waagent/error.json
+monitor-mgmt | copy | /var/lib/waagent/Incarnation
+monitor-mgmt | copy | /var/lib/waagent/history/\*.zip
 monitor-mgmt | copy | /var/opt/microsoft/omsagent/\*/log/omsagent.log
-monitor-mgmt | copy | /var/lib/waagent/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux.\*.manifest.xm<br>l
 monitor-mgmt | copy | /var/lib/waagent/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux-\*/\*
 monitor-mgmt | copy | /var/opt/microsoft/omsconfig/omsconfig.log
 monitor-mgmt | copy | /var/opt/microsoft/omsconfig/omsconfigdetailed.log
 monitor-mgmt | copy | /etc/opt/microsoft/omsagent/conf/\*.conf
 monitor-mgmt | copy | /etc/opt/microsoft/omsagent/\*/conf/omsagent.d/\*.conf
 monitor-mgmt | copy | /etc/opt/omi/conf/omsconfig/agentid
-monitor-mgmt | copy | /var/log/messages\*
-monitor-mgmt | copy | /var/log/syslog\*
 monitor-mgmt | copy | /var/opt/microsoft/scx/log/scx.log
 monitor-mgmt | copy | /var/opt/omi/log/\*.log
 monitor-mgmt | copy | /etc/opt/omi/conf/\*
-monitor-mgmt | copy | /var/log/waagent\*.log
-monitor-mgmt | copy | /var/lib/waagent/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux.\*.manifest.xm<br>l
-monitor-mgmt | copy | /var/lib/waagent/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux-\*/\*
-monitor-mgmt | copy | /var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/\*/\*.log
-monitor-mgmt | copy | /var/opt/microsoft/omsagent/\*/run/automationworker/omsupdatemgmt.log
-monitor-mgmt | copy | /var/opt/microsoft/omsagent/run/automationworker/worker.log
+monitor-mgmt | copy | /var/lib/waagent/Microsoft.CPlat.Core.LinuxPatchExtension\*/\*
+monitor-mgmt | copy | /var/log/apt/history.log
+monitor-mgmt | copy | /var/log/apt/term.log
+monitor-mgmt | copy | /var/log/dpkg\*
+monitor-mgmt | copy | /var/log/yum\*
+monitor-mgmt | copy | /var/log/dnf\*
+monitor-mgmt | copy | /var/log/zypp/history
+monitor-mgmt | copy | /etc/products.d/\*.prod
+monitor-mgmt | copy | /etc/zypp/repos.d/\*.repo
+monitor-mgmt | copy | /etc/regionserverclnt.cfg
+monitor-mgmt | copy | /etc/yum.conf
+monitor-mgmt | copy | /etc/yum.repos.d/\*.repo
+monitor-mgmt | copy | /etc/yum/vars/releasever
+monitor-mgmt | copy | /etc/dnf/dnf.conf
+monitor-mgmt | copy | /etc/dnf/vars/releasever
+monitor-mgmt | copy | /etc/yum.repos.d/rh-cloud-rhel\*.repo
+monitor-mgmt | copy | /etc/apt/sources.list
+monitor-mgmt | copy | /etc/apt/sources.list.d/\*.list
+monitor-mgmt | copy | /etc/apt/sources.list.d/\*.sources
+monitor-mgmt | copy | /etc/hosts
+monitor-mgmt | copy | /var/log/rhuicheck.log
 monitor-mgmt | copy | /tmp/omsagent\*.tgz
 monitor-mgmt | copy | /etc/opt/omi/conf/omsconfig/configuration/\*.mof
-monitor-mgmt | copy | /var/log/azure/Microsoft.OSTCExtensions.DSCForLinux/extension.log
 monitor-mgmt | copy | /var/lib/GuestConfig/gc_agent_logs/\*
 monitor-mgmt | copy | /var/lib/GuestConfig/Configuration/\*
+monitor-mgmt | diskinfo | 
+monitor-mgmt | copy | /home/hweautomation/run/\*.log
+monitor-mgmt | copy | /home/hweautomation/state/\*.conf
+monitor-mgmt | copy | /var/lib/waagent/Microsoft.Azure.Automation.HybridWorker.HybridWorkerForLinux-\*
 normal | list | /var/log
 normal | list | /etc/udev/rules.d
 normal | copy | /etc/fstab
@@ -1297,19 +1343,27 @@ min-diagnostic | copy | /Windows/Logs/eBPF/committed/\*
 min-diagnostic | diskinfo | 
 monitor-mgmt | copy | /Program Files/Microsoft Monitoring Agent/Agent/Health Service State/Management Packs<br>/\*.xml
 monitor-mgmt | copy | /Program Files/Microsoft Monitoring Agent/Agent/Health Service State/CT_\*/work/Servi<br>ceState/\*.log
-monitor-mgmt | copy | /WindowsAzure/Logs/\*.log
-monitor-mgmt | copy | /WindowsAzure/Logs/AggregateStatus/\*.json
-monitor-mgmt | copy | /WindowsAzure/Logs/plugins/\*/\*/\*.log
-monitor-mgmt | copy | /WindowsAzure/Logs/VFPlugin/\*.log
 monitor-mgmt | copy | /Program Files/Microsoft Monitoring Agent/Agent/Health Service State/FCT_\*/work/loca<br>lhost.mof
 monitor-mgmt | copy | /Program Files/Microsoft Monitoring Agent/Agent/Health Service State/FCT_\*/work/loca<br>lhost.prevmof
 monitor-mgmt | copy | /Program Files/Microsoft Monitoring Agent/Agent/Health Service State/FCT_\*/work/asmh<br>ost.log
 monitor-mgmt | copy | /Program Files/Microsoft Monitoring Agent/Agent/Health Service State/FCT_\*/work/Inve<br>ntory/asmhost.log
 monitor-mgmt | copy | /Program Files/Microsoft Monitoring Agent/Agent/Health Service State/FCT_\*/work/Inve<br>ntory/localhost.json
 monitor-mgmt | copy | /Program Files/Microsoft Monitoring Agent/Agent/Health Service State/FCT_\*/work/Inve<br>ntory/localhost.mof
-monitor-mgmt | copy | /Windows/system32/winevt/Logs/Operations Manager.evtx
-monitor-mgmt | copy | /Windows/System32/winevt/Logs/Windows PowerShell.evtx
-monitor-mgmt | copy | /Windows/System32/winevt/Logs/Windows Azure.evtx
+monitor-mgmt | list | /WindowsAzure
+monitor-mgmt | list | /Packages/Plugins
+monitor-mgmt | copy | /Packages/Plugins/\*/\*/config.txt
+monitor-mgmt | copy | /Packages/Plugins/\*/\*/HandlerEnvironment.json
+monitor-mgmt | copy | /Packages/Plugins/\*/\*/HandlerManifest.json
+monitor-mgmt | copy | /Packages/Plugins/\*/\*/RuntimeSettings/\*.settings
+monitor-mgmt | copy | /Packages/Plugins/\*/\*/Status/\*.status
+monitor-mgmt | copy | /Packages/Plugins/\*/\*/Status/HeartBeat.Json
+monitor-mgmt | copy | /Packages/Plugins/\*/\*/PackageInformation.txt
+monitor-mgmt | copy | /WindowsAzure/Logs/\*.log
+monitor-mgmt | copy | /WindowsAzure/Logs/AggregateStatus/\*.json
+monitor-mgmt | copy | /WindowsAzure/Logs/plugins/\*/\*/\*.log
+monitor-mgmt | copy | /WindowsAzure/Logs/VFPlugin/\*.log
+monitor-mgmt | copy | /WindowsAzure/config/\*.xml
+monitor-mgmt | copy | /Windows/System32/winevt/Logs/Application.evtx
 monitor-mgmt | copy | /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Bootstrapper.evtx
 monitor-mgmt | copy | /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4GuestAgent.evtx
 monitor-mgmt | copy | /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Heartbeat.evtx
@@ -1319,9 +1373,37 @@ monitor-mgmt | copy | /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Statu
 monitor-mgmt | copy | /Windows/System32/winevt/Logs/Microsoft-SMA%4Operational.evtx
 monitor-mgmt | copy | /Windows/System32/winevt/Logs/Microsoft-SMA%4Debug.etl
 monitor-mgmt | copy | /Windows/System32/winevt/Logs/Microsoft-Automation%4Operational.evtx
-monitor-mgmt | copy | /Windows/WindowsUpdate.log
+monitor-mgmt | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-DSC%4Operational.evtx
+monitor-mgmt | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-PowerShell%4Operational.evtx
+monitor-mgmt | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Shell-Core%4Operational.evtx
+monitor-mgmt | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-WinRM%4Operational.evtx
+monitor-mgmt | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-WMI-Activity%4Operational.evtx
+monitor-mgmt | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-CAPI2%4Operational.evtx
+monitor-mgmt | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Diagnostics-Performance%4Operational
+monitor-mgmt | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-GroupPolicy%4Operational.evtx
+monitor-mgmt | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TCPIP%4Operational.evtx
+monitor-mgmt | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-WER-Diagnostics%4Operational
+monitor-mgmt | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Resource-Exhaustion-Detector%4Operati<br>onal.evtx
+monitor-mgmt | copy | /Windows/system32/winevt/Logs/Operations Manager.evtx
+monitor-mgmt | copy | /Windows/System32/winevt/Logs/PowerShellCore%4Operational.evtx
+monitor-mgmt | copy | /Windows/System32/winevt/Logs/System.evtx
+monitor-mgmt | copy | /Windows/System32/winevt/Logs/Windows PowerShell.evtx
+monitor-mgmt | copy | /Windows/System32/winevt/Logs/Windows Azure.evtx
+monitor-mgmt | copy | /Program Files/Update Services/LogFiles/WSUSSetup.log
+monitor-mgmt | copy | /Program Files/Update Services/LogFiles/SoftwareDistribution.log
+monitor-mgmt | copy | /Program Files/Update Services/LogFiles/WSyncMgr.log
+monitor-mgmt | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.WindowsPatchExtension/\*/windowsUpdat<br>eLog/\*
+monitor-mgmt | copy | /Windows/Logs/CBS/\*.log
+monitor-mgmt | copy | /Windows/Logs/DISM/\*.log
 monitor-mgmt | copy | /Windows/Logs/WindowsUpdate/WindowsUpdate.\*.etl
+monitor-mgmt | copy | /Windows/servicing/sessions/sessions.xml
 monitor-mgmt | copy | /Windows/SoftwareDistribution/ReportingEvents.log
+monitor-mgmt | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-WindowsUpdateClient%4Operational.evtx
+monitor-mgmt | copy | /Windows/windowsupdate.log
+monitor-mgmt | list | /ProgramData/GuestConfig
+monitor-mgmt | copy | /ProgramData/GuestConfig/Configuration/\*
+monitor-mgmt | copy | /ProgramData/GuestConfig/gc_agent_logs/\*
+monitor-mgmt | copy | /WindowsAzure/Logs/Plugins/Microsoft.GuestConfiguration.ConfigurationforWindows/\*
 monitor-mgmt | copy | /Program Files/Microsoft Dependency Agent/logs/\*.\*
 monitor-mgmt | copy | /ProgramData/Microsoft/System Center/Orchestrator/7.2/SMA/\*.\*
 monitor-mgmt | copy | /Windows/Logs/OpsMgrTrace/\*.\*
@@ -1329,8 +1411,27 @@ monitor-mgmt | copy | /Windows/Temp/MonitoringAgent.log
 monitor-mgmt | copy | /Windows/Temp/MOMPerfCtrsInstall.log
 monitor-mgmt | copy | /ProgramData/GuestConfig/Configuration/\*
 monitor-mgmt | copy | /ProgramData/GuestConfig/gc_agent_logs/\*
-monitor-mgmt | copy | /Packages/Plugins/\*
-monitor-mgmt | copy | /WindowsAzure/Config/\*
+monitor-mgmt | copy | /HybridWorkerExtensionLogs/\*.zip
+monitor-mgmt | copy | /Packages/Plugins/Microsoft.Powershell.DSC/\*/DSCWork/\*.dsc
+monitor-mgmt | copy | /Packages/Plugins/Microsoft.Powershell.DSC/\*/DSCWork/\*.log
+monitor-mgmt | copy | /Packages/Plugins/Microsoft.Powershell.DSC/\*/DSCWork/\*.dpx
+monitor-mgmt | copy | /Packages/Plugins/Microsoft.Powershell.DSC/\*/DSCVersion.xml
+monitor-mgmt | copy | /Packages/Plugins/Microsoft.Powershell.DSC/\*/DSCWork/HotfixInstallInProgress.dsc
+monitor-mgmt | copy | /Packages/Plugins/Microsoft.Powershell.DSC/\*/DSCWork/PreInstallDone.dsc
+monitor-mgmt | copy | /WindowsAzure/Logs/Plugins/Microsoft.Powershell.DSC/\*/DSCLOG\*.json
+monitor-mgmt | copy | /Windows/System32/config/SOFTWARE
+monitor-mgmt | copy | /Windows/System32/config/SYSTEM
+monitor-mgmt | registry query | HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\RebootPendin<br>g
+monitor-mgmt | registry query | HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update\RebootRequir<br>ed
+monitor-mgmt | registry query | HKLM\SOFTWARE\Microsoft\HybridRunbookWorkerV2
+monitor-mgmt | registry query | HKLM\SOFTWARE\Microsoft\Azure\HybridWorker
+monitor-mgmt | registry query | HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AllowRebootlessUpdates
+monitor-mgmt | registry query | HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\LocalAccountTokenFilte<br>rPolicy
+monitor-mgmt | registry query | HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU\NoAutoUpdate
+monitor-mgmt | registry query | HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\DisableWindowsUpdateAccess
+monitor-mgmt | registry query | HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Cl<br>ient\Enabled
+monitor-mgmt | registry query | HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.3\Cl<br>ient\Enabled
+monitor-mgmt | registry query | HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard\EnableVirtualizationBasedSecurity
 normal | copy | /Windows/System32/winevt/Logs/System.evtx
 normal | copy | /Windows/System32/winevt/Logs/Application.evtx
 normal | copy | /Windows/System32/winevt/Logs/Microsoft-ServiceFabric%4Admin.evtx
@@ -2027,4 +2128,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-05-22 08:51:24.259333`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-08-04 22:55:33.734971`*

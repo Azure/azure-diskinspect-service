@@ -1,10 +1,6 @@
-echo,#Microsoft monitoring Agent Logs
+echo,# Microsoft monitoring Agent Logs #
 copy,/Program Files/Microsoft Monitoring Agent/Agent/Health Service State/Management Packs/*.xml
 copy,/Program Files/Microsoft Monitoring Agent/Agent/Health Service State/CT_*/work/ServiceState/*.log
-copy,/WindowsAzure/Logs/*.log
-copy,/WindowsAzure/Logs/AggregateStatus/*.json
-copy,/WindowsAzure/Logs/plugins/*/*/*.log
-copy,/WindowsAzure/Logs/VFPlugin/*.log
 copy,/Program Files/Microsoft Monitoring Agent/Agent/Health Service State/FCT_*/work/localhost.mof
 copy,/Program Files/Microsoft Monitoring Agent/Agent/Health Service State/FCT_*/work/localhost.prevmof
 copy,/Program Files/Microsoft Monitoring Agent/Agent/Health Service State/FCT_*/work/asmhost.log
@@ -12,10 +8,24 @@ copy,/Program Files/Microsoft Monitoring Agent/Agent/Health Service State/FCT_*/
 copy,/Program Files/Microsoft Monitoring Agent/Agent/Health Service State/FCT_*/work/Inventory/localhost.json
 copy,/Program Files/Microsoft Monitoring Agent/Agent/Health Service State/FCT_*/work/Inventory/localhost.mof
 
-echo,#Event Logs
-copy,/Windows/system32/winevt/Logs/Operations Manager.evtx
-copy,/Windows/System32/winevt/Logs/Windows PowerShell.evtx
-copy,/Windows/System32/winevt/Logs/Windows Azure.evtx
+echo,# Guest Agent #
+ll,/WindowsAzure
+ll,/Packages/Plugins
+copy,/Packages/Plugins/*/*/config.txt
+copy,/Packages/Plugins/*/*/HandlerEnvironment.json
+copy,/Packages/Plugins/*/*/HandlerManifest.json
+copy,/Packages/Plugins/*/*/RuntimeSettings/*.settings
+copy,/Packages/Plugins/*/*/Status/*.status
+copy,/Packages/Plugins/*/*/Status/HeartBeat.Json
+copy,/Packages/Plugins/*/*/PackageInformation.txt
+copy,/WindowsAzure/Logs/*.log
+copy,/WindowsAzure/Logs/AggregateStatus/*.json
+copy,/WindowsAzure/Logs/plugins/*/*/*.log
+copy,/WindowsAzure/Logs/VFPlugin/*.log
+copy,/WindowsAzure/config/*.xml
+
+echo,# Event Logs #
+copy,/Windows/System32/winevt/Logs/Application.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Bootstrapper.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4GuestAgent.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Heartbeat.evtx
@@ -25,23 +35,73 @@ copy,/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Status%4Plugins.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-SMA%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-SMA%4Debug.etl,noscan
 copy,/Windows/System32/winevt/Logs/Microsoft-Automation%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-DSC%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-PowerShell%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Shell-Core%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WinRM%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WMI-Activity%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-CAPI2%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Diagnostics-Performance%4Operational
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-GroupPolicy%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TCPIP%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WER-Diagnostics%4Operational
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Resource-Exhaustion-Detector%4Operational.evtx
+copy,/Windows/system32/winevt/Logs/Operations Manager.evtx
+copy,/Windows/System32/winevt/Logs/PowerShellCore%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/System.evtx
+copy,/Windows/System32/winevt/Logs/Windows PowerShell.evtx
+copy,/Windows/System32/winevt/Logs/Windows Azure.evtx
 
-echo,#Windows Update Logs
-copy,/Windows/WindowsUpdate.log
+echo,# Azure Update Manager #
+copy,/Program Files/Update Services/LogFiles/WSUSSetup.log
+copy,/Program Files/Update Services/LogFiles/SoftwareDistribution.log
+copy,/Program Files/Update Services/LogFiles/WSyncMgr.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.WindowsPatchExtension/*/windowsUpdateLog/*
+copy,/Windows/Logs/CBS/*.log
+copy,/Windows/Logs/DISM/*.log
 copy,/Windows/Logs/WindowsUpdate/WindowsUpdate.*.etl,noscan
+copy,/Windows/servicing/sessions/sessions.xml,noscan
 copy,/Windows/SoftwareDistribution/ReportingEvents.log
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WindowsUpdateClient%4Operational.evtx
+copy,/Windows/windowsupdate.log
+echo,
 
-echo,#Agent Trace Logs
+echo,# Azure Machine Configuration Logs #
+ll,/ProgramData/GuestConfig
+copy,/ProgramData/GuestConfig/Configuration/*
+copy,/ProgramData/GuestConfig/gc_agent_logs/*
+copy,/WindowsAzure/Logs/Plugins/Microsoft.GuestConfiguration.ConfigurationforWindows/*
+
+echo,# Agent Trace Logs #
 copy,/Program Files/Microsoft Dependency Agent/logs/*.*
 copy,/ProgramData/Microsoft/System Center/Orchestrator/7.2/SMA/*.*
 copy,/Windows/Logs/OpsMgrTrace/*.*
 copy,/Windows/Temp/MonitoringAgent.log
 copy,/Windows/Temp/MOMPerfCtrsInstall.log
 
-echo,#Guest Configuration Logs
-copy,/ProgramData/GuestConfig/Configuration/*
-copy,/ProgramData/GuestConfig/gc_agent_logs/*
+echo,# Hybrid Worker and DSC Logs #
+copy,/HybridWorkerExtensionLogs/*.zip,noscan
+copy,/Packages/Plugins/Microsoft.Powershell.DSC/*/DSCWork/*.dsc
+copy,/Packages/Plugins/Microsoft.Powershell.DSC/*/DSCWork/*.log,noscan
+copy,/Packages/Plugins/Microsoft.Powershell.DSC/*/DSCWork/*.dpx,noscan
+copy,/Packages/Plugins/Microsoft.Powershell.DSC/*/DSCVersion.xml
+copy,/Packages/Plugins/Microsoft.Powershell.DSC/*/DSCWork/HotfixInstallInProgress.dsc
+copy,/Packages/Plugins/Microsoft.Powershell.DSC/*/DSCWork/PreInstallDone.dsc
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Powershell.DSC/*/DSCLOG*.json
 
-echo,#General
-copy,/Packages/Plugins/*
-copy,/WindowsAzure/Config/*
+echo,# Registry Hives #
+copy,/Windows/System32/config/SOFTWARE,noscan
+copy,/Windows/System32/config/SYSTEM,noscan
+
+echo,# Registry Values #
+reg,HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\RebootPending
+reg,HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update\RebootRequired
+reg,HKLM\SOFTWARE\Microsoft\HybridRunbookWorkerV2
+reg,HKLM\SOFTWARE\Microsoft\Azure\HybridWorker
+reg,HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AllowRebootlessUpdates
+reg,HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\LocalAccountTokenFilterPolicy
+reg,HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU\NoAutoUpdate
+reg,HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\DisableWindowsUpdateAccess
+reg,HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client\Enabled
+reg,HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.3\Client\Enabled
+reg,HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard\EnableVirtualizationBasedSecurity
