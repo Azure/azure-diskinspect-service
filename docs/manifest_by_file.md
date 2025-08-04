@@ -135,7 +135,8 @@ File Path | Manifest
 /etc/yum.repos.d/rh-cloud-rhel\*.repo | linux-repoconfig, monitor-mgmt 
 /etc/yum/vars/releasever | linux-repoconfig, monitor-mgmt 
 /etc/zypp/repos.d/\*.repo | linux-repoconfig, monitor-mgmt 
-/home/hweautomation/run/worker.log | monitor-mgmt 
+/home/hweautomation/run/\*.log | monitor-mgmt 
+/home/hweautomation/state/\*.conf | monitor-mgmt 
 /opt/microsoft/servicefabric/bin/Fabric/Fabric.Code/Fabric | servicefabric 
 /opt/msawb/bin/AzureWLBackupCommonManagementSettings.json | workloadbackup 
 /opt/msawb/bin/AzureWLBackupMonitoringSync_config.json | workloadbackup 
@@ -837,4 +838,4 @@ File Path | Manifest
 /var/log/blobfuse2.log\* | diagnostic 
 /windows/Panther/setup.etl | diagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-07-31 11:58:38.417199`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-08-04 22:15:20.003079`*

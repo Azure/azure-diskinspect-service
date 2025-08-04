@@ -67,6 +67,7 @@ copy,/Windows/windowsupdate.log
 echo,
 
 echo,# Azure Machine Configuration Logs #
+ll,/ProgramData/GuestConfig
 copy,/ProgramData/GuestConfig/Configuration/*
 copy,/ProgramData/GuestConfig/gc_agent_logs/*
 copy,/WindowsAzure/Logs/Plugins/Microsoft.GuestConfiguration.ConfigurationforWindows/*

@@ -536,7 +536,8 @@ monitor-mgmt | copy | /etc/opt/omi/conf/omsconfig/configuration/\*.mof
 monitor-mgmt | copy | /var/lib/GuestConfig/gc_agent_logs/\*
 monitor-mgmt | copy | /var/lib/GuestConfig/Configuration/\*
 monitor-mgmt | diskinfo | 
-monitor-mgmt | copy | /home/hweautomation/run/worker.log
+monitor-mgmt | copy | /home/hweautomation/run/\*.log
+monitor-mgmt | copy | /home/hweautomation/state/\*.conf
 monitor-mgmt | copy | /var/lib/waagent/Microsoft.Azure.Automation.HybridWorker.HybridWorkerForLinux-\*
 normal | list | /var/log
 normal | list | /etc/udev/rules.d
@@ -2126,4 +2127,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-07-31 11:58:38.417199`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-08-04 22:15:20.003079`*

@@ -102,5 +102,6 @@ echo,# Gathering Disk Info #
 diskinfo,
 
 echo,### Automation HRW logs ###
-copy,/home/hweautomation/run/worker.log
+copy,/home/hweautomation/run/*.log
+copy,/home/hweautomation/state/*.conf
 copy,/var/lib/waagent/Microsoft.Azure.Automation.HybridWorker.HybridWorkerForLinux-*
