@@ -1400,6 +1400,7 @@ monitor-mgmt | copy | /Windows/servicing/sessions/sessions.xml
 monitor-mgmt | copy | /Windows/SoftwareDistribution/ReportingEvents.log
 monitor-mgmt | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-WindowsUpdateClient%4Operational.evtx
 monitor-mgmt | copy | /Windows/windowsupdate.log
+monitor-mgmt | list | /ProgramData/GuestConfig
 monitor-mgmt | copy | /ProgramData/GuestConfig/Configuration/\*
 monitor-mgmt | copy | /ProgramData/GuestConfig/gc_agent_logs/\*
 monitor-mgmt | copy | /WindowsAzure/Logs/Plugins/Microsoft.GuestConfiguration.ConfigurationforWindows/\*
@@ -2127,4 +2128,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-08-04 22:15:20.003079`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-08-04 22:55:33.734971`*

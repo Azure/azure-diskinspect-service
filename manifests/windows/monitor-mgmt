@@ -79,10 +79,6 @@ copy,/Windows/Logs/OpsMgrTrace/*.*
 copy,/Windows/Temp/MonitoringAgent.log
 copy,/Windows/Temp/MOMPerfCtrsInstall.log
 
-echo,# Guest Configuration Logs #
-copy,/ProgramData/GuestConfig/Configuration/*
-copy,/ProgramData/GuestConfig/gc_agent_logs/*
-
 echo,# Hybrid Worker and DSC Logs #
 copy,/HybridWorkerExtensionLogs/*.zip,noscan
 copy,/Packages/Plugins/Microsoft.Powershell.DSC/*/DSCWork/*.dsc
