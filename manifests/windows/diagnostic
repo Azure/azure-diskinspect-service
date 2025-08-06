@@ -108,9 +108,15 @@ copy,/Windows/System32/Sysprep/Sysprep_succeeded.tag
 echo,
 
 echo,### Plug and Play ###
-copy,/Windows/INF/netcfg*.*etl
-copy,/Windows/INF/setupapi.dev.log
+copy,/Windows/INF/netcfg*.*etl,noscan
+copy,/Windows/INF/setupapi.*
 echo,
+
+echo,### Plug and Play ###
+copy,/ProgramData/FSLogix/Logs/Profile/Profile_*.log
+copy,/ProgramData/FSLogix/Logs/*.etl.*
+ll,/ProgramData/FSLogix/Logs
+echo, 
 
 echo,### App Install ###
 copy,/Windows/inf/setupapi.app.log	
@@ -247,6 +253,8 @@ copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ActiveDirectory.AADLoginForWindo
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.AzureDiskEncryption/*/BitlockerExtension.log
 copy,/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/*/*.log,noscan
 copy,/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/*/log_*
+copy,/WindowsAzure/Logs/Plugins/Microsoft.HpcCompute.NvidiaGpuDriverWindows/*/*.log,noscan
+copy,/WindowsAzure/Logs/Plugins/Microsoft.HpcCompute.AmdGpuDriverMicrosoft/*/*.log,noscan
 copy,/Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/*/RuntimeSettings/applicationRegistry.active
 copy,/Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/*/RuntimeSettings/applicationRegistry.backup
 copy,/Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/*/RuntimeSettings/VMApp.lockfile,noscan
@@ -292,38 +300,38 @@ copy,/Windows/Logs/RDMSDeploymentUI.txt
 copy,/Windows/Logs/RDMSDeploymentUI.txt
 copy,/Windows/System32/tssesdir/*.xml
 copy,/Windows/web/rdweb/App_Data/rdweb.log
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AAD%4Operational
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4EXE and DLL
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4Packaged app-Execution
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4Packaged app-Deployment
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4MSI and Script
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppModel-Runtime%4Admin
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppReadiness%4Admin
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppReadiness%4Operational
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeployment%4Operational
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeploymentServer%4Operational
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeploymentServer%4Restricted
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppxPackaging%4Operational
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Diagnostics-Performance%4Operational
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-GroupPolicy%4Operational
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-HelloForBusiness%4Operational
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-PowerShell%4Operational
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Shell-Core%4Operational
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TaskScheduler%4Operational
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-TSV-VmHostAgent%4Admin
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-TSV-VmHostAgent%4Operational
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-User Device Registration%4Admin
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WER-Diagnostics%4Operational
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WinINet-Config%4ProxyConfigChanged
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Winlogon%4Operational
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WinRM%4Operational
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WMI-Activity%4Operational
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-DeviceManagement-Enterprise-Diagnostics-Provider%4Sync
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-DeviceManagement-Enterprise-Diagnostics-Provider%4Enrollment
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-DeviceManagement-Enterprise-Diagnostics-Provider%4Admin
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Workplace Join%4Admin
-copy,/Windows/System32/winevt/Logs/PowerShellCore%4Operational
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AAD%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4EXE and DLL.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4Packaged app-Execution.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4Packaged app-Deployment.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4MSI and Script.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppModel-Runtime%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppReadiness%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppReadiness%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeployment%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeploymentServer%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeploymentServer%4Restricted.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppxPackaging%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Diagnostics-Performance%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-GroupPolicy%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-HelloForBusiness%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-PowerShell%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Shell-Core%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TaskScheduler%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-TSV-VmHostAgent%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-TSV-VmHostAgent%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-User Device Registration%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WER-Diagnostics%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WinINet-Config%4ProxyConfigChanged.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Winlogon%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WinRM%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WMI-Activity%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-DeviceManagement-Enterprise-Diagnostics-Provider%4Sync.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-DeviceManagement-Enterprise-Diagnostics-Provider%4Enrollment.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-DeviceManagement-Enterprise-Diagnostics-Provider%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Workplace Join%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/PowerShellCore%4Operational.evtx
 ll,/Windows/RemotePackages
 ll,/Program Files/Microsoft RDInfra
 echo,
@@ -336,6 +344,9 @@ copy,/Windows/System32/winevt/Logs/Microsoft-FSLogix-CloudCache%4Operational.evt
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Ntfs%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-VHDMP%4Operational.evtx
 copy,/Program Files/FSLogix/Logs/Profile_*.log
+ll,/ProgramData/FSLogix/Logs
+copy,/ProgramData/FSLogix/Logs/Profile/Profile_*.log
+copy,/ProgramData/FSLogix/Logs/*.etl.*
 copy,/Program Files/FSLogix/Apps/Rules
 ll,/Program Files/FSLogix/Apps/Rules
 ll,/Program Files/FSLogix/Apps/CompiledRules
@@ -362,6 +373,37 @@ copy,/var/log/blobfuse2.log
 copy,/var/log/blobfuse2.log*
 echo,
 
+echo,### HPC###
+copy,/Program Files/NVIDIA Corporation/Installer2/*
+copy,/Windows/Temp/HPCSetupLogs/*
+copy,/Windows/Temp/HPCSetupLogs/*/*
+copy,/Windows/System32/winevt/Logs/Microsoft HPC Pack.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-HPC-Management%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-HPC-Reporting%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-HPC-Scheduler%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-HPC-Scheduler%4Admin.evtx
+
+echo,### HPC Pack 2019 ###
+ll,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Scheduler/
+ll,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Diagnostics/
+ll,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/HpcFrontend/
+ll,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/HpcNaming/
+ll,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Management/
+ll,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Monitoring/
+ll,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/SOA/
+echo,
+
+echo,### HPC Pack 2016 ###
+ll,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Scheduler
+ll,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Diagnostics
+ll,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/HpcFrontend
+ll,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/HpcNaming
+ll,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Management
+ll,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Monitoring
+ll,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/SOA
+echo,
+
 echo,### Gathering Disk Info ###
 diskinfo,
 echo,
+ 

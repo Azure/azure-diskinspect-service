@@ -97,13 +97,15 @@ File Path | Manifest
 /etc/opt/omi/conf/omsconfig/agentid | monitor-mgmt 
 /etc/opt/omi/conf/omsconfig/configuration/\*.mof | monitor-mgmt 
 /etc/pam.d/\* | diagnostic 
+/etc/pbs.conf | diagnostic 
 /etc/products.d/\*.prod | linux-repoconfig 
 /etc/regionserverclnt.cfg | linux-repoconfig 
 /etc/resolv.conf | diagnostic, eg, vmdiagnostic 
 /etc/rsyslog.conf | azuremonitoragent 
 /etc/rsyslog.d/\*.conf | azuremonitoragent 
-/etc/security/limits.conf | diagnostic 
+/etc/security/limits.conf | diagnostic, diagnostic 
 /etc/selinux/config | diagnostic 
+/etc/slurm/\* | diagnostic 
 /etc/spark/conf/\* | hdinsight 
 /etc/ssh/sshd_config | diagnostic, eg, normal, vmdiagnostic 
 /etc/ssh/sshd_config.d/\* | diagnostic 
@@ -121,6 +123,7 @@ File Path | Manifest
 /etc/sysconfig/network/dhcp | eg, vmdiagnostic 
 /etc/sysconfig/network/ifcfg-\* | eg, vmdiagnostic 
 /etc/sysconfig/network/routes | eg, vmdiagnostic 
+/etc/sysconfig/selinux/\* | diagnostic 
 /etc/sysctl.conf | diagnostic 
 /etc/sysctl.d/\*.conf | diagnostic 
 /etc/syslog-ng/\* | azuremonitoragent 
@@ -160,6 +163,40 @@ File Path | Manifest
 /run/resolvconf/\*.conf | eg 
 /run/systemd/netif/leases/\* | eg 
 /run/systemd/resolve/\*.conf | eg 
+/sched/sge/sge-2011.11/default/common/install_logs/\* | diagnostic 
+/sched/sge/sge-2011.11/default/spool/\* | diagnostic 
+/sys/class/infiniband/mlx5_ib0/ports/1/phys_state | diagnostic 
+/sys/class/infiniband/mlx5_ib0/ports/1/pkeys | diagnostic 
+/sys/class/infiniband/mlx5_ib0/ports/1/rate | diagnostic 
+/sys/class/infiniband/mlx5_ib0/ports/1/state | diagnostic 
+/sys/class/infiniband/mlx5_ib1/ports/1/phys_state | diagnostic 
+/sys/class/infiniband/mlx5_ib1/ports/1/pkeys | diagnostic 
+/sys/class/infiniband/mlx5_ib1/ports/1/rate | diagnostic 
+/sys/class/infiniband/mlx5_ib1/ports/1/state | diagnostic 
+/sys/class/infiniband/mlx5_ib2/ports/1/phys_state | diagnostic 
+/sys/class/infiniband/mlx5_ib2/ports/1/pkeys | diagnostic 
+/sys/class/infiniband/mlx5_ib2/ports/1/rate | diagnostic 
+/sys/class/infiniband/mlx5_ib2/ports/1/state | diagnostic 
+/sys/class/infiniband/mlx5_ib3/ports/1/phys_state | diagnostic 
+/sys/class/infiniband/mlx5_ib3/ports/1/pkeys | diagnostic 
+/sys/class/infiniband/mlx5_ib3/ports/1/rate | diagnostic 
+/sys/class/infiniband/mlx5_ib3/ports/1/state | diagnostic 
+/sys/class/infiniband/mlx5_ib4/ports/1/phys_state | diagnostic 
+/sys/class/infiniband/mlx5_ib4/ports/1/pkeys | diagnostic 
+/sys/class/infiniband/mlx5_ib4/ports/1/rate | diagnostic 
+/sys/class/infiniband/mlx5_ib4/ports/1/state | diagnostic 
+/sys/class/infiniband/mlx5_ib5/ports/1/phys_state | diagnostic 
+/sys/class/infiniband/mlx5_ib5/ports/1/pkeys | diagnostic 
+/sys/class/infiniband/mlx5_ib5/ports/1/rate | diagnostic 
+/sys/class/infiniband/mlx5_ib5/ports/1/state | diagnostic 
+/sys/class/infiniband/mlx5_ib6/ports/1/phys_state | diagnostic 
+/sys/class/infiniband/mlx5_ib6/ports/1/pkeys | diagnostic 
+/sys/class/infiniband/mlx5_ib6/ports/1/rate | diagnostic 
+/sys/class/infiniband/mlx5_ib6/ports/1/state | diagnostic 
+/sys/class/infiniband/mlx5_ib7/ports/1/phys_state | diagnostic 
+/sys/class/infiniband/mlx5_ib7/ports/1/pkeys | diagnostic 
+/sys/class/infiniband/mlx5_ib7/ports/1/rate | diagnostic 
+/sys/class/infiniband/mlx5_ib7/ports/1/state | diagnostic 
 /sys/kernel/security/apparmor/profiles | diagnostic 
 /tmp/omsagent\*.tgz | monitor-mgmt 
 /tmp/sosreport\*.tar.xz | linux-sos-scc 
@@ -264,8 +301,10 @@ File Path | Manifest
 /var/log/azure/containerd-status.log | aks 
 /var/log/azure/custom-script/handler.log | agents, diagnostic, vmdiagnostic 
 /var/log/azure/docker-status.log | aks 
+/var/log/azure/ib-vmext-status/\*log | diagnostic 
 /var/log/azure/kern.log | aks 
 /var/log/azure/kubelet-status.log | aks 
+/var/log/azure/nvidia-vmext-status/\*.log | diagnostic 
 /var/log/azure/run-command/handler.log | diagnostic, vmdiagnostic 
 /var/log/blobfuse2.log | aks, diagnostic 
 /var/log/blobfuse2.log\* | aks, diagnostic 
@@ -276,6 +315,7 @@ File Path | Manifest
 /var/log/cluster/\* | diagnostic 
 /var/log/corosync/\* | diagnostic 
 /var/log/corosync\* | diagnostic 
+/var/log/cuda-installer.log | diagnostic 
 /var/log/diskpool-agent\* | diskpool 
 /var/log/diskpool/bootstrapper.log\* | diskpool 
 /var/log/dmesg\* | agents, diagnostic, eg, normal, site-recovery, vmdiagnostic, workloadbackup 
@@ -295,6 +335,7 @@ File Path | Manifest
 /var/log/kern.log | servicefabric 
 /var/log/kern\* | diagnostic, diskpool, eg, normal, vmdiagnostic 
 /var/log/messages\* | azuremonitoragent, diagnostic, eg, monitor-mgmt, normal, vmdiagnostic 
+/var/log/nvidia-installer.log | diagnostic 
 /var/log/nvidia\*.log | aks 
 /var/log/pacemaker/\* | diagnostic 
 /var/log/pacemaker\* | diagnostic 
@@ -308,6 +349,8 @@ File Path | Manifest
 /var/log/sa/sa\* | performance 
 /var/log/scc\*.txz | linux-sos-scc 
 /var/log/secure\* | diagnostic, eg, normal, vmdiagnostic 
+/var/log/slurmctld/slurmctld.log | diagnostic 
+/var/log/slurmd/slurmd.log | diagnostic 
 /var/log/svagents\*.log | site-recovery 
 /var/log/syslog | aks, servicefabric 
 /var/log/syslog\* | agents, azuremonitoragent, diagnostic, diskpool, eg, lad, monitor-mgmt, normal, site-recovery, vmdiagnostic, workloadbackup 
@@ -332,6 +375,8 @@ File Path | Manifest
 /var/opt/omi/log/\*.log | monitor-mgmt 
 /var/run/azure-vnet\* | aks 
 /var/spool/cron/tabs/root | workloadbackup 
+/var/spool/pbs/mom_logs/\* | diagnostic 
+/var/spool/pbs/sched_logs/\* | diagnostic 
 /var/tmp/sosreport\*.tar.xz | linux-sos-scc 
 copy | sql-iaas 
 ## windows 
@@ -472,11 +517,14 @@ File Path | Manifest
 /Program Files/Microsoft SQL Server/\*/Setup Bootstrap/Log/Summary.txt | sql-iaas 
 /Program Files/Microsoft SQL Server/\*/Setup Bootstrap/Log/\*/Log\*.cab | sql-iaas 
 /Program Files/MsRDCMMRHost/MsRDCMMRHostInstall.log | diagnostic 
+/Program Files/NVIDIA Corporation/Installer2/\* | diagnostic 
 /Program Files/containerd/config.toml | aks 
 /ProgramData/ASRSetupLogs/ASRUnifiedAgentConfigurator.log | site-recovery, windowsupdate 
 /ProgramData/ASRSetupLogs/ASRUnifiedAgentInstaller.log | site-recovery, windowsupdate 
 /ProgramData/ASRSetupLogs/UnifiedAgentMSIInstall.log | site-recovery, windowsupdate 
 /ProgramData/ASRSetupLogs/WrapperUnifiedAgent.log | site-recovery, windowsupdate 
+/ProgramData/FSLogix/Logs/Profile/Profile_\*.log | diagnostic, diagnostic 
+/ProgramData/FSLogix/Logs/\*.etl.\* | diagnostic, diagnostic 
 /ProgramData/GuestConfig/Configuration/\* | monitor-mgmt 
 /ProgramData/GuestConfig/gc_agent_logs/\* | monitor-mgmt 
 /ProgramData/Microsoft/System Center/Orchestrator/7.2/SMA/\*.\* | monitor-mgmt 
@@ -492,8 +540,9 @@ File Path | Manifest
 /Windows.old/Windows/Logs/mosetup/bluebox.log | windowsupdate 
 /Windows.old/Windows/SoftwareDistribution/ReportingEvents.log | windowsupdate 
 /Windows/INF/netcfg\*.\*etl | diagnostic, vmdiagnostic, windowsupdate 
-/Windows/INF/setupapi.\*.log | windowsupdate 
-/Windows/INF/setupapi.dev.log | diagnostic, vmdiagnostic 
+/Windows/INF/setupapi.\* | diagnostic 
+/Windows/INF/setupapi.\*.log | min-diagnostic, windowsupdate 
+/Windows/INF/setupapi.dev.log | vmdiagnostic 
 /Windows/Inf/netcfg\*.\*etl | normal 
 /Windows/Inf/setupapi.dev.log | normal 
 /Windows/Logs/CBS/\*.cab | windowsupdate 
@@ -562,31 +611,35 @@ File Path | Manifest
 /Windows/System32/winevt/Logs/DFS Replication.evtx | diagnostic 
 /Windows/System32/winevt/Logs/DNS Server.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Directory Service.evtx | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft HPC Pack.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-AKSGMSAPlugin%4Admin.evtx | aks 
 /Windows/System32/winevt/Logs/Microsoft-Automation%4Operational.evtx | monitor-mgmt 
 /Windows/System32/winevt/Logs/Microsoft-FSLogix-Apps%4Admin.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-FSLogix-Apps%4Operational.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-FSLogix-CloudCache%4Admin.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-FSLogix-CloudCache%4Operational.evtx | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-HPC-Management%4Admin.evtx | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-HPC-Reporting%4Operational.evtx | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-HPC-Scheduler%4Admin.evtx | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-HPC-Scheduler%4Operational.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-SMA%4Debug.etl | monitor-mgmt 
 /Windows/System32/winevt/Logs/Microsoft-SMA%4Operational.evtx | monitor-mgmt 
 /Windows/System32/winevt/Logs/Microsoft-ServiceFabric%4Admin.evtx | diagnostic, eg, normal, servicefabric, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-ServiceFabric%4Operational.evtx | diagnostic, eg, normal, servicefabric, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-ServiceFabric-Lease%4Admin.evtx | diagnostic, eg, normal, servicefabric, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-ServiceFabric-Lease%4Operational.evtx | diagnostic, eg, normal, servicefabric, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-AAD%4Operational | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4EXE and DLL | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4MSI and Script | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4Packaged app-Deployment | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4Packaged app-Execution | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-AppModel-Runtime%4Admin | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-AppReadiness%4Admin | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-AppReadiness%4Operational | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeployment%4Operational | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeploymentServer%4Operational | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeploymentServer%4Operational.evt<br>x | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeploymentServer%4Restricted | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-AppxPackaging%4Operational | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-Windows-AAD%4Operational.evtx | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4EXE and DLL.evtx | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4MSI and Script.evtx | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4Packaged app-Deployment.ev<br>tx | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4Packaged app-Execution.evt<br>x | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-Windows-AppModel-Runtime%4Admin.evtx | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-Windows-AppReadiness%4Admin.evtx | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-Windows-AppReadiness%4Operational.evtx | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeployment%4Operational.evtx | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeploymentServer%4Operational.evt<br>x | diagnostic, diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeploymentServer%4Restricted.evtx | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-Windows-AppxPackaging%4Operational.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker%4BitLocker Management.evtx | diagnostic, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker-DrivePreparationTool%4Opera<br>tional.evtx | diagnostic, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Bits-Client%%4Operational.evtx | windowsupdate 
@@ -597,19 +650,18 @@ File Path | Manifest
 /Windows/System32/winevt/Logs/Microsoft-Windows-DNSServer%4Audit.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-DSC%4Operational.evtx | agents, diagnostic, eg, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-DeliveryOptimization%%4Operational.ev<br>tx | windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-DeviceManagement-Enterprise-Diagnosti<br>cs-Provider%4Admin | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-DeviceManagement-Enterprise-Diagnosti<br>cs-Provider%4Enrollment | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-DeviceManagement-Enterprise-Diagnosti<br>cs-Provider%4Sync | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-Windows-DeviceManagement-Enterprise-Diagnosti<br>cs-Provider%4Admin.evtx | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-Windows-DeviceManagement-Enterprise-Diagnosti<br>cs-Provider%4Enrollment.evtx | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-Windows-DeviceManagement-Enterprise-Diagnosti<br>cs-Provider%4Sync.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Dhcp-Client%4Admin.evtx | eg 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Dhcp-Client%4Operational.evtx | eg, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-Diagnostics-Performance%4Operational | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-Windows-Diagnostics-Performance%4Operational.<br>evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-FSLogic-Apps%4Admin.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-FSLogic-Apps%4Operational.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-FSLogic-CloudCache%4Admin.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-FSLogic-CloudCache%4Operational.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-GroupPolicy%4Operational | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-GroupPolicy%4Operational.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-HelloForBusiness%4Operational | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-Windows-GroupPolicy%4Operational.evtx | diagnostic, diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-Windows-HelloForBusiness%4Operational.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Host-Network-Service-Admin.evtx | aks 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Host-Network-Service-Operational.evtx | aks 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Hyper-V-Compute-Admin.evtx | aks 
@@ -625,21 +677,21 @@ File Path | Manifest
 /Windows/System32/winevt/Logs/Microsoft-Windows-NetworkProvider%4Operational.evtx | agents, diagnostic, eg, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-NlaSvc%4Operational.evtx | agents, diagnostic, eg, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Ntfs%4Operational.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-PowerShell%4Operational | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-Windows-PowerShell%4Operational.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteAssistance%4Admin.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteAssistance%4Operational.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RdpCoreTS%4Admi<br>n.evtx | diagnostic, eg, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RdpCoreTS%4Oper<br>ational.evtx | diagnostic, eg, min-diagnostic, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RemoteDesktopSe<br>ssionManager%4Admin.evtx | diagnostic, eg, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-SessionServices<br>%4Operational.evtx | diagnostic, eg, vmdiagnostic, windowsupdate 
+/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteHelp%4Operational.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Resource-Exhaustion-Detector%4Operati<br>onal.evtx | agents, diagnostic, eg, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-SMBClient%4Operational.evtx | diagnostic, eg, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-SMBServer%4Connectivity.evtx | diagnostic, eg, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-SMBServer%4Operational.evtx | diagnostic, eg, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-ServerManager%4Operational.evtx | diagnostic, eg, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-Shell-Core%4Operational | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-Windows-Shell-Core%4Operational.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-SmartCard-Audit%4Authentication.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-SmartCard-DeviceEnum%4Operational.evt<br>x | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-SmartCard-TPM-VCard-Module%4Admin.evt<br>x | diagnostic 
@@ -650,7 +702,7 @@ File Path | Manifest
 /Windows/System32/winevt/Logs/Microsoft-Windows-Store%%4Operational.evtx | windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-TCPIP%4Operational.evtx | agents, diagnostic, eg, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-TaskScheduler%%4Operational.evtx | windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-TaskScheduler%4Operational | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-Windows-TaskScheduler%4Operational.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-LocalSessionManager%<br>4Admin.evtx | diagnostic, eg, min-diagnostic, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-LocalSessionManager%<br>4Operational.evtx | diagnostic, eg, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-PnPDevices%4Admin.ev<br>tx | diagnostic, eg, vmdiagnostic, windowsupdate 
@@ -660,22 +712,22 @@ File Path | Manifest
 /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-RemoteConnectionMana<br>ger%4Operational.evtx | diagnostic, eg, min-diagnostic, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-SessionBroker-Client<br>%4Admin.evtx | diagnostic, eg, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-SessionBroker-Client<br>%4Operational.evtx | diagnostic, eg, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-TSV-VmHostAgent%4Adm<br>in | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-TSV-VmHostAgent%4Ope<br>rational | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-User Device Registration%4Admin | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-TSV-VmHostAgent%4Adm<br>in.evtx | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-TSV-VmHostAgent%4Ope<br>rational.evtx | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-Windows-User Device Registration%4Admin.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-User Profile Service%4Operational.evt<br>x | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-UserPnp%4DeviceInstall.evtx | agents, diagnostic, eg, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-VHDMP%4Operational.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-WER-Diagnostics%4Operational | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-WMI-Activity%4Operational | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-WinINet-Config%4ProxyConfigChanged | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-WinRM%4Operational | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-Windows-WER-Diagnostics%4Operational.evtx | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-Windows-WMI-Activity%4Operational.evtx | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-Windows-WinINet-Config%4ProxyConfigChanged.ev<br>tx | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-Windows-WinRM%4Operational.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Windows Firewall With Advanced Securi<br>ty%4ConnectionSecurity.evtx | agents, diagnostic, eg, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Windows Firewall With Advanced Securi<br>ty%4Firewall.evtx | agents, diagnostic, eg, min-diagnostic, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-WindowsUpdateClient%%4Operational.evt<br>x | windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-WindowsUpdateClient%4Operational.evtx | diagnostic, eg, min-diagnostic, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-Winlogon%4Operational | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-Workplace Join%4Admin | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-Windows-Winlogon%4Operational.evtx | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-Windows-Workplace Join%4Admin.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Bootstrapper.evtx | agents, diagnostic, eg, monitor-mgmt, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4GuestAgent.evtx | agents, diagnostic, eg, monitor-mgmt, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Heartbeat.evtx | agents, diagnostic, eg, monitor-mgmt, vmdiagnostic, windowsupdate 
@@ -685,13 +737,15 @@ File Path | Manifest
 /Windows/System32/winevt/Logs/MicrosoftAzureRecoveryServices-Replication.evtx | diagnostic, eg, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/OpenSSH%4Admin.evtx | diagnostic 
 /Windows/System32/winevt/Logs/OpenSSH%4Operational.evtx | diagnostic 
-/Windows/System32/winevt/Logs/PowerShellCore%4Operational | diagnostic 
+/Windows/System32/winevt/Logs/PowerShellCore%4Operational.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Security.evtx | diagnostic, eg, min-diagnostic, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Setup.evtx | diagnostic, eg, min-diagnostic, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/System.evtx | agents, aks, diagnostic, eg, min-diagnostic, normal, servicefabric, site-recovery, sql-iaas, vmdiagnostic, windowsupdate, workloadbackup 
 /Windows/System32/winevt/Logs/Windows Azure.evtx | agents, diagnostic, eg, monitor-mgmt, normal, site-recovery, vmdiagnostic, windowsupdate, workloadbackup 
 /Windows/System32/winevt/Logs/Windows PowerShell.evtx | monitor-mgmt 
 /Windows/System32/winevt/Logs/icrosoft-Windows-AppxPackaging%4Operational.evtx | diagnostic 
+/Windows/Temp/HPCSetupLogs/\* | diagnostic 
+/Windows/Temp/HPCSetupLogs/\*/\* | diagnostic 
 /Windows/Temp/MOMPerfCtrsInstall.log | monitor-mgmt 
 /Windows/Temp/MonitoringAgent.log | monitor-mgmt 
 /Windows/Temp/MsRDCMMRHostInstall.log | diagnostic 
@@ -780,6 +834,8 @@ File Path | Manifest
 /WindowsAzure/Logs/Plugins/Microsoft.Compute.JsonADDomainExtension/\*/ADDomainExtensi<br>on.log | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.Compute.VMAccessAgent/\*/JsonVMAccessExtension.l<br>og | agents, diagnostic, min-diagnostic, normal, vmdiagnostic, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAg<br>ent/\*/0.log | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
+/WindowsAzure/Logs/Plugins/Microsoft.HpcCompute.AmdGpuDriverMicrosoft/\*/\*.log | diagnostic 
+/WindowsAzure/Logs/Plugins/Microsoft.HpcCompute.NvidiaGpuDriverWindows/\*/\*.log | diagnostic 
 /WindowsAzure/Logs/Plugins/Microsoft.ManagedIdentity.ManagedIdentityExtensionForWindo<br>ws/\*/RuntimeSettings/\*.xml | diagnostic, vmdiagnostic, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.ManagedServices.ApplicationHealthWindows/\*/\*.l<br>og | diagnostic 
 /WindowsAzure/Logs/Plugins/Microsoft.Powershell.DSC/\*/DSCLOG\*.json | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
@@ -829,4 +885,4 @@ File Path | Manifest
 /var/log/blobfuse2.log\* | diagnostic 
 /windows/Panther/setup.etl | diagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-05-22 08:51:24.259333`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-07-17 07:32:49.301613`*
