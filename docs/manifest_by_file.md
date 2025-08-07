@@ -340,6 +340,7 @@ File Path | Manifest
 /var/log/pacemaker/\* | diagnostic 
 /var/log/pacemaker\* | diagnostic 
 /var/log/pods/calico-system\*/\*/\*.log\* | aks 
+/var/log/pods/dataprotection-microsoft\*/\*/\*.log\* | aks 
 /var/log/pods/kube-system\*/\*/\*.log\* | aks 
 /var/log/pods/kured\*/\*/\*.log\* | aks 
 /var/log/pods/tigera-operator\*/\*/\*.log\* | aks 
@@ -885,4 +886,4 @@ File Path | Manifest
 /var/log/blobfuse2.log\* | diagnostic 
 /windows/Panther/setup.etl | diagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-07-17 07:32:49.301613`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-08-07 12:18:10.438501`*
