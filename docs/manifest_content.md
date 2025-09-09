@@ -1035,6 +1035,7 @@ diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSD
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/\*/Configur<br>ation/MonAgentHost.\*.log
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/Diagnostics<br>Plugin.log
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/Diagnostics<br>PluginLauncher.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.KeyVault.KeyVaultForWindows/\*/\*.log
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.IaaSAntimalware/\*/AntimalwareCon<br>fig.log
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.Monitoring/\*/AsmExtension.log
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.ServiceFabricMCNode/\*/\*<br>.log
@@ -2106,4 +2107,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-07-17 07:32:49.301613`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-09-09 18:10:46.458836`*
