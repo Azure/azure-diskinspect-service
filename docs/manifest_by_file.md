@@ -847,7 +847,8 @@ File Path | Manifest
 /WindowsAzure/Logs/Plugins/Symantec.SymantecEndpointProtection/\*/sepManagedAzure.txt | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
 /WindowsAzure/Logs/Plugins/TrendMicro.DeepSecurity.TrendMicroDSA/\*/\*.log | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
 /WindowsAzure/Logs/Plugins/\* | site-recovery, workloadbackup 
-/WindowsAzure/Logs/Plugins/\*/\*/CommandExecution.log | agents, diagnostic, eg, normal, servicefabric, vmdiagnostic, windowsupdate 
+/WindowsAzure/Logs/Plugins/\*/\*/CommandExecution.log | agents, eg, normal, vmdiagnostic, windowsupdate 
+/WindowsAzure/Logs/Plugins/\*/\*/CommandExecution\*.log | diagnostic, servicefabric 
 /WindowsAzure/Logs/Plugins/\*/\*/Heartbeat.log | agents, diagnostic, eg, normal, servicefabric, vmdiagnostic, windowsupdate 
 /WindowsAzure/Logs/Plugins/\*/\*/Install.log | agents, diagnostic, eg, normal, servicefabric, vmdiagnostic, windowsupdate 
 /WindowsAzure/Logs/Plugins/\*/\*/Update.log | agents, diagnostic, eg, normal, servicefabric, vmdiagnostic, windowsupdate 
@@ -886,4 +887,4 @@ File Path | Manifest
 /var/log/blobfuse2.log\* | diagnostic 
 /windows/Panther/setup.etl | diagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-09-09 18:10:46.458836`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-09-10 09:27:03.168939`*
