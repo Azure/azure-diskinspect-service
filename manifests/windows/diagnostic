@@ -146,7 +146,7 @@ copy,/WindowsAzure/config/*.xml
 copy,/WindowsAzure/Logs/AggregateStatus/aggregatestatus*.json
 copy,/WindowsAzure/Logs/AppAgentRuntime.log
 copy,/WindowsAzure/Logs/MonitoringAgent.log
-copy,/WindowsAzure/Logs/Plugins/*/*/CommandExecution.log
+copy,/WindowsAzure/Logs/Plugins/*/*/CommandExecution*.log
 copy,/WindowsAzure/Logs/Plugins/*/*/Install.log
 copy,/WindowsAzure/Logs/Plugins/*/*/Update.log
 copy,/WindowsAzure/Logs/Plugins/*/*/Heartbeat.log
