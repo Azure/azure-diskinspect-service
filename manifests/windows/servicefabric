@@ -8,7 +8,7 @@ copy,/Windows/System32/winevt/Logs/Microsoft-ServiceFabric-Lease%4Admin.evtx
 
 echo,### Additional logs ###
 copy,/WindowsAzure/Logs/MonitoringAgent.log
-copy,/WindowsAzure/Logs/Plugins/*/*/CommandExecution.log
+copy,/WindowsAzure/Logs/Plugins/*/*/CommandExecution*.log
 copy,/WindowsAzure/Logs/Plugins/*/*/Install.log
 copy,/WindowsAzure/Logs/Plugins/*/*/Update.log
 copy,/WindowsAzure/Logs/Plugins/*/*/Heartbeat.log
