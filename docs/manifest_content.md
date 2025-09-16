@@ -944,7 +944,6 @@ diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDeskto
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RemoteDesktopSe<br>ssionManager%4Admin.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-SessionServices<br>%4Operational.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Resource-Exhaustion-Detector%4Operati<br>onal.evtx
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-schannel%4Operational.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-SmbClient%4Connectivity.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-SmbClient%4Security.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-SMBClient%4Operational.evtx
@@ -1021,7 +1020,7 @@ diagnostic | copy | /WindowsAzure/config/\*.xml
 diagnostic | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 diagnostic | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 diagnostic | copy | /WindowsAzure/Logs/MonitoringAgent.log
-diagnostic | copy | /WindowsAzure/Logs/Plugins/\*/\*/CommandExecution.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/\*/\*/CommandExecution\*.log
 diagnostic | copy | /WindowsAzure/Logs/Plugins/\*/\*/Install.log
 diagnostic | copy | /WindowsAzure/Logs/Plugins/\*/\*/Update.log
 diagnostic | copy | /WindowsAzure/Logs/Plugins/\*/\*/Heartbeat.log
@@ -1036,6 +1035,7 @@ diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSD
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/\*/Configur<br>ation/MonAgentHost.\*.log
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/Diagnostics<br>Plugin.log
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/Diagnostics<br>PluginLauncher.log
+diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.KeyVault.KeyVaultForWindows/\*/\*.log
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.IaaSAntimalware/\*/AntimalwareCon<br>fig.log
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.Monitoring/\*/AsmExtension.log
 diagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.ServiceFabricMCNode/\*/\*<br>.log
@@ -1580,7 +1580,7 @@ servicefabric | copy | /Windows/System32/winevt/Logs/Microsoft-ServiceFabric%4Op
 servicefabric | copy | /Windows/System32/winevt/Logs/Microsoft-ServiceFabric-Lease%4Operational.evtx
 servicefabric | copy | /Windows/System32/winevt/Logs/Microsoft-ServiceFabric-Lease%4Admin.evtx
 servicefabric | copy | /WindowsAzure/Logs/MonitoringAgent.log
-servicefabric | copy | /WindowsAzure/Logs/Plugins/\*/\*/CommandExecution.log
+servicefabric | copy | /WindowsAzure/Logs/Plugins/\*/\*/CommandExecution\*.log
 servicefabric | copy | /WindowsAzure/Logs/Plugins/\*/\*/Install.log
 servicefabric | copy | /WindowsAzure/Logs/Plugins/\*/\*/Update.log
 servicefabric | copy | /WindowsAzure/Logs/Plugins/\*/\*/Heartbeat.log
@@ -2107,4 +2107,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-08-06 15:04:55.581576`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-09-10 09:27:03.168939`*

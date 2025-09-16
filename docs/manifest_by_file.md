@@ -728,7 +728,6 @@ File Path | Manifest
 /Windows/System32/winevt/Logs/Microsoft-Windows-WindowsUpdateClient%4Operational.evtx | diagnostic, eg, min-diagnostic, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Winlogon%4Operational.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Workplace Join%4Admin.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-schannel%4Operational.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Bootstrapper.evtx | agents, diagnostic, eg, monitor-mgmt, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4GuestAgent.evtx | agents, diagnostic, eg, monitor-mgmt, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Heartbeat.evtx | agents, diagnostic, eg, monitor-mgmt, vmdiagnostic, windowsupdate 
@@ -780,6 +779,7 @@ File Path | Manifest
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/\*/Configur<br>ation/Checkpoint.txt | agents, diagnostic, normal, servicefabric, vmdiagnostic, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/\*/Configur<br>ation/MaConfig.xml | agents, diagnostic, normal, servicefabric, vmdiagnostic, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/\*/Configur<br>ation/MonAgentHost.\*.log | agents, diagnostic, normal, servicefabric, vmdiagnostic, windowsupdate 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.KeyVault.KeyVaultForWindows/\*/\*.log | diagnostic 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.KeyVault.KeyVaultForWindows\*/Events/\* | servicefabric 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.KeyVault.KeyVaultForWindows\*/\*.log | servicefabric 
 /WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.Edp.NetworkWatcherAgentWind<br>ows/\*/\*.log | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
@@ -847,7 +847,8 @@ File Path | Manifest
 /WindowsAzure/Logs/Plugins/Symantec.SymantecEndpointProtection/\*/sepManagedAzure.txt | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
 /WindowsAzure/Logs/Plugins/TrendMicro.DeepSecurity.TrendMicroDSA/\*/\*.log | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
 /WindowsAzure/Logs/Plugins/\* | site-recovery, workloadbackup 
-/WindowsAzure/Logs/Plugins/\*/\*/CommandExecution.log | agents, diagnostic, eg, normal, servicefabric, vmdiagnostic, windowsupdate 
+/WindowsAzure/Logs/Plugins/\*/\*/CommandExecution.log | agents, eg, normal, vmdiagnostic, windowsupdate 
+/WindowsAzure/Logs/Plugins/\*/\*/CommandExecution\*.log | diagnostic, servicefabric 
 /WindowsAzure/Logs/Plugins/\*/\*/Heartbeat.log | agents, diagnostic, eg, normal, servicefabric, vmdiagnostic, windowsupdate 
 /WindowsAzure/Logs/Plugins/\*/\*/Install.log | agents, diagnostic, eg, normal, servicefabric, vmdiagnostic, windowsupdate 
 /WindowsAzure/Logs/Plugins/\*/\*/Update.log | agents, diagnostic, eg, normal, servicefabric, vmdiagnostic, windowsupdate 
@@ -886,4 +887,4 @@ File Path | Manifest
 /var/log/blobfuse2.log\* | diagnostic 
 /windows/Panther/setup.etl | diagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-08-06 15:04:55.581576`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-09-10 09:27:03.168939`*
