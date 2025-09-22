@@ -39,6 +39,9 @@ copy,/var/log/pods/calico-system*/*/*.log*
 copy,/var/log/pods/tigera-operator*/*/*.log*
 copy,/var/log/pods/kured*/*/*.log*
 
+echo,### dataprotection-microsoft pod logs ###
+copy,/var/log/pods/dataprotection-microsoft*/*/*.log*
+
 echo,## Blob Fuse ##
 copy,/var/log/blobfuse2.log
 copy,/var/log/blobfuse2.log*
