@@ -46,6 +46,8 @@ echo,
 
 echo,### NVidia installer logs for GPU nodes ###
 copy,/var/log/nvidia*.log,noscan
+copy,/var/log/azure/nvidia*.log,noscan
+copy,/var/log/fabricmanager*.log,noscan
 
 echo,### list of pods and associated symlink to nav the container logs ###
 ll,/var/log/pods/*/*

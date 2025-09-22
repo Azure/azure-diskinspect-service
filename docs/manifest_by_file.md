@@ -305,6 +305,7 @@ File Path | Manifest
 /var/log/azure/kern.log | aks 
 /var/log/azure/kubelet-status.log | aks 
 /var/log/azure/nvidia-vmext-status/\*.log | diagnostic 
+/var/log/azure/nvidia\*.log | aks 
 /var/log/azure/run-command/handler.log | diagnostic, vmdiagnostic 
 /var/log/blobfuse2.log | aks, diagnostic 
 /var/log/blobfuse2.log\* | aks, diagnostic 
@@ -323,6 +324,7 @@ File Path | Manifest
 /var/log/dpkg.log | servicefabric 
 /var/log/dpkg\* | diagnostic, diskpool, eg, normal, vmdiagnostic 
 /var/log/evtcollforw\*.log | site-recovery 
+/var/log/fabricmanager\*.log | aks 
 /var/log/hadoop-yarn/yarn/\*.log | hdinsight 
 /var/log/hdinsight-agent/hdinsight-agent.log | hdinsight 
 /var/log/hdinsight-agent/hdinsight-agent.out | hdinsight 
@@ -887,4 +889,4 @@ File Path | Manifest
 /var/log/blobfuse2.log\* | diagnostic 
 /windows/Panther/setup.etl | diagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-09-10 09:27:03.168939`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-09-22 16:51:54.032752`*
