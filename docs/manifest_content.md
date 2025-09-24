@@ -155,9 +155,12 @@ aks | copy | /var/log/pods/kube-system\*/\*/\*.log\*
 aks | copy | /var/log/pods/calico-system\*/\*/\*.log\*
 aks | copy | /var/log/pods/tigera-operator\*/\*/\*.log\*
 aks | copy | /var/log/pods/kured\*/\*/\*.log\*
+aks | copy | /var/log/pods/dataprotection-microsoft\*/\*/\*.log\*
 aks | copy | /var/log/blobfuse2.log
 aks | copy | /var/log/blobfuse2.log\*
 aks | copy | /var/log/nvidia\*.log
+aks | copy | /var/log/azure/nvidia\*.log
+aks | copy | /var/log/fabricmanager\*.log
 aks | list | /var/log/pods/\*/\*
 aks | copy | /var/log/azure/Microsoft.AKS.Compute.AKS.Linux.AKSNode/extension.log
 azuremonitoragent | list | /var/opt/microsoft/azuremonitoragent/events
@@ -944,7 +947,6 @@ diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDeskto
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RemoteDesktopSe<br>ssionManager%4Admin.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-SessionServices<br>%4Operational.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Resource-Exhaustion-Detector%4Operati<br>onal.evtx
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-schannel%4Operational.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-SmbClient%4Connectivity.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-SmbClient%4Security.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-SMBClient%4Operational.evtx
@@ -2108,4 +2110,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-09-16 09:30:38.683302`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-09-22 18:20:13.050503`*
