@@ -317,13 +317,17 @@ copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Diagnostics-Performance%4Op
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-GroupPolicy%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-HelloForBusiness%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-PowerShell%4Operational.evtx
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices.evtx
+copy,/Windows/System32/winevt/Logs/RemoteDesktopServices.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RdpCoreCDV%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RdpCoreCDV%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Shell-Core%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TaskScheduler%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-TSV-VmHostAgent%4Admin.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-TSV-VmHostAgent%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-User Device Registration%4Admin.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WER-Diagnostics%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnP%4Device Configuration.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnP%4Device Management.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WinINet-Config%4ProxyConfigChanged.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Winlogon%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WinRM%4Operational.evtx
