@@ -355,6 +355,7 @@ diagnostic | copy | /sys/class/infiniband/mlx5_ib6/ports/1/pkeys
 diagnostic | copy | /sys/class/infiniband/mlx5_ib7/ports/1/pkeys
 diagnostic | diskinfo | 
 diagnostic | copy | /var/log/azure-proxy-agent/\*
+diagnostic | copy | /var/log/rhuicheck.log
 diskpool | list | /etc/cron.daily
 diskpool | list | /etc/cron.hourly
 diskpool | list | /etc/rsyslog.d
@@ -2110,4 +2111,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-09-22 18:20:13.050503`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-10-20 10:06:38.968368`*
