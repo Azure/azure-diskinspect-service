@@ -208,3 +208,7 @@ echo,
 echo,### Gathering Guest ProxyAgent Log Files ###
 copy,/var/log/azure-proxy-agent/*
 echo,
+
+echo,### Gathering Red Hat Update Infrastructure Log Files ###
+copy,/var/log/rhuicheck.log
+echo,
