@@ -1,0 +1,4 @@
+echo,### TSS LOG is pu8lled from the default MS_DATA directory as a ZIP###
+echo,### We only want the ZIP Files ###
+ll,/MS_DATA
+copy,/MS_DATA/*.zip,noscan
