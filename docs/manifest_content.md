@@ -355,6 +355,7 @@ diagnostic | copy | /sys/class/infiniband/mlx5_ib6/ports/1/pkeys
 diagnostic | copy | /sys/class/infiniband/mlx5_ib7/ports/1/pkeys
 diagnostic | diskinfo | 
 diagnostic | copy | /var/log/azure-proxy-agent/\*
+diagnostic | copy | /var/log/rhuicheck.log
 diskpool | list | /etc/cron.daily
 diskpool | list | /etc/cron.hourly
 diskpool | list | /etc/rsyslog.d
@@ -947,6 +948,7 @@ diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDeskto
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RemoteDesktopSe<br>ssionManager%4Admin.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-SessionServices<br>%4Operational.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Resource-Exhaustion-Detector%4Operati<br>onal.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-schannel%4Operational.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-SmbClient%4Connectivity.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-SmbClient%4Security.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-SMBClient%4Operational.evtx
@@ -1182,17 +1184,13 @@ diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Diagnostics-
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-GroupPolicy%4Operational.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-HelloForBusiness%4Operational.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-PowerShell%4Operational.evtx
-diagnostic | copy | /Windows/System32/winevt/Logs/RemoteDesktopServices.evtx
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RdpCoreCDV%4Adm<br>in.evtx
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RdpCoreCDV%4Ope<br>rational.evtx
+diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Shell-Core%4Operational.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TaskScheduler%4Operational.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-TSV-VmHostAgent%4Adm<br>in.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-TSV-VmHostAgent%4Ope<br>rational.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-User Device Registration%4Admin.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-WER-Diagnostics%4Operational.evtx
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnP%4Device Configuration.evtx
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnP%4Device Management.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-WinINet-Config%4ProxyConfigChanged.ev<br>tx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Winlogon%4Operational.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-WinRM%4Operational.evtx
@@ -2114,4 +2112,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-09-29 15:27:01.611266`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-12-10 13:05:37.163859`*

@@ -49,6 +49,7 @@ copy,/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RdpCo
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RemoteDesktopSessionManager%4Admin.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-SessionServices%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Resource-Exhaustion-Detector%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-schannel%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-SmbClient%4Connectivity.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-SmbClient%4Security.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-SMBClient%4Operational.evtx

@@ -346,7 +346,7 @@ File Path | Manifest
 /var/log/pods/kube-system\*/\*/\*.log\* | aks 
 /var/log/pods/kured\*/\*/\*.log\* | aks 
 /var/log/pods/tigera-operator\*/\*/\*.log\* | aks 
-/var/log/rhuicheck.log | linux-repoconfig 
+/var/log/rhuicheck.log | diagnostic, linux-repoconfig 
 /var/log/rsyslog\* | diagnostic, eg, lad, normal, vmdiagnostic 
 /var/log/s2\*.log | site-recovery 
 /var/log/sa/sa\* | performance 
@@ -672,8 +672,6 @@ File Path | Manifest
 /Windows/System32/winevt/Logs/Microsoft-Windows-Kerberos-KDCProxy%4Operational.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnP%%4Configuration.evtx | windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnP%4Configuration.evtx | agents, diagnostic, eg, min-diagnostic, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnP%4Device Configuration.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnP%4Device Management.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnPConfig%4Configuration.evtx | agents, diagnostic, eg, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-NTLM%4Operational.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-NdisImPlatform%4Operational.evtx | agents, diagnostic, eg, vmdiagnostic, windowsupdate 
@@ -685,12 +683,11 @@ File Path | Manifest
 /Windows/System32/winevt/Logs/Microsoft-Windows-PowerShell%4Operational.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteAssistance%4Admin.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteAssistance%4Operational.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RdpCoreCDV%4Adm<br>in.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RdpCoreCDV%4Ope<br>rational.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RdpCoreTS%4Admi<br>n.evtx | diagnostic, eg, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RdpCoreTS%4Oper<br>ational.evtx | diagnostic, eg, min-diagnostic, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RemoteDesktopSe<br>ssionManager%4Admin.evtx | diagnostic, eg, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-SessionServices<br>%4Operational.evtx | diagnostic, eg, vmdiagnostic, windowsupdate 
+/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteHelp%4Operational.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Resource-Exhaustion-Detector%4Operati<br>onal.evtx | agents, diagnostic, eg, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-SMBClient%4Operational.evtx | diagnostic, eg, vmdiagnostic, windowsupdate 
@@ -734,6 +731,7 @@ File Path | Manifest
 /Windows/System32/winevt/Logs/Microsoft-Windows-WindowsUpdateClient%4Operational.evtx | diagnostic, eg, min-diagnostic, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Winlogon%4Operational.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Workplace Join%4Admin.evtx | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-Windows-schannel%4Operational.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Bootstrapper.evtx | agents, diagnostic, eg, monitor-mgmt, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4GuestAgent.evtx | agents, diagnostic, eg, monitor-mgmt, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Heartbeat.evtx | agents, diagnostic, eg, monitor-mgmt, vmdiagnostic, windowsupdate 
@@ -744,7 +742,6 @@ File Path | Manifest
 /Windows/System32/winevt/Logs/OpenSSH%4Admin.evtx | diagnostic 
 /Windows/System32/winevt/Logs/OpenSSH%4Operational.evtx | diagnostic 
 /Windows/System32/winevt/Logs/PowerShellCore%4Operational.evtx | diagnostic 
-/Windows/System32/winevt/Logs/RemoteDesktopServices.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Security.evtx | diagnostic, eg, min-diagnostic, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/Setup.evtx | diagnostic, eg, min-diagnostic, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/System.evtx | agents, aks, diagnostic, eg, min-diagnostic, normal, servicefabric, site-recovery, sql-iaas, vmdiagnostic, windowsupdate, workloadbackup 
@@ -894,4 +891,4 @@ File Path | Manifest
 /var/log/blobfuse2.log\* | diagnostic 
 /windows/Panther/setup.etl | diagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-09-29 15:27:01.611266`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-12-10 13:05:37.163859`*
