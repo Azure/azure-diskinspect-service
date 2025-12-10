@@ -355,6 +355,7 @@ diagnostic | copy | /sys/class/infiniband/mlx5_ib6/ports/1/pkeys
 diagnostic | copy | /sys/class/infiniband/mlx5_ib7/ports/1/pkeys
 diagnostic | diskinfo | 
 diagnostic | copy | /var/log/azure-proxy-agent/\*
+diagnostic | copy | /var/log/rhuicheck.log
 diskpool | list | /etc/cron.daily
 diskpool | list | /etc/cron.hourly
 diskpool | list | /etc/rsyslog.d
@@ -947,7 +948,6 @@ diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDeskto
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RemoteDesktopSe<br>ssionManager%4Admin.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-SessionServices<br>%4Operational.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Resource-Exhaustion-Detector%4Operati<br>onal.evtx
-diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-schannel%4Operational.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-SmbClient%4Connectivity.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-SmbClient%4Security.evtx
 diagnostic | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-SMBClient%4Operational.evtx
@@ -2111,4 +2111,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-09-24 14:42:20.655111`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-10-20 10:06:38.968368`*
