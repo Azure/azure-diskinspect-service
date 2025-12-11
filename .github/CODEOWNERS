@@ -1,0 +1,11 @@
+# CODEOWNERS file for Azure DiskInspect Service
+# This file defines who will be automatically requested for review and receive notifications when PRs are opened.
+#
+# Each line is a file pattern followed by one or more owners.
+# Owners can be GitHub usernames (@username), email addresses (user@example.com), or teams (@org/team-name)
+#
+# For more information about CODEOWNERS, see:
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Global owners - these users will be requested for review on all PRs
+* chipate@microsoft.com
