@@ -397,6 +397,7 @@ File Path | Manifest
 /AzureData/NvidiaInstallLog/\*.log | aks 
 /Boot/BCD | windowsupdate 
 /CalicoWindows/logs/\*.log | aks 
+/MS_DATA/\*.zip | vmwindows-tss-ms_data 
 /Packages/Plugins/ESET.FileSecurity/\*/agent_version.txt | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
 /Packages/Plugins/ESET.FileSecurity/\*/extension_version.txt | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
 /Packages/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/AnalyzerConfigTempla<br>te.xml | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
@@ -895,4 +896,4 @@ File Path | Manifest
 /var/log/blobfuse2.log\* | diagnostic 
 /windows/Panther/setup.etl | diagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-12-10 13:18:46.078115`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-12-11 12:18:12.888263`*

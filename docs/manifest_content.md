@@ -1848,6 +1848,8 @@ vmdiagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.ActiveDirectory
 vmdiagnostic | copy | /WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.AzureDiskEncryption/\*/BitlockerE<br>xtension.log
 vmdiagnostic | copy | /Windows/servicing/sessions/sessions.xml
 vmdiagnostic | diskinfo | 
+vmwindows-tss-ms_data | list | /MS_DATA
+vmwindows-tss-ms_data | copy | /MS_DATA/\*.zip
 windowsupdate | copy | /Boot/BCD
 windowsupdate | copy | /Windows/System32/config/SOFTWARE
 windowsupdate | copy | /Windows/System32/config/SYSTEM
@@ -2116,4 +2118,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-12-10 13:18:46.078115`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-12-11 12:18:12.888263`*
