@@ -61,11 +61,11 @@ echo,### Windows Update - SoftwareDistribution ###
 copy,/Windows/SoftwareDistribution/ReportingEvents.log
 copy,/Windows/SoftwareDistribution/DeliveryOptimization/SavedLogs/*.log
 copy,/Windows/SoftwareDistribution/DeliveryOptimization/SavedLogs/*.etl,noscan
-copy,/Windows/SoftwareDistribution/Plugins/7D5F3CBA-03DB-4BE5-B4B36DBED19A6833/TokenRetrieval.log
+copy,/Windows/SoftwareDistribution/Plugins/7D5F3CBA-03DB-4BE5-B4B36DBED19A6833/*.log
+copy,/Windows/SoftwareDistribution/Plugins/7D5F3CBA-03DB-4BE5-B4B36DBED19A6833/*.cache
 copy,/Windows/SoftwareDistribution/Download/*/*/*.xml
 copy,/Windows/SoftwareDistribution/Download/*/*/*.log
 copy,/Windows/SoftwareDistribution/datastore/DataStore.edb,noscan
-copy,/Windows/SoftwareDistribution/Plugins/7D5F3CBA-03DB-4BE5-B4B36DBED19A6833/117CAB2D-82B1-4B5A-A08C-4D62DBEE7782.cache
 
 echo,### Windows Update - Update Orchestrator and Store ###
 copy,/ProgramData/UsoPrivate/UpdateStore/*.xml
