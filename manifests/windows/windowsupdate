@@ -49,8 +49,6 @@ echo,### Windows Update - Logs and ETL ###
 copy,/Windows/windowsupdate*.log
 copy,/Windows/Logs/WindowsUpdate/WindowsUpdate.*.etl,noscan
 copy,/Windows/Logs/SIH/SIH.*.etl,noscan
-copy,/Windows/Logs/NetSetup/*.etl,noscan
-copy,/Users/*/AppData/Local/microsoft/windows/windowsupdate.log
 copy,/Windows/Logs/dpx/*.log
 copy,/WindowsUpdateVerbose.etl,noscan
 
@@ -71,8 +69,6 @@ copy,/ProgramData/USOShared/*.etl,noscan
 
 echo,### Windows Update - Update Health Tools ###
 copy,/ProgramData/Microsoft/UpdateHealthTools/*.log
-copy,/Users/*/AppData/Local/Temp/winstore.log
-copy,/Users/*/AppData/Local/Packages/WinStore_cw5n1h2txyewy/AC/Temp/winstore.log
 
 echo,### Windows Update - Delivery Optimization ###
 copy,/Windows/ServiceProfiles/NetworkService/AppData/Local/Microsoft/Windows/DeliveryOptimization/Logs/*.etl,noscan
@@ -83,11 +79,15 @@ copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WindowsUpdateClient%%4Opera
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TaskScheduler%%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Bits-Client%%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Servicing%%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-CAPI2%%4Operational.evtx
 copy,/Windows/System32/Winevt/Logs/*AppX*.evtx
 copy,/Windows/System32/Winevt/Logs/Microsoft-WS-Licensing%%4Admin.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnP%%4Configuration.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Store%%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-DeliveryOptimization%%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WUSA%%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-Power%%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-GroupPolicy%%4Operational.evtx
 
 echo,### Azure Update Manager ###
 copy,/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.WindowsPatchExtension/*/*.log
@@ -100,6 +100,8 @@ copy,/Packages/Plugins/Microsoft.CPlat.Core.WindowsPatchExtension/*/HandlerManif
 echo,### Startup Repair ###
 copy,/Windows/System32/LogFiles/Srt/SrtTrail.txt
 copy,/Windows/System32/LogFiles/Srt/*.log
+copy,/Windows/bootstat.dat,noscan
+copy,/Windows/System32/Recovery/ReAgent.xml
 
 echo,### Windows Error Reporting ###
 copy,/ProgramData/Microsoft/Windows/WER/ReportArchive/*/*.wer

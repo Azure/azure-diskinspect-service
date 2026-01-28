@@ -1888,8 +1888,6 @@ windowsupdate | copy | /Windows/INF/setupapi.dev.log
 windowsupdate | copy | /Windows/windowsupdate\*.log
 windowsupdate | copy | /Windows/Logs/WindowsUpdate/WindowsUpdate.\*.etl
 windowsupdate | copy | /Windows/Logs/SIH/SIH.\*.etl
-windowsupdate | copy | /Windows/Logs/NetSetup/\*.etl
-windowsupdate | copy | /Users/\*/AppData/Local/microsoft/windows/windowsupdate.log
 windowsupdate | copy | /Windows/Logs/dpx/\*.log
 windowsupdate | copy | /WindowsUpdateVerbose.etl
 windowsupdate | copy | /Windows/SoftwareDistribution/ReportingEvents.log
@@ -1904,19 +1902,21 @@ windowsupdate | copy | /ProgramData/UsoPrivate/UpdateStore/\*.xml
 windowsupdate | copy | /ProgramData/USOShared/Logs/\*.etl
 windowsupdate | copy | /ProgramData/USOShared/\*.etl
 windowsupdate | copy | /ProgramData/Microsoft/UpdateHealthTools/\*.log
-windowsupdate | copy | /Users/\*/AppData/Local/Temp/winstore.log
-windowsupdate | copy | /Users/\*/AppData/Local/Packages/WinStore_cw5n1h2txyewy/AC/Temp/winstore.log
 windowsupdate | copy | /Windows/ServiceProfiles/NetworkService/AppData/Local/Microsoft/Windows/DeliveryOptim<br>ization/Logs/\*.etl
 windowsupdate | copy | /Windows/ServiceProfiles/LocalService/AppData/Local/Microsoft/WSLicense/tokens.dat
 windowsupdate | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-WindowsUpdateClient%%4Operational.evt<br>x
 windowsupdate | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TaskScheduler%%4Operational.evtx
 windowsupdate | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Bits-Client%%4Operational.evtx
 windowsupdate | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Servicing%%4Admin.evtx
+windowsupdate | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-CAPI2%%4Operational.evtx
 windowsupdate | copy | /Windows/System32/Winevt/Logs/\*AppX\*.evtx
 windowsupdate | copy | /Windows/System32/Winevt/Logs/Microsoft-WS-Licensing%%4Admin.evtx
 windowsupdate | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnP%%4Configuration.evtx
 windowsupdate | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Store%%4Operational.evtx
 windowsupdate | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-DeliveryOptimization%%4Operational.ev<br>tx
+windowsupdate | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-WUSA%%4Operational.evtx
+windowsupdate | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-Power%%4Operational.evtx
+windowsupdate | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-GroupPolicy%%4Operational.evtx
 windowsupdate | copy | /WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.WindowsPatchExtension/\*/\*.log
 windowsupdate | copy | /Packages/Plugins/Microsoft.CPlat.Core.WindowsPatchExtension/\*/status/\*.status
 windowsupdate | copy | /Packages/Plugins/Microsoft.CPlat.Core.WindowsPatchExtension/\*/RuntimeSettings/\*.se<br>ttings
@@ -1925,6 +1925,8 @@ windowsupdate | copy | /Packages/Plugins/Microsoft.CPlat.Core.WindowsPatchExtens
 windowsupdate | copy | /Packages/Plugins/Microsoft.CPlat.Core.WindowsPatchExtension/\*/HandlerManifest.json
 windowsupdate | copy | /Windows/System32/LogFiles/Srt/SrtTrail.txt
 windowsupdate | copy | /Windows/System32/LogFiles/Srt/\*.log
+windowsupdate | copy | /Windows/bootstat.dat
+windowsupdate | copy | /Windows/System32/Recovery/ReAgent.xml
 windowsupdate | copy | /ProgramData/Microsoft/Windows/WER/ReportArchive/\*/\*.wer
 windowsupdate | copy | /ProgramData/Microsoft/Windows/WER/ReportQueue/\*/\*.wer
 windowsupdate | copy | /Windows/setupcomplete.log
@@ -1984,4 +1986,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-01-28 15:47:01.978607`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-01-28 15:59:21.332903`*
