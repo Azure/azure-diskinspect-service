@@ -575,7 +575,6 @@ File Path | Manifest
 /Windows/Logs/CBS/\*.cab | windowsupdate 
 /Windows/Logs/CBS/\*.log | diagnostic, min-diagnostic, windowsupdate 
 /Windows/Logs/DISM/\*.log | diagnostic, min-diagnostic, windowsupdate 
-/Windows/Logs/MoSetup/MoSetup.log | windowsupdate 
 /Windows/Logs/MoSetup/UpdateAgent.log | windowsupdate 
 /Windows/Logs/MoSetup/\*.log | windowsupdate 
 /Windows/Logs/NetSetup/\*.etl | windowsupdate 
@@ -927,4 +926,4 @@ File Path | Manifest
 /var/log/blobfuse2.log\* | diagnostic 
 /windows/Panther/setup.etl | diagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-01-28 15:44:18.209209`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-01-28 15:47:01.978607`*

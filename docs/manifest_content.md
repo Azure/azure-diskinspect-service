@@ -1885,15 +1885,12 @@ windowsupdate | copy | /Windows/servicing/sessions/sessions.xml
 windowsupdate | copy | /Windows/servicing/sessions/\*.log
 windowsupdate | copy | /Windows/Logs/waasmedic/\*.etl
 windowsupdate | copy | /Windows/INF/setupapi.dev.log
-windowsupdate | copy | /Windows/INF/setupapi.upgrade.log
 windowsupdate | copy | /Windows/windowsupdate\*.log
 windowsupdate | copy | /Windows/Logs/WindowsUpdate/WindowsUpdate.\*.etl
 windowsupdate | copy | /Windows/Logs/SIH/SIH.\*.etl
 windowsupdate | copy | /Windows/Logs/NetSetup/\*.etl
 windowsupdate | copy | /Users/\*/AppData/Local/microsoft/windows/windowsupdate.log
 windowsupdate | copy | /Windows/Logs/dpx/\*.log
-windowsupdate | copy | /Windows/Logs/MoSetup/UpdateAgent.log
-windowsupdate | copy | /Windows/Logs/MoSetup/\*.log
 windowsupdate | copy | /WindowsUpdateVerbose.etl
 windowsupdate | copy | /Windows/SoftwareDistribution/ReportingEvents.log
 windowsupdate | copy | /Windows/SoftwareDistribution/DeliveryOptimization/SavedLogs/\*.log
@@ -1915,8 +1912,6 @@ windowsupdate | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-WindowsUp
 windowsupdate | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TaskScheduler%%4Operational.evtx
 windowsupdate | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Bits-Client%%4Operational.evtx
 windowsupdate | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Servicing%%4Admin.evtx
-windowsupdate | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Setup%%4Operational.evtx
-windowsupdate | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Upgrade-Diagnostics%%4Operational.evt<br>x
 windowsupdate | copy | /Windows/System32/Winevt/Logs/\*AppX\*.evtx
 windowsupdate | copy | /Windows/System32/Winevt/Logs/Microsoft-WS-Licensing%%4Admin.evtx
 windowsupdate | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnP%%4Configuration.evtx
@@ -1936,9 +1931,12 @@ windowsupdate | copy | /Windows/setupcomplete.log
 windowsupdate | copy | /Windows/Setup/Scripts/\*
 windowsupdate | copy | /Windows/appcompat/Programs/Appraiser/\*.xml
 windowsupdate | copy | /Windows/appcompat/Programs/Appraiser/\*.bin
-windowsupdate | copy | /Windows/Panther/miglog.xml
+windowsupdate | copy | /Windows/INF/setupapi.upgrade.log
+windowsupdate | copy | /Windows/Logs/MoSetup/UpdateAgent.log
+windowsupdate | copy | /Windows/Logs/MoSetup/\*.log
 windowsupdate | copy | /Windows/Logs/mosetup/bluebox.log
-windowsupdate | copy | /Windows/Logs/MoSetup/MoSetup.log
+windowsupdate | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Setup%%4Operational.evtx
+windowsupdate | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Upgrade-Diagnostics%%4Operational.evt<br>x
 windowsupdate | copy | /$WINDOWS.~BT/Sources/Panther/scanresult.xml
 windowsupdate | copy | /$Windows.~BT/Sources/Panther/CompatData\*.xml
 windowsupdate | copy | /$Windows.~BT/Sources/Panther/setupact.log
@@ -1948,6 +1946,7 @@ windowsupdate | copy | /$Windows.~BT/Sources/Panther/PreDownload\*.log
 windowsupdate | copy | /$Windows.~BT/Sources/Panther/NewOs\*.log
 windowsupdate | copy | /$Windows.~BT/Sources/Panther/DDACLSys.log
 windowsupdate | copy | /$Windows.~BT/Sources/Panther/actionlist.xml
+windowsupdate | copy | /Windows/Panther/miglog.xml
 windowsupdate | copy | /$Windows.~BT/Sources/Rollback/setuperr.log
 windowsupdate | copy | /$Windows.~BT/Sources/Rollback/diagerr.xml
 windowsupdate | copy | /$Windows.~BT/Sources/Rollback/diagwrn.xml
@@ -1985,4 +1984,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-01-28 15:44:18.209209`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-01-28 15:47:01.978607`*
