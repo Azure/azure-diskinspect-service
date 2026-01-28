@@ -1898,11 +1898,11 @@ windowsupdate | copy | /WindowsUpdateVerbose.etl
 windowsupdate | copy | /Windows/SoftwareDistribution/ReportingEvents.log
 windowsupdate | copy | /Windows/SoftwareDistribution/DeliveryOptimization/SavedLogs/\*.log
 windowsupdate | copy | /Windows/SoftwareDistribution/DeliveryOptimization/SavedLogs/\*.etl
-windowsupdate | copy | /Windows/SoftwareDistribution/Plugins/7D5F3CBA-03DB-4BE5-B4B36DBED19A6833/TokenRetrie<br>val.log
+windowsupdate | copy | /Windows/SoftwareDistribution/Plugins/7D5F3CBA-03DB-4BE5-B4B36DBED19A6833/\*.log
+windowsupdate | copy | /Windows/SoftwareDistribution/Plugins/7D5F3CBA-03DB-4BE5-B4B36DBED19A6833/\*.cache
 windowsupdate | copy | /Windows/SoftwareDistribution/Download/\*/\*/\*.xml
 windowsupdate | copy | /Windows/SoftwareDistribution/Download/\*/\*/\*.log
 windowsupdate | copy | /Windows/SoftwareDistribution/datastore/DataStore.edb
-windowsupdate | copy | /Windows/SoftwareDistribution/Plugins/7D5F3CBA-03DB-4BE5-B4B36DBED19A6833/117CAB2D-82<br>B1-4B5A-A08C-4D62DBEE7782.cache
 windowsupdate | copy | /ProgramData/UsoPrivate/UpdateStore/\*.xml
 windowsupdate | copy | /ProgramData/USOShared/Logs/\*.etl
 windowsupdate | copy | /Users/\*/AppData/Local/Temp/winstore.log
@@ -1971,4 +1971,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-01-28 15:31:46.329245`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-01-28 15:42:19.596618`*

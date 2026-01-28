@@ -600,8 +600,8 @@ File Path | Manifest
 /Windows/SoftwareDistribution/DeliveryOptimization/SavedLogs/\*.log | windowsupdate 
 /Windows/SoftwareDistribution/Download/\*/\*/\*.log | windowsupdate 
 /Windows/SoftwareDistribution/Download/\*/\*/\*.xml | windowsupdate 
-/Windows/SoftwareDistribution/Plugins/7D5F3CBA-03DB-4BE5-B4B36DBED19A6833/117CAB2D-82<br>B1-4B5A-A08C-4D62DBEE7782.cache | windowsupdate 
-/Windows/SoftwareDistribution/Plugins/7D5F3CBA-03DB-4BE5-B4B36DBED19A6833/TokenRetrie<br>val.log | windowsupdate 
+/Windows/SoftwareDistribution/Plugins/7D5F3CBA-03DB-4BE5-B4B36DBED19A6833/\*.cache | windowsupdate 
+/Windows/SoftwareDistribution/Plugins/7D5F3CBA-03DB-4BE5-B4B36DBED19A6833/\*.log | windowsupdate 
 /Windows/SoftwareDistribution/ReportingEvents.log | monitor-mgmt, windowsupdate 
 /Windows/SoftwareDistribution/datastore/DataStore.edb | windowsupdate 
 /Windows/System32/LogFiles/Srt/SrtTrail.txt | windowsupdate 
@@ -913,4 +913,4 @@ File Path | Manifest
 /var/log/blobfuse2.log\* | diagnostic 
 /windows/Panther/setup.etl | diagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-01-28 15:31:46.329245`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-01-28 15:42:19.596618`*
