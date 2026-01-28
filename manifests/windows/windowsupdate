@@ -70,6 +70,10 @@ copy,/Windows/SoftwareDistribution/datastore/DataStore.edb,noscan
 echo,### Windows Update - Update Orchestrator and Store ###
 copy,/ProgramData/UsoPrivate/UpdateStore/*.xml
 copy,/ProgramData/USOShared/Logs/*.etl,noscan
+copy,/ProgramData/USOShared/*.etl,noscan
+
+echo,### Windows Update - Update Health Tools ###
+copy,/ProgramData/Microsoft/UpdateHealthTools/*.log
 copy,/Users/*/AppData/Local/Temp/winstore.log
 copy,/Users/*/AppData/Local/Packages/WinStore_cw5n1h2txyewy/AC/Temp/winstore.log
 
@@ -81,6 +85,9 @@ echo,### Windows Update - Event Logs ###
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WindowsUpdateClient%%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TaskScheduler%%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Bits-Client%%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Servicing%%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Setup%%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Upgrade-Diagnostics%%4Operational.evtx
 copy,/Windows/System32/Winevt/Logs/*AppX*.evtx
 copy,/Windows/System32/Winevt/Logs/Microsoft-WS-Licensing%%4Admin.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnP%%4Configuration.evtx
@@ -107,6 +114,10 @@ echo,### Post-Setup Scripts ###
 copy,/Windows/setupcomplete.log
 copy,/Windows/Setup/Scripts/*
 
+echo,### Windows Update - Compatibility Appraiser ###
+copy,/Windows/appcompat/Programs/Appraiser/*.xml
+copy,/Windows/appcompat/Programs/Appraiser/*.bin,noscan
+
 echo,### Windows Update - in-place upgrade ###
 copy,/Windows/Panther/miglog.xml
 copy,/Windows/Logs/mosetup/bluebox.log
@@ -116,6 +127,10 @@ copy,/$Windows.~BT/Sources/Panther/CompatData*.xml
 copy,/$Windows.~BT/Sources/Panther/setupact.log
 copy,/$Windows.~BT/Sources/Panther/setuperr.log
 copy,/$Windows.~BT/Sources/Panther/miglog.xml
+copy,/$Windows.~BT/Sources/Panther/PreDownload*.log
+copy,/$Windows.~BT/Sources/Panther/NewOs*.log
+copy,/$Windows.~BT/Sources/Panther/DDACLSys.log
+copy,/$Windows.~BT/Sources/Panther/actionlist.xml
 copy,/$Windows.~BT/Sources/Rollback/setuperr.log
 copy,/$Windows.~BT/Sources/Rollback/diagerr.xml
 copy,/$Windows.~BT/Sources/Rollback/diagwrn.xml
@@ -132,3 +147,6 @@ copy,/Windows.old/Windows/Logs/WindowsUpdate/*.etl,noscan
 copy,/Windows.old/Windows/SoftwareDistribution/ReportingEvents.log
 copy,/Windows.old/ProgramData/USOPrivate/UpdateStore
 copy,/Windows.old/ProgramData/USOShared/Logs
+copy,/Windows.old/Windows/Panther/setupact.log
+copy,/Windows.old/Windows/Panther/setuperr.log
+copy,/Windows.old/Windows/Panther/miglog.xml

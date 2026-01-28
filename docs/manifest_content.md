@@ -1905,6 +1905,8 @@ windowsupdate | copy | /Windows/SoftwareDistribution/Download/\*/\*/\*.log
 windowsupdate | copy | /Windows/SoftwareDistribution/datastore/DataStore.edb
 windowsupdate | copy | /ProgramData/UsoPrivate/UpdateStore/\*.xml
 windowsupdate | copy | /ProgramData/USOShared/Logs/\*.etl
+windowsupdate | copy | /ProgramData/USOShared/\*.etl
+windowsupdate | copy | /ProgramData/Microsoft/UpdateHealthTools/\*.log
 windowsupdate | copy | /Users/\*/AppData/Local/Temp/winstore.log
 windowsupdate | copy | /Users/\*/AppData/Local/Packages/WinStore_cw5n1h2txyewy/AC/Temp/winstore.log
 windowsupdate | copy | /Windows/ServiceProfiles/NetworkService/AppData/Local/Microsoft/Windows/DeliveryOptim<br>ization/Logs/\*.etl
@@ -1912,6 +1914,9 @@ windowsupdate | copy | /Windows/ServiceProfiles/LocalService/AppData/Local/Micro
 windowsupdate | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-WindowsUpdateClient%%4Operational.evt<br>x
 windowsupdate | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TaskScheduler%%4Operational.evtx
 windowsupdate | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Bits-Client%%4Operational.evtx
+windowsupdate | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Servicing%%4Admin.evtx
+windowsupdate | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Setup%%4Operational.evtx
+windowsupdate | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Upgrade-Diagnostics%%4Operational.evt<br>x
 windowsupdate | copy | /Windows/System32/Winevt/Logs/\*AppX\*.evtx
 windowsupdate | copy | /Windows/System32/Winevt/Logs/Microsoft-WS-Licensing%%4Admin.evtx
 windowsupdate | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnP%%4Configuration.evtx
@@ -1929,6 +1934,8 @@ windowsupdate | copy | /ProgramData/Microsoft/Windows/WER/ReportArchive/\*/\*.we
 windowsupdate | copy | /ProgramData/Microsoft/Windows/WER/ReportQueue/\*/\*.wer
 windowsupdate | copy | /Windows/setupcomplete.log
 windowsupdate | copy | /Windows/Setup/Scripts/\*
+windowsupdate | copy | /Windows/appcompat/Programs/Appraiser/\*.xml
+windowsupdate | copy | /Windows/appcompat/Programs/Appraiser/\*.bin
 windowsupdate | copy | /Windows/Panther/miglog.xml
 windowsupdate | copy | /Windows/Logs/mosetup/bluebox.log
 windowsupdate | copy | /Windows/Logs/MoSetup/MoSetup.log
@@ -1937,6 +1944,10 @@ windowsupdate | copy | /$Windows.~BT/Sources/Panther/CompatData\*.xml
 windowsupdate | copy | /$Windows.~BT/Sources/Panther/setupact.log
 windowsupdate | copy | /$Windows.~BT/Sources/Panther/setuperr.log
 windowsupdate | copy | /$Windows.~BT/Sources/Panther/miglog.xml
+windowsupdate | copy | /$Windows.~BT/Sources/Panther/PreDownload\*.log
+windowsupdate | copy | /$Windows.~BT/Sources/Panther/NewOs\*.log
+windowsupdate | copy | /$Windows.~BT/Sources/Panther/DDACLSys.log
+windowsupdate | copy | /$Windows.~BT/Sources/Panther/actionlist.xml
 windowsupdate | copy | /$Windows.~BT/Sources/Rollback/setuperr.log
 windowsupdate | copy | /$Windows.~BT/Sources/Rollback/diagerr.xml
 windowsupdate | copy | /$Windows.~BT/Sources/Rollback/diagwrn.xml
@@ -1953,6 +1964,9 @@ windowsupdate | copy | /Windows.old/Windows/Logs/WindowsUpdate/\*.etl
 windowsupdate | copy | /Windows.old/Windows/SoftwareDistribution/ReportingEvents.log
 windowsupdate | copy | /Windows.old/ProgramData/USOPrivate/UpdateStore
 windowsupdate | copy | /Windows.old/ProgramData/USOShared/Logs
+windowsupdate | copy | /Windows.old/Windows/Panther/setupact.log
+windowsupdate | copy | /Windows.old/Windows/Panther/setuperr.log
+windowsupdate | copy | /Windows.old/Windows/Panther/miglog.xml
 workloadbackup | copy | /Windows/System32/winevt/Logs/System.evtx
 workloadbackup | copy | /Windows/System32/winevt/Logs/Application.evtx
 workloadbackup | copy | /Windows/System32/winevt/Logs/Windows Azure.evtx
@@ -1971,4 +1985,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-01-28 15:42:19.596618`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-01-28 15:44:18.209209`*

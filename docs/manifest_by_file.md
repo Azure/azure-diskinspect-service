@@ -387,6 +387,10 @@ File Path | Manifest
 ------------- | ------------- 
 /$WINDOWS.~BT/Sources/Panther/scanresult.xml | windowsupdate 
 /$Windows.~BT/Sources/Panther/CompatData\*.xml | windowsupdate 
+/$Windows.~BT/Sources/Panther/DDACLSys.log | windowsupdate 
+/$Windows.~BT/Sources/Panther/NewOs\*.log | windowsupdate 
+/$Windows.~BT/Sources/Panther/PreDownload\*.log | windowsupdate 
+/$Windows.~BT/Sources/Panther/actionlist.xml | windowsupdate 
 /$Windows.~BT/Sources/Panther/miglog.xml | windowsupdate 
 /$Windows.~BT/Sources/Panther/setupact.log | windowsupdate 
 /$Windows.~BT/Sources/Panther/setuperr.log | windowsupdate 
@@ -543,9 +547,11 @@ File Path | Manifest
 /ProgramData/GuestConfig/Configuration/\* | monitor-mgmt 
 /ProgramData/GuestConfig/gc_agent_logs/\* | monitor-mgmt 
 /ProgramData/Microsoft/System Center/Orchestrator/7.2/SMA/\*.\* | monitor-mgmt 
+/ProgramData/Microsoft/UpdateHealthTools/\*.log | windowsupdate 
 /ProgramData/Microsoft/Windows/WER/ReportArchive/\*/\*.wer | windowsupdate 
 /ProgramData/Microsoft/Windows/WER/ReportQueue/\*/\*.wer | windowsupdate 
 /ProgramData/USOShared/Logs/\*.etl | windowsupdate 
+/ProgramData/USOShared/\*.etl | windowsupdate 
 /ProgramData/UsoPrivate/UpdateStore/\*.xml | windowsupdate 
 /ProgramData/containerd/root/panic.log | aks 
 /Users/\*/AppData/Local/Packages/WinStore_cw5n1h2txyewy/AC/Temp/winstore.log | windowsupdate 
@@ -555,6 +561,9 @@ File Path | Manifest
 /Windows.old/ProgramData/USOShared/Logs | windowsupdate 
 /Windows.old/Windows/Logs/WindowsUpdate/\*.etl | windowsupdate 
 /Windows.old/Windows/Logs/mosetup/bluebox.log | windowsupdate 
+/Windows.old/Windows/Panther/miglog.xml | windowsupdate 
+/Windows.old/Windows/Panther/setupact.log | windowsupdate 
+/Windows.old/Windows/Panther/setuperr.log | windowsupdate 
 /Windows.old/Windows/SoftwareDistribution/ReportingEvents.log | windowsupdate 
 /Windows/INF/netcfg\*.\*etl | diagnostic, vmdiagnostic 
 /Windows/INF/setupapi.\* | diagnostic 
@@ -712,6 +721,8 @@ File Path | Manifest
 /Windows/System32/winevt/Logs/Microsoft-Windows-SMBServer%4Connectivity.evtx | diagnostic, eg, vmdiagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-SMBServer%4Operational.evtx | diagnostic, eg, vmdiagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-ServerManager%4Operational.evtx | diagnostic, eg, vmdiagnostic 
+/Windows/System32/winevt/Logs/Microsoft-Windows-Servicing%%4Admin.evtx | windowsupdate 
+/Windows/System32/winevt/Logs/Microsoft-Windows-Setup%%4Operational.evtx | windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-Shell-Core%4Operational.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-SmartCard-Audit%4Authentication.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-SmartCard-DeviceEnum%4Operational.evt<br>x | diagnostic 
@@ -735,6 +746,7 @@ File Path | Manifest
 /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-SessionBroker-Client<br>%4Operational.evtx | diagnostic, eg, vmdiagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-TSV-VmHostAgent%4Adm<br>in.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-TSV-VmHostAgent%4Ope<br>rational.evtx | diagnostic 
+/Windows/System32/winevt/Logs/Microsoft-Windows-Upgrade-Diagnostics%%4Operational.evt<br>x | windowsupdate 
 /Windows/System32/winevt/Logs/Microsoft-Windows-User Device Registration%4Admin.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-User Profile Service%4Operational.evt<br>x | diagnostic 
 /Windows/System32/winevt/Logs/Microsoft-Windows-UserPnp%4DeviceInstall.evtx | agents, diagnostic, eg, vmdiagnostic 
@@ -776,6 +788,8 @@ File Path | Manifest
 /Windows/WinSxS/pending.xml | windowsupdate 
 /Windows/WinSxS/poqexec.log | windowsupdate 
 /Windows/WindowsUpdate.log | monitor-mgmt 
+/Windows/appcompat/Programs/Appraiser/\*.bin | windowsupdate 
+/Windows/appcompat/Programs/Appraiser/\*.xml | windowsupdate 
 /Windows/debug/DCPROMO.LOG | diagnostic, eg, normal, vmdiagnostic 
 /Windows/debug/DCPROMO.log | min-diagnostic 
 /Windows/debug/NetSetup.LOG | diagnostic, eg, normal, vmdiagnostic 
@@ -913,4 +927,4 @@ File Path | Manifest
 /var/log/blobfuse2.log\* | diagnostic 
 /windows/Panther/setup.etl | diagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-01-28 15:42:19.596618`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-01-28 15:44:18.209209`*
