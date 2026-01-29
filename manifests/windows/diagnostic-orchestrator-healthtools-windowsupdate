@@ -1,0 +1,5 @@
+echo,### Update Health Tools ###
+copy,/ProgramData/Microsoft/Windows/UpdateHealthTools/*.log
+copy,/ProgramData/Microsoft/Windows/UpdateHealthTools/*.etl
+ll,/ProgramData/Microsoft/Windows/UpdateHealthTools
+

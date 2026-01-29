@@ -1,0 +1,5 @@
+echo,### OS Upgrade Compatibility Appraiser ###
+copy,/Windows/appcompat/Appraiser*.xml
+copy,/Windows/appcompat/Appraiser*.cab
+ll,/Windows/appcompat/Programs
+

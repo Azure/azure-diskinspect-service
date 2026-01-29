@@ -1,0 +1,5 @@
+echo,### Delivery Optimization Logs ###
+copy,/Windows/SoftwareDistribution/DeliveryOptimization*.log
+copy,/Windows/ServiceProfiles/NetworkService/AppData/Local/Microsoft/Windows/DeliveryOptimization/Logs/*.log
+copy,/Windows/ServiceProfiles/NetworkService/AppData/Local/Microsoft/Windows/DeliveryOptimization/Logs/*.etl
+

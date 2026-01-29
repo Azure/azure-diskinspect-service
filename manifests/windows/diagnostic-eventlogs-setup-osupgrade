@@ -1,0 +1,4 @@
+echo,### OS Upgrade Event Logs ###
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Setup%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Upgrade-Diagnostics%4Operational.evtx
+

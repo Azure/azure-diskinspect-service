@@ -1,0 +1,4 @@
+echo,### Kernel and Driver Event Logs ###
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnP%4Configuration.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-Power%4Operational.evtx
+

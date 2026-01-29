@@ -1,0 +1,4 @@
+echo,### OS Upgrade MoSetup Logs ###
+copy,/Windows/Logs/MoSetup/BlueBox.log
+copy,/Windows/Logs/mosetup/UpdateAgent.log
+

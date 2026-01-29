@@ -1,0 +1,4 @@
+echo,### WaaS Medic Service Logs ###
+copy,/Windows/Logs/waasmedic/waasmedic.log
+copy,/Windows/Logs/waasmedic/WaaSMedic*.etl
+

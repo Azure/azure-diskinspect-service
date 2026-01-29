@@ -1,0 +1,4 @@
+echo,### Windows Update DataStore ###
+copy,/Windows/SoftwareDistribution/DataStore/DataStore.edb,noscan
+copy,/Windows/SoftwareDistribution/DataStore/Logs/*.log
+

@@ -1,0 +1,3 @@
+echo,### Windows Update Plugins ###
+ll,/Windows/SoftwareDistribution/Plugins
+
