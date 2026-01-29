@@ -1,0 +1,4 @@
+echo,### Gathering Azure Agent Configuration ###
+copy,/etc/waagent.conf
+copy,/etc/waagent.conf.bak
+echo,

@@ -1,0 +1,5 @@
+echo,### Gathering Sysctl Configuration ###
+copy,/etc/sysctl.conf,noscan
+copy,/etc/sysctl.d/*.conf,noscan
+copy,/usr/lib/sysctl.d/*.conf,noscan
+echo,

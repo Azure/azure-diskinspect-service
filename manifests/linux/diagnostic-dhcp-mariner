@@ -1,0 +1,5 @@
+echo,### Gathering DHCP Files - Mariner ###
+copy,/var/lib/NetworkManager/*.lease,noscan
+copy,/var/lib/NetworkManager/*.leases,noscan
+copy,/run/systemd/netif/leases/*,noscan
+echo,

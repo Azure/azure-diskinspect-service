@@ -1,0 +1,7 @@
+echo,### Site Recovery Extension ###
+copy,/var/log/ua_install.log
+copy,/var/log/AzureRcmCli.log
+copy,/var/log/svagents*.log
+copy,/var/log/s2*.log
+copy,/var/log/evtcollforw*.log
+

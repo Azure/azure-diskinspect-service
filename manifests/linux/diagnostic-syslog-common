@@ -1,0 +1,5 @@
+echo,### Gathering System Log Files - syslog and messages ###
+copy,/var/log/syslog*
+copy,/var/log/rsyslog*
+copy,/var/log/messages*
+echo,

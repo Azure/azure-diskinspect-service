@@ -1,0 +1,10 @@
+echo,### Extension Handler Configuration ###
+copy,/var/lib/waagent/*/error.json
+copy,/var/lib/waagent/*.manifest.xml
+copy,/var/lib/waagent/*/config/*.settings
+copy,/var/lib/waagent/*/config/HandlerState
+copy,/var/lib/waagent/*/config/HandlerStatus
+copy,/var/lib/waagent/*/status/*.status
+copy,/var/lib/waagent/*/config/VMApp.lockfile,noscan
+copy,/var/lib/waagent/*/config/applicationRegistry.active
+

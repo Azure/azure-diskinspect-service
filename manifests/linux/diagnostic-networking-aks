@@ -1,0 +1,11 @@
+echo,### Gathering AKS Networking Logs ###
+copy,/var/log/azure-cni*
+copy,/var/log/azure-vnet*
+copy,/var/log/azure-ipam*
+copy,/var/log/azure-cns*,noscan
+copy,/var/log/azure-npm.log,noscan
+copy,/var/log/cilium-cni*
+copy,/var/run/azure-vnet*
+copy,/run/azure-vnet*
+copy,/etc/cni/net.d/*.conflist,noscan
+echo,

@@ -1,0 +1,7 @@
+echo,### Gathering Azure Linux Agent XML Configuration ###
+copy,/var/lib/waagent/*.xml
+copy,/var/lib/waagent/SharedConfig.xml
+copy,/var/lib/waagent/HostingEnvironmentConfig.xml
+copy,/var/lib/waagent/GoalState.*.xml
+copy,/var/lib/waagent/ExtensionsConfig.*.xml
+echo,

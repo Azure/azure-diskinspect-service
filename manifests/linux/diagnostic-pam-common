@@ -1,0 +1,6 @@
+echo,### Gathering PAM Configuration ###
+copy,/etc/pam.d/*
+copy,/etc/security/access.conf,noscan
+copy,/etc/security/limits.conf,noscan
+copy,/etc/security/limits.d/*,noscan
+echo,

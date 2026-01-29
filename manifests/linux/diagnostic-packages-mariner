@@ -1,0 +1,6 @@
+echo,### Gathering Package Management Log Files (Mariner - TDNF) ###
+copy,/var/log/tdnf*,noscan
+copy,/var/log/dnf*,noscan
+copy,/var/log/yum*,noscan
+copy,/var/cache/tdnf/history/*,noscan
+echo,

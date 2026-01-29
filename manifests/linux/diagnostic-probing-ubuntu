@@ -1,0 +1,17 @@
+echo,### Probing Directories (Ubuntu/Debian) ###
+ll,/boot
+ll,/var/log
+ll,/var/lib/cloud
+ll,/var/lib/waagent
+ll,/etc
+ll,/etc/udev/rules.d
+ll,/etc/alternatives
+ll,/etc/systemd/system
+ll,/etc/systemd/system/multi-user.target.wants
+ll,/etc/systemd/system/graphical.target.wants
+ll,/etc/systemd/user
+ll,/etc/apt
+ll,/etc/apt/sources.list.d
+ll,/usr/lib/systemd/system
+ll,/usr/lib/systemd/user
+echo,

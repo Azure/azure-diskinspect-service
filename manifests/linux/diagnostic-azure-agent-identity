@@ -1,0 +1,4 @@
+echo,### Gathering Managed Identity Files ###
+copy,/var/lib/waagent/ManagedIdentity-*.json
+copy,/var/lib/waagent/*/ManagedIdentity-*.json
+echo,

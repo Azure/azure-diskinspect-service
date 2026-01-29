@@ -1,0 +1,11 @@
+echo,### Probing SOS/Supportconfig Directories ###
+ll,/var/tmp
+ll,/tmp
+echo,
+
+echo,### Gathering sosreport Files - RHEL Ubuntu ###
+copy,/var/tmp/sosreport*.tar.xz,noscan
+copy,/var/tmp/sosreport*.tar.gz,noscan
+copy,/tmp/sosreport*.tar.xz,noscan
+copy,/tmp/sosreport*.tar.gz,noscan
+echo,

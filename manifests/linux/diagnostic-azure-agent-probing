@@ -1,0 +1,5 @@
+echo,### Probing Azure Agent Directories ###
+ll,/var/log
+ll,/var/lib/waagent
+ll,/var/lib/waagent/history
+echo,

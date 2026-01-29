@@ -1,0 +1,8 @@
+echo,### Gathering Network Configuration (Mariner) ###
+copy,/etc/systemd/network/*.network,noscan
+copy,/etc/systemd/network/*.netdev,noscan
+copy,/etc/systemd/network/*.link,noscan
+copy,/run/systemd/network/*.network,noscan
+copy,/usr/lib/systemd/network/*.network,noscan
+copy,/etc/dhcp/*.conf,noscan
+echo,

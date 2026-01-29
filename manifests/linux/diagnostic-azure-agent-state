@@ -1,0 +1,9 @@
+echo,### Gathering Azure Linux Agent State Files ###
+copy,/var/lib/waagent/provisioned,noscan
+copy,/var/lib/waagent/waagent_status.json
+copy,/var/lib/waagent/waagent_status.*.json
+copy,/var/lib/waagent/Incarnation
+copy,/var/lib/waagent/error.json
+copy,/var/lib/waagent/*.agentsManifest
+copy,/var/lib/waagent/history/*.zip,noscan
+echo,

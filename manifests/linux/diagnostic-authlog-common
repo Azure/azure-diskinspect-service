@@ -1,0 +1,8 @@
+echo,### Gathering Authentication Log Files ###
+copy,/var/log/auth*
+copy,/var/log/secure*
+copy,/var/log/faillog
+copy,/var/log/lastlog
+copy,/var/log/btmp*
+copy,/var/log/wtmp*
+echo,

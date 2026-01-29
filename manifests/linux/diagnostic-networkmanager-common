@@ -1,0 +1,9 @@
+echo,### Gathering NetworkManager Files ###
+copy,/usr/lib/NetworkManager/*.conf,noscan
+copy,/usr/lib/NetworkManager/conf.d/*.conf,noscan
+copy,/etc/NetworkManager/*.conf,noscan
+copy,/etc/NetworkManager/conf.d/*.conf,noscan
+copy,/var/lib/NetworkManager/*.conf,noscan
+copy,/var/lib/NetworkManager/conf.d/*.conf,noscan
+copy,/var/lib/NetworkManager/*.state,noscan
+echo,

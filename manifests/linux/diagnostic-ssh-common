@@ -1,0 +1,6 @@
+echo,### Gathering SSH Configuration ###
+copy,/etc/ssh/sshd_config
+copy,/etc/ssh/sshd_config.d/*
+copy,/etc/ssh/ssh_config
+copy,/etc/ssh/ssh_config.d/*
+echo,

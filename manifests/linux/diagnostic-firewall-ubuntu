@@ -1,0 +1,8 @@
+echo,### Gathering Firewall Configuration (Ubuntu/Debian - UFW) ###
+copy,/etc/ufw/ufw.conf,noscan
+copy,/etc/ufw/user.rules
+copy,/etc/ufw/user6.rules
+copy,/etc/ufw/before.rules
+copy,/etc/ufw/after.rules
+copy,/etc/default/ufw,noscan
+echo,

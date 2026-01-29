@@ -1,0 +1,19 @@
+echo,### Service Fabric Extension ###
+copy,/var/log/azure/Microsoft.Azure.KeyVault.KeyVaultForLinux/*
+copy,/var/log/azure/Microsoft.Azure.ServiceFabric.*ServiceFabricLinuxNode/extension.log
+copy,/var/log/azure/Microsoft.Azure.ServiceFabric.*ServiceFabricLinuxNode/handler.log
+copy,/var/log/azure/Microsoft.Azure.ServiceFabric.*ServiceFabricLinuxNode/ServiceFabricLinuxExtension.log
+copy,/var/log/azure/Microsoft.Azure.ServiceFabric.*ServiceFabricLinuxNode/CommandExecution*.log
+copy,/var/log/azure/Microsoft.Azure.ServiceFabric.*ServiceFabricLinuxNode/sfbootstrapagent*.log
+copy,/var/log/azure/Microsoft.Azure.ServiceFabric.*ServiceFabricLinuxNode/InfrastructureManifest.xml
+copy,/var/log/azure/Microsoft.Azure.ServiceFabric.*ServiceFabricLinuxNode/TempClusterManifest.xml
+copy,/var/log/azure/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode/events/*
+
+echo,### Key Vault Extension Config ###
+copy,/var/lib/waagent/Microsoft.Azure.KeyVault.KeyVaultForLinux-*/config/*
+
+echo,### Service Fabric Extension Handler ###
+copy,/var/lib/waagent/Microsoft.Azure.ServiceFabric.*ServiceFabricLinuxNode-*/heartbeat.log,noscan
+copy,/var/lib/waagent/Microsoft.Azure.ServiceFabric.*ServiceFabricLinuxNode-*.*/HandlerEnvironment.json
+copy,/var/lib/waagent/Microsoft.Azure.ServiceFabric.*ServiceFabricLinuxNode-*/HandlerManifest.json
+

@@ -1,0 +1,4 @@
+echo,### Gathering Package Management Log Files (SUSE) ###
+copy,/var/log/zypp/history,noscan
+copy,/var/log/zypper.log,noscan
+echo,

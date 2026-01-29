@@ -1,0 +1,3 @@
+echo,### Gathering Boot Log Files ###
+copy,/var/log/boot*
+echo,

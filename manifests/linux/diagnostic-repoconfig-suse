@@ -1,0 +1,11 @@
+echo,### Probing Repository Directories - SUSE ###
+ll,/etc/products.d
+ll,/etc/zypp/repos.d
+echo,
+
+echo,### Gathering Repository Configuration Files - SUSE ###
+copy,/etc/products.d/*.prod,noscan
+copy,/etc/zypp/repos.d/*.repo,noscan
+copy,/etc/zypp/zypp.conf,noscan
+copy,/etc/regionserverclnt.cfg,noscan
+echo,

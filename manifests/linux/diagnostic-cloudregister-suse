@@ -1,0 +1,3 @@
+echo,### Gathering SUSE Cloud Registration Log ###
+copy,/var/log/cloudregister
+echo,

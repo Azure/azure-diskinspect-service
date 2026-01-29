@@ -1,0 +1,4 @@
+echo,### Gathering Kernel Log Files ###
+copy,/var/log/kern*
+copy,/var/log/dmesg*
+echo,
