@@ -62,7 +62,7 @@ copy,/Windows/SoftwareDistribution/Download/*/*/*.xml
 copy,/Windows/SoftwareDistribution/Download/*/*/*.log
 copy,/Windows/SoftwareDistribution/datastore/DataStore.edb,noscan
 
-echo,### Windows Update - Update Orchestrator and Store ###
+echo,### Windows Update - Update Orchestrator ###
 copy,/ProgramData/UsoPrivate/UpdateStore/*.xml
 copy,/ProgramData/USOShared/Logs/*.etl,noscan
 copy,/ProgramData/USOShared/*.etl,noscan
@@ -80,10 +80,8 @@ copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TaskScheduler%%4Operational
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Bits-Client%%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Servicing%%4Admin.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-CAPI2%%4Operational.evtx
-copy,/Windows/System32/Winevt/Logs/*AppX*.evtx
 copy,/Windows/System32/Winevt/Logs/Microsoft-WS-Licensing%%4Admin.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnP%%4Configuration.evtx
-copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Store%%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-DeliveryOptimization%%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WUSA%%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-Power%%4Operational.evtx

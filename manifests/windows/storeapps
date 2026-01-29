@@ -1,0 +1,38 @@
+echo,### Registry Hives ###
+copy,/Windows/System32/config/SOFTWARE,noscan
+
+echo,### Event Logs ###
+copy,/Windows/System32/winevt/Logs/System.evtx
+copy,/Windows/System32/winevt/Logs/Application.evtx
+
+echo,### Microsoft Store - Event Logs ###
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Store%%4Operational.evtx
+copy,/Windows/System32/Winevt/Logs/*AppX*.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeployment%%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeploymentServer%%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppxPackaging%%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppModel-Runtime%%4Admin.evtx
+copy,/Windows/System32/Winevt/Logs/Microsoft-WS-Licensing%%4Admin.evtx
+
+echo,### Microsoft Store - Logs ###
+copy,/Users/*/AppData/Local/Temp/winstore.log
+copy,/Users/*/AppData/Local/Packages/WinStore_cw5n1h2txyewy/AC/Temp/winstore.log
+copy,/Users/*/AppData/Local/Packages/Microsoft.WindowsStore_*/LocalState/*.log
+
+echo,### Microsoft Store - Package Cache ###
+copy,/ProgramData/Microsoft/Windows/AppRepository/*.log
+copy,/ProgramData/Microsoft/Windows/AppRepository/Packages/*.xml
+
+echo,### UWP App Deployment ###
+copy,/Windows/Logs/CBS/*.log
+copy,/Windows/Logs/DISM/*.log
+
+echo,### Delivery Optimization (Store Downloads) ###
+copy,/Windows/SoftwareDistribution/DeliveryOptimization/SavedLogs/*.log
+copy,/Windows/SoftwareDistribution/DeliveryOptimization/SavedLogs/*.etl,noscan
+copy,/Windows/ServiceProfiles/NetworkService/AppData/Local/Microsoft/Windows/DeliveryOptimization/Logs/*.etl,noscan
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-DeliveryOptimization%%4Operational.evtx
+
+echo,### Windows Error Reporting ###
+copy,/ProgramData/Microsoft/Windows/WER/ReportArchive/*/*.wer
+copy,/ProgramData/Microsoft/Windows/WER/ReportQueue/*/*.wer

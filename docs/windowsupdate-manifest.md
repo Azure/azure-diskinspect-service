@@ -141,7 +141,7 @@ This document describes the `windowsupdate` manifest used for diagnosing Windows
 
 ---
 
-### Windows Update - Update Orchestrator and Store
+### Windows Update - Update Orchestrator
 
 | File Pattern | Est. Files | Typical Size | Purpose |
 |--------------|------------|--------------|---------|
@@ -189,10 +189,8 @@ This document describes the `windowsupdate` manifest used for diagnosing Windows
 | `Microsoft-Windows-Bits-Client%4Operational.evtx` | 1-20MB | BITS download operations |
 | `Microsoft-Windows-Servicing%4Admin.evtx` | 1-10MB | CBS/servicing events |
 | `Microsoft-Windows-CAPI2%4Operational.evtx` | 5-50MB | Certificate/signing issues |
-| `*AppX*.evtx` | 1-10MB each | AppX package updates |
 | `Microsoft-WS-Licensing%4Admin.evtx` | 1-5MB | Licensing events |
 | `Microsoft-Windows-Kernel-PnP%4Configuration.evtx` | 1-10MB | PnP device events |
-| `Microsoft-Windows-Store%4Operational.evtx` | 5-20MB | Store update events |
 | `Microsoft-Windows-DeliveryOptimization%4Operational.evtx` | 1-20MB | DO events |
 | `Microsoft-Windows-WUSA%4Operational.evtx` | 1-5MB | Standalone installer (MSU) |
 | `Microsoft-Windows-Kernel-Power%4Operational.evtx` | 5-50MB | Unexpected reboots during updates |
@@ -200,7 +198,7 @@ This document describes the `windowsupdate` manifest used for diagnosing Windows
 
 **Why Important:** Comprehensive event coverage for all Windows Update subsystems.
 
-**Estimated Files:** 13-15 files | **Estimated Size:** 30MB - 300MB
+**Estimated Files:** 11 files | **Estimated Size:** 25MB - 250MB
 
 ---
 
@@ -425,7 +423,7 @@ This document describes the `windowsupdate` manifest used for diagnosing Windows
 | Update Orchestrator | 5-20 | 15MB | 200MB |
 | Update Health Tools | 1-5 | 1MB | 50MB |
 | Delivery Optimization | 3-11 | 10MB | 200MB |
-| WU Event Logs | 13-15 | 30MB | 300MB |
+| WU Event Logs | 11 | 25MB | 250MB |
 | Azure Update Manager | 7-20 | 5MB | 100MB |
 | Startup Repair | 3-5 | 1MB | 10MB |
 | Windows Error Reporting | 0-70 | 1MB | 10MB |

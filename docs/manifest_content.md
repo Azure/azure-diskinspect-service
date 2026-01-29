@@ -1666,6 +1666,29 @@ sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.mdmp
 sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/Setup Bootstrap/Log/\*/Log\*.cab
 sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/Setup Bootstrap/Log/Summary.txt
 sql-iaas | copy | /Program Files/Microsoft SQL Server/90/Shared/SqlWriterLogger\*.txt
+storeapps | copy | /Windows/System32/config/SOFTWARE
+storeapps | copy | /Windows/System32/winevt/Logs/System.evtx
+storeapps | copy | /Windows/System32/winevt/Logs/Application.evtx
+storeapps | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Store%%4Operational.evtx
+storeapps | copy | /Windows/System32/Winevt/Logs/\*AppX\*.evtx
+storeapps | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeployment%%4Operational.evtx
+storeapps | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeploymentServer%%4Operational.ev<br>tx
+storeapps | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-AppxPackaging%%4Operational.evtx
+storeapps | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-AppModel-Runtime%%4Admin.evtx
+storeapps | copy | /Windows/System32/Winevt/Logs/Microsoft-WS-Licensing%%4Admin.evtx
+storeapps | copy | /Users/\*/AppData/Local/Temp/winstore.log
+storeapps | copy | /Users/\*/AppData/Local/Packages/WinStore_cw5n1h2txyewy/AC/Temp/winstore.log
+storeapps | copy | /Users/\*/AppData/Local/Packages/Microsoft.WindowsStore_\*/LocalState/\*.log
+storeapps | copy | /ProgramData/Microsoft/Windows/AppRepository/\*.log
+storeapps | copy | /ProgramData/Microsoft/Windows/AppRepository/Packages/\*.xml
+storeapps | copy | /Windows/Logs/CBS/\*.log
+storeapps | copy | /Windows/Logs/DISM/\*.log
+storeapps | copy | /Windows/SoftwareDistribution/DeliveryOptimization/SavedLogs/\*.log
+storeapps | copy | /Windows/SoftwareDistribution/DeliveryOptimization/SavedLogs/\*.etl
+storeapps | copy | /Windows/ServiceProfiles/NetworkService/AppData/Local/Microsoft/Windows/DeliveryOptim<br>ization/Logs/\*.etl
+storeapps | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-DeliveryOptimization%%4Operational.ev<br>tx
+storeapps | copy | /ProgramData/Microsoft/Windows/WER/ReportArchive/\*/\*.wer
+storeapps | copy | /ProgramData/Microsoft/Windows/WER/ReportQueue/\*/\*.wer
 vmdiagnostic | copy | /Windows/System32/config/SOFTWARE
 vmdiagnostic | copy | /Windows/System32/config/SYSTEM
 vmdiagnostic | copy | /Windows/System32/winevt/Logs/System.evtx
@@ -1909,10 +1932,8 @@ windowsupdate | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TaskSched
 windowsupdate | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Bits-Client%%4Operational.evtx
 windowsupdate | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Servicing%%4Admin.evtx
 windowsupdate | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-CAPI2%%4Operational.evtx
-windowsupdate | copy | /Windows/System32/Winevt/Logs/\*AppX\*.evtx
 windowsupdate | copy | /Windows/System32/Winevt/Logs/Microsoft-WS-Licensing%%4Admin.evtx
 windowsupdate | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnP%%4Configuration.evtx
-windowsupdate | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Store%%4Operational.evtx
 windowsupdate | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-DeliveryOptimization%%4Operational.ev<br>tx
 windowsupdate | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-WUSA%%4Operational.evtx
 windowsupdate | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-Power%%4Operational.evtx
@@ -1986,4 +2007,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-01-28 15:59:21.332903`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-01-28 16:14:43.410432`*
