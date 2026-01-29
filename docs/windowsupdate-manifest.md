@@ -438,7 +438,7 @@ This document describes the `windowsupdate` manifest used for diagnosing Windows
 | Alt Staging ($Windows.~WS) | 3 | 3MB | 45MB |
 | Setup Cleanup | 2 | 1MB | 11MB |
 | Previous OS (Windows.old) | 8-15 | 15MB | 150MB |
-| **TOTAL** | **115-360** | **~400MB** | **~3.5GB** |
+| **TOTAL** | **110-350** | **~350MB** | **~3.2GB** |
 
 ---
 
@@ -460,5 +460,6 @@ For smaller packages, consider splitting into:
 | `windowsupdate-min` | Event logs + CBS logs only | 100-400MB |
 | `windowsupdate` | Full WU troubleshooting | 200-800MB |
 | `windowsupdate-osupgrade` | OS upgrade specific | 100-500MB |
+| `storeapps` | Microsoft Store / UWP apps | 50-200MB |
 | `windowsupdate-full` | Everything | 400MB-1.5GB |
 
