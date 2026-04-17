@@ -1667,7 +1667,7 @@ sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.dmp
 sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/Setup Bootstrap/Log/\*/Log\*.cab
 sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/Setup Bootstrap/Log/Summary.txt
 sql-iaas | copy | /Program Files/Microsoft SQL Server/90/Shared/SqlWriterLogger\*.txt
-sql-iaas | copy | /ProgramData/GuestConfig/extension_logs/Microsoft.AzureData.WindowsAgent.SqlServer/\*<br>.log
+sql-iaas | copy | /ProgramData/GuestConfig/extension_logs/Microsoft.AzureData.WindowsAgent.SqlServer/\*.log
 vmdiagnostic | copy | /Windows/System32/config/SOFTWARE
 vmdiagnostic | copy | /Windows/System32/config/SYSTEM
 vmdiagnostic | copy | /Windows/System32/winevt/Logs/System.evtx
