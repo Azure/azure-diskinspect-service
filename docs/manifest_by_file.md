@@ -531,7 +531,7 @@ File Path | Manifest
 /ProgramData/FSLogix/Logs/Profile/Profile_\*.log | diagnostic, diagnostic 
 /ProgramData/FSLogix/Logs/\*.etl.\* | diagnostic, diagnostic 
 /ProgramData/GuestConfig/Configuration/\* | monitor-mgmt 
-/ProgramData/GuestConfig/extension_logs/Microsoft.AzureData.WindowsAgent.SqlServer/\*<br>.log | sql-iaas 
+/ProgramData/GuestConfig/extension_logs/Microsoft.AzureData.WindowsAgent.SqlServer/\\*.log | sql-iaas 
 /ProgramData/GuestConfig/gc_agent_logs/\* | monitor-mgmt 
 /ProgramData/Microsoft/System Center/Orchestrator/7.2/SMA/\*.\* | monitor-mgmt 
 /ProgramData/USOShared/Logs/\*.etl | windowsupdate 
