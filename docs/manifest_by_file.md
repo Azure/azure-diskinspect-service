@@ -511,6 +511,7 @@ File Path | Manifest
 /Program Files/Microsoft SQL Server/\*/MSSQL/Log/FDLAUNCHERRORLOG | sql-iaas 
 /Program Files/Microsoft SQL Server/\*/MSSQL/Log/FDLAUNCHERRORLOG.\* | sql-iaas 
 /Program Files/Microsoft SQL Server/\*/MSSQL/Log/SQLAGENT.\* | sql-iaas 
+/Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.dmp | sql-iaas 
 /Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.log | sql-iaas 
 /Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.mdmp | sql-iaas 
 /Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.trc | sql-iaas 
@@ -530,6 +531,7 @@ File Path | Manifest
 /ProgramData/FSLogix/Logs/Profile/Profile_\*.log | diagnostic, diagnostic 
 /ProgramData/FSLogix/Logs/\*.etl.\* | diagnostic, diagnostic 
 /ProgramData/GuestConfig/Configuration/\* | monitor-mgmt 
+/ProgramData/GuestConfig/extension_logs/Microsoft.AzureData.WindowsAgent.SqlServer/\*.log | sql-iaas 
 /ProgramData/GuestConfig/gc_agent_logs/\* | monitor-mgmt 
 /ProgramData/Microsoft/System Center/Orchestrator/7.2/SMA/\*.\* | monitor-mgmt 
 /ProgramData/USOShared/Logs/\*.etl | windowsupdate 
@@ -896,4 +898,4 @@ File Path | Manifest
 /var/log/blobfuse2.log\* | diagnostic 
 /windows/Panther/setup.etl | diagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-12-11 12:18:12.888263`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-04-15 12:40:44.353563`*
