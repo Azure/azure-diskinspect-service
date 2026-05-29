@@ -254,9 +254,12 @@ diagnostic | copy | /usr/lib/NetworkManager/\*.conf
 diagnostic | copy | /usr/lib/NetworkManager/conf.d/\*.conf
 diagnostic | copy | /etc/NetworkManager/\*.conf
 diagnostic | copy | /etc/NetworkManager/conf.d/\*.conf
+diagnostic | copy | /etc/NetworkManager/system-connections/\*.nmconnection
 diagnostic | copy | /var/lib/NetworkManager/\*.conf
 diagnostic | copy | /var/lib/NetworkManager/conf.d/\*.conf
 diagnostic | copy | /var/lib/NetworkManager/\*.state
+diagnostic | copy | /etc/systemd/network/\*
+diagnostic | copy | /etc/systemd/network/\*/\*.conf
 diagnostic | copy | /etc/sysconfig/network
 diagnostic | copy | /etc/sysconfig/network-scripts/ifcfg-\*
 diagnostic | copy | /etc/sysconfig/network-scripts/route-\*
@@ -2118,4 +2121,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-12-11 12:18:12.888263`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-05-29 09:24:27.682150`*

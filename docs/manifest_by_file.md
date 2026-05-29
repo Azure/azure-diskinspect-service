@@ -47,6 +47,7 @@ File Path | Manifest
 /etc/HOSTNAME | agents, diagnostic, eg, lad, site-recovery, sql-iaas, vmdiagnostic, workloadbackup 
 /etc/NetworkManager/\*.conf | diagnostic, eg, vmdiagnostic 
 /etc/NetworkManager/conf.d/\*.conf | diagnostic, eg, vmdiagnostic 
+/etc/NetworkManager/system-connections/\*.nmconnection | diagnostic 
 /etc/\*-release | agents, diagnostic, eg, site-recovery, sql-iaas, vmdiagnostic, workloadbackup 
 /etc/ambari-agent/conf/\* | hdinsight 
 /etc/ambari-server/conf/\* | hdinsight 
@@ -127,6 +128,8 @@ File Path | Manifest
 /etc/sysctl.conf | diagnostic 
 /etc/sysctl.d/\*.conf | diagnostic 
 /etc/syslog-ng/\* | azuremonitoragent 
+/etc/systemd/network/\* | diagnostic 
+/etc/systemd/network/\*/\*.conf | diagnostic 
 /etc/udev/rules.d/\*.rules | diagnostic 
 /etc/ufw/ufw.conf | diagnostic, eg, vmdiagnostic 
 /etc/ufw/user.rules | diagnostic 
@@ -896,4 +899,4 @@ File Path | Manifest
 /var/log/blobfuse2.log\* | diagnostic 
 /windows/Panther/setup.etl | diagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2025-12-11 12:18:12.888263`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-05-29 09:24:27.682150`*
