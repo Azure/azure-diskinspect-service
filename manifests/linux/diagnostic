@@ -76,9 +76,15 @@ copy,/usr/lib/NetworkManager/*.conf,noscan
 copy,/usr/lib/NetworkManager/conf.d/*.conf,noscan
 copy,/etc/NetworkManager/*.conf,noscan
 copy,/etc/NetworkManager/conf.d/*.conf,noscan
+copy,/etc/NetworkManager/system-connections/*.nmconnection
 copy,/var/lib/NetworkManager/*.conf,noscan
 copy,/var/lib/NetworkManager/conf.d/*.conf,noscan
 copy,/var/lib/NetworkManager/*.state,noscan
+echo,
+
+echo,### Gathering systemd-networkd Files ###
+copy,/etc/systemd/network/*
+copy,/etc/systemd/network/*/*.conf
 echo,
 
 echo,### Gathering Sysconfig Network Files ###
