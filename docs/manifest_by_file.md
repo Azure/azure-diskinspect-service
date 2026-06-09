@@ -40,8 +40,7 @@ File Path | Manifest
 ## linux 
 File Path | Manifest 
 ------------- | ------------- 
-/boot/grub\*/grub.c\* | eg, vmdiagnostic 
-/boot/grub\*/grub.cfg | linux-bootconfig 
+/boot/grub\*/grub.c\* | eg, linux-bootconfig, vmdiagnostic 
 /boot/grub\*/grubenv | linux-bootconfig 
 /boot/grub\*/menu.lst | eg, linux-bootconfig, vmdiagnostic 
 /boot/loader/entries/\*.conf | linux-bootconfig 
@@ -900,4 +899,4 @@ File Path | Manifest
 /var/log/blobfuse2.log\* | diagnostic 
 /windows/Panther/setup.etl | diagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-06-09 14:26:01.261507`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-06-09 14:31:10.507603`*
