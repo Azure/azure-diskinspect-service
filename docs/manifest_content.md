@@ -1666,9 +1666,11 @@ sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.trc
 sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/SQLAGENT.\*
 sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.log
 sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.mdmp
+sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.dmp
 sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/Setup Bootstrap/Log/\*/Log\*.cab
 sql-iaas | copy | /Program Files/Microsoft SQL Server/\*/Setup Bootstrap/Log/Summary.txt
 sql-iaas | copy | /Program Files/Microsoft SQL Server/90/Shared/SqlWriterLogger\*.txt
+sql-iaas | copy | /ProgramData/GuestConfig/extension_logs/Microsoft.AzureData.WindowsAgent.SqlServer/\*<br>.log
 vmdiagnostic | copy | /Windows/System32/config/SOFTWARE
 vmdiagnostic | copy | /Windows/System32/config/SYSTEM
 vmdiagnostic | copy | /Windows/System32/winevt/Logs/System.evtx
@@ -2121,4 +2123,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-06-09 14:31:10.507603`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-06-26 08:45:19.490209`*
