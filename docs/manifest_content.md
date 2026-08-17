@@ -1471,10 +1471,10 @@ monitor-mgmt | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Shell-Core
 monitor-mgmt | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-WinRM%4Operational.evtx
 monitor-mgmt | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-WMI-Activity%4Operational.evtx
 monitor-mgmt | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-CAPI2%4Operational.evtx
-monitor-mgmt | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Diagnostics-Performance%4Operational
+monitor-mgmt | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Diagnostics-Performance%4Operational.<br>evtx
 monitor-mgmt | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-GroupPolicy%4Operational.evtx
 monitor-mgmt | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-TCPIP%4Operational.evtx
-monitor-mgmt | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-WER-Diagnostics%4Operational
+monitor-mgmt | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-WER-Diagnostics%4Operational.evtx
 monitor-mgmt | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-Resource-Exhaustion-Detector%4Operati<br>onal.evtx
 monitor-mgmt | copy | /Windows/System32/winevt/Logs/PowerShellCore%4Operational.evtx
 monitor-mgmt | copy | /Windows/System32/winevt/Logs/System.evtx
