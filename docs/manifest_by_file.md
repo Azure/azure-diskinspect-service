@@ -759,6 +759,7 @@ File Path | Manifest
 /Windows/System32/winevt/Logs/MicrosoftAzureRecoveryServices-Replication.evtx | diagnostic, eg, vmdiagnostic, windowsupdate 
 /Windows/System32/winevt/Logs/OpenSSH%4Admin.evtx | diagnostic 
 /Windows/System32/winevt/Logs/OpenSSH%4Operational.evtx | diagnostic 
+/Windows/System32/winevt/Logs/Operations Manager.evtx | monitor-mgmt 
 /Windows/System32/winevt/Logs/PowerShellCore%4Operational.evtx | diagnostic, monitor-mgmt 
 /Windows/System32/winevt/Logs/RemoteDesktopServices.evtx | diagnostic 
 /Windows/System32/winevt/Logs/Security.evtx | diagnostic, eg, min-diagnostic, vmdiagnostic, windowsupdate 
@@ -786,7 +787,6 @@ File Path | Manifest
 /Windows/debug/netlogon.log | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 /Windows/inf/setupapi.app.log | diagnostic, windowsupdate 
 /Windows/servicing/sessions/sessions.xml | diagnostic, min-diagnostic, monitor-mgmt, vmdiagnostic, windowsupdate 
-/Windows/system32/winevt/Logs/Operations Manager.evtx | monitor-mgmt 
 /Windows/web/rdweb/App_Data/rdweb.log | diagnostic 
 /Windows/windowsupdate.log | monitor-mgmt 
 /Windows/windowsupdate\*.log | diagnostic, min-diagnostic, windowsupdate 
@@ -912,4 +912,4 @@ File Path | Manifest
 /var/log/blobfuse2.log\* | diagnostic 
 /windows/Panther/setup.etl | diagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-08-18 08:55:54.378213`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-08-18 09:26:42.943343`*

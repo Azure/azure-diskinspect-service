@@ -1453,7 +1453,7 @@ monitor-mgmt | copy | /Program Files/Microsoft Monitoring Agent/Agent/Health Ser
 monitor-mgmt | copy | /Program Files/Microsoft Monitoring Agent/Agent/Health Service State/FCT_\*/work/Inve<br>ntory/localhost.json
 monitor-mgmt | copy | /Program Files/Microsoft Monitoring Agent/Agent/Health Service State/FCT_\*/work/Inve<br>ntory/localhost.mof
 monitor-mgmt | copy | /Windows/System32/winevt/Logs/Application.evtx
-monitor-mgmt | copy | /Windows/system32/winevt/Logs/Operations Manager.evtx
+monitor-mgmt | copy | /Windows/System32/winevt/Logs/Operations Manager.evtx
 monitor-mgmt | copy | /Windows/System32/winevt/Logs/Windows PowerShell.evtx
 monitor-mgmt | copy | /Windows/System32/winevt/Logs/Windows Azure.evtx
 monitor-mgmt | copy | /Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Bootstrapper.evtx
@@ -2235,4 +2235,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-08-18 08:55:54.378213`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-08-18 09:26:42.943343`*
