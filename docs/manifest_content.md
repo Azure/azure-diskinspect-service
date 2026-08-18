@@ -1502,7 +1502,7 @@ monitor-mgmt | copy | /Packages/Plugins/\*/\*/Status/HeartBeat.Json
 monitor-mgmt | copy | /Packages/Plugins/\*/\*/PackageInformation.txt
 monitor-mgmt | copy | /WindowsAzure/Logs/\*.log
 monitor-mgmt | copy | /WindowsAzure/Logs/AggregateStatus/\*.json
-monitor-mgmt | copy | /WindowsAzure/Logs/plugins/\*/\*/\*.log
+monitor-mgmt | copy | /WindowsAzure/Logs/Plugins/\*/\*/\*.log
 monitor-mgmt | copy | /WindowsAzure/Logs/VFPlugin/\*.log
 monitor-mgmt | copy | /Windows/System32/config/SOFTWARE
 monitor-mgmt | copy | /Windows/System32/config/SYSTEM
@@ -2227,4 +2227,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-08-18 10:58:20.938620`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-08-18 11:21:27.487163`*

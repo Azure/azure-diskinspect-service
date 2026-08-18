@@ -73,7 +73,7 @@ copy,/Packages/Plugins/*/*/Status/HeartBeat.Json
 copy,/Packages/Plugins/*/*/PackageInformation.txt
 copy,/WindowsAzure/Logs/*.log
 copy,/WindowsAzure/Logs/AggregateStatus/*.json
-copy,/WindowsAzure/Logs/plugins/*/*/*.log
+copy,/WindowsAzure/Logs/Plugins/*/*/*.log
 copy,/WindowsAzure/Logs/VFPlugin/*.log
 
 echo,#Registry Hives#

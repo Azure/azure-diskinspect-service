@@ -876,6 +876,7 @@ File Path | Manifest
 /WindowsAzure/Logs/Plugins/\*/\*/Heartbeat.log | agents, diagnostic, eg, normal, servicefabric, vmdiagnostic, windowsupdate 
 /WindowsAzure/Logs/Plugins/\*/\*/Install.log | agents, diagnostic, eg, normal, servicefabric, vmdiagnostic, windowsupdate 
 /WindowsAzure/Logs/Plugins/\*/\*/Update.log | agents, diagnostic, eg, normal, servicefabric, vmdiagnostic, windowsupdate 
+/WindowsAzure/Logs/Plugins/\*/\*/\*.log | monitor-mgmt 
 /WindowsAzure/Logs/SqlServerLogs/ERRORLOG | sql-iaas 
 /WindowsAzure/Logs/SqlServerLogs/\*.txt | sql-iaas 
 /WindowsAzure/Logs/SqlServerLogs/\*.xel | sql-iaas 
@@ -889,7 +890,6 @@ File Path | Manifest
 /WindowsAzure/Logs/aks/\*.txt | aks 
 /WindowsAzure/Logs/blobfuse2.log | aks 
 /WindowsAzure/Logs/blobfuse2.log\* | aks 
-/WindowsAzure/Logs/plugins/\*/\*/\*.log | monitor-mgmt 
 /WindowsAzure/ProxyAgent/Logs/\* | agents, diagnostic, min-diagnostic, normal 
 /WindowsAzure/TransparentInstaller.log | aks 
 /WindowsAzure/WaAppAgent.log | aks 
@@ -911,4 +911,4 @@ File Path | Manifest
 /var/log/blobfuse2.log\* | diagnostic 
 /windows/Panther/setup.etl | diagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-08-18 10:58:20.938620`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-08-18 11:21:27.487163`*
