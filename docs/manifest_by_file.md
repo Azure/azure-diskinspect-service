@@ -791,7 +791,7 @@ File Path | Manifest
 /Windows/windowsupdate\*.log | diagnostic, min-diagnostic, windowsupdate 
 /WindowsAzure/Config/\* | monitor-mgmt 
 /WindowsAzure/GuestAgent\*/CommonAgentConfig.config | diagnostic, vmdiagnostic, windowsupdate 
-/WindowsAzure/Logs/AggregateStatus/\*.json | monitor-mgmt, monitor-mgmt 
+/WindowsAzure/Logs/AggregateStatus/\*.json | monitor-mgmt 
 /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json | agents, diagnostic, eg, min-diagnostic, normal, vmdiagnostic, windowsupdate, workloadbackup 
 /WindowsAzure/Logs/AppAgentRuntime.log | agents, diagnostic, eg, normal, vmdiagnostic, windowsupdate, workloadbackup 
 /WindowsAzure/Logs/MonitoringAgent.log | agents, diagnostic, eg, normal, servicefabric, vmdiagnostic, windowsupdate 
@@ -881,19 +881,19 @@ File Path | Manifest
 /WindowsAzure/Logs/SqlServerLogs/\*.xel | sql-iaas 
 /WindowsAzure/Logs/Telemetry.log | agents, diagnostic, eg, normal, site-recovery, vmdiagnostic, windowsupdate, workloadbackup 
 /WindowsAzure/Logs/TransparentInstaller.log | agents, asc-vmhealth, diagnostic, eg, min-diagnostic, normal, site-recovery, vmdiagnostic, windowsupdate, workloadbackup 
-/WindowsAzure/Logs/VFPlugin/\*.log | monitor-mgmt, monitor-mgmt 
+/WindowsAzure/Logs/VFPlugin/\*.log | monitor-mgmt 
 /WindowsAzure/Logs/WaAppAgent.log | agents, diagnostic, eg, min-diagnostic, normal, site-recovery, vmdiagnostic, windowsupdate, workloadbackup 
-/WindowsAzure/Logs/\*.log | monitor-mgmt, monitor-mgmt 
+/WindowsAzure/Logs/\*.log | monitor-mgmt 
 /WindowsAzure/Logs/aks/\*.dmp | aks 
 /WindowsAzure/Logs/aks/\*.log | aks 
 /WindowsAzure/Logs/aks/\*.txt | aks 
 /WindowsAzure/Logs/blobfuse2.log | aks 
 /WindowsAzure/Logs/blobfuse2.log\* | aks 
-/WindowsAzure/Logs/plugins/\*/\*/\*.log | monitor-mgmt, monitor-mgmt 
+/WindowsAzure/Logs/plugins/\*/\*/\*.log | monitor-mgmt 
 /WindowsAzure/ProxyAgent/Logs/\* | agents, diagnostic, min-diagnostic, normal 
 /WindowsAzure/TransparentInstaller.log | aks 
 /WindowsAzure/WaAppAgent.log | aks 
-/WindowsAzure/config/\*.xml | agents, diagnostic, eg, monitor-mgmt, normal, vmdiagnostic, windowsupdate 
+/WindowsAzure/config/\*.xml | agents, diagnostic, eg, normal, vmdiagnostic, windowsupdate 
 /WindowsUpdateVerbose.etl | windowsupdate 
 /k/\*.err | aks 
 /k/\*.log | aks 
@@ -911,4 +911,4 @@ File Path | Manifest
 /var/log/blobfuse2.log\* | diagnostic 
 /windows/Panther/setup.etl | diagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-08-18 10:04:36.734719`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-08-18 10:41:06.601548`*

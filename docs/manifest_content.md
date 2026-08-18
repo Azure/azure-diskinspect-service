@@ -1441,10 +1441,6 @@ min-diagnostic | copy | /Windows/Logs/eBPF/committed/\*
 min-diagnostic | diskinfo | 
 monitor-mgmt | copy | /Program Files/Microsoft Monitoring Agent/Agent/Health Service State/Management Packs<br>/\*.xml
 monitor-mgmt | copy | /Program Files/Microsoft Monitoring Agent/Agent/Health Service State/CT_\*/work/Servi<br>ceState/\*.log
-monitor-mgmt | copy | /WindowsAzure/Logs/\*.log
-monitor-mgmt | copy | /WindowsAzure/Logs/AggregateStatus/\*.json
-monitor-mgmt | copy | /WindowsAzure/Logs/plugins/\*/\*/\*.log
-monitor-mgmt | copy | /WindowsAzure/Logs/VFPlugin/\*.log
 monitor-mgmt | copy | /Program Files/Microsoft Monitoring Agent/Agent/Health Service State/FCT_\*/work/loca<br>lhost.mof
 monitor-mgmt | copy | /Program Files/Microsoft Monitoring Agent/Agent/Health Service State/FCT_\*/work/loca<br>lhost.prevmof
 monitor-mgmt | copy | /Program Files/Microsoft Monitoring Agent/Agent/Health Service State/FCT_\*/work/asmh<br>ost.log
@@ -1509,7 +1505,6 @@ monitor-mgmt | copy | /WindowsAzure/Logs/\*.log
 monitor-mgmt | copy | /WindowsAzure/Logs/AggregateStatus/\*.json
 monitor-mgmt | copy | /WindowsAzure/Logs/plugins/\*/\*/\*.log
 monitor-mgmt | copy | /WindowsAzure/Logs/VFPlugin/\*.log
-monitor-mgmt | copy | /WindowsAzure/config/\*.xml
 monitor-mgmt | copy | /Windows/System32/config/SOFTWARE
 monitor-mgmt | copy | /Windows/System32/config/SYSTEM
 monitor-mgmt | registry query | HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\RebootPendin<br>g
@@ -2233,4 +2228,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-08-18 10:04:36.734719`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-08-18 10:41:06.601548`*

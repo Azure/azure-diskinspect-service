@@ -1,10 +1,6 @@
 echo,#Microsoft monitoring Agent Logs
 copy,/Program Files/Microsoft Monitoring Agent/Agent/Health Service State/Management Packs/*.xml
 copy,/Program Files/Microsoft Monitoring Agent/Agent/Health Service State/CT_*/work/ServiceState/*.log
-copy,/WindowsAzure/Logs/*.log
-copy,/WindowsAzure/Logs/AggregateStatus/*.json
-copy,/WindowsAzure/Logs/plugins/*/*/*.log
-copy,/WindowsAzure/Logs/VFPlugin/*.log
 copy,/Program Files/Microsoft Monitoring Agent/Agent/Health Service State/FCT_*/work/localhost.mof
 copy,/Program Files/Microsoft Monitoring Agent/Agent/Health Service State/FCT_*/work/localhost.prevmof
 copy,/Program Files/Microsoft Monitoring Agent/Agent/Health Service State/FCT_*/work/asmhost.log
@@ -79,7 +75,6 @@ copy,/WindowsAzure/Logs/*.log
 copy,/WindowsAzure/Logs/AggregateStatus/*.json
 copy,/WindowsAzure/Logs/plugins/*/*/*.log
 copy,/WindowsAzure/Logs/VFPlugin/*.log
-copy,/WindowsAzure/config/*.xml
 
 echo,#Registry Hives#
 copy,/Windows/System32/config/SOFTWARE,noscan
