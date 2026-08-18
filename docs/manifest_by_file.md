@@ -368,7 +368,7 @@ File Path | Manifest
 /var/log/ua_install.log | site-recovery 
 /var/log/waagent.log | servicefabric 
 /var/log/waagent\* | agents, diagnostic, eg, lad, monitor-mgmt, normal, site-recovery, vmdiagnostic, workloadbackup 
-/var/log/waagent\*.log | azuremonitoragent, monitor-mgmt 
+/var/log/waagent\*.log | azuremonitoragent 
 /var/log/yum\* | diagnostic, eg, monitor-mgmt, normal, vmdiagnostic 
 /var/log/zypp/history | diagnostic, monitor-mgmt 
 /var/opt/microsoft/azuremonitoragent/events/taskstate.json | azuremonitoragent 
@@ -911,4 +911,4 @@ File Path | Manifest
 /var/log/blobfuse2.log\* | diagnostic 
 /windows/Panther/setup.etl | diagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-08-18 10:41:06.601548`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-08-18 10:58:20.938620`*

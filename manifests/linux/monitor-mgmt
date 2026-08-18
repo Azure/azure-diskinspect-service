@@ -47,7 +47,6 @@ copy,/var/opt/omi/log/*.log
 copy,/etc/opt/omi/conf/*
 
 echo,#WAAgent Logs
-copy,/var/log/waagent*.log
 copy,/var/lib/waagent/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux.*.manifest.xml
 copy,/var/lib/waagent/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux-*/*
 
