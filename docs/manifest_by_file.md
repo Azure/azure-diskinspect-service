@@ -307,7 +307,7 @@ File Path | Manifest
 /var/log/azure/cluster-provision-cse-output.log | aks 
 /var/log/azure/cluster-provision.log | aks, diagnostic, vmdiagnostic 
 /var/log/azure/containerd-status.log | aks 
-/var/log/azure/custom-script/handler.log | agents, diagnostic, monitor-mgmt, vmdiagnostic 
+/var/log/azure/custom-script/handler.log | agents, diagnostic, vmdiagnostic 
 /var/log/azure/docker-status.log | aks 
 /var/log/azure/ib-vmext-status/\*log | diagnostic 
 /var/log/azure/kern.log | aks 
@@ -912,4 +912,4 @@ File Path | Manifest
 /var/log/blobfuse2.log\* | diagnostic 
 /windows/Panther/setup.etl | diagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-08-18 09:26:42.943343`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-08-18 09:48:38.713962`*

@@ -547,7 +547,6 @@ monitor-mgmt | copy | /var/log/dmesg\*
 monitor-mgmt | copy | /var/log/auth\*
 monitor-mgmt | copy | /var/log/azure/\*/\*
 monitor-mgmt | copy | /var/log/azure/\*/\*/\*
-monitor-mgmt | copy | /var/log/azure/custom-script/handler.log
 monitor-mgmt | copy | /var/log/messages\*
 monitor-mgmt | copy | /var/log/syslog\*
 monitor-mgmt | copy | /var/opt/microsoft/scx/log/scx.log
@@ -2235,4 +2234,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-08-18 09:26:42.943343`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-08-18 09:48:38.713962`*
