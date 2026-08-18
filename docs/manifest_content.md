@@ -1488,7 +1488,6 @@ monitor-mgmt | copy | /Windows/Logs/CBS/\*.log
 monitor-mgmt | copy | /Windows/Logs/DISM/\*.log
 monitor-mgmt | copy | /Windows/servicing/sessions/sessions.xml
 monitor-mgmt | copy | /Windows/System32/winevt/Logs/Microsoft-Windows-WindowsUpdateClient%4Operational.evtx
-monitor-mgmt | copy | /Windows/windowsupdate.log
 monitor-mgmt | copy | /Program Files/Microsoft Dependency Agent/logs/\*.\*
 monitor-mgmt | copy | /ProgramData/Microsoft/System Center/Orchestrator/7.2/SMA/\*.\*
 monitor-mgmt | copy | /Windows/Logs/OpsMgrTrace/\*.\*
@@ -1496,7 +1495,7 @@ monitor-mgmt | copy | /Windows/Temp/MonitoringAgent.log
 monitor-mgmt | copy | /Windows/Temp/MOMPerfCtrsInstall.log
 monitor-mgmt | copy | /ProgramData/GuestConfig/Configuration/\*
 monitor-mgmt | copy | /ProgramData/GuestConfig/gc_agent_logs/\*
-monitor-mgmt | copy | /WindowsAzure/Logs/Plugins/Microsoft.GuestConfiguration.ConfigurationforWindows/
+monitor-mgmt | copy | /WindowsAzure/Logs/Plugins/Microsoft.GuestConfiguration.ConfigurationforWindows/\*/\*
 monitor-mgmt | list | /WindowsAzure
 monitor-mgmt | list | /Packages/Plugins
 monitor-mgmt | copy | /Packages/Plugins/\*/\*/config.txt
@@ -2234,4 +2233,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-08-18 09:48:38.713962`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-08-18 10:04:36.734719`*

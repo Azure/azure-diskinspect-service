@@ -788,7 +788,6 @@ File Path | Manifest
 /Windows/inf/setupapi.app.log | diagnostic, windowsupdate 
 /Windows/servicing/sessions/sessions.xml | diagnostic, min-diagnostic, monitor-mgmt, vmdiagnostic, windowsupdate 
 /Windows/web/rdweb/App_Data/rdweb.log | diagnostic 
-/Windows/windowsupdate.log | monitor-mgmt 
 /Windows/windowsupdate\*.log | diagnostic, min-diagnostic, windowsupdate 
 /WindowsAzure/Config/\* | monitor-mgmt 
 /WindowsAzure/GuestAgent\*/CommonAgentConfig.config | diagnostic, vmdiagnostic, windowsupdate 
@@ -859,7 +858,7 @@ File Path | Manifest
 /WindowsAzure/Logs/Plugins/Microsoft.Compute.JsonADDomainExtension/\*/ADDomainExtensi<br>on.log | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.Compute.VMAccessAgent/\*/JsonVMAccessExtension.l<br>og | agents, diagnostic, min-diagnostic, normal, vmdiagnostic, windowsupdate 
 /WindowsAzure/Logs/Plugins/Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAg<br>ent/\*/0.log | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/WindowsAzure/Logs/Plugins/Microsoft.GuestConfiguration.ConfigurationforWindows/ | monitor-mgmt 
+/WindowsAzure/Logs/Plugins/Microsoft.GuestConfiguration.ConfigurationforWindows/\*/\* | monitor-mgmt 
 /WindowsAzure/Logs/Plugins/Microsoft.HpcCompute.AmdGpuDriverMicrosoft/\*/\*.log | diagnostic 
 /WindowsAzure/Logs/Plugins/Microsoft.HpcCompute.NvidiaGpuDriverWindows/\*/\*.log | diagnostic 
 /WindowsAzure/Logs/Plugins/Microsoft.ManagedIdentity.ManagedIdentityExtensionForWindo<br>ws/\*/RuntimeSettings/\*.xml | diagnostic, vmdiagnostic, windowsupdate 
@@ -912,4 +911,4 @@ File Path | Manifest
 /var/log/blobfuse2.log\* | diagnostic 
 /windows/Panther/setup.etl | diagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-08-18 09:48:38.713962`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-08-18 10:04:36.734719`*

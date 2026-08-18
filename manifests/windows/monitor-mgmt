@@ -52,7 +52,6 @@ copy,/Windows/Logs/CBS/*.log
 copy,/Windows/Logs/DISM/*.log
 copy,/Windows/servicing/sessions/sessions.xml,noscan
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WindowsUpdateClient%4Operational.evtx
-copy,/Windows/windowsupdate.log
 
 echo,#Agent Trace Logs
 copy,/Program Files/Microsoft Dependency Agent/logs/*.*
@@ -64,7 +63,7 @@ copy,/Windows/Temp/MOMPerfCtrsInstall.log
 echo,#Guest Configuration Logs
 copy,/ProgramData/GuestConfig/Configuration/*
 copy,/ProgramData/GuestConfig/gc_agent_logs/*
-copy,/WindowsAzure/Logs/Plugins/Microsoft.GuestConfiguration.ConfigurationforWindows/
+copy,/WindowsAzure/Logs/Plugins/Microsoft.GuestConfiguration.ConfigurationforWindows/*/*
 
 echo,#Guest Agent#
 ll,/WindowsAzure
