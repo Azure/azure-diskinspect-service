@@ -1,0 +1,5 @@
+echo,### Extension Log Files ###
+copy,/var/log/azure/*
+copy,/var/log/azure/*/*
+copy,/var/log/azure/*/*/*
+

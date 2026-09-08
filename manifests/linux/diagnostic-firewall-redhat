@@ -1,0 +1,7 @@
+echo,### Gathering Firewall Configuration - RHEL CentOS Fedora ###
+copy,/etc/sysconfig/iptables,noscan
+copy,/etc/sysconfig/ip6tables,noscan
+copy,/etc/firewalld/*.xml,noscan
+copy,/etc/firewalld/zones/*.xml,noscan
+copy,/etc/firewalld/services/*.xml,noscan
+echo,

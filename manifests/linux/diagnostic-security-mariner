@@ -1,0 +1,4 @@
+echo,### Gathering SELinux Security Configuration ###
+copy,/etc/selinux/config,noscan
+ll,/etc/selinux
+echo,

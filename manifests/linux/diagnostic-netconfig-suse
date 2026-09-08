@@ -1,0 +1,9 @@
+echo,### Gathering Network Configuration (SUSE) ###
+copy,/etc/sysconfig/network,noscan
+copy,/etc/sysconfig/network/ifcfg-*,noscan
+copy,/etc/sysconfig/network/routes,noscan
+copy,/etc/sysconfig/network/ifroute-*,noscan
+copy,/etc/wicked/*.xml,noscan
+copy,/etc/wicked/ifconfig/*.xml,noscan
+copy,/etc/dhcp/*.conf,noscan
+echo,

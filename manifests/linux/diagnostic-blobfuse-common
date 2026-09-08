@@ -1,0 +1,5 @@
+echo,### Gathering Blobfuse Files ###
+copy,/var/log/blobfuse*
+copy,/var/log/blobfuse2.log*
+echo,
+
