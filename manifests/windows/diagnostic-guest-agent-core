@@ -1,0 +1,11 @@
+echo,### Guest Agent Core Logs ###
+ll,/WindowsAzure
+ll,/Packages/Plugins
+copy,/WindowsAzure/Logs/Telemetry.log
+copy,/WindowsAzure/Logs/TransparentInstaller.log
+copy,/WindowsAzure/Logs/WaAppAgent.log
+copy,/WindowsAzure/config/*.xml
+copy,/WindowsAzure/Logs/AggregateStatus/aggregatestatus*.json
+copy,/WindowsAzure/Logs/AppAgentRuntime.log
+copy,/WindowsAzure/Logs/MonitoringAgent.log
+copy,/WindowsAzure/GuestAgent*/CommonAgentConfig.config

@@ -1,0 +1,8 @@
+echo,### HPC Pack 2016 Directory Probes ###
+ll,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Scheduler
+ll,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Diagnostics
+ll,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/HpcFrontend
+ll,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/HpcNaming
+ll,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Management
+ll,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Monitoring
+ll,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/SOA

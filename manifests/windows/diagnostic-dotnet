@@ -1,0 +1,3 @@
+echo,### .NET Configuration ###
+copy,/Windows/Microsoft.NET/Framework/v4.0.30319/Config/machine.config
+copy,/Windows/Microsoft.NET/Framework64/v4.0.30319/Config/machine.config

@@ -1,0 +1,35 @@
+echo,### System Service Event Logs ###
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker%4BitLocker Management.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker-DrivePreparationTool%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-DSC%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnPConfig%4Configuration.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnP%4Configuration.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Resource-Exhaustion-Detector%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-ServerManager%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-UserPnp%4DeviceInstall.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-User Profile Service%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnP%4Device Configuration.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnP%4Device Management.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4EXE and DLL.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4Packaged app-Execution.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4Packaged app-Deployment.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4MSI and Script.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppModel-Runtime%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppReadiness%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppReadiness%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeployment%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeploymentServer%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeploymentServer%4Restricted.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AppxPackaging%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Diagnostics-Performance%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-PowerShell%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Shell-Core%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TaskScheduler%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WER-Diagnostics%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Winlogon%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WMI-Activity%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-DeviceManagement-Enterprise-Diagnostics-Provider%4Sync.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-DeviceManagement-Enterprise-Diagnostics-Provider%4Enrollment.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-DeviceManagement-Enterprise-Diagnostics-Provider%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/PowerShellCore%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/icrosoft-Windows-AppxPackaging%4Operational.evtx

@@ -1,0 +1,4 @@
+echo,### Miscellaneous Windows Diagnostic Files ###
+copy,/Windows/Temp/ScriptLog.log
+ll,/Windows/System32/IME
+ll,/Windows/IME

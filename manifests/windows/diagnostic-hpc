@@ -1,0 +1,9 @@
+echo,### HPC Logs and Events ###
+copy,/Windows/System32/winevt/Logs/Microsoft HPC Pack.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-HPC-Management%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-HPC-Reporting%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-HPC-Scheduler%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-HPC-Scheduler%4Admin.evtx
+copy,/Program Files/NVIDIA Corporation/Installer2/*
+copy,/Windows/Temp/HPCSetupLogs/*
+copy,/Windows/Temp/HPCSetupLogs/*/*

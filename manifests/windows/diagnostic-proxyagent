@@ -1,0 +1,3 @@
+echo,### Guest ProxyAgent and eBPF Logs ###
+copy,/WindowsAzure/ProxyAgent/Logs/*
+copy,/Windows/Logs/eBPF/committed/*

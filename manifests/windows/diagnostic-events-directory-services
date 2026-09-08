@@ -1,0 +1,6 @@
+echo,### Directory Services Event Logs ###
+copy,/Windows/System32/winevt/Logs/Active Directory Web Services.evtx
+copy,/Windows/System32/winevt/Logs/DFS Replication.evtx
+copy,/Windows/System32/winevt/Logs/DNS Server.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-DNSServer%4Audit.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-DNS-Client%4Operational.evtx

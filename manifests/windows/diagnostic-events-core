@@ -1,0 +1,6 @@
+echo,### Core Event Logs ###
+copy,/Windows/System32/winevt/Logs/System.evtx
+copy,/Windows/System32/winevt/Logs/Application.evtx
+copy,/Windows/System32/winevt/Logs/Windows Azure.evtx
+copy,/Windows/System32/winevt/Logs/Security.evtx
+copy,/Windows/System32/winevt/Logs/Setup.evtx

@@ -1,0 +1,6 @@
+echo,### Servicing and Windows Update ###
+copy,/Windows/servicing/sessions/sessions.xml,noscan
+copy,/Windows/Logs/CBS/*.log
+copy,/Windows/Logs/DISM/*.log
+copy,/Windows/windowsupdate*.log
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WindowsUpdateClient%4Operational.evtx

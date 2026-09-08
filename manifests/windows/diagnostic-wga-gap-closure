@@ -1,0 +1,12 @@
+echo,### WGA Mini Diagnostic Gap Closure ###
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-LocalSessionManager%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-SessionBroker-Client%4Operational.evtx
+copy,/Windows/Panther/WaSetup.xml
+copy,/Windows/Panther/VmAgentInstaller.xml
+copy,/Windows/Panther/setupact.log
+copy,/Windows/Panther/setuperr.log
+copy,/WindowsAzure/Logs/Plugins/*/*/CommandExecution*.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ActiveDirectory.AADLoginForWindows/*/CommandExecution*.log
+copy,/Windows/Panther/scanresults.xml
+copy,/Windows/Panther/msiexec.log
+copy,/Windows/System32/drivers/CrowdStrike/C-00000291*.sys,noscan

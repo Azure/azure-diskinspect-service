@@ -1,0 +1,3 @@
+echo,### BlobFuse Logs ###
+copy,/var/log/blobfuse2.log
+copy,/var/log/blobfuse2.log*

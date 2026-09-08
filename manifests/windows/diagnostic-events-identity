@@ -1,0 +1,12 @@
+echo,### Identity and Policy Event Logs ###
+copy,/Windows/System32/winevt/Logs/Directory Service.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-GroupPolicy%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-AAD%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-HelloForBusiness%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-User Device Registration%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Workplace Join%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Kerberos-KDCProxy%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-SmartCard-Audit%4Authentication.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-SmartCard-DeviceEnum%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-SmartCard-TPM-VCard-Module%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-SmartCard-TPM-VCard-Module%4Operational.evtx

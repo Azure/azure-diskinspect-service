@@ -1,0 +1,23 @@
+echo,### Network and Security Event Logs ###
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-CAPI2%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-CodeIntegrity%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-NdisImPlatform%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-NetworkLocationWizard%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-NetworkProfile%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-NetworkProvider%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-NTLM%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-schannel%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-SmbClient%4Connectivity.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-SmbClient%4Security.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-SMBClient%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-SMBServer%4Connectivity.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-SmbServer%4Security.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-SMBServer%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Windows Firewall With Advanced Security%4ConnectionSecurity.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Windows Firewall With Advanced Security%4Firewall.evtx
+copy,/Windows/System32/winevt/Logs/OpenSSH%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/OpenSSH%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-NlaSvc%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TCPIP%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WinINet-Config%4ProxyConfigChanged.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WinRM%4Operational.evtx

@@ -1,0 +1,7 @@
+echo,### Active Directory Domain Join ###
+copy,/Windows/debug/netlogon.log
+copy,/Windows/debug/NetSetup.LOG
+copy,/Windows/debug/mrt.log
+copy,/Windows/debug/DCPROMO.LOG
+copy,/Windows/debug/dcpromoui.log
+copy,/Windows/debug/PASSWD.LOG

@@ -1,0 +1,4 @@
+echo,### Plug and Play and App Install ###
+copy,/Windows/INF/netcfg*.*etl,noscan
+copy,/Windows/INF/setupapi.*
+copy,/Windows/inf/setupapi.app.log
