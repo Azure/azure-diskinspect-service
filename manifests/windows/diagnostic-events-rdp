@@ -1,0 +1,25 @@
+echo,### RDP and Terminal Services Event Logs ###
+echo,### Purpose: Collect RDP and Terminal Services channels required by cannot-connect scenarios. ###
+echo,### Covers: Remote Desktop Services, Terminal Services, LocalSessionManager, RemoteConnectionManager, SessionBroker, RDPClient, RemoteAssistance, and RemoteHelp event logs. ###
+echo,### Use when: Use for RDP failures, black screen, brute force, licensing, profile logon, and Terminal Services errors. ###
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RdpCoreTS%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RdpCoreTS%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RemoteDesktopSessionManager%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-SessionServices%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-LocalSessionManager%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-LocalSessionManager%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-PnPDevices%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-PnPDevices%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-RDPClient%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-RemoteConnectionManager%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-RemoteConnectionManager%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-SessionBroker-Client%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-SessionBroker-Client%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/RemoteDesktopServices.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RdpCoreCDV%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RdpCoreCDV%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-TSV-VmHostAgent%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-TSV-VmHostAgent%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteAssistance%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteAssistance%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteHelp%4Operational.evtx

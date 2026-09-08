@@ -1,0 +1,19 @@
+echo,### FSLogix Logs and Events ###
+echo,### Purpose: Collect FSLogix profile/container evidence as a standalone workload module. ###
+echo,### Covers: FSLogix Profile logs, ETL logs, App Rules/CompiledRules probes, and FSLogix Apps/CloudCache events. ###
+echo,### Use when: Use for FSLogix profile, CloudCache, rule, and AVD profile-container issues. ###
+copy,/ProgramData/FSLogix/Logs/Profile/Profile_*.log
+copy,/ProgramData/FSLogix/Logs/*.etl.*
+ll,/ProgramData/FSLogix/Logs
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-FSLogic-Apps%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-FSLogic-Apps%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-FSLogic-CloudCache%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-FSLogic-CloudCache%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-FSLogix-Apps%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-FSLogix-Apps%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-FSLogix-CloudCache%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-FSLogix-CloudCache%4Operational.evtx
+copy,/Program Files/FSLogix/Logs/Profile_*.log
+copy,/Program Files/FSLogix/Apps/Rules
+ll,/Program Files/FSLogix/Apps/Rules
+ll,/Program Files/FSLogix/Apps/CompiledRules

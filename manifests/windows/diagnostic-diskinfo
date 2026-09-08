@@ -1,0 +1,5 @@
+echo,### Disk Info ###
+echo,### Purpose: Collect disk and partition context without copying guest files. ###
+echo,### Covers: diskinfo output. ###
+echo,### Use when: Use when volume layout, free space, partition mapping, or disk utilization matters. ###
+diskinfo,

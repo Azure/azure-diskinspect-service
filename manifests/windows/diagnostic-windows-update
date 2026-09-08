@@ -1,0 +1,9 @@
+echo,### Servicing and Windows Update ###
+echo,### Purpose: Collect Windows servicing and update evidence. ###
+echo,### Covers: servicing sessions.xml, CBS logs, DISM logs, windowsupdate logs, and WindowsUpdateClient Operational events. ###
+echo,### Use when: Use for Windows Update, servicing, CBS/DISM, reboot-required, and in-place upgrade failures. ###
+copy,/Windows/servicing/sessions/sessions.xml,noscan
+copy,/Windows/Logs/CBS/*.log
+copy,/Windows/Logs/DISM/*.log
+copy,/Windows/windowsupdate*.log
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WindowsUpdateClient%4Operational.evtx

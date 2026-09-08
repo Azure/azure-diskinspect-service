@@ -1,0 +1,9 @@
+echo,### Directory Services Event Logs ###
+echo,### Purpose: Collect domain, DNS, and directory-service event channels. ###
+echo,### Covers: Active Directory Web Services, DFS Replication, DNS Server, Directory Service, DNS audit, and DNS Client logs. ###
+echo,### Use when: Use for domain join, DC promotion, DNS registration/resolution, and directory-service failures. ###
+copy,/Windows/System32/winevt/Logs/Active Directory Web Services.evtx
+copy,/Windows/System32/winevt/Logs/DFS Replication.evtx
+copy,/Windows/System32/winevt/Logs/DNS Server.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-DNSServer%4Audit.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-DNS-Client%4Operational.evtx

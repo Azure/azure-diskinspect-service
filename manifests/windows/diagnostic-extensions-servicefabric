@@ -1,0 +1,27 @@
+echo,### Service Fabric Extension Logs ###
+echo,### Purpose: Collect Service Fabric extension evidence separately from generic extension logs. ###
+echo,### Covers: Service Fabric MC, MC test, SfmcSetup, ServiceFabricNode manifests, temp cluster manifests, and raw event logs. ###
+echo,### Use when: Use for Service Fabric extension install, setup, upgrade, and node issues. ###
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.ServiceFabricMCNode/*/*.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.ServiceFabricMCNode/Events/sfmcnodeagent_Temp/Raw/sfmcnodeagent*.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.Test.ServiceFabricMCNode-Test/*/*.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.Test.ServiceFabricMCNode-Test/Events/sfmcnodeagent_Temp/Raw/sfmcnodeagent*.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.SfmcSetup/*/*.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.SfmcSetup/Events/sfmcsetupextagent_Temp/Raw/sfmcsetupextagent*.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.Test.SfmcSetup-Test/*/*.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.Test.SfmcSetup-Test/Events/sfmcsetupextagent_Temp/Raw/sfmcsetupextagent*.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/*/InfrastructureManifest.xml
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/*/TempClusterManifest.xml
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/*/*.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/Events/BootstrapAgent_Temp/Raw/BootstrapAgent*.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/Events/UpgradeAgent_Temp/Raw/UpgradeAgent*.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.Test.ServiceFabricNode/*/InfrastructureManifest.xml
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.Test.ServiceFabricNode/*/TempClusterManifest.xml
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.Test.ServiceFabricNode/*/*.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.Test.ServiceFabricNode/Events/BootstrapAgent_Temp/Raw/BootstrapAgent*.log
+copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.Test.ServiceFabricNode/Events/UpgradeAgent_Temp/Raw/UpgradeAgent*.log
+copy,/Packages/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/*/InstallUtil.InstallLog
+copy,/Packages/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/*/Service/current.config
+copy,/Packages/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/*/Service/InfrastructureManifest.template.xml
+copy,/Packages/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/*/Service/ServiceFabricNodeBootstrapAgent.InstallLog
+copy,/Packages/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/*/Service/ServiceFabricNodeBootstrapAgent.InstallState

@@ -1,0 +1,17 @@
+echo,### Azure Virtual Desktop and RDInfra Logs ###
+echo,### Purpose: Collect Azure Virtual Desktop/RDInfra artifacts previously mixed into the MSRDCollect block. ###
+echo,### Covers: RDInfra install logs, MsRDCMMRHost logs, RDMSDeploymentUI, rdweb.log, RemotePackages listing, and RDInfra directory listing. ###
+echo,### Use when: Use for AVD agent, RDInfra, WebRTC/MMR, SXS stack, RD web, and RemotePackages issues. ###
+copy,/Program Files/Microsoft RDInfra/AgentInstall.txt
+copy,/Program Files/Microsoft RDInfra/GenevaInstall.txt
+copy,/Program Files/Microsoft RDInfra/MsRdcWebRTCSvc.txt
+copy,/Program Files/Microsoft RDInfra/MsRdcWebRTCSvcMsiInstall.txt
+copy,/Program Files/Microsoft RDInfra/MsRdcWebRTCSvcMsiUninstall.txt
+copy,/Program Files/Microsoft RDInfra/SXSStackInstall.txt
+copy,/Program Files/Microsoft RDInfra/WVDAgentManagerInstall.txt
+copy,/Program Files/MsRDCMMRHost/MsRDCMMRHostInstall.log
+copy,/Windows/Temp/MsRDCMMRHostInstall.log
+copy,/Windows/Logs/RDMSDeploymentUI.txt
+copy,/Windows/web/rdweb/App_Data/rdweb.log
+ll,/Windows/RemotePackages
+ll,/Program Files/Microsoft RDInfra

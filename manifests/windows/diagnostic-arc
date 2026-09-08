@@ -1,0 +1,8 @@
+echo,### Azure Arc and Guest Configuration Logs ###
+echo,### Purpose: Collect Azure Arc and Guest Configuration evidence. ###
+echo,### Covers: AzureConnectedMachineAgent himds/azcmagent logs and GuestConfig policy/extension-manager logs. ###
+echo,### Use when: Use for Arc agent, Guest Configuration, policy, and connected-machine issues. ###
+copy,/Program Files/AzureConnectedMachineAgent/Log/himds.log
+copy,/Program Files/AzureConnectedMachineAgent/Log/azcmagent.log
+copy,/Program Files/GuestConfig/arc_policy_logs/gc_agent.log
+copy,/Program Files/GuestConfig/ext_mgr_logs/gc_ext.log

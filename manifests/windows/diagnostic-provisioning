@@ -1,0 +1,24 @@
+echo,### Provisioning and Setup ###
+echo,### Purpose: Collect Windows provisioning and setup evidence that event logs alone do not contain. ###
+echo,### Covers: CustomData, State.ini, WaSetup, VmAgentInstaller, unattend, Panther setup logs, Sysprep files/logs, Sysprep_succeeded.tag, and scanresults.xml. ###
+echo,### Use when: Use for provisioning, sysprep, unattend, in-place upgrade, setup, and compatibility scan failures. ###
+ll,/AzureData/CustomData.bin
+copy,/Windows/Setup/State/State.ini
+copy,/Windows/Panther/WaSetup.xml
+copy,/Windows/Panther/WaSetup.log
+copy,/Windows/Panther/VmAgentInstaller.xml
+copy,/Windows/Panther/unattend.xml
+copy,/windows/Panther/setup.etl
+copy,/unattend.xml
+copy,/Windows/Panther/setupact.log
+copy,/Windows/Panther/setuperr.log
+copy,/Windows/Panther/UnattendGC/setupact.log
+copy,/Windows/Panther/FastCleanup/setupact.log
+copy,/Windows/System32/Sysprep/ActionFiles/Generalize.xml
+copy,/Windows/System32/Sysprep/ActionFiles/Specialize.xml
+copy,/Windows/System32/Sysprep/ActionFiles/Respecialize.xml
+copy,/Windows/System32/Sysprep/Panther/setupact.log
+copy,/Windows/System32/Sysprep/Panther/IE/setupact.log
+copy,/Windows/System32/Sysprep/Panther/setuperr.log
+copy,/Windows/System32/Sysprep/Panther/IE/setuperr.log
+copy,/Windows/System32/Sysprep/Sysprep_succeeded.tag

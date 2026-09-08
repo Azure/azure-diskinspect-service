@@ -1,0 +1,6 @@
+echo,### BlobFuse Logs ###
+echo,### Purpose: Collect BlobFuse evidence independently from broader workload modules. ###
+echo,### Covers: BlobFuse logs under ProgramData and var/log paths present in diagnostic. ###
+echo,### Use when: Use for BlobFuse mount, IO, and workload storage issues. ###
+copy,/var/log/blobfuse2.log
+copy,/var/log/blobfuse2.log*

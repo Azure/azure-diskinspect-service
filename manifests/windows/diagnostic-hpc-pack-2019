@@ -1,0 +1,11 @@
+echo,### HPC Pack 2019 Directory Probes ###
+echo,### Purpose: Probe HPC Pack 2019 directory layout without copying logs. ###
+echo,### Covers: HPC Pack 2019 LogFiles, Diagnostics, HpcFrontend, HpcNaming, Management, Monitoring, and SOA directories. ###
+echo,### Use when: Use to confirm HPC Pack 2019 layout and available log folders. ###
+ll,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Scheduler/
+ll,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Diagnostics/
+ll,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/HpcFrontend/
+ll,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/HpcNaming/
+ll,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Management/
+ll,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/Monitoring/
+ll,/Program Files/Microsoft HPC Pack 2019/Data/LogFiles/SOA/

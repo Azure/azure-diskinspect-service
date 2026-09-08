@@ -1,0 +1,6 @@
+echo,### Storage Event Logs ###
+echo,### Purpose: Collect storage-specific operational event channels. ###
+echo,### Covers: NTFS and VHDMP operational logs. ###
+echo,### Use when: Use for disk attach, VHD, filesystem, and storage-related symptoms. ###
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Ntfs%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-VHDMP%4Operational.evtx

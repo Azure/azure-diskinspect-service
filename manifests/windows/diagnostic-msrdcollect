@@ -1,0 +1,5 @@
+echo,### MSRDCollect Files ###
+echo,### Purpose: Collect the focused MSRDCollect tssesdir artifact family. ###
+echo,### Covers: Windows System32 tssesdir XML files. ###
+echo,### Use when: Use when MSRDCollect/RDS diagnostics need tssesdir XML state. ###
+copy,/Windows/System32/tssesdir/*.xml

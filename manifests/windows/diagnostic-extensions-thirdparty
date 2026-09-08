@@ -1,0 +1,16 @@
+echo,### Third-party Extension Logs ###
+echo,### Purpose: Collect third-party security extension artifacts only when intentionally selected. ###
+echo,### Covers: Symantec, TrendMicro DeepSecurity, and ESET extension files. ###
+echo,### Use when: Use when third-party security agents may affect boot, networking, performance, or extension behavior. ###
+copy,/Packages/Plugins/*/*/RuntimeSettings/*.settings
+copy,/WindowsAzure/Logs/Plugins/Symantec.SymantecEndpointProtection/*/sepManagedAzure.txt
+copy,/WindowsAzure/Logs/Plugins/TrendMicro.DeepSecurity.TrendMicroDSA/*/*.log
+copy,/Packages/Plugins/ESET.FileSecurity/*/agent_version.txt
+copy,/Packages/Plugins/ESET.FileSecurity/*/extension_version.txt
+copy,/WindowsAzure/Logs/Plugins/Microsoft.ManagedIdentity.ManagedIdentityExtensionForWindows/*/RuntimeSettings/*.xml
+copy,/Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/*/RuntimeSettings/applicationRegistry.active
+copy,/Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/*/RuntimeSettings/applicationRegistry.backup
+copy,/Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/*/RuntimeSettings/VMApp.lockfile,noscan
+copy,/Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/*/RuntimeSettings/applicationRegistry.active
+copy,/Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/*/RuntimeSettings/applicationRegistry.backup
+copy,/Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/*/RuntimeSettings/VMApp.lockfile,noscan

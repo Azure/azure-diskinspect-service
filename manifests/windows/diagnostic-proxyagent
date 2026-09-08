@@ -1,0 +1,6 @@
+echo,### Guest ProxyAgent and eBPF Logs ###
+echo,### Purpose: Collect Guest ProxyAgent and eBPF logs separately from core guest-agent logs. ###
+echo,### Covers: WindowsAzure ProxyAgent logs and Windows eBPF committed logs. ###
+echo,### Use when: Use for proxy-agent, host communication, networking path, and eBPF-related investigations. ###
+copy,/WindowsAzure/ProxyAgent/Logs/*
+copy,/Windows/Logs/eBPF/committed/*

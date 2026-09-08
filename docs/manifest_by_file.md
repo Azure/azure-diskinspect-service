@@ -1,914 +1,335 @@
 This file documents files collected in disk inspection manifests used by Microsoft Azure support.  Any data collected by Microsoft using this tooling is done according to the policy outlined in the [Azure Trust Center](https://azure.microsoft.com/en-us/support/trust-center/).
 
-* [freebsd](#freebsd)
-* [linux](#linux)
 * [windows](#windows)
-## freebsd 
-File Path | Manifest 
-------------- | ------------- 
-/boot/loader.conf | diagnostic, normal, vmdiagnostic 
-/etc/\*-release | agents 
-/etc/dhclient.conf | agents, diagnostic, vmdiagnostic 
-/etc/fstab | diagnostic, normal, vmdiagnostic 
-/etc/networks | diagnostic, vmdiagnostic 
-/etc/nsswitch.conf | diagnostic, vmdiagnostic 
-/etc/rc.conf | agents, diagnostic, genspec, normal, vmdiagnostic 
-/etc/resolv.conf | diagnostic, vmdiagnostic 
-/etc/ssh/sshd_config | diagnostic, normal, vmdiagnostic 
-/etc/syslog.conf | diagnostic, vmdiagnostic 
-/etc/waagent.conf | agents, diagnostic, vmdiagnostic 
-/run/systemd/resolve/stub-resolv.conf | diagnostic, vmdiagnostic 
-/var/lib/waagent/ExtensionsConfig.\*.xml | agents, diagnostic, vmdiagnostic 
-/var/lib/waagent/GoalState.\*.xml | agents, diagnostic, vmdiagnostic 
-/var/lib/waagent/HostingEnvironmentConfig.xml | agents, diagnostic, vmdiagnostic 
-/var/lib/waagent/Microsoft.OSTCExtensions.CustomScriptForLinux.\*.manifest.xml | agents, diagnostic, vmdiagnostic 
-/var/lib/waagent/Prod.\*.manifest.xml | agents, diagnostic, vmdiagnostic 
-/var/lib/waagent/SharedConfig.xml | agents, diagnostic, vmdiagnostic 
-/var/lib/waagent/\*.xml | agents 
-/var/lib/waagent/\*/config/HandlerState | agents, diagnostic, vmdiagnostic 
-/var/lib/waagent/\*/config/HandlerStatus | agents, diagnostic, vmdiagnostic 
-/var/lib/waagent/\*/config/\*.settings | agents, diagnostic, vmdiagnostic 
-/var/lib/waagent/\*/status/\*.status | agents, diagnostic, vmdiagnostic 
-/var/lib/waagent/provisioned | diagnostic, genspec, vmdiagnostic 
-/var/log/auth\* | agents, diagnostic, normal, vmdiagnostic 
-/var/log/azure/\*/\*/\* | agents, diagnostic, vmdiagnostic 
-/var/log/boot\* | normal 
-/var/log/dmesg\* | agents, diagnostic, normal, vmdiagnostic 
-/var/log/messages\* | diagnostic, normal, vmdiagnostic 
-/var/log/secure\* | diagnostic, vmdiagnostic 
-/var/log/waagent\* | agents, diagnostic, normal, vmdiagnostic 
-## linux 
-File Path | Manifest 
-------------- | ------------- 
-/boot/grub\*/grub.c\* | eg, linux-bootconfig, vmdiagnostic 
-/boot/grub\*/grubenv | linux-bootconfig 
-/boot/grub\*/menu.lst | eg, linux-bootconfig, vmdiagnostic 
-/boot/loader/entries/\*.conf | linux-bootconfig 
-/etc/HOSTNAME | agents, diagnostic, eg, lad, monitor-mgmt, site-recovery, sql-iaas, vmdiagnostic, workloadbackup 
-/etc/NetworkManager/\*.conf | diagnostic, eg, vmdiagnostic 
-/etc/NetworkManager/conf.d/\*.conf | diagnostic, eg, vmdiagnostic 
-/etc/NetworkManager/system-connections/\*.nmconnection | diagnostic 
-/etc/\*-release | agents, diagnostic, eg, monitor-mgmt, site-recovery, sql-iaas, vmdiagnostic, workloadbackup 
-/etc/ambari-agent/conf/\* | hdinsight 
-/etc/ambari-server/conf/\* | hdinsight 
-/etc/apt/sources.list | linux-repoconfig, monitor-mgmt 
-/etc/apt/sources.list.d/\*.list | linux-repoconfig, monitor-mgmt 
-/etc/apt/sources.list.d/\*.sources | linux-repoconfig, monitor-mgmt 
-/etc/chrony/chrony.conf | diagnostic, vmdiagnostic 
-/etc/cloud/cloud.cfg | diagnostic, diskpool, eg, vmdiagnostic 
-/etc/cloud/cloud.cfg.d/\*.cfg | diagnostic, diskpool, eg, vmdiagnostic 
-/etc/cni/net.d/\*.conflist | aks 
-/etc/crypttab | diagnostic 
-/etc/default/azuremonitoragent | azuremonitoragent 
-/etc/default/grub | linux-bootconfig 
-/etc/default/grub.d/\*.cfg | linux-bootconfig 
-/etc/dhclient\*.conf | vmdiagnostic 
-/etc/dhcp/\*.conf | diagnostic, eg, vmdiagnostic 
-/etc/dnf/dnf.conf | linux-repoconfig, monitor-mgmt 
-/etc/dnf/vars/releasever | linux-repoconfig, monitor-mgmt 
-/etc/fstab | diagnostic, eg, normal, vmdiagnostic 
-/etc/hadoop/conf/\* | hdinsight 
-/etc/hbase/conf/\* | hdinsight 
-/etc/hive2/conf/\* | hdinsight 
-/etc/hostname | agents, diagnostic, eg, genspec, lad, monitor-mgmt, site-recovery, sql-iaas, vmdiagnostic, workloadbackup 
-/etc/hosts | diagnostic, hdinsight, linux-repoconfig, monitor-mgmt 
-/etc/hosts.allow | diagnostic 
-/etc/hosts.deny | diagnostic 
-/etc/idmapd.conf | diagnostic, vmdiagnostic 
-/etc/kdump.conf | crashdump 
-/etc/localtime | diagnostic 
-/etc/modprobe.d/\*.conf | diagnostic 
-/etc/netplan/\*.yaml | diagnostic, eg, vmdiagnostic 
-/etc/network/interfaces | diagnostic, eg, vmdiagnostic 
-/etc/network/interfaces.d/\*.cfg | diagnostic, eg, vmdiagnostic 
-/etc/nsswitch.conf | diagnostic, eg, vmdiagnostic 
-/etc/opt/microsoft/azuremonitoragent/amacoreagent/\* | azuremonitoragent 
-/etc/opt/microsoft/azuremonitoragent/config-cache/configchunks/\* | azuremonitoragent 
-/etc/opt/microsoft/azuremonitoragent/config-cache/configtransformid.txt | azuremonitoragent 
-/etc/opt/microsoft/azuremonitoragent/config-cache/fluentbit/\*.conf | azuremonitoragent 
-/etc/opt/microsoft/azuremonitoragent/config-cache/mcsconfig\* | azuremonitoragent 
-/etc/opt/microsoft/azuremonitoragent/config-cache/mdsd\* | azuremonitoragent 
-/etc/opt/microsoft/azuremonitoragent/config-cache/metricCounters.json | azuremonitoragent 
-/etc/opt/microsoft/azuremonitoragent/config-cache/syslog\* | azuremonitoragent 
-/etc/opt/microsoft/azuremonitoragent/dmiinfo.txt | azuremonitoragent 
-/etc/opt/microsoft/omsagent/LAD/conf/omsagent.d/\* | lad 
-/etc/opt/microsoft/omsagent/\*/conf/omsagent.d/\*.conf | monitor-mgmt 
-/etc/opt/microsoft/omsagent/conf/\*.conf | monitor-mgmt 
-/etc/opt/omi/conf/\* | monitor-mgmt 
-/etc/opt/omi/conf/omsconfig/agentid | monitor-mgmt 
-/etc/opt/omi/conf/omsconfig/configuration/\*.mof | monitor-mgmt 
-/etc/pam.d/\* | diagnostic 
-/etc/pbs.conf | diagnostic 
-/etc/products.d/\*.prod | linux-repoconfig, monitor-mgmt 
-/etc/regionserverclnt.cfg | linux-repoconfig, monitor-mgmt 
-/etc/resolv.conf | diagnostic, eg, vmdiagnostic 
-/etc/rsyslog.conf | azuremonitoragent 
-/etc/rsyslog.d/\*.conf | azuremonitoragent 
-/etc/security/limits.conf | diagnostic, diagnostic 
-/etc/selinux/config | diagnostic 
-/etc/slurm/\* | diagnostic 
-/etc/spark/conf/\* | hdinsight 
-/etc/ssh/sshd_config | diagnostic, eg, normal, vmdiagnostic 
-/etc/ssh/sshd_config.d/\* | diagnostic 
-/etc/ssh/sshd_config.d/\*.conf | vmdiagnostic 
-/etc/storm/conf/\* | hdinsight 
-/etc/sudoers | diagnostic 
-/etc/sudoers.d/\* | diagnostic 
-/etc/sysconfig/SuSEfirewall2 | diagnostic, eg, vmdiagnostic 
-/etc/sysconfig/iptables | diagnostic, eg, vmdiagnostic 
-/etc/sysconfig/network | diagnostic, eg, vmdiagnostic 
-/etc/sysconfig/network-scripts/ifcfg-\* | diagnostic, eg, vmdiagnostic 
-/etc/sysconfig/network-scripts/ifcfg-eth0 | normal 
-/etc/sysconfig/network-scripts/route-\* | diagnostic, eg, vmdiagnostic 
-/etc/sysconfig/network/config | eg, vmdiagnostic 
-/etc/sysconfig/network/dhcp | eg, vmdiagnostic 
-/etc/sysconfig/network/ifcfg-\* | eg, vmdiagnostic 
-/etc/sysconfig/network/routes | eg, vmdiagnostic 
-/etc/sysconfig/selinux/\* | diagnostic 
-/etc/sysctl.conf | diagnostic 
-/etc/sysctl.d/\*.conf | diagnostic 
-/etc/syslog-ng/\* | azuremonitoragent 
-/etc/systemd/network/\* | diagnostic 
-/etc/systemd/network/\*/\*.conf | diagnostic 
-/etc/udev/rules.d/\*.rules | diagnostic 
-/etc/ufw/ufw.conf | diagnostic, eg, vmdiagnostic 
-/etc/ufw/user.rules | diagnostic 
-/etc/ufw/user6.rules | diagnostic 
-/etc/waagent.conf | agents, diagnostic, eg, monitor-mgmt, site-recovery, vmdiagnostic, workloadbackup 
-/etc/wicked/\*.xml | diagnostic, eg, vmdiagnostic 
-/etc/yum.conf | linux-repoconfig, monitor-mgmt 
-/etc/yum.repos.d/\*.repo | linux-repoconfig, monitor-mgmt 
-/etc/yum.repos.d/rh-cloud-rhel\*.repo | linux-repoconfig, monitor-mgmt 
-/etc/yum/vars/releasever | linux-repoconfig, monitor-mgmt 
-/etc/zypp/repos.d/\*.repo | linux-repoconfig, monitor-mgmt 
-/home/hweautomation/run/worker.log | monitor-mgmt 
-/opt/microsoft/servicefabric/bin/Fabric/Fabric.Code/Fabric | servicefabric 
-/opt/msawb/bin/AzureWLBackupCommonManagementSettings.json | workloadbackup 
-/opt/msawb/bin/AzureWLBackupMonitoringSync_config.json | workloadbackup 
-/opt/msawb/etc/config/SAPHana/\* | workloadbackup 
-/opt/msawb/etc/config/global.json | workloadbackup 
-/opt/msawb/var/lib/catalog/AutoHealCatalog/AutoHealTask/\*.bin | workloadbackup 
-/opt/msawb/var/lib/catalog/InquiryCatalog/\*/\*.bin | workloadbackup 
-/opt/msawb/var/lib/catalog/SyncObjectsCatalog/AlertEventsTable/\*.bin | workloadbackup 
-/opt/msawb/var/lib/catalog/SyncObjectsCatalog/DatasourceSyncTable/\*.bin | workloadbackup 
-/opt/msawb/var/lib/catalog/WorkloadExtDatasourceCatalog/\*/\*.bin | workloadbackup 
-/opt/msawb/var/lib/catalog/WorkloadSchedules/\*/\*.bin | workloadbackup 
-/opt/msawb/var/log/\*/\*/\* | workloadbackup 
-/opt/msawb/var/log/\*/\*/\*/\*/\* | workloadbackup 
-/opt/mssql/bin/mssql-conf | sql-iaas 
-/run/NetworkManager/\*.conf | eg 
-/run/NetworkManager/conf.d/\*.conf | eg 
-/run/azure-vnet\* | aks 
-/run/cloud-init/cloud.cfg | diskpool, eg 
-/run/cloud-init/dhclient.hooks/\*.json | eg 
-/run/cloud-init/ds-identify.log | diskpool, eg 
-/run/cloud-init/result.json | diskpool, eg 
-/run/cloud-init/status.json | diskpool, eg 
-/run/resolvconf/\*.conf | eg 
-/run/systemd/netif/leases/\* | eg 
-/run/systemd/resolve/\*.conf | eg 
-/sched/sge/sge-2011.11/default/common/install_logs/\* | diagnostic 
-/sched/sge/sge-2011.11/default/spool/\* | diagnostic 
-/sys/class/infiniband/mlx5_ib0/ports/1/phys_state | diagnostic 
-/sys/class/infiniband/mlx5_ib0/ports/1/pkeys | diagnostic 
-/sys/class/infiniband/mlx5_ib0/ports/1/rate | diagnostic 
-/sys/class/infiniband/mlx5_ib0/ports/1/state | diagnostic 
-/sys/class/infiniband/mlx5_ib1/ports/1/phys_state | diagnostic 
-/sys/class/infiniband/mlx5_ib1/ports/1/pkeys | diagnostic 
-/sys/class/infiniband/mlx5_ib1/ports/1/rate | diagnostic 
-/sys/class/infiniband/mlx5_ib1/ports/1/state | diagnostic 
-/sys/class/infiniband/mlx5_ib2/ports/1/phys_state | diagnostic 
-/sys/class/infiniband/mlx5_ib2/ports/1/pkeys | diagnostic 
-/sys/class/infiniband/mlx5_ib2/ports/1/rate | diagnostic 
-/sys/class/infiniband/mlx5_ib2/ports/1/state | diagnostic 
-/sys/class/infiniband/mlx5_ib3/ports/1/phys_state | diagnostic 
-/sys/class/infiniband/mlx5_ib3/ports/1/pkeys | diagnostic 
-/sys/class/infiniband/mlx5_ib3/ports/1/rate | diagnostic 
-/sys/class/infiniband/mlx5_ib3/ports/1/state | diagnostic 
-/sys/class/infiniband/mlx5_ib4/ports/1/phys_state | diagnostic 
-/sys/class/infiniband/mlx5_ib4/ports/1/pkeys | diagnostic 
-/sys/class/infiniband/mlx5_ib4/ports/1/rate | diagnostic 
-/sys/class/infiniband/mlx5_ib4/ports/1/state | diagnostic 
-/sys/class/infiniband/mlx5_ib5/ports/1/phys_state | diagnostic 
-/sys/class/infiniband/mlx5_ib5/ports/1/pkeys | diagnostic 
-/sys/class/infiniband/mlx5_ib5/ports/1/rate | diagnostic 
-/sys/class/infiniband/mlx5_ib5/ports/1/state | diagnostic 
-/sys/class/infiniband/mlx5_ib6/ports/1/phys_state | diagnostic 
-/sys/class/infiniband/mlx5_ib6/ports/1/pkeys | diagnostic 
-/sys/class/infiniband/mlx5_ib6/ports/1/rate | diagnostic 
-/sys/class/infiniband/mlx5_ib6/ports/1/state | diagnostic 
-/sys/class/infiniband/mlx5_ib7/ports/1/phys_state | diagnostic 
-/sys/class/infiniband/mlx5_ib7/ports/1/pkeys | diagnostic 
-/sys/class/infiniband/mlx5_ib7/ports/1/rate | diagnostic 
-/sys/class/infiniband/mlx5_ib7/ports/1/state | diagnostic 
-/sys/kernel/security/apparmor/profiles | diagnostic 
-/tmp/omsagent\*.tgz | monitor-mgmt 
-/tmp/sosreport\*.tar.xz | linux-sos-scc 
-/usr/lib/NetworkManager/\*.conf | diagnostic, eg, vmdiagnostic 
-/usr/lib/NetworkManager/conf.d/\*.conf | diagnostic, eg, vmdiagnostic 
-/var/crash/\* | crashdump 
-/var/lib/.jupyter/jupyter_notebook_config.py | hdinsight 
-/var/lib/GuestConfig/Configuration/\* | monitor-mgmt 
-/var/lib/GuestConfig/gc_agent_logs/\* | monitor-mgmt 
-/var/lib/NetworkManager/\*.conf | diagnostic, eg, vmdiagnostic 
-/var/lib/NetworkManager/\*.lease | diagnostic, eg, vmdiagnostic 
-/var/lib/NetworkManager/\*.leases | diagnostic, eg, vmdiagnostic 
-/var/lib/NetworkManager/\*.state | diagnostic, eg, vmdiagnostic 
-/var/lib/NetworkManager/conf.d/\*.conf | diagnostic, eg, vmdiagnostic 
-/var/lib/dhclient/\*.lease | diagnostic, eg, vmdiagnostic 
-/var/lib/dhclient/\*.leases | diagnostic, eg, vmdiagnostic 
-/var/lib/dhcp/\*.lease | diagnostic, eg, vmdiagnostic 
-/var/lib/dhcp/\*.leases | diagnostic, eg, vmdiagnostic 
-/var/lib/waagent/ExtensionsConfig.\*.xml | diagnostic, lad, vmdiagnostic 
-/var/lib/waagent/GoalState.\*.xml | diagnostic, site-recovery, vmdiagnostic, workloadbackup 
-/var/lib/waagent/HostingEnvironmentConfig.xml | diagnostic, vmdiagnostic 
-/var/lib/waagent/Incarnation | agents, diagnostic, monitor-mgmt, vmdiagnostic 
-/var/lib/waagent/ManagedIdentity-\*.json | diagnostic, vmdiagnostic 
-/var/lib/waagent/Microsoft.Azure.Automation.HybridWorker.HybridWorkerForLinux-\* | monitor-mgmt 
-/var/lib/waagent/Microsoft.Azure.KeyVault.KeyVaultForLinux-\*/config/\* | servicefabric 
-/var/lib/waagent/Microsoft.Azure.Monitor.AzureMonitorLinuxAgent-\*/\* | azuremonitoragent 
-/var/lib/waagent/Microsoft.Azure.Monitor.AzureMonitorLinuxAgent-\*/config/\*.settings | azuremonitoragent 
-/var/lib/waagent/Microsoft.Azure.Monitor.AzureMonitorLinuxAgent-\*/config/metrics_con<br>figs/\*Configuration.json | azuremonitoragent 
-/var/lib/waagent/Microsoft.Azure.Monitor.AzureMonitorLinuxAgent-\*/config/telegraf_co<br>nfigs/telegraf.conf | azuremonitoragent 
-/var/lib/waagent/Microsoft.Azure.Monitor.AzureMonitorLinuxAgent-\*/config/telegraf_co<br>nfigs/telegraf.d/\* | azuremonitoragent 
-/var/lib/waagent/Microsoft.Azure.Monitor.AzureMonitorLinuxAgent-\*/status/\*.status | azuremonitoragent 
-/var/lib/waagent/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode-\*.\*/Handler<br>Environment.json | servicefabric 
-/var/lib/waagent/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode-\*.\*/status/<br>\*.status | servicefabric 
-/var/lib/waagent/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode-\*/HandlerMan<br>ifest.json | servicefabric 
-/var/lib/waagent/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode-\*/Service/cu<br>rrent.config | servicefabric 
-/var/lib/waagent/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode-\*/ServiceFab<br>ricLinuxExtension_install.log | servicefabric 
-/var/lib/waagent/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode-\*/WindowsFab<br>ricLinuxExtension_enable.log | servicefabric 
-/var/lib/waagent/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode-\*/background<br>_installer.log | servicefabric 
-/var/lib/waagent/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode-\*/config/\*.<br>settings | servicefabric 
-/var/lib/waagent/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode-\*/dotnet-uni<br>nstall-log-\*.log | servicefabric 
-/var/lib/waagent/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode-\*/heartbeat.<br>log | servicefabric 
-/var/lib/waagent/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode-\*/sfbootstra<br>pagentdebdownload.log | servicefabric 
-/var/lib/waagent/Microsoft.CPlat.Core.LinuxPatchExtension\*/\* | monitor-mgmt 
-/var/lib/waagent/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux-\*/\* | monitor-mgmt, monitor-mgmt 
-/var/lib/waagent/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux.\*.manifest.xm<br>l | monitor-mgmt, monitor-mgmt 
-/var/lib/waagent/Microsoft.OSTCExtensions.LinuxDiagnostic-\*/xmlCfg.xml | servicefabric 
-/var/lib/waagent/Microsoft.SqlServer.Management.SqlIaaSAgentLinux\*/HandlerEnvironmen<br>t.json | sql-iaas 
-/var/lib/waagent/Microsoft.SqlServer.Management.SqlIaaSAgentLinux\*/HandlerManifest.j<br>son | sql-iaas 
-/var/lib/waagent/Microsoft.SqlServer.Management.SqlIaaSAgentLinux\*/config/\* | sql-iaas 
-/var/lib/waagent/Microsoft.SqlServer.Management.SqlIaaSAgentLinux\*/deployer.log | sql-iaas 
-/var/lib/waagent/Microsoft.SqlServer.Management.SqlIaaSAgentLinux\*/status/\* | sql-iaas 
-/var/lib/waagent/Microsoft.\*LinuxDiagnostic\*/config/\*.settings | lad 
-/var/lib/waagent/Microsoft.\*LinuxDiagnostic\*/status/\*.status | lad 
-/var/lib/waagent/Microsoft.\*LinuxDiagnostic\*/xmlCfg.xml | lad 
-/var/lib/waagent/SharedConfig.xml | diagnostic, vmdiagnostic 
-/var/lib/waagent/\*.agentsManifest | agents, monitor-mgmt 
-/var/lib/waagent/\*.manifest.xml | diagnostic, vmdiagnostic 
-/var/lib/waagent/\*.xml | agents, monitor-mgmt, site-recovery, workloadbackup 
-/var/lib/waagent/\*/config/HandlerState | agents, diagnostic, monitor-mgmt, vmdiagnostic 
-/var/lib/waagent/\*/config/HandlerStatus | agents, diagnostic, monitor-mgmt, vmdiagnostic 
-/var/lib/waagent/\*/config/VMApp.lockfile | agents, diagnostic, monitor-mgmt 
-/var/lib/waagent/\*/config/\*.settings | agents, diagnostic, monitor-mgmt, vmdiagnostic 
-/var/lib/waagent/\*/config/applicationRegistry.active | agents, diagnostic, monitor-mgmt 
-/var/lib/waagent/\*/error.json | diagnostic, vmdiagnostic 
-/var/lib/waagent/\*/status/\*.status | agents, diagnostic, monitor-mgmt, vmdiagnostic 
-/var/lib/waagent/error.json | agents, eg, monitor-mgmt 
-/var/lib/waagent/history/\*.zip | agents, diagnostic, monitor-mgmt, vmdiagnostic 
-/var/lib/waagent/provisioned | diagnostic, eg, genspec, vmdiagnostic 
-/var/lib/waagent/waagent_status.\*.json | agents, diagnostic, eg, monitor-mgmt, vmdiagnostic 
-/var/lib/waagent/waagent_status.json | agents, diagnostic, eg, monitor-mgmt, vmdiagnostic 
-/var/lib/wicked/lease\* | diagnostic, eg, vmdiagnostic 
-/var/log/AzureRcmCli.log | site-recovery 
-/var/log/ambari-agent/ambari-agent.log | hdinsight 
-/var/log/ambari-server/ambari-audit.log | hdinsight 
-/var/log/ambari-server/ambari-server.log | hdinsight 
-/var/log/apt/history.log | monitor-mgmt 
-/var/log/apt/term.log | monitor-mgmt 
-/var/log/auth\* | agents, diagnostic, eg, monitor-mgmt, normal, vmdiagnostic 
-/var/log/azure-cni\* | aks 
-/var/log/azure-cns\* | aks 
-/var/log/azure-ipam\* | aks 
-/var/log/azure-npm.log | aks 
-/var/log/azure-proxy-agent/\* | agents, diagnostic, normal 
-/var/log/azure-vnet\* | aks 
-/var/log/azure/Microsoft.AKS.Compute.AKS.Linux.AKSNode/extension.log | aks 
-/var/log/azure/Microsoft.Azure.KeyVault.KeyVaultForLinux/\* | servicefabric 
-/var/log/azure/Microsoft.Azure.Monitor.AzureMonitorLinuxAgent/\*/\*.log | azuremonitoragent 
-/var/log/azure/Microsoft.Azure.ServiceFabric.ServiceFabricLinuxNode/events/\* | servicefabric 
-/var/log/azure/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode/CommandExecutio<br>n\*.log | servicefabric 
-/var/log/azure/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode/InfrastructureM<br>anifest.xml | servicefabric 
-/var/log/azure/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode/ServiceFabricLi<br>nuxExtension.log | servicefabric 
-/var/log/azure/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode/TempClusterMani<br>fest.xml | servicefabric 
-/var/log/azure/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode/extension.log | servicefabric 
-/var/log/azure/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode/handler.log | servicefabric 
-/var/log/azure/Microsoft.Azure.ServiceFabric.\*ServiceFabricLinuxNode/sfbootstrapagen<br>t\*.log | servicefabric 
-/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/\*/\*.log | monitor-mgmt 
-/var/log/azure/Microsoft.OSTCExtensions.DSCForLinux/extension.log | monitor-mgmt 
-/var/log/azure/Microsoft.OSTCExtensions.LinuxDiagnostic/\*/mdsd.\* | servicefabric 
-/var/log/azure/Microsoft.SqlServer.Management.SqlIaaSAgentLinux\* | sql-iaas 
-/var/log/azure/Microsoft.\*LinuxDiagnostic/\*/\* | lad 
-/var/log/azure/\* | site-recovery, workloadbackup 
-/var/log/azure/\*/\* | agents, diagnostic, monitor-mgmt, vmdiagnostic 
-/var/log/azure/\*/\*/\* | agents, diagnostic, monitor-mgmt, vmdiagnostic 
-/var/log/azure/cluster-provision-cse-output.log | aks 
-/var/log/azure/cluster-provision.log | aks, diagnostic, vmdiagnostic 
-/var/log/azure/containerd-status.log | aks 
-/var/log/azure/custom-script/handler.log | agents, diagnostic, vmdiagnostic 
-/var/log/azure/docker-status.log | aks 
-/var/log/azure/ib-vmext-status/\*log | diagnostic 
-/var/log/azure/kern.log | aks 
-/var/log/azure/kubelet-status.log | aks 
-/var/log/azure/nvidia-vmext-status/\*.log | diagnostic 
-/var/log/azure/nvidia\*.log | aks 
-/var/log/azure/run-command/handler.log | diagnostic, vmdiagnostic 
-/var/log/blobfuse2.log | aks, diagnostic 
-/var/log/blobfuse2.log\* | aks, diagnostic 
-/var/log/boot\* | diagnostic, eg, normal, vmdiagnostic 
-/var/log/cilium-cni\* | aks 
-/var/log/cloud-init\* | aks, diagnostic, diskpool, eg, normal, vmdiagnostic 
-/var/log/cloudregister | diagnostic 
-/var/log/cluster/\* | diagnostic 
-/var/log/corosync/\* | diagnostic 
-/var/log/corosync\* | diagnostic 
-/var/log/cuda-installer.log | diagnostic 
-/var/log/diskpool-agent\* | diskpool 
-/var/log/diskpool/bootstrapper.log\* | diskpool 
-/var/log/dmesg\* | agents, diagnostic, eg, monitor-mgmt, normal, site-recovery, vmdiagnostic, workloadbackup 
-/var/log/dnf\* | diagnostic, eg, monitor-mgmt, vmdiagnostic 
-/var/log/dpkg.log | servicefabric 
-/var/log/dpkg\* | diagnostic, diskpool, eg, monitor-mgmt, normal, vmdiagnostic 
-/var/log/evtcollforw\*.log | site-recovery 
-/var/log/fabricmanager\*.log | aks 
-/var/log/hadoop-yarn/yarn/\*.log | hdinsight 
-/var/log/hdinsight-agent/hdinsight-agent.log | hdinsight 
-/var/log/hdinsight-agent/hdinsight-agent.out | hdinsight 
-/var/log/hdinsight-provisioning-agent/hdinsight-provisioning-agent.log | hdinsight 
-/var/log/hdinsight-startupagent/hdinsight-startupagent.log | hdinsight 
-/var/log/hdinsight-startupagent/hdinsight-startupagent.out | hdinsight 
-/var/log/hive/hivemetastore.log | hdinsight 
-/var/log/hive/hiveserver2.log | hdinsight 
-/var/log/journal/\*/\* | aks, vmdiagnostic 
-/var/log/kern.log | servicefabric 
-/var/log/kern\* | diagnostic, diskpool, eg, normal, vmdiagnostic 
-/var/log/messages\* | azuremonitoragent, diagnostic, eg, monitor-mgmt, normal, vmdiagnostic 
-/var/log/nvidia-installer.log | diagnostic 
-/var/log/nvidia\*.log | aks 
-/var/log/pacemaker/\* | diagnostic 
-/var/log/pacemaker\* | diagnostic 
-/var/log/pods/calico-system\*/\*/\*.log\* | aks 
-/var/log/pods/dataprotection-microsoft\*/\*/\*.log\* | aks 
-/var/log/pods/kube-system\*/\*/\*.log\* | aks 
-/var/log/pods/kured\*/\*/\*.log\* | aks 
-/var/log/pods/tigera-operator\*/\*/\*.log\* | aks 
-/var/log/rhuicheck.log | diagnostic, linux-repoconfig, monitor-mgmt 
-/var/log/rsyslog\* | diagnostic, eg, lad, normal, vmdiagnostic 
-/var/log/s2\*.log | site-recovery 
-/var/log/sa/sa\* | performance 
-/var/log/scc\*.txz | linux-sos-scc 
-/var/log/secure\* | diagnostic, eg, normal, vmdiagnostic 
-/var/log/slurmctld/slurmctld.log | diagnostic 
-/var/log/slurmd/slurmd.log | diagnostic 
-/var/log/svagents\*.log | site-recovery 
-/var/log/syslog | aks, servicefabric 
-/var/log/syslog\* | agents, azuremonitoragent, diagnostic, diskpool, eg, lad, monitor-mgmt, normal, site-recovery, vmdiagnostic, workloadbackup 
-/var/log/ua_install.log | site-recovery 
-/var/log/waagent.log | servicefabric 
-/var/log/waagent\* | agents, diagnostic, eg, lad, monitor-mgmt, normal, site-recovery, vmdiagnostic, workloadbackup 
-/var/log/waagent\*.log | azuremonitoragent 
-/var/log/yum\* | diagnostic, eg, monitor-mgmt, normal, vmdiagnostic 
-/var/log/zypp/history | diagnostic, monitor-mgmt 
-/var/opt/microsoft/azuremonitoragent/events/taskstate.json | azuremonitoragent 
-/var/opt/microsoft/azuremonitoragent/log/\* | azuremonitoragent 
-/var/opt/microsoft/omsagent/LAD/log/\* | lad 
-/var/opt/microsoft/omsagent/\*/log/omsagent.log | monitor-mgmt 
-/var/opt/microsoft/omsagent/\*/run/automationworker/omsupdatemgmt.log | monitor-mgmt 
-/var/opt/microsoft/omsagent/run/automationworker/worker.log | monitor-mgmt 
-/var/opt/microsoft/omsconfig/omsconfig.log | monitor-mgmt 
-/var/opt/microsoft/omsconfig/omsconfigdetailed.log | monitor-mgmt 
-/var/opt/microsoft/scx/log/scx.log | monitor-mgmt 
-/var/opt/mssql/log/\*.tar.gz2 | sql-iaas 
-/var/opt/mssql/log/errorlog\* | sql-iaas 
-/var/opt/mssql/setup\* | sql-iaas 
-/var/opt/omi/log/\*.log | monitor-mgmt 
-/var/run/azure-vnet\* | aks 
-/var/spool/cron/tabs/root | workloadbackup 
-/var/spool/pbs/mom_logs/\* | diagnostic 
-/var/spool/pbs/sched_logs/\* | diagnostic 
-/var/tmp/sosreport\*.tar.xz | linux-sos-scc 
-copy | sql-iaas 
 ## windows 
 File Path | Manifest 
 ------------- | ------------- 
-/$WINDOWS.~BT/Sources/Panther/scanresult.xml | windowsupdate 
-/$Windows.~BT/Sources/Panther/CompatData\*.xml | windowsupdate 
-/$Windows.~BT/Sources/Panther/miglog.xml | windowsupdate 
-/$Windows.~BT/Sources/Panther/setupact.log | windowsupdate 
-/$Windows.~BT/Sources/Panther/setuperr.log | windowsupdate 
-/$Windows.~BT/Sources/Rollback/diagerr.xml | windowsupdate 
-/$Windows.~BT/Sources/Rollback/diagwrn.xml | windowsupdate 
-/$Windows.~BT/Sources/Rollback/setuperr.log | windowsupdate 
-/AzureData/CustomDataSetupScript.log | aks 
-/AzureData/NvidiaInstallLog/\*.log | aks 
-/Boot/BCD | windowsupdate 
-/CalicoWindows/logs/\*.log | aks 
-/HybridWorkerExtensionLogs/\*.zip | monitor-mgmt 
-/MS_DATA/\*.zip | vmwindows-tss-ms_data 
-/Packages/Plugins/ESET.FileSecurity/\*/agent_version.txt | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/ESET.FileSecurity/\*/extension_version.txt | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/AnalyzerConfigTempla<br>te.xml | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/Logs/\*DiagnosticsPl<br>ugin\*.log | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/StatusMonitor/Applic<br>ationInsightsPackagesVersion.json | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/\*.config | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/schema/wad\*.json | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Azure.RecoveryServices.VMSnapshot/\*/SeqNumber.txt | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Microsoft.WindowsAzure.Stora<br>ge.xml | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/AsmExtensio<br>nMonitoringConfig\*.xml | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/Extensions/<br>AzureSecurityPack/ASM.Azure.OSBaseline.xml | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/Extensions/<br>AzureSecurityPack/AsmExtensionSecurityPackStartupConfig.xml | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/Extensions/<br>AzureSecurityPack/AsmScan.log | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/Extensions/<br>AzureSecurityPack/AsmScannerConfiguration.xml | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/Extensions/<br>AzureSecurityPack/Azure.Common.scm.xml | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/Extensions/<br>AzureSecurityPack/SecurityPackStartup.log | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/Extensions/<br>AzureSecurityPack/SecurityScanLoggerManifest.man | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/MonAgent-Pk<br>g-Manifest.xml | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/initconfig/<br>\*/Standard/AgentStandardEvents.xml | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/initconfig/<br>\*/Standard/AgentStandardEventsMin.xml | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/initconfig/<br>\*/Standard/AgentStandardExtensions.xml | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/initconfig/<br>\*/Standard/AntiMalwareEvents.xml | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/initconfig/<br>\*/Standard/MonitoringEwsEvents.xml | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/initconfig/<br>\*/Standard/MonitoringEwsEventsCore.xml | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/initconfig/<br>\*/Standard/MonitoringEwsRootEvents.xml | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/initconfig/<br>\*/Standard/MonitoringStandardEvents.xml | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/initconfig/<br>\*/Standard/MonitoringStandardEvents2.xml | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/initconfig/<br>\*/Standard/MonitoringStandardEvents3.xml | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/initconfig/<br>\*/Standard/SecurityStandardEvents.xml | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/initconfig/<br>\*/Standard/SecurityStandardEvents2.xml | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/initconfig/<br>\*/Standard/SecurityStandardEvents3.xml | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/MonitoringAgentCertThumbprin<br>ts.txt | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/MonitoringAgentScheduledServ<br>ice.txt | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/InstallUtil.Inst<br>allLog | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/Service/Infrastr<br>uctureManifest.template.xml | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/Service/ServiceF<br>abricNodeBootstrapAgent.InstallLog | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/Service/ServiceF<br>abricNodeBootstrapAgent.InstallState | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/Service/current.<br>config | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/RuntimeSett<br>ings/VMApp.lockfile | agents, diagnostic 
-/Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/RuntimeSett<br>ings/applicationRegistry.active | agents, diagnostic 
-/Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/RuntimeSett<br>ings/applicationRegistry.backup | agents, diagnostic 
-/Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/RuntimeSettings<br>/VMApp.lockfile | agents, diagnostic, normal 
-/Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/RuntimeSettings<br>/applicationRegistry.active | agents, diagnostic, normal 
-/Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/RuntimeSettings<br>/applicationRegistry.backup | agents, diagnostic, normal 
-/Packages/Plugins/Microsoft.Compute.BGInfo/\*/BGInfo.def.xml | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Compute.BGInfo/\*/PluginManifest.xml | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Compute.BGInfo/\*/config.bgi | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Compute.BGInfo/\*/emptyConfig.bgi | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Powershell.DSC/\*/DSCVersion.xml | agents, diagnostic, monitor-mgmt, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Powershell.DSC/\*/DSCWork/HotfixInstallInProgress.dsc | agents, diagnostic, monitor-mgmt, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Powershell.DSC/\*/DSCWork/PreInstallDone.dsc | agents, diagnostic, monitor-mgmt, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Powershell.DSC/\*/DSCWork/\*.dpx | agents, diagnostic, monitor-mgmt, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Powershell.DSC/\*/DSCWork/\*.dsc | agents, diagnostic, monitor-mgmt, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.Powershell.DSC/\*/DSCWork/\*.log | agents, diagnostic, monitor-mgmt, normal, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/\*/CommandExecution\*.l<br>og | sql-iaas 
-/Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/\*/HandlerEnvironment.j<br>son | sql-iaas 
-/Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/\*/HandlerManifest.json | sql-iaas 
-/Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/\*/PackageDefinition.xm<br>l | agents, diagnostic, normal, sql-iaas, vmdiagnostic, windowsupdate 
-/Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/\*/RuntimeSettings/\*.s<br>ettings | sql-iaas 
-/Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/\*/Status/HeartBeat.Jso<br>n | sql-iaas 
-/Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/\*/Status/\*.status | sql-iaas 
-/Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/\*/config.txt | sql-iaas 
-/Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/\*/installation_log | sql-iaas 
-/Packages/Plugins/\* | monitor-mgmt 
-/Packages/Plugins/\*/\*/HandlerEnvironment.json | agents, diagnostic, monitor-mgmt, normal, servicefabric, vmdiagnostic, windowsupdate 
-/Packages/Plugins/\*/\*/HandlerManifest.json | agents, diagnostic, monitor-mgmt, normal, servicefabric, servicefabric, vmdiagnostic, windowsupdate 
-/Packages/Plugins/\*/\*/PackageInformation.txt | agents, diagnostic, monitor-mgmt, normal, servicefabric, vmdiagnostic, windowsupdate 
-/Packages/Plugins/\*/\*/RuntimeSettings/\*.settings | agents, diagnostic, monitor-mgmt, normal, servicefabric, vmdiagnostic, windowsupdate 
-/Packages/Plugins/\*/\*/Status/HeartBeat.Json | agents, diagnostic, monitor-mgmt, normal, servicefabric, vmdiagnostic, windowsupdate 
-/Packages/Plugins/\*/\*/Status/\*.status | agents, monitor-mgmt, normal, servicefabric, windowsupdate 
-/Packages/Plugins/\*/\*/config.txt | agents, diagnostic, monitor-mgmt, normal, servicefabric, vmdiagnostic, windowsupdate 
-/Program Files (x86)/Microsoft Azure Site Recovery/agent/AzureRcmCli.log | site-recovery, windowsupdate 
-/Program Files (x86)/Microsoft Azure Site Recovery/agent/evtcollforw\*.log | site-recovery, windowsupdate 
-/Program Files (x86)/Microsoft Azure Site Recovery/agent/s2\*.log | site-recovery, windowsupdate 
-/Program Files (x86)/Microsoft Azure Site Recovery/agent/svagents\*.log | site-recovery, windowsupdate 
-/Program Files/Azure Workload Backup/Catalog/InquiryCatalog/\*/\*.bin | workloadbackup 
-/Program Files/Azure Workload Backup/Catalog/SyncObjectsCatalog/AlertEventsTable/\*.b<br>in | workloadbackup 
-/Program Files/Azure Workload Backup/Catalog/SyncObjectsCatalog/DatasourceSyncTable/\<br>*.bin | workloadbackup 
-/Program Files/Azure Workload Backup/Catalog/WorkloadExtDatasourceCatalog/\*/\*.bin | workloadbackup 
-/Program Files/Azure Workload Backup/Catalog/WorkloadSchedules/\*/\*.bin | workloadbackup 
-/Program Files/Azure Workload Backup/bin/AzureWLBackupCommonManagementSettings.json | workloadbackup 
-/Program Files/Azure Workload Backup/bin/AzureWLBackupMonitoringSync_config.json | workloadbackup 
-/Program Files/AzureConnectedMachineAgent/Log/azcmagent.log | diagnostic 
-/Program Files/AzureConnectedMachineAgent/Log/himds.log | diagnostic 
-/Program Files/FSLogix/Apps/Rules | diagnostic 
-/Program Files/FSLogix/Logs/Profile_\*.log | diagnostic 
-/Program Files/GuestConfig/arc_policy_logs/gc_agent.log | diagnostic 
-/Program Files/GuestConfig/ext_mgr_logs/gc_ext.log | diagnostic 
-/Program Files/Microsoft Dependency Agent/logs/\*.\* | monitor-mgmt 
-/Program Files/Microsoft Monitoring Agent/Agent/Health Service State/CT_\*/work/Servi<br>ceState/\*.log | monitor-mgmt 
-/Program Files/Microsoft Monitoring Agent/Agent/Health Service State/FCT_\*/work/Inve<br>ntory/asmhost.log | monitor-mgmt 
-/Program Files/Microsoft Monitoring Agent/Agent/Health Service State/FCT_\*/work/Inve<br>ntory/localhost.json | monitor-mgmt 
-/Program Files/Microsoft Monitoring Agent/Agent/Health Service State/FCT_\*/work/Inve<br>ntory/localhost.mof | monitor-mgmt 
-/Program Files/Microsoft Monitoring Agent/Agent/Health Service State/FCT_\*/work/asmh<br>ost.log | monitor-mgmt 
-/Program Files/Microsoft Monitoring Agent/Agent/Health Service State/FCT_\*/work/loca<br>lhost.mof | monitor-mgmt 
-/Program Files/Microsoft Monitoring Agent/Agent/Health Service State/FCT_\*/work/loca<br>lhost.prevmof | monitor-mgmt 
-/Program Files/Microsoft Monitoring Agent/Agent/Health Service State/Management Packs<br>/\*.xml | monitor-mgmt 
-/Program Files/Microsoft RDInfra/AgentInstall.txt | diagnostic 
-/Program Files/Microsoft RDInfra/GenevaInstall.txt | diagnostic 
-/Program Files/Microsoft RDInfra/MsRdcWebRTCSvc.txt | diagnostic 
-/Program Files/Microsoft RDInfra/MsRdcWebRTCSvcMsiInstall.txt | diagnostic 
-/Program Files/Microsoft RDInfra/MsRdcWebRTCSvcMsiUninstall.txt | diagnostic 
-/Program Files/Microsoft RDInfra/SXSStackInstall.txt | diagnostic 
-/Program Files/Microsoft RDInfra/WVDAgentManagerInstall.txt | diagnostic 
-/Program Files/Microsoft SQL Server/90/Shared/SqlWriterLogger\*.txt | sql-iaas 
-/Program Files/Microsoft SQL Server/\*/MSSQL/Log/ERRORLOG | sql-iaas 
-/Program Files/Microsoft SQL Server/\*/MSSQL/Log/ERRORLOG.\* | sql-iaas 
-/Program Files/Microsoft SQL Server/\*/MSSQL/Log/ExtensibilityLog/ExtensibilityLog/EX<br>TLAUNCHERRORLOG | sql-iaas 
-/Program Files/Microsoft SQL Server/\*/MSSQL/Log/ExtensibilityLog/ExtensibilityLog/\*<br>.bin | sql-iaas 
-/Program Files/Microsoft SQL Server/\*/MSSQL/Log/ExtensibilityLog/ExtensibilityLog/\*<br>.log | sql-iaas 
-/Program Files/Microsoft SQL Server/\*/MSSQL/Log/FDLAUNCHERRORLOG | sql-iaas 
-/Program Files/Microsoft SQL Server/\*/MSSQL/Log/FDLAUNCHERRORLOG.\* | sql-iaas 
-/Program Files/Microsoft SQL Server/\*/MSSQL/Log/SQLAGENT.\* | sql-iaas 
-/Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.dmp | sql-iaas 
-/Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.log | sql-iaas 
-/Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.mdmp | sql-iaas 
-/Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.trc | sql-iaas 
-/Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.txt | sql-iaas 
-/Program Files/Microsoft SQL Server/\*/MSSQL/Log/\*.xel | sql-iaas 
-/Program Files/Microsoft SQL Server/\*/MSSQL/Log/fd | sql-iaas 
-/Program Files/Microsoft SQL Server/\*/MSSQL/Log/fd.\* | sql-iaas 
-/Program Files/Microsoft SQL Server/\*/Setup Bootstrap/Log/Summary.txt | sql-iaas 
-/Program Files/Microsoft SQL Server/\*/Setup Bootstrap/Log/\*/Log\*.cab | sql-iaas 
-/Program Files/MsRDCMMRHost/MsRDCMMRHostInstall.log | diagnostic 
-/Program Files/NVIDIA Corporation/Installer2/\* | diagnostic 
-/Program Files/Update Services/LogFiles/SoftwareDistribution.log | monitor-mgmt 
-/Program Files/Update Services/LogFiles/WSUSSetup.log | monitor-mgmt 
-/Program Files/Update Services/LogFiles/WSyncMgr.log | monitor-mgmt 
-/Program Files/containerd/config.toml | aks 
-/ProgramData/ASRSetupLogs/ASRUnifiedAgentConfigurator.log | site-recovery, windowsupdate 
-/ProgramData/ASRSetupLogs/ASRUnifiedAgentInstaller.log | site-recovery, windowsupdate 
-/ProgramData/ASRSetupLogs/UnifiedAgentMSIInstall.log | site-recovery, windowsupdate 
-/ProgramData/ASRSetupLogs/WrapperUnifiedAgent.log | site-recovery, windowsupdate 
-/ProgramData/FSLogix/Logs/Profile/Profile_\*.log | diagnostic, diagnostic 
-/ProgramData/FSLogix/Logs/\*.etl.\* | diagnostic, diagnostic 
-/ProgramData/GuestConfig/Configuration/\* | monitor-mgmt 
-/ProgramData/GuestConfig/extension_logs/Microsoft.AzureData.WindowsAgent.SqlServer/\*<br>.log | sql-iaas 
-/ProgramData/GuestConfig/gc_agent_logs/\* | monitor-mgmt 
-/ProgramData/Microsoft/System Center/Orchestrator/7.2/SMA/\*.\* | monitor-mgmt 
-/ProgramData/USOShared/Logs/\*.etl | windowsupdate 
-/ProgramData/UsoPrivate/UpdateStore/\*.xml | windowsupdate 
-/ProgramData/containerd/root/panic.log | aks 
-/Users/\*/AppData/Local/Packages/WinStore_cw5n1h2txyewy/AC/Temp/winstore.log | windowsupdate 
-/Users/\*/AppData/Local/Temp/winstore.log | windowsupdate 
-/Users/\*/AppData/Local/microsoft/windows/windowsupdate.log | windowsupdate 
-/Windows.old/ProgramData/USOPrivate/UpdateStore | windowsupdate 
-/Windows.old/ProgramData/USOShared/Logs | windowsupdate 
-/Windows.old/Windows/Logs/WindowsUpdate/\*.etl | windowsupdate 
-/Windows.old/Windows/Logs/mosetup/bluebox.log | windowsupdate 
-/Windows.old/Windows/SoftwareDistribution/ReportingEvents.log | windowsupdate 
-/Windows/INF/netcfg\*.\*etl | diagnostic, vmdiagnostic, windowsupdate 
-/Windows/INF/setupapi.\* | diagnostic 
-/Windows/INF/setupapi.\*.log | min-diagnostic, windowsupdate 
-/Windows/INF/setupapi.dev.log | vmdiagnostic 
-/Windows/Inf/netcfg\*.\*etl | normal 
-/Windows/Inf/setupapi.dev.log | normal 
-/Windows/Logs/CBS/\*.cab | windowsupdate 
-/Windows/Logs/CBS/\*.log | diagnostic, min-diagnostic, monitor-mgmt, windowsupdate 
-/Windows/Logs/DISM/\*.log | diagnostic, min-diagnostic, monitor-mgmt, windowsupdate 
-/Windows/Logs/MoSetup/MoSetup.log | windowsupdate 
-/Windows/Logs/MoSetup/UpdateAgent.log | windowsupdate 
-/Windows/Logs/NetSetup/\*.etl | windowsupdate 
-/Windows/Logs/OpsMgrTrace/\*.\* | monitor-mgmt 
-/Windows/Logs/RDMSDeploymentUI.txt | diagnostic, diagnostic 
-/Windows/Logs/SIH/SIH.\*.etl | windowsupdate 
-/Windows/Logs/SetupCleanupTask/setupact.log | windowsupdate 
-/Windows/Logs/SetupCleanupTask/setuperr.log | windowsupdate 
-/Windows/Logs/SystemRestore/\*.\* | windowsupdate 
-/Windows/Logs/WindowsUpdate/WindowsUpdate.\*.etl | monitor-mgmt, windowsupdate 
-/Windows/Logs/dpx/\*.log | windowsupdate 
-/Windows/Logs/eBPF/committed/\* | agents, diagnostic, min-diagnostic, normal 
-/Windows/Logs/mosetup/bluebox.log | windowsupdate 
-/Windows/Logs/waasmedic/waasmedic.\*.etl | windowsupdate 
-/Windows/Microsoft.NET/Framework/v4.0.30319/Config/machine.config | diagnostic, min-diagnostic, vmdiagnostic, windowsupdate 
-/Windows/Microsoft.NET/Framework64/v4.0.30319/Config/machine.config | diagnostic, min-diagnostic, vmdiagnostic, windowsupdate 
-/Windows/Minidump/\*.dmp | windowsupdate 
-/Windows/Panther/FastCleanup/setupact.log | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
-/Windows/Panther/UnattendGC/setupact.log | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
-/Windows/Panther/VmAgentInstaller.xml | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/Windows/Panther/WaSetup.log | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
-/Windows/Panther/WaSetup.xml | agents, diagnostic, eg, genspec, normal, site-recovery, vmdiagnostic, windowsupdate 
-/Windows/Panther/miglog.xml | windowsupdate 
-/Windows/Panther/setupact.log | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
-/Windows/Panther/setuperr.log | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
-/Windows/Panther/unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
-/Windows/ServiceProfiles/LocalService/AppData/Local/Microsoft/WSLicense/tokens.dat | windowsupdate 
-/Windows/ServiceProfiles/NetworkService/AppData/Local/Microsoft/Windows/DeliveryOptim<br>ization/Logs/\*.etl | windowsupdate 
-/Windows/Setup/State/State.ini | diagnostic, eg, genspec, vmdiagnostic, windowsupdate 
-/Windows/Setup/State/state.ini | agents, normal 
-/Windows/SoftwareDistribution/DeliveryOptimization/SavedLogs/\*.etl | windowsupdate 
-/Windows/SoftwareDistribution/DeliveryOptimization/SavedLogs/\*.log | windowsupdate 
-/Windows/SoftwareDistribution/Download/\*/\*/\*.log | windowsupdate 
-/Windows/SoftwareDistribution/Download/\*/\*/\*.xml | windowsupdate 
-/Windows/SoftwareDistribution/Plugins/7D5F3CBA-03DB-4BE5-B4B36DBED19A6833/117CAB2D-82<br>B1-4B5A-A08C-4D62DBEE7782.cache | windowsupdate 
-/Windows/SoftwareDistribution/Plugins/7D5F3CBA-03DB-4BE5-B4B36DBED19A6833/TokenRetrie<br>val.log | windowsupdate 
-/Windows/SoftwareDistribution/ReportingEvents.log | monitor-mgmt, windowsupdate 
-/Windows/SoftwareDistribution/datastore/DataStore.edb | windowsupdate 
-/Windows/System32/LogFiles/Firewall/pfirewall.log | windowsupdate 
-/Windows/System32/LogFiles/Firewall/pfirewall.log.old | windowsupdate 
-/Windows/System32/Sysprep/ActionFiles/Generalize.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
-/Windows/System32/Sysprep/ActionFiles/Respecialize.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
-/Windows/System32/Sysprep/ActionFiles/Specialize.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
-/Windows/System32/Sysprep/Panther/IE/setupact.log | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
-/Windows/System32/Sysprep/Panther/IE/setuperr.log | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
-/Windows/System32/Sysprep/Panther/setupact.log | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
-/Windows/System32/Sysprep/Panther/setuperr.log | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
-/Windows/System32/Sysprep/Sysprep_succeeded.tag | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
-/Windows/System32/Tasks/Microsoft/IaaSWorkloadBackup/\* | workloadbackup 
-/Windows/System32/Winevt/Logs/Microsoft-WS-Licensing%%4Admin.evtx | windowsupdate 
-/Windows/System32/Winevt/Logs/\*AppX\*.evtx | windowsupdate 
-/Windows/System32/config/SOFTWARE | diagnostic, min-diagnostic, monitor-mgmt, vmdiagnostic, windowsupdate 
-/Windows/System32/config/SOFTWARE.LOG1 | diagnostic, min-diagnostic 
-/Windows/System32/config/SOFTWARE.LOG2 | diagnostic, min-diagnostic 
-/Windows/System32/config/SYSTEM | diagnostic, min-diagnostic, monitor-mgmt, vmdiagnostic, windowsupdate 
-/Windows/System32/config/SYSTEM.LOG1 | diagnostic, min-diagnostic 
-/Windows/System32/config/SYSTEM.LOG2 | diagnostic, min-diagnostic 
-/Windows/System32/tssesdir/\*.xml | diagnostic 
-/Windows/System32/winevt/Logs/Active Directory Web Services.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Application.evtx | agents, aks, diagnostic, eg, min-diagnostic, monitor-mgmt, normal, servicefabric, site-recovery, sql-iaas, vmdiagnostic, windowsupdate, workloadbackup 
-/Windows/System32/winevt/Logs/DFS Replication.evtx | diagnostic 
-/Windows/System32/winevt/Logs/DNS Server.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Directory Service.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft HPC Pack.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-AKSGMSAPlugin%4Admin.evtx | aks 
-/Windows/System32/winevt/Logs/Microsoft-Automation%4Operational.evtx | monitor-mgmt 
-/Windows/System32/winevt/Logs/Microsoft-FSLogix-Apps%4Admin.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-FSLogix-Apps%4Operational.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-FSLogix-CloudCache%4Admin.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-FSLogix-CloudCache%4Operational.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-HPC-Management%4Admin.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-HPC-Reporting%4Operational.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-HPC-Scheduler%4Admin.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-HPC-Scheduler%4Operational.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-SMA%4Debug.etl | monitor-mgmt 
-/Windows/System32/winevt/Logs/Microsoft-SMA%4Operational.evtx | monitor-mgmt 
-/Windows/System32/winevt/Logs/Microsoft-ServiceFabric%4Admin.evtx | diagnostic, eg, normal, servicefabric, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-ServiceFabric%4Operational.evtx | diagnostic, eg, normal, servicefabric, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-ServiceFabric-Lease%4Admin.evtx | diagnostic, eg, normal, servicefabric, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-ServiceFabric-Lease%4Operational.evtx | diagnostic, eg, normal, servicefabric, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-AAD%4Operational.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4EXE and DLL.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4MSI and Script.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4Packaged app-Deployment.ev<br>tx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4Packaged app-Execution.evt<br>x | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-AppModel-Runtime%4Admin.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-AppReadiness%4Admin.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-AppReadiness%4Operational.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeployment%4Operational.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeploymentServer%4Operational.evt<br>x | diagnostic, diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeploymentServer%4Restricted.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-AppxPackaging%4Operational.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker%4BitLocker Management.evtx | diagnostic, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker-DrivePreparationTool%4Opera<br>tional.evtx | diagnostic, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-Bits-Client%%4Operational.evtx | windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-CAPI2%4Operational.evtx | agents, diagnostic, eg, monitor-mgmt, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-CodeIntegrity%4Operational.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-Containers-CCG%4Admin.evtx | aks 
-/Windows/System32/winevt/Logs/Microsoft-Windows-DNS-Client%4Operational.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-DNSServer%4Audit.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-DSC%4Operational.evtx | agents, diagnostic, eg, monitor-mgmt, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-DeliveryOptimization%%4Operational.ev<br>tx | windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-DeviceManagement-Enterprise-Diagnosti<br>cs-Provider%4Admin.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-DeviceManagement-Enterprise-Diagnosti<br>cs-Provider%4Enrollment.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-DeviceManagement-Enterprise-Diagnosti<br>cs-Provider%4Sync.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-Dhcp-Client%4Admin.evtx | eg 
-/Windows/System32/winevt/Logs/Microsoft-Windows-Dhcp-Client%4Operational.evtx | eg, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-Diagnostics-Performance%4Operational.<br>evtx | diagnostic, monitor-mgmt 
-/Windows/System32/winevt/Logs/Microsoft-Windows-FSLogic-Apps%4Admin.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-FSLogic-Apps%4Operational.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-FSLogic-CloudCache%4Admin.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-FSLogic-CloudCache%4Operational.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-GroupPolicy%4Operational.evtx | diagnostic, diagnostic, monitor-mgmt 
-/Windows/System32/winevt/Logs/Microsoft-Windows-HelloForBusiness%4Operational.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-Host-Network-Service-Admin.evtx | aks 
-/Windows/System32/winevt/Logs/Microsoft-Windows-Host-Network-Service-Operational.evtx | aks 
-/Windows/System32/winevt/Logs/Microsoft-Windows-Hyper-V-Compute-Admin.evtx | aks 
-/Windows/System32/winevt/Logs/Microsoft-Windows-Hyper-V-Compute-Operational.evtx | aks 
-/Windows/System32/winevt/Logs/Microsoft-Windows-Kerberos-KDCProxy%4Operational.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnP%%4Configuration.evtx | windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnP%4Configuration.evtx | agents, diagnostic, eg, min-diagnostic, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnP%4Device Configuration.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnP%4Device Management.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnPConfig%4Configuration.evtx | agents, diagnostic, eg, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-NTLM%4Operational.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-NdisImPlatform%4Operational.evtx | agents, diagnostic, eg, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-NetworkLocationWizard%4Operational.ev<br>tx | agents, diagnostic, eg, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-NetworkProfile%4Operational.evtx | agents, diagnostic, eg, min-diagnostic, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-NetworkProvider%4Operational.evtx | agents, diagnostic, eg, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-NlaSvc%4Operational.evtx | agents, diagnostic, eg, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-Ntfs%4Operational.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-PowerShell%4Operational.evtx | diagnostic, monitor-mgmt 
-/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteAssistance%4Admin.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteAssistance%4Operational.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RdpCoreCDV%4Adm<br>in.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RdpCoreCDV%4Ope<br>rational.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RdpCoreTS%4Admi<br>n.evtx | diagnostic, eg, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RdpCoreTS%4Oper<br>ational.evtx | diagnostic, eg, min-diagnostic, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RemoteDesktopSe<br>ssionManager%4Admin.evtx | diagnostic, eg, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-SessionServices<br>%4Operational.evtx | diagnostic, eg, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteHelp%4Operational.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-Resource-Exhaustion-Detector%4Operati<br>onal.evtx | agents, diagnostic, eg, monitor-mgmt, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-SMBClient%4Operational.evtx | diagnostic, eg, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-SMBServer%4Connectivity.evtx | diagnostic, eg, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-SMBServer%4Operational.evtx | diagnostic, eg, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-ServerManager%4Operational.evtx | diagnostic, eg, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-Shell-Core%4Operational.evtx | diagnostic, monitor-mgmt 
-/Windows/System32/winevt/Logs/Microsoft-Windows-SmartCard-Audit%4Authentication.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-SmartCard-DeviceEnum%4Operational.evt<br>x | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-SmartCard-TPM-VCard-Module%4Admin.evt<br>x | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-SmartCard-TPM-VCard-Module%4Operation<br>al.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-SmbClient%4Connectivity.evtx | diagnostic, eg, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-SmbClient%4Security.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-SmbServer%4Security.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-Store%%4Operational.evtx | windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-TCPIP%4Operational.evtx | agents, diagnostic, eg, monitor-mgmt, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-TaskScheduler%%4Operational.evtx | windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-TaskScheduler%4Operational.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-LocalSessionManager%<br>4Admin.evtx | diagnostic, eg, min-diagnostic, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-LocalSessionManager%<br>4Operational.evtx | diagnostic, eg, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-PnPDevices%4Admin.ev<br>tx | diagnostic, eg, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-PnPDevices%4Operatio<br>nal.evtx | diagnostic, eg, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-RDPClient%4Operation<br>al.evtx | diagnostic, eg, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-RemoteConnectionMana<br>ger%4Admin.evtx | diagnostic, eg, min-diagnostic, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-RemoteConnectionMana<br>ger%4Operational.evtx | diagnostic, eg, min-diagnostic, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-SessionBroker-Client<br>%4Admin.evtx | diagnostic, eg, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-SessionBroker-Client<br>%4Operational.evtx | diagnostic, eg, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-TSV-VmHostAgent%4Adm<br>in.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-TSV-VmHostAgent%4Ope<br>rational.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-User Device Registration%4Admin.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-User Profile Service%4Operational.evt<br>x | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-UserPnp%4DeviceInstall.evtx | agents, diagnostic, eg, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-VHDMP%4Operational.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-WER-Diagnostics%4Operational.evtx | diagnostic, monitor-mgmt 
-/Windows/System32/winevt/Logs/Microsoft-Windows-WMI-Activity%4Operational.evtx | diagnostic, monitor-mgmt 
-/Windows/System32/winevt/Logs/Microsoft-Windows-WinINet-Config%4ProxyConfigChanged.ev<br>tx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-WinRM%4Operational.evtx | diagnostic, monitor-mgmt 
-/Windows/System32/winevt/Logs/Microsoft-Windows-Windows Firewall With Advanced Securi<br>ty%4ConnectionSecurity.evtx | agents, diagnostic, eg, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-Windows Firewall With Advanced Securi<br>ty%4Firewall.evtx | agents, diagnostic, eg, min-diagnostic, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-WindowsUpdateClient%%4Operational.evt<br>x | windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-WindowsUpdateClient%4Operational.evtx | diagnostic, eg, min-diagnostic, monitor-mgmt, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-Windows-Winlogon%4Operational.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-Workplace Join%4Admin.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-Windows-schannel%4Operational.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Bootstrapper.evtx | agents, diagnostic, eg, monitor-mgmt, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4GuestAgent.evtx | agents, diagnostic, eg, monitor-mgmt, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Heartbeat.evtx | agents, diagnostic, eg, monitor-mgmt, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Runtime.evtx | agents, diagnostic, eg, monitor-mgmt, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Status%4GuestAgent.evtx | agents, diagnostic, eg, monitor-mgmt, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Status%4Plugins.evtx | agents, diagnostic, eg, monitor-mgmt, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/MicrosoftAzureRecoveryServices-Replication.evtx | diagnostic, eg, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/OpenSSH%4Admin.evtx | diagnostic 
-/Windows/System32/winevt/Logs/OpenSSH%4Operational.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Operations Manager.evtx | monitor-mgmt 
-/Windows/System32/winevt/Logs/PowerShellCore%4Operational.evtx | diagnostic, monitor-mgmt 
-/Windows/System32/winevt/Logs/RemoteDesktopServices.evtx | diagnostic 
-/Windows/System32/winevt/Logs/Security.evtx | diagnostic, eg, min-diagnostic, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/Setup.evtx | diagnostic, eg, min-diagnostic, vmdiagnostic, windowsupdate 
-/Windows/System32/winevt/Logs/System.evtx | agents, aks, diagnostic, eg, min-diagnostic, monitor-mgmt, normal, servicefabric, site-recovery, sql-iaas, vmdiagnostic, windowsupdate, workloadbackup 
-/Windows/System32/winevt/Logs/Windows Azure.evtx | agents, diagnostic, eg, monitor-mgmt, normal, site-recovery, vmdiagnostic, windowsupdate, workloadbackup 
-/Windows/System32/winevt/Logs/Windows PowerShell.evtx | monitor-mgmt 
-/Windows/System32/winevt/Logs/icrosoft-Windows-AppxPackaging%4Operational.evtx | diagnostic 
-/Windows/Temp/HPCSetupLogs/\* | diagnostic 
-/Windows/Temp/HPCSetupLogs/\*/\* | diagnostic 
-/Windows/Temp/MOMPerfCtrsInstall.log | monitor-mgmt 
-/Windows/Temp/MonitoringAgent.log | monitor-mgmt 
-/Windows/Temp/MsRDCMMRHostInstall.log | diagnostic 
-/Windows/Temp/ScriptLog.log | diagnostic 
-/Windows/WinSxS/pending.xml | windowsupdate 
-/Windows/WinSxS/poqexec.log | windowsupdate 
-/Windows/WindowsUpdate.log | monitor-mgmt 
-/Windows/debug/DCPROMO.LOG | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
-/Windows/debug/DCPROMO.log | min-diagnostic 
-/Windows/debug/NetSetup.LOG | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
-/Windows/debug/NetSetup.log | min-diagnostic 
-/Windows/debug/PASSWD.LOG | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
-/Windows/debug/dcpromoui.log | diagnostic, eg, min-diagnostic, normal, vmdiagnostic, windowsupdate 
-/Windows/debug/mrt.log | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
-/Windows/debug/netlogon.log | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
-/Windows/inf/setupapi.app.log | diagnostic, windowsupdate 
-/Windows/servicing/sessions/sessions.xml | diagnostic, min-diagnostic, monitor-mgmt, vmdiagnostic, windowsupdate 
-/Windows/web/rdweb/App_Data/rdweb.log | diagnostic 
-/Windows/windowsupdate\*.log | diagnostic, min-diagnostic, windowsupdate 
-/WindowsAzure/Config/\* | monitor-mgmt 
-/WindowsAzure/GuestAgent\*/CommonAgentConfig.config | diagnostic, vmdiagnostic, windowsupdate 
-/WindowsAzure/Logs/AggregateStatus/\*.json | monitor-mgmt 
-/WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json | agents, diagnostic, eg, min-diagnostic, normal, vmdiagnostic, windowsupdate, workloadbackup 
-/WindowsAzure/Logs/AppAgentRuntime.log | agents, diagnostic, eg, normal, vmdiagnostic, windowsupdate, workloadbackup 
-/WindowsAzure/Logs/MonitoringAgent.log | agents, diagnostic, eg, normal, servicefabric, vmdiagnostic, windowsupdate 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.ActiveDirectory.AADLoginForWindows/\*/\*.l<br>og | diagnostic, vmdiagnostic 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.ActiveDirectory.AADLoginForWindows/\*/\*.t<br>xt | diagnostic, vmdiagnostic 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/Diagnostics<br>Plugin.log | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/Diagnostics<br>PluginLauncher.log | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/\*/Configur<br>ation/Checkpoint.txt | agents, diagnostic, normal, servicefabric, vmdiagnostic, windowsupdate 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/\*/Configur<br>ation/MaConfig.xml | agents, diagnostic, normal, servicefabric, vmdiagnostic, windowsupdate 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/\*/Configur<br>ation/MonAgentHost.\*.log | agents, diagnostic, normal, servicefabric, vmdiagnostic, windowsupdate 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.KeyVault.KeyVaultForWindows/\*/\*.log | diagnostic 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.KeyVault.KeyVaultForWindows\*/Events/\* | servicefabric 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.KeyVault.KeyVaultForWindows\*/\*.log | servicefabric 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.Edp.NetworkWatcherAgentWind<br>ows/\*/\*.log | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.Edp.NetworkWatcherAgentWind<br>ows/\*/\*.txt | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows/<br>\*/\*.log | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows/<br>\*/\*.txt | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.RecoveryServices.VMSnapshot/\*/IaaSBcdrExt<br>ension\*.log | agents, normal, windowsupdate 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.AzureDiskEncryption/\*/BitlockerE<br>xtension.log | diagnostic, vmdiagnostic 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.IaaSAntimalware/\*/AntimalwareCon<br>fig.log | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.Monitoring/\*/AsmExtension.log | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.ServiceFabricMCNode/Event<br>s/sfmcnodeagent_Temp/Raw/sfmcnodeagent\*.log | diagnostic 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.ServiceFabricMCNode/\*/\*<br>.log | diagnostic 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.SfmcSetup/Events/sfmcsetu<br>pextagent_Temp/Raw/sfmcsetupextagent\*.log | diagnostic 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.SfmcSetup/\*/\*.log | diagnostic 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.Test.ServiceFabricMCNode-<br>Test/Events/sfmcnodeagent_Temp/Raw/sfmcnodeagent\*.log | diagnostic 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.Test.ServiceFabricMCNode-<br>Test/\*/\*.log | diagnostic 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.Test.SfmcSetup-Test/Event<br>s/sfmcsetupextagent_Temp/Raw/sfmcsetupextagent\*.log | diagnostic 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.Test.SfmcSetup-Test/\*/\*<br>.log | diagnostic 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.\*ServiceFabricMCNode\*/E<br>vents/\* | servicefabric 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.\*ServiceFabricMCNode\*/\<br>*/\*.log | servicefabric 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.\*ServiceFabricMCNode\*/\<br>*/\*.xml | servicefabric 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.\*SfmcSetup\*/Events/\* | servicefabric 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.\*SfmcSetup\*/\*/\*.log | servicefabric 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.\*SfmcSetup\*/\*/\*.xml | servicefabric 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/Events/Boo<br>tstrapAgent_Temp/Raw/BootstrapAgent\*.log | diagnostic 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/Events/Upg<br>radeAgent_Temp/Raw/UpgradeAgent\*.log | diagnostic 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/FabricM<br>SIInstall\*.log | agents, normal, vmdiagnostic, windowsupdate 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/Infrast<br>ructureManifest.xml | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/TempClu<br>sterManifest.xml | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/VCRunti<br>meInstall\*.log | agents, normal, vmdiagnostic, windowsupdate 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/\*.log | diagnostic 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.Test.ServiceFabricNode/Event<br>s/BootstrapAgent_Temp/Raw/BootstrapAgent\*.log | diagnostic 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.Test.ServiceFabricNode/Event<br>s/UpgradeAgent_Temp/Raw/UpgradeAgent\*.log | diagnostic 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.Test.ServiceFabricNode/\*/In<br>frastructureManifest.xml | diagnostic 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.Test.ServiceFabricNode/\*/Te<br>mpClusterManifest.xml | diagnostic 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.Test.ServiceFabricNode/\*/\*<br>.log | diagnostic 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.\*ServiceFabricNode\*/Events<br>/\* | servicefabric 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.\*ServiceFabricNode\*/\*/\*.<br>log | servicefabric 
-/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.\*ServiceFabricNode\*/\*/\*.<br>xml | servicefabric 
-/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/\*<br>.log | agents, diagnostic 
-/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/lo<br>g_\* | agents, diagnostic 
-/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.RunCommandHandlerWindows/\*/\*.log | diagnostic 
-/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.RunCommandWindows/\*/\*.log | diagnostic, vmdiagnostic 
-/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/\*.log | agents, diagnostic, normal 
-/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/log_\* | agents, diagnostic 
-/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.WindowsPatchExtension/\*/windowsUpdat<br>eLog/\* | diagnostic, monitor-mgmt 
-/WindowsAzure/Logs/Plugins/Microsoft.CPlat.ProxyAgent.ProxyAgentWindows/\*/\*.log | agents, diagnostic 
-/WindowsAzure/Logs/Plugins/Microsoft.CPlat.ProxyAgent.ProxyAgentWindowsARM64/\*/\*.lo<br>g | agents, diagnostic 
-/WindowsAzure/Logs/Plugins/Microsoft.CPlat.ProxyAgent.ProxyAgentWindowsARM64Test/\*/\<br>*.log | agents, diagnostic 
-/WindowsAzure/Logs/Plugins/Microsoft.CPlat.ProxyAgent.ProxyAgentWindowsTest/\*/\*.log | agents, diagnostic 
-/WindowsAzure/Logs/Plugins/Microsoft.Compute.BGInfo/\*/BGInfo\*.log | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/WindowsAzure/Logs/Plugins/Microsoft.Compute.CustomScriptExtension/\*/\*.log | diagnostic, vmdiagnostic, windowsupdate 
-/WindowsAzure/Logs/Plugins/Microsoft.Compute.JsonADDomainExtension/\*/ADDomainExtensi<br>on.log | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/WindowsAzure/Logs/Plugins/Microsoft.Compute.VMAccessAgent/\*/JsonVMAccessExtension.l<br>og | agents, diagnostic, min-diagnostic, normal, vmdiagnostic, windowsupdate 
-/WindowsAzure/Logs/Plugins/Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAg<br>ent/\*/0.log | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/WindowsAzure/Logs/Plugins/Microsoft.GuestConfiguration.ConfigurationforWindows/\*/\* | monitor-mgmt 
-/WindowsAzure/Logs/Plugins/Microsoft.HpcCompute.AmdGpuDriverMicrosoft/\*/\*.log | diagnostic 
-/WindowsAzure/Logs/Plugins/Microsoft.HpcCompute.NvidiaGpuDriverWindows/\*/\*.log | diagnostic 
-/WindowsAzure/Logs/Plugins/Microsoft.ManagedIdentity.ManagedIdentityExtensionForWindo<br>ws/\*/RuntimeSettings/\*.xml | diagnostic, vmdiagnostic, windowsupdate 
-/WindowsAzure/Logs/Plugins/Microsoft.ManagedServices.ApplicationHealthWindows/\*/\*.l<br>og | diagnostic 
-/WindowsAzure/Logs/Plugins/Microsoft.Powershell.DSC/\*/DSCLOG\*.json | agents, diagnostic, monitor-mgmt, normal, vmdiagnostic, windowsupdate 
-/WindowsAzure/Logs/Plugins/Microsoft.Powershell.DSC/\*/DscExtensionHandler\*.log | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/WindowsAzure/Logs/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/\*/CommandExec<br>ution\*.log | sql-iaas 
-/WindowsAzure/Logs/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/\*/ExtensionLo<br>g\*.log | sql-iaas 
-/WindowsAzure/Logs/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/\*/SqlCustomer<br>SupportLogs/\* | sql-iaas 
-/WindowsAzure/Logs/Plugins/Symantec.SymantecEndpointProtection/\*/sepManagedAzure.txt | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/WindowsAzure/Logs/Plugins/TrendMicro.DeepSecurity.TrendMicroDSA/\*/\*.log | agents, diagnostic, normal, vmdiagnostic, windowsupdate 
-/WindowsAzure/Logs/Plugins/\* | site-recovery, workloadbackup 
-/WindowsAzure/Logs/Plugins/\*/\*/CommandExecution.log | agents, eg, normal, vmdiagnostic, windowsupdate 
-/WindowsAzure/Logs/Plugins/\*/\*/CommandExecution\*.log | diagnostic, servicefabric 
-/WindowsAzure/Logs/Plugins/\*/\*/Heartbeat.log | agents, diagnostic, eg, normal, servicefabric, vmdiagnostic, windowsupdate 
-/WindowsAzure/Logs/Plugins/\*/\*/Install.log | agents, diagnostic, eg, normal, servicefabric, vmdiagnostic, windowsupdate 
-/WindowsAzure/Logs/Plugins/\*/\*/Update.log | agents, diagnostic, eg, normal, servicefabric, vmdiagnostic, windowsupdate 
-/WindowsAzure/Logs/Plugins/\*/\*/\*.log | monitor-mgmt 
-/WindowsAzure/Logs/SqlServerLogs/ERRORLOG | sql-iaas 
-/WindowsAzure/Logs/SqlServerLogs/\*.txt | sql-iaas 
-/WindowsAzure/Logs/SqlServerLogs/\*.xel | sql-iaas 
-/WindowsAzure/Logs/Telemetry.log | agents, diagnostic, eg, normal, site-recovery, vmdiagnostic, windowsupdate, workloadbackup 
-/WindowsAzure/Logs/TransparentInstaller.log | agents, asc-vmhealth, diagnostic, eg, min-diagnostic, normal, site-recovery, vmdiagnostic, windowsupdate, workloadbackup 
-/WindowsAzure/Logs/VFPlugin/\*.log | monitor-mgmt 
-/WindowsAzure/Logs/WaAppAgent.log | agents, diagnostic, eg, min-diagnostic, normal, site-recovery, vmdiagnostic, windowsupdate, workloadbackup 
-/WindowsAzure/Logs/\*.log | monitor-mgmt 
-/WindowsAzure/Logs/aks/\*.dmp | aks 
-/WindowsAzure/Logs/aks/\*.log | aks 
-/WindowsAzure/Logs/aks/\*.txt | aks 
-/WindowsAzure/Logs/blobfuse2.log | aks 
-/WindowsAzure/Logs/blobfuse2.log\* | aks 
-/WindowsAzure/ProxyAgent/Logs/\* | agents, diagnostic, min-diagnostic, normal 
-/WindowsAzure/TransparentInstaller.log | aks 
-/WindowsAzure/WaAppAgent.log | aks 
-/WindowsAzure/config/\*.xml | agents, diagnostic, eg, normal, vmdiagnostic, windowsupdate 
-/WindowsUpdateVerbose.etl | windowsupdate 
-/k/\*.err | aks 
-/k/\*.log | aks 
-/k/azure-vnet-ipam.json | aks 
-/k/azure-vnet-ipam.log | aks 
-/k/azure-vnet.json | aks 
-/k/azure-vnet.log | aks 
-/k/azurecni/netconf/10-azure.conflist | aks 
-/k/azurecns/\*.json | aks 
-/k/azurecns/\*.log | aks 
-/k/bootstrap-config | aks 
-/k/kubeclusterconfig.json | aks, aks 
-/unattend.xml | diagnostic, eg, normal, vmdiagnostic, windowsupdate 
-/var/log/blobfuse2.log | diagnostic 
-/var/log/blobfuse2.log\* | diagnostic 
-/windows/Panther/setup.etl | diagnostic, windowsupdate 
+/Packages/Plugins/ESET.FileSecurity/\*/agent_version.txt | diagnostic-extensions-thirdparty 
+/Packages/Plugins/ESET.FileSecurity/\*/extension_version.txt | diagnostic-extensions-thirdparty 
+/Packages/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/AnalyzerConfigTempla<br>te.xml | diagnostic-extensions-azure 
+/Packages/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/Logs/\*DiagnosticsPl<br>ugin\*.log | diagnostic-extensions-azure 
+/Packages/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/StatusMonitor/Applic<br>ationInsightsPackagesVersion.json | diagnostic-extensions-azure 
+/Packages/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/\*.config | diagnostic-extensions-azure 
+/Packages/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/schema/wad\*.json | diagnostic-extensions-azure 
+/Packages/Plugins/Microsoft.Azure.RecoveryServices.VMSnapshot/\*/SeqNumber.txt | diagnostic-extensions-azure 
+/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Microsoft.WindowsAzure.Stora<br>ge.xml | diagnostic-extensions-azure 
+/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/AsmExtensio<br>nMonitoringConfig\*.xml | diagnostic-extensions-azure 
+/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/Extensions/<br>AzureSecurityPack/ASM.Azure.OSBaseline.xml | diagnostic-extensions-azure 
+/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/Extensions/<br>AzureSecurityPack/AsmExtensionSecurityPackStartupConfig.xml | diagnostic-extensions-azure 
+/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/Extensions/<br>AzureSecurityPack/AsmScan.log | diagnostic-extensions-azure 
+/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/Extensions/<br>AzureSecurityPack/AsmScannerConfiguration.xml | diagnostic-extensions-azure 
+/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/Extensions/<br>AzureSecurityPack/Azure.Common.scm.xml | diagnostic-extensions-azure 
+/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/Extensions/<br>AzureSecurityPack/SecurityPackStartup.log | diagnostic-extensions-azure 
+/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/Extensions/<br>AzureSecurityPack/SecurityScanLoggerManifest.man | diagnostic-extensions-azure 
+/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/MonAgent-Pk<br>g-Manifest.xml | diagnostic-extensions-azure 
+/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/initconfig/<br>\*/Standard/AgentStandardEvents.xml | diagnostic-extensions-azure 
+/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/initconfig/<br>\*/Standard/AgentStandardEventsMin.xml | diagnostic-extensions-azure 
+/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/initconfig/<br>\*/Standard/AgentStandardExtensions.xml | diagnostic-extensions-azure 
+/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/initconfig/<br>\*/Standard/AntiMalwareEvents.xml | diagnostic-extensions-azure 
+/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/initconfig/<br>\*/Standard/MonitoringEwsEvents.xml | diagnostic-extensions-azure 
+/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/initconfig/<br>\*/Standard/MonitoringEwsEventsCore.xml | diagnostic-extensions-azure 
+/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/initconfig/<br>\*/Standard/MonitoringEwsRootEvents.xml | diagnostic-extensions-azure 
+/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/initconfig/<br>\*/Standard/MonitoringStandardEvents.xml | diagnostic-extensions-azure 
+/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/initconfig/<br>\*/Standard/MonitoringStandardEvents2.xml | diagnostic-extensions-azure 
+/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/initconfig/<br>\*/Standard/MonitoringStandardEvents3.xml | diagnostic-extensions-azure 
+/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/initconfig/<br>\*/Standard/SecurityStandardEvents.xml | diagnostic-extensions-azure 
+/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/initconfig/<br>\*/Standard/SecurityStandardEvents2.xml | diagnostic-extensions-azure 
+/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/Monitoring/agent/initconfig/<br>\*/Standard/SecurityStandardEvents3.xml | diagnostic-extensions-azure 
+/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/MonitoringAgentCertThumbprin<br>ts.txt | diagnostic-extensions-azure 
+/Packages/Plugins/Microsoft.Azure.Security.Monitoring/\*/MonitoringAgentScheduledServ<br>ice.txt | diagnostic-extensions-azure 
+/Packages/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/InstallUtil.Inst<br>allLog | diagnostic-extensions-servicefabric 
+/Packages/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/Service/Infrastr<br>uctureManifest.template.xml | diagnostic-extensions-servicefabric 
+/Packages/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/Service/ServiceF<br>abricNodeBootstrapAgent.InstallLog | diagnostic-extensions-servicefabric 
+/Packages/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/Service/ServiceF<br>abricNodeBootstrapAgent.InstallState | diagnostic-extensions-servicefabric 
+/Packages/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/Service/current.<br>config | diagnostic-extensions-servicefabric 
+/Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/RuntimeSett<br>ings/VMApp.lockfile | diagnostic-extensions-thirdparty 
+/Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/RuntimeSett<br>ings/applicationRegistry.active | diagnostic-extensions-thirdparty 
+/Packages/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/RuntimeSett<br>ings/applicationRegistry.backup | diagnostic-extensions-thirdparty 
+/Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/RuntimeSettings<br>/VMApp.lockfile | diagnostic-extensions-thirdparty 
+/Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/RuntimeSettings<br>/applicationRegistry.active | diagnostic-extensions-thirdparty 
+/Packages/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/RuntimeSettings<br>/applicationRegistry.backup | diagnostic-extensions-thirdparty 
+/Packages/Plugins/Microsoft.Compute.BGInfo/\*/BGInfo.def.xml | diagnostic-extensions-azure 
+/Packages/Plugins/Microsoft.Compute.BGInfo/\*/PluginManifest.xml | diagnostic-extensions-azure 
+/Packages/Plugins/Microsoft.Compute.BGInfo/\*/config.bgi | diagnostic-extensions-azure 
+/Packages/Plugins/Microsoft.Compute.BGInfo/\*/emptyConfig.bgi | diagnostic-extensions-azure 
+/Packages/Plugins/Microsoft.Powershell.DSC/\*/DSCVersion.xml | diagnostic-extensions-azure 
+/Packages/Plugins/Microsoft.Powershell.DSC/\*/DSCWork/HotfixInstallInProgress.dsc | diagnostic-extensions-azure 
+/Packages/Plugins/Microsoft.Powershell.DSC/\*/DSCWork/PreInstallDone.dsc | diagnostic-extensions-azure 
+/Packages/Plugins/Microsoft.Powershell.DSC/\*/DSCWork/\*.dpx | diagnostic-extensions-azure 
+/Packages/Plugins/Microsoft.Powershell.DSC/\*/DSCWork/\*.dsc | diagnostic-extensions-azure 
+/Packages/Plugins/Microsoft.Powershell.DSC/\*/DSCWork/\*.log | diagnostic-extensions-azure 
+/Packages/Plugins/Microsoft.SqlServer.Management.SqlIaaSAgent/\*/PackageDefinition.xm<br>l | diagnostic-extensions-azure 
+/Packages/Plugins/\*/\*/HandlerEnvironment.json | diagnostic-extensions-core 
+/Packages/Plugins/\*/\*/HandlerManifest.json | diagnostic-extensions-core 
+/Packages/Plugins/\*/\*/PackageInformation.txt | diagnostic-extensions-core 
+/Packages/Plugins/\*/\*/RuntimeSettings/\*.settings | diagnostic-extensions-thirdparty 
+/Packages/Plugins/\*/\*/Status/HeartBeat.Json | diagnostic-extensions-core 
+/Packages/Plugins/\*/\*/config.txt | diagnostic-extensions-core 
+/Program Files/AzureConnectedMachineAgent/Log/azcmagent.log | diagnostic-arc 
+/Program Files/AzureConnectedMachineAgent/Log/himds.log | diagnostic-arc 
+/Program Files/FSLogix/Apps/Rules | diagnostic-fslogix 
+/Program Files/FSLogix/Logs/Profile_\*.log | diagnostic-fslogix 
+/Program Files/GuestConfig/arc_policy_logs/gc_agent.log | diagnostic-arc 
+/Program Files/GuestConfig/ext_mgr_logs/gc_ext.log | diagnostic-arc 
+/Program Files/Microsoft RDInfra/AgentInstall.txt | diagnostic-avd-rdinfra 
+/Program Files/Microsoft RDInfra/GenevaInstall.txt | diagnostic-avd-rdinfra 
+/Program Files/Microsoft RDInfra/MsRdcWebRTCSvc.txt | diagnostic-avd-rdinfra 
+/Program Files/Microsoft RDInfra/MsRdcWebRTCSvcMsiInstall.txt | diagnostic-avd-rdinfra 
+/Program Files/Microsoft RDInfra/MsRdcWebRTCSvcMsiUninstall.txt | diagnostic-avd-rdinfra 
+/Program Files/Microsoft RDInfra/SXSStackInstall.txt | diagnostic-avd-rdinfra 
+/Program Files/Microsoft RDInfra/WVDAgentManagerInstall.txt | diagnostic-avd-rdinfra 
+/Program Files/MsRDCMMRHost/MsRDCMMRHostInstall.log | diagnostic-avd-rdinfra 
+/Program Files/NVIDIA Corporation/Installer2/\* | diagnostic-hpc 
+/ProgramData/FSLogix/Logs/Profile/Profile_\*.log | diagnostic-fslogix 
+/ProgramData/FSLogix/Logs/\*.etl.\* | diagnostic-fslogix 
+/Windows/INF/netcfg\*.\*etl | diagnostic-pnp-appinstall 
+/Windows/INF/setupapi.\* | diagnostic-pnp-appinstall 
+/Windows/Logs/CBS/\*.log | diagnostic-windows-update 
+/Windows/Logs/DISM/\*.log | diagnostic-windows-update 
+/Windows/Logs/RDMSDeploymentUI.txt | diagnostic-avd-rdinfra 
+/Windows/Logs/eBPF/committed/\* | diagnostic-proxyagent 
+/Windows/Microsoft.NET/Framework/v4.0.30319/Config/machine.config | diagnostic-dotnet 
+/Windows/Microsoft.NET/Framework64/v4.0.30319/Config/machine.config | diagnostic-dotnet 
+/Windows/Panther/FastCleanup/setupact.log | diagnostic-provisioning 
+/Windows/Panther/UnattendGC/setupact.log | diagnostic-provisioning 
+/Windows/Panther/VmAgentInstaller.xml | diagnostic-provisioning, diagnostic-wga-gap-closure 
+/Windows/Panther/WaSetup.log | diagnostic-provisioning 
+/Windows/Panther/WaSetup.xml | diagnostic-provisioning, diagnostic-wga-gap-closure 
+/Windows/Panther/msiexec.log | diagnostic-wga-gap-closure 
+/Windows/Panther/scanresults.xml | diagnostic-wga-gap-closure 
+/Windows/Panther/setupact.log | diagnostic-provisioning, diagnostic-wga-gap-closure 
+/Windows/Panther/setuperr.log | diagnostic-provisioning, diagnostic-wga-gap-closure 
+/Windows/Panther/unattend.xml | diagnostic-provisioning 
+/Windows/Setup/State/State.ini | diagnostic-provisioning 
+/Windows/System32/Sysprep/ActionFiles/Generalize.xml | diagnostic-provisioning 
+/Windows/System32/Sysprep/ActionFiles/Respecialize.xml | diagnostic-provisioning 
+/Windows/System32/Sysprep/ActionFiles/Specialize.xml | diagnostic-provisioning 
+/Windows/System32/Sysprep/Panther/IE/setupact.log | diagnostic-provisioning 
+/Windows/System32/Sysprep/Panther/IE/setuperr.log | diagnostic-provisioning 
+/Windows/System32/Sysprep/Panther/setupact.log | diagnostic-provisioning 
+/Windows/System32/Sysprep/Panther/setuperr.log | diagnostic-provisioning 
+/Windows/System32/Sysprep/Sysprep_succeeded.tag | diagnostic-provisioning 
+/Windows/System32/config/SOFTWARE | diagnostic-registry-core 
+/Windows/System32/config/SOFTWARE.LOG1 | diagnostic-registry-core 
+/Windows/System32/config/SOFTWARE.LOG2 | diagnostic-registry-core 
+/Windows/System32/config/SYSTEM | diagnostic-registry-core 
+/Windows/System32/config/SYSTEM.LOG1 | diagnostic-registry-core 
+/Windows/System32/config/SYSTEM.LOG2 | diagnostic-registry-core 
+/Windows/System32/drivers/CrowdStrike/C-00000291\*.sys | diagnostic-wga-gap-closure 
+/Windows/System32/tssesdir/\*.xml | diagnostic-msrdcollect 
+/Windows/System32/winevt/Logs/Active Directory Web Services.evtx | diagnostic-events-directory-services 
+/Windows/System32/winevt/Logs/Application.evtx | diagnostic-events-core 
+/Windows/System32/winevt/Logs/DFS Replication.evtx | diagnostic-events-directory-services 
+/Windows/System32/winevt/Logs/DNS Server.evtx | diagnostic-events-directory-services 
+/Windows/System32/winevt/Logs/Directory Service.evtx | diagnostic-events-identity 
+/Windows/System32/winevt/Logs/Microsoft HPC Pack.evtx | diagnostic-hpc 
+/Windows/System32/winevt/Logs/Microsoft-FSLogix-Apps%4Admin.evtx | diagnostic-fslogix 
+/Windows/System32/winevt/Logs/Microsoft-FSLogix-Apps%4Operational.evtx | diagnostic-fslogix 
+/Windows/System32/winevt/Logs/Microsoft-FSLogix-CloudCache%4Admin.evtx | diagnostic-fslogix 
+/Windows/System32/winevt/Logs/Microsoft-FSLogix-CloudCache%4Operational.evtx | diagnostic-fslogix 
+/Windows/System32/winevt/Logs/Microsoft-HPC-Management%4Admin.evtx | diagnostic-hpc 
+/Windows/System32/winevt/Logs/Microsoft-HPC-Reporting%4Operational.evtx | diagnostic-hpc 
+/Windows/System32/winevt/Logs/Microsoft-HPC-Scheduler%4Admin.evtx | diagnostic-hpc 
+/Windows/System32/winevt/Logs/Microsoft-HPC-Scheduler%4Operational.evtx | diagnostic-hpc 
+/Windows/System32/winevt/Logs/Microsoft-ServiceFabric%4Admin.evtx | diagnostic-events-azure 
+/Windows/System32/winevt/Logs/Microsoft-ServiceFabric%4Operational.evtx | diagnostic-events-azure 
+/Windows/System32/winevt/Logs/Microsoft-ServiceFabric-Lease%4Admin.evtx | diagnostic-events-azure 
+/Windows/System32/winevt/Logs/Microsoft-ServiceFabric-Lease%4Operational.evtx | diagnostic-events-azure 
+/Windows/System32/winevt/Logs/Microsoft-Windows-AAD%4Operational.evtx | diagnostic-events-identity 
+/Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4EXE and DLL.evtx | diagnostic-events-system-services 
+/Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4MSI and Script.evtx | diagnostic-events-system-services 
+/Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4Packaged app-Deployment.ev<br>tx | diagnostic-events-system-services 
+/Windows/System32/winevt/Logs/Microsoft-Windows-AppLocker%4Packaged app-Execution.evt<br>x | diagnostic-events-system-services 
+/Windows/System32/winevt/Logs/Microsoft-Windows-AppModel-Runtime%4Admin.evtx | diagnostic-events-system-services 
+/Windows/System32/winevt/Logs/Microsoft-Windows-AppReadiness%4Admin.evtx | diagnostic-events-system-services 
+/Windows/System32/winevt/Logs/Microsoft-Windows-AppReadiness%4Operational.evtx | diagnostic-events-system-services 
+/Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeployment%4Operational.evtx | diagnostic-events-system-services 
+/Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeploymentServer%4Operational.evt<br>x | diagnostic-events-system-services 
+/Windows/System32/winevt/Logs/Microsoft-Windows-AppXDeploymentServer%4Restricted.evtx | diagnostic-events-system-services 
+/Windows/System32/winevt/Logs/Microsoft-Windows-AppxPackaging%4Operational.evtx | diagnostic-events-system-services 
+/Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker%4BitLocker Management.evtx | diagnostic-events-system-services 
+/Windows/System32/winevt/Logs/Microsoft-Windows-BitLocker-DrivePreparationTool%4Opera<br>tional.evtx | diagnostic-events-system-services 
+/Windows/System32/winevt/Logs/Microsoft-Windows-CAPI2%4Operational.evtx | diagnostic-events-network-security 
+/Windows/System32/winevt/Logs/Microsoft-Windows-CodeIntegrity%4Operational.evtx | diagnostic-events-network-security 
+/Windows/System32/winevt/Logs/Microsoft-Windows-DNS-Client%4Operational.evtx | diagnostic-events-directory-services 
+/Windows/System32/winevt/Logs/Microsoft-Windows-DNSServer%4Audit.evtx | diagnostic-events-directory-services 
+/Windows/System32/winevt/Logs/Microsoft-Windows-DSC%4Operational.evtx | diagnostic-events-system-services 
+/Windows/System32/winevt/Logs/Microsoft-Windows-DeviceManagement-Enterprise-Diagnosti<br>cs-Provider%4Admin.evtx | diagnostic-events-system-services 
+/Windows/System32/winevt/Logs/Microsoft-Windows-DeviceManagement-Enterprise-Diagnosti<br>cs-Provider%4Enrollment.evtx | diagnostic-events-system-services 
+/Windows/System32/winevt/Logs/Microsoft-Windows-DeviceManagement-Enterprise-Diagnosti<br>cs-Provider%4Sync.evtx | diagnostic-events-system-services 
+/Windows/System32/winevt/Logs/Microsoft-Windows-Diagnostics-Performance%4Operational.<br>evtx | diagnostic-events-system-services 
+/Windows/System32/winevt/Logs/Microsoft-Windows-FSLogic-Apps%4Admin.evtx | diagnostic-fslogix 
+/Windows/System32/winevt/Logs/Microsoft-Windows-FSLogic-Apps%4Operational.evtx | diagnostic-fslogix 
+/Windows/System32/winevt/Logs/Microsoft-Windows-FSLogic-CloudCache%4Admin.evtx | diagnostic-fslogix 
+/Windows/System32/winevt/Logs/Microsoft-Windows-FSLogic-CloudCache%4Operational.evtx | diagnostic-fslogix 
+/Windows/System32/winevt/Logs/Microsoft-Windows-GroupPolicy%4Operational.evtx | diagnostic-events-identity 
+/Windows/System32/winevt/Logs/Microsoft-Windows-HelloForBusiness%4Operational.evtx | diagnostic-events-identity 
+/Windows/System32/winevt/Logs/Microsoft-Windows-Kerberos-KDCProxy%4Operational.evtx | diagnostic-events-identity 
+/Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnP%4Configuration.evtx | diagnostic-events-system-services 
+/Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnP%4Device Configuration.evtx | diagnostic-events-system-services 
+/Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnP%4Device Management.evtx | diagnostic-events-system-services 
+/Windows/System32/winevt/Logs/Microsoft-Windows-Kernel-PnPConfig%4Configuration.evtx | diagnostic-events-system-services 
+/Windows/System32/winevt/Logs/Microsoft-Windows-NTLM%4Operational.evtx | diagnostic-events-network-security 
+/Windows/System32/winevt/Logs/Microsoft-Windows-NdisImPlatform%4Operational.evtx | diagnostic-events-network-security 
+/Windows/System32/winevt/Logs/Microsoft-Windows-NetworkLocationWizard%4Operational.ev<br>tx | diagnostic-events-network-security 
+/Windows/System32/winevt/Logs/Microsoft-Windows-NetworkProfile%4Operational.evtx | diagnostic-events-network-security 
+/Windows/System32/winevt/Logs/Microsoft-Windows-NetworkProvider%4Operational.evtx | diagnostic-events-network-security 
+/Windows/System32/winevt/Logs/Microsoft-Windows-NlaSvc%4Operational.evtx | diagnostic-events-network-security 
+/Windows/System32/winevt/Logs/Microsoft-Windows-Ntfs%4Operational.evtx | diagnostic-events-storage 
+/Windows/System32/winevt/Logs/Microsoft-Windows-PowerShell%4Operational.evtx | diagnostic-events-system-services 
+/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteAssistance%4Admin.evtx | diagnostic-events-rdp 
+/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteAssistance%4Operational.evtx | diagnostic-events-rdp 
+/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RdpCoreCDV%4Adm<br>in.evtx | diagnostic-events-rdp 
+/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RdpCoreCDV%4Ope<br>rational.evtx | diagnostic-events-rdp 
+/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RdpCoreTS%4Admi<br>n.evtx | diagnostic-events-rdp 
+/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RdpCoreTS%4Oper<br>ational.evtx | diagnostic-events-rdp 
+/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RemoteDesktopSe<br>ssionManager%4Admin.evtx | diagnostic-events-rdp 
+/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-SessionServices<br>%4Operational.evtx | diagnostic-events-rdp 
+/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteHelp%4Operational.evtx | diagnostic-events-rdp 
+/Windows/System32/winevt/Logs/Microsoft-Windows-Resource-Exhaustion-Detector%4Operati<br>onal.evtx | diagnostic-events-system-services 
+/Windows/System32/winevt/Logs/Microsoft-Windows-SMBClient%4Operational.evtx | diagnostic-events-network-security 
+/Windows/System32/winevt/Logs/Microsoft-Windows-SMBServer%4Connectivity.evtx | diagnostic-events-network-security 
+/Windows/System32/winevt/Logs/Microsoft-Windows-SMBServer%4Operational.evtx | diagnostic-events-network-security 
+/Windows/System32/winevt/Logs/Microsoft-Windows-ServerManager%4Operational.evtx | diagnostic-events-system-services 
+/Windows/System32/winevt/Logs/Microsoft-Windows-Shell-Core%4Operational.evtx | diagnostic-events-system-services 
+/Windows/System32/winevt/Logs/Microsoft-Windows-SmartCard-Audit%4Authentication.evtx | diagnostic-events-identity 
+/Windows/System32/winevt/Logs/Microsoft-Windows-SmartCard-DeviceEnum%4Operational.evt<br>x | diagnostic-events-identity 
+/Windows/System32/winevt/Logs/Microsoft-Windows-SmartCard-TPM-VCard-Module%4Admin.evt<br>x | diagnostic-events-identity 
+/Windows/System32/winevt/Logs/Microsoft-Windows-SmartCard-TPM-VCard-Module%4Operation<br>al.evtx | diagnostic-events-identity 
+/Windows/System32/winevt/Logs/Microsoft-Windows-SmbClient%4Connectivity.evtx | diagnostic-events-network-security 
+/Windows/System32/winevt/Logs/Microsoft-Windows-SmbClient%4Security.evtx | diagnostic-events-network-security 
+/Windows/System32/winevt/Logs/Microsoft-Windows-SmbServer%4Security.evtx | diagnostic-events-network-security 
+/Windows/System32/winevt/Logs/Microsoft-Windows-TCPIP%4Operational.evtx | diagnostic-events-network-security 
+/Windows/System32/winevt/Logs/Microsoft-Windows-TaskScheduler%4Operational.evtx | diagnostic-events-system-services 
+/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-LocalSessionManager%<br>4Admin.evtx | diagnostic-events-rdp 
+/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-LocalSessionManager%<br>4Operational.evtx | diagnostic-events-rdp, diagnostic-wga-gap-closure 
+/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-PnPDevices%4Admin.ev<br>tx | diagnostic-events-rdp 
+/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-PnPDevices%4Operatio<br>nal.evtx | diagnostic-events-rdp 
+/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-RDPClient%4Operation<br>al.evtx | diagnostic-events-rdp 
+/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-RemoteConnectionMana<br>ger%4Admin.evtx | diagnostic-events-rdp 
+/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-RemoteConnectionMana<br>ger%4Operational.evtx | diagnostic-events-rdp 
+/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-SessionBroker-Client<br>%4Admin.evtx | diagnostic-events-rdp 
+/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-SessionBroker-Client<br>%4Operational.evtx | diagnostic-events-rdp, diagnostic-wga-gap-closure 
+/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-TSV-VmHostAgent%4Adm<br>in.evtx | diagnostic-events-rdp 
+/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-TSV-VmHostAgent%4Ope<br>rational.evtx | diagnostic-events-rdp 
+/Windows/System32/winevt/Logs/Microsoft-Windows-User Device Registration%4Admin.evtx | diagnostic-events-identity 
+/Windows/System32/winevt/Logs/Microsoft-Windows-User Profile Service%4Operational.evt<br>x | diagnostic-events-system-services 
+/Windows/System32/winevt/Logs/Microsoft-Windows-UserPnp%4DeviceInstall.evtx | diagnostic-events-system-services 
+/Windows/System32/winevt/Logs/Microsoft-Windows-VHDMP%4Operational.evtx | diagnostic-events-storage 
+/Windows/System32/winevt/Logs/Microsoft-Windows-WER-Diagnostics%4Operational.evtx | diagnostic-events-system-services 
+/Windows/System32/winevt/Logs/Microsoft-Windows-WMI-Activity%4Operational.evtx | diagnostic-events-system-services 
+/Windows/System32/winevt/Logs/Microsoft-Windows-WinINet-Config%4ProxyConfigChanged.ev<br>tx | diagnostic-events-network-security 
+/Windows/System32/winevt/Logs/Microsoft-Windows-WinRM%4Operational.evtx | diagnostic-events-network-security 
+/Windows/System32/winevt/Logs/Microsoft-Windows-Windows Firewall With Advanced Securi<br>ty%4ConnectionSecurity.evtx | diagnostic-events-network-security 
+/Windows/System32/winevt/Logs/Microsoft-Windows-Windows Firewall With Advanced Securi<br>ty%4Firewall.evtx | diagnostic-events-network-security 
+/Windows/System32/winevt/Logs/Microsoft-Windows-WindowsUpdateClient%4Operational.evtx | diagnostic-windows-update 
+/Windows/System32/winevt/Logs/Microsoft-Windows-Winlogon%4Operational.evtx | diagnostic-events-system-services 
+/Windows/System32/winevt/Logs/Microsoft-Windows-Workplace Join%4Admin.evtx | diagnostic-events-identity 
+/Windows/System32/winevt/Logs/Microsoft-Windows-schannel%4Operational.evtx | diagnostic-events-network-security 
+/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Bootstrapper.evtx | diagnostic-events-azure 
+/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4GuestAgent.evtx | diagnostic-events-azure 
+/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Heartbeat.evtx | diagnostic-events-azure 
+/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Diagnostics%4Runtime.evtx | diagnostic-events-azure 
+/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Status%4GuestAgent.evtx | diagnostic-events-azure 
+/Windows/System32/winevt/Logs/Microsoft-WindowsAzure-Status%4Plugins.evtx | diagnostic-events-azure 
+/Windows/System32/winevt/Logs/MicrosoftAzureRecoveryServices-Replication.evtx | diagnostic-events-azure 
+/Windows/System32/winevt/Logs/OpenSSH%4Admin.evtx | diagnostic-events-network-security 
+/Windows/System32/winevt/Logs/OpenSSH%4Operational.evtx | diagnostic-events-network-security 
+/Windows/System32/winevt/Logs/PowerShellCore%4Operational.evtx | diagnostic-events-system-services 
+/Windows/System32/winevt/Logs/RemoteDesktopServices.evtx | diagnostic-events-rdp 
+/Windows/System32/winevt/Logs/Security.evtx | diagnostic-events-core 
+/Windows/System32/winevt/Logs/Setup.evtx | diagnostic-events-core 
+/Windows/System32/winevt/Logs/System.evtx | diagnostic-events-core 
+/Windows/System32/winevt/Logs/Windows Azure.evtx | diagnostic-events-core 
+/Windows/System32/winevt/Logs/icrosoft-Windows-AppxPackaging%4Operational.evtx | diagnostic-events-system-services 
+/Windows/Temp/HPCSetupLogs/\* | diagnostic-hpc 
+/Windows/Temp/HPCSetupLogs/\*/\* | diagnostic-hpc 
+/Windows/Temp/MsRDCMMRHostInstall.log | diagnostic-avd-rdinfra 
+/Windows/Temp/ScriptLog.log | diagnostic-misc 
+/Windows/debug/DCPROMO.LOG | diagnostic-domainjoin 
+/Windows/debug/NetSetup.LOG | diagnostic-domainjoin 
+/Windows/debug/PASSWD.LOG | diagnostic-domainjoin 
+/Windows/debug/dcpromoui.log | diagnostic-domainjoin 
+/Windows/debug/mrt.log | diagnostic-domainjoin 
+/Windows/debug/netlogon.log | diagnostic-domainjoin 
+/Windows/inf/setupapi.app.log | diagnostic-pnp-appinstall 
+/Windows/servicing/sessions/sessions.xml | diagnostic-windows-update 
+/Windows/web/rdweb/App_Data/rdweb.log | diagnostic-avd-rdinfra 
+/Windows/windowsupdate\*.log | diagnostic-windows-update 
+/WindowsAzure/GuestAgent\*/CommonAgentConfig.config | diagnostic-guest-agent-core 
+/WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json | diagnostic-guest-agent-core 
+/WindowsAzure/Logs/AppAgentRuntime.log | diagnostic-guest-agent-core 
+/WindowsAzure/Logs/MonitoringAgent.log | diagnostic-guest-agent-core 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.ActiveDirectory.AADLoginForWindows/\*/Comm<br>andExecution\*.log | diagnostic-wga-gap-closure 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.ActiveDirectory.AADLoginForWindows/\*/\*.l<br>og | diagnostic-extensions-aadlogin 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.ActiveDirectory.AADLoginForWindows/\*/\*.t<br>xt | diagnostic-extensions-aadlogin 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/Diagnostics<br>Plugin.log | diagnostic-extensions-azure 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/Diagnostics<br>PluginLauncher.log | diagnostic-extensions-azure 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/\*/Configur<br>ation/Checkpoint.txt | diagnostic-extensions-core 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/\*/Configur<br>ation/MaConfig.xml | diagnostic-extensions-core 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/\*/\*/Configur<br>ation/MonAgentHost.\*.log | diagnostic-extensions-core 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.KeyVault.KeyVaultForWindows/\*/\*.log | diagnostic-extensions-azure 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.Edp.NetworkWatcherAgentWind<br>ows/\*/\*.log | diagnostic-extensions-azure 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.Edp.NetworkWatcherAgentWind<br>ows/\*/\*.txt | diagnostic-extensions-azure 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows/<br>\*/\*.log | diagnostic-extensions-azure 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows/<br>\*/\*.txt | diagnostic-extensions-azure 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.AzureDiskEncryption/\*/BitlockerE<br>xtension.log | diagnostic-extensions-azure 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.IaaSAntimalware/\*/AntimalwareCon<br>fig.log | diagnostic-extensions-azure 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.Security.Monitoring/\*/AsmExtension.log | diagnostic-extensions-azure 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.ServiceFabricMCNode/Event<br>s/sfmcnodeagent_Temp/Raw/sfmcnodeagent\*.log | diagnostic-extensions-servicefabric 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.ServiceFabricMCNode/\*/\*<br>.log | diagnostic-extensions-servicefabric 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.SfmcSetup/Events/sfmcsetu<br>pextagent_Temp/Raw/sfmcsetupextagent\*.log | diagnostic-extensions-servicefabric 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.SfmcSetup/\*/\*.log | diagnostic-extensions-servicefabric 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.Test.ServiceFabricMCNode-<br>Test/Events/sfmcnodeagent_Temp/Raw/sfmcnodeagent\*.log | diagnostic-extensions-servicefabric 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.Test.ServiceFabricMCNode-<br>Test/\*/\*.log | diagnostic-extensions-servicefabric 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.Test.SfmcSetup-Test/Event<br>s/sfmcsetupextagent_Temp/Raw/sfmcsetupextagent\*.log | diagnostic-extensions-servicefabric 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.Test.SfmcSetup-Test/\*/\*<br>.log | diagnostic-extensions-servicefabric 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/Events/Boo<br>tstrapAgent_Temp/Raw/BootstrapAgent\*.log | diagnostic-extensions-servicefabric 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/Events/Upg<br>radeAgent_Temp/Raw/UpgradeAgent\*.log | diagnostic-extensions-servicefabric 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/Infrast<br>ructureManifest.xml | diagnostic-extensions-servicefabric 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/TempClu<br>sterManifest.xml | diagnostic-extensions-servicefabric 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.ServiceFabricNode/\*/\*.log | diagnostic-extensions-servicefabric 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.Test.ServiceFabricNode/Event<br>s/BootstrapAgent_Temp/Raw/BootstrapAgent\*.log | diagnostic-extensions-servicefabric 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.Test.ServiceFabricNode/Event<br>s/UpgradeAgent_Temp/Raw/UpgradeAgent\*.log | diagnostic-extensions-servicefabric 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.Test.ServiceFabricNode/\*/In<br>frastructureManifest.xml | diagnostic-extensions-servicefabric 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.Test.ServiceFabricNode/\*/Te<br>mpClusterManifest.xml | diagnostic-extensions-servicefabric 
+/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.Test.ServiceFabricNode/\*/\*<br>.log | diagnostic-extensions-servicefabric 
+/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/\*<br>.log | diagnostic-extensions-azure 
+/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.EDP.VMApplicationManagerWindows/\*/lo<br>g_\* | diagnostic-extensions-azure 
+/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.RunCommandHandlerWindows/\*/\*.log | diagnostic-extensions-azure 
+/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.RunCommandWindows/\*/\*.log | diagnostic-extensions-azure 
+/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/\*.log | diagnostic-extensions-azure 
+/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.VMApplicationManagerWindows/\*/log_\* | diagnostic-extensions-azure 
+/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.WindowsPatchExtension/\*/windowsUpdat<br>eLog/\* | diagnostic-extensions-azure 
+/WindowsAzure/Logs/Plugins/Microsoft.CPlat.ProxyAgent.ProxyAgentWindows/\*/\*.log | diagnostic-extensions-azure 
+/WindowsAzure/Logs/Plugins/Microsoft.CPlat.ProxyAgent.ProxyAgentWindowsARM64/\*/\*.lo<br>g | diagnostic-extensions-azure 
+/WindowsAzure/Logs/Plugins/Microsoft.CPlat.ProxyAgent.ProxyAgentWindowsARM64Test/\*/\<br>*.log | diagnostic-extensions-azure 
+/WindowsAzure/Logs/Plugins/Microsoft.CPlat.ProxyAgent.ProxyAgentWindowsTest/\*/\*.log | diagnostic-extensions-azure 
+/WindowsAzure/Logs/Plugins/Microsoft.Compute.BGInfo/\*/BGInfo\*.log | diagnostic-extensions-azure 
+/WindowsAzure/Logs/Plugins/Microsoft.Compute.CustomScriptExtension/\*/\*.log | diagnostic-extensions-azure 
+/WindowsAzure/Logs/Plugins/Microsoft.Compute.JsonADDomainExtension/\*/ADDomainExtensi<br>on.log | diagnostic-extensions-azure 
+/WindowsAzure/Logs/Plugins/Microsoft.Compute.VMAccessAgent/\*/JsonVMAccessExtension.l<br>og | diagnostic-extensions-azure 
+/WindowsAzure/Logs/Plugins/Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAg<br>ent/\*/0.log | diagnostic-extensions-azure 
+/WindowsAzure/Logs/Plugins/Microsoft.HpcCompute.AmdGpuDriverMicrosoft/\*/\*.log | diagnostic-extensions-azure 
+/WindowsAzure/Logs/Plugins/Microsoft.HpcCompute.NvidiaGpuDriverWindows/\*/\*.log | diagnostic-extensions-azure 
+/WindowsAzure/Logs/Plugins/Microsoft.ManagedIdentity.ManagedIdentityExtensionForWindo<br>ws/\*/RuntimeSettings/\*.xml | diagnostic-extensions-thirdparty 
+/WindowsAzure/Logs/Plugins/Microsoft.ManagedServices.ApplicationHealthWindows/\*/\*.l<br>og | diagnostic-extensions-azure 
+/WindowsAzure/Logs/Plugins/Microsoft.Powershell.DSC/\*/DSCLOG\*.json | diagnostic-extensions-azure 
+/WindowsAzure/Logs/Plugins/Microsoft.Powershell.DSC/\*/DscExtensionHandler\*.log | diagnostic-extensions-azure 
+/WindowsAzure/Logs/Plugins/Symantec.SymantecEndpointProtection/\*/sepManagedAzure.txt | diagnostic-extensions-thirdparty 
+/WindowsAzure/Logs/Plugins/TrendMicro.DeepSecurity.TrendMicroDSA/\*/\*.log | diagnostic-extensions-thirdparty 
+/WindowsAzure/Logs/Plugins/\*/\*/CommandExecution\*.log | diagnostic-extensions-core, diagnostic-wga-gap-closure 
+/WindowsAzure/Logs/Plugins/\*/\*/Heartbeat.log | diagnostic-extensions-core 
+/WindowsAzure/Logs/Plugins/\*/\*/Install.log | diagnostic-extensions-core 
+/WindowsAzure/Logs/Plugins/\*/\*/Update.log | diagnostic-extensions-core 
+/WindowsAzure/Logs/Telemetry.log | diagnostic-guest-agent-core 
+/WindowsAzure/Logs/TransparentInstaller.log | diagnostic-guest-agent-core 
+/WindowsAzure/Logs/WaAppAgent.log | diagnostic-guest-agent-core 
+/WindowsAzure/ProxyAgent/Logs/\* | diagnostic-proxyagent 
+/WindowsAzure/config/\*.xml | diagnostic-guest-agent-core 
+/unattend.xml | diagnostic-provisioning 
+/var/log/blobfuse2.log | diagnostic-blobfuse 
+/var/log/blobfuse2.log\* | diagnostic-blobfuse 
+/windows/Panther/setup.etl | diagnostic-provisioning 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-08-18 11:21:27.487163`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-09-08 22:01:37.587378`*
