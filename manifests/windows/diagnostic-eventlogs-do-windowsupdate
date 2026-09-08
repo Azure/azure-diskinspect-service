@@ -1,0 +1,4 @@
+echo,### Delivery Optimization Event Logs ###
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-DeliveryOptimization%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Bits-Client%4Operational.evtx
+

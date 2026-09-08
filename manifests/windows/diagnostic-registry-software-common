@@ -1,0 +1,3 @@
+echo,### SOFTWARE Registry Hive ###
+copy,/Windows/System32/config/SOFTWARE,noscan
+

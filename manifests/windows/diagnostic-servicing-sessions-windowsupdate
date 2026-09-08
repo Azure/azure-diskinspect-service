@@ -1,0 +1,5 @@
+echo,### Servicing Sessions ###
+copy,/Windows/servicing/Sessions.xml
+copy,/Windows/servicing/Sessions/Sessions.xml
+ll,/Windows/servicing/Sessions
+

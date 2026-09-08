@@ -1,0 +1,4 @@
+echo,### Disk Cleanup Logs ###
+copy,/Windows/Logs/DiskCleanup/DiskCleanup.log
+ll,/Windows/Logs/DiskCleanup
+

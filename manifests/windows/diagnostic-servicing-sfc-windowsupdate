@@ -1,0 +1,3 @@
+echo,### SFC Servicing Logs ###
+copy,/Windows/Logs/CBS/sfc*.log
+

@@ -1,0 +1,5 @@
+echo,### General Event Logs ###
+copy,/Windows/System32/winevt/Logs/System.evtx
+copy,/Windows/System32/winevt/Logs/Application.evtx
+copy,/Windows/System32/winevt/Logs/Setup.evtx
+
