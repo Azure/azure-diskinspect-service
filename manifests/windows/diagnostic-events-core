@@ -1,4 +1,7 @@
 echo,### Core Event Logs ###
+echo,### Purpose: Provide the baseline Windows event logs used by most triage flows. ###
+echo,### Covers: System, Application, Windows Azure, Security, and Setup event logs. ###
+echo,### Use when: Use for broad OS, agent, setup, security, and application symptom investigation. ###
 copy,/Windows/System32/winevt/Logs/System.evtx
 copy,/Windows/System32/winevt/Logs/Application.evtx
 copy,/Windows/System32/winevt/Logs/Windows Azure.evtx

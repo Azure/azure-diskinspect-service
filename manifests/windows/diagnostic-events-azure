@@ -1,4 +1,7 @@
 echo,### Azure and Service Fabric Event Logs ###
+echo,### Purpose: Collect Azure platform and Service Fabric event channels. ###
+echo,### Covers: Service Fabric, WindowsAzure Diagnostics, WindowsAzure Status, and Azure Recovery Services logs. ###
+echo,### Use when: Use for guest-agent/platform integration, Azure diagnostics/status, ASR, and Service Fabric issues. ###
 copy,/Windows/System32/winevt/Logs/Microsoft-ServiceFabric%4Admin.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-ServiceFabric%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-ServiceFabric-Lease%4Operational.evtx

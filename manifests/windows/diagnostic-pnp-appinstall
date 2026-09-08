@@ -1,4 +1,7 @@
 echo,### Plug and Play and App Install ###
+echo,### Purpose: Collect device install and app install setup evidence. ###
+echo,### Covers: netcfg ETL, setupapi files, and setupapi.app.log. ###
+echo,### Use when: Use for driver, Plug and Play, network adapter install, and app install failures. ###
 copy,/Windows/INF/netcfg*.*etl,noscan
 copy,/Windows/INF/setupapi.*
 copy,/Windows/inf/setupapi.app.log

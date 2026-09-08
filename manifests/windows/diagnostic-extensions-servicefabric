@@ -1,4 +1,7 @@
 echo,### Service Fabric Extension Logs ###
+echo,### Purpose: Collect Service Fabric extension evidence separately from generic extension logs. ###
+echo,### Covers: Service Fabric MC, MC test, SfmcSetup, ServiceFabricNode manifests, temp cluster manifests, and raw event logs. ###
+echo,### Use when: Use for Service Fabric extension install, setup, upgrade, and node issues. ###
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.ServiceFabricMCNode/*/*.log
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.ServiceFabricMCNode/Events/sfmcnodeagent_Temp/Raw/sfmcnodeagent*.log
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ServiceFabric.MC.Test.ServiceFabricMCNode-Test/*/*.log

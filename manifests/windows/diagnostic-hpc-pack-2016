@@ -1,4 +1,7 @@
 echo,### HPC Pack 2016 Directory Probes ###
+echo,### Purpose: Probe HPC Pack 2016 directory layout without copying logs. ###
+echo,### Covers: HPC Pack 2016 LogFiles, Diagnostics, HpcFrontend, HpcNaming, Management, Monitoring, and SOA directories. ###
+echo,### Use when: Use to confirm HPC Pack 2016 layout and available log folders. ###
 ll,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Scheduler
 ll,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/Diagnostics
 ll,/Program Files/Microsoft HPC Pack 2016/Data/LogFiles/HpcFrontend

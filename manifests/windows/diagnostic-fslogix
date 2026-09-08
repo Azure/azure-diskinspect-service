@@ -1,4 +1,7 @@
 echo,### FSLogix Logs and Events ###
+echo,### Purpose: Collect FSLogix profile/container evidence as a standalone workload module. ###
+echo,### Covers: FSLogix Profile logs, ETL logs, App Rules/CompiledRules probes, and FSLogix Apps/CloudCache events. ###
+echo,### Use when: Use for FSLogix profile, CloudCache, rule, and AVD profile-container issues. ###
 copy,/ProgramData/FSLogix/Logs/Profile/Profile_*.log
 copy,/ProgramData/FSLogix/Logs/*.etl.*
 ll,/ProgramData/FSLogix/Logs

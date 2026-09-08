@@ -1,4 +1,7 @@
 echo,### Guest Agent Core Logs ###
+echo,### Purpose: Collect the core Windows Guest Agent log bundle. ###
+echo,### Covers: Telemetry, TransparentInstaller, WaAppAgent, WindowsAzure config XML, AggregateStatus, AppAgentRuntime, and MonitoringAgent logs. ###
+echo,### Use when: Use for Windows Guest Agent, WireServer, provisioning-agent, and basic extension orchestration issues. ###
 ll,/WindowsAzure
 ll,/Packages/Plugins
 copy,/WindowsAzure/Logs/Telemetry.log

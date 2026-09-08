@@ -1,4 +1,7 @@
 echo,### Miscellaneous Windows Diagnostic Files ###
+echo,### Purpose: Preserve current diagnostic operations that do not fit a larger domain module. ###
+echo,### Covers: Windows Temp ScriptLog and Windows IME directory probes. ###
+echo,### Use when: Use only when these specific miscellaneous artifacts are needed. ###
 copy,/Windows/Temp/ScriptLog.log
 ll,/Windows/System32/IME
 ll,/Windows/IME

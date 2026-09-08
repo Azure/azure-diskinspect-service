@@ -1,4 +1,7 @@
 echo,### Registry Hives and Journals ###
+echo,### Purpose: Enable offline registry-based Windows triage and WGA registry rules. ###
+echo,### Covers: SYSTEM and SOFTWARE hives plus hive transaction logs. ###
+echo,### Use when: Use when rules or troubleshooting need registry state without the full diagnostic manifest. ###
 copy,/Windows/System32/config/SOFTWARE,noscan
 copy,/Windows/System32/config/SYSTEM,noscan
 copy,/Windows/System32/config/SYSTEM.LOG1,noscan

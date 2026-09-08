@@ -1,4 +1,7 @@
 echo,### RDP and Terminal Services Event Logs ###
+echo,### Purpose: Collect RDP and Terminal Services channels required by cannot-connect scenarios. ###
+echo,### Covers: Remote Desktop Services, Terminal Services, LocalSessionManager, RemoteConnectionManager, SessionBroker, RDPClient, RemoteAssistance, and RemoteHelp event logs. ###
+echo,### Use when: Use for RDP failures, black screen, brute force, licensing, profile logon, and Terminal Services errors. ###
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RdpCoreTS%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RdpCoreTS%4Admin.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-RemoteDesktopServices-RemoteDesktopSessionManager%4Admin.evtx

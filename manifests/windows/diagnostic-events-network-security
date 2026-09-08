@@ -1,4 +1,7 @@
 echo,### Network and Security Event Logs ###
+echo,### Purpose: Collect network/security channels that are not fully represented in System.evtx. ###
+echo,### Covers: CAPI2, CodeIntegrity, NDIS, NetworkProfile, NetworkProvider, NlaSvc, NTLM, Schannel, SMB, TCPIP, firewall, OpenSSH, WinINet proxy, and WinRM logs. ###
+echo,### Use when: Use for firewall, SMB, TLS, OpenSSH, WinRM, NTLM, proxy, and network profile/provider issues. ###
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-CAPI2%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-CodeIntegrity%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-NdisImPlatform%4Operational.evtx

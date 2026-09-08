@@ -1,4 +1,7 @@
 echo,### WGA Mini Diagnostic Gap Closure ###
+echo,### Purpose: Add targeted artifacts that close known Windows Guest Analyzer gaps in min-diagnostic. ###
+echo,### Covers: RDP operational/session broker logs, WaSetup/Panther logs, extension CommandExecution logs, AADLoginForWindows command logs, scanresults.xml, msiexec.log, and the CrowdStrike C-00000291 driver marker. ###
+echo,### Use when: Use when min-diagnostic is desired but WGA/driver-alignment coverage is the driver. ###
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-LocalSessionManager%4Operational.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TerminalServices-SessionBroker-Client%4Operational.evtx
 copy,/Windows/Panther/WaSetup.xml

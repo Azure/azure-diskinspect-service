@@ -1,3 +1,6 @@
 echo,### .NET Configuration ###
+echo,### Purpose: Collect .NET machine configuration used by agent and application troubleshooting. ###
+echo,### Covers: 32-bit and 64-bit .NET Framework machine.config files. ###
+echo,### Use when: Use when .NET configuration could affect Windows agents, extensions, or applications. ###
 copy,/Windows/Microsoft.NET/Framework/v4.0.30319/Config/machine.config
 copy,/Windows/Microsoft.NET/Framework64/v4.0.30319/Config/machine.config

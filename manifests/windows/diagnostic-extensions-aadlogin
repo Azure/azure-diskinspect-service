@@ -1,3 +1,6 @@
 echo,### AADLoginForWindows Extension Logs ###
+echo,### Purpose: Collect AADLoginForWindows extension evidence for sign-in and WGA coverage. ###
+echo,### Covers: AADLoginForWindows .log/.txt files and CommandExecution logs. ###
+echo,### Use when: Use for Azure AD/Entra login extension failures and AAD join error scenarios. ###
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ActiveDirectory.AADLoginForWindows/*/*.log
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.ActiveDirectory.AADLoginForWindows/*/*.txt

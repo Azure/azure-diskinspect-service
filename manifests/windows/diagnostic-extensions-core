@@ -1,4 +1,7 @@
 echo,### Generic Extension Logs and State ###
+echo,### Purpose: Collect generic extension handler logs and state independent of publisher. ###
+echo,### Covers: CommandExecution, Install, Update, Heartbeat, config.txt, HandlerEnvironment, HandlerManifest, RuntimeSettings, HeartBeat.Json, and PackageInformation files. ###
+echo,### Use when: Use for extension install/update/command failures before selecting a publisher-specific module. ###
 copy,/WindowsAzure/Logs/Plugins/*/*/CommandExecution*.log
 copy,/WindowsAzure/Logs/Plugins/*/*/Install.log
 copy,/WindowsAzure/Logs/Plugins/*/*/Update.log

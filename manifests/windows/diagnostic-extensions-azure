@@ -1,4 +1,7 @@
 echo,### Azure Extension Specific Logs ###
+echo,### Purpose: Collect Azure first-party extension-specific artifacts. ###
+echo,### Covers: IaaSDiagnostics, KeyVault, Antimalware, Security.Monitoring, BGInfo, JsonADDomainExtension, VMAccessAgent, MMA, DSC, backup, Guest Configuration, and GPU-driver extension artifacts. ###
+echo,### Use when: Use for known Azure extension workflows and driver-alignment investigations. ###
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/*/DiagnosticsPlugin.log
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.Diagnostics.IaaSDiagnostics/*/DiagnosticsPluginLauncher.log
 copy,/WindowsAzure/Logs/Plugins/Microsoft.Azure.KeyVault.KeyVaultForWindows/*/*.log

@@ -1,4 +1,7 @@
 echo,### Active Directory Domain Join ###
+echo,### Purpose: Collect Windows debug logs for domain join and domain controller promotion. ###
+echo,### Covers: netlogon.log, NetSetup.LOG, mrt.log, DCPROMO.LOG, dcpromoui.log, and PASSWD.LOG. ###
+echo,### Use when: Use for domain join, secure channel, AD DS, and DC promotion issues. ###
 copy,/Windows/debug/netlogon.log
 copy,/Windows/debug/NetSetup.LOG
 copy,/Windows/debug/mrt.log

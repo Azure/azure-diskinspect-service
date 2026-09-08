@@ -1,4 +1,7 @@
 echo,### HPC Logs and Events ###
+echo,### Purpose: Collect HPC and NVIDIA/HPC setup logs and events. ###
+echo,### Covers: NVIDIA installer files, HPCSetupLogs, HPC Pack ProgramData logs, and HPC event logs. ###
+echo,### Use when: Use for HPC Pack, NVIDIA driver, scheduler, management, monitoring, SOA, and setup issues. ###
 copy,/Windows/System32/winevt/Logs/Microsoft HPC Pack.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-HPC-Management%4Admin.evtx
 copy,/Windows/System32/winevt/Logs/Microsoft-HPC-Reporting%4Operational.evtx
