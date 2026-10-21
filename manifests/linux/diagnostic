@@ -123,7 +123,7 @@ copy,/var/log/corosync*
 copy,/var/log/cluster/*
 copy,/var/log/pacemaker/*
 copy,/var/log/corosync/*
-copy,/var/log/journal/*/*
+copy,/var/log/journal/*/system.*
 echo,
 
 echo,### Gathering Azure Files ###
