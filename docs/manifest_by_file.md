@@ -341,7 +341,7 @@ File Path | Manifest
 /var/log/hdinsight-startupagent/hdinsight-startupagent.out | hdinsight 
 /var/log/hive/hivemetastore.log | hdinsight 
 /var/log/hive/hiveserver2.log | hdinsight 
-/var/log/journal/\*/\* | aks, vmdiagnostic 
+/var/log/journal/\*/\* | aks, diagnostic, vmdiagnostic 
 /var/log/kern.log | servicefabric 
 /var/log/kern\* | diagnostic, diskpool, eg, normal, vmdiagnostic 
 /var/log/messages\* | azuremonitoragent, diagnostic, eg, monitor-mgmt, normal, vmdiagnostic 
@@ -911,4 +911,4 @@ File Path | Manifest
 /var/log/blobfuse2.log\* | diagnostic 
 /windows/Panther/setup.etl | diagnostic, windowsupdate 
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-08-18 11:21:27.487163`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-10-21 14:19:00.144708`*

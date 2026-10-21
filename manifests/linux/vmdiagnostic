@@ -1,5 +1,7 @@
 echo,### Probing Directories ###
 ll,/var/log
+ll,/var/log/journal
+ll,/var/log/journal/*
 ll,/var/lib/cloud
 ll,/var/lib/waagent
 ll,/etc/udev/rules.d

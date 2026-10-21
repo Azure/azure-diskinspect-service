@@ -193,6 +193,8 @@ crashdump | copy | /var/crash/\*
 crashdump | copy | /etc/kdump.conf
 diagnostic | list | /boot
 diagnostic | list | /var/log
+diagnostic | list | /var/log/journal
+diagnostic | list | /var/log/journal/\*
 diagnostic | list | /var/lib/cloud
 diagnostic | list | /var/lib/waagent
 diagnostic | list | /etc
@@ -284,6 +286,7 @@ diagnostic | copy | /var/log/corosync\*
 diagnostic | copy | /var/log/cluster/\*
 diagnostic | copy | /var/log/pacemaker/\*
 diagnostic | copy | /var/log/corosync/\*
+diagnostic | copy | /var/log/journal/\*/\*
 diagnostic | copy | /var/log/azure/\*/\*
 diagnostic | copy | /var/log/azure/\*/\*/\*
 diagnostic | copy | /var/log/azure/custom-script/handler.log
@@ -679,6 +682,8 @@ sql-iaas | copy | /var/opt/mssql/log/errorlog\*
 sql-iaas | copy | /var/opt/mssql/log/\*.tar.gz2
 sql-iaas | copy | copy
 vmdiagnostic | list | /var/log
+vmdiagnostic | list | /var/log/journal
+vmdiagnostic | list | /var/log/journal/\*
 vmdiagnostic | list | /var/lib/cloud
 vmdiagnostic | list | /var/lib/waagent
 vmdiagnostic | list | /etc/udev/rules.d
@@ -2227,4 +2232,4 @@ workloadbackup | copy | /WindowsAzure/Logs/Plugins/\*
 workloadbackup | copy | /WindowsAzure/Logs/AggregateStatus/aggregatestatus\*.json
 workloadbackup | copy | /WindowsAzure/Logs/AppAgentRuntime.log
 
-*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-08-18 11:21:27.487163`*
+*File was created by running [parse_manifest.py](../tools/parse_manifest.py) on `2026-10-21 14:19:00.144708`*
