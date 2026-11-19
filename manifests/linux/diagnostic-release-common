@@ -1,0 +1,7 @@
+echo,### Gathering OS Release and Hostname ###
+copy,/etc/*-release,noscan
+copy,/etc/os-release,noscan
+copy,/etc/HOSTNAME,noscan
+copy,/etc/hostname,noscan
+copy,/etc/machine-id,noscan
+echo,

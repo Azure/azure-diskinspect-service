@@ -1,0 +1,9 @@
+echo,### Probing AKS Directories ###
+ll,/var/log
+ll,/var/log/azure/
+ll,/var/log/pods
+ll,/var/log/containers
+ll,/opt/azure/containers/
+ll,/etc/kubernetes
+ll,/etc/cni/net.d
+echo,

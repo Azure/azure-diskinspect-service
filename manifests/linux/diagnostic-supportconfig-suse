@@ -1,0 +1,8 @@
+echo,### Probing Supportconfig Directories ###
+ll,/var/log
+echo,
+
+echo,### Gathering supportconfig Files - SUSE ###
+copy,/var/log/scc*.txz,noscan
+copy,/var/log/scc*.tar.xz,noscan
+echo,

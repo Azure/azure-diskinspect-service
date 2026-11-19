@@ -1,0 +1,4 @@
+echo,### Gathering Guest ProxyAgent Log Files ###
+copy,/var/log/azure-proxy-agent/*
+copy,/var/log/azure-proxy-agent.*
+echo,

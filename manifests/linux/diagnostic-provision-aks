@@ -1,0 +1,6 @@
+echo,### Gathering AKS Cluster Provisioning Scripts ###
+ll,/opt/azure/containers
+copy,/opt/azure/containers/*.sh
+copy,/opt/azure/containers/*.log
+copy,/opt/azure/containers/*.txt
+echo,

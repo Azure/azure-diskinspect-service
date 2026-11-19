@@ -1,0 +1,10 @@
+echo,### Gathering AKS Pod Logs ###
+copy,/var/log/pods/kube-system*/*/*.log*
+copy,/var/log/pods/calico-system*/*/*.log*
+copy,/var/log/pods/tigera-operator*/*/*.log*
+copy,/var/log/pods/kured*/*/*.log*
+copy,/var/log/pods/dataprotection-microsoft*/*/*.log*
+copy,/var/log/pods/azure*/*/*.log*
+copy,/var/log/containers/*.log
+ll,/var/log/pods/*/*
+echo,

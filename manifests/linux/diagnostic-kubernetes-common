@@ -1,0 +1,10 @@
+echo,### Gathering Kubernetes/Container Files ###
+copy,/var/log/pods/*/*/*.log
+copy,/var/log/containers/*.log
+copy,/etc/kubernetes/*.conf
+copy,/etc/kubernetes/*.yaml
+copy,/var/lib/kubelet/config.yaml
+copy,/var/log/kubelet.log
+copy,/etc/containerd/config.toml
+copy,/var/log/containerd.log
+echo,

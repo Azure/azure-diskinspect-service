@@ -1,0 +1,12 @@
+echo,### Probing Repository Directories - Ubuntu Debian ###
+ll,/etc/apt
+ll,/etc/apt/sources.list.d
+echo,
+
+echo,### Gathering Repository Configuration Files - Ubuntu Debian ###
+copy,/etc/apt/sources.list,noscan
+copy,/etc/apt/sources.list.d/*.list,noscan
+copy,/etc/apt/sources.list.d/*.sources,noscan
+copy,/etc/apt/preferences,noscan
+copy,/etc/apt/preferences.d/*,noscan
+echo,

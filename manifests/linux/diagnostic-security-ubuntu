@@ -1,0 +1,6 @@
+echo,### Gathering AppArmor Security Configuration ###
+copy,/sys/kernel/security/apparmor/profiles,noscan
+copy,/etc/apparmor/parser.conf,noscan
+copy,/etc/apparmor.d/*.conf,noscan
+ll,/etc/apparmor.d
+echo,

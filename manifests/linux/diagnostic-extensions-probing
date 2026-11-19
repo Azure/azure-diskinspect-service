@@ -1,0 +1,5 @@
+echo,### Extension Directory Listings ###
+ll,/var/lib/waagent
+ll,/var/log/azure
+ll,/opt/azure/containers
+

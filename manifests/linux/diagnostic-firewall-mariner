@@ -1,0 +1,6 @@
+echo,### Gathering Firewall Configuration (Mariner) ###
+copy,/etc/sysconfig/iptables,noscan
+copy,/etc/nftables.conf,noscan
+copy,/etc/firewalld/*.xml,noscan
+copy,/etc/firewalld/zones/*.xml,noscan
+echo,

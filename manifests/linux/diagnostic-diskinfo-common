@@ -1,0 +1,3 @@
+echo,### Gathering Disk Info ###
+diskinfo,
+echo,

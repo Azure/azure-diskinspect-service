@@ -1,0 +1,8 @@
+echo,### Gathering DHCP Files (Ubuntu/Debian) ###
+copy,/var/lib/NetworkManager/*.lease,noscan
+copy,/var/lib/NetworkManager/*.leases,noscan
+copy,/var/lib/dhclient/*.lease,noscan
+copy,/var/lib/dhclient/*.leases,noscan
+copy,/var/lib/dhcp/*.lease,noscan
+copy,/var/lib/dhcp/*.leases,noscan
+echo,

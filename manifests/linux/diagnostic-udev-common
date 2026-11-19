@@ -1,0 +1,6 @@
+echo,### Gathering Udev and Module Configuration ###
+copy,/etc/udev/rules.d/*.rules
+copy,/usr/lib/udev/rules.d/*.rules
+copy,/etc/modprobe.d/*.conf,noscan
+copy,/usr/lib/modprobe.d/*.conf,noscan
+echo,

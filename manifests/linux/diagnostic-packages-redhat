@@ -1,0 +1,10 @@
+echo,### Gathering Package Management Log Files (RHEL/CentOS/Fedora) ###
+copy,/var/log/yum*,noscan
+copy,/var/log/dnf*,noscan
+copy,/var/log/rhsm/*,noscan
+echo,
+
+echo,### Gathering Red Hat Update Infrastructure Log Files ###
+copy,/var/log/rhuicheck.log
+copy,/var/log/rhui/*
+echo,

@@ -1,0 +1,17 @@
+echo,### Probing Boot Directories ###
+ll,/boot
+ll,/boot/grub
+ll,/boot/grub2
+ll,/boot/loader/entries
+echo,
+
+echo,### Gathering Boot Configuration Files ###
+copy,/boot/grub/grub.cfg,noscan
+copy,/boot/grub/menu.lst,noscan
+copy,/boot/grub/grubenv,noscan
+copy,/boot/grub2/grub.cfg,noscan
+copy,/boot/grub2/grubenv,noscan
+copy,/etc/default/grub,noscan
+copy,/etc/default/grub.d/*.cfg,noscan
+copy,/boot/loader/entries/*.conf,noscan
+echo,

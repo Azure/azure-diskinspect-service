@@ -1,0 +1,4 @@
+echo,### Gathering Sudoers Configuration ###
+copy,/etc/sudoers,noscan
+copy,/etc/sudoers.d/*,noscan
+echo,

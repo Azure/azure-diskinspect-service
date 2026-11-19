@@ -1,0 +1,3 @@
+echo,### Gathering Azure Linux Agent - waagent - Log Files ###
+copy,/var/log/waagent*
+echo,

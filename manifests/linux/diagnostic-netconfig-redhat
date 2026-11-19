@@ -1,0 +1,6 @@
+echo,### Gathering Network Configuration (RHEL/CentOS/Fedora) ###
+copy,/etc/sysconfig/network,noscan
+copy,/etc/sysconfig/network-scripts/ifcfg-*,noscan
+copy,/etc/sysconfig/network-scripts/route-*,noscan
+copy,/etc/dhcp/*.conf,noscan
+echo,

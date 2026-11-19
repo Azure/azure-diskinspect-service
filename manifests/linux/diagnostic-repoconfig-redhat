@@ -1,0 +1,12 @@
+echo,### Probing Repository Directories - RHEL CentOS Fedora ###
+ll,/etc/yum.repos.d
+echo,
+
+echo,### Gathering Repository Configuration Files - RHEL CentOS Fedora ###
+copy,/etc/yum.conf,noscan
+copy,/etc/yum.repos.d/*.repo,noscan
+copy,/etc/yum/vars/releasever,noscan
+copy,/etc/dnf/dnf.conf,noscan
+copy,/etc/dnf/vars/releasever,noscan
+copy,/etc/yum.repos.d/rh-cloud-rhel*.repo,noscan
+echo,

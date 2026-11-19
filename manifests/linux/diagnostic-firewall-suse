@@ -1,0 +1,6 @@
+echo,### Gathering Firewall Configuration (SUSE) ###
+copy,/etc/sysconfig/SuSEfirewall2,noscan
+copy,/etc/sysconfig/SuSEfirewall2.d/*,noscan
+copy,/etc/firewalld/*.xml,noscan
+copy,/etc/firewalld/zones/*.xml,noscan
+echo,

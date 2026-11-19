@@ -1,0 +1,12 @@
+echo,### Gathering AKS Kubernetes Component Files ###
+copy,/var/log/kubelet.log
+copy,/var/log/containerd.log
+copy,/var/log/docker.log
+copy,/var/log/journal/*/*,noscan
+copy,/etc/kubernetes/*.conf,noscan
+copy,/etc/kubernetes/*.yaml,noscan
+copy,/etc/kubernetes/manifests/*.yaml,noscan
+copy,/var/lib/kubelet/config.yaml,noscan
+copy,/etc/containerd/config.toml,noscan
+copy,/etc/docker/daemon.json,noscan
+echo,

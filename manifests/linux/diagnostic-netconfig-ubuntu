@@ -1,0 +1,6 @@
+echo,### Gathering Network Configuration (Ubuntu/Debian) ###
+copy,/etc/netplan/*.yaml,noscan
+copy,/etc/network/interfaces,noscan
+copy,/etc/network/interfaces.d/*.cfg,noscan
+copy,/etc/dhcp/*.conf,noscan
+echo,

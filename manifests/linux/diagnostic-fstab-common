@@ -1,0 +1,6 @@
+echo,### Gathering Filesystem Mount Configuration ###
+copy,/etc/fstab
+copy,/etc/crypttab
+copy,/etc/mdadm.conf
+copy,/etc/mdadm/mdadm.conf
+echo,

@@ -1,0 +1,9 @@
+echo,### Gathering DNS/Name Resolution Files ###
+copy,/etc/resolv.conf,noscan
+copy,/etc/nsswitch.conf,noscan
+copy,/etc/hosts,noscan
+copy,/etc/hosts.allow,noscan
+copy,/etc/hosts.deny,noscan
+copy,/run/systemd/resolve/resolv.conf,noscan
+copy,/run/systemd/resolve/stub-resolv.conf,noscan
+echo,

@@ -1,0 +1,6 @@
+echo,### Gathering NFS/IDMap Configuration ###
+copy,/etc/idmapd.conf,noscan
+copy,/etc/nfs.conf,noscan
+copy,/etc/nfsmount.conf,noscan
+copy,/etc/exports
+echo,

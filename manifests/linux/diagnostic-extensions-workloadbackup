@@ -1,0 +1,15 @@
+echo,### Workload Backup Extension ###
+copy,/var/spool/cron/tabs/root
+copy,/opt/msawb/etc/config/SAPHana/*
+copy,/opt/msawb/etc/config/global.json
+copy,/opt/msawb/var/lib/catalog/AutoHealCatalog/AutoHealTask/*.bin
+copy,/opt/msawb/var/lib/catalog/InquiryCatalog/*/*.bin
+copy,/opt/msawb/var/lib/catalog/WorkloadExtDatasourceCatalog/*/*.bin
+copy,/opt/msawb/var/lib/catalog/WorkloadSchedules/*/*.bin
+copy,/opt/msawb/var/lib/catalog/SyncObjectsCatalog/DatasourceSyncTable/*.bin
+copy,/opt/msawb/var/lib/catalog/SyncObjectsCatalog/AlertEventsTable/*.bin
+copy,/opt/msawb/bin/AzureWLBackupCommonManagementSettings.json
+copy,/opt/msawb/bin/AzureWLBackupMonitoringSync_config.json
+copy,/opt/msawb/var/log/*/*/*
+copy,/opt/msawb/var/log/*/*/*/*/*
+

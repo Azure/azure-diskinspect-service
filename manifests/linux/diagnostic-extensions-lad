@@ -1,0 +1,10 @@
+echo,### Linux Diagnostic Extension LAD ###
+copy,/var/log/azure/Microsoft.*LinuxDiagnostic/*/*
+copy,/var/lib/waagent/Microsoft.*LinuxDiagnostic*/status/*.status
+copy,/var/lib/waagent/Microsoft.*LinuxDiagnostic*/config/*.settings
+copy,/var/lib/waagent/Microsoft.*LinuxDiagnostic*/xmlCfg.xml
+
+echo,### OMS Agent - used by LAD ###
+copy,/etc/opt/microsoft/omsagent/LAD/conf/omsagent.d/*
+copy,/var/opt/microsoft/omsagent/LAD/log/*
+

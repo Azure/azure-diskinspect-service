@@ -1,0 +1,5 @@
+echo,### Gathering Package Management Log Files (Ubuntu/Debian) ###
+copy,/var/log/dpkg*,noscan
+copy,/var/log/apt/*,noscan
+copy,/var/log/unattended-upgrades/*,noscan
+echo,

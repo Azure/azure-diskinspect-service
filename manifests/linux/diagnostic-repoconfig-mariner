@@ -1,0 +1,10 @@
+echo,### Probing Repository Directories - Mariner ###
+ll,/etc/yum.repos.d
+ll,/etc/tdnf
+echo,
+
+echo,### Gathering Repository Configuration Files - Mariner ###
+copy,/etc/tdnf/tdnf.conf,noscan
+copy,/etc/yum.repos.d/*.repo,noscan
+copy,/etc/dnf/dnf.conf,noscan
+echo,

@@ -1,0 +1,18 @@
+echo,### SQL IaaS Extension ###
+ll,/var/opt/mssql
+copy,/var/log/azure/Microsoft.SqlServer.Management.SqlIaaSAgentLinux*,noscan
+copy,/var/lib/waagent/Microsoft.SqlServer.Management.SqlIaaSAgentLinux*/deployer.log,noscan
+copy,/var/lib/waagent/Microsoft.SqlServer.Management.SqlIaaSAgentLinux*/status/*
+copy,/var/lib/waagent/Microsoft.SqlServer.Management.SqlIaaSAgentLinux*/config/*,noscan
+copy,/var/lib/waagent/Microsoft.SqlServer.Management.SqlIaaSAgentLinux*/HandlerManifest.json,noscan
+copy,/var/lib/waagent/Microsoft.SqlServer.Management.SqlIaaSAgentLinux*/HandlerEnvironment.json,noscan
+
+echo,### SQL Server Installation ###
+copy,/var/opt/mssql/setup*
+
+echo,### SQL Server Logs ###
+copy,/opt/mssql/bin/mssql-conf
+copy,/var/opt/mssql/log/errorlog*
+copy,/var/opt/mssql/log/*.tar.gz2
+copy,/var/opt/mssql/log/*.mdmp
+

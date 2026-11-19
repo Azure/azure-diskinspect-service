@@ -1,0 +1,8 @@
+echo,### Gathering Time Configuration ###
+copy,/etc/localtime,noscan
+copy,/etc/timezone,noscan
+copy,/etc/chrony.conf,noscan
+copy,/etc/chrony/chrony.conf,noscan
+copy,/etc/ntp.conf,noscan
+copy,/etc/systemd/timesyncd.conf,noscan
+echo,

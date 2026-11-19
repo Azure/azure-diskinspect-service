@@ -1,0 +1,12 @@
+echo,### Gathering Cloud-init Files ###
+ll,/run/cloud-init
+ll,/var/lib/cloud
+copy,/var/log/cloud-init*
+copy,/etc/cloud/cloud.cfg
+copy,/etc/cloud/cloud.cfg.d/*.cfg
+copy,/run/cloud-init/cloud.cfg
+copy,/run/cloud-init/ds-identify.log
+copy,/run/cloud-init/result.json
+copy,/run/cloud-init/status.json
+echo,
+
