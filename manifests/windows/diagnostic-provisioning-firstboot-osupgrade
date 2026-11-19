@@ -1,0 +1,4 @@
+echo,### First Logon Commands ###
+copy,/Windows/Panther/FirstLogonCommands.log
+copy,/Windows/Panther/Specialize.log
+

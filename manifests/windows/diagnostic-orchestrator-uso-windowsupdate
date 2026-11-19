@@ -1,0 +1,7 @@
+echo,### USO Update Session Orchestrator Logs ###
+copy,/ProgramData/USOPrivate/UpdateStore/*.xml
+copy,/ProgramData/USOShared/Logs/*.log
+copy,/ProgramData/USOShared/Logs/*.etl
+ll,/ProgramData/USOPrivate
+ll,/ProgramData/USOShared
+

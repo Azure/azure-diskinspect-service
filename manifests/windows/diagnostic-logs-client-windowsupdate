@@ -1,0 +1,14 @@
+echo,### Windows Update Logs ###
+copy,/Windows/windowsupdate*.log
+copy,/Windows/Logs/WindowsUpdate/WindowsUpdate.*.etl,noscan
+copy,/WindowsUpdateVerbose.etl,noscan
+
+echo,### SIH Logs ###
+copy,/Windows/Logs/SIH/SIH.*.etl,noscan
+
+echo,### DPX Logs ###
+copy,/Windows/Logs/dpx/*.log
+
+echo,### Setup API ###
+copy,/Windows/INF/setupapi.dev.log
+

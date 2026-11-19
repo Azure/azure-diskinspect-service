@@ -1,0 +1,3 @@
+echo,### Component Based Servicing Registry ###
+copy,/Windows/System32/config/COMPONENTS,noscan
+

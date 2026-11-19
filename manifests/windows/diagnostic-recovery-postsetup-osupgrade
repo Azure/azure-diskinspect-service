@@ -1,0 +1,4 @@
+echo,### Post-Setup Actions ###
+copy,/Windows/Logs/mosetup/UpdateAgent.log
+copy,/Windows/Logs/MoSetup/BlueBox.log
+

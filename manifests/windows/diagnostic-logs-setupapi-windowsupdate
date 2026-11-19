@@ -1,0 +1,4 @@
+echo,### SetupAPI Logs ###
+copy,/Windows/INF/setupapi.dev.log
+copy,/Windows/INF/setupapi.app.log
+

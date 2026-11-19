@@ -1,0 +1,5 @@
+echo,### CBS Component Servicing Logs ###
+copy,/Windows/Logs/CBS/CBS.log
+copy,/Windows/Logs/CBS/CbsPersist*.log
+copy,/Windows/Logs/CBS/CbsPersist*.cab
+

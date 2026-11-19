@@ -1,0 +1,5 @@
+echo,### Windows Update Download Metadata ###
+ll,/Windows/SoftwareDistribution/Download
+copy,/Windows/SoftwareDistribution/Download/*.log
+copy,/Windows/SoftwareDistribution/SLS/*.log
+

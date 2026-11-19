@@ -1,0 +1,5 @@
+echo,### Startup Repair Logs ###
+copy,/Windows/System32/LogFiles/Srt/SrtTrail.txt
+copy,/Windows/System32/LogFiles/Srt/srt-ui-*.txt
+ll,/Windows/System32/LogFiles/Srt
+

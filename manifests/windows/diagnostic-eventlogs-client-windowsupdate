@@ -1,0 +1,5 @@
+echo,### Windows Update Event Logs ###
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WindowsUpdateClient%4Operational.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-Servicing%4Admin.evtx
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-WUSA%4Operational.evtx
+

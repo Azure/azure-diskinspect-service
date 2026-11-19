@@ -1,0 +1,3 @@
+echo,### BCD Registry Hive ###
+copy,/Boot/BCD,noscan
+

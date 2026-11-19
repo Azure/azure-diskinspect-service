@@ -1,0 +1,5 @@
+echo,### OS Upgrade SafeOS DU ###
+ll,/$Windows.~BT/Sources/SafeOS/SafeOS.Mount
+copy,/$Windows.~BT/Sources/SafeOS/setupact.log
+copy,/$Windows.~BT/Sources/SafeOS/setuperr.log
+

@@ -1,0 +1,3 @@
+echo,### Group Policy Event Logs ###
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-GroupPolicy%4Operational.evtx
+

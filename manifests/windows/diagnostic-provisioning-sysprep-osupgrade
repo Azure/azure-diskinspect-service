@@ -1,0 +1,8 @@
+echo,### Sysprep Files ###
+copy,/Windows/System32/Sysprep/Panther/setupact.log
+copy,/Windows/System32/Sysprep/Panther/setuperr.log
+copy,/Windows/System32/Sysprep/Panther/IE/setupact.log
+copy,/Windows/System32/Sysprep/Sysprep_succeeded.tag
+copy,/Windows/System32/Sysprep/Unattend.xml
+ll,/Windows/System32/Sysprep
+

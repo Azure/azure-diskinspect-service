@@ -1,0 +1,3 @@
+echo,### Windows Update Reporting Events ###
+copy,/Windows/SoftwareDistribution/ReportingEvents.log
+

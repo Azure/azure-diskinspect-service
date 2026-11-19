@@ -1,0 +1,4 @@
+echo,### SIH Service Logs ###
+copy,/Windows/Logs/SIH/SIH*.log
+copy,/Windows/Logs/SIH/SIH*.etl
+

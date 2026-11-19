@@ -1,0 +1,19 @@
+echo,### Alternative Staging Folder - $Windows.~WS ###
+copy,/$Windows.~WS/Sources/Panther/setupact.log
+copy,/$Windows.~WS/Sources/Panther/setuperr.log
+copy,/$Windows.~WS/Sources/Panther/miglog.xml
+
+echo,### Setup Cleanup ###
+copy,/Windows/Logs/SetupCleanupTask/setupact.log
+copy,/Windows/Logs/SetupCleanupTask/setuperr.log
+
+echo,### Previous OS - Windows.old ###
+copy,/Windows.old/Windows/Logs/mosetup/bluebox.log
+copy,/Windows.old/Windows/Logs/WindowsUpdate/*.etl,noscan
+copy,/Windows.old/Windows/SoftwareDistribution/ReportingEvents.log
+copy,/Windows.old/ProgramData/USOPrivate/UpdateStore
+copy,/Windows.old/ProgramData/USOShared/Logs
+copy,/Windows.old/Windows/Panther/setupact.log
+copy,/Windows.old/Windows/Panther/setuperr.log
+copy,/Windows.old/Windows/Panther/miglog.xml
+

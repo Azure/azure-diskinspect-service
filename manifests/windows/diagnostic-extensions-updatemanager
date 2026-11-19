@@ -1,0 +1,8 @@
+echo,### Azure Update Manager Extension ###
+copy,/WindowsAzure/Logs/Plugins/Microsoft.CPlat.Core.WindowsPatchExtension/*/*.log
+copy,/Packages/Plugins/Microsoft.CPlat.Core.WindowsPatchExtension/*/status/*.status
+copy,/Packages/Plugins/Microsoft.CPlat.Core.WindowsPatchExtension/*/RuntimeSettings/*.settings
+copy,/Packages/Plugins/Microsoft.CPlat.Core.WindowsPatchExtension/*/config.txt
+copy,/Packages/Plugins/Microsoft.CPlat.Core.WindowsPatchExtension/*/HandlerEnvironment.json
+copy,/Packages/Plugins/Microsoft.CPlat.Core.WindowsPatchExtension/*/HandlerManifest.json
+

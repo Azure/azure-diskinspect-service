@@ -1,0 +1,10 @@
+echo,### Panther Setup Logs ###
+copy,/Windows/Panther/setupact.log
+copy,/Windows/Panther/setuperr.log
+copy,/Windows/Panther/UnattendGC/setupact.log
+copy,/Windows/Panther/UnattendGC/setuperr.log
+copy,/Windows/Panther/cbs_unattend.log
+copy,/Windows/Panther/DDACLSys.log
+copy,/Windows/Panther/UnattendedJoin/UnattendedJoinDCLocator.etl
+copy,/Windows/Panther/miglog.xml
+

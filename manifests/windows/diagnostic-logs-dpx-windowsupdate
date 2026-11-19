@@ -1,0 +1,4 @@
+echo,### DPX Logs ###
+copy,/Windows/Logs/DPX/setupact.log
+copy,/Windows/Logs/DPX/setuperr.log
+

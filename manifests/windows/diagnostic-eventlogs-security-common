@@ -1,0 +1,4 @@
+echo,### Security and Licensing Event Logs ###
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-CAPI2%4Operational.evtx
+copy,/Windows/System32/Winevt/Logs/Microsoft-WS-Licensing%4Admin.evtx
+

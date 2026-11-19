@@ -1,0 +1,4 @@
+echo,### Windows Error Reporting ReportQueue ###
+ll,/ProgramData/Microsoft/Windows/WER/ReportQueue
+copy,/ProgramData/Microsoft/Windows/WER/ReportQueue/*/Report.wer
+

@@ -1,0 +1,4 @@
+echo,### DISM Logs ###
+copy,/Windows/Logs/DISM/dism.log
+copy,/Windows/Logs/DISM/dism_*.log
+

@@ -1,0 +1,4 @@
+echo,### Provisioning State ###
+copy,/Windows/Setup/State/State.ini
+ll,/Windows/Setup/State
+

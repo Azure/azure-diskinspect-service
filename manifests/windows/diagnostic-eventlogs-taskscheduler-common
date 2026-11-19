@@ -1,0 +1,3 @@
+echo,### Task Scheduler Event Logs ###
+copy,/Windows/System32/winevt/Logs/Microsoft-Windows-TaskScheduler%4Operational.evtx
+
